@@ -3,9 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; neotree
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package neotree
   :bind (	("s-n" . neotree-toggle)
 		([f11] . neotree-toggle)

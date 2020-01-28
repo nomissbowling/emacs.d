@@ -10,7 +10,6 @@
  "M-."
  (defhydra hydra-quick-menu (:hint nil :exit t)
    "
-
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   pinky_:_   _r_estart   _m_arkdown   _u_ndotree   _p_ackage

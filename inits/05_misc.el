@@ -15,11 +15,6 @@
 (bind-key "C-@" 'er/expand-region)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; back-button
-
-(add-hook 'after-init-hook 'back-button-mode)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; yasnippet
 
 (add-hook 'after-init-hook 'yas-global-mode)

@@ -7,7 +7,7 @@
  [f2]
  (defhydra hydra-compile (:color red :hint nil)
    "
- 🗿 Compile: make _k_  _a_ll  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _e_rror 🐾 "
+ 🗿 Compile: make:_k_  _a_ll  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _e_rror 🐾 "
    ("k" my:make-k)
    ("a" my:make-all)
    ("u" my:make-upftp)

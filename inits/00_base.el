@@ -13,11 +13,7 @@
 (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
 
 ;; Use clipboard
-(setq select-active-regions nil)
-(setq mouse-drag-copy-region t)
-(setq x-select-enable-primary t)
-(setq x-select-enable-clipboard nil)
-;; (setq x-select-enable-clipboard t)
+(setq x-select-enable-clipboard t)
 
 ;; Enter a backslash instead of ¥
 (define-key global-map [?¥] [?\\])

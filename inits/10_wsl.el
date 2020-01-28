@@ -17,8 +17,8 @@
 	    ))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; wsl-utls
-;; https://github.com/smzht/wsl-utils
+;; dired-open with windows application
+;; use wsl-utils:https://github.com/smzht/wsl-utils
 (when (getenv "WSLENV")
   (use-package dired-open)
   (setq dired-open-extensions

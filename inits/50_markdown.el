@@ -5,13 +5,14 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; markdown-mode
-(setq markdown-fontify-code-blocks-natively t)
 
+(setq markdown-fontify-code-blocks-natively t)
 (add-hook 'markdown-mode-hook
           '(lambda () (outline-minor-mode t)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra
+
 (defhydra hydra-markdown (:color red :hint nil)
   "
  _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _l_ivedown:_k_ill  _p_df._d_ocx"
@@ -32,6 +33,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2pdf (Use wkhtmltopdf without latex)
+
 (defun md2pdf ()
   "Generate pdf from currently open markdown."
   (interactive)
@@ -55,6 +57,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2docx
+
 (defun md2docx ()
   "Generate docx from currently open markdown."
   (interactive)
@@ -77,7 +80,10 @@
                (file-name-sans-extension filename)
                ".docx")))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; livedown: Realtime viewer
+;; https://github.com/shime/livedown
+
 (use-package livedown)
 (custom-set-variables
  '(livedown-autostart nil) ; automatically open preview when opening markdown files

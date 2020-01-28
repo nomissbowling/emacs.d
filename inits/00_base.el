@@ -3,7 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; test
 ;; Language setting, default encode
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)

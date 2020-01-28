@@ -19,6 +19,7 @@
   (interactive)
   (shell-command-to-string
    "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
+
 (defun mozc-config-dialog ()
   "Mozc config dialog."
   (interactive)

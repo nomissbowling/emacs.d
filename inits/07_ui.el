@@ -15,6 +15,9 @@
 (with-eval-after-load "all-the-icons"
   (setq all-the-icons-scale-factor 1.0))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; modeline
+
 (use-package doom-modeline
   :commands (doom-modeline-def-modeline)
   :custom

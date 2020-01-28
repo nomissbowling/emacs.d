@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; use popwin
 (with-eval-after-load "popwin"
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
   (key-chord-define-global "zz" 'eshell))

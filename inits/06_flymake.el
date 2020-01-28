@@ -13,7 +13,7 @@
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; flymake-posframe
+;; posframe
 
 (defvar flymake-posframe-hide-posframe-hooks
   '(pre-command-hook post-command-hook focus-out-hook)

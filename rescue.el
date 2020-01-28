@@ -1,6 +1,7 @@
 ;;; rescue.el --- rescue.el
 ;;; Commentary:
 ;;; Code:
+
 (package-initialize)
 
 (menu-bar-mode 0)

@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+
 (use-package easy-hugo
   :commands easy-hugo-mode
   :init

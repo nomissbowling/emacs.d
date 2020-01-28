@@ -70,25 +70,6 @@
   ("y" (search-web-dwim "yodobashi"))
   ("r" (search-web-dwim "ruigo")))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; espy
-
-(setq espy-password-file "~/Dropbox/passwd/password.org.gpg")
-(defhydra hydra-espy (:color red :hint nil)
-  "
- 📦 Password: ( 'ω')
-    Espy: _p_ass   _u_ser   _f_ile  |  Generate: _1_:strong   _2_:simple   _3_:phonetic"
-  ("p" espy-get-pass)
-  ("u" espy-get-user)
-  ("f" my:password-file :exit t)
-  ("1" password-generator-strong)
-  ("2" password-generator-simple)
-  ("3" password-generator-phonetic))
-(defun my:password-file ()
-  "Open password file."
-  (interactive)
-  (find-file espy-password-file))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Automatic deletion for empty files (Valid in all modes)
 ;; https://uwabami.github.io/cc-env/Emacs.html#org57f6557

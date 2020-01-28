@@ -53,7 +53,7 @@
   ;; Refresh dashboard buffer
   (if (get-buffer dashboard-buffer-name)
       (kill-buffer dashboard-buffer-name))
-  (setq default-directory "~/")
+  ;; (setq default-directory "~/")
   (dashboard-insert-startupify-lists)
   (switch-to-buffer dashboard-buffer-name)
   ;; Jump to the first section

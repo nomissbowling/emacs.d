@@ -90,11 +90,8 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     dired-hacks-utils
     doom-themes
     doom-modeline
-    edit-indirect
-    espy
     easy-hugo
     eshell-z
-    esh-autosuggest
     exec-path-from-shell
     expand-region
     flymake-diagnostic-at-point
@@ -123,7 +120,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     oauth
     open-junk-file
     package-utils
-    password-generator
     persistent-scratch
     php-mode
     popwin

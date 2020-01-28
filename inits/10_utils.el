@@ -54,24 +54,21 @@
   (add-to-list 'search-web-engines '("yahoo jp" "http://search.yahoo.co.jp/search?p=%s" nil))
   (add-to-list 'search-web-engines '("eijiro" "http://eow.alc.co.jp/%s/UTF-8/" nil)))
 
-(bind-key
- "s-s"
- (defhydra hydra-search (:hint nil :exit t)
-   "
+(defhydra hydra-search (:hint nil :exit t)
+  "
  🔍  _a_mazon  _y_odobashi  _g_oogle  _e_ijiro  _m_aps  _q_itta  _w_eblio  g_o_o  _p_:〒  _k_:古語  _r_:類語"
 
-   ("a" (search-web-dwim "amazon jp"))
-   ("e" (search-web-dwim "eijiro"))
-   ("g" (search-web-dwim "google"))
-   ("o" (search-web-dwim "goo"))
-   ("m" (search-web-dwim "google maps"))
-   ("q" (search-web-dwim "qitta"))
-   ("w" (search-web-dwim "weblio"))
-   ("p" (search-web-dwim "post"))
-   ("k" (search-web-dwim "kobun"))
-   ("y" (search-web-dwim "yodobashi"))
-   ("r" (search-web-dwim "ruigo"))))
-
+  ("a" (search-web-dwim "amazon jp"))
+  ("e" (search-web-dwim "eijiro"))
+  ("g" (search-web-dwim "google"))
+  ("o" (search-web-dwim "goo"))
+  ("m" (search-web-dwim "google maps"))
+  ("q" (search-web-dwim "qitta"))
+  ("w" (search-web-dwim "weblio"))
+  ("p" (search-web-dwim "post"))
+  ("k" (search-web-dwim "kobun"))
+  ("y" (search-web-dwim "yodobashi"))
+  ("r" (search-web-dwim "ruigo")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; espy

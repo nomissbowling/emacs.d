@@ -38,7 +38,6 @@
   (list 427110 1469889687))
 
 ;; Remedy of when it comes to args-out-of-range
-;; https://qiita.com/akicho8/items/cae976cb3286f51e4632
 ;; Patch of following in google-translate-core.el
 
 ;; (defun google-translate-json-suggestion (json)

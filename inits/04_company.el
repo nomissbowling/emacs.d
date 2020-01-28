@@ -25,10 +25,6 @@
   (setq company-box-doc-enable nil)
   (add-hook 'company-mode-hook 'company-box-mode))
 
-;; company-quickhelp
-(setq company-quickhelp-color-foreground "white")
-(setq company-quickhelp-color-background "dark slate gray")
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

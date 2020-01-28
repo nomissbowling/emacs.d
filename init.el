@@ -73,7 +73,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     apel
     auto-save-buffers-enhanced
     avy
-    back-button
     beacon
     bind-key
     browse-at-remote

@@ -18,16 +18,8 @@
 ;; Iconify-frame
 (bind-key* "C-x C-c" 'iconify-frame)
 
-;; Font setting corresponding to Host
-(when (string-match "e590" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-14.5"))
-  (if (getenv "WSLENV")
-      (add-to-list 'default-frame-alist '(font . "Cica-17.5"))))
-
-(when (string-match "x250" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-13.5"))
-  (if (getenv "WSLENV")
-      (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
+;; Font setting
+(add-to-list 'default-frame-alist '(font . "Cica-14.5"))
 
 ;; exec-path-from-shell
 (setq exec-path-from-shell-check-startup-files nil)

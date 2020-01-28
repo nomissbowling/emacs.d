@@ -37,6 +37,20 @@
   "TKK='427110.1469889687'."
   (list 427110 1469889687))
 
+;; Remedy of when it comes to args-out-of-range
+;; https://qiita.com/akicho8/items/cae976cb3286f51e4632
+;; Patch of following in google-translate-core.el
+
+;; (defun google-translate-json-suggestion (json)
+;;   "Retrieve from JSON (which returns by the
+;; `google-translate-request' function) suggestion. This function
+;; does matter when translating misspelled word. So instead of
+;; translation it is possible to get suggestion."
+;;   (let ((info (aref json 7)))
+;;     (if (and info (> (length info) 0))
+;;         (aref info 1)
+;;       nil)))
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

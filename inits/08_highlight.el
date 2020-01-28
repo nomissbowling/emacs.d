@@ -69,13 +69,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Whitespace
 
-;; Highlight the space at the end of the line
 (setq-default show-trailing-whitespace nil)
 
 (defun my:enable-trailing-mode ()
   "Show tail whitespace."
   (setq show-trailing-whitespace t))
-
 (add-hook 'prog-mode-hook 'my:enable-trailing-mode)
 
 (defun my:cleanup-for-spaces ()

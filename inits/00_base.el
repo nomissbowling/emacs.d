@@ -12,9 +12,6 @@
 (bind-key "C-." 'xref-find-definitions)
 (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
 
-;; Use clipboard
-(setq x-select-enable-clipboard t)
-
 ;; Enter a backslash instead of ¥
 (define-key global-map [?¥] [?\\])
 
@@ -110,6 +107,9 @@
 
 ;; Copy with mouse drag
 (setq mouse-drag-copy-region t)
+
+;; Use clipboard
+(setq x-select-enable-clipboard t)
 
 ;; Exit Emacs with M-x exit
 (defalias 'exit 'save-buffers-kill-emacs)

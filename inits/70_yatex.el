@@ -3,7 +3,7 @@
 ;;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
 ;;; | #!/bin/bash
 ;;; | name=$1
-;;; | dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
+;;; | dvipdfmx $1 && evince ${name%.*}.pdf
 ;;; Code:
 ;; (setq debug-on-error t)
 

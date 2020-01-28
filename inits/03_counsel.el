@@ -13,7 +13,6 @@
 (setq counsel-yank-pop-separator
       "\n------------------------------------------------------------\n")
 (bind-keys ("C-:" . counsel-switch-buffer)
-	   ("C-s" . swiper-or-isearch-forward)
 	   ("M-s" . swiper-isearch-thing-at-point)
 	   ("M-x" . counsel-M-x)
 	   ("C-c a" . counsel-ag)
@@ -28,12 +27,6 @@
 (bind-key [f6] (lambda ()
 		 (interactive)
 		 (counsel-M-x "^counsel ")))
-
-(defun swiper-or-isearch-forward (use)
-  "If add `C-u' USE the iserach-forward."
-  (interactive "P")
-  (let (current-prefix-arg)
-    (call-interactively (if use 'isearch-forward 'swiper))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-css to activate imenu integration to "C-r"

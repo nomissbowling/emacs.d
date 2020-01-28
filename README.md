@@ -1,4 +1,4 @@
-# My private emacs configuration file
+# My private emacs configuration files
 
 ## Screen Shot
 

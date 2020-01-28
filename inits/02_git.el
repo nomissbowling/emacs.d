@@ -9,6 +9,7 @@
 (autoload 'magit-status "magit" nil t)
 (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 (bind-key "C-x g" 'magit-status)
+(bind-key "C-x G" 'magit-blame)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; diff-hl

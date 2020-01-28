@@ -10,13 +10,6 @@
 (auto-save-buffers-enhanced t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Winner-mode
-
-(winner-mode)
-(bind-key [M-left] 'winner-undo)
-(bind-key [M-right] 'winner-redo)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; iflipb
 
 (setq iflipb-wrap-around t)

@@ -70,7 +70,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 (defvar my-install-package-list
   '(aggressive-indent
     all-the-icons-dired
-    apel
     auto-save-buffers-enhanced
     avy
     beacon
@@ -80,7 +79,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     company-box
     company-prescient
     counsel
-    counsel-css
     counsel-projectile
     counsel-tramp
     dash
@@ -106,7 +104,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     init-loader
     ivy-prescient
     ivy-rich
-    ivy-xref
     ivy-yasnippet
     japanese-holidays
     key-chord
@@ -121,7 +118,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     open-junk-file
     package-utils
     persistent-scratch
-    php-mode
     popwin
     posframe
     prescient

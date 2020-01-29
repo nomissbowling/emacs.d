@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package dashboard
   :bind (([f10] . open-dashboard)
 	 :map dashboard-mode-map
@@ -50,16 +51,15 @@
   "Open the *dashboard* buffer and jump to the first widget."
   (interactive)
   (delete-other-windows)
+  (setq default-directory "~/")
   ;; Refresh dashboard buffer
   (if (get-buffer dashboard-buffer-name)
       (kill-buffer dashboard-buffer-name))
-  (setq default-directory "~/")
   (dashboard-insert-startupify-lists)
   (switch-to-buffer dashboard-buffer-name)
   ;; Jump to the first section
   (goto-char (point-min))
   (dashboard-goto-recent-files))
-
 
 (defun quit-dashboard ()
   "Quit dashboard window."
@@ -78,7 +78,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dashoard-hydra
-
 (defhydra dashboard-hydra (:hint nil :exit t)
   "
 
@@ -122,9 +121,9 @@
   ("l" line-app-open)
   ("." nil))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; browse-url
-
 (defun browse-calendar ()
   "Open keep with chrome."
   (interactive)
@@ -153,6 +152,7 @@
   "Open slack with chrome."
   (interactive)
   (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/"))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

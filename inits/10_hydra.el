@@ -12,11 +12,12 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   pinky_:_   _r_estart   _m_arkdown   _u_ndotree   _p_ackage
-   _r_estart   work:_._  esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _s_earch   _g_ithub   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
+   magit:_._   make_k_   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _s_earch   _g_ithub   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
    ("2" my:pdfout-buffer)
    ("p" hydra-package/body)
    ("o" browse-url-at-point)
    ("s" hydra-search/body)
+   ("." magit-status)
    ("f" ftp-client)
    ("t" my:tramp-xsrv)
    ("q" my:tramp-quit)
@@ -38,7 +39,7 @@
    ("g" my:github-show)
    ("@" howm-list-all)
    ("," hydra-howm/body)
-   ("." hydra-work/body)
+   ("k" my:recompile)
    ("u" undo-tree-visualize)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
@@ -48,37 +49,39 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My work
-(defhydra hydra-work (:hint nil :exit t)
-  "
+(bind-key
+ "M-:"
+ (defhydra hydra-work (:hint nil :exit t)
+   "
  📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _j_unk  _g_ist:_l_  bkup:mel_p_a:_r_ecentf"
-  ("e" easy-hugo)
-  ("d" my:diary)
-  ("D" my:diary-new-post)
-  ("o" my:otibo)
-  ("O" my:otibo-new-post)
-  ("t" my:teirei)
-  ("T" my:teirei-new-post)
-  ("s" my:swan)
-  ("S" my:swan-new-post)
-  ("k" my:kinnei)
-  ("K" my:kinnei-new-post)
-  ("m" my:d_kukai)
-  ("w" my:m_kukai)
-  ("n" my:haiku-note)
-  ("N" my:haiku-note-post)
-  (":" view-mode)
-  ("p" backup-melpa)
-  ("r" backup-recentf)
-  ("/" kill-other-buffers)
-  ("_" delete-other-windows)
-  ("." hydra-quick-menu/body)
-  ("j" open-junk-file)
-  ("J" my:open-junk-file-dir)
-  ("l" gist-list)
-  ("g" gist-region-or-buffer)
-  ("j" open-junk-file)
-  ("J" my:open-junk-file-dir)
-  ("q" keyboard-quit))
+   ("e" easy-hugo)
+   ("d" my:diary)
+   ("D" my:diary-new-post)
+   ("o" my:otibo)
+   ("O" my:otibo-new-post)
+   ("t" my:teirei)
+   ("T" my:teirei-new-post)
+   ("s" my:swan)
+   ("S" my:swan-new-post)
+   ("k" my:kinnei)
+   ("K" my:kinnei-new-post)
+   ("m" my:d_kukai)
+   ("w" my:m_kukai)
+   ("n" my:haiku-note)
+   ("N" my:haiku-note-post)
+   (":" view-mode)
+   ("p" backup-melpa)
+   ("r" backup-recentf)
+   ("/" kill-other-buffers)
+   ("_" delete-other-windows)
+   ("." hydra-quick-menu/body)
+   ("j" open-junk-file)
+   ("J" my:open-junk-file-dir)
+   ("l" gist-list)
+   ("g" gist-region-or-buffer)
+   ("j" open-junk-file)
+   ("J" my:open-junk-file-dir)
+   ("q" keyboard-quit)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

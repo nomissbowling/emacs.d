@@ -42,6 +42,11 @@
 	   (easy-hugo-sshdomain . "xsrv")
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/tube/"))
 	  ;; blog7 setting
+	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/snap/")
+	   (easy-hugo-url . "https://snap.wegh.net")
+	   (easy-hugo-sshdomain . "xsrv")
+	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/snap/"))
+	  ;; blog8 setting
 	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/ryo/")
 	   (easy-hugo-url . "https://ryo.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")

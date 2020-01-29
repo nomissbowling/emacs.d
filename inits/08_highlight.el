@@ -8,12 +8,10 @@
 (add-hook 'prog-mode-hook 'smartparens-mode)
 (add-hook 'markdown-mode-hook #'smartparens-markdown-mode)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; aggressive-indent
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 (add-hook 'css-mode-hook #'aggressive-indent-mode)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Brace the corresponding parentheses
@@ -24,22 +22,18 @@
 (custom-set-faces
  '(show-paren-match ((nil (:background "lime green" :foreground "#f1fa8c")))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Enable hi-line-mode
 (add-hook 'after-init-hook 'global-hl-line-mode)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Enable beacon-mode ... flush the current line
 (add-hook 'after-init-hook 'beacon-mode 1)
 (setq beacon-color "yellow")
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; rainbow delimiters
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; volatile-highlights
@@ -47,24 +41,20 @@
 (custom-set-faces
  '(vhl/default-face ((nil (:foreground "#FF3333" :background "#FFCDCD")))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set background color of inactive window
 (hiwin-activate)
 (set-face-background 'hiwin-face "#364456")
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set background color of region
 (set-face-background 'region "dark cyan")
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set code font of markdown
 (custom-set-faces
  '(markdown-code-face
    ((t (:inherit font-lock-constant-face :family "Cica" :background " ")))))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Whitespace
@@ -84,7 +74,6 @@
       (widen)
       (goto-char (point-max))
       (delete-blank-lines))))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

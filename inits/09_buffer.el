@@ -8,14 +8,12 @@
 (setq auto-save-buffers-enhanced-quiet-save-p t)
 (auto-save-buffers-enhanced t)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; iflipb
 (setq iflipb-wrap-around t)
 (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir]$"))
 (bind-key [C-left] 'iflipb-previous-buffer)
 (bind-key [C-right] 'iflipb-next-buffer)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Toggle current buffer and *scratch* buffer
@@ -30,14 +28,12 @@
 	 (switch-to-buffer "*scratch*"))
      (switch-to-buffer toggle-scratch-prev-buffer))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set buffer that can not be killed.
 (with-current-buffer "*scratch*"
   (emacs-lock-mode 'kill))
 (with-current-buffer "*Messages*"
   (emacs-lock-mode 'kill))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; automatically kill unnecessary buffers
@@ -49,11 +45,9 @@
   :config
   (setq tempbuf-kill-message nil))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Run M-/ same kill-buffer as C-x k
 (bind-key "M-/" 'kill-buffer)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Run key bind in hydra-work
@@ -64,7 +58,6 @@
    (interactive)
    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
    (message "Killed other buffers!")))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Assign ibuffer to C-x C-b
@@ -93,14 +86,12 @@
 				" " (mode 16 16 :left :elide) " " filename-and-process)
 			  (mark " " (name 16 -1) " " filename))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; undohist
 (use-package undohist
   :hook (after-init . undohist-initialize)
   :init
   (setq undohist-ignored-files '("/tmp" "COMMIT_EDITMSG")))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; undo-tree
@@ -135,7 +126,6 @@
     (setq-local undo-tree-visualizer-diff nil)
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

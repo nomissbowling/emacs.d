@@ -24,7 +24,6 @@
   (setq company-box-doc-enable nil)
   (add-hook 'company-mode-hook 'company-box-mode))
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

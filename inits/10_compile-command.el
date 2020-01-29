@@ -21,7 +21,6 @@
 ;; Auto scroll with compilation
 (setq compilation-scroll-output t)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Make Commands
 (defun my:make-k ()
@@ -71,7 +70,6 @@
   (interactive)
   (recompile)
   (setq compile-command "make -k"))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

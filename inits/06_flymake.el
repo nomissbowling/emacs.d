@@ -11,7 +11,6 @@
 (add-hook 'prog-mode-hook 'flymake-mode)
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; posframe
 (defvar flymake-posframe-hide-posframe-hooks
@@ -39,7 +38,6 @@
     (add-hook hook #'flymake-posframe-hide-posframe nil t)))
 
 (advice-add 'flymake-diagnostic-at-point-display-popup :override 'my:flymake-diagnostic-at-point-display-popup)
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

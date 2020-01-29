@@ -5,7 +5,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Quick menu
-
 (bind-key
  "M-."
  (defhydra hydra-quick-menu (:hint nil :exit t)
@@ -46,9 +45,9 @@
    ("_" delete-other-windows)
    ("M-." nil)))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My work
-
 (defhydra hydra-work (:hint nil :exit t)
   "
  📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _j_unk  _g_ist:_l_  bkup:mel_p_a:_r_ecentf"
@@ -84,7 +83,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package-utils
-
 (defhydra hydra-package (:color red :hint nil)
   "
  📦 Package: _i_nstall   _u_pgrade   _r_emove   _a_ll-update   _l_ist"
@@ -94,9 +92,9 @@
   ("a" package-utils-upgrade-all-and-restart)
   ("l" package-list-packages))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Gist help
-
 (bind-key "." 'hydra-gist-help/body tabulated-list-mode-map)
 (defhydra hydra-gist-help ()
   "
@@ -116,9 +114,9 @@
      @ : make a gist out of marked files"
   ("." nil))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; my:functions
-
 (defun ftp-client ()
   "Open Ftp application."
   (interactive)
@@ -141,9 +139,9 @@
     (shell-command "sh recentfbackup.sh"))
   (message "Finished recentf buckup!"))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Pinky
-
 (defhydra hydra-pinky (:color red :hint nil)
   "
  :_0_._1_._2_._3_._5_._o_._S_._x_._d_ :_j_._k_._h_._l_._c_._a_._e_._b_._SPC_._m_._w_._s_  :_+_._-_._r_  :_n_._p_._u_._t_  :_<_-_:_-_>_  :_q_uit"
@@ -194,6 +192,8 @@
   ;; quit
   ("q" nil))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; sequential-command
 (use-package sequential-command-config
   :commands sequential-command-setup-keys
@@ -235,6 +235,7 @@ If there are two or more windows, it will go to another window."
     (other-window 1)
     (switch-to-buffer other-buf)
     (other-window -1)))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

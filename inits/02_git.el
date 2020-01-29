@@ -5,22 +5,21 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; magit
-
 (autoload 'magit-status "magit" nil t)
 (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 (bind-key "C-x g" 'magit-status)
 (bind-key "C-x G" 'magit-blame)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; diff-hl
-
 (add-hook 'after-init-hook 'global-diff-hl-mode)
 (add-hook 'after-init-hook 'diff-hl-margin-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra-magit
-
 (bind-key
  [f3]
  (defhydra hydra-magit (:color red :hint nil)
@@ -34,6 +33,7 @@
    ("r" diff-hl-revert-hunk)
    ("v" vc-diff)
    ("<f3>" nil)))
+
 
 ;; local Variables:
 ;; no-byte-compile: t

@@ -5,21 +5,20 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-save-buffers-enhanced
-
 (setq auto-save-buffers-enhanced-quiet-save-p t)
 (auto-save-buffers-enhanced t)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; iflipb
-
 (setq iflipb-wrap-around t)
 (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir]$"))
 (bind-key [C-left] 'iflipb-previous-buffer)
 (bind-key [C-right] 'iflipb-next-buffer)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Toggle current buffer and *scratch* buffer
-
 (bind-key
  [home]
  (defun toggle-scratch()
@@ -31,17 +30,17 @@
 	 (switch-to-buffer "*scratch*"))
      (switch-to-buffer toggle-scratch-prev-buffer))))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set buffer that can not be killed.
-
 (with-current-buffer "*scratch*"
   (emacs-lock-mode 'kill))
 (with-current-buffer "*Messages*"
   (emacs-lock-mode 'kill))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; automatically kill unnecessary buffers
-
 (use-package tempbuf
   :hook
   (dired-mode . turn-on-tempbuf-mode)
@@ -50,14 +49,14 @@
   :config
   (setq tempbuf-kill-message nil))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Run M-/ same kill-buffer as C-x k
-
 (bind-key "M-/" 'kill-buffer)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Run key bind in hydra-work
-
 (bind-key
  "C-M-/"
  (defun kill-other-buffers ()
@@ -66,9 +65,9 @@
    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
    (message "Killed other buffers!")))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Assign ibuffer to C-x C-b
-
 (bind-key "C-x C-b" 'ibuffer-other-window)
 ;; Use counsel without ibuffer-find-file
 (bind-key* "C-x C-f" 'counsel-find-file ibuffer-mode-map)
@@ -94,17 +93,17 @@
 				" " (mode 16 16 :left :elide) " " filename-and-process)
 			  (mark " " (name 16 -1) " " filename))))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; undohist
-
 (use-package undohist
   :hook (after-init . undohist-initialize)
   :init
   (setq undohist-ignored-files '("/tmp" "COMMIT_EDITMSG")))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; undo-tree
-
 (use-package undo-tree
   :bind* (("C-_" . undo-tree-undo)
 	  ("C-\\" . undo-tree-undo)
@@ -136,6 +135,7 @@
     (setq-local undo-tree-visualizer-diff nil)
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

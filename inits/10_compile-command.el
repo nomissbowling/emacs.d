@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (bind-key
  [f2]
  (defhydra hydra-compile (:color red :hint nil)
@@ -20,6 +21,8 @@
 ;; Auto scroll with compilation
 (setq compilation-scroll-output t)
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Make Commands
 (defun my:make-k ()
   "Make command default."
@@ -68,6 +71,7 @@
   (interactive)
   (recompile)
   (setq compile-command "make -k"))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -5,7 +5,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Output PDF from text file
-
 (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
 (defun my:pdfout-region (begin end)
   "PDF out from BEGIN to END of region."
@@ -16,9 +15,9 @@
   (interactive)
   (my:pdfout-region (point-min) (point-max)))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Open application
-
 (bind-key*
  "C-z"
  (defun term-current-dir-open ()
@@ -35,10 +34,10 @@
    (interactive)
    (shell-command (concat "xdg-open " default-directory))))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Search Web
 ;; Tips from https://github.com/nomaddo/search-web.el
-
 (use-package search-web
   :commands search-web-dwim
   :config
@@ -70,10 +69,10 @@
   ("y" (search-web-dwim "yodobashi"))
   ("r" (search-web-dwim "ruigo")))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Automatic deletion for empty files (Valid in all modes)
 ;; https://uwabami.github.io/cc-env/Emacs.html#org57f6557
-
 (defun my:delete-file-if-no-contents ()
   "Automatic deletion for empty files."
   (when (and (buffer-file-name (current-buffer))
@@ -84,9 +83,9 @@
     (setq after-save-hook
           (cons 'my:delete-file-if-no-contents after-save-hook)))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; key-chord
-
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay           0.15
       key-chord-safety-interval-backward 0.1
@@ -101,6 +100,7 @@
   (let ((input-method-function-save input-method-function))
     ad-do-it
     (setq input-method-function input-method-function-save)))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

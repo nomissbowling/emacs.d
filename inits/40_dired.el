@@ -5,7 +5,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dired
-
 (with-eval-after-load 'dired
   (bind-keys :map dired-mode-map
 	     ("j" . dired-next-line)
@@ -132,10 +131,10 @@
   (call-interactively 'dired-unmark-all-marks)
   (call-interactively 'revert-buffer))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shows icons
 ;; Tips from https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el
-
 (when (eq system-type 'gnu/linux)
   (use-package all-the-icons-dired
     :commands dired-mode
@@ -198,6 +197,7 @@
 		    (insert "\t"))))   ; Align and keep one space for refeshing after operations
 	      (forward-line 1))))))
     (advice-add #'all-the-icons-dired--display :override #'my-all-the-icons-dired--display)))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -5,14 +5,13 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; markdown-mode
-
 (setq markdown-fontify-code-blocks-natively t)
 (add-hook 'markdown-mode-hook
           '(lambda () (outline-minor-mode t)))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra
-
 (defhydra hydra-markdown (:color red :hint nil)
   "
  _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _l_ivedown:_k_ill  _p_df._d_ocx"
@@ -31,9 +30,9 @@
 ;; Change markdown-modo key bind `markdown-shifttab' to `company-yasnippet'
 (bind-key* "S-<tab>" 'company-yasnippet markdown-mode-map)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2pdf (Use wkhtmltopdf without latex)
-
 (defun md2pdf ()
   "Generate pdf from currently open markdown."
   (interactive)
@@ -55,9 +54,9 @@
                (file-name-sans-extension filename)
 	       ".pdf")))))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2docx
-
 (defun md2docx ()
   "Generate docx from currently open markdown."
   (interactive)
@@ -80,16 +79,17 @@
                (file-name-sans-extension filename)
                ".docx")))))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; livedown: Realtime viewer
 ;; https://github.com/shime/livedown
-
 (use-package livedown)
 (custom-set-variables
  '(livedown-autostart nil) ; automatically open preview when opening markdown files
  '(livedown-open t)        ; automatically open the browser window
  '(livedown-port 1337)     ; port for livedown server
  '(livedown-browser nil))  ; browser to use
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;]
 ;; use popwin
 (with-eval-after-load "popwin"
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
@@ -67,6 +68,7 @@
     (with-current-buffer "*eshell*"
       (cd path)
       (eshell-emit-prompt))))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

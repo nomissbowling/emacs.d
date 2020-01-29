@@ -3,18 +3,17 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flymake
-
 (use-package flymake-diagnostic-at-point
   :after flymake
   :hook (flymake-mode . flymake-diagnostic-at-point-mode))
 (add-hook 'prog-mode-hook 'flymake-mode)
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; posframe
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; posframe
 (defvar flymake-posframe-hide-posframe-hooks
   '(pre-command-hook post-command-hook focus-out-hook)
   "The hooks which should trigger automatic removal of the posframe.")
@@ -40,6 +39,7 @@
     (add-hook hook #'flymake-posframe-hide-posframe nil t)))
 
 (advice-add 'flymake-diagnostic-at-point-display-popup :override 'my:flymake-diagnostic-at-point-display-popup)
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

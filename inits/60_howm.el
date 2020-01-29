@@ -4,7 +4,6 @@
 ;; (setq debug-on-error t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (use-package howm
   :commands (howm-create howm-remember howm-list-all)
   ;; :hook (howm-view-contents-mode .  markdown-mode)
@@ -92,9 +91,9 @@
   (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
   (howm-create))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Open junk file
-
 (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d%H%M.")
 (setq open-junk-file-find-file-function 'find-file)
 
@@ -103,9 +102,9 @@
   (interactive)
   (find-file (format-time-string "~/Dropbox/howm/junk")))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haiku note
-
 (defun my:haiku-note ()
   "Open haiku note file."
   (interactive)
@@ -123,6 +122,7 @@
    (format-time-string "PLACE:\n\n"))
   (forward-line -2)
   (forward-char 6))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

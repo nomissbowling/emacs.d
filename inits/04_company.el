@@ -5,7 +5,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; company
-
 (use-package company
   :bind (([C-tab] . company-complete)
 	 ([backtab] . company-yasnippet)
@@ -24,6 +23,7 @@
   (setq company-box-icons-alist 'company-box-icons-all-the-icons)
   (setq company-box-doc-enable nil)
   (add-hook 'company-mode-hook 'company-box-mode))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

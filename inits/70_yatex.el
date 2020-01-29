@@ -7,6 +7,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package yatex
   :mode (("\\.tex$" . yatex-mode))
   :custom
@@ -26,6 +27,7 @@
 	      (use-package yatexprc
 		:bind (("M-c" . YaTeX-typeset-buffer)   ;; Type set
 		       ("M-l" . YaTeX-lpr))))))         ;; Open PDF file
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

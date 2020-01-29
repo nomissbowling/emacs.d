@@ -30,14 +30,14 @@
 		 (interactive)
 		 (counsel-M-x "^counsel ")))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-css to activate imenu integration to "C-r"
-
 (add-hook 'css-mode-hook 'counsel-css-imenu-setup)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-tramp
-
 (setq tramp-default-method "ssh")
 (setq counsel-tramp-custom-connections '(/scp:xsrv:/home/minorugh/gospel-haiku.com/))
 
@@ -54,9 +54,9 @@
     (counsel-tramp-quit)
     (message "Now tramp-quit!")))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ivy-format-function-arrow
-
 (defun my-ivy-format-function-arrow (cands)
   "Transform CANDS into a string for minibuffer."
   (ivy--format-function-generic
@@ -72,9 +72,9 @@
    "\n"))
 (setq ivy-format-functions-alist '((t . my-ivy-format-function-arrow)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; More friendly display transformer for Ivy
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; More friendly display transformer for Ivy
 (use-package ivy-rich
   :hook (ivy-mode . ivy-rich-mode)
   :preface
@@ -185,6 +185,7 @@
 	    (ivy-rich-candidate (:width 0.8))
 	    (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))
 	  )))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -15,9 +15,7 @@
 (setq counsel-yank-pop-separator
       "\n------------------------------------------------------------\n")
 (bind-keys ("C-:" . counsel-switch-buffer)
-	   ("C-s" . swiper-isearch)
-	   ("C-r" . swiper-isearch-backward)
-	   ("M-s" . swiper-isearch-thing-at-point)
+	   ("C-s" . swiper-isearch-region)
 	   ("M-x" . counsel-M-x)
 	   ("C-c a" . counsel-ag)
 	   ("C-c f" . counsel-projectile-find-file)
@@ -32,6 +30,17 @@
 		 (interactive)
 		 (counsel-M-x "^counsel ")))
 
+;; avy
+(bind-key "C-r" 'avy-goto-word-1)
+
+
+(defun swiper-isearch-region ()
+  "If region is selected, `swiper-isearch' with the keyword selected in region.
+If the region isn't selected, `swiper-isearch'."
+  (interactive)
+  (if (not (use-region-p))
+      (swiper-isearch)
+    (swiper-isearch-thing-at-point)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-css to activate imenu integration to "C-r"

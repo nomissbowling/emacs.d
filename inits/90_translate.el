@@ -40,9 +40,10 @@
   "TKK='427110.1469889687'."
   (list 427110 1469889687))
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Remedy of when it comes to args-out-of-range
-;; Patch of following in google-translate-core.el
+;; Fix error of "args-out-of-range"
+;; Replace function in google-translate-core.el
 
 ;; (defun google-translate-json-suggestion (json)
 ;;   "Retrieve from JSON (which returns by the

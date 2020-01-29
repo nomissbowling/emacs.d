@@ -11,12 +11,13 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   pinky_:_   _r_estart   _m_arkdown   _u_ndotree   _p_ackage
-   magit:_._   make_k_   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _s_earch   _g_ithub   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
+   _d_ropbox   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage
+   magit:_._   _a_g:🔍   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
    ("2" my:pdfout-buffer)
+   ("a" counsel-ag)
    ("p" hydra-package/body)
    ("o" browse-url-at-point)
-   ("s" hydra-search/body)
+   ("s" toggle-scratch)
    ("." magit-status)
    ("f" ftp-client)
    ("t" my:tramp-xsrv)
@@ -37,6 +38,8 @@
    ("c" hydra-compile/body)
    ("l" dashboard-hydra/body)
    ("g" my:github-show)
+   ("j" open-junk-file)
+   ("J" my:open-junk-file-dir)
    ("@" howm-list-all)
    ("," hydra-howm/body)
    ("k" my:recompile)
@@ -79,8 +82,6 @@
    ("J" my:open-junk-file-dir)
    ("l" gist-list)
    ("g" gist-region-or-buffer)
-   ("j" open-junk-file)
-   ("J" my:open-junk-file-dir)
    ("q" keyboard-quit)))
 
 

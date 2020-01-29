@@ -1,9 +1,5 @@
 ;;; 70_yatex.el --- 70_yatex.el
 ;;; Commentary:
-;;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
-;;; | #!/bin/bash
-;;; | name=$1
-;;; | dvipdfmx $1 && evince ${name%.*}.pdf
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -27,6 +23,14 @@
 	      (use-package yatexprc
 		:bind (("M-c" . YaTeX-typeset-buffer)   ;; Type set
 		       ("M-l" . YaTeX-lpr))))))         ;; Open PDF file
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; dvpd.sh
+;;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
+;;; | #!/bin/bash
+;;; | name=$1
+;;; | dvipdfmx $1 && evince ${name%.*}.pdf
 
 
 ;; Local Variables:

@@ -195,6 +195,7 @@
   (">" iflipb-next-buffer)
   ;; quit
   ("q" nil))
+(key-chord-define-global "::" 'hydra-pinky/body)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -16,6 +16,7 @@
       "\n------------------------------------------------------------\n")
 (bind-keys ("C-:" . counsel-switch-buffer)
 	   ("C-s" . swiper-isearch-region)
+	   ("C-S" . swiper-isearch-thing-at-point)
 	   ("M-x" . counsel-M-x)
 	   ("C-c a" . counsel-ag)
 	   ("C-c f" . counsel-projectile-find-file)

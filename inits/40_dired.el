@@ -35,7 +35,7 @@
   :after dired
   :config
   (setq-default dired-omit-files-p t)
-  (setq dired-omit-files "^desktop.ini\\|^\\.DS_Store\\|^\\.dropbox\\|^\\Icon\015")
+  (setq dired-omit-files "^desktop.ini\\|^\\.dropbox")
   ;; zip file can be expanded with Z key
   (eval-after-load "dired-aux"
     '(add-to-list 'dired-compress-file-suffixes

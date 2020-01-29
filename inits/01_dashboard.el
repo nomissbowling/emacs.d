@@ -51,6 +51,7 @@
   "Open the *dashboard* buffer and jump to the first widget."
   (interactive)
   (delete-other-windows)
+  (kill-other-buffers)
   (setq default-directory "~/")
   ;; Refresh dashboard buffer
   (if (get-buffer dashboard-buffer-name)

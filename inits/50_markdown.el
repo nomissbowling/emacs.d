@@ -9,7 +9,6 @@
 (add-hook 'markdown-mode-hook
           '(lambda () (outline-minor-mode t)))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra
 (defhydra hydra-markdown (:color red :hint nil)
@@ -29,7 +28,6 @@
 
 ;; Change markdown-modo key bind `markdown-shifttab' to `company-yasnippet'
 (bind-key* "S-<tab>" 'company-yasnippet markdown-mode-map)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2pdf (Use wkhtmltopdf without latex)
@@ -53,7 +51,6 @@
        (concat "open -a preview.app "
                (file-name-sans-extension filename)
 	       ".pdf")))))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2docx
@@ -79,7 +76,6 @@
                (file-name-sans-extension filename)
                ".docx")))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; livedown: Realtime viewer
 ;; https://github.com/shime/livedown
@@ -89,7 +85,6 @@
  '(livedown-open t)        ; automatically open the browser window
  '(livedown-port 1337)     ; port for livedown server
  '(livedown-browser nil))  ; browser to use
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

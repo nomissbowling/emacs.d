@@ -17,7 +17,6 @@
   (setq migemo-command "/usr/bin/cmigemo"
 	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

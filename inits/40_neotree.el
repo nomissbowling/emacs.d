@@ -56,7 +56,6 @@
     (interactive "P")
     (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir)))
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

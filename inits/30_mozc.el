@@ -32,7 +32,6 @@
   :custom
   (mozc-candidate-style 'posframe))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set the character to be immediately determine
 ;; https://www2.ninjal.ac.jp/kubota/mozc.html
@@ -48,7 +47,6 @@
 	    (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
 	    (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
 	    (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

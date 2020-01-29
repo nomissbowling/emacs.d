@@ -19,7 +19,7 @@
 (bind-key* "C-x C-c" 'iconify-frame)
 
 ;; Font setting
-(add-to-list 'default-frame-alist '(font . "Cica-14.5"))
+(add-to-list 'default-frame-alist '(font . "Cica-15.5"))
 
 ;; exec-path-from-shell
 (setq exec-path-from-shell-check-startup-files nil)
@@ -32,7 +32,7 @@
       recentf-auto-cleanup 'never
       recentf-exclude
       '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-	"\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "Icon" "^/ssh:" "^/scp"
+	"\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
 	(lambda (file) (file-in-directory-p file package-user-dir))))
 (push (expand-file-name recentf-save-file) recentf-exclude)
 
@@ -149,6 +149,7 @@
 ;; Load my-lisp
 (use-package my-dired)
 (use-package my-template)
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

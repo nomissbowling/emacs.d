@@ -15,6 +15,8 @@
 (setq counsel-yank-pop-separator
       "\n------------------------------------------------------------\n")
 (bind-keys ("C-:" . counsel-switch-buffer)
+	   ("C-s" . swiper-isearch)
+	   ("C-r" . swiper-isearch-backward)
 	   ("M-s" . swiper-isearch-thing-at-point)
 	   ("M-x" . counsel-M-x)
 	   ("C-c a" . counsel-ag)

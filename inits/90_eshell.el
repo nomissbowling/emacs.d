@@ -36,6 +36,8 @@
 	(list "ll" "ls -ltr -S")
         (list "la" "ls -a -S")
         (list "ex" "exit"))))
+(bind-key "C-l" 'eshell/clear eshell-mode-map)
+
 
 (with-eval-after-load 'eshell
   ;; Clear command.

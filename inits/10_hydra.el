@@ -148,7 +148,7 @@
 ;; Pinky
 (defhydra hydra-pinky (:color red :hint nil)
   "
- :_0_._1_._2_._3_._5_._o_._S_._x_._d_ :_j_._k_._h_._l_._c_._a_._e_._b_._SPC_._m_._w_._s_  :_+_._-_._r_  :_n_._p_._u_._t_  :_<_-_:_-_>_  :_q_uit"
+ :_0_._1_._2_._3_._5_._o_._S_._x_._d_ :_j_._k_._h_._l_._c_._a_._e_._b_._SPC_._m_._w_._s_  :_+_._-_._r_  :_n_._p_._t_  :_<_-_:_-_>_  :_q_uit"
   ;; window
   ("0" delete-window)
   ("1" delete-other-windows)
@@ -185,10 +185,9 @@
   ("-" text-scale-decrease)
   ("r" (text-scale-set 0))
   ;; git
-  ("n" git-gutter:next-hunk)
-  ("p" git-gutter:previous-hunk)
-  ("u" git-gutter-popup-hunk)
-  ("t" git-gutter:toggle-popup-hunk)
+  ("n" diff-hl-next-hunk)
+  ("p" diff-hl-previous-hunk)
+  ("t" git-timemachine)
   ;; buffer
   (":" counsel-switch-buffer)
   ("<" iflipb-previous-buffer)
@@ -205,24 +204,15 @@
   :hook (after-init . sequential-command-setup-keys))
 
 ;; other-window-or-split
-(defun other-window-or-split ()
-  "If there is one window, open split window.
-If there are two or more windows, it will go to another window."
-  (interactive)
-  (when (one-window-p)
-    (split-window-horizontally))
-  (other-window 1))
-
 (bind-key
  "C-q"
- (defun other-window-or-split-or-close (arg)
-   "Screen is split if one moves if two or more.
- Close the window and put a C-u."
-   (interactive "p")
-   (case arg
-     (4  (delete-other-windows))
-     (16 (delete-window))
-     (t  (other-window-or-split)))))
+ (defun other-window-or-split ()
+   "If there is one window, open split window.
+If there are two or more windows, it will go to another window."
+   (interactive)
+   (when (one-window-p)
+     (split-window-horizontally))
+   (other-window 1)))
 
 ;; window-toggle-division
 (defun window-toggle-division ()

@@ -25,10 +25,10 @@
   ;; Font setting corresponding to Host
   ;; (when (getenv "WSLENV")
   (if (string-match "e590" (shell-command-to-string "uname -n"))
-      (add-to-list 'default-frame-alist '(font . "Cica-17.5")))
+      (add-to-list 'default-frame-alist '(font . "Cica-18.5")))
   (if (string-match "x250" (shell-command-to-string "uname -n"))
-      (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
-  )
+      (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

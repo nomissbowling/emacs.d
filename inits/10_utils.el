@@ -70,6 +70,7 @@
   ("r" (search-web-dwim "ruigo")))
 
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Automatic deletion for empty files (Valid in all modes)
 ;; https://uwabami.github.io/cc-env/Emacs.html#org57f6557

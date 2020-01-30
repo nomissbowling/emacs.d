@@ -75,6 +75,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     company-prescient
     counsel
     counsel-projectile
+    counsel-css
     counsel-tramp
     dash
     dashboard
@@ -82,7 +83,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     doom-themes
     doom-modeline
     easy-hugo
-    eshell-z
     exec-path-from-shell
     expand-region
     flymake-diagnostic-at-point
@@ -93,7 +93,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     howm
     htmlize
     hydra
-    iflipb
     init-loader
     ivy-prescient
     ivy-rich
@@ -108,7 +107,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     neotree
     nyan-mode
     oauth
-    open-junk-file
     package-utils
     persistent-scratch
     popwin

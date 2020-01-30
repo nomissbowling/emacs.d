@@ -5,8 +5,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; smartparens
-(add-hook 'prog-mode-hook 'smartparens-mode)
-(add-hook 'markdown-mode-hook #'smartparens-markdown-mode)
+(add-hook 'after-init-hook 'smartparens-global-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; aggressive-indent

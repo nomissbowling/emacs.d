@@ -9,13 +9,11 @@
 (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 (bind-key "C-x g" 'magit-status)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; diff-hl
 (add-hook 'after-init-hook 'global-diff-hl-mode)
 (add-hook 'after-init-hook 'diff-hl-margin-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra-magit
@@ -32,7 +30,6 @@
    ("r" diff-hl-revert-hunk)
    ("v" vc-diff)
    ("<f3>" nil)))
-
 
 ;; local Variables:
 ;; no-byte-compile: t

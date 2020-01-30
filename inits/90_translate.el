@@ -33,13 +33,11 @@
 	   "ja" "en"
 	   string))))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Fix error of "Failed to search TKK"
 (defun google-translate--get-b-d1 ()
   "TKK='427110.1469889687'."
   (list 427110 1469889687))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Fix error of "args-out-of-range"
@@ -54,7 +52,6 @@
 ;;     (if (and info (> (length info) 0))
 ;;         (aref info 1)
 ;;       nil)))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

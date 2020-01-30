@@ -9,13 +9,6 @@
 (auto-save-buffers-enhanced t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; iflipb
-(setq iflipb-wrap-around t)
-(setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir]$"))
-(bind-key [C-left] 'iflipb-previous-buffer)
-(bind-key [C-right] 'iflipb-next-buffer)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Toggle current buffer and *scratch* buffer
 (bind-key
  [home]

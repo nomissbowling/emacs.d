@@ -69,7 +69,6 @@
       (cd path)
       (eshell-emit-prompt))))
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

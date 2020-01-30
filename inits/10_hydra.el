@@ -12,7 +12,7 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage
-   magit:_._   _a_g:🔍   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
+   magit:_._   👀:_a_g   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
    ("2" my:pdfout-buffer)
    ("a" counsel-ag)
    ("p" hydra-package/body)
@@ -55,7 +55,7 @@
  "M-:"
  (defhydra hydra-work (:hint nil :exit t)
    "
- 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _j_unk  _g_ist:_l_  bkup:mel_p_a:_r_ecentf"
+ 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_l_  bkup:mel_p_a"
    ("e" easy-hugo)
    ("d" my:diary)
    ("D" my:diary-new-post)
@@ -73,12 +73,9 @@
    ("N" my:haiku-note-post)
    (":" view-mode)
    ("p" backup-melpa)
-   ("r" backup-recentf)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
-   ("j" open-junk-file)
-   ("J" my:open-junk-file-dir)
    ("l" gist-list)
    ("g" gist-region-or-buffer)
    ("q" keyboard-quit)))
@@ -132,18 +129,11 @@
     (shell-command "sh melpabackup.sh"))
   (message "Finished melpa buckup!"))
 
-(defun backup-recentf ()
-  "Backup for recentf."
-  (interactive)
-  (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
-    (shell-command "sh recentfbackup.sh"))
-  (message "Finished recentf buckup!"))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Pinky
 (defhydra hydra-pinky (:color red :hint nil)
   "
- :_0_._1_._2_._3_._5_._o_._S_._x_._d_ :_j_._k_._h_._l_._c_._a_._e_._b_._SPC_._m_._w_._s_  :_+_._-_._r_  :_n_._p_._t_  :_<_-_:_-_>_  :_q_uit"
+ :_0_._1_._2_._3_._5_._o_._S_._x_._d_ :_j_._k_._h_._l_._c_._a_._e_._b_._SPC_._m_._w_._s_  :_+_._-_._r_  :_n_._p_._t_  :SB_:_  :_q_uit"
   ;; window
   ("0" delete-window)
   ("1" delete-other-windows)
@@ -183,10 +173,10 @@
   ("n" diff-hl-next-hunk)
   ("p" diff-hl-previous-hunk)
   ("t" git-timemachine)
-  ;; buffer
+  ;; other
   (":" counsel-switch-buffer)
-  ("<" iflipb-previous-buffer)
-  (">" iflipb-next-buffer)
+  ;; ("<" iflipb-previous-buffer)
+  ;; (">" iflipb-next-buffer)
   ;; quit
   ("q" nil))
 (key-chord-define-global "::" 'hydra-pinky/body)

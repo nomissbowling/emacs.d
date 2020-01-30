@@ -51,7 +51,6 @@
   "Open the *dashboard* buffer and jump to the first widget."
   (interactive)
   (delete-other-windows)
-  (kill-other-buffers)
   (setq default-directory "~/")
   ;; Refresh dashboard buffer
   (if (get-buffer dashboard-buffer-name)
@@ -61,6 +60,9 @@
   ;; Jump to the first section
   (goto-char (point-min))
   (dashboard-goto-recent-files))
+
+(defvar dashboard-recover-layout-p nil
+  "Wether recovers the layout.")
 
 (defun quit-dashboard ()
   "Quit dashboard window."
@@ -75,7 +77,6 @@
   "Go to recent files."
   (interactive)
   (funcall (local-key-binding "r")))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Dashoard-hydra

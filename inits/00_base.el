@@ -19,10 +19,13 @@
 (bind-key* "C-x C-c" 'iconify-frame)
 
 ;; Font setting
-(add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+(when (string-match "e590" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+  (if (getenv "WSLENV")
+      (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
 ;; For submachine
-(if (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+(when (string-match "x250" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
 
 ;; exec-path-from-shell
 (setq exec-path-from-shell-check-startup-files nil)

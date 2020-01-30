@@ -55,10 +55,7 @@
     :bind (:map eshell-mode-map
 		([remap eshell-pcomplete] . completion-at-point))
     :hook ((eshell-mode . esh-autosuggest-mode)
-	   (eshell-mode . setup-eshell-ivy-completion)))
-  ;; `cd' to frequent directory in eshell
-  (use-package eshell-z
-    :hook (eshell-mode . (lambda () (require 'eshell-z)))))
+	   (eshell-mode . setup-eshell-ivy-completion))))
 
 ;; Launch eshell with Current buffer
 (defun eshell-on-current-buffer ()

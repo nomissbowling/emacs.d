@@ -28,6 +28,7 @@
 	  ("日記:" . (0 'diary prepend))
 	  ("note:" . (0 'diff-changed prepend)))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hydra-howm
 (defhydra hydra-howm (:hint nil :exit t)
   "
@@ -43,6 +44,7 @@
   ("@" howm-list-all))
 (key-chord-define-global "@@" 'howm-list-all)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set template
 (defun my:howm-memo ()
   "My howm remember for memo."
@@ -92,7 +94,6 @@
   (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
   (howm-create))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Open junk file
 (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d%H%M.")
@@ -102,7 +103,6 @@
   "Open junk file dir."
   (interactive)
   (find-file (format-time-string "~/Dropbox/howm/junk")))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haiku note
@@ -123,7 +123,6 @@
    (format-time-string "PLACE:\n\n"))
   (forward-line -2)
   (forward-char 6))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

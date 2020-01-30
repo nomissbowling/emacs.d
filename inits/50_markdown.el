@@ -5,21 +5,62 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; markdown-mode
-(setq markdown-fontify-code-blocks-natively t)
-(add-hook 'markdown-mode-hook
-          '(lambda () (outline-minor-mode t)))
+(setq markdown-enable-wiki-links t
+      markdown-italic-underscore t
+      markdown-asymmetric-header t
+      markdown-make-gfm-checkboxes-buttons t
+      markdown-gfm-uppercase-checkbox t
+      markdown-fontify-code-blocks-natively t
+      markdown-enable-math t
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+      markdown-content-type "application/xhtml+xml"
+      markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+			   "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
+      markdown-xhtml-header-content "
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<style>
+body {
+  box-sizing: border-box;
+  max-width: 740px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 0 10px;
+}
+</style>
+<script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('markdown-body');
+  document.querySelectorAll('pre[lang] > code').forEach((code) => {
+    code.classList.add(code.parentElement.lang);
+    hljs.highlightBlock(code);
+  });
+});
+</script>
+")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Preview via `livedown'
+;; Install: npm install -g livedown
+(use-package livedown
+  :config
+  (custom-set-variables
+   '(livedown-autostart nil) ; automatically open preview when opening markdown files
+   '(livedown-open t)        ; automatically open the browser window
+   '(livedown-port 1337)     ; port for livedown server
+   '(livedown-browser nil)))  ; browser to use
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra
 (defhydra hydra-markdown (:color red :hint nil)
   "
- _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _l_ivedown:_k_ill  _p_df._d_ocx"
+ _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _v_iewer:_k_  md2_p_df  md2_d_ocx"
   ("i" markdown-insert-italic)
   ("x" markdown-insert-strike-through)
   ("t" markdown-insert-table)
   ("o" markdown-toc-generate-or-refresh-toc)
   ("f" markdown-insert-footnote)
-  ("l" livedown-preview)
+  ("v" livedown-preview)
   ("k" livedown-kill)
   ;; Pndoc
   ("p" md2pdf)
@@ -75,16 +116,6 @@
        (concat "open -a pages.app "
                (file-name-sans-extension filename)
                ".docx")))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; livedown: Realtime viewer
-;; https://github.com/shime/livedown
-(use-package livedown)
-(custom-set-variables
- '(livedown-autostart nil) ; automatically open preview when opening markdown files
- '(livedown-open t)        ; automatically open the browser window
- '(livedown-port 1337)     ; port for livedown server
- '(livedown-browser nil))  ; browser to use
 
 ;; Local Variables:
 ;; no-byte-compile: t

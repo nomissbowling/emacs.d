@@ -94,16 +94,6 @@
   (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
   (howm-create))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Open junk file
-(setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d%H%M.")
-(setq open-junk-file-find-file-function 'find-file)
-
-(defun my:open-junk-file-dir ()
-  "Open junk file dir."
-  (interactive)
-  (find-file (format-time-string "~/Dropbox/howm/junk")))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Haiku note
 (defun my:haiku-note ()

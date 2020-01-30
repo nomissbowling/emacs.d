@@ -35,7 +35,7 @@
 (setq dashboard-footer-icon
       (all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
 ;; (setq dashboard-page-separator "\n\f\f\n")
-(setq dashboard-items '((recents  . 8)))
+(setq dashboard-items '((recents  . 9)))
 
 ;; Insert custom item
 (defun dashboard-insert-custom (list-size)
@@ -81,7 +81,6 @@
 ;; Dashoard-hydra
 (defhydra dashboard-hydra (:hint nil :exit t)
   "
-
   💰 Shop^        ^💭 SNS^        ^🔃 Repos^       ^🏠 GH^        ^🙌 Favorite^    ^📝 Others^    ^💣 Github^^      oogle
   ^^^^^^^^^^----------------------------------------------------------------------------------------------------------------
   _a_: Amazon      _t_: Twitter    _g_: github      _h_: HOME      _j_: Jorudan     _c_: Crome     _1_: masasam     _k_: Keep
@@ -122,7 +121,6 @@
   ("l" line-app-open)
   ("." nil))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; browse-url
 (defun browse-calendar ()
@@ -153,7 +151,6 @@
   "Open slack with chrome."
   (interactive)
   (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/"))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

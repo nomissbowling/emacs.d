@@ -24,14 +24,18 @@
 		:bind (("M-c" . YaTeX-typeset-buffer)   ;; Type set
 		       ("M-l" . YaTeX-lpr))))))         ;; Open PDF file
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; dvpd.sh
+;; dvpd.sh for Linux
 ;;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
 ;;; | #!/bin/bash
 ;;; | name=$1
 ;;; | dvipdfmx $1 && evince ${name%.*}.pdf
 
+;; dvpd.sh for WSL
+;;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
+;;; | #!/bin/bash
+;;; | name=$1
+;;; | dvipdfmx $1 && wslstart ${name%.*}.pdf
 
 ;; Local Variables:
 ;; no-byte-compile: t

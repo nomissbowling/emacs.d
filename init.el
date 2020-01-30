@@ -15,7 +15,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Speed up startup
 ;; https://github.com/seagle0128/.emacs.d/blob/master/init.el
-
 (defvar my:gc-cons-threshold (if (display-graphic-p) 8000000 800000)
   "The default value to use for `gc-cons-threshold'.
 If you experience freezing,decrease this.If you experience stuttering, increase this.")
@@ -58,13 +57,10 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load path
-
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp/my-lisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Packeges
-
 ;; List of packages to install from melpa
 (defvar my-install-package-list
   '(aggressive-indent
@@ -83,8 +79,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     dash
     dashboard
     diff-hl
-    dired-open
-    dired-hacks-utils
     doom-themes
     doom-modeline
     easy-hugo
@@ -155,7 +149,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Init-loader
-
 (custom-set-variables
  '(init-loader-show-log-after-init 'error-only))
 (init-loader-load "~/Dropbox/emacs.d/inits")

@@ -93,7 +93,8 @@
   "Open file in relation to the extension."
   (interactive)
   (let ((fn (dired-get-file-for-visit)))
-    (call-process "xdg-open" nil 0 nil fn)
+    (unless (getenv "WSLENV")
+      (call-process "xdg-open" nil 0 nil fn))
     ;; use wsl-utils:https://github.com/smzht/wsl-utils
     (when (getenv "WSLENV")
       (call-process "wslstart" nil 0 nil fn))))

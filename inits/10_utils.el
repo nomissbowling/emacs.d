@@ -3,6 +3,18 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Emacs on WSL open links in Windows web browser
+;; https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/
+(when (getenv "WSLENV")
+  (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
+	(cmd-args '("/c" "start")))
+    (when (file-exists-p cmd-exe)
+      (setq browse-url-generic-program  cmd-exe
+	    browse-url-generic-args     cmd-args
+	    browse-url-browser-function 'browse-url-generic
+	    search-web-default-browser 'browse-url-generic))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Output PDF from text file
 (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
@@ -14,7 +26,6 @@
   "PDF out from buffer."
   (interactive)
   (my:pdfout-region (point-min) (point-max)))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Open application
@@ -34,7 +45,6 @@
    (interactive)
    (shell-command (concat "xdg-open " default-directory))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Search Web
 ;; Tips from https://github.com/nomaddo/search-web.el
@@ -53,7 +63,6 @@
   (add-to-list 'search-web-engines '("yahoo jp" "http://search.yahoo.co.jp/search?p=%s" nil))
   (add-to-list 'search-web-engines '("eijiro" "http://eow.alc.co.jp/%s/UTF-8/" nil)))
 
-
 (bind-key
  "M-s"
  (defhydra hydra-search (:hint nil :exit t)
@@ -71,7 +80,6 @@
    ("y" (search-web-dwim "yodobashi"))
    ("r" (search-web-dwim "ruigo"))))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Automatic deletion for empty files (Valid in all modes)
 ;; https://uwabami.github.io/cc-env/Emacs.html#org57f6557
@@ -84,7 +92,6 @@
 (if (not (memq 'my:delete-file-if-no-contents after-save-hook))
     (setq after-save-hook
           (cons 'my:delete-file-if-no-contents after-save-hook)))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; key-chord
@@ -100,7 +107,6 @@
   (let ((input-method-function-save input-method-function))
     ad-do-it
     (setq input-method-function input-method-function-save)))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

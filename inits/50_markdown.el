@@ -5,18 +5,22 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; markdown-mode
-(setq markdown-enable-wiki-links t
-      markdown-italic-underscore t
-      markdown-asymmetric-header t
-      markdown-make-gfm-checkboxes-buttons t
-      markdown-gfm-uppercase-checkbox t
-      markdown-fontify-code-blocks-natively t
-      markdown-enable-math t
+(use-package markdown-mode
+  :hook ((markdown-mode . auto-fill-mode))
+  :mode (("README\\.md\\'" . gfm-mode))
+  :init
+  (setq markdown-enable-wiki-links t
+	markdown-italic-underscore t
+	markdown-asymmetric-header t
+	markdown-make-gfm-checkboxes-buttons t
+	markdown-gfm-uppercase-checkbox t
+	markdown-fontify-code-blocks-natively t
+	markdown-enable-math t
 
-      markdown-content-type "application/xhtml+xml"
-      markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
-			   "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
-      markdown-xhtml-header-content "
+	markdown-content-type "application/xhtml+xml"
+	markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+			     "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
+	markdown-xhtml-header-content "
 <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
 <style>
 body {
@@ -38,17 +42,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 ")
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Preview via `livedown'
-;; Install: npm install -g livedown
-(use-package livedown
   :config
-  (custom-set-variables
-   '(livedown-autostart nil) ; automatically open preview when opening markdown files
-   '(livedown-open t)        ; automatically open the browser window
-   '(livedown-port 1337)     ; port for livedown server
-   '(livedown-browser nil)))  ; browser to use
+  ;; Preview via `livedown'
+  ;; Install: npm install -g livedown
+  (use-package livedown
+    :config
+    (custom-set-variables
+     '(livedown-autostart nil)
+     '(livedown-open t)
+     '(livedown-port 1337)
+     '(livedown-browser nil))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra

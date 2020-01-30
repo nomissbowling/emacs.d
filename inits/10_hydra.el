@@ -49,7 +49,6 @@
    ("_" delete-other-windows)
    ("M-." nil)))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; My work
 (bind-key
@@ -84,7 +83,6 @@
    ("g" gist-region-or-buffer)
    ("q" keyboard-quit)))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Package-utils
 (defhydra hydra-package (:color red :hint nil)
@@ -95,7 +93,6 @@
   ("r" package-utils-remove-by-name)
   ("a" package-utils-upgrade-all-and-restart)
   ("l" package-list-packages))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Gist help
@@ -117,7 +114,6 @@
   🎲 In dired buffer
      @ : make a gist out of marked files"
   ("." nil))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; my:functions
@@ -142,7 +138,6 @@
   (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
     (shell-command "sh recentfbackup.sh"))
   (message "Finished recentf buckup!"))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Pinky
@@ -196,7 +191,6 @@
   ("q" nil))
 (key-chord-define-global "::" 'hydra-pinky/body)
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; sequential-command
 (use-package sequential-command-config
@@ -230,7 +224,6 @@ If there are two or more windows, it will go to another window."
     (other-window 1)
     (switch-to-buffer other-buf)
     (other-window -1)))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

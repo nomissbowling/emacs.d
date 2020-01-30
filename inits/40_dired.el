@@ -93,7 +93,10 @@
   "Open file in relation to the extension."
   (interactive)
   (let ((fn (dired-get-file-for-visit)))
-    (call-process "xdg-open" nil 0 nil fn)))
+    (call-process "xdg-open" nil 0 nil fn)
+    ;; use wsl-utils:https://github.com/smzht/wsl-utils
+    (when (getenv "WSLENV")
+      (call-process "wslstart" nil 0 nil fn))))
 
 (defun my-dired-ediff-files ()
   "Start ediff with a file marked with `dired-mode'."
@@ -130,7 +133,6 @@
   (interactive)
   (call-interactively 'dired-unmark-all-marks)
   (call-interactively 'revert-buffer))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shows icons
@@ -197,7 +199,6 @@
 		    (insert "\t"))))   ; Align and keep one space for refeshing after operations
 	      (forward-line 1))))))
     (advice-add #'all-the-icons-dired--display :override #'my-all-the-icons-dired--display)))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -12,7 +12,7 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage
-   magit:_._   👀:_a_g   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
+   magit:_._   _a_g:🐾   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
    ("2" my:pdfout-buffer)
    ("a" counsel-ag)
    ("p" hydra-package/body)

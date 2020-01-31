@@ -18,7 +18,7 @@
   :custom
   (neo-smart-open t)
   (neo-create-file-auto-open t)
-  (neo-hidden-regexp-list '("Icon" "^\\." "\\.cs\\.meta$" "\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
+  (neo-hidden-regexp-list '("^\\." "\\.cs\\.meta$" "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.ini$"))
   :config
   ;; Patched to allow everything but .DS_Store.
   ;; Tips from https://github.com/syl20bnr/spacemacs/issues/2751

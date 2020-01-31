@@ -84,7 +84,7 @@
   "
   💰 Shop^        ^💭 SNS^        ^🔃 Repos^       ^🏠 GH^        ^🙌 Favorite^    ^📝 Others^    ^💣 Github^^      Google
   ^^^^^^^^^^----------------------------------------------------------------------------------------------------------------
-  _a_: Amazon      _t_: Twitter    _g_: github      _h_: HOME      _j_: Jorudan     _c_: Crome     _1_: masasam     _5_: Keep
+  _a_: Amazon      _t_: Twitter    _g_: github      _h_: HOME      _j_: Jorudan     _c_: Chrome    _1_: masasam     _5_: Keep
   _r_: Rakuten     _u_: Youtube    _0_: gist        _b_: Hatena    _n_: News        _p_: Pocket    _2_: abo-abo     _6_: Map
   _y_: Yodobashi   _f_: Flickr     _d_: Dropbox     _e_: Essay     _w_: Weather     _q_: Qiita     _3_: blue        _7_: Drive
   _k_: Kakaku      _l_: LINE       _x_: Xserver     _:_: Blog      _s_: SanyoBas    _,_: Slack     _4_: seagle      _8_: Photo"
@@ -106,7 +106,7 @@
   (":" (browse-url "http://blog.wegh.net/"))
   ("e" (browse-url "http://essay.wegh.net/"))
   ("b" (browse-url "https://minoru.hatenablog.com/"))
-  ("s" (browse-url "http://www.sanyo-bus.co.jp/pdf/180913.pdf"))
+  ("s" (browse-url "http://www.sanyo-bus.co.jp/pdf/20191028tarusan_schedule.pdf"))
   ("j" (browse-url "https://www.jorudan.co.jp/"))
   ("n" (browse-url "https://news.yahoo.co.jp/"))
   ("x" (browse-url "https://www.xserver.ne.jp/login_server.php"))
@@ -152,6 +152,14 @@
   "Open slack with chrome."
   (interactive)
   (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/"))
+
+(defun line-app-open ()
+  "Open Ftp application."
+  (interactive)
+  (when (getenv "WSLENV")
+    (shell-command "/mnt/c/Users/minoru/AppData/Local/LINE/bin/LineLauncher.exe"))
+  (when (getenv "")
+    (shell-command "chromium")))
 
 ;; Local Variables:
 ;; no-byte-compile: t

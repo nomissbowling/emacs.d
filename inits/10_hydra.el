@@ -32,6 +32,7 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
+   ("x" swiper-thing-at-point)
    (":" hydra-pinky/body)
    ("m" hydra-markdown/body)
    (";" my:dot-emacs-dir)

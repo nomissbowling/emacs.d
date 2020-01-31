@@ -49,7 +49,7 @@
 ;; does matter when translating misspelled word. So instead of
 ;; translation it is possible to get suggestion."
 ;;   (let ((info (aref json 7)))
-;;     (if (and info (> (length info) 0))
+;;     (when (and info (> (length info) 0))
 ;;         (aref info 1)
 ;;       nil)))
 

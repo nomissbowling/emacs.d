@@ -17,36 +17,31 @@
   ;; Bloglist
   (setq easy-hugo-bloglist
 	;; blog2 setting
-	'(((easy-hugo-basedir . "~/Dropbox/web/wegh/blog/")
+	'(((easy-hugo-basedir . "~/Dropbox/web/wegh/snap/")
+	   (easy-hugo-url . "https://snap.wegh.net")
+	   (easy-hugo-sshdomain . "xsrv")
+	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/snap/"))
+	  ;; blog3 setting
+	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/blog/")
 	   (easy-hugo-url . "https://blog.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/blog/"))
-	  ;; blog3 setting
+	  ;; blog4 setting
 	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/essay/")
 	   (easy-hugo-url . "https://essay.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/essay/"))
-	  ;; blog4 setting
+	  ;; blog5 setting
 	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/bible/")
 	   (easy-hugo-url . "https://bible.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/bible/"))
-	  ;; blog5 setting
-	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/topics/")
-	   (easy-hugo-url . "https://topics.wegh.net")
-	   (easy-hugo-sshdomain . "xsrv")
-	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/topics/"))
 	  ;; blog6 setting
 	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/tube/")
 	   (easy-hugo-url . "https://tube.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/tube/"))
 	  ;; blog7 setting
-	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/snap/")
-	   (easy-hugo-url . "https://snap.wegh.net")
-	   (easy-hugo-sshdomain . "xsrv")
-	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/snap/"))
-	  ;; blog8 setting
 	  ((easy-hugo-basedir . "~/Dropbox/web/wegh/ryo/")
 	   (easy-hugo-url . "https://ryo.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")

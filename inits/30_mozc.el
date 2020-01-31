@@ -26,7 +26,10 @@
   (shell-command-to-string
    "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
 
+;; https://github.com/iRi-E/mozc-el-extensions
 (use-package mozc-cursor-color)
+
+;; https://github.com/derui/mozc-posframe
 (use-package mozc-posframe
   :after mozc
   :custom

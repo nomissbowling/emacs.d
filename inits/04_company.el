@@ -4,7 +4,6 @@
 ;; (setq debug-on-error t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; company
 (use-package company
   :bind (([C-tab] . company-complete)
 	 ([backtab] . company-yasnippet)

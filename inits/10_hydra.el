@@ -55,7 +55,7 @@
  "M-:"
  (defhydra hydra-work (:hint nil :exit t)
    "
- 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_l_  bkup:mel_p_a"
+ 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_l_  _b_ackup-melpa"
    ("e" easy-hugo)
    ("d" my:diary)
    ("D" my:diary-new-post)
@@ -72,7 +72,7 @@
    ("n" my:haiku-note)
    ("N" my:haiku-note-post)
    (":" view-mode)
-   ("p" backup-melpa)
+   ("b" backup-melpa)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)

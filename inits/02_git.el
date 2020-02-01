@@ -17,19 +17,17 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra-magit
-(bind-key
- [f3]
- (defhydra hydra-magit (:color red :hint nil)
-   "
+(defhydra hydra-magit (:color red :hint nil)
+  "
  📦 Git: _s_tatus  _b_lame  _t_imemachine  hunk:_n_:_p_:_r_  _d_iff"
-   ("s" magit-status :exit t)
-   ("b" magit-blame :exit t)
-   ("t" git-timemachine :exit t)
-   ("n" diff-hl-next-hunk)
-   ("p" diff-hl-previous-hunk)
-   ("r" diff-hl-revert-hunk)
-   ("d" vc-diff)
-   ("<f3>" nil)))
+  ("s" magit-status :exit t)
+  ("b" magit-blame :exit t)
+  ("t" git-timemachine :exit t)
+  ("n" diff-hl-next-hunk)
+  ("p" diff-hl-previous-hunk)
+  ("r" diff-hl-revert-hunk)
+  ("d" vc-diff)
+  ("<f3>" nil))
 
 ;; local Variables:
 ;; no-byte-compile: t

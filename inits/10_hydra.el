@@ -148,7 +148,7 @@ If there are two or more windows, it will go to another window."
  "jk"
  (defhydra hydra-pinky (:color red :hint nil)
    "
- Pinky: _0_._1_._2_._3_._o_._S_._x_._h_._l_._j_._k_._a_._e_._f_._b_._g_._G_._s_._:_"
+ 🐳: _0_._1_._2_._3_._o_._S_._x_._h_._l_._j_._k_._a_._e_._f_._b_._g_._G_._s_._:_"
    ("0" delete-window)
    ("1" delete-other-windows)
    ("2" split-window-below)

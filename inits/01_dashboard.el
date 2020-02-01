@@ -43,7 +43,7 @@
   (interactive)
   (insert (if (display-graphic-p)
 	      (all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
-  (insert "   Calendar: (c)    Weather: (w)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h)   🔖 BM: (.)" ))
+  (insert "   Calendar: (c)    Weather: (w)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h)" ))
 (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
 (add-to-list 'dashboard-items '(custom) t)
 

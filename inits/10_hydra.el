@@ -10,15 +10,13 @@
  (defhydra hydra-quick-menu (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage
-   magit:_._   _a_g:🐾   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
+  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^----------------------------------------------------------------------------------------------------------
+   _d_ropbox^^   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   _s_wiper   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage
+   magit_:__._   _a_g:🐾   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
    ("2" my:pdfout-buffer)
    ("a" counsel-ag)
    ("p" hydra-package/body)
    ("o" browse-url-at-point)
-   ("s" toggle-scratch)
-   ("." magit-status)
    ("f" ftp-client)
    ("t" my:tramp-xsrv)
    ("q" my:tramp-quit)
@@ -32,8 +30,9 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("x" swiper-thing-at-point)
-   (":" hydra-pinky/body)
+   ("s" swiper-thing-at-point)
+   (":" hydra-magit/body)
+   ("." magit-status)
    ("m" hydra-markdown/body)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
@@ -176,8 +175,6 @@
   ("t" git-timemachine)
   ;; other
   (":" counsel-switch-buffer)
-  ;; ("<" iflipb-previous-buffer)
-  ;; (">" iflipb-next-buffer)
   ;; quit
   ("q" nil))
 (key-chord-define-global "::" 'hydra-pinky/body)

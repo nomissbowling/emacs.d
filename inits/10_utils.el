@@ -39,7 +39,7 @@
      (shell-command (concat "gnome-terminal --working-directory " dir)))))
 
 (bind-key
- [f4]
+ [f3]
  (defun filer-current-dir-open ()
    "Open filer in current dir."
    (interactive)

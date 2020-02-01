@@ -13,6 +13,7 @@
   (migemo-regex-dictionary nil)
   (migemo-coding-system 'utf-8-unix)
   :config
+  ;; sudo apt-install cmigemo
   ;; migemo-dict installed path
   (setq migemo-command "/usr/bin/cmigemo"
 	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))

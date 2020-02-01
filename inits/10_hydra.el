@@ -10,11 +10,13 @@
  (defhydra hydra-quick-menu (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^----------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _l_aunch   _s_wiper   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage
-   magit_:__._   _a_g:🐾   esh:_z_   _f_tp   e_2_ps   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_"
-   ("2" my:pdfout-buffer)
+  ---^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------
+   _d_ropbox^^   _e_macs   _i_nits   _w_eb   GH:_h_^^   .emacs_;_^^^^   _l_aunch   _s_wiper   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   _b_ackup-melpa
+   magit_:__._   _a_g:🐾   esh:_z_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   next:_<right>_"
+   ("1" my:pdfout-buffer)
+   ("2" my:pdfout-region)
    ("a" counsel-ag)
+   ("b" backup-melpa)
    ("p" hydra-package/body)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -44,6 +46,7 @@
    ("," hydra-howm/body)
    ("k" my:recompile)
    ("u" undo-tree-visualize)
+   ("<right>" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -55,7 +58,7 @@
  "M-:"
  (defhydra hydra-work (:hint nil :exit t)
    "
- 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_l_  _b_ackup-melpa"
+ 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_._  back:_<left>_"
    ("e" easy-hugo)
    ("d" my:diary)
    ("D" my:diary-new-post)
@@ -72,11 +75,10 @@
    ("n" my:haiku-note)
    ("N" my:haiku-note-post)
    (":" view-mode)
-   ("b" backup-melpa)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
-   ("." hydra-quick-menu/body)
-   ("l" gist-list)
+   ("<left>" hydra-quick-menu/body)
+   ("." gist-list)
    ("g" gist-region-or-buffer)
    ("q" keyboard-quit)))
 

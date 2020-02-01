@@ -50,12 +50,6 @@
 (set-face-background 'region "dark cyan")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Set code font of markdown
-(custom-set-faces
- '(markdown-code-face
-   ((t (:inherit font-lock-constant-face :family "Cica" :background " ")))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Whitespace
 (setq-default show-trailing-whitespace nil)
 

@@ -106,7 +106,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     mozc
     neotree
     nyan-mode
-    oauth
     package-utils
     persistent-scratch
     popwin

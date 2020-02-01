@@ -4,7 +4,7 @@
 ;; (setq debug-on-error t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; flymake
+;; flymake-diagnostic-at-point
 (use-package flymake-diagnostic-at-point
   :after flymake
   :hook (flymake-mode . flymake-diagnostic-at-point-mode))

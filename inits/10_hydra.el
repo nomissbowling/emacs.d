@@ -12,7 +12,7 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------
    _d_ropbox^^   _e_macs   _i_nits   _w_eb   GH:_h_^^   .emacs_;_^^^^   _l_aunch   _s_wiper   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   _b_ackup-melpa
-   magit_:__._   _a_g:🐾   esh:_z_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   next:_<right>_"
+   magit_:__._   _a_g:🐾   esh:_z_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -58,7 +58,7 @@
  "M-:"
  (defhydra hydra-work (:hint nil :exit t)
    "
- 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_._  back:_<left>_"
+ 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_._  _<left>_:back"
    ("e" easy-hugo)
    ("d" my:diary)
    ("D" my:diary-new-post)
@@ -78,6 +78,7 @@
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("<left>" hydra-quick-menu/body)
+   ("<right>" dashboard-hydra/body)
    ("." gist-list)
    ("g" gist-region-or-buffer)
    ("q" keyboard-quit)))
@@ -131,62 +132,6 @@
     (shell-command "sh melpabackup.sh"))
   (message "Finished melpa buckup!"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Pinky
-(defhydra hydra-pinky (:color red :hint nil)
-  "
- :_0_._1_._2_._3_._5_._o_._S_._x_._d_ :_j_._k_._h_._l_._c_._a_._e_._b_._SPC_._m_._w_._s_  :_+_._-_._r_  :_n_._p_._t_  :SB_:_  :_q_uit"
-  ;; window
-  ("0" delete-window)
-  ("1" delete-other-windows)
-  ("2" split-window-below)
-  ("3" split-window-right)
-  ("5" make-frame-command)
-  ("o" other-window-or-split)
-  ("S" window-swap-states)
-  ("x" window-toggle-division)
-  ("d" delete-frame)
-  ;; page
-  ("a" seq-home)
-  ("e" seq-end)
-  ("j" next-line)
-  ("k" previous-line)
-  ("l" forward-char)
-  ("h" backward-char)
-  ("c" recenter-top-bottom)
-  ("<down>" next-line)
-  ("<up>" previous-line)
-  ("<right>" forward-char)
-  ("<left>" backward-char)
-  ("<C-up>" backward-paragraph)
-  ("<C-down>" forward-paragraph)
-  ("<C-left>" left-word)
-  ("<C-right>" right-word)
-  ("b" scroll-down-command)
-  ("SPC" scroll-up-command)
-  ("m" set-mark-command)
-  ("w" avy-goto-word-1)
-  ("s" swiper-isearch-region)
-  ;; zoom
-  ("+" text-scale-increase)
-  ("-" text-scale-decrease)
-  ("r" (text-scale-set 0))
-  ;; git
-  ("n" diff-hl-next-hunk)
-  ("p" diff-hl-previous-hunk)
-  ("t" git-timemachine)
-  ;; other
-  (":" counsel-switch-buffer)
-  ;; quit
-  ("q" nil))
-(key-chord-define-global "::" 'hydra-pinky/body)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; sequential-command
-(use-package sequential-command-config
-  :commands sequential-command-setup-keys
-  :hook (after-init . sequential-command-setup-keys))
-
 ;; other-window-or-split
 (bind-key
  "C-q"
@@ -196,7 +141,24 @@ If there are two or more windows, it will go to another window."
    (interactive)
    (when (one-window-p)
      (split-window-horizontally))
-   (other-window 1)))
+   (other-window 1)
+   (hydra-window/body)))
+
+(defhydra hydra-window (:color red :hint nil)
+  "
+  : _0_._1_._2_._3_._o_._l_._S_._x_._<_._>_._s_._:_"
+  ("0" delete-window)
+  ("1" delete-other-windows)
+  ("2" split-window-below)
+  ("3" split-window-right)
+  ("o" other-window-or-split)
+  ("l" recenter-top-bottom)
+  ("S" window-swap-states)
+  ("s" swiper-isearch-region)
+  ("x" window-toggle-division)
+  ("<" beginning-of-buffer)
+  (">" end-of-buffer)
+  (":" counsel-switch-buffer))
 
 ;; window-toggle-division
 (defun window-toggle-division ()

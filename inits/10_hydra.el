@@ -142,23 +142,33 @@ If there are two or more windows, it will go to another window."
    (when (one-window-p)
      (split-window-horizontally))
    (other-window 1)
-   (hydra-window/body)))
+   (hydra-pinky/body)))
 
-(defhydra hydra-window (:color red :hint nil)
-  "
-  : _0_._1_._2_._3_._o_._l_._S_._x_._<_._>_._s_._:_"
-  ("0" delete-window)
-  ("1" delete-other-windows)
-  ("2" split-window-below)
-  ("3" split-window-right)
-  ("o" other-window-or-split)
-  ("l" recenter-top-bottom)
-  ("S" window-swap-states)
-  ("s" swiper-isearch-region)
-  ("x" window-toggle-division)
-  ("<" beginning-of-buffer)
-  (">" end-of-buffer)
-  (":" counsel-switch-buffer))
+(key-chord-define-global
+ "jk"
+ (defhydra hydra-pinky (:color red :hint nil)
+   "
+ Pinky: _0_._1_._2_._3_._o_._S_._x_._h_._l_._j_._k_._a_._e_._f_._b_._g_._G_._s_._:_"
+   ("0" delete-window)
+   ("1" delete-other-windows)
+   ("2" split-window-below)
+   ("3" split-window-right)
+   ("o" other-window-or-split)
+   ("S" window-swap-states)
+   ("x" window-toggle-division)
+   ("h" backward-char)
+   ("j" next-line)
+   ("k" previous-line)
+   ("l" forward-char)
+   ("a" beginning-of-line)
+   ("e" end-of-line)
+   ("f" scroll-up-command)
+   ("<SPC>" scroll-up-command)
+   ("b" scroll-down-command)
+   ("g" beginning-of-buffer)
+   ("G" end-of-buffer)
+   ("s" swiper-isearch-region)
+   (":" counsel-switch-buffer)))
 
 ;; window-toggle-division
 (defun window-toggle-division ()

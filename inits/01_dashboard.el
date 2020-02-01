@@ -87,7 +87,7 @@
   _a_: Amazon      _t_: Twitter    _g_: github      _h_: HOME      _j_: Jorudan     _c_: Chrome    _1_: masasam     _5_: Keep
   _r_: Rakuten     _u_: Youtube    _0_: gist        _b_: Hatena    _n_: News        _p_: Pocket    _2_: abo-abo     _6_: Map
   _y_: Yodobashi   _f_: Flickr     _d_: Dropbox     _e_: Essay     _w_: Weather     _q_: Qiita     _3_: blue        _7_: Drive
-  _k_: Kakaku      _l_: LINE       _x_: Xserver     _:_: Blog      _s_: SanyoBas    _,_: Slack     _4_: seagle      _8_: Photo"
+  _k_: Kakaku      _l_: Tumblr     _x_: Xserver     _:_: Blog      _s_: SanyoBas    _,_: Slack     _4_: seagle      _8_: Photo"
   ("a" (browse-url "https://www.amazon.co.jp/"))
   ("r" (browse-url "https://www.rakuten.co.jp/"))
   ("y" (browse-url "https://www.yodobashi.com/"))
@@ -114,12 +114,12 @@
   ("q" (browse-url "https://qiita.com/tags/emacs"))
   ("8" (browse-url "https://photos.google.com/?pageId=none"))
   ("c" (browse-url "https://google.com"))
+  ("l" (browse-url "https://minorugh.tumblr.com"))
   ("w" browse-weather)
   ("h" browse-homepage)
   ("p" browse-pocket)
   ("t" browse-tweetdeck)
   ("," browse-slack)
-  ("l" line-app-open)
   ("." nil))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -152,14 +152,6 @@
   "Open slack with chrome."
   (interactive)
   (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/"))
-
-(defun line-app-open ()
-  "Open Ftp application."
-  (interactive)
-  (when (getenv "WSLENV")
-    (shell-command "/mnt/c/Users/minoru/AppData/Local/LINE/bin/LineLauncher.exe"))
-  (when (getenv "")
-    (shell-command "chromium")))
 
 ;; Local Variables:
 ;; no-byte-compile: t

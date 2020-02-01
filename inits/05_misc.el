@@ -12,6 +12,12 @@
 ;; expand-region
 (bind-key "C-@" 'er/expand-region)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; sequential-command
+(use-package sequential-command-config
+  :commands sequential-command-setup-keys
+  :hook (after-init . sequential-command-setup-keys))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; yasnippet
 (add-hook 'after-init-hook 'yas-global-mode)

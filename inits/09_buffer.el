@@ -38,6 +38,13 @@
   :config
   (setq tempbuf-kill-message nil))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; iflipb
+(setq iflipb-ignore-buffers (list "^[*]" "^magit" "]$"))
+(setq iflipb-wrap-around t)
+(bind-key "C-<right>" 'iflipb-next-buffer)
+(bind-key "C-<left>" 'iflipb-previous-buffer)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Run M-/ same kill-buffer as C-x k
 (bind-key "M-/" 'kill-buffer)

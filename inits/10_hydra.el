@@ -148,14 +148,7 @@ If there are two or more windows, it will go to another window."
  "jk"
  (defhydra hydra-pinky (:color red :hint nil)
    "
- 🐳: _0_._1_._2_._3_._o_._S_._x_._h_._l_._j_._k_._a_._e_._f_._b_._g_._G_._s_._:_"
-   ("0" delete-window)
-   ("1" delete-other-windows)
-   ("2" split-window-below)
-   ("3" split-window-right)
-   ("o" other-window-or-split)
-   ("S" window-swap-states)
-   ("x" window-toggle-division)
+ 🐳: _h_._l_._j_._k_._a_._e_._f_._b_._g_._G_._o_._w_._@_._s_._S_._/_._0_._1_._2_._3_._x_._<_._>_._:_"
    ("h" backward-char)
    ("j" next-line)
    ("k" previous-line)
@@ -167,7 +160,19 @@ If there are two or more windows, it will go to another window."
    ("b" scroll-down-command)
    ("g" beginning-of-buffer)
    ("G" end-of-buffer)
+   ("o" other-window-or-split)
+   ("w" avy-goto-word-1)
+   ("@" recenter-top-bottom)
    ("s" swiper-isearch-region)
+   ("S" window-swap-states)
+   ("/" kill-buffer)
+   ("0" delete-window)
+   ("1" delete-other-windows)
+   ("2" split-window-below)
+   ("3" split-window-right)
+   ("x" window-toggle-division)
+   ("<" iflipb-next-buffer)
+   (">" iflipb-previous-buffer)
    (":" counsel-switch-buffer)))
 
 ;; window-toggle-division

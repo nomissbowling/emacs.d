@@ -3,8 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Quick menu
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Hydra Quick menu
 (bind-key
  "M-."
  (defhydra hydra-quick-menu (:hint nil :exit t)
@@ -52,8 +52,23 @@
    ("_" delete-other-windows)
    ("M-." nil)))
 
+(defun ftp-client ()
+  "Open Ftp application."
+  (interactive)
+  (when (getenv "WSLENV")
+    (shell-command "/mnt/c/\"Program Files\"/\"FileZilla FTP Client\"/filezilla.exe"))
+  (when (getenv "")
+    (shell-command "filezilla")))
+
+(defun backup-melpa ()
+  "Backup for melpa package."
+  (interactive)
+  (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
+    (shell-command "sh melpabackup.sh"))
+  (message "Finished melpa buckup!"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; My work
+;; Hydra Work
 (bind-key
  "M-:"
  (defhydra hydra-work (:hint nil :exit t)
@@ -83,67 +98,8 @@
    ("g" gist-region-or-buffer)
    ("q" keyboard-quit)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Package-utils
-(defhydra hydra-package (:color red :hint nil)
-  "
- 📦 Package: _i_nstall   _u_pgrade   _r_emove   _a_ll-update   _l_ist"
-  ("i" package-install)
-  ("u" package-utils-list-upgrades)
-  ("r" package-utils-remove-by-name)
-  ("a" package-utils-upgrade-all-and-restart)
-  ("l" package-list-packages))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Gist help
-(bind-key "." 'hydra-gist-help/body tabulated-list-mode-map)
-(defhydra hydra-gist-help ()
-  "
-  🎲 Function for gist
-     M-x gist-list: Lists your gists in a new buffer
-     M-x gist-region-or-buffer: Post either the current region or buffer
-    -----------------------------
-  🎲 In gist-list buffer
-     RET:fetch  e:edit-description  g:list-reload  b:browse current  y:print current url
-     +:add file to current  -:remove file from current  k:delete current
-    -----------------------------
-  🎲 In fetch file buffer
-     C-x C-s : save a new version of the gist
-     C-x C-w : rename some file
-    -----------------------------
-  🎲 In dired buffer
-     @ : make a gist out of marked files"
-  ("." nil))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; my:functions
-(defun ftp-client ()
-  "Open Ftp application."
-  (interactive)
-  (when (getenv "WSLENV")
-    (shell-command "/mnt/c/\"Program Files\"/\"FileZilla FTP Client\"/filezilla.exe"))
-  (when (getenv "")
-    (shell-command "filezilla")))
-
-(defun backup-melpa ()
-  "Backup for melpa package."
-  (interactive)
-  (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
-    (shell-command "sh melpabackup.sh"))
-  (message "Finished melpa buckup!"))
-
-;; other-window-or-split
-(bind-key
- "C-q"
- (defun other-window-or-split ()
-   "If there is one window, open split window.
-If there are two or more windows, it will go to another window."
-   (interactive)
-   (when (one-window-p)
-     (split-window-horizontally))
-   (other-window 1)
-   (hydra-pinky/body)))
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Hydra Pinky
 (key-chord-define-global
  "jk"
  (defhydra hydra-pinky (:color red :hint nil)
@@ -182,7 +138,17 @@ If there are two or more windows, it will go to another window."
    (">" iflipb-previous-buffer)
    (":" counsel-switch-buffer)))
 
-;; window-toggle-division
+(bind-key
+ "C-q"
+ (defun other-window-or-split ()
+   "If there is one window, open split window.
+If there are two or more windows, it will go to another window."
+   (interactive)
+   (when (one-window-p)
+     (split-window-horizontally))
+   (other-window 1)
+   (hydra-pinky/body)))
+
 (defun window-toggle-division ()
   "Replace vertical <-> horizontal when divided into two."
   (interactive)
@@ -198,6 +164,38 @@ If there are two or more windows, it will go to another window."
     (other-window 1)
     (switch-to-buffer other-buf)
     (other-window -1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Package-utils
+(defhydra hydra-package (:color red :hint nil)
+  "
+ 📦 Package: _i_nstall   _u_pgrade   _r_emove   _a_ll-update   _l_ist"
+  ("i" package-install)
+  ("u" package-utils-list-upgrades)
+  ("r" package-utils-remove-by-name)
+  ("a" package-utils-upgrade-all-and-restart)
+  ("l" package-list-packages))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Gist help
+(bind-key "." 'hydra-gist-help/body tabulated-list-mode-map)
+(defhydra hydra-gist-help ()
+  "
+  🎲 Function for gist
+     M-x gist-list: Lists your gists in a new buffer
+     M-x gist-region-or-buffer: Post either the current region or buffer
+    -----------------------------
+  🎲 In gist-list buffer
+     RET:fetch  e:edit-description  g:list-reload  b:browse current  y:print current url
+     +:add file to current  -:remove file from current  k:delete current
+    -----------------------------
+  🎲 In fetch file buffer
+     C-x C-s : save a new version of the gist
+     C-x C-w : rename some file
+    -----------------------------
+  🎲 In dired buffer
+     @ : make a gist out of marked files"
+  ("." nil))
 
 ;; Local Variables:
 ;; no-byte-compile: t

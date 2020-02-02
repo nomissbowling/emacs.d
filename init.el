@@ -93,6 +93,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     howm
     htmlize
     hydra
+    iflipb
     init-loader
     ivy-prescient
     ivy-rich

@@ -148,16 +148,21 @@ If there are two or more windows, it will go to another window."
  "jk"
  (defhydra hydra-pinky (:color red :hint nil)
    "
- 🐳: _h_._l_._j_._k_._a_._e_._f_._b_._g_._G_._o_._w_._@_._s_._S_._/_._0_._1_._2_._3_._x_._<_._>_._:_"
+ 🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._w_._@_._s_._S_._/_._v_._f_._0_._1_._2_._3_._x_._<_._>_._:_"
    ("h" backward-char)
    ("j" next-line)
    ("k" previous-line)
    ("l" forward-char)
+   ("<left>" backward-char)
+   ("<down>" next-line)
+   ("<up>" previous-line)
+   ("<right>" forward-char)
    ("a" beginning-of-line)
    ("e" end-of-line)
-   ("f" scroll-up-command)
-   ("<SPC>" scroll-up-command)
+   ("SPC" scroll-up-command)
    ("b" scroll-down-command)
+   ("<next>" scroll-up-command)
+   ("<prior>" scroll-down-command)
    ("g" beginning-of-buffer)
    ("G" end-of-buffer)
    ("o" other-window-or-split)
@@ -166,6 +171,8 @@ If there are two or more windows, it will go to another window."
    ("s" swiper-isearch-region)
    ("S" window-swap-states)
    ("/" kill-buffer)
+   ("v" vc-diff)
+   ("f" counsel-find-file)
    ("0" delete-window)
    ("1" delete-other-windows)
    ("2" split-window-below)

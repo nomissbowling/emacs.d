@@ -30,7 +30,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Open application
 (bind-key*
- "C-z"
+ [f4]
  (defun term-current-dir-open ()
    "Open terminal application in current dir."
    (interactive)

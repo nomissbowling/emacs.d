@@ -7,7 +7,7 @@
 ;; use popwin
 (with-eval-after-load "popwin"
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
-  (key-chord-define-global "zz" 'eshell))
+  (bind-key* "C-z" 'eshell))
 
 ;; Not case sensitive
 (setq eshell-cmpl-ignore-case t)
@@ -37,25 +37,12 @@
         (list "la" "ls -a -S")
         (list "ex" "exit"))))
 
-(with-eval-after-load 'eshell
-  ;; Clear command.
-  (defun eshell/clear ()
-    "Clear the current buffer, leaving one prompt at the top."
-    (interactive)
-    (let ((inhibit-read-only t))
-      (erase-buffer)))
-  ;; Fish-like history autosuggestions
-  (use-package esh-autosuggest
-    :defines ivy-display-functions-alist
-    :preface
-    (defun setup-eshell-ivy-completion ()
-      (setq-local ivy-display-functions-alist
-		  (remq (assoc 'ivy-completion-in-region ivy-display-functions-alist)
-			ivy-display-functions-alist)))
-    :bind (:map eshell-mode-map
-		([remap eshell-pcomplete] . completion-at-point))
-    :hook ((eshell-mode . esh-autosuggest-mode)
-	   (eshell-mode . setup-eshell-ivy-completion))))
+;; Clear command.
+(defun eshell/clear ()
+  "Clear the current buffer, leaving one prompt at the top."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
 
 ;; Launch eshell with Current buffer
 (defun eshell-on-current-buffer ()

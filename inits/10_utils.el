@@ -101,6 +101,7 @@
       key-chord-safety-interval-forward  0.25)
 (key-chord-define-global "df" 'counsel-descbinds)
 (key-chord-define-global "l;" 'init-loader-show-log)
+
 ;; don't hijack input method
 (defadvice toggle-input-method (around toggle-input-method-around activate)
   "Input method function in key-chord.el not to be nil."

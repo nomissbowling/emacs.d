@@ -101,7 +101,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hydra Pinky
 (key-chord-define-global
- "jk"
+ ".."
  (defhydra hydra-pinky (:color red :hint nil)
    "
  🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._w_._@_._s_._S_._/_._v_._f_._0_._1_._2_._3_._x_._<_._>_._:_"

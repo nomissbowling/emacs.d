@@ -124,30 +124,38 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; browse-url
-(defun browse-calendar ()
-  "Open keep with chrome."
-  (interactive)
-  (browse-url "https://calendar.google.com/calendar/r"))
+(bind-key
+ [f7]
+ (defun browse-calendar ()
+   "Open keep with chrome."
+   (interactive)
+   (browse-url "https://calendar.google.com/calendar/r")))
+
 (defun browse-weather  ()
   "Open tenki with chrome."
   (interactive)
   (browse-url "https://tenki.jp/week/6/31/"))
+
 (defun browse-pocket ()
   "Open pocket with chrome."
   (interactive)
   (browse-url "https://getpocket.com/a/queue/"))
+
 (defun browse-homepage ()
   "Open my homepage."
   (interactive)
   (browse-url "https://gospel-haiku.com/"))
+
 (defun browse-gmail ()
   "Open gmail with chrome."
   (interactive)
   (browse-url "https://mail.google.com/mail/u/0/?tab=rm#inbox"))
+
 (defun browse-tweetdeck ()
   "Open tweetdeck with chrome."
   (interactive)
   (browse-url "https://tweetdeck.twitter.com/"))
+
 (defun browse-slack ()
   "Open slack with chrome."
   (interactive)

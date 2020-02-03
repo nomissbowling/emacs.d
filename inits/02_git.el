@@ -17,8 +17,7 @@
   ("s" magit-status :exit t)
   ("b" magit-blame :exit t)
   ("t" git-timemachine :exit t)
-  ("d" vc-diff)
-  ("<f3>" nil))
+  ("d" vc-diff))
 
 ;; local Variables:
 ;; no-byte-compile: t

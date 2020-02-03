@@ -65,4 +65,4 @@
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
-;;; 10_compile-command.el ends here
+;;; 10_compile.el ends here

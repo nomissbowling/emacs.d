@@ -11,12 +11,11 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits   _w_eb   GH:_h_^^   .emacs_;_^^^^   _l_aunch   _s_wiper   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   _b_ackup-melpa
-   magit_:__._   _a_g:🐾   esh:_z_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_<right>_"
+   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   _s_wiper@point
+   _M_agit:_._   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
-   ("b" backup-melpa)
    ("p" hydra-package/body)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -33,18 +32,21 @@
    ("r" restart-emacs)
    ("z" eshell)
    ("s" swiper-thing-at-point)
-   (":" hydra-magit/body)
+   ("M" hydra-magit/body)
    ("." magit-status)
    ("m" hydra-markdown/body)
+   (":" hydra-pinky/body)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
-   ("l" dashboard-hydra/body)
+   ("b" dashboard-hydra/body)
    ("g" my:github-show)
    ("j" open-junk-file)
    ("J" my:open-junk-file-dir)
    ("@" howm-list-all)
    ("," hydra-howm/body)
    ("k" my:recompile)
+   ("G" gist-region-or-buffer)
+   ("l" gist-list)
    ("u" undo-tree-visualize)
    ("<right>" hydra-work/body)
    ("/" kill-other-buffers)
@@ -73,8 +75,9 @@
  "M-:"
  (defhydra hydra-work (:hint nil :exit t)
    "
- 📝  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _g_ist:_._  _<left>_:back"
+ 📝 Work: _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  _<left>_:back"
    ("e" easy-hugo)
+   ("b" backup-melpa)
    ("d" my:diary)
    ("D" my:diary-new-post)
    ("o" my:otibo)
@@ -94,14 +97,12 @@
    ("_" delete-other-windows)
    ("<left>" hydra-quick-menu/body)
    ("<right>" dashboard-hydra/body)
-   ("." gist-list)
-   ("g" gist-region-or-buffer)
    ("q" keyboard-quit)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hydra Pinky
 (key-chord-define-global
- ".."
+ "jk"
  (defhydra hydra-pinky (:color red :hint nil)
    "
  🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._w_._@_._s_._S_._/_._v_._f_._0_._1_._2_._3_._x_._<_._>_._:_"

@@ -98,7 +98,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     ivy-prescient
     ivy-rich
     ivy-yasnippet
-    japanese-holidays
     key-chord
     magit
     markdown-mode

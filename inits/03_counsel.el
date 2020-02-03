@@ -29,10 +29,8 @@
 (bind-key [f6] (lambda ()
 		 (interactive)
 		 (counsel-M-x "^counsel ")))
-
 ;; avy
 (bind-key "C-r" 'avy-goto-word-1)
-
 
 (defun swiper-isearch-region ()
   "If region is selected, `swiper-isearch' with the keyword selected in region.
@@ -45,7 +43,6 @@ If the region isn't selected, `swiper-isearch'."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-css to activate imenu integration to "C-r"
 (add-hook 'css-mode-hook 'counsel-css-imenu-setup)
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-tramp
@@ -65,7 +62,6 @@ If the region isn't selected, `swiper-isearch'."
     (counsel-tramp-quit)
     (message "Now tramp-quit!")))
 
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ivy-format-function-arrow
 (defun my-ivy-format-function-arrow (cands)
@@ -82,7 +78,6 @@ If the region isn't selected, `swiper-isearch'."
    cands
    "\n"))
 (setq ivy-format-functions-alist '((t . my-ivy-format-function-arrow)))
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; More friendly display transformer for Ivy
@@ -196,7 +191,6 @@ If the region isn't selected, `swiper-isearch'."
 	    (ivy-rich-candidate (:width 0.8))
 	    (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))
 	  )))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

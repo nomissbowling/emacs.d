@@ -6,7 +6,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package neotree
   :bind (	("s-n" . neotree-toggle)
-		([f11] . neotree-toggle)
 		:map neotree-mode-map
 		("RET" . neotree-enter-hide)
 		("C-g" . neotree-toggle)
@@ -19,19 +18,6 @@
   (neo-smart-open t)
   (neo-create-file-auto-open t)
   (neo-hidden-regexp-list '("^\\." "\\.cs\\.meta$" "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.ini$"))
-  :config
-  ;; Patched to allow everything but .DS_Store.
-  ;; Tips from https://github.com/syl20bnr/spacemacs/issues/2751
-  (with-eval-after-load 'neotree
-    (defun neo-util--walk-dir (path)
-      "Return the subdirectories and subfiles of the PATH."
-      (let* ((full-path (neo-path--file-truename path)))
-  	(condition-case nil
-  	    (directory-files
-  	     path 'full "^\\([^.]\\|\\.[^d.][^S]\\).*")
-  	  ('file-error
-  	   (message "Walk directory %S failed." path)
-  	   nil)))))
   :preface
   ;; Change neotree's font size
   ;; Tips from https://github.com/jaypei/emacs-neotree/issues/218
@@ -54,7 +40,19 @@
   (defun neotree-enter-hide (&optional arg)
     "`The description of ARG is in `neo-buffer--execute'."
     (interactive "P")
-    (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir)))
+    (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir))
+  ;; Set for WSL
+  (bind-key
+   [f11]
+   (defun open-neotree-or-dired-jump ()
+     "In WSL-mode open dired-jump. If not by neotree."
+     (interactive)
+     (when (getenv "WSLENV")
+       (split-window-horizontally)
+       (dired-jump-other-window)
+       (dired-hide-details-mode))
+     (unless (getenv "WSLENV")
+       (neotree-toggle)))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

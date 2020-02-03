@@ -68,30 +68,6 @@
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Calendar
-(use-package calendar
-  :commands calendar
-  :bind (([f7] . calendar)
-	 :map calendar-mode-map
-	 ("n" . calendar-forward-day)
-	 ("b" . calendar-backward-day)
-	 ([f7] . calendar-exit))
-  :config
-  (setq calendar-mark-holidays-flag t))
-
-;; japanese-holidays
-(use-package japanese-holidays
-  :after calendar
-  :config
-  (setq calendar-holidays
-	(append japanese-holidays holiday-local-holidays holiday-other-holidays)
-	japanese-holiday-weekend '(0 6)    ;; Show weekends as holidays
-	japanese-holiday-weekend-marker    ;; Shows Saturday in light blue
-	'(holiday nil nil nil nil nil japanese-holiday-saturday))
-  (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
-  (add-hook 'calendar-today-visible-hook 'calendar-mark-today))
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

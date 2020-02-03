@@ -156,7 +156,6 @@
 (use-package my-dired)
 (use-package my-template)
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

@@ -43,7 +43,8 @@
  (defun filer-current-dir-open ()
    "Open filer in current dir."
    (interactive)
-   (shell-command (concat "xdg-open " default-directory))))
+   ;; (shell-command (concat "xdg-open " default-directory))))
+   (shell-command (concat "rox-filer " default-directory))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Search Web

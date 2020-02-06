@@ -43,7 +43,10 @@
  (defun filer-current-dir-open ()
    "Open filer in current dir."
    (interactive)
-   (shell-command (concat "xdg-open " default-directory))))
+   (when (getenv "WSLENV")
+     (shell-command "explorer.exe . "))
+   (unless (getenv "WSLENV")
+     (shell-command (concat "xdg-open " default-directory)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Search Web

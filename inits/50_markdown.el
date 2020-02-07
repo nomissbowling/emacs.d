@@ -42,6 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 ")
+  :custom-face
+  (markdown-header-delimiter-face ((t (:foreground "mediumpurple"))))
+  (markdown-header-face-1 ((t (:foreground "violet" :weight bold :height 1.0))))
+  (markdown-header-face-2 ((t (:foreground "lightslateblue" :weight bold :height 1.0))))
+  (markdown-header-face-3 ((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
+  (markdown-link-face ((t (:background "#0e1014" :foreground "#bd93f9"))))
+  (markdown-list-face ((t (:foreground "mediumpurple"))))
+  (markdown-code-face ((t (:background "#222" :inherit 'default))))
+  (markdown-pre-face ((t (:foreground "#bd98fe"))))
   :config
   ;; Preview via `livedown'
   ;; Install: npm install -g livedown
@@ -52,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
      '(livedown-open t)
      '(livedown-port 1337)
      '(livedown-browser nil))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra

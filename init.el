@@ -37,13 +37,12 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 
             ;; GC automatically while unfocusing the frame
             ;; `focus-out-hook' is obsolete since 27.1
-            (if (boundp 'after-focus-change-function)
-                (add-function :after after-focus-change-function
-	    		      (lambda ()
-	    			(unless (frame-focus-state)
-	    			  (garbage-collect))))
-              (add-hook 'focus-out-hook 'garbage-collect))
-
+	    (if (boundp 'after-focus-change-function)
+		(add-function :after after-focus-change-function
+			      (lambda ()
+				(unless (frame-focus-state)
+				  (garbage-collect))))
+	      (add-hook 'focus-out-hook 'garbage-collect))
             ;; Avoid GCs while using `ivy'/`counsel'/`swiper' and `helm', etc.
             ;; @see http://bling.github.io/blog/2016/01/18/why-are-you-changing-gc-cons-threshold/
             (defun my-minibuffer-setup-hook ()
@@ -55,12 +54,12 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
             (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
             (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load path
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp/my-lisp")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; List of packages to install from melpa
 (defvar my-install-package-list
   '(aggressive-indent
@@ -143,7 +142,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     (dolist (pkg not-installed)
       (package-install pkg))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Init-loader
 (custom-set-variables
  '(init-loader-show-log-after-init 'error-only))

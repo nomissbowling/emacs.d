@@ -58,13 +58,11 @@
     (interactive)
     (display-line-numbers-mode 0)
     (flymake-mode 0)
-    (diff-hl-mode 0)
     (darkroom-mode 1))
   (defun my:darkroom-mode-out ()
     "Darkroom mode out."
     (interactive)
     (darkroom-mode 0)
-    (diff-hl-mode 1)
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 

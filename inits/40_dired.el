@@ -22,7 +22,8 @@
 	     ("a" . dired-list-all-mode)
 	     ("q" . dired-dwim-quit-window)
 	     ("t" . counsel-tramp)
-	     ("s" . sudo-edit)))
+	     ("s" . sudo-edit)
+	     ("." . magit-status)))
 
 ;; Show directory first
 (use-package ls-lisp

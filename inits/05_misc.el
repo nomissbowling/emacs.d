@@ -40,10 +40,6 @@
       ediff-diff-options "-twB")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; compilei
-(bind-key [f2] 'compile)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; quickrun
 (bind-key [f5] 'quickrun)
 

@@ -10,9 +10,10 @@
   (setq default-input-method "japanese-mozc")
   (setq mozc-helper-program-name "mozc_emacs_helper")
   :config
+  (custom-set-variables '(mozc-leim-title "かな "))
   (bind-key* "<henkan>" 'toggle-input-method)
-  (bind-key [f8] 'mozc-word-regist)
-  (bind-key [S-f8] 'mozc-config-dialog))
+  (bind-key [f7] 'mozc-word-regist)
+  (bind-key [f8] 'mozc-config-dialog))
 
 (defun mozc-word-regist ()
   "Mozc word regist."

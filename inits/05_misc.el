@@ -12,6 +12,15 @@
 ;; expand-region
 (bind-key "C-@" 'er/expand-region)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; key-chord
+(key-chord-mode 1)
+(setq key-chord-two-keys-delay           0.15
+      key-chord-safety-interval-backward 0.1
+      key-chord-safety-interval-forward  0.25)
+(key-chord-define-global "df" 'counsel-descbinds)
+(key-chord-define-global "l;" 'init-loader-show-log)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; sequential-command
 (use-package sequential-command-config

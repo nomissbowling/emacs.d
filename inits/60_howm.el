@@ -42,7 +42,6 @@
   ("b" my:howm-blog)
   ("m" my:howm-mail)
   ("@" howm-list-all))
-(key-chord-define-global "@@" 'howm-list-all)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set template

@@ -44,15 +44,30 @@
   ;; Set for WSL
   (bind-key
    [f11]
-   (defun open-neotree-or-dired-jump ()
-     "In WSL-mode open dired-jump. If not by neotree."
+   (defun open-neotree-or-direx-jump ()
+     "In WSL-mode open direx:jump-to-other-buffer."
      (interactive)
      (when (getenv "WSLENV")
-       (split-window-horizontally)
-       (dired-jump-other-window)
-       (dired-hide-details-mode))
+       (direx:jump-to-project-directory))
      (unless (getenv "WSLENV")
        (neotree-toggle)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Using the direx when the WSL
+(use-package direx)
+(setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
+(push '(direx:direx-mode :position left :width 30 :dedicated t)
+      popwin:special-display-config)
+;; use direx-project.el
+;; https://blog.shibayu36.org/entry/2013/02/12/191459
+(defun direx:jump-to-project-directory ()
+  "If in project, launch direx-project otherwise start direx."
+  (interactive)
+  (let ((result (ignore-errors
+		  (direx-project:jump-to-project-root-other-window)
+		  t)))
+    (unless result
+      (direx:jump-to-directory-other-window))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

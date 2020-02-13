@@ -4,11 +4,12 @@
 ;; (setq debug-on-error t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Use direx.el
 (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
 (push '(direx:direx-mode :position left :width 30 :dedicated t)
       popwin:special-display-config)
 
-;; use direx-project.el
+;; Use direx-project.el
 ;; https://blog.shibayu36.org/entry/2013/02/12/191459
 (bind-key
  [f11]

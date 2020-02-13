@@ -78,6 +78,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     counsel-tramp
     dash
     dashboard
+    direx
     doom-themes
     doom-modeline
     easy-hugo

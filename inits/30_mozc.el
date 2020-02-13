@@ -12,29 +12,32 @@
   :config
   (custom-set-variables '(mozc-leim-title "かな "))
   (bind-key* "<henkan>" 'toggle-input-method)
-  (bind-key [f7] 'mozc-word-regist)
-  (bind-key [f8] 'mozc-config-dialog))
+  ;; https://github.com/iRi-E/mozc-el-extensions
+  (use-package mozc-cursor-color)
 
-(defun mozc-word-regist ()
-  "Mozc word regist."
-  (interactive)
-  (shell-command-to-string
-   "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
+  ;; https://github.com/derui/mozc-posframe
+  (use-package mozc-posframe
+    :after mozc
+    :custom
+    (mozc-candidate-style 'posframe)))
 
-(defun mozc-config-dialog ()
-  "Mozc config dialog."
-  (interactive)
-  (shell-command-to-string
-   "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; mozc-tool
+(bind-key
+ [f7]
+ (defun mozc-word-regist ()
+   "Mozc word regist."
+   (interactive)
+   (shell-command-to-string
+    "/usr/lib/mozc/mozc_tool --mode=word_register_dialog")))
 
-;; https://github.com/iRi-E/mozc-el-extensions
-(use-package mozc-cursor-color)
-
-;; https://github.com/derui/mozc-posframe
-(use-package mozc-posframe
-  :after mozc
-  :custom
-  (mozc-candidate-style 'posframe))
+(bind-key
+ [f8]
+ (defun mozc-config-dialog ()
+   "Mozc config dialog."
+   (interactive)
+   (shell-command-to-string
+    "/usr/lib/mozc/mozc_tool --mode=config_dialog")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set the character to be immediately determine

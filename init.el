@@ -103,7 +103,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     markdown-toc
     migemo
     mozc
-    neotree
     nyan-mode
     package-utils
     persistent-scratch

@@ -16,6 +16,7 @@
       "\n------------------------------------------------------------\n")
 (bind-keys ("C-:" . counsel-switch-buffer)
 	   ("C-s" . swiper-isearch-region)
+	   ("C-r" . swiper-thing-at-point)
 	   ("M-x" . counsel-M-x)
 	   ("C-c a" . counsel-ag)
 	   ("C-c f" . counsel-projectile-find-file)
@@ -29,8 +30,6 @@
 (bind-key [f6] (lambda ()
 		 (interactive)
 		 (counsel-M-x "^counsel ")))
-;; avy
-(bind-key "C-r" 'avy-goto-word-1)
 
 (defun swiper-isearch-region ()
   "If region is selected, `swiper-isearch' with the keyword selected in region.

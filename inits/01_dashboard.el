@@ -24,7 +24,7 @@
 		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux")))
 
 ;; Set the banner
-(setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png")
+;; (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png")
 
 ;; Use icons
 (setq dashboard-set-heading-icons t)

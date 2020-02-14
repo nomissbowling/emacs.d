@@ -11,15 +11,16 @@
   (setq mozc-helper-program-name "mozc_emacs_helper")
   :config
   (custom-set-variables '(mozc-leim-title "かな "))
-  (bind-key* "<henkan>" 'toggle-input-method)
-  ;; https://github.com/iRi-E/mozc-el-extensions
-  (use-package mozc-cursor-color)
+  (bind-key* "<henkan>" 'toggle-input-method))
 
-  ;; https://github.com/derui/mozc-posframe
-  (use-package mozc-posframe
-    :after mozc
-    :custom
-    (mozc-candidate-style 'posframe)))
+;; https://github.com/iRi-E/mozc-el-extensions
+(use-package mozc-cursor-color)
+
+;; https://github.com/derui/mozc-posframe
+(use-package mozc-posframe
+  :after mozc
+  :custom
+  (mozc-candidate-style 'posframe))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mozc-tool
@@ -54,6 +55,14 @@
 	    (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
 	    (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
 	    (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; don't hijack input method
+(defadvice toggle-input-method (around toggle-input-method-around activate)
+  "Input method function in key-chord.el not to be nil."
+  (let ((input-method-function-save input-method-function))
+    ad-do-it
+    (setq input-method-function input-method-function-save)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -34,7 +34,6 @@
  (defun term-current-dir-open ()
    "Open terminal application in current dir."
    (interactive)
-   ;; Remove trailing '/' from 'default-derectory'
    (let ((dir (directory-file-name default-directory)))
      (shell-command (concat "gnome-terminal --working-directory " dir)))))
 
@@ -92,13 +91,6 @@
 (if (not (memq 'my:delete-file-if-no-contents after-save-hook))
     (setq after-save-hook
           (cons 'my:delete-file-if-no-contents after-save-hook)))
-
-;; don't hijack input method
-(defadvice toggle-input-method (around toggle-input-method-around activate)
-  "Input method function in key-chord.el not to be nil."
-  (let ((input-method-function-save input-method-function))
-    ad-do-it
-    (setq input-method-function input-method-function-save)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

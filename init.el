@@ -5,6 +5,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI
+(when (getenv "WSLENV")
+  (set-frame-parameter nil 'fullscreen 'maximized))
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)

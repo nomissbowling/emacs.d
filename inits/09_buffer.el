@@ -11,7 +11,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Toggle current buffer and *scratch* buffer
 (bind-key
- [home]
+ [S-return]
  (defun toggle-scratch()
    "Toggle current buffer and *scratch* buffer."
    (interactive)

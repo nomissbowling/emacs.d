@@ -21,11 +21,11 @@
 (setq eshell-hist-ignoredups t)
 
 ;; Prompt change string
-(defun my-eshell-prompt ()
+(defun my:eshell-prompt ()
   "Prompt change string."
   (concat (eshell/pwd)
 	  (if (= (user-uid) 0) "\n# " "\n$ ")))
-(setq eshell-prompt-function 'my-eshell-prompt)
+(setq eshell-prompt-function 'my:eshell-prompt)
 (setq eshell-prompt-regexp "^[^#$\n]*[$#] ")
 
 ;; written by Stefan Reichoer <reichoer@web.de>

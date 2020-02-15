@@ -5,6 +5,8 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UI
+(when (getenv "WSLENV")
+  (set-frame-parameter nil 'fullscreen 'maximized))
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -89,11 +91,13 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     git-timemachine
     google-translate
     hiwin
+    hide-mode-line
     howm
     htmlize
     hydra
     iflipb
     init-loader
+    imenu-list
     ivy-prescient
     ivy-rich
     ivy-yasnippet

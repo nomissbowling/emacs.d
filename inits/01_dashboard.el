@@ -31,7 +31,6 @@
 (setq dashboard-set-file-icons t)
 
 ;; Set the footer
-(setq dashboard-footer "Always be joyful. Never stop praying. Be thankful in all circumstances!")
 (setq dashboard-footer-icon
       (all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
 ;; (setq dashboard-page-separator "\n\f\f\n")

@@ -21,7 +21,8 @@
 (defun my:pdfout-region (begin end)
   "PDF out from BEGIN to END of region."
   (interactive "r")
-  (shell-command-on-region begin end (format my:pdfout-command-format (concat (read-from-minibuffer "File name:") ".pdf"))))
+  (shell-command-on-region begin end (format my:pdfout-command-format
+					     (concat (read-from-minibuffer "File name:") ".pdf"))))
 (defun my:pdfout-buffer ()
   "PDF out from buffer."
   (interactive)
@@ -91,6 +92,16 @@
 (if (not (memq 'my:delete-file-if-no-contents after-save-hook))
     (setq after-save-hook
           (cons 'my:delete-file-if-no-contents after-save-hook)))
+
+
+(use-package imenu-list
+  :bind
+  ("<f10>" . imenu-list-smart-toggle)
+  :custom-face
+  (imenu-list-entry-face-1 ((t (:foreground "white"))))
+  :custom
+  (imenu-list-focus-after-activation t)
+  (imenu-list-auto-resize nil))
 
 ;; Local Variables:
 ;; no-byte-compile: t

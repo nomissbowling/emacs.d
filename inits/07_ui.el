@@ -46,10 +46,6 @@
 (bind-key [f9] 'display-line-numbers-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Fullscreen
-(bind-key [S-return] 'toggle-frame-fullscreen)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Darkroom
 (use-package darkroom
   :bind (([f12] . my:darkroom-mode-in)

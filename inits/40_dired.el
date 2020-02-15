@@ -155,7 +155,7 @@
     ;; Recursively copy directory
     (dired-recursive-copies 'always)
     :config
-    (defun my-all-the-icons-dired--display ()
+    (defun my:all-the-icons-dired--display ()
       "Display the icons of files without colors in a dired buffer."
       (when dired-subdir-alist
 	(let ((inhibit-read-only t)
@@ -200,7 +200,7 @@
 			(insert (all-the-icons-icon-for-file file :v-adjust all-the-icons-dired-v-adjust))))
 		    (insert "\t"))))   ; Align and keep one space for refeshing after operations
 	      (forward-line 1))))))
-    (advice-add #'all-the-icons-dired--display :override #'my-all-the-icons-dired--display)))
+    (advice-add #'all-the-icons-dired--display :override #'my:all-the-icons-dired--display)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

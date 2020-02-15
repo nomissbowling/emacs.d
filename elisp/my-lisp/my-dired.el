@@ -20,6 +20,10 @@
   "Open dropbox dir."
   (interactive)
   (find-file "~/Dropbox/"))
+(defun my:documents ()
+  "Open documents dir."
+  (interactive)
+  (find-file "~/Dropbox/Documents/"))
 (defun my:www-dir ()
   "Open Web dir."
   (interactive)

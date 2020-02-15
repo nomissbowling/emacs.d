@@ -147,8 +147,7 @@ If there are two or more windows, it will go to another window."
    (interactive)
    (when (one-window-p)
      (split-window-horizontally))
-   (other-window 1)
-   (hydra-pinky/body)))
+   (other-window 1)))
 
 (defun window-toggle-division ()
   "Replace vertical <-> horizontal when divided into two."

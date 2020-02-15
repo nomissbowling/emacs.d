@@ -22,6 +22,7 @@
    ("t" my:tramp-xsrv)
    ("q" my:tramp-quit)
    ("d" my:dropbox)
+   ("D" my:documents)
    ("i" my:inits-dir)
    ("e" my:emacs-dir)
    ("w" my:www-dir)

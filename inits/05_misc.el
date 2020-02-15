@@ -20,6 +20,7 @@
       key-chord-safety-interval-forward  0.25)
 (key-chord-define-global "df" 'counsel-descbinds)
 (key-chord-define-global "l;" 'init-loader-show-log)
+(key-chord-define-global "@@" 'howm-list-all)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; sequential-command

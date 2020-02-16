@@ -10,10 +10,10 @@
 	 :map company-active-map
 	 ("b" . company-select-previous)
 	 ("SPC" . company-select-next)
-	 ([backtab] . my-company-yasnippet))
+	 ([backtab] . my:company-yasnippet))
   :hook (after-init . global-company-mode)
   :init
-  (defun my-company-yasnippet ()
+  (defun my:company-yasnippet ()
     (interactive)
     (company-abort)
     (call-interactively 'company-yasnippet))

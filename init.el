@@ -45,14 +45,14 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 	      (add-hook 'focus-out-hook 'garbage-collect))
             ;; Avoid GCs while using `ivy'/`counsel'/`swiper' and `helm', etc.
             ;; @see http://bling.github.io/blog/2016/01/18/why-are-you-changing-gc-cons-threshold/
-            (defun my-minibuffer-setup-hook ()
+            (defun my:minibuffer-setup-hook ()
               (setq gc-cons-threshold my:gc-cons-upper-limit))
 
-            (defun my-minibuffer-exit-hook ()
+            (defun my:minibuffer-exit-hook ()
               (setq gc-cons-threshold my:gc-cons-threshold))
 
-            (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
-            (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)))
+            (add-hook 'minibuffer-setup-hook #'my:minibuffer-setup-hook)
+            (add-hook 'minibuffer-exit-hook #'my:minibuffer-exit-hook)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Load path
@@ -61,7 +61,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; List of packages to install from melpa
-(defvar my-install-package-list
+(defvar my:install-package-list
   '(aggressive-indent
     all-the-icons-dired
     auto-save-buffers-enhanced
@@ -136,7 +136,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 
 ;; Install packages that are not installed.
 (let ((not-installed
-       (cl-loop for x in my-install-package-list
+       (cl-loop for x in my:install-package-list
                 when (not (package-installed-p x))
                 collect x)))
   (when not-installed

@@ -12,7 +12,7 @@
 	     ("<left>" . dired-up-alternate-directory)
 	     ("<right>" . dired-open-in-accordance-with-situation)
 	     ("RET" . dired-open-in-accordance-with-situation)
-	     ("e" . my-dired-ediff-files)
+	     ("e" . my:dired-ediff-files)
 	     ("<SPC>" . my:dired-toggle-mark)
 	     ("C-g" . my:dired-unmark-all)
 	     ("r" . wdired-change-to-wdired-mode)
@@ -100,7 +100,7 @@
     (when (getenv "WSLENV")
       (call-process "wslstart" nil 0 nil fn))))
 
-(defun my-dired-ediff-files ()
+(defun my:dired-ediff-files ()
   "Start ediff with a file marked with `dired-mode'."
   (interactive)
   (let ((files (dired-get-marked-files))

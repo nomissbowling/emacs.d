@@ -130,10 +130,12 @@
    (interactive)
    (browse-url "https://calendar.google.com/calendar/r")))
 
-(defun browse-weather  ()
-  "Open tenki with chrome."
-  (interactive)
-  (browse-url "https://tenki.jp/week/6/31/"))
+(bind-key
+ [f8]
+ (defun browse-weather  ()
+   "Open tenki with chrome."
+   (interactive)
+   (browse-url "https://tenki.jp/week/6/31/")))
 
 (defun browse-pocket ()
   "Open pocket with chrome."

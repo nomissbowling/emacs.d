@@ -25,20 +25,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; mozc-tool
 (bind-key
- [f7]
+ "C-c C-d"
  (defun mozc-word-regist ()
    "Mozc word regist."
    (interactive)
    (shell-command-to-string
     "/usr/lib/mozc/mozc_tool --mode=word_register_dialog")))
 
-(bind-key
- [f8]
- (defun mozc-config-dialog ()
-   "Mozc config dialog."
-   (interactive)
-   (shell-command-to-string
-    "/usr/lib/mozc/mozc_tool --mode=config_dialog")))
+(defun mozc-config-dialog ()
+  "Mozc config dialog."
+  (interactive)
+  (shell-command-to-string
+   "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set the character to be immediately determine

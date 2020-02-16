@@ -65,7 +65,7 @@ If the region isn't selected, `swiper-isearch'."
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ivy-format-function-arrow
-(defun my-ivy-format-function-arrow (cands)
+(defun my:ivy-format-function-arrow (cands)
   "Transform CANDS into a string for minibuffer."
   (ivy--format-function-generic
    (lambda (str)
@@ -78,7 +78,7 @@ If the region isn't selected, `swiper-isearch'."
      (concat (propertize " " 'display `(space :align-to 2)) str))
    cands
    "\n"))
-(setq ivy-format-functions-alist '((t . my-ivy-format-function-arrow)))
+(setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; More friendly display transformer for Ivy

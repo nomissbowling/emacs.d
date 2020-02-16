@@ -12,10 +12,6 @@
   "Open dot-emacs dir."
   (interactive)
   (find-file "~/.emacs.d/"))
-(defun my:package-dir ()
-  "Open elpa dir."
-  (interactive)
-  (find-file "~/.emacs.d/elpa/"))
 (defun my:dropbox ()
   "Open dropbox dir."
   (interactive)

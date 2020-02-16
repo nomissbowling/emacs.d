@@ -64,6 +64,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 (defvar my:install-package-list
   '(aggressive-indent
     all-the-icons-dired
+    atomic-chrome
     auto-save-buffers-enhanced
     avy
     beacon

@@ -62,6 +62,11 @@
 (add-hook 'after-init-hook 'projectile-mode)
 (add-hook 'after-init-hook 'counsel-projectile-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; atomic-chrome
+;; https://github.com/alpha22jp/atomic-chrome
+(atomic-chrome-start-server)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

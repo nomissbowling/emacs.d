@@ -93,7 +93,8 @@
     (setq after-save-hook
           (cons 'my:delete-file-if-no-contents after-save-hook)))
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; imenu
 (use-package imenu-list
   :bind
   ("<f10>" . imenu-list-smart-toggle)

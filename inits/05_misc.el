@@ -66,9 +66,7 @@
 ;; atomic-chrome
 ;; https://github.com/alpha22jp/atomic-chrome
 (atomic-chrome-start-server)
-(setq atomic-chrome-url-major-mode-alist
-      '(("github\\.com" . gfm-mode)
-	("qiita\\.com"  . gfm-mode)))
+(setq atomic-chrome-url-major-mode-alist '(("qiita\\.com" . gfm-mode)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

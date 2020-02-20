@@ -107,10 +107,10 @@
 (setq mouse-drag-copy-region t)
 
 ;; Use the X11 clipboard
-(setq x-select-enable-clipboard  t)
+(setq select-enable-clipboard  t)
 (bind-key "M-w" 'clipboard-kill-ring-save)
-(bind-key "C-w" 'my/clipboard-kill-region)
-(defun my/clipboard-kill-region ()
+(bind-key "C-w" 'my:clipboard-kill-region)
+(defun my:clipboard-kill-region ()
   "If the region is active, `clipboard-kill-region'.
 If the region is inactive, `backward-kill-word'."
   (interactive)

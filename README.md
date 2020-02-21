@@ -53,7 +53,7 @@ rm ~/emacs-26.3.tar.gz
 * Put all files under emacs.d in '~/Dropbox' directory
 * Then put a symboliclink of 'init.el' to  '~/.emacs.d'
 
->By executing the above settings for gnu/Linux and macOS,
+>By executing the above settings for gnu/Linux and Windows Subsystem for Linux,
 >You can use Emacs with the same operation from either environment.
 
 ## Consept

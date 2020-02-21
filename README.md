@@ -2,7 +2,7 @@
 
 ## Screen Shot
 
-![Alt Text](https://jubilee-live.flickr.com/65535/48721753511_36677bd214_b.jpg)
+![Alt Text](https://live.staticflickr.com/65535/49563670097_cc031076a9_b.jpg)
 
 ## Usage environment
 

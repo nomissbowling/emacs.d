@@ -10,12 +10,13 @@
   * GNU Linux Debian 10.3
 
 ### GNU Emacs
+ * GNU Emacs 26.3
 
-#### Install Emacs
+## Install Emacs
 
 This installs all dependencies for Emacs and then installs Emacs 26.3:
 
-#### install dependencies (got those from all over the net)
+### install dependencies (got those from all over the net)
 
 ``` shell
 sudo apt install -y autoconf automake autotools-dev bsd-mailx build-essential \
@@ -30,7 +31,7 @@ sudo apt install -y autoconf automake autotools-dev bsd-mailx build-essential \
 
 ```
 
-#### download and install
+### download and install
 
 ``` shell
 cd ~
@@ -57,7 +58,7 @@ rm ~/emacs-26.3.tar.gz
 
 ## Consept
 
-  * I installed 101 packages from melpa and downloaded some other elisp from github.
+  * I installed 90 packages from melpa and downloaded some other elisp from github.
   * We use lazy loading with 'use-package' and use 'after-init-hook' whenever possible for fast emacs startup.
   * This repository only discloses personal configuration information, and does not guarantee its operation.
 

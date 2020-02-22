@@ -153,7 +153,6 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
 (custom-set-variables
  '(init-loader-show-log-after-init 'error-only))
 (init-loader-load "~/Dropbox/emacs.d/inits")
-;; (setq custom-file (expand-file-name "custom.el" "~/Dropbox/emacs.d"))
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
 (provide 'init)

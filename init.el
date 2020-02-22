@@ -65,6 +65,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
   '(aggressive-indent
     all-the-icons-dired
     atomic-chrome
+    auto-compile
     auto-save-buffers-enhanced
     avy
     beacon
@@ -108,6 +109,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     mozc
     nyan-mode
     package-utils
+    packed
     persistent-scratch
     popwin
     posframe
@@ -144,6 +146,11 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     (package-refresh-contents)
     (dolist (pkg not-installed)
       (package-install pkg))))
+
+;; auto-compile
+(setq load-prefer-newer t)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Init-loader

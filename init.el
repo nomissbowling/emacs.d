@@ -145,7 +145,7 @@ If you experience freezing,decrease this.If you experience stuttering, increase 
     (dolist (pkg not-installed)
       (package-install pkg))))
 
-;; Read new one the of the el or elc
+;; Load newer whichever el or elc
 (setq load-prefer-newer t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

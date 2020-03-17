@@ -76,7 +76,9 @@
  "M-:"
  (defhydra hydra-work (:hint nil :exit t)
    "
- 📝 Work: _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  _<left>_:back"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  _<left>_:back"
+   ("a" my:apsh)
+   ("A" my:apsh-new-post)
    ("e" easy-hugo)
    ("b" backup-melpa)
    ("d" my:diary)

@@ -122,7 +122,33 @@
   (forward-line -14)
   (forward-char 1))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Insert template for apsh.txt
+
+(defun my:apsh-new-post ()
+  "Open apsh file and insert template."
+  (interactive)
+  (find-file (expand-file-name "apsh.txt" "~/Dropbox/GH/apsh/"))
+  (goto-char 0)
+  ;; Insert a new date if the date has changed
+  (defvar string (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
+  (unless (string-match (format-time-string "%Y%m:") string)
+    (forward-line -1)
+    (insert (format-time-string "%Y%m:\n")))
+  ;; Insert template
+  (goto-char (point-min))
+  (forward-line)
+  (insert
+   ";--------------------------------------------------------------------\n"
+   (format-time-string "*[%Y%m%d]%m月%d日\n")
+   ";--------------------------------------------------------------------\n"
+   (format-time-string "-*[%Y%m%d]\n")
+   "<small>\n( )\n</small>\n-(\n=[\n= 合評\n-[\n- 投稿いただいた記事は編集してここに転記されます。\n-]\n=]\n-)\n-elink\n")
+  (forward-line -13)
+  (forward-char 18))
+
 (provide 'my-template)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

@@ -21,6 +21,7 @@
 (key-chord-define-global "df" 'counsel-descbinds)
 (key-chord-define-global "l;" 'init-loader-show-log)
 (key-chord-define-global "@@" 'howm-list-all)
+(key-chord-define-global ".." 'hydra-work/body)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; sequential-command

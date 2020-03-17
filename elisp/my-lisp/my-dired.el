@@ -71,6 +71,11 @@
   (interactive)
   (find-file "~/Dropbox/GH/kinnei/kinnei.txt")
   (goto-char (point-min)))
+(defun my:apsh ()
+  "Open apsh file."
+  (interactive)
+  (find-file "~/Dropbox/GH/apsh/apsh.txt")
+  (goto-char (point-min)))
 (defalias 'my:github-show 'browse-at-remote)
 
 (provide 'my-dired)

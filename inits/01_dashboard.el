@@ -9,6 +9,7 @@
 	 :map dashboard-mode-map
 	 ("c" . browse-calendar)
 	 ("w" . browse-weather)
+	 ("n" . browse-google-news)
 	 ("m" . browse-gmail)
 	 ("t" . browse-tweetdeck)
 	 ("s" . browse-slack)
@@ -42,7 +43,7 @@
   (interactive)
   (insert (if (display-graphic-p)
 	      (all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
-  (insert "   Calendar: (c)    Weather: (w)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+  (insert "    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
 (add-to-list 'dashboard-items '(custom) t)
 
@@ -136,6 +137,11 @@
    "Open tenki with chrome."
    (interactive)
    (browse-url "https://tenki.jp/week/6/31/")))
+
+(defun browse-google-news  ()
+  "Open tenki with chrome."
+  (interactive)
+  (browse-url "https://news.google.com/topstories?hl=ja&gl=JP&ceid=JP:ja"))
 
 (defun browse-pocket ()
   "Open pocket with chrome."

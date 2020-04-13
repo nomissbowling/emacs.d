@@ -13,15 +13,13 @@
 
 ;; key-chord
 (key-chord-mode 1)
-(setq key-chord-two-keys-delay           0.15
-      key-chord-safety-interval-backward 0.1
-      key-chord-safety-interval-forward  0.25)
 (key-chord-define-global "df" 'counsel-descbinds)
 (key-chord-define-global "l;" 'init-loader-show-log)
 (key-chord-define-global "hj" 'undo)
 (key-chord-define-global "@@" 'howm-list-all)
 
-;; sequential-command
+;;
+sequential-command
 (leaf sequential-command
   :config
   (leaf sequential-command-config

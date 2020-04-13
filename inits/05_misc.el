@@ -17,6 +17,7 @@
 (key-chord-define-global "l;" 'init-loader-show-log)
 (key-chord-define-global "hj" 'undo)
 (key-chord-define-global "@@" 'howm-list-all)
+(key-chord-define-global ".." 'magit-status)
 
 ;;sequential-command
 (leaf sequential-command

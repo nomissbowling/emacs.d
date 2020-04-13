@@ -43,9 +43,10 @@
 (push (expand-file-name recentf-save-file) recentf-exclude)
 
 ;; server start for emacs-client
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+(leaf server :require t
+  :config
+  (unless (server-running-p)
+    (server-start)))
 
 ;; History;;
 (add-hook 'after-init-hook 'save-place-mode)
@@ -81,8 +82,10 @@
 (setq read-file-name-completion-ignore-case t)
 
 ;; Make it easy to see when it is the same name file
-(use-package uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+(leaf uniquify
+  :config
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+        uniquify-min-dir-content 1))
 
 ;; Do not record the same content in the history
 (setq history-delete-duplicates t)
@@ -148,7 +151,7 @@ If the region is inactive, `backward-kill-word'."
 (setq ad-redefinition-action 'accept)
 
 ;; contains many mode setting
-(use-package generic-x)
+(leaf generic-x)
 
 ;; M-x info-emacs-manual (C-h r or F1+r)
 (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
@@ -162,8 +165,8 @@ If the region is inactive, `backward-kill-word'."
 (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
 ;; Load my-lisp
-(use-package my-dired)
-(use-package my-template)
+(leaf my-dired :require t)
+(leaf my-template :require t)
 
 ;; Local Variables:
 ;; no-byte-compile: t

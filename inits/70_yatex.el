@@ -17,10 +17,10 @@
 	YaTeX-use-font-lock t
 	YaTeX-default-pop-window-height 20)
   (add-hook 'yatex-mode-hook
-	    (lambda()
-	      (leaf yatexprc
-		:bind (("M-c" . YaTeX-typeset-buffer)   ;; Type set
-		       ("M-l" . YaTeX-lpr))))))         ;; Open PDF file
+  	    (lambda()
+  	      (leaf yatexprc
+  		:bind (("M-c" . YaTeX-typeset-buffer)	;; Type set
+  		       ("M-l" . YaTeX-lpr))))))		;; Open pdf
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; dvpd.sh for Linux

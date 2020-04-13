@@ -125,8 +125,8 @@ If the region isn't selected, `swiper-isearch'."
 	  icon))))
   :init
   ;; For better performance
-  (setq ivy-rich-parse-remote-buffer nil)
-  (setq ivy-rich-display-transformers-list
+  (setq ivy-rich-parse-remote-buffer nil
+	ivy-rich-display-transformers-list
 	'(counsel-switch-buffer
 	  (:columns
 	   ((ivy-rich-buffer-icon)

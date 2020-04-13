@@ -14,6 +14,7 @@
 	     ("<SPC>" . my:dired-toggle-mark)
 	     ("C-g" . my:dired-unmark-all)
 	     ("r" . wdired-change-to-wdired-mode)
+	     ("R" . dired-rsync)
 	     ("o" . dired-open-file)
 	     ("O" . dired-omit-mode)
 	     ("[" . dired-hide-details-mode)
@@ -112,6 +113,11 @@
   (interactive)
   (call-interactively 'dired-unmark-all-marks)
   (call-interactively 'revert-buffer))
+
+;; Allow rsync from dired buffers
+(leaf dired-rsync
+  :bind (:dired-mode-map
+	 ("C-c C-r" . dired-rsync)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shows icons

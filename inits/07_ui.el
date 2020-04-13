@@ -3,6 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; all-the-icons
+(with-eval-after-load "all-the-icons"
+  (setq all-the-icons-scale-factor 1.0))
+
 ;; Theme
 (load-theme 'doom-dracula t)
 
@@ -34,10 +38,6 @@
   :hook
   (prog-mode-hook . display-line-numbers-mode)
   (text-mode-hook . display-line-numbers-mode))
-
-;; all-the-icons
-(with-eval-after-load "all-the-icons"
-  (setq all-the-icons-scale-factor 1.0))
 
 ;; Darkroom
 (leaf darkroom

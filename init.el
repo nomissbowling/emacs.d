@@ -36,6 +36,7 @@
     counsel-tramp
     dash
     dashboard
+    dired-rsync
     direx
     doom-themes
     doom-modeline

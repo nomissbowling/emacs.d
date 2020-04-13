@@ -3,8 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; dired
 (with-eval-after-load 'dired
   (bind-keys :map dired-mode-map
 	     ("j" . dired-next-line)
@@ -26,13 +24,13 @@
 	     ("." . magit-status)))
 
 ;; Show directory first
-(use-package ls-lisp
+(leaf ls-lisp :require t
   :after dired
   :config
   (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
 
 ;; Dired-x
-(use-package dired-x
+(leaf dired-x
   :after dired
   :config
   (setq-default dired-omit-files-p t)
@@ -56,7 +54,7 @@
 
 ;; Toggle listing dot files in dired
 ;; https://github.com/10sr/emacs-lisp/blob/master/docs/elpa/dired-list-all-mode-20161115.118.el
-(use-package dired-list-all-mode
+(leaf dired-list-all-mode :require t
   :after dired
   :config
   (setq dired-listing-switches "-lhFG"))
@@ -140,20 +138,19 @@
 ;; Shows icons
 ;; Tips from https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el
 (when (eq system-type 'gnu/linux)
-  (use-package all-the-icons-dired
+  (leaf all-the-icons-dired
     :commands dired-mode
-    :custom-face
-    (all-the-icons-dired-dir-face ((t (:foreground nil))))
-    :hook (dired-mode . all-the-icons-dired-mode)
+    :hook
+    (dired-mode-hook . all-the-icons-dired-mode)
     :custom
     ;; Dired files deleted by trash and no ask recursive
-    (delete-by-moving-to-trash t)
-    (dired-recursive-copies 'always)
-    (dired-recursive-deletes 'always)
+    (delete-by-moving-to-trash . t)
+    (dired-recursive-copies . 'always)
+    (dired-recursive-deletes . 'always)
     ;; When dired opened in two windows, move or copy in the other dired
-    (dired-dwim-target t)
+    (dired-dwim-target . t)
     ;; Recursively copy directory
-    (dired-recursive-copies 'always)
+    (dired-recursive-copies . 'always)
     :config
     (defun my:all-the-icons-dired--display ()
       "Display the icons of files without colors in a dired buffer."

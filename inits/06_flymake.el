@@ -3,11 +3,11 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; flymake-diagnostic-at-point
-(use-package flymake-diagnostic-at-point
+(leaf flymake-diagnostic-at-point
   :after flymake
-  :hook (flymake-mode . flymake-diagnostic-at-point-mode))
+  :hook
+  (flymake-mode-hook . flymake-diagnostic-at-point-mode))
 (add-hook 'prog-mode-hook 'flymake-mode)
 (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake)
 

@@ -3,11 +3,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; markdown-mode
-(use-package markdown-mode
-  :hook ((markdown-mode . auto-fill-mode))
-  :mode (("\\.md\\'" . gfm-mode))
+(leaf markdown-mode
+  :hook (markdown-mode-hook . auto-fill-mode)
+  :mode ("\\.md$'" . gfm-mode)
   :init
   (setq markdown-enable-wiki-links t
 	markdown-italic-underscore t
@@ -16,7 +14,6 @@
 	markdown-gfm-uppercase-checkbox t
 	markdown-fontify-code-blocks-natively t
 	markdown-enable-math t
-
 	markdown-content-type "application/xhtml+xml"
 	markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
 			     "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
@@ -43,18 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 ")
   :custom-face
-  (markdown-header-delimiter-face ((t (:foreground "mediumpurple"))))
-  (markdown-header-face-1 ((t (:foreground "violet" :weight bold :height 1.0))))
-  (markdown-header-face-2 ((t (:foreground "lightslateblue" :weight bold :height 1.0))))
-  (markdown-header-face-3 ((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
-  (markdown-link-face ((t (:background "#0e1014" :foreground "#bd93f9"))))
-  (markdown-list-face ((t (:foreground "mediumpurple"))))
-  (markdown-code-face ((t (:background "#222" :inherit 'default))))
-  (markdown-pre-face ((t (:foreground "#bd98fe"))))
+  (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
+  (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))
+  (markdown-header-face-2 . '((t (:foreground "lightslateblue" :weight bold :height 1.0))))
+  (markdown-header-face-3 . '((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
+  (markdown-link-face . '((t (:background "#0e1014" :foreground "#bd93f9"))))
+  (markdown-list-face . '((t (:foreground "mediumpurple"))))
+  (markdown-code-face . '((t (:background "#222" :inherit 'default))))
+  (markdown-pre-face . '((t (:foreground "#bd98fe"))))
   :config
-  ;; Preview via `livedown'
-  ;; Install: npm install -g livedown
-  (use-package livedown
+  ;; Preview via `livedown' (Install: npm install -g livedown)
+  (leaf livedown
     :config
     (custom-set-variables
      '(livedown-autostart nil)
@@ -62,8 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
      '(livedown-port 1337)
      '(livedown-browser nil))))
 
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; hydra
 (defhydra hydra-markdown (:color red :hint nil)
   "
@@ -83,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 ;; Change markdown-modo key bind `markdown-shifttab' to `company-yasnippet'
 (bind-key* "S-<tab>" 'company-yasnippet markdown-mode-map)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2pdf (Use wkhtmltopdf without latex)
 (defun md2pdf ()
   "Generate pdf from currently open markdown."
@@ -106,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
                (file-name-sans-extension filename)
 	       ".pdf")))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; md2docx
 (defun md2docx ()
   "Generate docx from currently open markdown."

@@ -3,13 +3,12 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package howm
+(leaf howm
   :commands (howm-create howm-remember howm-list-all)
-  ;; :hook (howm-view-contents-mode .  markdown-mode)
-  :bind* (:map howm-view-summary-mode-map
-	       ([backtab] . howm-view-summary-previous-section))
-  :init (setq howm-view-title-header "#")
+  :bind (:howm-view-summary-mode-map
+	 ([backtab] . howm-view-summary-previous-section))
+  :init
+  (setq howm-view-title-header "#")
   :config
   (setq howm-directory "~/Dropbox/howm"
 	howm-file-name-format "%Y/%m/%Y%m%d%H%M.md"
@@ -26,24 +25,20 @@
 	  ("mail:" . (0 'all-the-icons-silver prepend))
 	  ("page:" . (0 'all-the-icons-dgreen prepend))
 	  ("日記:" . (0 'diary prepend))
-	  ("note:" . (0 'diff-changed prepend)))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Hydra-howm
-(defhydra hydra-howm (:hint nil :exit t)
-  "
+	  ("note:" . (0 'diff-changed prepend))))
+  (defhydra hydra-howm (:hint nil :exit t)
+    "
  📝 howm:  memo_,_  _i_dea  _h_ack  _n_ote  _d_iary  _p_age  _b_log  _m_ail  list_@_  "
-  ("," my:howm-memo)
-  ("i" my:howm-idea)
-  ("h" my:howm-hack)
-  ("n" my:howm-note)
-  ("d" my:howm-dia)
-  ("p" my:howm-page)
-  ("b" my:howm-blog)
-  ("m" my:howm-mail)
-  ("@" howm-list-all))
+    ("," my:howm-memo)
+    ("i" my:howm-idea)
+    ("h" my:howm-hack)
+    ("n" my:howm-note)
+    ("d" my:howm-dia)
+    ("p" my:howm-page)
+    ("b" my:howm-blog)
+    ("m" my:howm-mail)
+    ("@" howm-list-all)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Set template
 (defun my:howm-memo ()
   "My howm remember for memo."
@@ -93,8 +88,6 @@
   (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
   (howm-create))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Haiku note
 (defun my:haiku-note ()
   "Open haiku note file."
   (interactive)

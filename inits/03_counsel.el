@@ -3,16 +3,15 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Counsel/ivy
 (add-hook 'after-init-hook 'ivy-mode)
 (add-hook 'ivy-mode-hook 'counsel-mode)
-(setq ivy-use-virtual-buffers t)
-(setq ivy-use-selectable-prompt t)
-(setq enable-recursive-minibuffers t)
-(setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
-(setq counsel-find-file-ignore-regexp (regexp-opt '(".DS_Store" ".dropox")))
-(setq counsel-yank-pop-separator
+(setq ivy-use-virtual-buffers t
+      ivy-use-selectable-prompt t
+      enable-recursive-minibuffers t
+      xref-show-xrefs-function #'ivy-xref-show-xrefs
+      counsel-find-file-ignore-regexp (regexp-opt '(".DS_Store" ".dropox"))
+      counsel-yank-pop-separator
       "\n------------------------------------------------------------\n")
 (bind-keys ("C-:" . counsel-switch-buffer)
 	   ("C-s" . swiper-isearch-region)
@@ -27,25 +26,22 @@
 	   ("C-c i" . counsel-imenu)
 	   ("C-c r" . counsel-recentf)
 	   ("C-c t" . counsel-tramp)
-	   ("C-x m" . counsel-mark-ring)
 	   ([remap dired] . counsel-dired))
 (bind-key [f6] (lambda ()
 		 (interactive)
 		 (counsel-M-x "^counsel ")))
 
 (defun swiper-isearch-region ()
-  "If region is selected, `swiper-isearch' with the keyword selected in region.
+  "If region is selected, `swiper-isearch-thing-at-point'.
 If the region isn't selected, `swiper-isearch'."
   (interactive)
   (if (not (use-region-p))
       (swiper-isearch)
     (swiper-isearch-thing-at-point)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-css to activate imenu integration to "C-r"
 (add-hook 'css-mode-hook 'counsel-css-imenu-setup)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; counsel-tramp
 (setq tramp-default-method "ssh")
 (setq counsel-tramp-custom-connections '(/scp:xsrv:/home/minorugh/gospel-haiku.com/))
@@ -63,7 +59,6 @@ If the region isn't selected, `swiper-isearch'."
     (counsel-tramp-quit)
     (message "Now tramp-quit!")))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ivy-format-function-arrow
 (defun my:ivy-format-function-arrow (cands)
   "Transform CANDS into a string for minibuffer."
@@ -80,10 +75,9 @@ If the region isn't selected, `swiper-isearch'."
    "\n"))
 (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; More friendly display transformer for Ivy
-(use-package ivy-rich
-  :hook (ivy-mode . ivy-rich-mode)
+(leaf ivy-rich
+  :hook (ivy-mode-hook . ivy-rich-mode)
   :preface
   (defun ivy-rich-bookmark-name (candidate)
     (car (assoc candidate bookmark-alist)))

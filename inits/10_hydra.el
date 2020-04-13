@@ -11,8 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   _s_wiper@point
-   _M_agit:_._   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_<right>_"
+   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   _s_earch
+   magit:_x_   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_._"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -32,9 +32,8 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("s" swiper-thing-at-point)
-   ("M" hydra-magit/body)
-   ("." magit-status)
+   ("s" isearch-forward)
+   ("x" hydra-magit/body)
    ("m" hydra-markdown/body)
    (":" hydra-pinky/body)
    (";" my:dot-emacs-dir)
@@ -49,7 +48,7 @@
    ("G" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)
-   ("<right>" hydra-work/body)
+   ("." hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -73,7 +72,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Hydra Work
 (bind-key
- "M-,"
+ "<hiragana-katakana>"
  (defhydra hydra-work (:hint nil :exit t)
    "
  📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  _<left>_:back"

@@ -8,15 +8,14 @@
 (prefer-coding-system 'utf-8)
 
 ;; Key Modifiers
-(bind-key [insert] 'clipboard-yank)
-(bind-key "C-." 'xref-find-definitions)
-(bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
+(leaf bind-key
+  :bind (([insert] . clipboard-yank)
+	 ("C-." . xref-find-definitions))
+  :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
+	  ("C-x C-c" . iconify-frame)))
 
 ;; Enter a backslash instead of ¥
 (define-key global-map [?¥] [?\\])
-
-;; Iconify-frame
-(bind-key* "C-x C-c" 'iconify-frame)
 
 ;; Font setting
 (when (string-match "e590" (shell-command-to-string "uname -n"))
@@ -32,15 +31,17 @@
 (add-hook 'after-init-hook 'exec-path-from-shell-initialize)
 
 ;; Recentf
-(add-hook 'after-init-hook 'recentf-mode)
-(setq recentf-save-file "~/.emacs.d/recentf"
-      recentf-max-saved-items 200
-      recentf-auto-cleanup 'never
-      recentf-exclude
-      '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-	"\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-	(lambda (file) (file-in-directory-p file package-user-dir))))
-(push (expand-file-name recentf-save-file) recentf-exclude)
+(leaf recentf
+  :hook (after-init-hook . recentf-mode)
+  :config
+  (setq recentf-save-file "~/.emacs.d/recentf"
+	recentf-max-saved-items 200
+	recentf-auto-cleanup 'never
+	recentf-exclude
+	'("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+	  "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+	  (lambda (file) (file-in-directory-p file package-user-dir))))
+  (push (expand-file-name recentf-save-file) recentf-exclude))
 
 ;; server start for emacs-client
 (leaf server :require t

@@ -1,4 +1,4 @@
-;;; 10_compile-command.el --- compile-command.el
+;;; 10_make-command.el --- make-command.el
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -68,4 +68,4 @@
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
-;;; 10_compile.el ends here
+;;; 10_make-command.el ends here

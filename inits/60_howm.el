@@ -39,7 +39,7 @@
     ("m" my:howm-mail)
     ("@" howm-list-all)))
 
-(prog1 "Set template"
+(prog1 "my:howm functions"
   (defun my:howm-memo ()
     "My howm remember for memo."
     (interactive)

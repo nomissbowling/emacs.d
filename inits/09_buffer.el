@@ -34,7 +34,6 @@
   :config
   (setq tempbuf-kill-message nil))
 
-;; iflipb
 (leaf iflipb
   :bind (("C-<right>" . iflipb-next-buffer)
 	 ("C-<left>" . iflipb-previous-buffer))
@@ -42,17 +41,16 @@
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir"))
   (setq iflipb-wrap-around t))
 
-;; Run M-/ same kill-buffer as C-x k
-(bind-key "M-/" 'kill-buffer)
-
-;; Run key bind in hydra-work
-(bind-key
- "C-M-/"
- (defun kill-other-buffers ()
-   "Kill all other buffers."
-   (interactive)
-   (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-   (message "Killed other buffers!")))
+(prog1 "Kill-buffer"
+  (leaf bind-key
+    :bind (("M-/" . kill-buffer)
+	   ("C-M-/" . kill-other-buffer))
+    :config
+    (defun kill-other-buffers ()
+      "Kill all other buffers."
+      (interactive)
+      (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+      (message "Killed other buffers!"))))
 
 ;; Assign ibuffer to C-x C-b
 (leaf ibuffer

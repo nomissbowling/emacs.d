@@ -8,8 +8,8 @@
 	 ("<f7>" . hydra-magit/body))
   :custom
   (magit-auto-revert-mode . nil)
+  (magit-display-buffer-function . #'magit-display-buffer-fullframe-status-v1)
   :config
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (leaf git-timemachine
     :after magit)
   (defhydra hydra-magit (:color red :hint nil)

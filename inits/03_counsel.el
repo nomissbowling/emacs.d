@@ -3,7 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; Counsel/ivy
 (leaf counsel
   :bind (("C-s" . swiper-isearch-region)
 	 ("C-r" . swiper-thing-at-point)

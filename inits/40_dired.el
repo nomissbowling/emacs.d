@@ -113,9 +113,9 @@
   ;; Direx
   (leaf direx
     :after popwin
-    :bind (([f11] . direx:jump-to-project-directory)
+    :bind (("<f11>" . direx:jump-to-project-directory)
 	   (:direx:direx-mode-map
-	    ([f11] . quit-window)))
+	    ("<f11>" . quit-window)))
     :config
     (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
     (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)

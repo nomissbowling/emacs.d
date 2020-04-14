@@ -5,9 +5,11 @@
 
 ;; Counsel/ivy
 (leaf counsel
-  :bind (("C-:" . counsel-switch-buffer)
-	 ("C-s" . swiper-isearch-region)
+  :bind (("C-s" . swiper-isearch-region)
 	 ("C-r" . swiper-thing-at-point)
+	 ("C-:" . counsel-switch-buffer)
+	 ("C-x C-b" . counsel-switch-buffer)
+	 ("C-x b" . counsel-switch-buffer)
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
 	 ("C-x C-f" . counsel-find-file)
@@ -31,9 +33,9 @@
 	counsel-find-file-ignore-regexp (regexp-opt '(".DS_Store" ".dropox"))
 	counsel-yank-pop-separator
 	"\n------------------------------------------------------------\n")
-  (bind-key [f6] (lambda ()
-		   (interactive)
-		   (counsel-M-x "^counsel ")))
+  (bind-key "<f6>" (lambda ()
+		     (interactive)
+		     (counsel-M-x "^counsel ")))
   (defun swiper-isearch-region ()
     "If region is selected, `swiper-isearch-thing-at-point'.
 If the region isn't selected, `swiper-isearch'."

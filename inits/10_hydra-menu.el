@@ -10,8 +10,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   _s_earch
-   magit:_x_   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_._"
+   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   isearch:_[_:_]_
+   magit:_s_   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   day-works:_._"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -31,12 +31,13 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("s" isearch-forward)
-   ("x" hydra-magit/body)
+   ("]" isearch-forward)
+   ("[" isearch-backward)
+   ("s" magit-status)
    ("m" hydra-markdown/body)
    (":" hydra-pinky/body)
    (";" my:dot-emacs-dir)
-   ("c" hydra-compile/body)
+   ("c" hydra-make/body)
    ("b" dashboard-hydra/body)
    ("g" my:github-show)
    ("j" open-junk-file)

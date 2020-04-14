@@ -3,19 +3,20 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(bind-key
- "<f2>"
- (defhydra hydra-make (:color red :hint nil)
-   "
+(leaf hydra
+  :bind ("<f2>" . hydra-make/body)
+  :config
+  (defhydra hydra-make (:color red :hint nil)
+    "
  🗿 Compile: make:_k_  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _e_rror 🐾 "
-   ("k" my:make-k)
-   ("u" my:make-upftp)
-   ("m" my:make-move)
-   ("b" my:make-bklog)
-   ("g" my:make-git)
-   ("c" my:make-clean)
-   ("e" next-error)
-   ("<f2" nil)))
+    ("k" my:make-k)
+    ("u" my:make-upftp)
+    ("m" my:make-move)
+    ("b" my:make-bklog)
+    ("g" my:make-git)
+    ("c" my:make-clean)
+    ("e" next-error)
+    ("<f2>" nil)))
 
 (prog1 "Compile command"
   ;; Auto scroll with compilation

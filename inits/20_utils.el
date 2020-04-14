@@ -35,8 +35,8 @@
 
 (prog1 "Open application"
   (leaf bind-key
-    :bind (([f3] . filer-current-dir-open)
-	   ([f4] . term-current-dir-open))
+    :bind (("<f3>" . filer-current-dir-open)
+	   ("<f4>" . term-current-dir-open))
     :config
     (defun filer-current-dir-open ()
       "Open filer in current dir."

@@ -38,7 +38,7 @@
 (persistent-scratch-setup-default)
 
 ;; quickrun
-(bind-key [f5] 'quickrun)
+(bind-key "<f5>" 'quickrun)
 
 ;; which-key
 (add-hook 'after-init-hook 'which-key-mode)

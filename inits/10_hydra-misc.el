@@ -80,8 +80,8 @@ If there are two or more windows, it will go to another window."
 
 ;; Gist
 (leaf gist
-  :bind (("C-x g r" . gist-region-or-buffer)
-	 ("C-x g l" . gist-list)
+  :bind (("M-g r" . gist-region-or-buffer)
+	 ("M-g l" . gist-list)
 	 (:tabulated-list-mode-map
 	  ("." . hydra-gist-help/body)))
   :config

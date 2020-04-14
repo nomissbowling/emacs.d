@@ -3,8 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;]
-;; use popwin
 (leaf eshell
   :after popwin
   :bind* ("C-z" . eshell)

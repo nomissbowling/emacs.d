@@ -15,8 +15,6 @@
 	  ("h" . browse-homepage)
 	  ("p" . browse-pocket)
 	  ("." . hydra-browse/body)
-	  ;; ([f7] . browse-calendar)
-	  ;;	  ([f8] . browse-weather)
 	  ([home] . quit-dashboard)))
   :init (dashboard-setup-startup-hook)
   :config

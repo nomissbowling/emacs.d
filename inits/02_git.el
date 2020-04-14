@@ -8,6 +8,8 @@
 	 ([f7] . hydra-magit/body))
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  (leaf git-timemachine
+    :after magit)
   (defhydra hydra-magit (:color red :hint nil)
     "
  📦 Git: _s_tatus  _b_lame  _t_imemachine  _d_iff"

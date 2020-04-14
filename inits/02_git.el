@@ -4,8 +4,8 @@
 ;; (setq debug-on-error t)
 
 (leaf magit
-  :bind (("C-x g" . magit-status)
-	 ("C-x m" . hydra-magit/body))
+  :bind (([f8] . magit-status)
+	 ([f7] . hydra-magit/body))
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (defhydra hydra-magit (:color red :hint nil)

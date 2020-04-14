@@ -4,6 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf mozc
+  :bind ("C-c C-d" . mozc-word-regist)
   :bind* ("<henkan>" . toggle-input-method)
   :init
   (setq default-input-method "japanese-mozc")
@@ -25,13 +26,11 @@
       ad-do-it
       (setq input-method-function input-method-function-save)))
   ;; mozc-tool
-  (bind-key
-   "C-c C-d"
-   (defun mozc-word-regist ()
-     "Mozc word regist."
-     (interactive)
-     (shell-command-to-string
-      "/usr/lib/mozc/mozc_tool --mode=word_register_dialog")))
+  (defun mozc-word-regist ()
+    "Mozc word regist."
+    (interactive)
+    (shell-command-to-string
+     "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
   (defun mozc-config-dialog ()
     "Mozc config dialog."
     (interactive)

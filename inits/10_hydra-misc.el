@@ -78,10 +78,15 @@ If there are two or more windows, it will go to another window."
   ("a" package-utils-upgrade-all-and-restart)
   ("l" package-list-packages))
 
-;; Gist help
-(bind-key "." 'hydra-gist-help/body tabulated-list-mode-map)
-(defhydra hydra-gist-help ()
-  "
+;; Gist
+(leaf gist
+  :bind (("C-x g r" . gist-region-or-buffer)
+	 ("C-x g l" . gist-list)
+	 (:tabulated-list-mode-map
+	  ("." . hydra-gist-help/body)))
+  :config
+  (defhydra hydra-gist-help ()
+    "
   🎲 Function for gist
      M-x gist-list: Lists your gists in a new buffer
      M-x gist-region-or-buffer: Post either the current region or buffer
@@ -96,10 +101,10 @@ If there are two or more windows, it will go to another window."
     -----------------------------
   🎲 In dired buffer
      @ : make a gist out of marked files"
-  ("." nil))
+    ("." nil)))
 
-;; Dashoard-hydra
-(defhydra dashboard-hydra (:hint nil :exit t)
+;; Hydra-browse
+(defhydra hydra-browse (:hint nil :exit t)
   "
   💰 Shop^        ^💭 SNS^        ^🔃 Repos^       ^🏠 GH^        ^🙌 Favorite^    ^📝 Others^    ^💣 Github^^      Google
   ^^^^^^^^^^----------------------------------------------------------------------------------------------------------------

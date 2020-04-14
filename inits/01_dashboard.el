@@ -14,7 +14,7 @@
 	  ("s" . browse-slack)
 	  ("h" . browse-homepage)
 	  ("p" . browse-pocket)
-	  ("." . dashboard-hydra/body)
+	  ("." . hydra-browse/body)
 	  ;; ([f7] . browse-calendar)
 	  ;;	  ([f8] . browse-weather)
 	  ([home] . quit-dashboard)))

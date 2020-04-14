@@ -38,7 +38,7 @@
    (":" hydra-pinky/body)
    (";" my:dot-emacs-dir)
    ("c" hydra-make/body)
-   ("b" dashboard-hydra/body)
+   ("b" hydra-browse/body)
    ("g" my:github-show)
    ("j" open-junk-file)
    ("J" my:open-junk-file-dir)

@@ -4,14 +4,14 @@
 ;; (setq debug-on-error t)
 
 (leaf magit
-  :bind (("<f8>" . magit-status)
+  :bind (("C-x g" . magit-status)
+	 ("<f8>" . magit-status)
 	 ("<f7>" . hydra-magit/body))
-  :custom
-  (magit-auto-revert-mode . nil)
-  (magit-display-buffer-function . #'magit-display-buffer-fullframe-status-v1)
   :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (leaf git-timemachine
-    :after magit)
+    :after magit
+    :commands git-timemachine)
   (defhydra hydra-magit (:color red :hint nil)
     "
  📦 Git: _s_tatus  _b_lame  _t_imemachine  _d_iff"

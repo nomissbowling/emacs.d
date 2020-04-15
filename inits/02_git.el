@@ -7,6 +7,7 @@
   :bind (("C-x g" . magit-status)
 	 ("<f8>" . magit-status)
 	 ("<f7>" . hydra-magit/body))
+  :commands magit-status
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (leaf git-timemachine

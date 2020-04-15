@@ -4,8 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf *hydra-quick-menu
-  :config
-  (bind-key "M-." 'hydra-quick-menu/body)
+  :bind ("M-." . hydra-quick-menu/body)
   :preface
   (defhydra hydra-quick-menu (:hint nil :exit t)
     "
@@ -56,8 +55,6 @@
     ("M-." nil)))
 
 (leaf *hydra-Work
-  :config
-  (bind-key "<hiragana-katakana>" 'hydra-work/body)
   :preface
   (defhydra hydra-work (:hint nil :exit t)
     "

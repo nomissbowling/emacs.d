@@ -19,10 +19,9 @@
     ("e" next-error)
     ("<f2>" nil)))
 
-(leaf *compile-command
+(leaf *my-make-command
   :config
   (setq compilation-scroll-output t)
-  :preface
   (defun my:make-k ()
     "Make command default."
     (interactive)

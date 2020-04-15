@@ -3,8 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(prog1 "Hydra Pinky"
+(leaf *hydra-pinky
+  :config
   (key-chord-define-global "jk" 'hydra-pinky/body)
+  :preface
   (defhydra hydra-pinky (:color red :hint nil)
     "
  🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._w_._@_._s_._S_._/_._v_._f_._0_._1_._2_._3_._x_._<_._>_._:_"
@@ -40,9 +42,12 @@
     ("<" iflipb-next-buffer)
     (">" iflipb-previous-buffer)
     (":" counsel-switch-buffer)
-    ("." view-mode))
+    ("." view-mode)))
 
+(leaf :window
+  :config
   (bind-key "C-q" 'other-window-or-split)
+  :preface
   (defun other-window-or-split ()
     "If there is one window, open split window.
 If there are two or more windows, it will go to another window."
@@ -50,7 +55,6 @@ If there are two or more windows, it will go to another window."
     (when (one-window-p)
       (split-window-horizontally))
     (other-window 1))
-
   (defun window-toggle-division ()
     "Replace vertical <-> horizontal when divided into two."
     (interactive)
@@ -65,26 +69,25 @@ If there are two or more windows, it will go to another window."
 	(split-window-horizontally))
       (other-window 1)
       (switch-to-buffer other-buf)
-      (other-window -1)))
-  )
+      (other-window -1))))
 
-;; Package-utils
-(defhydra hydra-package (:color red :hint nil)
-  "
+(leaf *package-utils
+  :config
+  (defhydra hydra-package (:color red :hint nil)
+    "
  📦 Package: _i_nstall   _u_pgrade   _r_emove   _a_ll-update   _l_ist"
-  ("i" package-install)
-  ("u" package-utils-list-upgrades)
-  ("r" package-utils-remove-by-name)
-  ("a" package-utils-upgrade-all-and-restart)
-  ("l" package-list-packages))
+    ("i" package-install)
+    ("u" package-utils-list-upgrades)
+    ("r" package-utils-remove-by-name)
+    ("a" package-utils-upgrade-all-and-restart)
+    ("l" package-list-packages)))
 
-;; Gist
 (leaf gist
   :bind (("M-g r" . gist-region-or-buffer)
 	 ("M-g l" . gist-list)
 	 (:tabulated-list-mode-map
 	  ("." . hydra-gist-help/body)))
-  :config
+  :preface
   (defhydra hydra-gist-help ()
     "
   🎲 Function for gist
@@ -104,7 +107,8 @@ If there are two or more windows, it will go to another window."
     ("." nil))
   )
 
-(prog1 "Hydra-browse"
+(leaf *hydra-browse
+  :config
   (defhydra hydra-browse (:hint nil :exit t)
     "
   💰 Shop^        ^💭 SNS^        ^🔃 Repos^       ^🏠 GH^        ^🙌 Favorite^    ^📝 Others^    ^💣 Github^^      Google
@@ -145,10 +149,11 @@ If there are two or more windows, it will go to another window."
     ("p" browse-pocket)
     ("t" browse-tweetdeck)
     ("," browse-slack)
-    ("." nil))
+    ("." nil)))
 
-  ;; Emacs in WSL and opening links
-  ;; https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/
+(leaf *emacs-in-WSL-and-open-links
+  :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
+  :config
   (when (getenv "WSLENV")
     (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
 	  (cmd-args '("/c" "start")))
@@ -156,8 +161,7 @@ If there are two or more windows, it will go to another window."
 	(setq browse-url-generic-program  cmd-exe
 	      browse-url-generic-args     cmd-args
 	      browse-url-browser-function 'browse-url-generic
-	      search-web-default-browser 'browse-url-generic))))
-  )
+	      search-web-default-browser 'browse-url-generic)))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

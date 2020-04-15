@@ -3,9 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf hydra
-  :bind ("<f2>" . hydra-make/body)
+(leaf *hydra-make
   :config
+  (bind-key "<f2>" 'hydra-make/body)
+  :preface
   (defhydra hydra-make (:color red :hint nil)
     "
  🗿 Compile: make:_k_  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _e_rror 🐾 "
@@ -18,10 +19,10 @@
     ("e" next-error)
     ("<f2>" nil)))
 
-(prog1 "Compile command"
-  ;; Auto scroll with compilation
+(leaf *compile-command
+  :config
   (setq compilation-scroll-output t)
-  ;; my make commands
+  :preface
   (defun my:make-k ()
     "Make command default."
     (interactive)

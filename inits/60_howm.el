@@ -26,6 +26,7 @@
 	  ("page:" . (0 'all-the-icons-dgreen prepend))
 	  ("日記:" . (0 'diary prepend))
 	  ("note:" . (0 'diff-changed prepend))))
+  ;; hydra
   (defhydra hydra-howm (:hint nil :exit t)
     "
  📝 howm:  memo_,_  _i_dea  _h_ack  _n_ote  _d_iary  _p_age  _b_log  _m_ail  list_@_  "
@@ -39,7 +40,8 @@
     ("m" my:howm-mail)
     ("@" howm-list-all)))
 
-(prog1 "my:howm functions"
+(leaf *my:howm-functions
+  :config
   (defun my:howm-memo ()
     "My howm remember for memo."
     (interactive)

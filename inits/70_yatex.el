@@ -20,9 +20,9 @@
   	    (lambda()
   	      (leaf yatexprc
   		:bind (("M-c" . YaTeX-typeset-buffer)	;; Type set
-  		       ("M-l" . YaTeX-lpr)))))		;; Open pdf
+  		       ("M-l" . YaTeX-lpr))))))		;; Open pdf
 
-  ;; Make script for dviprint-command-format
+(leaf *dviprint-command-format
   ;; -----------------------------------------------------------------------
   ;; dvpd.sh for Linux
   ;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'

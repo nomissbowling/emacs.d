@@ -4,6 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf search-web
+  :url "https://github.com/tomoya/search-web.el"
   :bind ("M-s" . hydra-search/body)
   :commands search-web-dwim
   :config

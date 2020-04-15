@@ -41,16 +41,16 @@
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir"))
   (setq iflipb-wrap-around t))
 
-(prog1 "Kill-buffer"
-  (leaf bind-key
-    :bind (("M-/" . kill-buffer)
-	   ("C-M-/" . kill-other-buffer))
-    :config
-    (defun kill-other-buffers ()
-      "Kill all other buffers."
-      (interactive)
-      (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-      (message "Killed other buffers!"))))
+(leaf *kill-buffer
+  :config
+  (bind-key "M-/" 'kill-buffer)
+  (bind-key "C-M-/" 'kill-other-buffer)
+  :preface
+  (defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+    (message "Killed other buffers!")))
 
 ;; undohist
 (leaf undohist

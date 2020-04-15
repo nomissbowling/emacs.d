@@ -110,17 +110,19 @@
 ;; Copy with mouse drag
 (setq mouse-drag-copy-region t)
 
-;; Use the X11 clipboard
-(setq select-enable-clipboard  t)
-(bind-key "M-w" 'clipboard-kill-ring-save)
-(bind-key "C-w" 'my:clipboard-kill-region)
-(defun my:clipboard-kill-region ()
-  "If the region is active, `clipboard-kill-region'.
-If the region is inactive, `backward-kill-word'."
-  (interactive)
-  (if (use-region-p)
-      (clipboard-kill-region (region-beginning) (region-end))
-    (backward-kill-word 1)))
+;; Clipboard
+(leaf *use-the-X11-clipboard
+  :config
+  (setq select-enable-clipboard  t)
+  (bind-key "M-w" 'clipboard-kill-ring-save)
+  (bind-key "C-w" 'my:clipboard-kill-region)
+  :preface
+  (defun my:clipboard-kill-region ()
+    "If the region is active, `clipboard-kill-region'. If the region is inactive, `backward-kill-word'."
+    (interactive)
+    (if (use-region-p)
+	(clipboard-kill-region (region-beginning) (region-end))
+      (backward-kill-word 1))))
 
 ;; Exit Emacs with M-x exit
 (defalias 'exit 'save-buffers-kill-emacs)

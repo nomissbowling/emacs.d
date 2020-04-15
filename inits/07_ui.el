@@ -32,7 +32,9 @@
   (prog-mode-hook . display-line-numbers-mode)
   (text-mode-hook . display-line-numbers-mode))
 
+;; Remove visual distractions and focus on writing.
 (leaf darkroom
+  :url "https://github.com/joaotavora/darkroom"
   :bind (("<f12>" . my:darkroom-mode-in)
 	 (:darkroom-mode-map
 	  ("<f12>" . my:darkroom-mode-out )))
@@ -53,8 +55,8 @@
 (leaf all-the-icons
   :config
   (setq all-the-icons-scale-factor 1.0)
-  ;; Tips from https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el
   (leaf all-the-icons-dired
+    :url "https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el"
     :commands dired-mode
     :hook
     (dired-mode-hook . all-the-icons-dired-mode)

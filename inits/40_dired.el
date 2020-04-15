@@ -30,6 +30,7 @@
     :after dired
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
+
   ;; Dired-x
   (leaf dired-x
     :after dired
@@ -40,6 +41,7 @@
     (eval-after-load "dired-aux"
       '(add-to-list 'dired-compress-file-suffixes
 		    '("\\.zip\\'" ".zip" "unzip"))))
+
   ;; Add [Dir] to the directory buffer
   (defun dired-my-append-buffer-name-hint ()
     "Append a auxiliary string to a name of dired buffer."
@@ -50,17 +52,20 @@
 			     (string-match "^\\([a-zA-Z]:\\)/" dir))
 			(match-string 1 dir) "")))
 	(rename-buffer (concat (buffer-name) " [" drive "dir]") t))))
+
   ;; Toggle listing dot files in dired
-  ;; https://github.com/10sr/emacs-lisp/blob/master/docs/elpa/dired-list-all-mode-20161115.118.el
   (leaf dired-list-all-mode :require t
+    :url "https://github.com/10sr/emacs-lisp/blob/master/docs/elpa/dired-list-all-mode-20161115.118.el"
     :after dired
     :config
     (setq dired-listing-switches "-lhFG"))
+
   ;; Quit-window according to screen division
   (defun dired-dwim-quit-window ()
     "`quit-window 'according to screen division."
     (interactive)
     (quit-window (not (delq (selected-window) (get-buffer-window-list)))))
+
   ;; File are opened in separate buffer, directories are opened in same buffer
   ;; http://nishikawasasaki.hatenablog.com/entry/20120222/1329932699
   (defun dired-open-in-accordance-with-situation ()
@@ -70,6 +75,7 @@
       (if (file-directory-p file)
 	  (dired-find-alternate-file)
 	(dired-find-file))))
+
   (defun dired-up-alternate-directory ()
     "Move to higher directory without make new buffer."
     (interactive)
@@ -82,6 +88,7 @@
 	  (progn
 	    (find-alternate-file up)
 	    (dired-goto-file dir)))))
+
   (defun dired-open-file ()
     "Open file in relation to the extension."
     (interactive)
@@ -91,6 +98,7 @@
       ;; use wsl-utils:https://github.com/smzht/wsl-utils
       (when (getenv "WSLENV")
 	(call-process "wslstart" nil 0 nil fn))))
+
   (defun my:dired-toggle-mark (arg)
     "Toggle the current (or next ARG) files."
     (interactive "p")
@@ -99,6 +107,7 @@
 			       (looking-at " "))
 	       dired-marker-char ?\040)))
       (dired-mark arg)))
+
   (defun my:dired-unmark-all ()
     "Dired unmark all."
     (interactive)
@@ -112,6 +121,8 @@
 
   ;; Direx
   (leaf direx
+    :url "https://github.com/emacsorphanage/direx"
+    :url "https://blog.shibayu36.org/entry/2013/02/12/191459"
     :after popwin
     :bind (("<f11>" . direx:jump-to-project-directory)
 	   (:direx:direx-mode-map
@@ -119,7 +130,6 @@
     :config
     (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
     (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
-    ;; https://blog.shibayu36.org/entry/2013/02/12/191459
     (defun direx:jump-to-project-directory ()
       "If in project, launch direx-project otherwise start direx."
       (interactive)

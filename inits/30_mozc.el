@@ -50,10 +50,10 @@
     (toggle-input-method))
   :config
   (add-hook 'mozc-mode-hook
-	    (lambda ()
-	      (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
-	      (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-	      (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。"))))))
+  	    (lambda ()
+  	      (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+  	      (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+  	      (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。"))))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

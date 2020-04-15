@@ -26,9 +26,8 @@
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
 (leaf *open-application
-  :config
-  (bind-key "<f3>" 'filer-current-dir-open)
-  (bind-key "<f4>" 'term-current-dir-open)
+  :bind (("<f3>" . filer-current-dir-open)
+	 ("<f4>" . term-current-dir-open))
   :preface
   (defun filer-current-dir-open ()
     "Open filer in current dir."

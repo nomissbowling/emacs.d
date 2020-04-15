@@ -25,14 +25,19 @@
 	 ("." . magit-status))
   :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
   :config
-  ;; Show directory first
   (leaf ls-lisp :require t
+    :doc "Show directory first"
     :after dired
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
-
-  ;; Dired-x
+  (leaf dired-list-all-mode :require t
+    :doc "Toggle listing dot files in dired"
+    :url "https://github.com/10sr/emacs-lisp/blob/master/docs/elpa/dired-list-all-mode-20161115.118.el"
+    :after dired
+    :config
+    (setq dired-listing-switches "-lhFG"))
   (leaf dired-x
+    :doc "Extended version of dired"
     :after dired
     :config
     (setq-default dired-omit-files-p t)
@@ -41,7 +46,14 @@
     (eval-after-load "dired-aux"
       '(add-to-list 'dired-compress-file-suffixes
 		    '("\\.zip\\'" ".zip" "unzip"))))
+  (leaf dired-rsync
+    :doc "Allow rsync from dired buffers"
+    :url "https://github.com/stsquad/dired-rsync"
+    :bind (:dired-mode-map
+	   ("C-c C-r" . dired-rsync))))
 
+(leaf *functions-for-extention
+  :preface
   ;; Add [Dir] to the directory buffer
   (defun dired-my-append-buffer-name-hint ()
     "Append a auxiliary string to a name of dired buffer."
@@ -52,13 +64,6 @@
 			     (string-match "^\\([a-zA-Z]:\\)/" dir))
 			(match-string 1 dir) "")))
 	(rename-buffer (concat (buffer-name) " [" drive "dir]") t))))
-
-  ;; Toggle listing dot files in dired
-  (leaf dired-list-all-mode :require t
-    :url "https://github.com/10sr/emacs-lisp/blob/master/docs/elpa/dired-list-all-mode-20161115.118.el"
-    :after dired
-    :config
-    (setq dired-listing-switches "-lhFG"))
 
   ;; Quit-window according to screen division
   (defun dired-dwim-quit-window ()
@@ -113,31 +118,28 @@
     (interactive)
     (call-interactively 'dired-unmark-all-marks)
     (call-interactively 'revert-buffer))
+  )
 
-  ;; Allow rsync from dired buffers
-  (leaf dired-rsync
-    :bind (:dired-mode-map
-	   ("C-c C-r" . dired-rsync)))
-
-  ;; Direx
-  (leaf direx
-    :url "https://github.com/emacsorphanage/direx"
-    :url "https://blog.shibayu36.org/entry/2013/02/12/191459"
-    :after popwin
-    :bind (("<f11>" . direx:jump-to-project-directory)
-	   (:direx:direx-mode-map
-	    ("<f11>" . quit-window)))
-    :config
-    (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
-    (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
-    (defun direx:jump-to-project-directory ()
-      "If in project, launch direx-project otherwise start direx."
-      (interactive)
-      (let ((result (ignore-errors
-		      (direx-project:jump-to-project-root-other-window)
-		      t)))
-	(unless result
-	  (direx:jump-to-directory-other-window))))))
+;; -------------------------------------------------------------------
+;; Yet another dired for tree display.
+(leaf direx
+  :url "https://github.com/emacsorphanage/direx"
+  :url "https://blog.shibayu36.org/entry/2013/02/12/191459"
+  :after popwin
+  :bind (("<f11>" . direx:jump-to-project-directory)
+	 (:direx:direx-mode-map
+	  ("<f11>" . quit-window)))
+  :config
+  (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
+  (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
+  (defun direx:jump-to-project-directory ()
+    "If in project, launch direx-project otherwise start direx."
+    (interactive)
+    (let ((result (ignore-errors
+		    (direx-project:jump-to-project-root-other-window)
+		    t)))
+      (unless result
+	(direx:jump-to-directory-other-window)))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

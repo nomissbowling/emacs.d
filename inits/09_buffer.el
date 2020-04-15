@@ -31,8 +31,8 @@
   (dired-mode-hook . turn-on-tempbuf-mode)
   (magit-mode-hook . turn-on-tempbuf-mode)
   (compilation-mode-hook . turn-on-tempbuf-mode)
-  :config
-  (setq tempbuf-kill-message nil))
+  :custom
+  (tempbuf-kill-message . nil))
 
 (leaf iflipb
   :bind (("C-<right>" . iflipb-next-buffer)

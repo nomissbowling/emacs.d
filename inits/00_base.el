@@ -3,34 +3,35 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; Language setting, default encode
-(set-language-environment "Japanese")
-(prefer-coding-system 'utf-8)
+(leaf *language-setting
+  :config
+  (set-language-environment "Japanese")
+  (prefer-coding-system 'utf-8))
 
-;; Key Modifiers
-(leaf bind-key
+(leaf *key-modifiers
   :bind (([insert] . clipboard-yank)
 	 ("C-." . xref-find-definitions))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	  ("C-x C-c" . iconify-frame)))
+	  ("C-x C-c" . iconify-frame))
+  :config
+  ;; Enter a backslash instead of ¥
+  (define-key global-map [?¥] [?\\]))
 
-;; Enter a backslash instead of ¥
-(define-key global-map [?¥] [?\\])
+(leaf *font-setting
+  :config
+  (when (string-match "e590" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+    (if (getenv "WSLENV")
+	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+  ;; For submachine
+  (when (string-match "x250" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
 
-;; Font setting
-(when (string-match "e590" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-  (if (getenv "WSLENV")
-      (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-;; For submachine
-(when (string-match "x250" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+(leaf exec-path-from-shell
+  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :custom
+  (exec-path-from-shell-check-startup-files . nil))
 
-;; exec-path-from-shell
-(setq exec-path-from-shell-check-startup-files nil)
-(add-hook 'after-init-hook 'exec-path-from-shell-initialize)
-
-;; Recentf
 (leaf recentf
   :hook (after-init-hook . recentf-mode)
   :config
@@ -43,7 +44,6 @@
 	  (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
 
-;; server start for emacs-client
 (leaf server :require t
   :config
   (unless (server-running-p)
@@ -85,8 +85,8 @@
 ;; Make it easy to see when it is the same name file
 (leaf uniquify
   :config
-  (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-        uniquify-min-dir-content 1))
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+  (setq uniquify-min-dir-content 1))
 
 ;; Do not record the same content in the history
 (setq history-delete-duplicates t)

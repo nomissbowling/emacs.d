@@ -12,18 +12,18 @@
 	  ([backtab] . my:company-yasnippet)))
   :hook
   (after-init-hook . global-company-mode)
-  :init
+  :preface
   (defun my:company-yasnippet ()
     (interactive)
     (company-abort)
     (call-interactively 'company-yasnippet))
   :config
   (leaf company-box
-    :hook
-    (add-hook 'company-mode-hook 'company-box-mode)
-    :config
-    (setq company-box-icons-alist 'company-box-icons-all-the-icons)
-    (setq company-box-doc-enable nil)))
+    :after (company all-the-icons)
+    :hook (company-mode-hook . company-box-mode)
+    :custom
+    (company-box-icons-alist . company-box-icons-all-the-icons)
+    (company-box-doc-enable . nil)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

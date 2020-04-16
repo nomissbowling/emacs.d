@@ -16,14 +16,15 @@
   (defun my:company-yasnippet ()
     (interactive)
     (company-abort)
-    (call-interactively 'company-yasnippet))
+    (call-interactively 'company-yasnippet)))
+
+(leaf company-box
+  ;;  :after (company all-the-icons)
+  :custom
+  (company-box-icons-alist . company-box-icons-all-the-icons)
+  (company-box-doc-enable . nil)
   :config
-  (leaf company-box
-    :after (company all-the-icons)
-    :hook (company-mode-hook . company-box-mode)
-    :custom
-    (company-box-icons-alist . company-box-icons-all-the-icons)
-    (company-box-doc-enable . nil)))
+  (company-box-mode))
 
 ;; Local Variables:
 ;; no-byte-compile: t

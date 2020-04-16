@@ -117,8 +117,7 @@
     "Dired unmark all."
     (interactive)
     (call-interactively 'dired-unmark-all-marks)
-    (call-interactively 'revert-buffer))
-  )
+    (call-interactively 'revert-buffer)))
 
 (leaf direx
   :doc "Yet another dired for tree display."

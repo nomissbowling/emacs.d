@@ -105,8 +105,7 @@ If there are two or more windows, it will go to another window."
     -----------------------------
   🎲 In dired buffer
      @ : make a gist out of marked files"
-    ("." nil))
-  )
+    ("." nil)))
 
 (leaf *hydra-browse
   :config
@@ -152,7 +151,7 @@ If there are two or more windows, it will go to another window."
     ("," browse-slack)
     ("." nil)))
 
-(leaf *emacs-in-WSL-and-open-links
+(leaf *open-link-on-WSL
   :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
   :config
   (when (getenv "WSLENV")

@@ -27,13 +27,11 @@
     "Prompt change string."
     (concat (eshell/pwd)
 	    (if (= (user-uid) 0) "\n# " "\n$ ")))
-  ;; Clear command.
   (defun eshell/clear ()
     "Clear the current buffer, leaving one prompt at the top."
     (interactive)
     (let ((inhibit-read-only t))
       (erase-buffer)))
-  ;; Launch eshell with Current buffer
   (defun eshell-on-current-buffer ()
     "Set the eshell directory to the current buffer."
     (interactive)

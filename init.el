@@ -28,7 +28,6 @@
     bind-key
     browse-at-remote
     company
-    company-box
     company-prescient
     counsel
     counsel-projectile

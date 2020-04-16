@@ -141,10 +141,10 @@
 
 (leaf select
   :doc "use the X11 clipboard."
-  :config
-  (setq select-enable-clipboard  t)
-  (bind-key "M-w" 'clipboard-kill-ring-save)
-  (bind-key "C-w" 'my:clipboard-kill-region)
+  :bind (("M-w" . clipboard-kill-ring-save)
+	 ("C-w" . my:clipboard-kill-region))
+  :custom
+  (select-enable-clipboard . t)
   :preface
   (defun my:clipboard-kill-region ()
     "If the region is active, `clipboard-kill-region'. If the region is inactive, `backward-kill-word'."

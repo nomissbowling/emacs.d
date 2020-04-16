@@ -29,38 +29,46 @@
   :custom
   (exec-path-from-shell-check-startup-files . nil))
 
-(leaf *custom-start
+(leaf *custom-startup
+  ;; auto-mode
+  :mode (("\\.html?\\'" . web-mode)
+	 ("\\.mak\\'" . makefile-mode))
+  ;; key-modify
+  :bind (([insert] . clipboard-yank)
+	 ("C-." . xref-find-definitions))
+  :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
+	  ("C-x C-c" . iconify-frame))
   :custom
-  (;; Display file name in title bar: buffername-emacs-version
-   ;; (setq frame-title-format '("%b - on GNU Emacs " emacs-version))
-   (frame-title-format . "%b")
-   ;; Point keeps its screen position when scroll
-   (scroll-preserve-screen-position . :always)
-   ;; Turn Off warning sound screen flash
-   (visible-bell . nil)
-   ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
-   (ring-bell-function . 'ignore)
-   ;; Do not change the position of the cursor when scrolling pages
-   (scroll-preserve-screen-position . t)
-   ;; Suppress warnings for 'ad-handle-definition:'
-   (ad-redefinition-action . 'accept)
-   ;; Faster rendering by not corresponding to right-to-left language
-   (bidi-display-reordering . nil)
-   ;; between the lines
-   (line-spacing . 0.1)
-   ;; Do not distinguish uppercase and lowercase letters on completion
-   (completion-ignore-case . t)
-   (read-file-name-completion-ignore-case . t)
-   ;; Copy with mouse drag
-   (mouse-drag-copy-region . t)
-   ;; Do not make a backup filie like *.~
-   (make-backup-files . nil)
-   ;; Do not use auto save
-   (auto-save-default . nil)
-   ;; Do not create lock file
-   (create-lockfiles . nil)
-   ;; Do not record the same content in the history
-   (history-delete-duplicates . t))
+  ;; Display file name in title bar: buffername-emacs-version
+  ;; (setq frame-title-format '("%b - on GNU Emacs " emacs-version))
+  (frame-title-format . "%b")
+  ;; Point keeps its screen position when scroll
+  (scroll-preserve-screen-position . :always)
+  ;; Turn Off warning sound screen flash
+  (visible-bell . nil)
+  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
+  (ring-bell-function . 'ignore)
+  ;; Do not change the position of the cursor when scrolling pages
+  (scroll-preserve-screen-position . t)
+  ;; Suppress warnings for 'ad-handle-definition:'
+  (ad-redefinition-action . 'accept)
+  ;; Faster rendering by not corresponding to right-to-left language
+  (bidi-display-reordering . nil)
+  ;; between the lines
+  (line-spacing . 0.1)
+  ;; Do not distinguish uppercase and lowercase letters on completion
+  (completion-ignore-case . t)
+  (read-file-name-completion-ignore-case . t)
+  ;; Copy with mouse drag
+  (mouse-drag-copy-region . t)
+  ;; Do not make a backup filie like *.~
+  (make-backup-files . nil)
+  ;; Do not use auto save
+  (auto-save-default . nil)
+  ;; Do not create lock file
+  (create-lockfiles . nil)
+  ;; Do not record the same content in the history
+  (history-delete-duplicates . t)
   :hook
   ;; Automatic reloading of changed files
   (after-init-hook . global-auto-revert-mode)
@@ -75,14 +83,14 @@
    (lambda ()
      (fset 'makefile-warn-suspicious-lines 'ignore))))
 
-;; Exit Emacs with M-x exit
-(defalias 'exit 'save-buffers-kill-emacs)
-
-;; Input yes or no to y or n (even SPC OK instead of y)
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Set transparency (active inactive)
-(add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
+(leaf *custom
+  :config
+  ;; Exit Emacs with M-x exit
+  (defalias 'exit 'save-buffers-kill-emacs)
+  ;; Input yes or no to y or n (even SPC OK instead of y)
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  ;; Set transparency (active inactive)
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8))))
 
 (leaf save-place
   :hook (after-init-hook . save-place-mode))
@@ -114,19 +122,6 @@
     (if (use-region-p)
 	(clipboard-kill-region (region-beginning) (region-end))
       (backward-kill-word 1))))
-
-(leaf *key-modifiers
-  :bind (([insert] . clipboard-yank)
-	 ("C-." . xref-find-definitions))
-  :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	  ("C-x C-c" . iconify-frame))
-  :config
-  ;; Enter a backslash instead of ¥
-  (define-key global-map [?¥] [?\\]))
-
-(leaf *mode-alist
-  :mode (("\\.html?\\'" . web-mode)
-	 ("\\.mak\\'" . makefile-mode)))
 
 (leaf recentf
   :hook (after-init-hook . recentf-mode)

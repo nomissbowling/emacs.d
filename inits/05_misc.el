@@ -4,8 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf popwin
-  :hook
-  (after-init-hook . popwin-mode))
+  :hook (after-init-hook . popwin-mode))
 
 (leaf expand-region
   :bind ("C-@" . er/expand-region))
@@ -30,10 +29,9 @@
   (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))
 
 (leaf prescient
-  :hook
-  (after-init-hook . prescient-persist-mode)
-  (after-init-hook . company-prescient-mode)
-  (after-init-hook . ivy-prescient-mode))
+  :hook ((after-init-hook . prescient-persist-mode)
+	 (after-init-hook . company-prescient-mode)
+	 (after-init-hook . ivy-prescient-mode)))
 
 (leaf persistent-scratch
   :config
@@ -45,14 +43,12 @@
 ;; which-key
 (leaf which-key
   :hook (after-init-hook . which-key-mode)
-  :custom
-  (which-key-max-description-length . 40)
-  (which-key-use-C-h-commands . t))
+  :custom ((which-key-max-description-length . 40)
+	   (which-key-use-C-h-commands . t)))
 
 (leaf projectile
-  :hook
-  (after-init-hook . projectile-mode)
-  (after-init-hook . counsel-projectile-mode))
+  :hook ((after-init-hook . projectile-mode)
+	 (after-init-hook . counsel-projectile-mode)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

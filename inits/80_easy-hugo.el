@@ -16,11 +16,10 @@
 	  ("m" . asy-hugo-magit)
 	  ("r" . easy-hugo-rename)
 	  ("e" . my:edit-easy-hugo)))
-  :custom
   ;; Sort-publishday on startup
-  (easy-hugo--sort-char-flg . nil)
-  (easy-hugo--sort-time-flg . nil)
-  (easy-hugo--sort-publishday-flg . 1)
+  :custom ((easy-hugo--sort-char-flg . nil)
+	   (easy-hugo--sort-time-flg . nil)
+	   (easy-hugo--sort-publishday-flg . 1))
   :init
   ;; Main blog (=blog1)
   (setq easy-hugo-basedir "~/Dropbox/web/wegh/topics/"

@@ -98,9 +98,9 @@
 (leaf imenu-list
   :bind
   ("<f10>" . imenu-list-smart-toggle)
-  :custom
-  (imenu-list-focus-after-activation . t)
-  (imenu-list-auto-resize . nil))
+  :custom ((imenu-list-focus-after-activation . t)
+	   (imenu-list-size . 30)
+	   (imenu-list-position . 'left)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

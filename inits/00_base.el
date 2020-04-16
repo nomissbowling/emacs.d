@@ -26,8 +26,7 @@
 
 (leaf exec-path-from-shell
   :hook (after-init-hook . exec-path-from-shell-initialize)
-  :custom
-  (exec-path-from-shell-check-startup-files . nil))
+  :custom (exec-path-from-shell-check-startup-files . nil))
 
 (leaf *custom-start
   ;; auto-mode

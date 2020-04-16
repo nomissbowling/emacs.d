@@ -2,12 +2,12 @@
 
 ## Screen Shot
 
-![Alt Text](https://live.staticflickr.com/65535/49563670097_cc031076a9_b.jpg)
+![Alt Text](https://live.staticflickr.com/65535/49780516452_9f9b2ff69f_b.jpg)
 
 ## Usage environment
 
 ### OS
-  * GNU Linux Debian 10.3
+  * GNU Linux Debian 10.3 on WSL
 
 ### GNU Emacs
  * GNU Emacs 26.3
@@ -58,8 +58,10 @@ rm ~/emacs-26.3.tar.gz
 
 ## Consept
 
-  * I installed 90 packages from melpa and downloaded some other elisp from github.
-  * We use lazy loading with 'use-package' and use 'after-init-hook' whenever possible for fast emacs startup.
+  * I installed 88 packages from melpa and downloaded some other elisp from github.
+  * We use lazy loading with 'leaf' and use 'after-init-hook' whenever
+  possible for fast emacs startup
+  .
   * This repository only discloses personal configuration information, and does not guarantee its operation.
 
 ## Referenced code and article

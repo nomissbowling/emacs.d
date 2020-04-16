@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *hydra-quick-menu
+(leaf hydra-quick-menu
   :bind ("M-." . hydra-quick-menu/body)
   :preface
   (defhydra hydra-quick-menu (:hint nil :exit t)
@@ -54,36 +54,36 @@
     ("_" delete-other-windows)
     ("M-." nil)))
 
-(leaf *hydra-Work
+(leaf hydra-Work
   :preface
-  (defhydra hydra-work (:hint nil :exit t)
-    "
+  (key-chord-define-global
+   ".."
+   (defhydra hydra-work (:hint nil :exit t)
+     "
  📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  quick-menu:_._"
-    ("a" my:apsh)
-    ("A" my:apsh-new-post)
-    ("e" easy-hugo)
-    ("b" backup-melpa)
-    ("d" my:diary)
-    ("D" my:diary-new-post)
-    ("o" my:otibo)
-    ("O" my:otibo-new-post)
-    ("t" my:teirei)
-    ("T" my:teirei-new-post)
-    ("s" my:swan)
-    ("S" my:swan-new-post)
-    ("k" my:kinnei)
-    ("K" my:kinnei-new-post)
-    ("m" my:d_kukai)
-    ("w" my:m_kukai)
-    ("n" my:haiku-note)
-    ("N" my:haiku-note-post)
-    (":" view-mode)
-    ("/" kill-other-buffers)
-    ("_" delete-other-windows)
-    ("." hydra-quick-menu/body)
-    ("q" keyboard-quit)))
-
-(leaf *my-function
+     ("a" my:apsh)
+     ("A" my:apsh-new-post)
+     ("e" easy-hugo)
+     ("b" backup-melpa)
+     ("d" my:diary)
+     ("D" my:diary-new-post)
+     ("o" my:otibo)
+     ("O" my:otibo-new-post)
+     ("t" my:teirei)
+     ("T" my:teirei-new-post)
+     ("s" my:swan)
+     ("S" my:swan-new-post)
+     ("k" my:kinnei)
+     ("K" my:kinnei-new-post)
+     ("m" my:d_kukai)
+     ("w" my:m_kukai)
+     ("n" my:haiku-note)
+     ("N" my:haiku-note-post)
+     (":" view-mode)
+     ("/" kill-other-buffers)
+     ("_" delete-other-windows)
+     ("." hydra-quick-menu/body)
+     ("q" keyboard-quit)))
   :config
   (defun ftp-client ()
     "Open Ftp application."

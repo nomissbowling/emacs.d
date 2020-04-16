@@ -3,9 +3,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *hydra-make
-  :config
-  (bind-key "<f2>" 'hydra-make/body)
+(leaf hydra-make
+  :bind ("<f2>" . hydra-make/body)
+  :custom (compilation-scroll-output . t)
   :preface
   (defhydra hydra-make (:color red :hint nil)
     "
@@ -18,11 +18,9 @@
     ("c" my:make-clean)
     ("e" next-error)
     ("<f2>" nil)
-    ("q" nil)))
-
-(leaf *my-make-command
+    ("q" nil))
   :config
-  (setq compilation-scroll-output t)
+  ;; my-make-command
   (defun my:make-k ()
     "Make command default."
     (interactive)

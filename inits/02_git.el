@@ -6,8 +6,9 @@
 (leaf magit
   :bind (("<f8>" . magit-status)
 	 ("<f7>" . hydra-magit/body))
+  :custom (magit-display-buffer-function
+	   . #'magit-display-buffer-fullframe-status-v1)
   :config
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   (leaf git-timemachine
     :after magit
     :commands git-timemachine)
@@ -19,7 +20,8 @@
     ("b" magit-blame :exit t)
     ("t" git-timemachine :exit t)
     ("d" vc-diff)
-    ("q" nil)))
+    ("q" nil))
+  )
 
 ;; local Variables:
 ;; no-byte-compile: t

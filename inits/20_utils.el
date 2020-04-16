@@ -6,14 +6,12 @@
 (leaf migemo
   :when (executable-find "cmigemo")
   :hook (after-init-hook . migemo-init)
-  :config
-  (setq migemo-command (executable-find "cmigemo"))
-  (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))
+  :custom ((migemo-command . "cmigemo")
+	   (migemo-dictionary . "/usr/share/cmigemo/utf-8/migemo-dict")))
 
-(leaf *e2ps			;
+(leaf cus-e2ps			;
   :url "https://yohgami.hateblo.jp/entry/20130402/1364895193"
-  :config
-  (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
+  :custom (my:pdfout-command-format . "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
   :preface
   (defun my:pdfout-buffer ()
     "PDF out from buffer."
@@ -25,7 +23,8 @@
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
-(leaf *open-application
+(leaf cus-dir-open
+  :doc "current dir open of linux-filer and linux terminal"
   :bind (("<f3>" . filer-current-dir-open)
 	 ("<f4>" . term-current-dir-open))
   :preface
@@ -39,7 +38,8 @@
     (let ((dir (directory-file-name default-directory)))
       (shell-command (concat "gnome-terminal --working-directory " dir)))))
 
-(leaf *delete-file-if-no-contents
+(leaf cus-delete-file
+  :doc "delete file if no contents"
   :url "https://uwabami.github.io/cc-env/Emacs.html#org57f6557"
   :preface
   (defun my:delete-file-if-no-contents ()

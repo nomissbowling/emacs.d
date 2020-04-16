@@ -8,12 +8,12 @@
   (unless (server-running-p)
     (server-start)))
 
-(leaf *language-setting
+(leaf cus-language
   :config
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8))
 
-(leaf *font-setting
+(leaf cus-font
   :config
   ;; For main-machine
   (when (string-match "e590" (shell-command-to-string "uname -n"))
@@ -28,7 +28,7 @@
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :custom (exec-path-from-shell-check-startup-files . nil))
 
-(leaf *custom-start
+(leaf cus-start
   ;; auto-mode
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))
@@ -40,51 +40,49 @@
   :custom
   ;; Display file name in title bar: buffername-emacs-version
   ;; (setq frame-title-format '("%b - on GNU Emacs " emacs-version))
-  (frame-title-format . "%b")
-  ;; Point keeps its screen position when scroll
-  (scroll-preserve-screen-position . :always)
-  ;; Turn Off warning sound screen flash
-  (visible-bell . nil)
-  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
-  (ring-bell-function . 'ignore)
-  ;; Do not change the position of the cursor when scrolling pages
-  (scroll-preserve-screen-position . t)
-  ;; Suppress warnings for 'ad-handle-definition:'
-  (ad-redefinition-action . 'accept)
-  ;; Faster rendering by not corresponding to right-to-left language
-  (bidi-display-reordering . nil)
-  ;; between the lines
-  (line-spacing . 0.1)
-  ;; Do not distinguish uppercase and lowercase letters on completion
-  (completion-ignore-case . t)
-  (read-file-name-completion-ignore-case . t)
-  ;; Copy with mouse drag
-  (mouse-drag-copy-region . t)
-  ;; Do not make a backup filie like *.~
-  (make-backup-files . nil)
-  ;; Do not use auto save
-  (auto-save-default . nil)
-  ;; Do not create lock file
-  (create-lockfiles . nil)
-  ;; Do not record the same content in the history
-  (history-delete-duplicates . t)
+  ((frame-title-format . "%b")
+   ;; Point keeps its screen position when scroll
+   (scroll-preserve-screen-position . :always)
+   ;; Turn Off warning sound screen flash
+   (visible-bell . nil)
+   ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
+   (ring-bell-function . 'ignore)
+   ;; Do not change the position of the cursor when scrolling pages
+   (scroll-preserve-screen-position . t)
+   ;; Suppress warnings for 'ad-handle-definition:'
+   (ad-redefinition-action . 'accept)
+   ;; Faster rendering by not corresponding to right-to-left language
+   (bidi-display-reordering . nil)
+   ;; between the lines
+   (line-spacing . 0.1)
+   ;; Do not distinguish uppercase and lowercase letters on completion
+   (completion-ignore-case . t)
+   (read-file-name-completion-ignore-case . t)
+   ;; Copy with mouse drag
+   (mouse-drag-copy-region . t)
+   ;; Do not make a backup filie like *.~
+   (make-backup-files . nil)
+   ;; Do not use auto save
+   (auto-save-default . nil)
+   ;; Do not create lock file
+   (create-lockfiles . nil)
+   ;; Do not record the same content in the history
+   (history-delete-duplicates . t))
   :hook
   ;; Automatic reloading of changed files
-  (after-init-hook . global-auto-revert-mode)
-  ;; Do not blink the cursor
-  (after-init-hook . blink-cursor-mode)
-  ;; font-lock
-  (after-init-hook . global-font-lock-mode)
-  ;; word wrapping is used
-  (after-init-hook . global-visual-line-mode)
-  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
-  (makefile-mode-hook
-   (lambda ()
-     (fset 'makefile-warn-suspicious-lines 'ignore))))
-
-(leaf *custom
-  :config
-  ;; Exit Emacs with M-x exit
+  ((after-init-hook . global-auto-revert-mode)
+   ;; Do not blink the cursor
+   (after-init-hook . blink-cursor-mode)
+   ;; font-lock
+   (after-init-hook . global-font-lock-mode)
+   ;; word wrapping is used
+   (after-init-hook . global-visual-line-mode)
+   ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
+   (makefile-mode-hook
+    (lambda ()
+      (fset 'makefile-warn-suspicious-lines 'ignore))))
+  :preface
+  ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
   ;; Input yes or no to y or n (even SPC OK instead of y)
   (defalias 'yes-or-no-p 'y-or-n-p)

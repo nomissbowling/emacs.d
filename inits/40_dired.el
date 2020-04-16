@@ -52,7 +52,7 @@
     :bind (:dired-mode-map
 	   ("C-c C-r" . dired-rsync))))
 
-(leaf *functions-for-extention
+(leaf *for-dired-extention
   :preface
   ;; Add [Dir] to the directory buffer
   (defun dired-my-append-buffer-name-hint ()

@@ -36,16 +36,6 @@
     :after dired
     :config
     (setq dired-listing-switches "-lhFG"))
-  (leaf dired-x
-    :doc "Extended version of dired"
-    :after dired
-    :config
-    (setq-default dired-omit-files-p t)
-    (setq dired-omit-files "^desktop.ini\\|^\\.dropbox")
-    ;; zip file can be expanded with Z key
-    (eval-after-load "dired-aux"
-      '(add-to-list 'dired-compress-file-suffixes
-		    '("\\.zip\\'" ".zip" "unzip"))))
   (leaf dired-rsync
     :doc "Allow rsync from dired buffers"
     :url "https://github.com/stsquad/dired-rsync"

@@ -4,6 +4,9 @@
 ;; (setq debug-on-error t)
 
 (leaf markdown-mode
+  ;; Change markdown-modo key bind `markdown-shifttab' to `company-yasnippet'
+  :bind (:markdown-mode-map
+	 ("S-<tab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode ("\\.md$'" . gfm-mode)
   :init
@@ -49,10 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
   (markdown-code-face . '((t (:background "#222" :inherit 'default))))
   (markdown-pre-face . '((t (:foreground "#bd98fe"))))
   :config
-  ;; Change markdown-modo key bind `markdown-shifttab' to `company-yasnippet'
-  (bind-key* "S-<tab>" 'company-yasnippet markdown-mode-map)
-  ;; Preview via `livedown'
   (leaf livedown
+    :doc "Preview via `livedown'"
     :url "https://github.com/shime/livedown"
     :config
     (custom-set-variables
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
      '(livedown-open t)
      '(livedown-port 1337)
      '(livedown-browser nil)))
-  ;; hydra
+  :preface
   (defhydra hydra-markdown (:color red :hint nil)
     "
  _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _v_iewer:_k_  md2_p_df  md2_d_ocx"
@@ -76,8 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ("d" md2docx)
     ("C-;" nil)))
 
-
-(leaf *pandoc-for-markdown
+(leaf *pandoc
   :config
   (defun md2pdf ()
     "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"

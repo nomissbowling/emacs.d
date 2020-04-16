@@ -32,7 +32,8 @@
     (shell-command-to-string
      "/usr/lib/mozc/mozc_tool --mode=config_dialog")))
 
-(leaf *do-not-hijack-input-method
+(leaf *do-not-hijack
+  :doc "do not hijack input-method."
   :config
   (defadvice toggle-input-method (around toggle-input-method-around activate)
     "Input method function in key-chord.el not to be nil."
@@ -40,7 +41,8 @@
       ad-do-it
       (setq input-method-function input-method-function-save))))
 
-(leaf *set-the-character-to-be-immediately-determine
+(leaf *immediately-determine
+  :doc "Set the character to be immediately determine."
   :url "https://www2.ninjal.ac.jp/kubota/mozc.html"
   :preface
   (defun mozc-insert-str (str)

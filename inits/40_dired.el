@@ -120,9 +120,8 @@
     (call-interactively 'revert-buffer))
   )
 
-;; -------------------------------------------------------------------
-;; Yet another dired for tree display.
 (leaf direx
+  :doc "Yet another dired for tree display."
   :url "https://github.com/emacsorphanage/direx"
   :url "https://blog.shibayu36.org/entry/2013/02/12/191459"
   :after popwin

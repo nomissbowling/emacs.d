@@ -19,12 +19,13 @@
     :after mozc
     :config
     (setq mozc-candidate-style 'posframe))
-  ;; mozc-tool
+
   (defun mozc-word-regist ()
     "Mozc word regist."
     (interactive)
     (shell-command-to-string
      "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
+
   (defun mozc-config-dialog ()
     "Mozc config dialog."
     (interactive)

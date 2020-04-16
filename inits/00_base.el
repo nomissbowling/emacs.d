@@ -8,6 +8,22 @@
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8))
 
+(leaf *font-setting
+  :config
+  ;; For main-machine
+  (when (string-match "e590" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+    (if (getenv "WSLENV")
+	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+  ;; For sub-machine
+  (when (string-match "x250" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
+
+(leaf exec-path-from-shell
+  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :custom
+  (exec-path-from-shell-check-startup-files . nil))
+
 (leaf *key-modifiers
   :bind (([insert] . clipboard-yank)
 	 ("C-." . xref-find-definitions))
@@ -17,20 +33,80 @@
   ;; Enter a backslash instead of ¥
   (define-key global-map [?¥] [?\\]))
 
-(leaf *font-setting
-  :config
-  (when (string-match "e590" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-    (if (getenv "WSLENV")
-	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-  ;; For submachine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
-
-(leaf exec-path-from-shell
-  :hook (after-init-hook . exec-path-from-shell-initialize)
+(leaf *custom-start
   :custom
-  (exec-path-from-shell-check-startup-files . nil))
+  (;; Display file name in title bar: buffername-emacs-version
+   ;; (setq frame-title-format '("%b - on GNU Emacs " emacs-version))
+   (frame-title-format . "%b")
+   ;; Point keeps its screen position when scroll
+   (scroll-preserve-screen-position . :always)
+   ;; Turn Off warning sound screen flash
+   (visible-bell . nil)
+   ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
+   (ring-bell-function . 'ignore)
+   ;; Do not change the position of the cursor when scrolling pages
+   (scroll-preserve-screen-position . t)
+   ;; Suppress warnings for 'ad-handle-definition:'
+   (ad-redefinition-action . 'accept)
+   ;; Faster rendering by not corresponding to right-to-left language
+   (bidi-display-reordering . nil)
+   ;; between the lines
+   (line-spacing . 0.1)
+   ;; Do not distinguish uppercase and lowercase letters on completion
+   (completion-ignore-case . t)
+   (read-file-name-completion-ignore-case . t)
+   ;; Copy with mouse drag
+   (mouse-drag-copy-region . t)
+   ;; Do not make a backup filie like *.~
+   (make-backup-files . nil)
+   ;; Do not use auto save
+   (auto-save-default . nil)
+   ;; Do not create lock file
+   (create-lockfiles . nil)
+   ;; Do not record the same content in the history
+   (history-delete-duplicates . t))
+  :hook
+  ;; Automatic reloading of changed files
+  (after-init-hook . global-auto-revert-mode)
+  ;; Do not blink the cursor
+  (after-init-hook . blink-cursor-mode)
+  ;; font-lock
+  (after-init-hook . global-font-lock-mode)
+  ;; word wrapping is used
+  (after-init-hook . global-visual-line-mode)
+  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
+  (makefile-mode-hook
+   (lambda ()
+     (fset 'makefile-warn-suspicious-lines 'ignore))))
+
+;; Exit Emacs with M-x exit
+(defalias 'exit 'save-buffers-kill-emacs)
+
+;; Input yes or no to y or n (even SPC OK instead of y)
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Set transparency (active inactive)
+(add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
+
+;; contains many mode setting
+(leaf generic-x)
+
+;; M-x info-emacs-manual (C-h r or F1+r)
+(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
+(defun Info-find-node--info-ja (orig-fn filename &rest args)
+  "Info as ORIG-FN FILENAME ARGS."
+  (apply orig-fn
+	 (pcase filename
+	   ("emacs" "emacs-ja.info")
+	   (_ filename))
+	 args))
+(advice-add 'Info-find-node :around 'Info-find-node--info-ja)
+
+(leaf *auto-mode-alist
+  :doc "Set major mode by extension"
+  :config
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode)))
 
 (leaf recentf
   :hook (after-init-hook . recentf-mode)
@@ -49,69 +125,22 @@
   (unless (server-running-p)
     (server-start)))
 
-;; History;;
-(add-hook 'after-init-hook 'save-place-mode)
+(leaf save-place
+  :hook (after-init-hook . save-place-mode))
 
-;; Save history of minibuffer
-(add-hook 'after-init-hook 'savehist-mode)
-(setq history-length 1000)
+(leaf savehist
+  :doc "Save history of minibuffer."
+  :hook (after-init-hook . savehist-mode)
+  :custom (history-length . 1000))
 
-;; Faster rendering by not corresponding to right-to-left language
-(setq-default bidi-display-reordering nil)
-
-;; between the lines
-(setq-default line-spacing 0.1)
-
-;; Do not make a backup filie like *.~
-(setq make-backup-files nil)
-
-;; Do not use auto save
-(setq auto-save-default nil)
-
-;; Do not create lock file
-(setq create-lockfiles nil)
-
-;; Disable automatic save
-(setq auto-save-default nil)
-
-;; Display file name in title bar: buffername-emacs-version
-;; (setq frame-title-format '("%b - on GNU Emacs " emacs-version))
-(setq frame-title-format "%b")
-
-;; Do not distinguish uppercase and lowercase letters on completion
-(setq completion-ignore-case t)
-(setq read-file-name-completion-ignore-case t)
-
-;; Make it easy to see when it is the same name file
 (leaf uniquify
+  :doc "Make it easy to see when it is the same name file."
   :config
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
   (setq uniquify-min-dir-content 1))
 
-;; Do not record the same content in the history
-(setq history-delete-duplicates t)
-
-;; Point keeps its screen position when scroll
-(setq scroll-preserve-screen-position :always)
-
-;; Turn Off warning sound screen flash
-(setq visible-bell nil)
-
-;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
-(setq ring-bell-function 'ignore)
-
-;; Do not change the position of the cursor when scrolling pages
-(setq scroll-preserve-screen-position t)
-
-;; Set major mode by extension
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
-
-;; Copy with mouse drag
-(setq mouse-drag-copy-region t)
-
-;; Clipboard
-(leaf *use-the-X11-clipboard
+(leaf select
+  :doc "use the X11 clipboard."
   :config
   (setq select-enable-clipboard  t)
   (bind-key "M-w" 'clipboard-kill-ring-save)
@@ -123,49 +152,6 @@
     (if (use-region-p)
 	(clipboard-kill-region (region-beginning) (region-end))
       (backward-kill-word 1))))
-
-;; Exit Emacs with M-x exit
-(defalias 'exit 'save-buffers-kill-emacs)
-
-;; Input yes or no to y or n (even SPC OK instead of y)
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Automatic reloading of changed files
-(add-hook 'after-init-hook 'global-auto-revert-mode)
-
-;; Do not blink the cursor
-(add-hook 'after-init-hook 'blink-cursor-mode 0)
-
-;; font-lock
-(add-hook 'after-init-hook 'global-font-lock-mode)
-
-;; word wrapping is used
-(add-hook 'after-init-hook 'global-visual-line-mode)
-
-;; Set transparency (active inactive)
-(add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
-
-;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
-(add-hook 'makefile-mode-hook
-	  (lambda ()
-	    (fset 'makefile-warn-suspicious-lines 'ignore)))
-
-;; Suppress warnings for 'ad-handle-definition:'
-(setq ad-redefinition-action 'accept)
-
-;; contains many mode setting
-(leaf generic-x)
-
-;; M-x info-emacs-manual (C-h r or F1+r)
-(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
-(defun Info-find-node--info-ja (orig-fn filename &rest args)
-  "Info as ORIG-FN FILENAME ARGS."
-  (apply orig-fn
-	 (pcase filename
-	   ("emacs" "emacs-ja.info")
-	   (_ filename))
-	 args))
-(advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
 ;; Load my-lisp
 (leaf my-dired :require t)

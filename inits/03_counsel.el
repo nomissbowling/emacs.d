@@ -35,33 +35,33 @@
   (bind-key "<f6>" (lambda ()
 		     (interactive)
 		     (counsel-M-x "^counsel ")))
+
   (defun swiper-isearch-region ()
     "If region is selected, `swiper-isearch-thing-at-point'.
 If the region isn't selected, `swiper-isearch'."
     (interactive)
     (if (not (use-region-p))
 	(swiper-isearch)
-      (swiper-isearch-thing-at-point)))
-  ;; counsel-tramp
-  (leaf counsel-tramp
-    :config
-    (setq tramp-default-method "ssh")
-    (setq counsel-tramp-custom-connections '(/scp:xsrv:/home/minorugh/gospel-haiku.com/))
-    (defun my:tramp-xsrv ()
-      "Start tramp after closed all buffers."
-      (interactive)
-      (when (get-buffer "*tramp/scp xsrv*")
-	(counsel-tramp-quit))
-      (counsel-tramp))
-    (defun my:tramp-quit ()
-      "Quit tramp, if tramp connencted."
-      (interactive)
-      (when (get-buffer "*tramp/scp xsrv*")
-	(counsel-tramp-quit)
-	(message "Now tramp-quit!")))))
+      (swiper-isearch-thing-at-point))))
 
-(prog1 "Ivy"
-  ;; ivy-format-function-arrow
+(leaf counsel-tramp
+  :config
+  (setq tramp-default-method "ssh")
+  (setq counsel-tramp-custom-connections '(/scp:xsrv:/home/minorugh/gospel-haiku.com/))
+  (defun my:tramp-xsrv ()
+    "Start tramp after closed all buffers."
+    (interactive)
+    (when (get-buffer "*tramp/scp xsrv*")
+      (counsel-tramp-quit))
+    (counsel-tramp))
+  (defun my:tramp-quit ()
+    "Quit tramp, if tramp connencted."
+    (interactive)
+    (when (get-buffer "*tramp/scp xsrv*")
+      (counsel-tramp-quit)
+      (message "Now tramp-quit!"))))
+
+(leaf *fanctions-for-ivy-extention
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."
     (ivy--format-function-generic
@@ -77,8 +77,8 @@ If the region isn't selected, `swiper-isearch'."
      "\n"))
   (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
 
-  ;; More friendly display transformer for Ivy
   (leaf ivy-rich
+    :doc "More friendly display transformer for Ivy"
     :hook (ivy-mode-hook . ivy-rich-mode)
     :preface
     (defun ivy-rich-bookmark-name (candidate)

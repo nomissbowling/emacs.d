@@ -32,6 +32,7 @@
 	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
   ;; (setq dashboard-page-separator "\n\f\f\n")
   (setq dashboard-items '((recents  . 10)))
+
   ;; Insert custom item
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
@@ -40,8 +41,10 @@
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
     (insert "    Calendar: (c)    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
-  (add-to-list 'dashboard-items '(custom) t)
-  :preface
+  (add-to-list 'dashboard-items '(custom) t))
+
+(leaf *dashuboard-refresh
+  :config
   (defun open-dashboard ()
     "Open the *dashboard* buffer and jump to the first widget."
     (interactive)
@@ -57,6 +60,7 @@
     (dashboard-goto-recent-files))
   (defvar dashboard-recover-layout-p nil
     "Wether recovers the layout.")
+
   (defun quit-dashboard ()
     "Quit dashboard window."
     (interactive)
@@ -70,7 +74,8 @@
     (interactive)
     (funcall (local-key-binding "r"))))
 
-(prog1 "Browse-url"
+(leaf *my-functions-for-browse-url
+  :config
   (defun browse-calendar ()
     "Open Google-calendar with chrome."
     (interactive)

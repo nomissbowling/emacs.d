@@ -3,30 +3,33 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; auto-save-buffers-enhanced
-(setq auto-save-buffers-enhanced-quiet-save-p t)
-(auto-save-buffers-enhanced t)
+(leaf auto-save-buffers-enhanced
+  :config
+  (setq auto-save-buffers-enhanced-quiet-save-p t)
+  (auto-save-buffers-enhanced t))
 
-;; Toggle current buffer and *scratch* buffer
-(bind-key
- [S-return]
- (defun toggle-scratch()
-   "Toggle current buffer and *scratch* buffer."
-   (interactive)
-   (if (not (string= "*scratch*" (buffer-name)))
-       (progn
-	 (setq toggle-scratch-prev-buffer (buffer-name))
-	 (switch-to-buffer "*scratch*"))
-     (switch-to-buffer toggle-scratch-prev-buffer))))
+(leaf *Toggle-current-buffer-and-scratch-buffer.
+  :bind ([S-return] . toggle-scratch)
+  :preface
+  (defun toggle-scratch()
+    "Toggle current buffer and *scratch* buffer."
+    (interactive)
+    (if (not (string= "*scratch*" (buffer-name)))
+	(progn
+	  (setq toggle-scratch-prev-buffer (buffer-name))
+	  (switch-to-buffer "*scratch*"))
+      (switch-to-buffer toggle-scratch-prev-buffer))))
 
-;; Set buffer that can not be killed.
-(with-current-buffer "*scratch*"
-  (emacs-lock-mode 'kill))
-(with-current-buffer "*Messages*"
-  (emacs-lock-mode 'kill))
+(leaf emacs-lock
+  :doc "set buffer that can not be killed."
+  :config
+  (with-current-buffer "*scratch*"
+    (emacs-lock-mode 'kill))
+  (with-current-buffer "*Messages*"
+    (emacs-lock-mode 'kill)))
 
-;; automatically kill unnecessary buffers
 (leaf tempbuf
+  :doc "automatically kill unnecessary buffers"
   :hook
   (dired-mode-hook . turn-on-tempbuf-mode)
   (magit-mode-hook . turn-on-tempbuf-mode)
@@ -52,14 +55,12 @@
     (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
     (message "Killed other buffers!")))
 
-;; undohist
 (leaf undohist
   :hook
   (after-init-hook . undohist-initialize)
-  :init
+  :config
   (setq undohist-ignored-files '("/tmp" "COMMIT_EDITMSG")))
 
-;; undo-tree
 (leaf undo-tree
   :bind* (("C-_" . undo-tree-undo)
 	  ("C-\\" . undo-tree-undo)
@@ -94,7 +95,6 @@
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
-;; imenu
 (leaf imenu-list
   :bind
   ("<f10>" . imenu-list-smart-toggle)

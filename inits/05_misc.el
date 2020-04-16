@@ -3,55 +3,56 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; popwin
 (leaf popwin
   :hook
   (after-init-hook . popwin-mode))
 
-;; expand-region
-(bind-key "C-@" 'er/expand-region)
+(leaf expand-region
+  :bind ("C-@" . er/expand-region))
 
-;; key-chord
-(key-chord-mode 1)
-(key-chord-define-global "df" 'counsel-descbinds)
-(key-chord-define-global "l;" 'init-loader-show-log)
-(key-chord-define-global "hj" 'undo)
-(key-chord-define-global "@@" 'howm-list-all)
-(key-chord-define-global ".." 'hydra-work/body)
+(leaf key-chord
+  :config
+  (key-chord-mode 1)
+  (key-chord-define-global "df" 'counsel-descbinds)
+  (key-chord-define-global "l;" 'init-loader-show-log)
+  (key-chord-define-global "hj" 'undo)
+  (key-chord-define-global "@@" 'howm-list-all)
+  (key-chord-define-global ".." 'hydra-work/body))
 
-;;sequential-command
 (leaf sequential-command
   :config
   (leaf sequential-command-config
     :hook (after-init-hook . sequential-command-setup-keys)))
 
-;; yasnippet
-(add-hook 'after-init-hook 'yas-global-mode)
-(setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
+(leaf yasnippet
+  :hook (after-init-hook . yas-global-mode)
+  :config
+  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))
 
-;; prescient
-(add-hook 'after-init-hook 'prescient-persist-mode)
-(add-hook 'after-init-hook 'company-prescient-mode)
-(add-hook 'after-init-hook 'ivy-prescient-mode)
+(leaf prescient
+  :hook
+  (after-init-hook . prescient-persist-mode)
+  (after-init-hook . company-prescient-mode)
+  (after-init-hook . ivy-prescient-mode))
 
-;; persistent-scratch
-(persistent-scratch-setup-default)
+(leaf persistent-scratch
+  :config
+  (persistent-scratch-setup-default))
 
-;; quickrun
-(bind-key "<f5>" 'quickrun)
+(leaf quickrun
+  :bind ("<f5>" . quickrun))
 
 ;; which-key
-;; (leaf which-key
-;;   :custom
-;;   (which-key-max-description-length . 40)
-;;   (which-key-use-C-h-commands . t)
-;;   :hook
-;;   ((after-init . which-key-mode)))
-(add-hook 'after-init-hook 'which-key-mode)
+(leaf which-key
+  :hook (after-init-hook . which-key-mode)
+  :custom
+  (which-key-max-description-length . 40)
+  (which-key-use-C-h-commands . t))
 
-;; projectile
-(add-hook 'after-init-hook 'projectile-mode)
-(add-hook 'after-init-hook 'counsel-projectile-mode)
+(leaf projectile
+  :hook
+  (after-init-hook . projectile-mode)
+  (after-init-hook . counsel-projectile-mode))
 
 ;; Local Variables:
 ;; no-byte-compile: t

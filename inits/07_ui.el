@@ -32,8 +32,8 @@
   (prog-mode-hook . display-line-numbers-mode)
   (text-mode-hook . display-line-numbers-mode))
 
-;; Remove visual distractions and focus on writing.
 (leaf darkroom
+  :doc "Remove visual distractions and focus on writing."
   :url "https://github.com/joaotavora/darkroom"
   :bind (("<f12>" . my:darkroom-mode-in)
 	 (:darkroom-mode-map

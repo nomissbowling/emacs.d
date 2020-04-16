@@ -10,7 +10,7 @@
   (setq migemo-command (executable-find "cmigemo"))
   (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))
 
-(leaf *pdf-out-from-emacs
+(leaf *e2ps			;
   :url "https://yohgami.hateblo.jp/entry/20130402/1364895193"
   :config
   (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")

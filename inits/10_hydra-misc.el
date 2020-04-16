@@ -42,9 +42,10 @@
     ("<" iflipb-next-buffer)
     (">" iflipb-previous-buffer)
     (":" counsel-switch-buffer)
-    ("." view-mode)))
+    ("." view-mode)
+    ("q" nil)))
 
-(leaf :window
+(leaf *window-control
   :config
   (bind-key "C-q" 'other-window-or-split)
   :preface

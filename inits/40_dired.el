@@ -50,10 +50,7 @@
     :doc "Allow rsync from dired buffers"
     :url "https://github.com/stsquad/dired-rsync"
     :bind (:dired-mode-map
-	   ("C-c C-r" . dired-rsync)))
-  ;; Open the file/URL at the cursor position with C-x C-f
-  (ffap-bindings)
-  )
+	   ("C-c C-r" . dired-rsync))))
 
 (leaf *functions-for-extention
   :preface

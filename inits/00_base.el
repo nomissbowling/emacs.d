@@ -104,9 +104,8 @@
 
 (leaf *auto-mode-alist
   :doc "Set major mode by extension"
-  :config
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode)))
+  :mode (("\\.html?\\'" . web-mode)
+	 ("\\.mak\\'" . makefile-mode)))
 
 (leaf recentf
   :hook (after-init-hook . recentf-mode)

@@ -38,9 +38,10 @@
     (list 427110 1469889687))
 
   ;; Fix error of `args-out-of-range'
-  (leaf *bugfix-tip
+  (leaf *bugfix-tips
+    :url "https://qiita.com/akicho8/items/cae976cb3286f51e4632"
+    :doc "Replace function in google-translate-core.el"
     ;; ---------------------------------------------------------------
-    ;; Replace function in google-translate-core.el
     ;; (defun google-translate-json-suggestion (json)
     ;;   "Retrieve from JSON (which returns by the
     ;; `google-translate-request' function) suggestion. This function

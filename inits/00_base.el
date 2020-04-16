@@ -91,19 +91,7 @@
 ;; contains many mode setting
 (leaf generic-x)
 
-;; M-x info-emacs-manual (C-h r or F1+r)
-(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
-(defun Info-find-node--info-ja (orig-fn filename &rest args)
-  "Info as ORIG-FN FILENAME ARGS."
-  (apply orig-fn
-	 (pcase filename
-	   ("emacs" "emacs-ja.info")
-	   (_ filename))
-	 args))
-(advice-add 'Info-find-node :around 'Info-find-node--info-ja)
-
 (leaf *auto-mode-alist
-  :doc "Set major mode by extension"
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode)))
 
@@ -151,6 +139,17 @@
     (if (use-region-p)
 	(clipboard-kill-region (region-beginning) (region-end))
       (backward-kill-word 1))))
+
+;; M-x info-emacs-manual (C-h r or F1+r)
+(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
+(defun Info-find-node--info-ja (orig-fn filename &rest args)
+  "Info as ORIG-FN FILENAME ARGS."
+  (apply orig-fn
+	 (pcase filename
+	   ("emacs" "emacs-ja.info")
+	   (_ filename))
+	 args))
+(advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
 ;; Load my-lisp
 (leaf my-dired :require t)

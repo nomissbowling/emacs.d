@@ -4,7 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf yatex
-  :mode (("\\.tex\\'" . yatex-mode))
+  :mode ("\\.tex\\'" . yatex-mode)
   :config
   (setq tex-command "platex"
 	dviprint-command-format "dvpd.sh %s"

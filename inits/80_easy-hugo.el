@@ -8,7 +8,6 @@
   :bind (("C-c C-e" . easy-hugo)
 	 ("C-x p" . easy-hugo-preview)
 	 ("C-x P" . easy-hugo-publish)
-	 ("C-x t" . easy-hugo-complete-tags)
 	 ("C-c d" . inseart-date)
 	 (:easy-hugo-mode-map
 	  ([tab] . easy-hugo-no-help)
@@ -17,9 +16,12 @@
 	  ("m" . asy-hugo-magit)
 	  ("r" . easy-hugo-rename)
 	  ("e" . my:edit-easy-hugo)))
-  :commands easy-hugo-mode
+  :custom
+  ;; Sort-publishday on startup
+  (easy-hugo--sort-char-flg . nil)
+  (easy-hugo--sort-time-flg . nil)
+  (easy-hugo--sort-publishday-flg . 1)
   :init
-  (leaf popup)
   ;; Main blog (=blog1)
   (setq easy-hugo-basedir "~/Dropbox/web/wegh/topics/"
 	easy-hugo-url "https://topics.wegh.net"
@@ -58,11 +60,6 @@
 	   (easy-hugo-url . "https://ryo.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/ryo/"))))
-  ;; Sort-publishday on startup
-  (setq easy-hugo--sort-char-flg nil)
-  (setq easy-hugo--sort-time-flg nil)
-  (setq easy-hugo--sort-publishday-flg 1)
-
   ;; Customize for my help menu
   (setq easy-hugo-help-line 5)
   (setq easy-hugo-help

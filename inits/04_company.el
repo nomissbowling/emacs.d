@@ -19,7 +19,7 @@
     (call-interactively 'company-yasnippet)))
 
 (leaf company-box
-  ;;  :after (company all-the-icons)
+  :after (company all-the-icons)
   :custom
   (company-box-icons-alist . company-box-icons-all-the-icons)
   (company-box-doc-enable . nil)

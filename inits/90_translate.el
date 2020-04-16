@@ -37,7 +37,7 @@
     "TKK='427110.1469889687'."
     (list 427110 1469889687))
 
-  ;; Fix error of `args-out-of-range'
+  ;; Fix error of "args out of range"
   (leaf *bugfix-tips
     :url "https://qiita.com/akicho8/items/cae976cb3286f51e4632"
     :doc "Replace function in google-translate-core.el"

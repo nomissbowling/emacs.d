@@ -38,7 +38,7 @@
     (list 427110 1469889687))
 
   ;; Fix error of "args out of range"
-  (leaf *bugfix-tips
+  (leaf *patch-to-fix
     :url "https://qiita.com/akicho8/items/cae976cb3286f51e4632"
     :doc "Apply the following patch."
     ;; ---------------------------------------------------------------

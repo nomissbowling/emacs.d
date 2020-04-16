@@ -29,7 +29,7 @@
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill)))
 
-(leaf tempbuf
+(leaf tempbuf :require t
   :doc "automatically kill unnecessary buffers"
   :hook
   (dired-mode-hook . turn-on-tempbuf-mode)

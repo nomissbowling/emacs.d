@@ -3,6 +3,11 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+(leaf server :require t
+  :config
+  (unless (server-running-p)
+    (server-start)))
+
 (leaf *language-setting
   :config
   (set-language-environment "Japanese")
@@ -23,15 +28,6 @@
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :custom
   (exec-path-from-shell-check-startup-files . nil))
-
-(leaf *key-modifiers
-  :bind (([insert] . clipboard-yank)
-	 ("C-." . xref-find-definitions))
-  :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	  ("C-x C-c" . iconify-frame))
-  :config
-  ;; Enter a backslash instead of ¥
-  (define-key global-map [?¥] [?\\]))
 
 (leaf *custom-start
   :custom
@@ -88,30 +84,6 @@
 ;; Set transparency (active inactive)
 (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
 
-;; contains many mode setting
-(leaf generic-x)
-
-(leaf *auto-mode-alist
-  :mode (("\\.html?\\'" . web-mode)
-	 ("\\.mak\\'" . makefile-mode)))
-
-(leaf recentf
-  :hook (after-init-hook . recentf-mode)
-  :config
-  (setq recentf-save-file "~/.emacs.d/recentf"
-	recentf-max-saved-items 200
-	recentf-auto-cleanup 'never
-	recentf-exclude
-	'("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-	  "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-	  (lambda (file) (file-in-directory-p file package-user-dir))))
-  (push (expand-file-name recentf-save-file) recentf-exclude))
-
-(leaf server :require t
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
 (leaf save-place
   :hook (after-init-hook . save-place-mode))
 
@@ -126,6 +98,9 @@
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
   (setq uniquify-min-dir-content 1))
 
+(leaf generic-x
+  :doc "contains many mode setting")
+
 (leaf select
   :doc "use the X11 clipboard."
   :bind (("M-w" . clipboard-kill-ring-save)
@@ -139,6 +114,31 @@
     (if (use-region-p)
 	(clipboard-kill-region (region-beginning) (region-end))
       (backward-kill-word 1))))
+
+(leaf *key-modifiers
+  :bind (([insert] . clipboard-yank)
+	 ("C-." . xref-find-definitions))
+  :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
+	  ("C-x C-c" . iconify-frame))
+  :config
+  ;; Enter a backslash instead of ¥
+  (define-key global-map [?¥] [?\\]))
+
+(leaf *mode-alist
+  :mode (("\\.html?\\'" . web-mode)
+	 ("\\.mak\\'" . makefile-mode)))
+
+(leaf recentf
+  :hook (after-init-hook . recentf-mode)
+  :config
+  (setq recentf-save-file "~/.emacs.d/recentf"
+	recentf-max-saved-items 200
+	recentf-auto-cleanup 'never
+	recentf-exclude
+	'("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+	  "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+	  (lambda (file) (file-in-directory-p file package-user-dir))))
+  (push (expand-file-name recentf-save-file) recentf-exclude))
 
 ;; M-x info-emacs-manual (C-h r or F1+r)
 (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")

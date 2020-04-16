@@ -81,7 +81,8 @@ If there are two or more windows, it will go to another window."
     ("u" package-utils-list-upgrades)
     ("r" package-utils-remove-by-name)
     ("a" package-utils-upgrade-all-and-restart)
-    ("l" package-list-packages)))
+    ("l" package-list-packages)
+    ("q" nil)))
 
 (leaf gist
   :bind (("M-g r" . gist-region-or-buffer)

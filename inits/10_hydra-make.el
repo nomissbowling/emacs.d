@@ -17,7 +17,8 @@
     ("g" my:make-git)
     ("c" my:make-clean)
     ("e" next-error)
-    ("<f2>" nil)))
+    ("<f2>" nil)
+    ("q" nil)))
 
 (leaf *my-make-command
   :config

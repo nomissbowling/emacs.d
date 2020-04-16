@@ -38,7 +38,8 @@
     ("p" my:howm-page)
     ("b" my:howm-blog)
     ("m" my:howm-mail)
-    ("@" howm-list-all)))
+    ("@" howm-list-all)
+    ("q" nil)))
 
 (leaf *my:howm-functions
   :config

@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ;; Pndoc
     ("p" md2pdf)
     ("d" md2docx)
-    ("C-;" nil)))
+    ("q" nil)))
 
 (leaf *pandoc
   :config

@@ -8,7 +8,8 @@
   (setq auto-save-buffers-enhanced-quiet-save-p t)
   (auto-save-buffers-enhanced t))
 
-(leaf *Toggle-current-buffer-and-scratch-buffer.
+(leaf *toggle-scratch
+  :doc "Toggle current buffer and scratch-buffer."
   :bind ([S-return] . toggle-scratch)
   :preface
   (defun toggle-scratch()

@@ -71,7 +71,6 @@
     (interactive)
     (quit-window (not (delq (selected-window) (get-buffer-window-list)))))
 
-  ;; File are opened in separate buffer, directories are opened in same buffer
   ;; http://nishikawasasaki.hatenablog.com/entry/20120222/1329932699
   (defun dired-open-in-accordance-with-situation ()
     "Files are opened in separate buffers, directories are opened in the same buffer."

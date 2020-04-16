@@ -12,7 +12,7 @@
   (leaf git-timemachine
     :after magit
     :commands git-timemachine)
-
+  :preface
   (defhydra hydra-magit (:color red :hint nil)
     "
  📦 Git: _s_tatus  _b_lame  _t_imemachine  _d_iff"

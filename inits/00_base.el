@@ -29,7 +29,7 @@
   :custom
   (exec-path-from-shell-check-startup-files . nil))
 
-(leaf *custom-startup
+(leaf *custom-start
   ;; auto-mode
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))

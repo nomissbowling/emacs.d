@@ -6,29 +6,27 @@
 (leaf eshell
   :after popwin
   :bind* ("C-z" . eshell)
-  :config
+  :custom
+  (eshell-cmpl-ignore-case . t)
+  (eshell-ask-to-save-history . (quote always))
+  (eshell-cmpl-cycle-completions . t)
+  (eshell-cmpl-cycle-cutoff-length . 5)
+  (eshell-hist-ignoredups . t)
+  (eshell-prompt-regexp . "^[^#$\n]*[$#] ")
+  :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
-  (setq eshell-cmpl-ignore-case t)
-  (setq eshell-ask-to-save-history (quote always))
-  (setq eshell-cmpl-cycle-completions t)
-  (setq eshell-cmpl-cycle-cutoff-length 5)
-  (setq eshell-hist-ignoredups t)
-  ;; Prompt change string
+  :config
+  (setq eshell-command-aliases-list (append
+				     (list
+				      (list "cl" "clear")
+				      (list "ll" "ls -ltr -S")
+				      (list "la" "ls -a -S")
+				      (list "ex" "exit"))))
+  (setq eshell-prompt-function 'my:eshell-prompt)
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat (eshell/pwd)
 	    (if (= (user-uid) 0) "\n# " "\n$ ")))
-  (setq eshell-prompt-function 'my:eshell-prompt)
-  (setq eshell-prompt-regexp "^[^#$\n]*[$#] ")
-  ;; written by Stefan Reichoer <reichoer@web.de>
-  (setq eshell-command-aliases-list
-	(append
-	 (list
-	  (list "cl" "clear")
-	  (list "ll" "ls -ltr -S")
-	  (list "la" "ls -a -S")
-	  (list "ex" "exit"))))
-  :preface
   ;; Clear command.
   (defun eshell/clear ()
     "Clear the current buffer, leaving one prompt at the top."

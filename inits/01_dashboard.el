@@ -17,22 +17,20 @@
 	  ("." . hydra-browse/body)
 	  ([home] . quit-dashboard)))
   :init (dashboard-setup-startup-hook)
+  :custom
+  ((dashboard-startup-banner . "~/Dropbox/emacs.d/emacs.png")
+   (dashboard-set-heading-icons . t)
+   (dashboard-set-file-icons . t)
+   ;; (dashboard-page-separator . "\n\f\f\n")
+   (dashboard-items . '((recents  . 10))))
   :config
   (setq dashboard-banner-logo-title
-	(concat "GNU Emacs " emacs-version " kernel "
-		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
-		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
-  ;; Set the banner
-  (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png")
-  ;; Use icons
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
+  	(concat "GNU Emacs " emacs-version " kernel "
+  		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
+  		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
   ;; Set the footer
   (setq dashboard-footer-icon
 	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
-  ;; (setq dashboard-page-separator "\n\f\f\n")
-  (setq dashboard-items '((recents  . 10)))
-
   ;; Insert custom item
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
@@ -60,7 +58,6 @@
     (dashboard-goto-recent-files))
   (defvar dashboard-recover-layout-p nil
     "Wether recovers the layout.")
-
   (defun quit-dashboard ()
     "Quit dashboard window."
     (interactive)

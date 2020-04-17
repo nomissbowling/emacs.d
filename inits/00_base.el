@@ -8,15 +8,27 @@
   (unless (server-running-p)
     (server-start)))
 
+;; Save the file specified code with basic utf-8 if it exists
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+
+;; font for main-machine
+(when (string-match "e590" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+  (if (getenv "WSLENV")
+      (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+;; font for sub-machine
+(when (string-match "x250" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+
 (leaf exec-path-from-shell
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :custom (exec-path-from-shell-check-startup-files . nil))
 
 (leaf cus-start
   :custom
-  ;; Display file name in title bar: buffername-emacs-version
-  ;; (setq frame-title-format '("%b - on GNU Emacs " emacs-version))
-  ((frame-title-format . "%b")
+  (;; Display file name in title bar: buffername-emacs-version
+   (frame-title-format . "%b")
    ;; Point keeps its screen position when scroll
    (scroll-preserve-screen-position . :always)
    ;; Turn Off warning sound screen flash
@@ -45,8 +57,8 @@
    ;; Do not record the same content in the history
    (history-delete-duplicates . t))
   :hook
-  ;; Automatic reloading of changed files
-  ((after-init-hook . global-auto-revert-mode)
+  (;; Automatic reloading of changed files
+   (after-init-hook . global-auto-revert-mode)
    ;; Do not blink the cursor
    (after-init-hook . blink-cursor-mode)
    ;; font-lock
@@ -59,28 +71,13 @@
       (fset 'makefile-warn-suspicious-lines 'ignore)))))
 
 (leaf cus-misc
-  ;; auto-mode
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))
-  ;; key-modify
   :bind (([insert] . clipboard-yank)
 	 ("C-." . xref-find-definitions))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
 	  ("C-x C-c" . iconify-frame))
-  :preface
-  ;; Save the file specified code with basic utf-8 if it exists
-  (set-language-environment "Japanese")
-  (prefer-coding-system 'utf-8)
-
-  ;; font for main-machine
-  (when (string-match "e590" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-    (if (getenv "WSLENV")
-	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-  ;; font for sub-machine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
-
+  :config
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
   ;; Input yes or no to y or n (even SPC OK instead of y)

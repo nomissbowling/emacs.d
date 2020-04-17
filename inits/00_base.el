@@ -8,21 +8,18 @@
   (unless (server-running-p)
     (server-start)))
 
-(leaf cus-language
-  :config
-  (set-language-environment "Japanese")
-  (prefer-coding-system 'utf-8))
+;; Save the file specified code with basic utf-8 if it exists
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
 
-(leaf cus-font
-  :config
-  ;; For main-machine
-  (when (string-match "e590" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-    (if (getenv "WSLENV")
-	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-  ;; For sub-machine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
+;; font for main-machine
+(when (string-match "e590" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+  (if (getenv "WSLENV")
+      (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+;; font for sub-machine
+(when (string-match "x250" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
 
 (leaf exec-path-from-shell
   :hook (after-init-hook . exec-path-from-shell-initialize)
@@ -99,9 +96,8 @@
 
 (leaf uniquify
   :doc "Make it easy to see when it is the same name file."
-  :config
-  (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-  (setq uniquify-min-dir-content 1))
+  :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
+	   (uniquify-min-dir-content . 1)))
 
 (leaf generic-x
   :doc "contains many mode setting")
@@ -110,8 +106,7 @@
   :doc "use the X11 clipboard."
   :bind (("M-w" . clipboard-kill-ring-save)
 	 ("C-w" . my:clipboard-kill-region))
-  :custom
-  (select-enable-clipboard . t)
+  :custom (select-enable-clipboard . t)
   :preface
   (defun my:clipboard-kill-region ()
     "If the region is active, `clipboard-kill-region'. If the region is inactive, `backward-kill-word'."
@@ -122,14 +117,14 @@
 
 (leaf recentf
   :hook (after-init-hook . recentf-mode)
+  :custom((setq recentf-save-file . "~/.emacs.d/recentf")
+	  (recentf-max-saved-items . 200)
+	  (recentf-auto-cleanup . 'never)
+	  (recentf-exclude
+	   . '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+	       "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+	       (lambda (file) (file-in-directory-p file package-user-dir)))))
   :config
-  (setq recentf-save-file "~/.emacs.d/recentf"
-	recentf-max-saved-items 200
-	recentf-auto-cleanup 'never
-	recentf-exclude
-	'("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-	  "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-	  (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
 
 ;; M-x info-emacs-manual (C-h r or F1+r)

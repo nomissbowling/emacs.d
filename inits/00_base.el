@@ -119,7 +119,7 @@
 
 (leaf recentf
   :hook (after-init-hook . recentf-mode)
-  :custom((setq recentf-save-file . "~/.emacs.d/recentf")
+  :custom((recentf-save-file . "~/.emacs.d/recentf")
 	  (recentf-max-saved-items . 200)
 	  (recentf-auto-cleanup . 'never)
 	  (recentf-exclude

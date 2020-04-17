@@ -50,16 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
   (markdown-code-face . '((t (:background "#222" :inherit 'default))))
   (markdown-pre-face . '((t (:foreground "#bd98fe"))))
   :config
-  (leaf livedown
+  (leaf livedown :require t
     :doc "Preview via `livedown'"
     :url "https://github.com/shime/livedown"
-    :config
-    (custom-set-variables
-     '(livedown-autostart nil)
-     '(livedown-open t)
-     '(livedown-port 1337)
-     '(livedown-browser nil)))
-  :preface
+    :custom ((livedown-autostart . nil)
+	     (livedown-open . t)
+	     (livedown-port . 1337)
+	     (livedown-browser . nil)))
   (defhydra hydra-markdown (:color red :hint nil)
     "
  _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _v_iewer:_k_  md2_p_df  md2_d_ocx"

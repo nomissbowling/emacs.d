@@ -55,7 +55,7 @@
     init-loader
     imenu-list
     ivy-prescient
-;;    ivy-rich
+    ivy-rich
     ivy-yasnippet
     key-chord
     leaf

@@ -21,7 +21,7 @@
 	 ("C-c r" . counsel-recentf)
 	 ("C-c t" . counsel-tramp)
 	 ([remap dired] . counsel-dired)
-	 ("<f6>" . my:find-counsel-command))
+	 ("<f6>" . find-counsel-in-m-x))
   :hook ((after-init-hook . ivy-mode)
 	 (ivy-mode-hook . counsel-mode)
 	 (css-mode-hook . counsel-css-imenu-setup))
@@ -52,8 +52,8 @@
        (concat (propertize " " 'display `(space :align-to 2)) str))
      cands
      "\n"))
-  (defun my:find-counsel-command ()
-    ;;  (bind-key "<f6>" (lambda ()
+  (defun find-counsel-in-m-x ()
+    "Narrow the only counsel-command in M-x."
     (interactive)
     (counsel-M-x "^counsel "))
   (defun swiper-isearch-region ()

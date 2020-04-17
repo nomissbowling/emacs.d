@@ -7,13 +7,13 @@
 
 (leaf doom-modeline
   :commands doom-modeline-def-modeline
+  :hook
+  (after-init-hook . doom-modeline-mode)
   :custom
   (doom-modeline-buffer-file-name-style . 'truncate-with-project)
   (doom-modeline-icon . t)
   (doom-modeline-major-mode-icon . nil)
   (doom-modeline-minor-modes . nil)
-  :hook
-  (after-init-hook . doom-modeline-mode)
   :config
   (line-number-mode 0)
   (column-number-mode 0)

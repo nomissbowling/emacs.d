@@ -4,12 +4,16 @@
 ;; (setq debug-on-error t)
 
 (leaf mozc
-  :bind ("C-c C-d" . mozc-word-regist)
+  :bind (("C-c C-w" . mozc-word-regist)
+	 ("C-c C-d" . mozc-config-dialog))
   :bind* ("<henkan>" . toggle-input-method)
-  :init
-  (setq default-input-method "japanese-mozc")
-  (setq mozc-helper-program-name "mozc_emacs_helper")
-  :config
+  ;; :init
+  ;; (setq default-input-method "japanese-mozc")
+  ;; (setq mozc-helper-program-name "mozc_emacs_helper")
+  :custom
+  (default-input-method . "japanese-mozc")
+  (mozc-helper-program-name . "mozc_emacs_helper")
+  :preface
   (custom-set-variables '(mozc-leim-title "かな "))
   (leaf mozc-cursor-color :require t
     :url "https://github.com/iRi-E/mozc-el-extensions"
@@ -19,13 +23,11 @@
     :after mozc
     :config
     (setq mozc-candidate-style 'posframe))
-
   (defun mozc-word-regist ()
     "Mozc word regist."
     (interactive)
     (shell-command-to-string
      "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
-
   (defun mozc-config-dialog ()
     "Mozc config dialog."
     (interactive)

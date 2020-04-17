@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *my-pinky
+(leaf my-pinky
   :bind ("C-q" . other-window-or-split)
   :preface
   (key-chord-define-global
@@ -45,7 +45,7 @@
      (":" counsel-switch-buffer)
      ("." view-mode)
      ("q" nil)))
-  :config
+
   (defun other-window-or-split ()
     "If there is one window, open split window.
 If there are two or more windows, it will go to another window."

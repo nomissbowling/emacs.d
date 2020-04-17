@@ -83,18 +83,18 @@
     ("," browse-slack)
     ("." nil)))
 
-(leaf cus-browse-url
+(leaf browse-url
   :doc "Emacs in WSL and opening links"
   :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
+  :if (getenv "WSLENV")
   :config
-  (when (getenv "WSLENV")
-    (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
-	  (cmd-args '("/c" "start")))
-      (when (file-exists-p cmd-exe)
-	(setq browse-url-generic-program  cmd-exe
-	      browse-url-generic-args     cmd-args
-	      browse-url-browser-function 'browse-url-generic
-	      search-web-default-browser 'browse-url-generic)))))
+  (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
+	(cmd-args '("/c" "start")))
+    (when (file-exists-p cmd-exe)
+      (setq browse-url-generic-program  cmd-exe
+	    browse-url-generic-args     cmd-args
+	    browse-url-browser-function 'browse-url-generic
+	    search-web-default-browser 'browse-url-generic))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -9,10 +9,9 @@
   :config
   (leaf flymake-diagnostic-at-point
     :after flymake
-    :hook
-    (flymake-mode-hook . flymake-diagnostic-at-point-mode)
+    :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
     (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
-
+  :preface
   (defvar flymake-posframe-hide-posframe-hooks
     '(pre-command-hook post-command-hook focus-out-hook)
     "The hooks which should trigger automatic removal of the posframe.")
@@ -21,7 +20,6 @@
     (posframe-hide " *flymake-posframe-buffer*")
     (dolist (hook flymake-posframe-hide-posframe-hooks)
       (remove-hook hook #'flymake-posframe-hide-posframe t)))
-
   (defun my:flymake-diagnostic-at-point-display-popup (text)
     "Display the flymake diagnostic TEXT inside a posframe."
     (posframe-show " *flymake-posframe-buffer*"

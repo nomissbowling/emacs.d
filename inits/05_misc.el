@@ -24,8 +24,7 @@
 
 (leaf yasnippet
   :hook (after-init-hook . yas-global-mode)
-  :config
-  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))
+  :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets")))
 
 (leaf prescient
   :hook ((after-init-hook . prescient-persist-mode)

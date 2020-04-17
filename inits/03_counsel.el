@@ -7,6 +7,7 @@
   :bind (("C-s" . swiper-isearch-region)
 	 ("C-r" . swiper-thing-at-point)
 	 ("C-:" . counsel-switch-buffer)
+	 ("C-c s" . isearch-forward)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
 	 ("M-x" . counsel-M-x)
@@ -43,10 +44,10 @@
     (ivy--format-function-generic
      (lambda (str)
        (concat (if (display-graphic-p)
-		   (all-the-icons-octicon "chevron-right" :height 0.8 :v-adjust -0.05)
-		 ">")
-	       (propertize " " 'display `(space :align-to 2))
-	       (ivy--add-face str 'ivy-current-match)))
+  		   (all-the-icons-octicon "chevron-right" :height 0.8 :v-adjust -0.05)
+  		 ">")
+  	       (propertize " " 'display `(space :align-to 2))
+  	       (ivy--add-face str 'ivy-current-match)))
      (lambda (str)
        (concat (propertize " " 'display `(space :align-to 2)) str))
      cands

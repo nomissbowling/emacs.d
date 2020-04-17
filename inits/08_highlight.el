@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf smartparen
+(leaf smartparens
   :hook (after-init-hook . smartparens-global-mode))
 
 (leaf aggressive-indent
@@ -32,8 +32,9 @@
 (leaf volatile-highlights
   :hook (after-init-hook . volatile-highlights-mode)
   :config
-  (custom-set-faces
-   '(vhl/default-face ((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
+  (set-face-background 'vhl/default-face "yellow"))
+  ;; (custom-set-faces
+  ;;  '(vhl/default-face ((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
 
 (leaf hiwin
   :doc "Set background color of inactive window."
@@ -42,10 +43,9 @@
   (set-face-background 'hiwin-face "#364456"))
 
 (leaf whitespace
-  :hook
-  (prog-mode-hook . my:enable-trailing-mode)
-  :config
-  (setq-default show-trailing-whitespace nil)
+  :bind ("C-c c" . my:cleanup-for-spaces)
+  :hook (prog-mode-hook . my:enable-trailing-mode)
+  :custom (show-trailing-whitespace . nil)
   :preface
   (defun my:enable-trailing-mode ()
     "Show tail whitespace."

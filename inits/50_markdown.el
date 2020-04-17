@@ -4,23 +4,21 @@
 ;; (setq debug-on-error t)
 
 (leaf markdown-mode
-  ;; Change markdown-modo key bind `markdown-shifttab' to `company-yasnippet'
   :bind (:markdown-mode-map
 	 ("S-<tab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode ("\\.md$'" . gfm-mode)
-  :init
-  (setq markdown-enable-wiki-links t
-	markdown-italic-underscore t
-	markdown-asymmetric-header t
-	markdown-make-gfm-checkboxes-buttons t
-	markdown-gfm-uppercase-checkbox t
-	markdown-fontify-code-blocks-natively t
-	markdown-enable-math t
-	markdown-content-type "application/xhtml+xml"
-	markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
-			     "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
-	markdown-xhtml-header-content "
+  :custom ((markdown-enable-wiki-links . t)
+	   (markdown-italic-underscore . t)
+	   (markdown-asymmetric-header . t)
+	   (markdown-make-gfm-checkboxes-buttons . t)
+	   (markdown-gfm-uppercase-checkbox . t)
+	   (markdown-fontify-code-blocks-natively . t)
+	   (markdown-enable-math . t)
+	   (markdown-content-type . "application/xhtml+xml")
+	   (markdown-css-paths . '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+				   "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"))
+	   (markdown-xhtml-header-content . "
 <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
 <style>
 body {
@@ -41,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
-")
+"))
   :custom-face
   (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
   (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))

@@ -8,10 +8,6 @@
 	 ("<f7>" . hydra-magit/body))
   :custom (magit-display-buffer-function
 	   . #'magit-display-buffer-fullframe-status-v1)
-  :config
-  (leaf git-timemachine
-    :after magit
-    :commands git-timemachine)
   :preface
   (defhydra hydra-magit (:color red :hint nil)
     "
@@ -20,8 +16,7 @@
     ("b" magit-blame :exit t)
     ("t" git-timemachine :exit t)
     ("d" vc-diff)
-    ("q" nil))
-  )
+    ("q" nil)))
 
 ;; local Variables:
 ;; no-byte-compile: t

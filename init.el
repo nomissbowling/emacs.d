@@ -107,10 +107,7 @@
 (custom-set-variables
  '(init-loader-show-log-after-init 'error-only))
 (init-loader-load "~/Dropbox/emacs.d/inits")
-;; (setq custom-file (locate-user-emacs-file "custom.el"))
-(leaf cus-edit
-  :doc "tools for customizing Emacs and Lisp packages"
-  :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
+(setq custom-file (locate-user-emacs-file "custom.el"))
 
 (provide 'init)
 

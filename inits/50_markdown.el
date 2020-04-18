@@ -50,12 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
   (markdown-code-face . '((t (:background "#222" :inherit 'default))))
   (markdown-pre-face . '((t (:foreground "#bd98fe"))))
   :config
-  (leaf livedown
-    :ensure t
-    :require t
+  (leaf livedown :require t
     :doc "Preview via `livedown'"
     :url "https://github.com/shime/livedown"
-    :el-get bundle livedown
     :custom ((livedown-autostart . nil)
 	     (livedown-open . t)
 	     (livedown-port . 1337)

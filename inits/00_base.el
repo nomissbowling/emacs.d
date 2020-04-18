@@ -73,7 +73,7 @@
 (leaf *key-modified
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))
-  :bind (([insert] . clipboard-yank)
+  :bind (("<insert>" . clipboard-yank)
 	 ("C-." . xref-find-definitions))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
 	  ("C-x C-c" . iconify-frame))
@@ -81,12 +81,12 @@
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
   ;; Input yes or no to y or n (even SPC OK instead of y)
-  (defalias 'yes-or-no-p 'y-or-n-p)
-  ;; Set transparency (active inactive)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8))))
+  (defalias 'yes-or-no-p 'y-or-n-p))
 
 (leaf *cus-misc
   :config
+  ;; Set transparency (active inactive)
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
   (leaf save-place
     :hook (after-init-hook . save-place-mode))
   (leaf savehist
@@ -123,18 +123,20 @@
     :config
     (push (expand-file-name recentf-save-file) recentf-exclude)))
 
-;; M-x info-emacs-manual (C-h r or F1+r)
-(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
-(defun Info-find-node--info-ja (orig-fn filename &rest args)
-  "Info as ORIG-FN FILENAME ARGS."
-  (apply orig-fn
-	 (pcase filename
-	   ("emacs" "emacs-ja.info")
-	   (_ filename))
-	 args))
-(advice-add 'Info-find-node :around 'Info-find-node--info-ja)
+(leaf *manual
+  :config
+  ;; M-x info-emacs-manual (C-h r or F1+r)
+  (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
+  (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
+  (defun Info-find-node--info-ja (orig-fn filename &rest args)
+    "Info as ORIG-FN FILENAME ARGS."
+    (apply orig-fn
+	   (pcase filename
+	     ("emacs" "emacs-ja.info")
+	     (_ filename))
+	   args)))
 
-;; load-my-lisp			;
+;; load-my-lisp
 (leaf my-dired :require t)
 (leaf my-template :require t)
 

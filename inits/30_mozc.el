@@ -34,7 +34,7 @@
     (shell-command-to-string
      "/usr/lib/mozc/mozc_tool --mode=config_dialog")))
 
-(leaf cus-input-method
+(leaf *cus-input-method
   :doc "do not hijack input-method."
   :config
   (defadvice toggle-input-method (around toggle-input-method-around activate)
@@ -43,7 +43,7 @@
       ad-do-it
       (setq input-method-function input-method-function-save))))
 
-(leaf cus-insert-str
+(leaf *cus-insert-str
   :doc "Set the character to be immediately determine."
   :url "https://www2.ninjal.ac.jp/kubota/mozc.html"
   :preface

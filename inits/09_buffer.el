@@ -41,7 +41,7 @@
   :custom (iflipb-wrap-around . t)
   :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
-(leaf kill-buffer
+(leaf *kill-buffer
   :bind (("M-/" . kill-buffer)
 	 ("C-M-/" . kill-other-buffer))
   :preface

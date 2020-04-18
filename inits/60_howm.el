@@ -39,7 +39,7 @@
     ("@" howm-list-all)
     ("q" nil))
 
-  (leaf cus-my:howm
+  (leaf *cus-howm
     :config
     (defun my:howm-memo ()
       "My howm remember for memo."

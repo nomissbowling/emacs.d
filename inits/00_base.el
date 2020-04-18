@@ -25,7 +25,7 @@
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :custom (exec-path-from-shell-check-startup-files . nil))
 
-(leaf cus-start
+(leaf *cus-start
   :custom
   (;; Display file name in title bar: buffername-emacs-version
    (frame-title-format . "%b")
@@ -70,7 +70,7 @@
     (lambda ()
       (fset 'makefile-warn-suspicious-lines 'ignore)))))
 
-(leaf modified
+(leaf *modified
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))
   :bind (([insert] . clipboard-yank)

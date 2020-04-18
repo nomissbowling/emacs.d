@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf hydra-make
+(leaf *hydra-make
   :bind ("<f2>" . hydra-make/body)
   :custom (compilation-scroll-output . t)
   :config

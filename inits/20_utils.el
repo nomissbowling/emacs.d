@@ -9,7 +9,7 @@
   :custom ((migemo-command . "cmigemo")
 	   (migemo-dictionary . "/usr/share/cmigemo/utf-8/migemo-dict")))
 
-(leaf cus-e2ps			;
+(leaf *cus-e2ps			;
   :url "https://yohgami.hateblo.jp/entry/20130402/1364895193"
   :custom (my:pdfout-command-format . "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
   :preface
@@ -23,7 +23,7 @@
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
-(leaf cus-dir-open
+(leaf *cus-dir-open
   :doc "current dir open of linux-filer and linux terminal"
   :bind (("<f3>" . filer-current-dir-open)
 	 ("<f4>" . term-current-dir-open))
@@ -38,7 +38,7 @@
     (let ((dir (directory-file-name default-directory)))
       (shell-command (concat "gnome-terminal --working-directory " dir)))))
 
-(leaf cus-delete-file
+(leaf *cus-delete-file
   :doc "delete file if no contents"
   :url "https://uwabami.github.io/cc-env/Emacs.html#org57f6557"
   :preface

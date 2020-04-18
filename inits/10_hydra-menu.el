@@ -3,15 +3,15 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf hydra-quick-menu
+(leaf *hydra-quick-menu
   :bind ("M-." . hydra-quick-menu/body)
   :preface
   (defhydra hydra-quick-menu (:hint nil :exit t)
     "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   isearch:_[_:_]_
-   magit:_s_   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   day-works:_._"
+  ---^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------------------
+   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   isearch:_[__]_   work:_<right>_
+   magit:_._   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   _s_earch-web"
     ("1" my:pdfout-buffer)
     ("2" my:pdfout-region)
     ("a" counsel-ag)
@@ -33,7 +33,7 @@
     ("z" eshell)
     ("]" isearch-forward)
     ("[" isearch-backward)
-    ("s" magit-status)
+    ("." magit-status)
     ("m" hydra-markdown/body)
     (":" hydra-pinky/body)
     (";" my:dot-emacs-dir)
@@ -48,7 +48,8 @@
     ("G" gist-region-or-buffer)
     ("l" gist-list)
     ("u" undo-tree-visualize)
-    ("." hydra-work/body)
+    ("s" hydra-search/body)
+    ("<right>" hydra-work/body)
     ("/" kill-other-buffers)
     ("\\" delete-other-windows)
     ("_" delete-other-windows)
@@ -63,13 +64,13 @@
       (shell-command "filezilla"))))
 
 
-(leaf hydra-Work
+(leaf *hydra-Work
   :config
   (key-chord-define-global
    ".."
    (defhydra hydra-work (:hint nil :exit t)
      "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  quick-menu:_._"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  quick-menu:_<left>_"
      ("a" my:apsh)
      ("A" my:apsh-new-post)
      ("e" easy-hugo)
@@ -91,7 +92,7 @@
      (":" view-mode)
      ("/" kill-other-buffers)
      ("_" delete-other-windows)
-     ("." hydra-quick-menu/body)
+     ("<left>" hydra-quick-menu/body)
      ("q" keyboard-quit)))
   :preface
   (defun backup-melpa ()

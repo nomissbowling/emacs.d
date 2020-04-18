@@ -19,7 +19,7 @@
   (setq dashboard-footer-icon
   	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face)))
 
-(leaf insert-custom
+(leaf *insert-custom
   :config
   (bind-key "<home>" 'open-dashboard)
   (bind-keys :map dashboard-mode-map

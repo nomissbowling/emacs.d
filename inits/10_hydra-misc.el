@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf hydra-package
+(leaf *hydra-package
   :config
   (defhydra hydra-package (:color red :hint nil)
     "
@@ -37,7 +37,7 @@
      @ : make a gist out of marked files"
   ("." nil))
 
-(leaf hydra-browse
+(leaf *hydra-browse
   :config
   (defhydra hydra-browse (:hint nil :exit t)
     "
@@ -81,7 +81,7 @@
     ("," browse-slack)
     ("." nil))
   :preface
-  (leaf WSL-browse-url
+  (leaf *WSL-browse-url
     :doc "Emacs in WSL and opening links"
     :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
     :if (getenv "WSLENV")

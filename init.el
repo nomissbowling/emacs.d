@@ -103,6 +103,10 @@
 ;; Load newer whichever el or elc
 (setq load-prefer-newer t)
 
+;; load my-lisp
+(leaf my-dired :require t)
+(leaf my-template :require t)
+
 ;; Init-loader
 (custom-set-variables
  '(init-loader-show-log-after-init 'error-only))

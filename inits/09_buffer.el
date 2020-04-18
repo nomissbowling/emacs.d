@@ -4,9 +4,8 @@
 ;; (setq debug-on-error t)
 
 (leaf auto-save-buffers-enhanced
-  :config
-  (setq auto-save-buffers-enhanced-quiet-save-p t)
-  (auto-save-buffers-enhanced t))
+  :custom (auto-save-buffers-enhanced-quiet-save-p . t)
+  :config (auto-save-buffers-enhanced t))
 
 (leaf *toggle-scratch
   :doc "Toggle current buffer and scratch-buffer."
@@ -34,15 +33,13 @@
   :hook ((dired-mode-hook . turn-on-tempbuf-mode)
 	 (magit-mode-hook . turn-on-tempbuf-mode)
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
-  :custom
-  (tempbuf-kill-message . nil))
+  :custom (tempbuf-kill-message . nil))
 
 (leaf iflipb
   :bind (("C-<right>" . iflipb-next-buffer)
 	 ("C-<left>" . iflipb-previous-buffer))
   :custom (iflipb-wrap-around . t)
-  :config
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
+  :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
 (leaf kill-buffer
   :bind (("M-/" . kill-buffer)
@@ -55,8 +52,7 @@
     (message "Killed other buffers!")))
 
 (leaf undohist
-  :hook
-  (after-init-hook . undohist-initialize)
+  :hook (after-init-hook . undohist-initialize)
   :custom (undohist-ignored-files . '("/tmp" "COMMIT_EDITMSG")))
 
 (leaf undo-tree
@@ -67,13 +63,12 @@
 	  ("C-x u" . undo-tree-visualize))
   :hook ((prog-mode-hook . undo-tree-mode)
 	 (text-mode-hook . undo-tree-mode))
-  :init
-  (setq undo-tree-visualizer-timestamps t
-	undo-tree-visualizer-diff t
-	undo-tree-enable-undo-in-region nil
-	undo-tree-auto-save-history nil
-	undo-tree-history-directory-alist
-	`(("." . ,(concat user-emacs-directory "undo-tree-hist/"))))
+  :custom ((undo-tree-visualizer-timestamps . t)
+	   (undo-tree-visualizer-diff . t)
+	   (undo-tree-enable-undo-in-region . nil)
+	   (undo-tree-auto-save-history . nil)
+	   (undo-tree-history-directory-alist
+	    . `(("." . ,(concat user-emacs-directory "undo-tree-hist/")))))
   :config
   ;; FIXME: `undo-tree-visualizer-diff' is a local variable in *undo-tree* buffer.
   (defun undo-tree-visualizer-show-diff (&optional node)
@@ -93,8 +88,7 @@
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
 (leaf imenu-list
-  :bind
-  ("<f10>" . imenu-list-smart-toggle)
+  :bind ("<f10>" . imenu-list-smart-toggle)
   :custom ((imenu-list-focus-after-activation . t)
 	   (imenu-list-size . 30)
 	   (imenu-list-position . 'left)))

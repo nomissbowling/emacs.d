@@ -32,8 +32,7 @@
 	 (after-init-hook . ivy-prescient-mode)))
 
 (leaf persistent-scratch
-  :config
-  (persistent-scratch-setup-default))
+  :config (persistent-scratch-setup-default))
 
 (leaf quickrun
   :bind ("<f5>" . quickrun))

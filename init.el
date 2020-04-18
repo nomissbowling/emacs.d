@@ -96,12 +96,12 @@
     (dolist (pkg not-installed)
       (package-install pkg))))
 
-;; Load path
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp/my-lisp/")
-
 ;; Load newer whichever el or elc
 (setq load-prefer-newer t)
+
+;; lod-path
+(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+(add-to-list 'load-path "~/Dropbox/emacs.d/elisp/mylisp")
 
 ;; load my-lisp
 (leaf my-dired :require t)

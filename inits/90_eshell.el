@@ -11,7 +11,7 @@
 	   (eshell-cmpl-cycle-completions . t)
 	   (eshell-cmpl-cycle-cutoff-length . 5)
 	   (eshell-hist-ignoredups . t)
-	   (eshell-prompt-regexp . "^[^#$\n]*[$#] "))
+	   (eshell-prompt-regexp . "^[^#$]*[$#] "))
   :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
   :config

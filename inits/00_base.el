@@ -70,61 +70,58 @@
     (lambda ()
       (fset 'makefile-warn-suspicious-lines 'ignore)))))
 
-(leaf key-modify
+(leaf modified
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))
   :bind (([insert] . clipboard-yank)
 	 ("C-." . xref-find-definitions))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	  ("C-x C-c" . iconify-frame)))
-
-;; Exit Emacs with M-x exitle
-(defalias 'exit 'save-buffers-kill-emacs)
-;; Input yes or no to y or n (even SPC OK instead of y)
-(defalias 'yes-or-no-p 'y-or-n-p)
-;; Set transparency (active inactive)
-(add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
-
-(leaf save-place
-  :hook (after-init-hook . save-place-mode))
-
-(leaf savehist
-  :doc "Save history of minibuffer."
-  :hook (after-init-hook . savehist-mode)
-  :custom (history-length . 1000))
-
-(leaf uniquify
-  :doc "Make it easy to see when it is the same name file."
-  :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
-	   (uniquify-min-dir-content . 1)))
-
-(leaf generic-x
-  :doc "contains many mode setting")
-
-(leaf select
-  :doc "use the X11 clipboard."
-  :bind (("M-w" . clipboard-kill-ring-save)
-	 ("C-w" . my:clipboard-kill-region))
-  :custom (select-enable-clipboard . t)
+	  ("C-x C-c" . iconify-frame))
   :preface
-  (defun my:clipboard-kill-region ()
-    "If the region is active, `clipboard-kill-region'. If the region is inactive, `backward-kill-word'."
-    (interactive)
-    (if (use-region-p)
-	(clipboard-kill-region (region-beginning) (region-end))
-      (backward-kill-word 1))))
+  ;; Exit Emacs with M-x exitle
+  (defalias 'exit 'save-buffers-kill-emacs)
+  ;; Input yes or no to y or n (even SPC OK instead of y)
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  ;; Set transparency (active inactive)
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8))))
 
-(leaf recentf
-  :hook (after-init-hook . recentf-mode)
-  :custom((recentf-save-file . "~/.emacs.d/recentf")
-	  (recentf-max-saved-items . 200)
-	  (recentf-auto-cleanup . 'never)
-	  (recentf-exclude
-	   . '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-	       "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-	       (lambda (file) (file-in-directory-p file package-user-dir)))))
+(leaf *cus-misc
   :config
-  (push (expand-file-name recentf-save-file) recentf-exclude))
+  (leaf save-place
+    :hook (after-init-hook . save-place-mode))
+  (leaf savehist
+    :doc "Save history of minibuffer."
+    :hook (after-init-hook . savehist-mode)
+    :custom (history-length . 1000))
+  (leaf uniquify
+    :doc "Make it easy to see when it is the same name file."
+    :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
+	     (uniquify-min-dir-content . 1)))
+  (leaf generic-x
+    :doc "contains many mode setting")
+  (leaf select
+    :doc "use the X11 clipboard."
+    :bind (("M-w" . clipboard-kill-ring-save)
+	   ("C-w" . my:clipboard-kill-region))
+    :custom (select-enable-clipboard . t)
+    :preface
+    (defun my:clipboard-kill-region ()
+      "If the region is active, `clipboard-kill-region'. If the region is inactive, `backward-kill-word'."
+      (interactive)
+      (if (use-region-p)
+	  (clipboard-kill-region (region-beginning) (region-end))
+	(backward-kill-word 1))))
+  (leaf recentf
+    :hook (after-init-hook . recentf-mode)
+    :custom((recentf-save-file . "~/.emacs.d/recentf")
+	    (recentf-max-saved-items . 200)
+	    (recentf-auto-cleanup . 'never)
+	    (recentf-exclude
+	     . '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+		 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+		 (lambda (file) (file-in-directory-p file package-user-dir)))))
+    :config
+    (push (expand-file-name recentf-save-file) recentf-exclude)))
 
 ;; M-x info-emacs-manual (C-h r or F1+r)
 (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
@@ -137,7 +134,7 @@
 	 args))
 (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
-;; Load my-lisp
+;; load-my-lisp			;
 (leaf my-dired :require t)
 (leaf my-template :require t)
 

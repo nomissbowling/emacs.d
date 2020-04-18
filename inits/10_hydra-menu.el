@@ -52,10 +52,19 @@
     ("/" kill-other-buffers)
     ("\\" delete-other-windows)
     ("_" delete-other-windows)
-    ("M-." nil)))
+    ("M-." nil))
+  :config
+  (defun ftp-client ()
+    "Open Ftp application."
+    (interactive)
+    (when (getenv "WSLENV")
+      (shell-command "/mnt/c/\"Program Files\"/\"FileZilla FTP Client\"/filezilla.exe"))
+    (when (getenv "")
+      (shell-command "filezilla"))))
+
 
 (leaf hydra-Work
-  :preface
+  :config
   (key-chord-define-global
    ".."
    (defhydra hydra-work (:hint nil :exit t)
@@ -84,14 +93,7 @@
      ("_" delete-other-windows)
      ("." hydra-quick-menu/body)
      ("q" keyboard-quit)))
-  :config
-  (defun ftp-client ()
-    "Open Ftp application."
-    (interactive)
-    (when (getenv "WSLENV")
-      (shell-command "/mnt/c/\"Program Files\"/\"FileZilla FTP Client\"/filezilla.exe"))
-    (when (getenv "")
-      (shell-command "filezilla")))
+  :preface
   (defun backup-melpa ()
     "Backup for melpa package."
     (interactive)

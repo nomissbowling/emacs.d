@@ -70,20 +70,20 @@
     (lambda ()
       (fset 'makefile-warn-suspicious-lines 'ignore)))))
 
-(leaf cus-misc
+(leaf key-modify
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))
   :bind (([insert] . clipboard-yank)
 	 ("C-." . xref-find-definitions))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	  ("C-x C-c" . iconify-frame))
-  :config
-  ;; Exit Emacs with M-x exitle
-  (defalias 'exit 'save-buffers-kill-emacs)
-  ;; Input yes or no to y or n (even SPC OK instead of y)
-  (defalias 'yes-or-no-p 'y-or-n-p)
-  ;; Set transparency (active inactive)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8))))
+	  ("C-x C-c" . iconify-frame)))
+
+;; Exit Emacs with M-x exitle
+(defalias 'exit 'save-buffers-kill-emacs)
+;; Input yes or no to y or n (even SPC OK instead of y)
+(defalias 'yes-or-no-p 'y-or-n-p)
+;; Set transparency (active inactive)
+(add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
 
 (leaf save-place
   :hook (after-init-hook . save-place-mode))

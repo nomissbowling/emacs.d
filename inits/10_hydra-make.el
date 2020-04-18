@@ -6,7 +6,7 @@
 (leaf hydra-make
   :bind ("<f2>" . hydra-make/body)
   :custom (compilation-scroll-output . t)
-  :preface
+  :config
   (defhydra hydra-make (:color red :hint nil)
     "
  🗿 Compile: make:_k_  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _e_rror 🐾 "
@@ -19,7 +19,7 @@
     ("e" next-error)
     ("<f2>" nil)
     ("q" nil))
-  :config
+  :preface
   ;; my-make-command
   (defun my:make-k ()
     "Make command default."

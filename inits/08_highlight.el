@@ -7,14 +7,13 @@
   :hook (after-init-hook . smartparens-global-mode))
 
 (leaf aggressive-indent
-  :hook
-  (emacs-lisp-mode-hook . aggressive-indent-mode)
-  (css-mode-hook . aggressive-indent-mode))
+  :hook ((emacs-lisp-mode-hook . aggressive-indent-mode)
+	 (css-mode-hook . aggressive-indent-mode)))
 
 (leaf paren
+  :custom (show-paren-style . 'mixed)
   :config
   (show-paren-mode 1)
-  (setq show-paren-style 'mixed)
   (custom-set-faces
    '(show-paren-match ((nil (:background "lime green" :foreground "#f1fa8c"))))))
 
@@ -24,7 +23,7 @@
 (leaf beacon
   :doc "Enable beacon-mode ... flush the current line."
   :hook (after-init-hook . beacon-mode)
-  :config (setq beacon-color "yellow"))
+  :custom (beacon-color . "yellow"))
 
 (leaf rainbow-delimiters
   :hook (prog-mode-hook . rainbow-delimiters-mode))
@@ -32,9 +31,8 @@
 (leaf volatile-highlights
   :hook (after-init-hook . volatile-highlights-mode)
   :config
-  (set-face-background 'vhl/default-face "yellow"))
-  ;; (custom-set-faces
-  ;;  '(vhl/default-face ((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
+  (custom-set-faces
+   '(vhl/default-face ((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
 
 (leaf hiwin
   :doc "Set background color of inactive window."
@@ -46,7 +44,7 @@
   :bind ("C-c c" . my:cleanup-for-spaces)
   :hook (prog-mode-hook . my:enable-trailing-mode)
   :custom (show-trailing-whitespace . nil)
-  :preface
+  :config
   (defun my:enable-trailing-mode ()
     "Show tail whitespace."
     (setq show-trailing-whitespace t))

@@ -34,10 +34,6 @@
 	    . "\n------------------------------------------------------------\n")
 	   (ivy-format-functions-alist . '((t . my:ivy-format-function-arrow)))
 	   )
-  :config
-  (leaf ivy-rich
-    :doc "More friendly display transformer for Ivy"
-    :hook (ivy-mode-hook . ivy-rich-mode))
   :preface
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."
@@ -62,7 +58,11 @@ If the region isn't selected, `swiper-isearch'."
     (interactive)
     (if (not (use-region-p))
 	(swiper-isearch)
-      (swiper-isearch-thing-at-point))))
+      (swiper-isearch-thing-at-point)))
+  :config
+  (leaf ivy-rich
+    :doc "More friendly display transformer for Ivy"
+    :hook (ivy-mode-hook . ivy-rich-mode)))
 
 (leaf counsel-tramp
   :custom ((tramp-default-method . "ssh")

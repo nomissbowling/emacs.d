@@ -31,21 +31,20 @@
 
 (leaf tempbuf :require t
   :doc "automatically kill unnecessary buffers"
-  :hook
-  (dired-mode-hook . turn-on-tempbuf-mode)
-  (magit-mode-hook . turn-on-tempbuf-mode)
-  (compilation-mode-hook . turn-on-tempbuf-mode)
+  :hook ((dired-mode-hook . turn-on-tempbuf-mode)
+	 (magit-mode-hook . turn-on-tempbuf-mode)
+	 (compilation-mode-hook . turn-on-tempbuf-mode))
   :custom
   (tempbuf-kill-message . nil))
 
 (leaf iflipb
   :bind (("C-<right>" . iflipb-next-buffer)
 	 ("C-<left>" . iflipb-previous-buffer))
+  :custom (iflipb-wrap-around . t)
   :config
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir"))
-  (setq iflipb-wrap-around t))
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
-(leaf cus-kill-buffer
+(leaf kill-buffer
   :bind (("M-/" . kill-buffer)
 	 ("C-M-/" . kill-other-buffer))
   :preface
@@ -58,8 +57,7 @@
 (leaf undohist
   :hook
   (after-init-hook . undohist-initialize)
-  :config
-  (setq undohist-ignored-files '("/tmp" "COMMIT_EDITMSG")))
+  :custom (undohist-ignored-files . '("/tmp" "COMMIT_EDITMSG")))
 
 (leaf undo-tree
   :bind* (("C-_" . undo-tree-undo)
@@ -67,9 +65,8 @@
 	  ("M-_" . undo-tree-redo)
 	  ("M-\\" . undo-tree-redo)
 	  ("C-x u" . undo-tree-visualize))
-  :hook
-  (prog-mode-hook . undo-tree-mode)
-  (text-mode-hook . undo-tree-mode)
+  :hook ((prog-mode-hook . undo-tree-mode)
+	 (text-mode-hook . undo-tree-mode))
   :init
   (setq undo-tree-visualizer-timestamps t
 	undo-tree-visualizer-diff t

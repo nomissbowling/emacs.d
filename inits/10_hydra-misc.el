@@ -16,13 +16,11 @@
     ("q" nil)))
 
 (leaf gist
-  :bind (("M-g r" . gist-region-or-buffer)
-	 ("M-g l" . gist-list)
-	 (:tabulated-list-mode-map
-	  ("." . hydra-gist-help/body)))
-  :preface
-  (defhydra hydra-gist-help ()
-    "
+  :bind (:tabulated-list-mode-map
+	 ("." . hydra-gist-help/body)))
+:preface
+(defhydra hydra-gist-help ()
+  "
   🎲 Function for gist
      M-x gist-list: Lists your gists in a new buffer
      M-x gist-region-or-buffer: Post either the current region or buffer
@@ -37,9 +35,9 @@
     -----------------------------
   🎲 In dired buffer
      @ : make a gist out of marked files"
-    ("." nil)))
+  ("." nil))
 
-(leaf cus-hydra-browse
+(leaf hydra-browse
   :config
   (defhydra hydra-browse (:hint nil :exit t)
     "
@@ -81,20 +79,20 @@
     ("p" browse-pocket)
     ("t" browse-tweetdeck)
     ("," browse-slack)
-    ("." nil)))
-
-(leaf browse-url
-  :doc "Emacs in WSL and opening links"
-  :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
-  :if (getenv "WSLENV")
-  :config
-  (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
-	(cmd-args '("/c" "start")))
-    (when (file-exists-p cmd-exe)
-      (setq browse-url-generic-program  cmd-exe
-	    browse-url-generic-args     cmd-args
-	    browse-url-browser-function 'browse-url-generic
-	    search-web-default-browser 'browse-url-generic))))
+    ("." nil))
+  :preface
+  (leaf WSL-browse-url
+    :doc "Emacs in WSL and opening links"
+    :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
+    :if (getenv "WSLENV")
+    :config
+    (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
+	  (cmd-args '("/c" "start")))
+      (when (file-exists-p cmd-exe)
+	(setq browse-url-generic-program  cmd-exe
+	      browse-url-generic-args     cmd-args
+	      browse-url-browser-function 'browse-url-generic
+	      search-web-default-browser 'browse-url-generic)))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

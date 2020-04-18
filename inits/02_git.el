@@ -6,8 +6,9 @@
 (leaf magit
   :bind (("<f8>" . magit-status)
 	 ("<f7>" . hydra-magit/body))
-  :custom (magit-display-buffer-function
-	   . #'magit-display-buffer-fullframe-status-v1)
+  :custom
+  (magit-display-buffer-function
+   . #'magit-display-buffer-fullframe-status-v1)
   :preface
   (defhydra hydra-magit (:color red :hint nil)
     "

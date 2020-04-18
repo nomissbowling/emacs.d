@@ -7,16 +7,15 @@
 
 (leaf doom-modeline
   :commands doom-modeline-def-modeline
-  :hook
-  (after-init-hook . doom-modeline-mode)
-  :custom
-  (doom-modeline-buffer-file-name-style . 'truncate-with-project)
-  (doom-modeline-icon . t)
-  (doom-modeline-major-mode-icon . nil)
-  (doom-modeline-minor-modes . nil)
+  :hook (after-init-hook . doom-modeline-mode)
+  :custom ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
+	   (doom-modeline-icon . t)
+	   (doom-modeline-major-mode-icon . nil)
+	   (doom-modeline-minor-modes . nil))
   :config
   (line-number-mode 0)
   (column-number-mode 0)
+  :preface
   (leaf hide-mode-line
     :hook
     ((direx:direx-mode imenu-list-minor-mode diff-mode) . hide-mode-line-mode))
@@ -28,9 +27,8 @@
 
 (leaf display-line-numbers
   :bind ("<f9>" . display-line-numbers-mode)
-  :hook
-  (prog-mode-hook . display-line-numbers-mode)
-  (text-mode-hook . display-line-numbers-mode))
+  :hook ((prog-mode-hook . display-line-numbers-mode)
+	 (text-mode-hook . display-line-numbers-mode)))
 
 (leaf darkroom
   :doc "Remove visual distractions and focus on writing."
@@ -59,10 +57,8 @@
 (leaf all-the-icons-dired
   :url "https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el"
   :commands dired-mode
-  :hook
-  (dired-mode-hook . all-the-icons-dired-mode)
+  :hook (dired-mode-hook . all-the-icons-dired-mode)
   :custom
-  ;; Dired files deleted by trash and no ask recursive
   (delete-by-moving-to-trash . t)
   (dired-recursive-copies . :always)
   (dired-recursive-deletes . :always)
@@ -71,6 +67,8 @@
   ;; Recursively copy directory
   (dired-recursive-copies . :always)
   :config
+  (advice-add #'all-the-icons-dired--display
+	      :override #'my:all-the-icons-dired--display)
   (defun my:all-the-icons-dired--display ()
     "Display the icons of files without colors in a dired buffer."
     (when dired-subdir-alist
@@ -115,8 +113,7 @@
 			  (insert icon))
 		      (insert (all-the-icons-icon-for-file file :v-adjust all-the-icons-dired-v-adjust))))
 		  (insert "\t"))))   ; Align and keep one space for refeshing after operations
-	    (forward-line 1))))))
-  (advice-add #'all-the-icons-dired--display :override #'my:all-the-icons-dired--display))
+	    (forward-line 1)))))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

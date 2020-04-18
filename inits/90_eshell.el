@@ -11,17 +11,17 @@
 	   (eshell-cmpl-cycle-completions . t)
 	   (eshell-cmpl-cycle-cutoff-length . 5)
 	   (eshell-hist-ignoredups . t)
+	   (eshell-prompt-function . 'my:eshell-prompt)
 	   (eshell-prompt-regexp . "^[^#$]*[$#] "))
   :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
   :config
-  (setq eshell-command-aliases-list (append
-				     (list
-				      (list "cl" "clear")
-				      (list "ll" "ls -ltr -S")
-				      (list "la" "ls -a -S")
-				      (list "ex" "exit"))))
-  (setq eshell-prompt-function 'my:eshell-prompt)
+  (setq eshell-command-aliases-list
+	(append (list
+		 (list "cl" "clear")
+		 (list "ll" "ls -ltr -S")
+		 (list "la" "ls -a -S")
+		 (list "ex" "exit"))))
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat (eshell/pwd)

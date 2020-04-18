@@ -17,32 +17,32 @@
   		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
   ;; Set the footer
   (setq dashboard-footer-icon
-  	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+  	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face)))
+
+(leaf insert-custom
+  :config
+  (bind-key "<home>" 'open-dashboard)
+  (bind-keys :map dashboard-mode-map
+  	     ("c" . browse-calendar)
+  	     ("w" . browse-weather)
+  	     ("n" . browse-google-news)
+  	     ("m" . browse-gmail)
+  	     ("t" . browse-tweetdeck)
+  	     ("s" . browse-slack)
+  	     ("h" . browse-homepage)
+  	     ("p" . browse-pocket)
+  	     ("." . hydra-browse/body)
+  	     ("<home>" . quit-dashboard))
+  :preface
   ;; Insert custom item
+  (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
+  (add-to-list 'dashboard-items '(custom) t)
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
     (interactive)
     (insert (if (display-graphic-p)
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
     (insert "    Calendar: (c)    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
-  (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
-  (add-to-list 'dashboard-items '(custom) t))
-
-(leaf dashboard-custom-menu
-  :config
-  (bind-key "<home>" 'open-dashboard)
-  (bind-keys :map dashboard-mode-map
-	     ("c" . browse-calendar)
-	     ("w" . browse-weather)
-	     ("n" . browse-google-news)
-	     ("m" . browse-gmail)
-	     ("t" . browse-tweetdeck)
-	     ("s" . browse-slack)
-	     ("h" . browse-homepage)
-	     ("p" . browse-pocket)
-	     ("." . hydra-browse/body)
-	     ("<home>" . quit-dashboard))
-  :preface
   (defun open-dashboard ()
     "Open the *dashboard* buffer and jump to the first widget."
     (interactive)
@@ -69,7 +69,7 @@
     (interactive)
     (funcall (local-key-binding "r")))
 
-  (leaf my-browse-url
+  (leaf my:browse-url
     :config
     (defun browse-calendar ()
       "Open Google-calendar with chrome."

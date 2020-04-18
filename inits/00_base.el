@@ -136,10 +136,6 @@
 	     (_ filename))
 	   args)))
 
-;; load-my-lisp
-(leaf my-dired :require t)
-(leaf my-template :require t)
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

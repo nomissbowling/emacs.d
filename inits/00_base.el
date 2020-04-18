@@ -70,7 +70,7 @@
     (lambda ()
       (fset 'makefile-warn-suspicious-lines 'ignore)))))
 
-(leaf *modified
+(leaf *key-modified
   :mode (("\\.html?\\'" . web-mode)
 	 ("\\.mak\\'" . makefile-mode))
   :bind (([insert] . clipboard-yank)

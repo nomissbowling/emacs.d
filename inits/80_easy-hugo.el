@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf easy-hugo
+(leaf easy-hugo :ensure t
   :url "https://github.com/masasam/emacs-easy-hugo"
   :bind (("C-c C-e" . easy-hugo)
 	 ("C-x p" . easy-hugo-preview)

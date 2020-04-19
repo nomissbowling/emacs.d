@@ -3,13 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf mozc
+(leaf mozc :ensure t
   :bind (("C-c C-w" . mozc-word-regist)
 	 ("C-c C-d" . mozc-config-dialog))
   :bind* ("<henkan>" . toggle-input-method)
-  ;; :init
-  ;; (setq default-input-method "japanese-mozc")
-  ;; (setq mozc-helper-program-name "mozc_emacs_helper")
   :custom
   (default-input-method . "japanese-mozc")
   (mozc-helper-program-name . "mozc_emacs_helper")
@@ -17,12 +14,14 @@
   (custom-set-variables '(mozc-leim-title "かな "))
   (leaf mozc-cursor-color :require t
     :url "https://github.com/iRi-E/mozc-el-extensions"
+    :el-get iRi-E/mozc-el-extensions
     :after mozc)
   (leaf mozc-posframe :require t
     :url "https://github.com/derui/mozc-posframe"
+    :el-get derui/mozc-posframe
     :after mozc
     :config
-    (setq mozc-candidate-style 'posframe))
+    (mozc-posframe-register))
   (defun mozc-word-regist ()
     "Mozc word regist."
     (interactive)

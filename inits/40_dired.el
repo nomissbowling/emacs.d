@@ -30,13 +30,16 @@
     :after dired
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
+
   (leaf dired-list-all-mode :require t
     :doc "Toggle listing dot files in dired"
     :url "https://github.com/10sr/emacs-lisp/blob/master/docs/elpa/dired-list-all-mode-20161115.118.el"
     :after dired
     :config
     (setq dired-listing-switches "-lhFG"))
+
   (leaf dired-rsync
+    :ensure t
     :doc "Allow rsync from dired buffers"
     :url "https://github.com/stsquad/dired-rsync"
     :bind (:dired-mode-map
@@ -108,7 +111,7 @@
     (call-interactively 'dired-unmark-all-marks)
     (call-interactively 'revert-buffer)))
 
-(leaf direx
+(leaf direx :ensure t
   :doc "Yet another dired for tree display."
   :url "https://github.com/emacsorphanage/direx"
   :url "https://blog.shibayu36.org/entry/2013/02/12/191459"

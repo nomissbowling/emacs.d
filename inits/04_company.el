@@ -4,6 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf company
+  :ensure t
   :bind (([C-tab] . company-complete)
 	 ([backtab] . company-yasnippet)
 	 (:company-active-map
@@ -11,7 +12,7 @@
 	  ("SPC" . company-select-next)
 	  ([backtab] . my:company-yasnippet)))
   :hook (after-init-hook . global-company-mode)
-  :preface
+  :config
   (defun my:company-yasnippet ()
     (interactive)
     (company-abort)

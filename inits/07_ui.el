@@ -3,9 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(load-theme 'doom-dracula t)
+(leaf doom-themes :ensure t
+  :config (load-theme 'doom-dracula t))
 
-(leaf doom-modeline
+(leaf doom-modeline :ensure t
   :commands doom-modeline-def-modeline
   :hook (after-init-hook . doom-modeline-mode)
   :custom ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
@@ -16,10 +17,10 @@
   (line-number-mode 0)
   (column-number-mode 0)
   :preface
-  (leaf hide-mode-line
+  (leaf hide-mode-line :ensure t
     :hook
     ((direx:direx-mode imenu-list-minor-mode diff-mode) . hide-mode-line-mode))
-  (leaf nyan-mode
+  (leaf nyan-mode :ensure t
     :hook (after-init-hook . nyan-mode)
     :custom
     (nyan-cat-face-number . 4)
@@ -33,6 +34,7 @@
 (leaf darkroom
   :doc "Remove visual distractions and focus on writing."
   :url "https://github.com/joaotavora/darkroom"
+  :el-get joaotavora/darkroom
   :bind (("<f12>" . my:darkroom-mode-in)
 	 (:darkroom-mode-map
 	  ("<f12>" . my:darkroom-mode-out )))
@@ -50,11 +52,10 @@
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 
-(leaf all-the-icons
-  :custom
-  (all-the-icons-scale-factor . 1.0))
+(leaf all-the-icons :ensure t
+  :custom (all-the-icons-scale-factor . 1.0))
 
-(leaf all-the-icons-dired
+(leaf all-the-icons-dired :ensure t
   :url "https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el"
   :commands dired-mode
   :hook (dired-mode-hook . all-the-icons-dired-mode)

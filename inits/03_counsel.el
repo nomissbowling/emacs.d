@@ -4,6 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf counsel
+  :ensure t
   :bind (("C-s" . swiper-isearch-region)
 	 ("C-r" . swiper-thing-at-point)
 	 ("C-:" . counsel-switch-buffer)
@@ -61,10 +62,11 @@ If the region isn't selected, `swiper-isearch'."
       (swiper-isearch-thing-at-point)))
   :config
   (leaf ivy-rich
-    :doc "More friendly display transformer for Ivy"
+    :ensure t
     :hook (ivy-mode-hook . ivy-rich-mode)))
 
 (leaf counsel-tramp
+  :ensure t
   :custom ((tramp-default-method . "ssh")
 	   (counsel-tramp-custom-connections
 	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/)))

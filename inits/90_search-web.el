@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf search-web
+(leaf search-web :ensure t
   :url "https://github.com/tomoya/search-web.el"
   :commands search-web-dwim
   :config

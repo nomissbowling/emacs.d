@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf migemo
+(leaf migemo :ensure t
   :when (executable-find "cmigemo")
   :hook (after-init-hook . migemo-init)
   :custom ((migemo-command . "cmigemo")

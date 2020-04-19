@@ -22,6 +22,7 @@
   (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
 
 (leaf exec-path-from-shell
+  :ensure t
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :custom (exec-path-from-shell-check-startup-files . nil))
 
@@ -83,7 +84,7 @@
   ;; Input yes or no to y or n (even SPC OK instead of y)
   (defalias 'yes-or-no-p 'y-or-n-p))
 
-(leaf *cus-misc
+(leaf *set-misc
   :config
   ;; Set transparency (active inactive)
   (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
@@ -123,7 +124,7 @@
     :config
     (push (expand-file-name recentf-save-file) recentf-exclude)))
 
-(leaf *manual
+(leaf *emacs-manual
   :config
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
@@ -135,6 +136,10 @@
 	     ("emacs" "emacs-ja.info")
 	     (_ filename))
 	   args)))
+
+;; load my-lisp
+(leaf my-dired :require t)
+(leaf my-template :require t)
 
 ;; Local Variables:
 ;; no-byte-compile: t

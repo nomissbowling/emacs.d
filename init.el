@@ -1,7 +1,27 @@
-﻿;;; init.el --- init.el
+;;; init.el --- My init.el  -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2020  Naoya Yamashita
+;; Author: Naoya Yamashita <conao3@gmail.com>
+;; Modified: Minoru Yamada <minorughgmail.com>
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ;;; Commentary:
+
+;; My init.el.
+
 ;;; Code:
-;; (setq debug-on-error t)
 
 ;; Custom start
 (menu-bar-mode 0)
@@ -12,100 +32,37 @@
 (setq inhibit-startup-message t)
 (setq gc-cons-threshold (* 128 1024 1024))
 
-;; package
-(require 'package)
-(setq package-user-dir "~/.emacs.d/elpa")
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-(package-initialize)
+;; this enables this running method
+;; emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
+(eval-and-compile
+  (when (or load-file-name byte-compile-current-file)
+    (setq user-emacs-directory
+          (expand-file-name
+           (file-name-directory (or load-file-name byte-compile-current-file))))))
 
-(defvar my:install-packages
-  '(aggressive-indent
-    all-the-icons-dired
-    auto-save-buffers-enhanced
-    avy
-    beacon
-    bind-key
-    browse-at-remote
-    company
-    company-prescient
-    counsel
-    counsel-projectile
-    counsel-css
-    counsel-tramp
-    dash
-    dashboard
-    dired-rsync
-    direx
-    doom-themes
-    doom-modeline
-    easy-hugo
-    exec-path-from-shell
-    expand-region
-    flymake-diagnostic-at-point
-    gist
-    git-timemachine
-    google-translate
-    hiwin
-    hide-mode-line
-    howm
-    htmlize
-    hydra
-    iflipb
-    init-loader
-    imenu-list
-    ivy-prescient
-    ivy-rich
-    ivy-yasnippet
-    key-chord
-    leaf
-    magit
-    markdown-mode
-    markdown-toc
-    migemo
-    mozc
-    nyan-mode
-    package-utils
-    persistent-scratch
-    popwin
-    posframe
-    prescient
-    projectile
-    quickrun
-    rainbow-delimiters
-    restart-emacs
-    search-web
-    sequential-command
-    smartparens
-    smex
-    sudo-edit
-    undohist
-    volatile-highlights
-    web-mode
-    which-key
-    yasnippet
-    yatex))
-
-;; Install packages that are not installed.
-(let ((not-installed
-       (cl-loop for x in my:install-packages
-                when (not (package-installed-p x))
-                collect x)))
-  (when not-installed
+(eval-and-compile
+  (customize-set-variable
+   'package-archives '(("org"   . "https://orgmode.org/elpa/")
+                       ("melpa" . "https://melpa.org/packages/")))
+  (package-initialize)
+  (unless (package-installed-p 'leaf)
     (package-refresh-contents)
-    (dolist (pkg not-installed)
-      (package-install pkg))))
+    (package-install 'leaf))
 
-;; Load newer whichever el or elc
-(setq load-prefer-newer t)
-
-;; lod-path
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp/mylisp")
-
-;; load my-lisp
-(leaf my-dired :require t)
-(leaf my-template :require t)
+  (leaf leaf-keywords
+    :ensure t
+    ;; Load newer whichever el or elc
+    :custom (load-prefer-newer . t)
+    :init
+    ;; optional packages
+    (leaf hydra :ensure t)
+    (leaf el-get :ensure t)
+    (leaf bind-key :ensure t)
+    (leaf init-loader :ensure t)
+    :config
+    (setq el-get-dir "~/Dropbox/emacs.d/elisp")
+    (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+    (leaf-keywords-init)))
 
 ;; Init-loader
 (custom-set-variables
@@ -116,6 +73,7 @@
 (provide 'init)
 
 ;; Local Variables:
-;; no-byte-compile: t
+;; indent-tabs-mode: nil
 ;; End:
+
 ;;; init.el ends here

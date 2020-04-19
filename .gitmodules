@@ -1,3 +1,0 @@
-[submodule "el-get"]
-	path = elisp/key-chord
-	url = https://github.com/zk-phi/key-chord.git

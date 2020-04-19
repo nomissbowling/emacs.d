@@ -3,10 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf smartparens
+(leaf smartparens :ensure t
   :hook (after-init-hook . smartparens-global-mode))
 
-(leaf aggressive-indent
+(leaf aggressive-indent :ensure t
   :hook ((emacs-lisp-mode-hook . aggressive-indent-mode)
 	 (css-mode-hook . aggressive-indent-mode)))
 
@@ -20,27 +20,27 @@
 (leaf hi-line
   :hook (after-init-hook . global-hl-line-mode))
 
-(leaf beacon
+(leaf beacon :ensure t
   :doc "Enable beacon-mode ... flush the current line."
   :hook (after-init-hook . beacon-mode)
   :custom (beacon-color . "yellow"))
 
-(leaf rainbow-delimiters
+(leaf rainbow-delimiters :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
 
-(leaf volatile-highlights
+(leaf volatile-highlights :ensure t
   :hook (after-init-hook . volatile-highlights-mode)
   :config
   (custom-set-faces
    '(vhl/default-face ((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
 
-(leaf hiwin
+(leaf hiwin :ensure t
   :doc "Set background color of inactive window."
   :config
   (hiwin-activate)
   (set-face-background 'hiwin-face "#364456"))
 
-(leaf whitespace
+(leaf whitespace :ensure t
   :bind ("C-c c" . my:cleanup-for-spaces)
   :hook (prog-mode-hook . my:enable-trailing-mode)
   :custom (show-trailing-whitespace . nil)

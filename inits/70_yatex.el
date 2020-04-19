@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf yatex
+(leaf yatex :ensure t
   :mode ("\\.tex\\'" . yatex-mode)
   :custom ((tex-command . "platex")
 	   (dviprint-command-format . "dvpd.sh %s")

@@ -3,49 +3,54 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf popwin
+(leaf popwin :ensure t
   :hook (after-init-hook . popwin-mode))
 
-(leaf expand-region
+(leaf expand-region :ensure t
   :bind ("C-@" . er/expand-region))
 
 (leaf key-chord
-  :config
-  (key-chord-mode 1)
-  (key-chord-define-global "df" 'counsel-descbinds)
-  (key-chord-define-global "l;" 'init-loader-show-log)
-  (key-chord-define-global "hj" 'undo)
-  (key-chord-define-global "@@" 'howm-list-all))
+  :el-get zk-phi/key-chord
+  :chord (("df" . counsel-descbinds)
+	  ("l;" . init-loader-show-log)
+	  ("hj" . undo))
+  :config (key-chord-mode 1))
 
-(leaf sequential-command
+(leaf sequential-command :ensure t
   :config
   (leaf sequential-command-config
     :hook (after-init-hook . sequential-command-setup-keys)))
 
-(leaf yasnippet
+(leaf yasnippet :ensure t
   :hook (after-init-hook . yas-global-mode)
   :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets")))
 
-(leaf prescient
-  :hook ((after-init-hook . prescient-persist-mode)
-	 (after-init-hook . company-prescient-mode)
-	 (after-init-hook . ivy-prescient-mode)))
+(leaf prescient :ensure t
+  :hook (after-init-hook . prescient-persist-mode)
+  :config
+  (leaf company-prescient :ensure t
+    :hook (after-init-hook . company-prescient-mode))
+  (leaf ivy-prescient :ensure t
+    :hook (after-init-hook . ivy-prescient-mode)))
 
-(leaf persistent-scratch
+(leaf persistent-scratch :ensure t
   :config (persistent-scratch-setup-default))
 
-(leaf quickrun
+(leaf quickrun :ensure t
   :bind ("<f5>" . quickrun))
 
 ;; which-key
-(leaf which-key
+(leaf which-key :ensure t
   :hook (after-init-hook . which-key-mode)
   :custom ((which-key-max-description-length . 40)
 	   (which-key-use-C-h-commands . t)))
 
-(leaf projectile
-  :hook ((after-init-hook . projectile-mode)
-	 (after-init-hook . counsel-projectile-mode)))
+(leaf projectile :ensure t
+  :hook (after-init-hook . projectile-mode)
+  :config
+  (leaf counsel-projectile
+    :ensure t
+    :hook (after-init-hook . counsel-projectile-mode)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

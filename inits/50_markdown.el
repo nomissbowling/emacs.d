@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf markdown-mode
+(leaf markdown-mode :ensure t
   :bind (:markdown-mode-map
 	 ("S-<tab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
   :config
   (leaf livedown :require t
     :doc "Preview via `livedown'"
-    :url "https://github.com/shime/livedown"
+    :url "https://github.com/shime/emacs-livedown"
     :custom ((livedown-autostart . nil)
 	     (livedown-open . t)
 	     (livedown-port . 1337)

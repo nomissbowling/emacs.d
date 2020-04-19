@@ -7,6 +7,7 @@
   :hook (prog-mode-hook . flymake-mode)
   :config
   (leaf flymake-diagnostic-at-point
+    :ensure t
     :after flymake
     :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
     (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))

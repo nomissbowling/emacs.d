@@ -3,45 +3,51 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf howm :ensure t
+(leaf howm
+  :ensure t
   :require t
-  :chord ("@@" . howm-list-all)
   :commands (howm-create howm-remember howm-list-all)
   :bind (:howm-view-summary-mode-map
 	 ([backtab] . howm-view-summary-previous-section))
-  :custom ((howm-view-title-header . "#")
-	   (howm-directory . "~/Dropbox/howm")
-	   (howm-file-name-format . "%Y/%m/%Y%m%d%H%M.md")
-	   (howm-keyword-file . "~/Dropbox/dotfiles/howm-conf/.howm-keys")
-	   (howm-history-file . "~/Dropbox/dotfiles/howm-conf/.howm-history")
-	   (howm-view-split-horizontally . t)
-	   (howm-view-summary-persistent . nil)
-	   (howm-list-normalizer . 'howm-view-sort-by-reverse-date)
-	   (howm-user-font-lock-keywords
-	    . '(("memo:" . (0 'dired-mark prepend))
-		("blog:" . (0 'error prepend))
-		("idea:" . (0 'diff-added prepend))
-		("hack:" . (0 'dired-marked prepend))
-		("mail:" . (0 'all-the-icons-silver prepend))
-		("page:" . (0 'all-the-icons-dgreen prepend))
-		("日記:" . (0 'diary prepend))
-		("note:" . (0 'diff-changed prepend)))))
-  :hydra (hydra-howm
-	  (:hint nil :exit t)
-	  "
- 📝 howm:  memo_,_  _i_dea  _h_ack  _n_ote  _d_iary  _p_age  _b_log  _m_ail  list_@_  "
-	  ("," my:howm-memo)
-	  ("i" my:howm-idea)
-	  ("h" my:howm-hack)
-	  ("n" my:howm-note)
-	  ("d" my:howm-dia)
-	  ("p" my:howm-page)
-	  ("b" my:howm-blog)
-	  ("m" my:howm-mail)
-	  ("@" howm-list-all)
-	  ("q" nil)))
+  :init
+  (setq howm-view-title-header "#")
 
-(leaf *cus-howm
+  :config
+  (setq howm-directory "~/Dropbox/howm"
+	howm-file-name-format "%Y/%m/%Y%m%d%H%M.md"
+	howm-keyword-file "~/Dropbox/dotfiles/howm-conf/.howm-keys"
+	howm-history-file "~/Dropbox/dotfiles/howm-conf/.howm-history"
+	howm-view-split-horizontally t
+	howm-view-summary-persistent nil
+	howm-list-normalizer 'howm-view-sort-by-reverse-date
+	howm-user-font-lock-keywords
+	'(("memo:" . (0 'dired-mark prepend))
+	  ("blog:" . (0 'error prepend))
+	  ("idea:" . (0 'diff-added prepend))
+	  ("hack:" . (0 'dired-marked prepend))
+	  ("mail:" . (0 'all-the-icons-silver prepend))
+	  ("page:" . (0 'all-the-icons-dgreen prepend))
+	  ("日記:" . (0 'diary prepend))
+	  ("note:" . (0 'diff-changed prepend))))
+
+  :hydra
+  (hydra-howm
+   (:hint nil :exit t)
+   "
+ 📝 howm:  memo_,_  _i_dea  _h_ack  _n_ote  _d_iary  _p_age  _b_log  _m_ail  list_@_  "
+   ("," my:howm-memo)
+   ("i" my:howm-idea)
+   ("h" my:howm-hack)
+   ("n" my:howm-note)
+   ("d" my:howm-dia)
+   ("p" my:howm-page)
+   ("b" my:howm-blog)
+   ("m" my:howm-mail)
+   ("@" howm-list-all)
+   ("q" nil)))
+
+
+(leaf *create-menu
   :config
   (defun my:howm-memo ()
     "My howm remember for memo."
@@ -100,7 +106,9 @@
     (forward-line -2)
     (forward-char 6)))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 60_howm.el ends here

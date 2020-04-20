@@ -3,11 +3,13 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf markdown-mode :ensure t
+(leaf markdown-mode
+  :ensure t
   :bind (:markdown-mode-map
 	 ("S-<tab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode ("\\.md$'" . gfm-mode)
+
   :custom ((markdown-enable-wiki-links . t)
 	   (markdown-italic-underscore . t)
 	   (markdown-asymmetric-header . t)
@@ -40,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 "))
+
   :custom-face
   (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
   (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))
@@ -49,30 +52,40 @@ document.addEventListener('DOMContentLoaded', () => {
   (markdown-list-face . '((t (:foreground "mediumpurple"))))
   (markdown-code-face . '((t (:background "#222" :inherit 'default))))
   (markdown-pre-face . '((t (:foreground "#bd98fe"))))
+
   :config
-  (leaf livedown :require t
-    :doc "Preview via `livedown'"
+  (leaf livedown
+    :doc "Markdown Preview"
     :url "https://github.com/shime/emacs-livedown"
+    :el-get  shime/emacs-livedown
+    :bind ((:markdown-mode-map
+	    :package markdown-mode
+	    ("C-c l p" . livedown-preview)
+	    ("C-c l k" . livedown-kill)))
+    :require t
     :custom ((livedown-autostart . nil)
 	     (livedown-open . t)
 	     (livedown-port . 1337)
 	     (livedown-browser . nil)))
-  (defhydra hydra-markdown (:color red :hint nil)
-    "
- _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _v_iewer:_k_  md2_p_df  md2_d_ocx"
-    ("i" markdown-insert-italic)
-    ("x" markdown-insert-strike-through)
-    ("t" markdown-insert-table)
-    ("o" markdown-toc-generate-or-refresh-toc)
-    ("f" markdown-insert-footnote)
-    ("v" livedown-preview)
-    ("k" livedown-kill)
-    ;; Pndoc
-    ("p" md2pdf)
-    ("d" md2docx)
-    ("q" nil)))
 
-(leaf *pandoc
+  :hydra
+  (hydra-markdown
+   (:color red :hint nil)
+   "
+ _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _v_iewer:_k_  md2_p_df  md2_d_ocx"
+   ("i" markdown-insert-italic)
+   ("x" markdown-insert-strike-through)
+   ("t" markdown-insert-table)
+   ("o" markdown-toc-generate-or-refresh-toc)
+   ("f" markdown-insert-footnote)
+   ("v" livedown-preview)
+   ("k" livedown-kill)
+   ;; Pndoc
+   ("p" md2pdf)
+   ("d" md2docx)
+   ("q" nil)))
+
+(leaf *md2pdf
   :config
   (defun md2pdf ()
     "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"
@@ -117,7 +130,48 @@ document.addEventListener('DOMContentLoaded', () => {
 		 (file-name-sans-extension filename)
 		 ".docx"))))))
 
+
+;; localstackと9000がぶつかるので変えた
+;; (setq markdown-preview-http-port 19000)
+;; (setq markdown-command "runpandoc")
+;; (setq markdown-use-pandoc-style-yaml-metadata t)
+
+;; ;; ショッキングピンクとか使ってて見た目がやばいので変える
+;; (setq markdown-preview-stylesheets nil)
+
+
+;; ;; markdown-preview like github
+(setq markdown-command "pandoc"
+      markdown-command-needs-filename t
+      markdown-content-type "application/xhtml+xml"
+      markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+			   "http://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
+      markdown-xhtml-header-content "
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<style>
+body {
+  box-sizing: border-box;
+  max-width: 740px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 0 10px;
+}
+</style>
+<script src='http://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('markdown-body');
+  document.querySelectorAll('pre[lang] > code').forEach((code) => {
+    code.classList.add(code.parentElement.lang);
+    hljs.highlightBlock(code);
+  });
+});
+</script>
+")
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 50_markdown.el ends here

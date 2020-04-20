@@ -3,8 +3,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf easy-hugo :ensure t
+(leaf easy-hugo
   :url "https://github.com/masasam/emacs-easy-hugo"
+  :ensure t
   :bind (("C-c C-e" . easy-hugo)
 	 ("C-x p" . easy-hugo-preview)
 	 ("C-x P" . easy-hugo-publish)
@@ -16,10 +17,12 @@
 	  ("m" . asy-hugo-magit)
 	  ("r" . easy-hugo-rename)
 	  ("e" . my:edit-easy-hugo)))
+
   ;; Sort-publishday on startup
   :custom ((easy-hugo--sort-char-flg . nil)
 	   (easy-hugo--sort-time-flg . nil)
 	   (easy-hugo--sort-publishday-flg . 1))
+
   :init
   ;; Main blog (=blog1)
   (setq easy-hugo-basedir "~/Dropbox/web/wegh/topics/"
@@ -27,6 +30,7 @@
 	easy-hugo-sshdomain "xsrv"
 	easy-hugo-root "/home/minorugh/wegh.net/public_html/topics/"
 	easy-hugo-previewtime "300")
+
   ;; Bloglist
   (setq easy-hugo-bloglist
 	;; blog2 setting
@@ -59,6 +63,7 @@
 	   (easy-hugo-url . "https://ryo.wegh.net")
 	   (easy-hugo-sshdomain . "xsrv")
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/ryo/"))))
+
   ;; Customize for my help menu
   (setq easy-hugo-help-line 5)
   (setq easy-hugo-help
@@ -68,6 +73,7 @@
   T .. publish timer    m .. Magit status    c .. Open config      f .. Open file
   N .. No help [tab]    / .. Select postdir  o .. Open base dir    v .. View other window
   ")
+
   :preface
   (defun my:edit-easy-hugo ()
     "Edit setting file for 'easy-hugo'."
@@ -79,7 +85,9 @@
     (interactive)
     (insert (format-time-string "%Y-%m-%dT%H:%M:%S+09:00"))))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 80_easy-hugo.el ends here

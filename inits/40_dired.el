@@ -18,25 +18,22 @@
 	 ("o" . dired-open-file)
 	 ("O" . dired-omit-mode)
 	 ("[" . dired-hide-details-mode)
-	 ("a" . dired-list-all-mode)
+	 ("a" . toggle-dired-listing-switches)
 	 ("q" . dired-dwim-quit-window)
 	 ("t" . counsel-tramp)
 	 ("s" . sudo-edit)
 	 ("." . magit-status))
-  :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
+  :hook
+  (dired-mode-hook . dired-my-append-buffer-name-hint)
+  :custom
+  (dired-listing-switches . "-lgGhF")
+
   :config
   (leaf ls-lisp :require t
     :doc "Show directory first"
     :after dired
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
-
-  (leaf dired-list-all-mode :require t
-    :doc "Toggle listing dot files in dired"
-    :url "https://github.com/10sr/emacs-lisp/blob/master/docs/elpa/dired-list-all-mode-20161115.118.el"
-    :after dired
-    :config
-    (setq dired-listing-switches "-lhFG"))
 
   (leaf dired-rsync
     :ensure t
@@ -45,8 +42,23 @@
     :bind (:dired-mode-map
 	   ("C-c C-r" . dired-rsync))))
 
-(leaf *cus-dired-extention
+(leaf *dired-extentions
   :preface
+  ;; Switching the display and non-display of hidden files
+  (defun toggle-dired-listing-switches ()
+    "Toggle `dired-mode' switch between with and without 'A' option to show or hide dot files."
+    (interactive)
+    (progn
+      (if (string-match "[Aa]" dired-listing-switches)
+          (setq dired-listing-switches "-lgGhF")
+	(setq dired-listing-switches "-lgGhFA"))
+      (reload-current-dired-buffer)))
+  (defun reload-current-dired-buffer ()
+    "Reload current `dired-mode' buffer."
+    (let* ((dir (dired-current-directory)))
+      (progn (kill-buffer (current-buffer))
+             (dired dir))))
+
   ;; Add [Dir] to the directory buffer
   (defun dired-my-append-buffer-name-hint ()
     "Append a auxiliary string to a name of dired buffer."
@@ -113,15 +125,16 @@
 
 (leaf direx :ensure t
   :doc "Yet another dired for tree display."
-  :url "https://github.com/emacsorphanage/direx"
-  :url "https://blog.shibayu36.org/entry/2013/02/12/191459"
   :after popwin
   :bind (("<f11>" . direx:jump-to-project-directory)
 	 (:direx:direx-mode-map
 	  ("<f11>" . quit-window)))
+
   :config
   (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
   (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
+
+  ;; https://blog.shibayu36.org/entry/2013/02/12/191459
   (defun direx:jump-to-project-directory ()
     "If in project, launch direx-project otherwise start direx."
     (interactive)
@@ -131,7 +144,9 @@
       (unless result
 	(direx:jump-to-directory-other-window)))))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 40_dired.el ends here

@@ -32,7 +32,7 @@
 (setq inhibit-startup-message t)
 (setq gc-cons-threshold (* 128 1024 1024))
 
-;; this enables this running method
+;; this enables this running methodf
 ;; emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
 (eval-and-compile
   (when (or load-file-name byte-compile-current-file)
@@ -49,26 +49,37 @@
     (package-refresh-contents)
     (package-install 'leaf))
 
-  (leaf leaf-keywords
-    :ensure t
-    ;; Load newer whichever el or elc
-    :custom (load-prefer-newer . t)
+  (leaf leaf-keywords :ensure t
     :init
-    ;; optional packages
     (leaf hydra :ensure t)
     (leaf el-get :ensure t)
-    (leaf bind-key :ensure t)
-    (leaf init-loader :ensure t)
+
     :config
-    (setq el-get-dir "~/Dropbox/emacs.d/elisp")
+    (setq el-get-dir "~/.emacs.d/elisp")
+    ;; path to my-lisp
     (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     (leaf-keywords-init)))
 
-;; Init-loader
-(custom-set-variables
- '(init-loader-show-log-after-init 'error-only))
-(init-loader-load "~/Dropbox/emacs.d/inits")
-(setq custom-file (locate-user-emacs-file "custom.el"))
+(leaf leaf
+  :config
+  (leaf leaf-convert :ensure t
+    :bind ("<f7>" . leaf-convert-region-pop))
+  (leaf leaf-tree :ensure t
+    :bind (("<f8>" . leaf-tree-mode))
+    :custom
+    ((imenu-list-size . 30)
+     (imenu-list-position . 'left))))
+
+(leaf macrostep :ensure t
+  :bind (("C-c e" . macrostep-expand)))
+
+(leaf init-loader :ensure t
+  :custom
+  (init-loader-show-log-after-init 'error-only)
+  :config
+  (init-loader-load "~/Dropbox/emacs.d/inits")
+  (setq custom-file (locate-user-emacs-file "custom.el")))
+
 
 (provide 'init)
 

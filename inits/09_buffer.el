@@ -16,8 +16,8 @@
     (emacs-lock-mode 'kill)))
 
 (leaf tempbuf :require t
+  :el-get emacswiki:tempbuf
   :doc "automatically kill unnecessary buffers"
-;;  :el-get kootenpv/emp/tempbuf
   :hook ((dired-mode-hook . turn-on-tempbuf-mode)
 	 (magit-mode-hook . turn-on-tempbuf-mode)
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
@@ -48,6 +48,7 @@
 	   (undo-tree-auto-save-history . nil)
 	   (undo-tree-history-directory-alist
 	    . `(("." . ,(concat user-emacs-directory "undo-tree-hist/")))))
+
   :config
   ;; FIXME: `undo-tree-visualizer-diff' is a local variable in *undo-tree* buffer.
   (defun undo-tree-visualizer-show-diff (&optional node)
@@ -60,24 +61,17 @@
       (setq win (split-window))
       (set-window-buffer win buff)
       (shrink-window-if-larger-than-buffer win)))
+
   (defun undo-tree-visualizer-hide-diff ()
     ;; hide visualizer diff display
     (setq-local undo-tree-visualizer-diff nil)
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
-(leaf imenu-list :ensure t
-  :bind ("<f10>" . imenu-list-smart-toggle)
-  :custom ((imenu-list-focus-after-activation . t)
-	   (imenu-list-size . 30)
-	   (imenu-list-position . 'left))
-  :config
-  (leaf counsel-css :ensure t))
-
 (leaf *toggle-scratch
   :doc "Toggle current buffer and scratch-buffer."
   :bind ([S-return] . toggle-scratch)
-  :preface
+  :init
   (defun toggle-scratch()
     "Toggle current buffer and *scratch* buffer."
     (interactive)
@@ -97,7 +91,9 @@
     (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
     (message "Killed other buffers!")))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 09_buffer.el ends here

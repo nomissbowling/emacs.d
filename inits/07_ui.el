@@ -6,7 +6,8 @@
 (leaf doom-themes :ensure t
   :config (load-theme 'doom-dracula t))
 
-(leaf doom-modeline :ensure t
+(leaf doom-modeline
+  :ensure t
   :commands doom-modeline-def-modeline
   :hook (after-init-hook . doom-modeline-mode)
   :custom ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
@@ -18,8 +19,7 @@
   (column-number-mode 0)
   :preface
   (leaf hide-mode-line :ensure t
-    :hook
-    ((direx:direx-mode imenu-list-minor-mode diff-mode) . hide-mode-line-mode))
+    :hook ((direx:direx-mode imenu-list-minor-mode diff-mode) . hide-mode-line-mode))
   (leaf nyan-mode :ensure t
     :hook (after-init-hook . nyan-mode)
     :custom
@@ -33,7 +33,6 @@
 
 (leaf darkroom
   :doc "Remove visual distractions and focus on writing."
-  :url "https://github.com/joaotavora/darkroom"
   :el-get joaotavora/darkroom
   :bind (("<f12>" . my:darkroom-mode-in)
 	 (:darkroom-mode-map
@@ -45,6 +44,7 @@
     (display-line-numbers-mode 0)
     (flymake-mode 0)
     (darkroom-mode 1))
+
   (defun my:darkroom-mode-out ()
     "Darkroom mode out."
     (interactive)
@@ -55,7 +55,8 @@
 (leaf all-the-icons :ensure t
   :custom (all-the-icons-scale-factor . 1.0))
 
-(leaf all-the-icons-dired :ensure t
+(leaf all-the-icons-dired
+  :ensure t
   :url "https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el"
   :commands dired-mode
   :hook (dired-mode-hook . all-the-icons-dired-mode)
@@ -116,7 +117,9 @@
 		  (insert "\t"))))   ; Align and keep one space for refeshing after operations
 	    (forward-line 1)))))))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 07_ui.el ends here

@@ -3,28 +3,36 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf server :require t
+(leaf server
+  :require t
   :config
   (unless (server-running-p)
     (server-start)))
 
-;; Save the file specified code with basic utf-8 if it exists
-(set-language-environment "Japanese")
-(prefer-coding-system 'utf-8)
+(leaf *language
+  :doc "Save the file specified code with basic utf-8 if it exists"
+  :config
+  (set-language-environment "Japanese")
+  (prefer-coding-system 'utf-8))
 
-;; font for main-machine
-(when (string-match "e590" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-  (if (getenv "WSLENV")
-      (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-;; font for sub-machine
-(when (string-match "x250" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+(leaf *font
+  :config
+  ;; font for main-machine
+  (when (string-match "e590" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+    (if (getenv "WSLENV")
+	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+  ;; font for sub-machine
+  (when (string-match "x250" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
 
 (leaf exec-path-from-shell
+  :when  (member window-system '(mac ns x))
   :ensure t
-  :hook (after-init-hook . exec-path-from-shell-initialize)
-  :custom (exec-path-from-shell-check-startup-files . nil))
+  :require t
+  :config
+  (if (fboundp 'exec-path-from-shell-initialize)
+      (exec-path-from-shell-initialize)))
 
 (leaf *cus-start
   :custom
@@ -57,6 +65,7 @@
    (create-lockfiles . nil)
    ;; Do not record the same content in the history
    (history-delete-duplicates . t))
+
   :hook
   (;; Automatic reloading of changed files
    (after-init-hook . global-auto-revert-mode)
@@ -69,37 +78,44 @@
    ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
    (makefile-mode-hook
     (lambda ()
-      (fset 'makefile-warn-suspicious-lines 'ignore)))))
+      (fset 'makefile-warn-suspicious-lines 'ignore))))
 
-(leaf *key-modified
-  :mode (("\\.html?\\'" . web-mode)
-	 ("\\.mak\\'" . makefile-mode))
-  :bind (("<insert>" . clipboard-yank)
-	 ("C-." . xref-find-definitions))
-  :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	  ("C-x C-c" . iconify-frame))
   :preface
+  (leaf web-mode :ensure t
+    :mode (("\\.html?\\'" . web-mode)))
+  (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
   ;; Input yes or no to y or n (even SPC OK instead of y)
   (defalias 'yes-or-no-p 'y-or-n-p))
 
+
 (leaf *set-misc
   :config
+  (leaf bind-key :ensure t
+    :bind (("<insert>" . clipboard-yank)
+	   ("C-." . xref-find-definitions))
+    :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
+	    ("C-x C-c" . iconify-frame)))
+
   ;; Set transparency (active inactive)
   (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
   (leaf save-place
     :hook (after-init-hook . save-place-mode))
+
   (leaf savehist
     :doc "Save history of minibuffer."
     :hook (after-init-hook . savehist-mode)
     :custom (history-length . 1000))
+
   (leaf uniquify
     :doc "Make it easy to see when it is the same name file."
     :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
 	     (uniquify-min-dir-content . 1)))
+
   (leaf generic-x
     :doc "contains many mode setting")
+
   (leaf select
     :doc "use the X11 clipboard."
     :bind (("M-w" . clipboard-kill-ring-save)
@@ -112,6 +128,7 @@
       (if (use-region-p)
 	  (clipboard-kill-region (region-beginning) (region-end))
 	(backward-kill-word 1))))
+
   (leaf recentf
     :hook (after-init-hook . recentf-mode)
     :custom((recentf-save-file . "~/.emacs.d/recentf")
@@ -123,6 +140,7 @@
 		 (lambda (file) (file-in-directory-p file package-user-dir)))))
     :config
     (push (expand-file-name recentf-save-file) recentf-exclude)))
+
 
 (leaf *emacs-manual
   :config
@@ -137,11 +155,14 @@
 	     (_ filename))
 	   args)))
 
-;; load my-lisp
-(leaf my-dired :require t)
-(leaf my-template :require t)
+(leaf my-lisp
+  :config
+  (leaf my-dired :require t)
+  (leaf my-template :require t))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 00_base.el ends here

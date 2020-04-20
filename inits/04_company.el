@@ -12,6 +12,7 @@
 	  ("SPC" . company-select-next)
 	  ([backtab] . my:company-yasnippet)))
   :hook (after-init-hook . global-company-mode)
+
   :config
   (defun my:company-yasnippet ()
     (interactive)

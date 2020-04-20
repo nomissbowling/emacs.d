@@ -17,7 +17,9 @@
 	  ("p" . browse-pocket)
 	  ("." . hydra-browse/body)
 	  ("<home>" . quit-dashboard)))
-  :init (dashboard-setup-startup-hook)
+  :init
+  (dashboard-setup-startup-hook)
+
   :config
   (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
 	dashboard-set-heading-icons t
@@ -28,18 +30,22 @@
   	(concat "GNU Emacs " emacs-version " kernel "
   		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
   		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
+
   ;; Set the footer
   (setq dashboard-footer-icon
   	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+
   ;; Insert custom item
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
   (add-to-list 'dashboard-items '(custom) t)
+
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
     (interactive)
     (insert (if (display-graphic-p)
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
     (insert "    Calendar: (c)    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+
   (defun open-dashboard ()
     "Open the *dashboard* buffer and jump to the first widget."
     (interactive)
@@ -53,6 +59,7 @@
     ;; Jump to the first section
     (goto-char (point-min))
     (dashboard-goto-recent-files))
+
   (defun quit-dashboard ()
     "Quit dashboard window."
     (interactive)
@@ -61,6 +68,7 @@
 	       (bound-and-true-p winner-mode))
       (winner-undo)
       (setq dashboard-recover-layout-p nil)))
+
   (defun dashboard-goto-recent-files ()
     "Go to recent files."
     (interactive)
@@ -101,7 +109,9 @@
     (interactive)
     (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 01_dashboard.el ends here

@@ -6,24 +6,29 @@
 (leaf popwin :ensure t
   :hook (after-init-hook . popwin-mode))
 
+
 (leaf expand-region :ensure t
   :bind ("C-@" . er/expand-region))
 
+
 (leaf key-chord
   :el-get zk-phi/key-chord
+  :config (key-chord-mode 1)
   :chord (("df" . counsel-descbinds)
 	  ("l;" . init-loader-show-log)
-	  ("hj" . undo))
-  :config (key-chord-mode 1))
+	  ("@@" . howm-list-all)
+	  ("hj" . undo)))
 
-(leaf sequential-command :ensure t
-  :config
-  (leaf sequential-command-config
-    :hook (after-init-hook . sequential-command-setup-keys)))
+
+(leaf sequential-command-config
+  :hook (after-init-hook . sequential-command-setup-keys)
+  :init (leaf sequential-command :ensure t))
+
 
 (leaf yasnippet :ensure t
   :hook (after-init-hook . yas-global-mode)
   :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets")))
+
 
 (leaf prescient :ensure t
   :hook (after-init-hook . prescient-persist-mode)
@@ -33,26 +38,39 @@
   (leaf ivy-prescient :ensure t
     :hook (after-init-hook . ivy-prescient-mode)))
 
+
 (leaf persistent-scratch :ensure t
   :config (persistent-scratch-setup-default))
+
 
 (leaf quickrun :ensure t
   :bind ("<f5>" . quickrun))
 
+
 ;; which-key
 (leaf which-key :ensure t
   :hook (after-init-hook . which-key-mode)
-  :custom ((which-key-max-description-length . 40)
-	   (which-key-use-C-h-commands . t)))
+  :custom
+  ((which-key-max-description-length . 40)
+   (which-key-use-C-h-commands . t)))
+
 
 (leaf projectile :ensure t
   :hook (after-init-hook . projectile-mode)
   :config
-  (leaf counsel-projectile
-    :ensure t
+  (leaf counsel-projectile :ensure t
     :hook (after-init-hook . counsel-projectile-mode)))
+
+
+(leaf *other-misc
+  :config
+  (leaf posframe :ensure t)
+  (leaf restart-emacs :ensure t)
+  (leaf sudo-edit :ensure t))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 05_misc.el ends here

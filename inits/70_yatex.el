@@ -15,6 +15,7 @@
 	   (YaTeX-use-LaTeX2e . t)
 	   (YaTeX-use-font-lock . t)
 	   (YaTeX-default-pop-window-height . 20))
+
   :config
   (leaf yatexprc
     :config

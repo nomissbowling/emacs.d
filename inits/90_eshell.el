@@ -13,8 +13,10 @@
 	   (eshell-hist-ignoredups . t)
 	   (eshell-prompt-function . 'my:eshell-prompt)
 	   (eshell-prompt-regexp . "^[^#$]*[$#] "))
+
   :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
+
   :config
   (setq eshell-command-aliases-list
 	(append (list
@@ -22,15 +24,18 @@
 		 (list "ll" "ls -ltr -S")
 		 (list "la" "ls -a -S")
 		 (list "ex" "exit"))))
+
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat (eshell/pwd)
 	    (if (= (user-uid) 0) "\n# " "\n$ ")))
+
   (defun eshell/clear ()
     "Clear the current buffer, leaving one prompt at the top."
     (interactive)
     (let ((inhibit-read-only t))
       (erase-buffer)))
+
   (defun eshell-on-current-buffer ()
     "Set the eshell directory to the current buffer."
     (interactive)
@@ -43,4 +48,5 @@
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 90_eshell.el ends here

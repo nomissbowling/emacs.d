@@ -60,8 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     :el-get  shime/emacs-livedown
     :bind ((:markdown-mode-map
 	    :package markdown-mode
-	    ("C-c l p" . livedown-preview)
-	    ("C-c l k" . livedown-kill)))
+	    ("C-c p" . livedown-preview)
+	    ("C-c k" . livedown-kill)))
     :require t
     :custom ((livedown-autostart . nil)
 	     (livedown-open . t)

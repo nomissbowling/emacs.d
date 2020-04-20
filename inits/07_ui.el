@@ -61,13 +61,13 @@
   :commands dired-mode
   :hook (dired-mode-hook . all-the-icons-dired-mode)
   :custom
-  (delete-by-moving-to-trash . t)
-  (dired-recursive-copies . :always)
-  (dired-recursive-deletes . :always)
-  ;; When dired opened in two windows, move or copy in the other dired
-  (dired-dwim-target . t)
-  ;; Recursively copy directory
-  (dired-recursive-copies . :always)
+  ((delete-by-moving-to-trash . t)
+   (dired-recursive-copies . :always)
+   (dired-recursive-deletes . :always)
+   ;; When dired opened in two windows, move or copy in the other dired
+   (dired-dwim-target . t)
+   ;; Recursively copy directory
+   (dired-recursive-copies . :always))
   :config
   (advice-add #'all-the-icons-dired--display
 	      :override #'my:all-the-icons-dired--display)

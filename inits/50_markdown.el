@@ -21,8 +21,10 @@
   (markdown-pre-face . '((t (:foreground "#bd98fe"))))
 
   :config
+  ;; toc generater
+  (leaf markdown-toc :ensure t)
+  ;; markdown preview
   (leaf livedown
-    :doc "Markdown Preview"
     :url "https://github.com/shime/emacs-livedown"
     :el-get  shime/emacs-livedown
     :bind ((:markdown-mode-map

@@ -53,7 +53,6 @@
     :init
     (leaf hydra :ensure t)
     (leaf el-get :ensure t)
-    (leaf init-loader :ensure t)
 
     :config
     (setq el-get-dir "~/.emacs.d/elisp")
@@ -74,11 +73,13 @@
 (leaf macrostep :ensure t
   :bind (("C-c e" . macrostep-expand)))
 
-;; init-loader
-(custom-set-variables
- '(init-loader-show-log-after-init 'error-only))
-(init-loader-load "~/Dropbox/emacs.d/inits")
-(setq custom-file (locate-user-emacs-file "custom.el"))
+
+(leaf init-loader :ensure t
+  :custom
+  (init-loader-show-log-after-init 'error-only)
+  :config
+  (init-loader-load "~/Dropbox/emacs.d/inits")
+  (setq custom-file (locate-user-emacs-file "custom.el")))
 
 
 (provide 'init)

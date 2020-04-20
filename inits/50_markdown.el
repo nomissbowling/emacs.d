@@ -23,6 +23,7 @@
   :config
   ;; toc generater
   (leaf markdown-toc :ensure t)
+
   ;; markdown preview
   (leaf livedown
     :url "https://github.com/shime/emacs-livedown"

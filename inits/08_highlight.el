@@ -14,10 +14,9 @@
 
 (leaf paren
   :custom (show-paren-style . 'mixed)
-  :config
-  (show-paren-mode 1)
-  (custom-set-faces
-   '(show-paren-match ((nil (:background "lime green" :foreground "#f1fa8c"))))))
+  :config (show-paren-mode 1)
+  :custom-face
+  ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
 
 
 (leaf hi-line
@@ -36,9 +35,8 @@
 
 (leaf volatile-highlights :ensure t
   :hook (after-init-hook . volatile-highlights-mode)
-  :config
-  (custom-set-faces
-   '(vhl/default-face ((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
+  :custom-face
+  ((vhl/default-face '((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
 
 
 (leaf hiwin :ensure t

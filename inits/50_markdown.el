@@ -10,39 +10,6 @@
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode ("\\.md$'" . gfm-mode)
 
-  :custom ((markdown-enable-wiki-links . t)
-	   (markdown-italic-underscore . t)
-	   (markdown-asymmetric-header . t)
-	   (markdown-make-gfm-checkboxes-buttons . t)
-	   (markdown-gfm-uppercase-checkbox . t)
-	   (markdown-fontify-code-blocks-natively . t)
-	   (markdown-enable-math . t)
-	   (markdown-content-type . "application/xhtml+xml")
-	   (markdown-css-paths . '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
-				   "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"))
-	   (markdown-xhtml-header-content . "
-<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-<style>
-body {
-  box-sizing: border-box;
-  max-width: 740px;
-  width: 100%;
-  margin: 40px auto;
-  padding: 0 10px;
-}
-</style>
-<script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('markdown-body');
-  document.querySelectorAll('pre[lang] > code').forEach((code) => {
-    code.classList.add(code.parentElement.lang);
-    hljs.highlightBlock(code);
-  });
-});
-</script>
-"))
-
   :custom-face
   (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
   (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))
@@ -84,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
    ("p" md2pdf)
    ("d" md2docx)
    ("q" nil)))
+
 
 (leaf *md2pdf
   :config

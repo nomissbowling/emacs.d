@@ -1,4 +1,4 @@
-;;; 00_base.el --- 00_base.el   -*- lexical-binding: t; -*-
+;;; 00_base.el --- 00_base.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -168,7 +168,7 @@
 	     (_ filename))
 	   args)))
 
-(leaf my:template :require t
+(leaf my-template :require t
   :doc "Templates for their own"
   :init
   (add-to-list 'load-path "~/Dropbox/emacs.d/elisp"))

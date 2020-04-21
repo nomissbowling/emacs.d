@@ -9,13 +9,13 @@
   (unless (server-running-p)
     (server-start)))
 
-(leaf *language
+(leaf Language
   :doc "Save the file specified code with basic utf-8 if it exists"
   :config
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8))
 
-(leaf *font
+(leaf Font
   :config
   ;; font for main-machine
   (when (string-match "e590" (shell-command-to-string "uname -n"))
@@ -26,15 +26,13 @@
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
 
-(leaf exec-path-from-shell
+(leaf exec-path-from-shell :require t
   :when  (member window-system '(mac ns x))
-  :ensure t
-  :require t
+  :hook (after-init-hook . exec-path-from-shell-initialize)
   :config
-  (if (fboundp 'exec-path-from-shell-initialize)
-      (exec-path-from-shell-initialize)))
+  (setq exec-path-from-shell-check-startup-files nil))
 
-(leaf *cus-start
+(leaf Cus-start
   :custom
   (;; Display file name in title bar: buffername-emacs-version
    (frame-title-format . "%b")
@@ -80,26 +78,21 @@
     (lambda ()
       (fset 'makefile-warn-suspicious-lines 'ignore))))
 
-  :preface
-  (leaf web-mode :ensure t
-    :mode (("\\.html?\\'" . web-mode)))
+  :init
+  ;; Set makefle mode
   (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
+
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
+
   ;; Input yes or no to y or n (even SPC OK instead of y)
-  (defalias 'yes-or-no-p 'y-or-n-p))
-
-
-(leaf *set-misc
-  :config
-  (leaf bind-key :ensure t
-    :bind (("<insert>" . clipboard-yank)
-	   ("C-." . xref-find-definitions))
-    :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	    ("C-x C-c" . iconify-frame)))
+  (defalias 'yes-or-no-p 'y-or-n-p)
 
   ;; Set transparency (active inactive)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8))))
+
+(leaf leaf
+  :config
   (leaf save-place
     :hook (after-init-hook . save-place-mode))
 
@@ -139,10 +132,29 @@
 		 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
 		 (lambda (file) (file-in-directory-p file package-user-dir)))))
     :config
-    (push (expand-file-name recentf-save-file) recentf-exclude)))
+    (push (expand-file-name recentf-save-file) recentf-exclude))
+
+  (leaf bind-key
+    :ensure t
+    :bind (("<insert>" . clipboard-yank)
+	   ("C-." . xref-find-definitions)
+	   ("M-/" . kill-buffer)
+	   ("C-M-/" . kill-other-buffer))
+    :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
+	    ("C-x C-c" . iconify-frame))
+    :config
+    (defun kill-other-buffers ()
+      "Kill all other buffers."
+      (interactive)
+      (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+      (message "Killed other buffers!")))
+
+  (leaf web-mode
+    :ensure t
+    :mode (("\\.html?\\'" . web-mode))))
 
 
-(leaf *emacs-manual
+(leaf Emacs-manual
   :config
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
@@ -155,10 +167,10 @@
 	     (_ filename))
 	   args)))
 
-(leaf my-lisp
-  :config
-  (leaf my-dired :require t)
-  (leaf my-template :require t))
+
+(leaf my:template :require t
+  :init
+  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp"))
 
 
 ;; Local Variables:

@@ -19,7 +19,6 @@
 	  ("<home>" . quit-dashboard)))
   :init
   (dashboard-setup-startup-hook)
-
   :config
   (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
 	dashboard-set-heading-icons t
@@ -72,10 +71,9 @@
   (defun dashboard-goto-recent-files ()
     "Go to recent files."
     (interactive)
-    (funcall (local-key-binding "r"))))
+    (funcall (local-key-binding "r")))
 
-(leaf browse-url
-  :config
+  :preface
   (defun browse-calendar ()
     "Open Google-calendar with chrome."
     (interactive)

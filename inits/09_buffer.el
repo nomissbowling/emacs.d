@@ -3,7 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf auto-save-buffers-enhanced :ensure t
+(leaf auto-save-buffers-enhanced
+  :ensure t
   :custom (auto-save-buffers-enhanced-quiet-save-p . t)
   :config (auto-save-buffers-enhanced t))
 
@@ -15,7 +16,8 @@
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill)))
 
-(leaf tempbuf :require t
+(leaf tempbuf
+  :require t
   :el-get emacswiki:tempbuf
   :doc "automatically kill unnecessary buffers"
   :hook ((dired-mode-hook . turn-on-tempbuf-mode)
@@ -23,13 +25,15 @@
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
   :custom (tempbuf-kill-message . nil))
 
-(leaf iflipb :ensure t
+(leaf iflipb
+  :ensure t
   :bind (("C-<right>" . iflipb-next-buffer)
 	 ("C-<left>" . iflipb-previous-buffer))
   :custom (iflipb-wrap-around . t)
   :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
-(leaf undohist :ensure t
+(leaf undohist
+  :ensure t
   :hook (after-init-hook . undohist-initialize)
   :custom (undohist-ignored-files . '("/tmp" "COMMIT_EDITMSG")))
 
@@ -68,7 +72,7 @@
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
-(leaf *toggle-scratch
+(leaf my:toggle-scratch
   :doc "Toggle current buffer and scratch-buffer."
   :bind ([S-return] . toggle-scratch)
   :init
@@ -80,16 +84,6 @@
 	  (setq toggle-scratch-prev-buffer (buffer-name))
 	  (switch-to-buffer "*scratch*"))
       (switch-to-buffer toggle-scratch-prev-buffer))))
-
-(leaf *kill-buffer
-  :bind (("M-/" . kill-buffer)
-	 ("C-M-/" . kill-other-buffer))
-  :config
-  (defun kill-other-buffers ()
-    "Kill all other buffers."
-    (interactive)
-    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-    (message "Killed other buffers!")))
 
 
 ;; Local Variables:

@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *pinky
+(leaf Hydra-pinky
   :chord ("jk" . hydra-pinky/body)
   :hydra
   (hydra-pinky
@@ -43,34 +43,35 @@
    (">" iflipb-previous-buffer)
    (":" counsel-switch-buffer)
    ("." view-mode)
-   ("q" nil)))
+   ("q" nil))
 
-(leaf edit-window
-  :bind ("C-q" . other-window-or-split)
   :init
-  (defun other-window-or-split ()
-    "If there is one window, open split window.
+  (leaf Edit-window
+    :bind ("C-q" . other-window-or-split)
+    :init
+    (defun other-window-or-split ()
+      "If there is one window, open split window.
 If there are two or more windows, it will go to another window."
-    (interactive)
-    (when (one-window-p)
-      (split-window-horizontally))
-    (other-window 1))
-
-  (defun window-toggle-division ()
-    "Replace vertical <-> horizontal when divided into two."
-    (interactive)
-    (unless (= (count-windows 1) 2)
-      (error "Not divided into two!"))
-    (let ((before-height)
-	  (other-buf (window-buffer (next-window))))
-      (setq before-height (window-height))
-      (delete-other-windows)
-      (if (= (window-height) before-height)
-	  (split-window-vertically)
+      (interactive)
+      (when (one-window-p)
 	(split-window-horizontally))
-      (other-window 1)
-      (switch-to-buffer other-buf)
-      (other-window -1))))
+      (other-window 1))
+
+    (defun window-toggle-division ()
+      "Replace vertical <-> horizontal when divided into two."
+      (interactive)
+      (unless (= (count-windows 1) 2)
+	(error "Not divided into two!"))
+      (let ((before-height)
+	    (other-buf (window-buffer (next-window))))
+	(setq before-height (window-height))
+	(delete-other-windows)
+	(if (= (window-height) before-height)
+	    (split-window-vertically)
+	  (split-window-horizontally))
+	(other-window 1)
+	(switch-to-buffer other-buf)
+	(other-window -1)))))
 
 
 ;; Local Variables:

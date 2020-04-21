@@ -3,23 +3,28 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf migemo :ensure t
+(leaf migemo
+  :ensure t
   :when (executable-find "cmigemo")
   :hook (after-init-hook . migemo-init)
   :custom ((migemo-command . "cmigemo")
 	   (migemo-dictionary . "/usr/share/cmigemo/utf-8/migemo-dict")))
 
 
-(leaf imenu-list :ensure t
-  :bind ("<f10>" . imenu-list-smart-toggle))
+(leaf imenu-list
+  :ensure t
+  :bind (("<f7>" . leaf-convert-region-pop)
+	 ("<f8>" . leaf-tree-mode)
+	 ("<f10>" . imenu-list-smart-toggle)))
 
 
-(leaf browse-at-remote :ensure t
+(leaf browse-at-remote
+  :ensure t
   :config
   (defalias 'my:github-show 'browse-at-remote))
 
 
-(leaf *pdf-out-from-emacs			;
+(leaf Pdf-out-from-emacs			;
   :url "https://yohgami.hateblo.jp/entry/20130402/1364895193"
   :custom
   (my:pdfout-command-format . "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
@@ -34,11 +39,11 @@
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
-(leaf *current-dir-open
+(leaf Current-dir-open
   :doc "current dir open of linux-filer and linux terminal"
   :bind (("<f3>" . filer-current-dir-open)
 	 ("<f4>" . term-current-dir-open))
-  :preface
+  :init
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)
@@ -50,8 +55,8 @@
       (shell-command (concat "gnome-terminal --working-directory " dir)))))
 
 
-(leaf *delete-file-if-no-contents
-  :preface
+(leaf Delete-file-if-no-contents
+  :init
   (defun my:delete-file-if-no-contents ()
     (when (and (buffer-file-name (current-buffer))
 	       (= (point-min) (point-max)))

@@ -3,11 +3,13 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf popwin :ensure t
+(leaf popwin
+  :ensure t
   :hook (after-init-hook . popwin-mode))
 
 
-(leaf expand-region :ensure t
+(leaf expand-region
+  :ensure t
   :bind ("C-@" . er/expand-region))
 
 
@@ -16,7 +18,6 @@
   :config (key-chord-mode 1)
   :chord (("df" . counsel-descbinds)
 	  ("l;" . init-loader-show-log)
-	  ("@@" . howm-list-all)
 	  ("hj" . undo)))
 
 
@@ -25,45 +26,53 @@
   :init (leaf sequential-command :ensure t))
 
 
-(leaf yasnippet :ensure t
+(leaf yasnippet
+  :ensure t
   :hook (after-init-hook . yas-global-mode)
-  :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets")))
+  :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets"))
+  :init (leaf ivy-yasnippet :ensure t))
 
 
-(leaf prescient :ensure t
-  :hook (after-init-hook . prescient-persist-mode)
-  :config
-  (leaf company-prescient :ensure t
-    :hook (after-init-hook . company-prescient-mode))
-  (leaf ivy-prescient :ensure t
-    :hook (after-init-hook . ivy-prescient-mode)))
+  (leaf prescient
+    :ensure t
+    :hook (after-init-hook . prescient-persist-mode)
+    :config
+    (leaf company-prescient :ensure t
+      :hook (after-init-hook . company-prescient-mode))
+    (leaf ivy-prescient :ensure t
+      :hook (after-init-hook . ivy-prescient-mode)))
 
 
-(leaf persistent-scratch :ensure t
+(leaf persistent-scratch
+  :ensure t
   :config (persistent-scratch-setup-default))
 
 
-(leaf quickrun :ensure t
+(leaf quickrun
+  :ensure t
   :bind ("<f5>" . quickrun))
 
 
 ;; which-key
-(leaf which-key :ensure t
+(leaf which-key
+  :ensure t
   :hook (after-init-hook . which-key-mode)
   :custom
   ((which-key-max-description-length . 40)
    (which-key-use-C-h-commands . t)))
 
 
-(leaf projectile :ensure t
+(leaf projectile
+  :ensure t
   :hook (after-init-hook . projectile-mode)
   :config
   (leaf counsel-projectile :ensure t
     :hook (after-init-hook . counsel-projectile-mode)))
 
 
-(leaf *other-misc
+(leaf leaf
   :config
+  (leaf smex :ensure t)
   (leaf posframe :ensure t)
   (leaf restart-emacs :ensure t)
   (leaf sudo-edit :ensure t))

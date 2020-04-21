@@ -10,20 +10,9 @@
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode ("\\.md$'" . gfm-mode)
 
-  :custom-face
-  (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
-  (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))
-  (markdown-header-face-2 . '((t (:foreground "lightslateblue" :weight bold :height 1.0))))
-  (markdown-header-face-3 . '((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
-  (markdown-link-face . '((t (:background "#0e1014" :foreground "#bd93f9"))))
-  (markdown-list-face . '((t (:foreground "mediumpurple"))))
-  (markdown-code-face . '((t (:background "#222" :inherit 'default))))
-  (markdown-pre-face . '((t (:foreground "#bd98fe"))))
-
-  :config
+  :init
   ;; toc generater
   (leaf markdown-toc :ensure t)
-
   ;; markdown preview
   (leaf livedown
     :url "https://github.com/shime/emacs-livedown"
@@ -38,6 +27,17 @@
 	     (livedown-port . 1337)
 	     (livedown-browser . nil)))
 
+  :custom-face
+  (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
+  (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))
+  (markdown-header-face-2 . '((t (:foreground "lightslateblue" :weight bold :height 1.0))))
+  (markdown-header-face-3 . '((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
+  (markdown-link-face . '((t (:background "#0e1014" :foreground "#bd93f9"))))
+  (markdown-list-face . '((t (:foreground "mediumpurple"))))
+  (markdown-code-face . '((t (:background "#222" :inherit 'default))))
+  (markdown-pre-face . '((t (:foreground "#bd98fe"))))
+
+  :config
   :hydra
   (hydra-markdown
    (:color red :hint nil)
@@ -56,7 +56,7 @@
    ("q" nil)))
 
 
-(leaf *md2pdf
+(leaf Pandoc
   :config
   (defun md2pdf ()
     "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"

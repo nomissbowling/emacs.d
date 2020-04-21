@@ -13,7 +13,7 @@
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (custom-set-variables '(mozc-leim-title "かな "))
 
-  :config
+  :preface
   (leaf mozc-cursor-color
     :url "https://github.com/iRi-E/mozc-el-extensions"
     :el-get iRi-E/mozc-el-extensions

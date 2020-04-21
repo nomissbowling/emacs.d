@@ -3,7 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf doom-themes :ensure t
+(leaf doom-themes
+  :ensure t
   :config (load-theme 'doom-dracula t))
 
 (leaf doom-modeline
@@ -18,9 +19,11 @@
   (line-number-mode 0)
   (column-number-mode 0)
   :preface
-  (leaf hide-mode-line :ensure t
+  (leaf hide-mode-line
+    :ensure t
     :hook ((direx:direx-mode imenu-list-minor-mode diff-mode) . hide-mode-line-mode))
-  (leaf nyan-mode :ensure t
+  (leaf nyan-mode
+    :ensure t
     :hook (after-init-hook . nyan-mode)
     :custom
     (nyan-cat-face-number . 4)
@@ -52,7 +55,8 @@
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 
-(leaf all-the-icons :ensure t
+(leaf all-the-icons
+  :ensure t
   :custom (all-the-icons-scale-factor . 1.0))
 
 (leaf all-the-icons-dired

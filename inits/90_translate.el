@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf google-translate :ensure t
+(leaf google-translate
+  :ensure t
   :bind ("C-t" . google-translate-auto)
   :config
   (defun google-translate-auto ()
@@ -39,7 +40,7 @@
     (list 427110 1469889687)))
 
 ;; Fix error of "args out of range"
-(leaf *patch-fix-error
+(leaf Fix-error
   :url "https://qiita.com/akicho8/items/cae976cb3286f51e4632"
   :doc "Apply the following patch."
   ;; ---------------------------------------------------------------

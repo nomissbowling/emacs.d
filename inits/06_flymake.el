@@ -5,7 +5,12 @@
 
 (leaf flymake
   :hook (prog-mode-hook . flymake-mode)
-
+  :init
+  (leaf flymake-diagnostic-at-point
+    :ensure t
+    :after flymake
+    :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
+    (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
   :config
   (defvar flymake-posframe-hide-posframe-hooks
     '(pre-command-hook post-command-hook focus-out-hook)
@@ -31,28 +36,6 @@
     (dolist (hook flymake-posframe-hide-posframe-hooks)
       (add-hook hook #'flymake-posframe-hide-posframe nil t)))
   (advice-add 'flymake-diagnostic-at-point-display-popup :override 'my:flymake-diagnostic-at-point-display-popup))
-
-(leaf flymake-diagnostic-at-point
-  :ensure t
-  :after flymake
-  :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
-  (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
-
-
-;; (leaf flyspell
-;;   :hook (;; Full
-;; 	 (markdown-mode-hook . flyspell-mode)
-;; 	 (org-mode-hook . flyspell-mode)
-;; 	 (text-mode-hook . flyspell-mode)
-;; 	 ;; Comments ONLY
-;; 	 (css-mode-hook . flyspell-prog-mode)
-;; 	 (emacs-lisp-mode-hook . flyspell-prog-mode)
-;; 	 (html-mode-hook . flyspell-prog-mode)
-;; 	 (make-file-mode-hook . flyspell-prog-mode)
-;; 	 (lisp-interaction-mode-hook . flyspell-prog-mode)
-;; 	 (lisp-mode-hook . flyspell-prog-mode)
-;; 	 (php-mode-hook . flyspell-prog-mode))
-;;   :custom `((flyspell-delay . 1.0)))
 
 
 ;; Local Variables:

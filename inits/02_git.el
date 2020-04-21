@@ -5,7 +5,7 @@
 
 (leaf magit
   :ensure t
-  :bind* ("<f2>" . hydra-magit/body)
+  :bind ("<f2>" . hydra-magit/body)
   :custom
   (magit-display-buffer-function
    . #'magit-display-buffer-fullframe-status-v1)

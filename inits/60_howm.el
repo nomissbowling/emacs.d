@@ -5,10 +5,13 @@
 
 (leaf howm
   :ensure t
-  :require t
-  :commands (howm-create howm-remember howm-list-all)
+  :commands
+  (howm-create howm-remember howm-list-all)
   :bind (:howm-view-summary-mode-map
 	 ([backtab] . howm-view-summary-previous-section))
+  :chord ("@@" . howm-list-all)
+  :hook
+  (after-init-hook . howm-mode)
   :init
   (setq howm-view-title-header "#")
 
@@ -19,7 +22,7 @@
 	howm-history-file "~/Dropbox/dotfiles/howm-conf/.howm-history"
 	howm-view-split-horizontally t
 	howm-view-summary-persistent nil
-	howm-list-normalizer 'howm-view-sort-by-reverse-date
+	howm-normalizer 'howm-sort-items-by-reverse-date
 	howm-user-font-lock-keywords
 	'(("memo:" . (0 'dired-mark prepend))
 	  ("blog:" . (0 'error prepend))
@@ -47,7 +50,7 @@
    ("q" nil)))
 
 
-(leaf *create-menu
+(leaf Create-menu
   :config
   (defun my:howm-memo ()
     "My howm remember for memo."

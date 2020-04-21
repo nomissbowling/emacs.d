@@ -3,7 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf package-utils :ensure t
+(leaf package-utils
+  :ensure t
   :hydra
   (hydra-package
    (:color red :hint nil)
@@ -16,7 +17,8 @@
    ("l" package-list-packages)
    ("q" nil)))
 
-(leaf gist :ensure t
+(leaf gist
+  :ensure t
   :bind (:tabulated-list-mode-map
 	 ("." . hydra-gist-help/body))
   :hydra
@@ -38,7 +40,7 @@
      @ : make a gist out of marked files"
 		   ("." nil)))
 
-(leaf *select-favorite
+(leaf Hydra-browse
   :hydra
   (hydra-browse
    (:hint nil :exit t)
@@ -81,21 +83,22 @@
    ("p" browse-pocket)
    ("t" browse-tweetdeck)
    ("," browse-slack)
-   ("." nil)))
+   ("." nil))
 
-(leaf *browse-url-in-WSL
-  :doc "Emacs in WSL and opening links"
-  :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
-  :if (getenv "WSLENV")
+  :init
+  (leaf Browse-in-WSL
+    :doc "Emacs in WSL and opening links"
+    :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
+    :if (getenv "WSLENV")
 
-  :config
-  (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
-	(cmd-args '("/c" "start")))
-    (when (file-exists-p cmd-exe)
-      (setq browse-url-generic-program  cmd-exe
-	    browse-url-generic-args     cmd-args
-	    browse-url-browser-function 'browse-url-generic
-	    search-web-default-browser 'browse-url-generic))))
+    :config
+    (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
+	  (cmd-args '("/c" "start")))
+      (when (file-exists-p cmd-exe)
+	(setq browse-url-generic-program  cmd-exe
+	      browse-url-generic-args     cmd-args
+	      browse-url-browser-function 'browse-url-generic
+	      search-web-default-browser 'browse-url-generic)))))
 
 
 ;; Local Variables:

@@ -3,7 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf yatex :ensure t
+(leaf yatex
+  :ensure t
   :mode ("\\.tex\\'" . yatex-mode)
   :custom ((tex-command . "platex")
 	   (dviprint-command-format . "dvpd.sh %s")
@@ -27,7 +28,7 @@
 		 ("M-l" . YaTeX-lpr)))))))	;; Open pdf
 
 
-(leaf *dviprint-command-format
+(leaf Dviprint-command-format
   ;; -----------------------------------------------------------------------
   ;; dvpd.sh for Linux
   ;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'

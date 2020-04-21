@@ -42,8 +42,8 @@
     :bind (:dired-mode-map
 	   ("C-c C-r" . dired-rsync))))
 
-(leaf *dired-extentions
-  :preface
+(leaf Dired-extentions
+  :init
   ;; Switching the display and non-display of hidden files
   (defun toggle-dired-listing-switches ()
     "Toggle `dired-mode' switch between with and without 'A' option to show or hide dot files."
@@ -123,7 +123,8 @@
     (call-interactively 'dired-unmark-all-marks)
     (call-interactively 'revert-buffer)))
 
-(leaf direx :ensure t
+(leaf direx
+  :ensure t
   :doc "Yet another dired for tree display."
   :after popwin
   :bind (("<f11>" . direx:jump-to-project-directory)

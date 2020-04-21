@@ -1,14 +1,14 @@
-;;; 03_counsel.el --- 03_counsel.el
+;;; 03_counsel.el --- 03_counsel.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
 
 (leaf counsel
   :ensure t
+  :chord ("p@" . swiper-thing-at-point)
   :bind (("C-s" . swiper-isearch-region)
-	 ("C-r" . swiper-thing-at-point)
+	 ("C-r" . counsel-recentf)
 	 ("C-:" . counsel-switch-buffer)
-	 ("C-c s" . isearch-forward)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
 	 ("M-x" . counsel-M-x)
@@ -19,8 +19,9 @@
 	 ("C-c g" . counsel-git)
 	 ("C-c j" . counsel-git-grep)
 	 ("C-c i" . counsel-imenu)
-	 ("C-c r" . counsel-recentf)
 	 ("C-c t" . counsel-tramp)
+	 ("C-c s" . isearch-forward)
+	 ("C-c r" . isearch-backward)
 	 ([remap dired] . counsel-dired)
 	 ("<f6>" . find-counsel-in-m-x))
 
@@ -33,6 +34,7 @@
   ((ivy-use-virtual-buffers . t)
    (ivy-use-selectable-prompt . t)
    (enable-recursive-minibuffers . t)
+
    (xref-show-xrefs-function . #'ivy-xref-show-xrefs)
    (counsel-find-file-ignore-regexp . ,(regexp-opt '("destop.ini" ".dropox")))
    (counsel-yank-pop-separator

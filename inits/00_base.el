@@ -1,4 +1,4 @@
-;;; 00_base.el --- 00_base.el
+;;; 00_base.el --- 00_base.el   -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -26,7 +26,8 @@
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
 
-(leaf exec-path-from-shell :require t
+(leaf exec-path-from-shell
+  :require t
   :when  (member window-system '(mac ns x))
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :config
@@ -155,8 +156,8 @@
 
 
 (leaf Emacs-manual
+  :doc "M-x info-emacs-manual (C-h r or F1+r)"
   :config
-  ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
   (defun Info-find-node--info-ja (orig-fn filename &rest args)
@@ -167,8 +168,8 @@
 	     (_ filename))
 	   args)))
 
-
 (leaf my:template :require t
+  :doc "Templates for their own"
   :init
   (add-to-list 'load-path "~/Dropbox/emacs.d/elisp"))
 

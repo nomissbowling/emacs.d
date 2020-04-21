@@ -1,4 +1,4 @@
-;;; 06_flymake.el --- 06_flymake.el
+;;; 06_flymake.el --- 06_flymake.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

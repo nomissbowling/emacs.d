@@ -1,4 +1,4 @@
-;;; 01_dashboard.el --- 01_dashboard.el
+;;; 01_dashboard.el --- 01_dashboard.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -17,8 +17,8 @@
 	  ("p" . browse-pocket)
 	  ("." . hydra-browse/body)
 	  ("<home>" . quit-dashboard)))
-  :init
-  (dashboard-setup-startup-hook)
+  :hook
+  (after-init-hook . dashboard-setup-startup-hook)
   :config
   (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
 	dashboard-set-heading-icons t

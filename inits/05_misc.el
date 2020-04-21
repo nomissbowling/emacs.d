@@ -1,4 +1,4 @@
-;;; 05_misc.el --- 05_misc.el
+;;; 05_misc.el --- 05_misc.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -68,6 +68,11 @@
   :config
   (leaf counsel-projectile :ensure t
     :hook (after-init-hook . counsel-projectile-mode)))
+
+
+(leaf atomic-chrome
+  :ensure t
+  :hook (after-init-hook . atomic-chrome-start-server))
 
 
 (leaf leaf

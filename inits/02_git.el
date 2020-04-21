@@ -1,4 +1,4 @@
-;;; 02_git.el --- 02_git.el
+;;; 02_git.el --- 02_git.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-erro

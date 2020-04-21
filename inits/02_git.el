@@ -20,8 +20,7 @@
    ("s" magit-status :exit t)
    ("b" magit-blame :exit t)
    ("t" git-timemachine :exit t)
-   ("d" vc-diff)
-   ("q" nil)))
+   ("d" vc-diff)))
 
 
 ;; local Variables:

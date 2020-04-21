@@ -1,4 +1,4 @@
-;;; 07_ui.el --- 07_ui.el
+;;; 07_ui.el --- 07_ui.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

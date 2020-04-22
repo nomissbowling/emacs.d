@@ -109,21 +109,20 @@
     (forward-line -2)
     (forward-char 6)))
 
-;;; open junk file
+
 (leaf open-junk-file
   :ensure t
   :config
-  ;; howmの中にファイル作成
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d%H%M.")
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d.")
   (setq open-junk-file-find-file-function 'find-file)
-  ;; howm用のタグを挿入
+  ;; Automatically tag insertion
   (defvar open-junk-ext-tags-alist
     '(("el" ";;" "ELISP")
-      ("cpp" "//" "CPP")
-      ("r" "#" "R")
+      ("pl" "#" "PERL")
+      ("rb" "#" "RUBY")
       ("py" "#" "PYTHON")
-      ("hs" "--" "HASKELL")
-      ("scm" ";;" "SCHEME")))
+      ("md" "#" "GFM")
+      ("txt" ";;" "TEXT")))
   (defadvice open-junk-file
       (after open-junk-file-insert-howm-comment-advice activate)
     "After open-junk-file, insert a tag into the opened buffer

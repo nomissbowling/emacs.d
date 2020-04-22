@@ -1,4 +1,4 @@
-;;; 10_hydra-misc.el --- 10_hydra-misc.el
+;;; 10_hydra-misc.el --- 10_hydra-misc.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -19,8 +19,10 @@
 
 (leaf gist
   :ensure t
-  :bind (:tabulated-list-mode-map
-	 ("." . hydra-gist-help/body))
+  :bind (("C-c g" . gist-region-or-buffer)
+	 ("C-c l" . gist-list)
+	 (:tabulated-list-mode-map
+	  ("." . hydra-gist-help/body)))
   :hydra
   (hydra-gist-help ()
 		   "

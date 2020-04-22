@@ -109,6 +109,32 @@
     (forward-line -2)
     (forward-char 6)))
 
+;;; open junk file
+(leaf open-junk-file
+  :ensure t
+  :config
+  ;; howmの中にファイル作成
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d%H%M.")
+  (setq open-junk-file-find-file-function 'find-file)
+  ;; howm用のタグを挿入
+  (defvar open-junk-ext-tags-alist
+    '(("el" ";;" "ELISP")
+      ("cpp" "//" "CPP")
+      ("r" "#" "R")
+      ("py" "#" "PYTHON")
+      ("hs" "--" "HASKELL")
+      ("scm" ";;" "SCHEME")))
+  (defadvice open-junk-file
+      (after open-junk-file-insert-howm-comment-advice activate)
+    "After open-junk-file, insert a tag into the opened buffer
+to be searched by howm."
+    (let* ((ext (replace-regexp-in-string "^.*\\.\\([^\\.]+\\)$" "\\1" buffer-file-name))
+	   (asc (assoc ext open-junk-ext-tags-alist))
+	   (prefix (cadr asc))
+	   (tag (caddr asc)))
+      (insert prefix)
+      (insert " %" tag))))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

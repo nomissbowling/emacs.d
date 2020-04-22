@@ -5,7 +5,6 @@
 
 (leaf counsel
   :ensure t
-  :chord ("p@" . swiper-thing-at-point)
   :bind (("C-s" . swiper-isearch-region)
 	 ("C-r" . counsel-recentf)
 	 ("C-:" . counsel-switch-buffer)

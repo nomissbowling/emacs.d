@@ -37,7 +37,7 @@
   (hydra-howm
    (:hint nil :exit t)
    "
- 📝 howm:  memo_,_  _i_dea  _h_ack  _n_ote  _d_iary  _p_age  _b_log  _m_ail  list_@_  "
+ 📝 howm:  memo_,_  _i_dea  _h_ack  _n_ote  _d_iary  _p_age  _b_log  _m_ail  list_@_  _j_unk"
    ("," my:howm-memo)
    ("i" my:howm-idea)
    ("h" my:howm-hack)
@@ -47,6 +47,7 @@
    ("b" my:howm-blog)
    ("m" my:howm-mail)
    ("@" howm-list-all)
+   ("j" open-junk-file)
    ("q" nil)))
 
 

@@ -5,19 +5,29 @@
 
 (leaf company
   :ensure t
-  :bind (([C-tab] . company-complete)
-	 ([backtab] . company-yasnippet)
+  :bind (("C-<tab>" . company-complete)
 	 (:company-active-map
+	  ("<tab>" . company-complete-common-or-cycle)
+	  ("<backtab>" . company-select-previous)
 	  ("b" . company-select-previous)
 	  ("SPC" . company-select-next)
-	  ([backtab] . my:company-yasnippet)))
+	  ("C-d" . company-show-doc-buffer)))
   :hook (after-init-hook . global-company-mode)
-
+  :custom ((company-minimum-prefix-length . 2)
+	   (company-selection-wrap-around . t)
+	   (company-tooltip-maximum-width . 50))
   :config
-  (defun my:company-yasnippet ()
-    (interactive)
-    (company-abort)
-    (call-interactively 'company-yasnippet)))
+  (add-to-list 'company-backends 'company-restclient))
+
+
+(leaf company-quickhelp
+  :ensure t
+  :after company
+  :hook (after-init-hook . comoany-quickhelp-mode)
+  :custom ((company-quickhelp-color-foreground . "white")
+	   (company-quickhelp-color-background . "dark slate gray")
+	   (company-quickhelp-max-lines . 5)))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

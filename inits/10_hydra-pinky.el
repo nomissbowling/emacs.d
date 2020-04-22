@@ -43,8 +43,7 @@
    ("<" iflipb-next-buffer)
    (">" iflipb-previous-buffer)
    (":" counsel-switch-buffer)
-   ("." view-mode)
-   ("q" nil))
+   ("." view-mode))
 
   :init
   (leaf Edit-window

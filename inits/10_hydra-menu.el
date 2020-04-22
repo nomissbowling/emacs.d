@@ -1,4 +1,4 @@
-;;; 10_hydra-menu.el --- 10_hydra-menu.el
+;;; 10_hydra-menu.el --- 10_hydra-menu.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -11,8 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   pinky_:_   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   isearch:_[__]_   work:_<right>_
-   magit:_._   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   _s_earch-web"
+   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   _s_wiper   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   isearch:_[_:_]_
+   git:_,_:_._   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_:_:_@_   _t_ramp:_q_   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -36,7 +36,7 @@
    ("[" isearch-backward)
    ("." magit-status)
    ("m" hydra-markdown/body)
-   (":" hydra-pinky/body)
+   ("," hydra-magit/body)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
@@ -44,12 +44,12 @@
    ("j" open-junk-file)
    ("J" my:open-junk-file-dir)
    ("@" howm-list-all)
-   ("," hydra-howm/body)
+   (":" hydra-howm/body)
    ("k" my:recompile)
    ("G" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)
-   ("s" hydra-search/body)
+   ("s" swiper-thing-at-point)
    ("<right>" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)

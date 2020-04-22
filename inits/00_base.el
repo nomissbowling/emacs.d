@@ -169,7 +169,6 @@
 	   args)))
 
 (leaf my-template :require t
-  :doc "Templates for their own"
   :init
   (add-to-list 'load-path "~/Dropbox/emacs.d/elisp"))
 

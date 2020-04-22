@@ -12,7 +12,7 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------------
    _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   gi_s_t:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   isearch:_[_:_]_
-   git:_,_:_._   _a_g:🐾   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_:_:_@_   _t_ramp:_q_   work:_<right>_"
+   git:_:_:_._   _a_g:🐾   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -35,7 +35,7 @@
    ("[" isearch-backward)
    ("." magit-status)
    ("m" hydra-markdown/body)
-   ("," hydra-magit/body)
+   (":" hydra-magit/body)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
@@ -43,7 +43,7 @@
    ("j" open-junk-file)
    ("J" my:open-junk-file-dir)
    ("@" howm-list-all)
-   (":" hydra-howm/body)
+   ("," hydra-howm/body)
    ("k" my:recompile)
    ("s" gist-region-or-buffer)
    ("l" gist-list)

@@ -5,6 +5,7 @@
 
 (leaf counsel
   :ensure t
+  :chord ("::" . swiper-thing-at-point)
   :bind (("C-s" . swiper-isearch-region)
 	 ("C-r" . counsel-recentf)
 	 ("C-:" . counsel-switch-buffer)
@@ -93,11 +94,6 @@ If the region isn't selected, `swiper-isearch'."
     (when (get-buffer "*tramp/scp xsrv*")
       (counsel-tramp-quit)
       (message "Now tramp-quit!"))))
-
-
-(leaf counsel-css
-  :ensure
-  :hook (css-mode-hook . #'counsel-css-imenu-setup))
 
 
 ;; Local Variables:

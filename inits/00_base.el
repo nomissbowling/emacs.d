@@ -86,13 +86,10 @@
   :init
   ;; Set makefle mode
   (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
-
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
-
   ;; Input yes or no to y or n (even SPC OK instead of y)
   (defalias 'yes-or-no-p 'y-or-n-p)
-
   ;; Set transparency (active inactive)
   (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
   )

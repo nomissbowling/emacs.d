@@ -10,9 +10,9 @@
    (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   _s_wiper   _r_estart   _m_arkdown   _u_ndotree^^   _p_ackage   isearch:_[_:_]_
-   git:_,_:_._   _a_g:🐾   _G_ist_l_   _f_tp   p_1_:_2_   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_:_:_@_   _t_ramp:_q_   work:_<right>_"
+  ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------------
+   _d_ropbox^^   _e_macs   _i_nits^^   _w_eb   GH:_h_^^   .emacs_;_^^^^   _b_rowse   gi_s_t:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   isearch:_[_:_]_
+   git:_,_:_._   _a_g:🐾   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_   _c_ompile   _o_pen-url   howm:_:_:_@_   _t_ramp:_q_   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -22,7 +22,6 @@
    ("t" my:tramp-xsrv)
    ("q" my:tramp-quit)
    ("d" my:dropbox)
-   ("D" my:documents)
    ("i" my:inits-dir)
    ("e" my:emacs-dir)
    ("w" my:www-dir)
@@ -46,10 +45,10 @@
    ("@" howm-list-all)
    (":" hydra-howm/body)
    ("k" my:recompile)
-   ("G" gist-region-or-buffer)
+   ("s" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)
-   ("s" swiper-thing-at-point)
+   ("p" hydra-pinky/body)
    ("<right>" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)

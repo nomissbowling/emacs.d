@@ -170,9 +170,8 @@
 	   args)))
 
 
-(leaf my-template :require t
-  :init
-  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp"))
+;; Load my template
+(load "~/Dropbox/emacs.d/elisp/my-template.el")
 
 
 ;; Local Variables:

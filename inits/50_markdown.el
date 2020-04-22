@@ -1,4 +1,4 @@
-;;; 50_markdown.el --- 50_markdown.el
+;;; 50_markdown.el --- 50_markdown.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

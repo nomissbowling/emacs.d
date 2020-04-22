@@ -1,4 +1,4 @@
-;;; 10_hydra-make.el --- 10_hydra-make.el
+;;; 10_hydra-make.el --- 10_hydra-make.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -16,7 +16,6 @@
    ("g" my:make-git)
    ("c" my:make-clean)
    ("e" next-error)
-   ("<f2>" nil)
    ("q" nil))
 
   :init

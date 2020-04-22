@@ -1,4 +1,4 @@
-;;; 30_mozc.el --- 30_mozc.el
+;;; 30_mozc.el --- 30_mozc.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -13,7 +13,7 @@
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (custom-set-variables '(mozc-leim-title "かな "))
 
-  :preface
+  :config
   (leaf mozc-cursor-color
     :url "https://github.com/iRi-E/mozc-el-extensions"
     :el-get iRi-E/mozc-el-extensions

@@ -1,4 +1,4 @@
-;;; 90_eshell.el --- 90_eshell.el
+;;; 90_eshell.el --- 90_eshell.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

@@ -94,23 +94,31 @@
   (defalias 'yes-or-no-p 'y-or-n-p)
 
   ;; Set transparency (active inactive)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8))))
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
+  )
 
 
 (leaf leaf
   :config
   (leaf save-place
     :hook (after-init-hook . save-place-mode))
+
   (leaf savehist
     :doc "Save history of minibuffer."
     :hook (after-init-hook . savehist-mode)
     :custom (history-length . 1000))
+
   (leaf uniquify
     :doc "Make it easy to see when it is the same name file."
     :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
 	     (uniquify-min-dir-content . 1)))
+
   (leaf generic-x
     :doc "contains many mode setting")
+
+  (leaf web-mode :ensure t
+    :mode (("\\.html?\\'" . web-mode)))
+
   (leaf select
     :doc "use the X11 clipboard."
     :bind (("M-w" . clipboard-kill-ring-save)
@@ -123,6 +131,7 @@
       (if (use-region-p)
 	  (clipboard-kill-region (region-beginning) (region-end))
 	(backward-kill-word 1))))
+
   (leaf recentf
     :hook (after-init-hook . recentf-mode)
     :custom((recentf-save-file . "~/.emacs.d/recentf")
@@ -134,9 +143,7 @@
 		 (lambda (file) (file-in-directory-p file package-user-dir)))))
     :config
     (push (expand-file-name recentf-save-file) recentf-exclude))
-  (leaf web-mode
-    :ensure t
-    :mode (("\\.html?\\'" . web-mode))))
+  )
 
 
 (leaf bind-key

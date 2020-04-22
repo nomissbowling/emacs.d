@@ -10,23 +10,20 @@
     (server-start)))
 
 
-(leaf Language
-  :doc "Save the file specified code with basic utf-8 if it exists"
-  :config
-  (set-language-environment "Japanese")
-  (prefer-coding-system 'utf-8))
+;; Save the file specified code with basic utf-8 if it exists
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
 
 
-(leaf Font
-  :config
-  ;; font for main-machine
-  (when (string-match "e590" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-    (if (getenv "WSLENV")
-	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-  ;; font for sub-machine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
+;; font for main-machine
+(when (string-match "e590" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+  (if (getenv "WSLENV")
+      (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+
+;; font for sub-machine
+(when (string-match "x250" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
 
 
 (leaf exec-path-from-shell

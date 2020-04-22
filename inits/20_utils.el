@@ -15,7 +15,14 @@
   :ensure t
   :bind (("<f7>" . leaf-convert-region-pop)
 	 ("<f8>" . leaf-tree-mode)
-	 ("<f10>" . imenu-list-smart-toggle)))
+	 ("<f10>" . imenu-list-smart-toggle))
+  :custom ((imenu-list-size . 30)
+	   (imenu-list-position . 'left))
+  :config
+  (leaf counsel-css
+    :ensure
+    :hook (css-mode-hook . #'counsel-css-imenu-setup))
+  )
 
 
 (leaf browse-at-remote

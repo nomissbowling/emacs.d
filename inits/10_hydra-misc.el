@@ -5,6 +5,8 @@
 
 (leaf package-utils
   :ensure t
+  :chord ("p@" . hydra-package/body)
+  :bind ("C-c p" . hydra-package/body)
   :hydra
   (hydra-package
    (:color red :hint nil)

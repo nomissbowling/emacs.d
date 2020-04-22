@@ -9,11 +9,13 @@
   (unless (server-running-p)
     (server-start)))
 
+
 (leaf Language
   :doc "Save the file specified code with basic utf-8 if it exists"
   :config
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8))
+
 
 (leaf Font
   :config
@@ -26,12 +28,14 @@
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-14.5"))))
 
+
 (leaf exec-path-from-shell
   :require t
   :when  (member window-system '(mac ns x))
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :config
   (setq exec-path-from-shell-check-startup-files nil))
+
 
 (leaf Cus-start
   :custom
@@ -92,6 +96,7 @@
   ;; Set transparency (active inactive)
   (add-to-list 'default-frame-alist '(alpha . (1.0 0.8))))
 
+
 (leaf leaf
   :config
   (leaf save-place
@@ -135,24 +140,25 @@
     :config
     (push (expand-file-name recentf-save-file) recentf-exclude))
 
-  (leaf bind-key
-    :ensure t
-    :bind (("<insert>" . clipboard-yank)
-	   ("C-." . xref-find-definitions)
-	   ("M-/" . kill-buffer)
-	   ("C-M-/" . kill-other-buffer))
-    :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
-	    ("C-x C-c" . iconify-frame))
-    :config
-    (defun kill-other-buffers ()
-      "Kill all other buffers."
-      (interactive)
-      (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-      (message "Killed other buffers!")))
-
   (leaf web-mode
     :ensure t
     :mode (("\\.html?\\'" . web-mode))))
+
+
+(leaf bind-key
+  :ensure t
+  :bind (("<insert>" . clipboard-yank)
+	 ("C-." . xref-find-definitions)
+	 ("M-/" . kill-buffer)
+	 ("C-M-/" . kill-other-buffer))
+  :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
+	  ("C-x C-c" . iconify-frame))
+  :config
+  (defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+    (message "Killed other buffers!")))
 
 
 (leaf Emacs-manual

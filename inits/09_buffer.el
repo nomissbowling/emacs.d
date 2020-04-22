@@ -1,4 +1,4 @@
-;;; 09_buffer.el --- 09_buffer.el
+;;; 09_buffer.el --- 09_buffer.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

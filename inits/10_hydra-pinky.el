@@ -1,9 +1,10 @@
-;;; 10_hydra-pinky.el --- 10_hydra-pinky.el
+;;; 10_hydra-pinky.el --- 10_hydra-pinky.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
 
 (leaf Hydra-pinky
+  :bind ("C-;" . hydra-pinky/body)
   :chord ("jk" . hydra-pinky/body)
   :hydra
   (hydra-pinky

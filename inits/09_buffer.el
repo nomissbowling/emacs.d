@@ -3,18 +3,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf auto-save-buffers-enhanced
-  :ensure t
+(leaf auto-save-buffers-enhanced :ensure t
   :custom (auto-save-buffers-enhanced-quiet-save-p . t)
   :config (auto-save-buffers-enhanced t))
-
-(leaf emacs-lock
-  :doc "set buffer that can not be killed."
-  :config
-  (with-current-buffer "*scratch*"
-    (emacs-lock-mode 'kill))
-  (with-current-buffer "*Messages*"
-    (emacs-lock-mode 'kill)))
 
 (leaf tempbuf
   :require t
@@ -25,15 +16,13 @@
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
   :custom (tempbuf-kill-message . nil))
 
-(leaf iflipb
-  :ensure t
+(leaf iflipb :ensure t
   :bind (("C-<right>" . iflipb-next-buffer)
 	 ("C-<left>" . iflipb-previous-buffer))
   :custom (iflipb-wrap-around . t)
   :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
-(leaf undohist
-  :ensure t
+(leaf undohist :ensure t
   :hook (after-init-hook . undohist-initialize)
   :custom (undohist-ignored-files . '("/tmp" "COMMIT_EDITMSG")))
 

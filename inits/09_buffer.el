@@ -65,7 +65,7 @@
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
 
-(leaf Kill-other-buffers
+(leaf kill-other-buffers
   :bind (("M-/" . kill-buffer)
 	 ("C-M-/" . kill-other-buffers))
   :init

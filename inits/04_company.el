@@ -15,9 +15,7 @@
   :hook (after-init-hook . global-company-mode)
   :custom ((company-minimum-prefix-length . 2)
 	   (company-selection-wrap-around . t)
-	   (company-tooltip-maximum-width . 50))
-  :config
-  (add-to-list 'company-backends 'company-restclient))
+	   (company-tooltip-maximum-width . 50)))
 
 
 ;; Local Variables:

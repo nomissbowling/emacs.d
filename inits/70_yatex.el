@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf yatex
-  :ensure t
+(leaf yatex :ensure t
   :mode ("\\.tex\\'" . yatex-mode)
   :custom ((tex-command . "platex")
 	   (dviprint-command-format . "dvpd.sh %s")
@@ -28,21 +27,21 @@
 		 ("M-l" . YaTeX-lpr)))))))	;; Open pdf
 
 
-(leaf Dviprint-command-format
-  ;; -----------------------------------------------------------------------
-  ;; dvpd.sh for Linux
-  ;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
-  ;; | #!/bin/bash
-  ;; | name=$1
-  ;; | dvipdfmx $1 && evince ${name%.*}.pdf
+;; Dviprint-command-format
+;; -----------------------------------------------------------------------
+;; dvpd.sh for Linux
+;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
+;; | #!/bin/bash
+;; | name=$1
+;; | dvipdfmx $1 && evince ${name%.*}.pdf
 
-  ;; dvpd.sh for WSL
-  ;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
-  ;; | #!/bin/bash
-  ;; | name=$1
-  ;; | dvipdfmx $1 && wslstart ${name%.*}.pdf
-  ;; ------------------------------------------------------------------------
-  )
+;; dvpd.sh for WSL
+;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
+;; | #!/bin/bash
+;; | name=$1
+;; | dvipdfmx $1 && wslstart ${name%.*}.pdf
+;; ------------------------------------------------------------------------
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

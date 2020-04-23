@@ -5,8 +5,8 @@
 
 (leaf mozc
   :ensure t
-  :bind (("C-c C-w" . mozc-word-regist)
-	 ("C-c C-d" . mozc-config-dialog))
+  :bind (("<f8>" . mozc-word-regist)
+	 ("<f7>" . mozc-config-dialog))
   :bind* ("<henkan>" . toggle-input-method)
   :init
   (setq default-input-method "japanese-mozc")

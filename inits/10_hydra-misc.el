@@ -85,7 +85,7 @@
    ("w" browse-weather)
    ("h" browse-homepage)
    ("p" browse-pocket)
-   ("t" browse-tweetdeck)
+   ("t" twit-1)
    ("," browse-slack)
    ("." nil))
 

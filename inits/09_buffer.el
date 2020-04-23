@@ -19,8 +19,8 @@
 
 (leaf iflipb
   :ensure t
-  :bind (("C-<right>" . iflipb-next-buffer)
-	 ("C-<left>" . iflipb-previous-buffer))
+  :bind (("<f8>" . iflipb-next-buffer)
+	 ("<f7>" . iflipb-previous-buffer))
   :custom (iflipb-wrap-around . t)
   :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 

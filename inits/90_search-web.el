@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf search-web
-  :ensure t
+(leaf search-web :ensure t
   :url "https://github.com/tomoya/search-web.el"
   :bind ("M-s" . hydra-search/body)
   :commands search-web-dwim

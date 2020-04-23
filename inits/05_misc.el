@@ -69,11 +69,6 @@
     :hook (after-init-hook . counsel-projectile-mode)))
 
 
-(leaf atomic-chrome
-  :ensure t
-  :hook (after-init-hook . atomic-chrome-start-server))
-
-
 (leaf web-mode
   :ensure t
   :mode (("\\.html?\\'" . web-mode)))

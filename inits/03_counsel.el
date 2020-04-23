@@ -5,9 +5,8 @@
 
 (leaf counsel
   :ensure t
-  :chord ("::" . swiper-thing-at-point)
   :bind (("C-s" . swiper-isearch-region)
-	 ("C-r" . counsel-recentf)
+	 ("C-r" . swiper-thing-at-point)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -20,8 +19,7 @@
 	 ("C-c j" . counsel-git-grep)
 	 ("C-c i" . counsel-imenu)
 	 ("C-c t" . counsel-tramp)
-	 ("C-c s" . isearch-forward)
-	 ("C-c r" . isearch-backward)
+	 ("C-c r" . counsel-recentf)
 	 ([remap dired] . counsel-dired)
 	 ("<f6>" . find-counsel-in-m-x))
 

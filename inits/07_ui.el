@@ -3,12 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf doom-themes
-  :ensure t
+(leaf doom-themes :ensure t
   :config (load-theme 'doom-dracula t))
 
-(leaf doom-modeline
-  :ensure t
+(leaf doom-modeline :ensure t
   :commands doom-modeline-def-modeline
   :hook (after-init-hook . doom-modeline-mode)
   :custom ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
@@ -29,10 +27,12 @@
     (nyan-cat-face-number . 4)
     (nyan-animate-nyancat . t)))
 
+
 (leaf display-line-numbers
   :bind ("<f9>" . display-line-numbers-mode)
   :hook ((prog-mode-hook . display-line-numbers-mode)
 	 (text-mode-hook . display-line-numbers-mode)))
+
 
 (leaf darkroom
   :doc "Remove visual distractions and focus on writing."
@@ -55,8 +55,8 @@
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 
-(leaf all-the-icons
-  :ensure t
+
+(leaf all-the-icons :ensure t
   :custom (all-the-icons-scale-factor . 1.0))
 
 (leaf all-the-icons-dired
@@ -120,6 +120,7 @@
 		      (insert (all-the-icons-icon-for-file file :v-adjust all-the-icons-dired-v-adjust))))
 		  (insert "\t"))))   ; Align and keep one space for refeshing after operations
 	    (forward-line 1)))))))
+
 
 
 ;; Local Variables:

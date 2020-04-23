@@ -80,7 +80,6 @@
 
 
 (leaf leaf
-  :doc "Other misc"
   :config
   (leaf smex :ensure t)
   (leaf posframe :ensure t)

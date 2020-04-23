@@ -55,7 +55,6 @@
   (init-loader-load "~/Dropbox/emacs.d/inits")
   (setq custom-file (locate-user-emacs-file "custom.el"))
   :init
-  ;; Load my template
   (load "~/Dropbox/emacs.d/elisp/my-template.el"))
 
 

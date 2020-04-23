@@ -125,9 +125,9 @@
   :ensure t
   :bind (("C-." . xref-find-definitions)
 	 ("M-w" . clipboard-kill-ring-save)
-	 ("C-w" . my:clipboard-kill-region)
-	 ("M-c" . clipboard-kill-ring-save)
-	 ("M-v" . yank))
+	 ("C-w" . my:clipboard-kill-region))
+  :bind* (("M-c" . clipboard-kill-ring-save)
+	  ("M-v" . yank))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
 	  ("C-x C-c" . iconify-frame))
   :custom (select-enable-clipboard . t)

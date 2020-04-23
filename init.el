@@ -43,6 +43,10 @@
       :config (setq el-get-dir "~/.emacs.d/elisp"))
     (leaf-keywords-init)))
 
+(leaf macrostep
+  :ensure t
+  :bind (("<f2>" . macrostep-expand)))
+
 (leaf init-loader
   :ensure t
   :config

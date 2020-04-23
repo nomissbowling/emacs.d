@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf markdown-mode
-  :ensure t
+(leaf markdown-mode :ensure t
   :bind (:markdown-mode-map
 	 ("S-<tab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)

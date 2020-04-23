@@ -37,9 +37,9 @@
   (leaf leaf-keywords
     :ensure t
     :init
+    (leaf leaf-convert :ensure t)
     (leaf hydra :ensure t)
-    (leaf el-get
-      :ensure t
+    (leaf el-get :ensure t
       :config (setq el-get-dir "~/.emacs.d/elisp"))
     (leaf-keywords-init)))
 

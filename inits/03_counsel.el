@@ -42,7 +42,8 @@
    (ivy-format-functions-alist . '((t . my:ivy-format-function-arrow))))
 
   :preface
-  (leaf ivy-rich :ensure t
+  (leaf ivy-rich
+    :ensure t
     :hook (ivy-mode-hook . ivy-rich-mode))
 
   :config

@@ -3,11 +3,13 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf popwin :ensure t
+(leaf popwin
+  :ensure t
   :hook (after-init-hook . popwin-mode))
 
 
-(leaf expand-region :ensure t
+(leaf expand-region
+  :ensure t
   :bind ("C-@" . er/expand-region))
 
 
@@ -24,13 +26,15 @@
   :init (leaf sequential-command :ensure t))
 
 
-(leaf yasnippet :ensure t
+(leaf yasnippet
+  :ensure t
   :hook (after-init-hook . yas-global-mode)
   :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets"))
   :init (leaf ivy-yasnippet :ensure t))
 
 
-(leaf prescient :ensure t
+(leaf prescient
+  :ensure t
   :hook (after-init-hook . prescient-persist-mode)
   :config
   (leaf company-prescient :ensure t
@@ -39,30 +43,41 @@
     :hook (after-init-hook . ivy-prescient-mode)))
 
 
-(leaf persistent-scratch :ensure t
+(leaf persistent-scratch
+  :ensure t
   :config (persistent-scratch-setup-default))
 
 
-(leaf quickrun :ensure t
+(leaf quickrun
+  :ensure t
   :bind ("<f5>" . quickrun))
 
 
-(leaf which-key :ensure t
+(leaf which-key
+  :ensure t
   :hook (after-init-hook . which-key-mode)
   :custom
   ((which-key-max-description-length . 40)
    (which-key-use-C-h-commands . t)))
 
 
-(leaf projectile :ensure t
+(leaf projectile
+  :ensure t
   :hook (after-init-hook . projectile-mode)
   :config
   (leaf counsel-projectile :ensure t
     :hook (after-init-hook . counsel-projectile-mode)))
 
 
-(leaf atomic-chrome :ensure t
+(leaf atomic-chrome
+  :ensure t
   :hook (after-init-hook . atomic-chrome-start-server))
+
+
+;; Set web mode
+(leaf web-mode
+  :ensure t
+  :mode (("\\.html?\\'" . web-mode)))
 
 
 ;; Other misc

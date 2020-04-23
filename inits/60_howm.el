@@ -3,7 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf howm :ensure t
+(leaf howm
+  :ensure t
   :commands (howm-create howm-remember howm-list-all)
   :chord ("@@" . howm-list-all)
   :bind (:howm-view-summary-mode-map
@@ -107,7 +108,8 @@
   (forward-char 6))
 
 
-(leaf open-junk-file :ensure t
+(leaf open-junk-file
+  :ensure t
   :config
   (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d.")
   (setq open-junk-file-find-file-function 'find-file)

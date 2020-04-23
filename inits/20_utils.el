@@ -3,14 +3,16 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf migemo :ensure t
+(leaf migemo
+  :ensure t
   :when (executable-find "cmigemo")
   :hook (after-init-hook . migemo-init)
   :custom ((migemo-command . "cmigemo")
 	   (migemo-dictionary . "/usr/share/cmigemo/utf-8/migemo-dict")))
 
 
-(leaf imenu-list :ensure t
+(leaf imenu-list
+  :ensure t
   :bind (("<f10>" . imenu-list-smart-toggle))
   :custom ((imenu-list-size . 30)
 	   (imenu-list-position . 'left))
@@ -20,7 +22,8 @@
     :hook (css-mode-hook . #'counsel-css-imenu-setup)))
 
 
-(leaf browse-at-remote :ensure t
+(leaf browse-at-remote
+  :ensure t
   :config
   (defalias 'my:github-show 'browse-at-remote))
 

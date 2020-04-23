@@ -29,7 +29,8 @@
   (dired-listing-switches . "-lgGhF")
 
   :config
-  (leaf ls-lisp :require t
+  (leaf ls-lisp
+    :require t
     :doc "Show directory first"
     :after dired
     :config
@@ -124,7 +125,8 @@
     (call-interactively 'revert-buffer)))
 
 
-(leaf direx :ensure t
+(leaf direx
+  :ensure t
   :doc "Yet another dired for tree display."
   :after popwin
   :bind (("<f11>" . direx:jump-to-project-directory)

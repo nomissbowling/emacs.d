@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf google-translate :ensure t
+(leaf google-translate
+  :ensure t
   :bind ("C-t" . google-translate-auto)
   :config
   (defun google-translate-auto ()

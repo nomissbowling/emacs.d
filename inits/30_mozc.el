@@ -3,7 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf mozc :ensure t
+(leaf mozc
+  :ensure t
   :bind (("C-c C-w" . mozc-word-regist)
 	 ("C-c C-d" . mozc-config-dialog))
   :bind* ("<henkan>" . toggle-input-method)

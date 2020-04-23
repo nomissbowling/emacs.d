@@ -8,7 +8,8 @@
 (prefer-coding-system 'utf-8)
 
 
-(leaf exec-path-from-shell :require t
+(leaf exec-path-from-shell
+  :require t
   :when  (memq window-system '(mac ns x))
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :config
@@ -37,66 +38,47 @@
   :custom
   (;; Display file name in title bar: buffername-emacs-version
    (frame-title-format . "%b")
-
    ;; Point keeps its screen position when scroll
    (scroll-preserve-screen-position . :always)
-
    ;; Turn Off warning sound screen flash
    (visible-bell . nil)
-
    ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
    (ring-bell-function . 'ignore)
-
    ;; Do not change the position of the cursor when scrolling pages
    (scroll-preserve-screen-position . t)
-
    ;; Suppress warnings for 'ad-handle-definition:'
    (ad-redefinition-action . 'accept)
-
    ;; Faster rendering by not corresponding to right-to-left language
    (bidi-display-reordering . nil)
-
    ;; between the lines
    (line-spacing . 0.1)
-
    ;; Do not distinguish uppercase and lowercase letters on completion
    (completion-ignore-case . t)
    (read-file-name-completion-ignore-case . t)
-
    ;; Copy with mouse drag
    (mouse-drag-copy-region . t)
-
    ;; Do not make a backup filie like *.~
    (make-backup-files . nil)
-
    ;; Do not use auto save
    (auto-save-default . nil)
-
    ;; Do not create lock file
    (create-lockfiles . nil)
-
    ;; Do not record the same content in the history
    (history-delete-duplicates . t))
 
   :hook
   (;; Save hist
    (after-init-hook . savehist-mode)
-
    ;;Save place
    (after-init-hook . save-place-mode)
-
    ;; Automatic reloading of changed files
    (after-init-hook . global-auto-revert-mode)
-
    ;; Do not blink the cursor
    (after-init-hook . blink-cursor-mode)
-
    ;; font-lock
    (after-init-hook . global-font-lock-mode)
-
    ;; word wrapping is used
    (after-init-hook . global-visual-line-mode)
-
    ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
    (makefile-mode-hook
     (lambda ()
@@ -105,20 +87,12 @@
   :init
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
-
   ;; Input yes or no to y or n (even SPC OK instead of y)
   (defalias 'yes-or-no-p 'y-or-n-p)
-
   ;; Set transparency (active inactive)
   (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
-
   ;; Set makefle mode
   (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
-
-  ;; Set web mode
-  (leaf web-mode :ensure t
-    :mode (("\\.html?\\'" . web-mode)))
-
   ;; Set buffer that can not be killed
   (with-current-buffer "*scratch*"
     (emacs-lock-mode 'kill))
@@ -130,10 +104,8 @@
   (leaf uniquify
     :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
 	     (uniquify-min-dir-content . 1)))
-
   ;; contains many mode setting
   (leaf generic-x)
-
   ;; Recentf
   (leaf recentf
     :hook (after-init-hook . recentf-mode)

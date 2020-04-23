@@ -3,10 +3,12 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf doom-themes :ensure t
+(leaf doom-themes
+  :ensure t
   :config (load-theme 'doom-dracula t))
 
-(leaf doom-modeline :ensure t
+(leaf doom-modeline
+  :ensure t
   :commands doom-modeline-def-modeline
   :hook (after-init-hook . doom-modeline-mode)
   :custom ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
@@ -56,7 +58,8 @@
     (display-line-numbers-mode 1)))
 
 
-(leaf all-the-icons :ensure t
+(leaf all-the-icons
+  :ensure t
   :custom (all-the-icons-scale-factor . 1.0))
 
 (leaf all-the-icons-dired

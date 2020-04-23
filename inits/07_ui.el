@@ -57,7 +57,6 @@
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 
-
 (leaf all-the-icons
   :ensure t
   :custom (all-the-icons-scale-factor . 1.0))
@@ -65,6 +64,7 @@
 (leaf all-the-icons-dired
   :ensure t
   :url "https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el"
+;;  :after dired
   :commands dired-mode
   :hook (dired-mode-hook . all-the-icons-dired-mode)
   :custom
@@ -123,7 +123,6 @@
 		      (insert (all-the-icons-icon-for-file file :v-adjust all-the-icons-dired-v-adjust))))
 		  (insert "\t"))))   ; Align and keep one space for refeshing after operations
 	    (forward-line 1)))))))
-
 
 
 ;; Local Variables:

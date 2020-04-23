@@ -109,13 +109,13 @@
   ;; Recentf
   (leaf recentf
     :hook (after-init-hook . recentf-mode)
-    :custom((recentf-save-file . "~/.emacs.d/recentf")
-	    (recentf-max-saved-items . 200)
-	    (recentf-auto-cleanup . 'never)
-	    (recentf-exclude
-	     . '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-		 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-		 (lambda (file) (file-in-directory-p file package-user-dir)))))
+    :custom ((recentf-save-file . "~/.emacs.d/recentf")
+	     (recentf-max-saved-items . 200)
+	     (recentf-auto-cleanup . 'never)
+	     (recentf-exclude
+	      . '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+		  "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+		  (lambda (file) (file-in-directory-p file package-user-dir)))))
     :config
     (push (expand-file-name recentf-save-file) recentf-exclude)))
 
@@ -124,21 +124,14 @@
 (leaf bind-key
   :ensure t
   :bind (("C-." . xref-find-definitions)
-	 ("M-/" . kill-buffer)
-	 ("C-M-/" . kill-other-buffer)
 	 ("M-w" . clipboard-kill-ring-save)
-	 ("C-w" . my:clipboard-kill-region))
+	 ("C-w" . my:clipboard-kill-region)
+	 ("M-c" . clipboard-kill-ring-save)
+	 ("M-v" . yank))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit)
 	  ("C-x C-c" . iconify-frame))
   :custom (select-enable-clipboard . t)
-
   :config
-  (defun kill-other-buffers ()
-    "Kill all other buffers."
-    (interactive)
-    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-    (message "Killed other buffers!"))
-
   (defun my:clipboard-kill-region ()
     "If the region is active, `clipboard-kill-region'.
 If the region is inactive, `backward-kill-word'."

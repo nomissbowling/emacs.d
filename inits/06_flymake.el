@@ -11,6 +11,7 @@
     :after flymake
     :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
     (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
+
   :config
   (defvar flymake-posframe-hide-posframe-hooks
     '(pre-command-hook post-command-hook focus-out-hook)

@@ -64,6 +64,18 @@
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
+
+(leaf kill-buffer
+  :bind (("M-/" . kill-buffer)
+	 ("C-M-/" . kill-other-buffer))
+  :config
+  (defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+    (message "Killed other buffers!")))
+
+
 (leaf my:toggle-scratch
   :doc "Toggle current buffer and scratch-buffer."
   :bind ([S-return] . toggle-scratch)
@@ -76,6 +88,7 @@
 	  (setq toggle-scratch-prev-buffer (buffer-name))
 	  (switch-to-buffer "*scratch*"))
       (switch-to-buffer toggle-scratch-prev-buffer))))
+
 
 
 ;; Local Variables:

@@ -4,8 +4,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf google-translate
-  :ensure t
+(leaf google-translate :ensure t
   :bind ("C-t" . google-translate-auto)
   :config
   (defun google-translate-auto ()
@@ -40,22 +39,20 @@
     (list 427110 1469889687)))
 
 ;; Fix error of "args out of range"
-(leaf Fix-error
-  :url "https://qiita.com/akicho8/items/cae976cb3286f51e4632"
-  :doc "Apply the following patch."
-  ;; ---------------------------------------------------------------
-  ;; --- a/google-translate-core.el
-  ;; +++ b/google-translate-core.el
-  ;; @@ -252,7 +252,7 @@ speech."
-  ;; does matter when translating misspelled word. So instead of
-  ;; translation it is possible to get suggestion."
-  ;; (let ((info (aref json 7)))
-  ;; - (when info
-  ;; + (when (and info (> (length info) 0))
-  ;; (aref info 1))))
-  ;; (defun google-translate-version ()
-  ;; -----------------------------------------------------------------
-  )
+;; https://qiita.com/akicho8/items/cae976cb3286f51e4632
+;; ---------------------------------------------------------------
+;; --- a/google-translate-core.el
+;; +++ b/google-translate-core.el
+;; @@ -252,7 +252,7 @@ speech."
+;; does matter when translating misspelled word. So instead of
+;; translation it is possible to get suggestion."
+;; (let ((info (aref json 7)))
+;; - (when info
+;; + (when (and info (> (length info) 0))
+;; (aref info 1))))
+;; (defun google-translate-version ()
+;; -----------------------------------------------------------------
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

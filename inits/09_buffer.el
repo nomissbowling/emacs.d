@@ -90,7 +90,6 @@
       (switch-to-buffer toggle-scratch-prev-buffer))))
 
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

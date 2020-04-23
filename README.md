@@ -59,7 +59,7 @@ rm ~/emacs-26.3.tar.gz
 
 ## Consept
 
-  * I installed 88 packages from melpa and downloaded some other elisp from github.
+  * I installed 98 packages from melpa and downloaded some other elisp from github.
   * We use lazy loading with 'leaf' and use 'after-init-hook' whenever possible for fast emacs startup.
   * This repository only discloses personal configuration information, and does not guarantee its operation.
 
@@ -68,3 +68,4 @@ rm ~/emacs-26.3.tar.gz
   * [Github: masasam/dotfiles](https://github.com/masasam/dotfiles)
   * [Github: seagle0128/.emacs.d](https://github.com/seagle0128/.emacs.d)
   * [Qiita: Emacsモダン化計画](https://qiita.com/Ladicle/items/feb5f9dce9adf89652cf)
+  * [Qiita: Emacs入門から始めるleaf.el入門](https://qiita.com/conao3/items/347d7e472afd0c58fbd7) 

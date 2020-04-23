@@ -20,15 +20,6 @@
   (add-to-list 'company-backends 'company-restclient))
 
 
-(leaf company-quickhelp
-  :ensure t
-  :after company
-  :hook (after-init-hook . comoany-quickhelp-mode)
-  :custom ((company-quickhelp-color-foreground . "white")
-	   (company-quickhelp-color-background . "dark slate gray")
-	   (company-quickhelp-max-lines . 5)))
-
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

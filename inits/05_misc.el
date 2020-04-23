@@ -74,17 +74,18 @@
   :hook (after-init-hook . atomic-chrome-start-server))
 
 
-;; Set web mode
 (leaf web-mode
   :ensure t
   :mode (("\\.html?\\'" . web-mode)))
 
 
-;; Other misc
-(leaf smex :ensure t)
-(leaf posframe :ensure t)
-(leaf restart-emacs :ensure t)
-(leaf sudo-edit :ensure t)
+(leaf leaf
+  :doc "Other misc"
+  :config
+  (leaf smex :ensure t)
+  (leaf posframe :ensure t)
+  (leaf restart-emacs :ensure t)
+  (leaf sudo-edit :ensure t))
 
 
 ;; Local Variables:

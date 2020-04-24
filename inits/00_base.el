@@ -21,7 +21,6 @@
   (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
   (if (getenv "WSLENV")
       (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-
 ;; font for sub-machine
 (when (string-match "x250" (shell-command-to-string "uname -n"))
   (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
@@ -125,9 +124,12 @@
   :ensure t
   :bind (("C-." . xref-find-definitions)
 	 ("M-w" . clipboard-kill-ring-save)
-	 ("C-w" . my:clipboard-kill-region))
+	 ("C-w" . my:clipboard-kill-region)
+	 ("M-/" . kill-buffer)
+	 ("C-M-/" . kill-other-buffers))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit))
   :custom (select-enable-clipboard . t)
+
   :config
   (defun my:clipboard-kill-region ()
     "If the region is active, `clipboard-kill-region'.
@@ -135,7 +137,13 @@ If the region is inactive, `backward-kill-word'."
     (interactive)
     (if (use-region-p)
 	(clipboard-kill-region (region-beginning) (region-end))
-      (backward-kill-word 1))))
+      (backward-kill-word 1)))
+
+  (defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+    (message "Killed other buffers!")))
 
 
 ;; M-x info-emacs-manual (C-h r or F1+r)

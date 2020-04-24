@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; Interactive extensions for package.el
 (leaf package-utils
   :ensure t
   :chord ("p@" . hydra-package/body)
@@ -19,6 +20,8 @@
    ("l" package-list-packages)
    ("q" nil)))
 
+
+;; Emacs integration for gist.github.com
 (leaf gist
   :ensure t
   :bind (("C-c g" . gist-region-or-buffer)
@@ -44,6 +47,8 @@
      @ : make a gist out of marked files"
 		   ("." nil)))
 
+
+;; Open browser by favorite url
 (leaf *hydra-browse
   :hydra
   (hydra-browse
@@ -90,11 +95,10 @@
    ("." nil)))
 
 
+;; Emacs in WSL and opening links
 (leaf *browse-in-WSL
-  :doc "Emacs in WSL and opening links"
   :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
   :if (getenv "WSLENV")
-
   :config
   (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
 	(cmd-args '("/c" "start")))

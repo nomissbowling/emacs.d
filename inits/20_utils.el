@@ -28,7 +28,7 @@
   (defalias 'my:github-show 'browse-at-remote))
 
 
-(leaf Pdf-out-from-emacs			;
+(leaf *ps2pdf			;
   :url "https://yohgami.hateblo.jp/entry/20130402/1364895193"
   :custom
   (my:pdfout-command-format . "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
@@ -43,7 +43,7 @@
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
-(leaf Current-dir-open
+(leaf *current-dir-open
   :doc "current dir open of linux-filer and linux terminal"
   :bind (("<f3>" . filer-current-dir-open)
 	 ("<f4>" . term-current-dir-open))
@@ -59,7 +59,7 @@
       (shell-command (concat "gnome-terminal --working-directory " dir)))))
 
 
-(leaf Delete-file-if-no-contents
+(leaf *delete-no-contents
   :init
   (defun my:delete-file-if-no-contents ()
     (when (and (buffer-file-name (current-buffer))

@@ -49,7 +49,6 @@
   (hiwin-activate)
   (set-face-background 'hiwin-face "#364456"))
 
-
 (leaf whitespace
   :ensure t
   :bind ("C-c c" . my:cleanup-for-spaces)

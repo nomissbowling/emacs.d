@@ -25,7 +25,7 @@
 		 (list "ex" "exit")))))
 
 
-(leaf *user-eshell-defined
+(leaf *user-eshell-fonction
   :config
   (defun my:eshell-prompt ()
     "Prompt change string."

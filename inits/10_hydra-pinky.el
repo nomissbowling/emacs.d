@@ -4,7 +4,8 @@
 ;; (setq debug-on-error t)
 
 (leaf *hydra-pinky
-  :bind ("C-;" . hydra-pinky/body)
+  :bind (("C-;" . hydra-pinky/body)
+	 ("C-q" . other-window-or-split))
   :chord ("jk" . hydra-pinky/body)
   :hydra
   (hydra-pinky
@@ -46,9 +47,8 @@
    ("." view-mode)))
 
 
-(leaf *edit-window
-  :bind ("C-q" . other-window-or-split)
-  :init
+(leaf *edit-window-function
+  :config
   (defun other-window-or-split ()
     "If there is one window, open split window.
 If there are two or more windows, it will go to another window."

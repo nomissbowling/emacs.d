@@ -34,8 +34,9 @@
   :hook ((prog-mode-hook . display-line-numbers-mode)
 	 (text-mode-hook . display-line-numbers-mode)))
 
+
+;; Remove visual distractions and focus on writing
 (leaf darkroom
-  :doc "Remove visual distractions and focus on writing."
   :el-get joaotavora/darkroom
   :bind (("<f12>" . my:darkroom-mode-in)
 	 (:darkroom-mode-map
@@ -55,9 +56,11 @@
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 
+
 (leaf all-the-icons
   :ensure t
   :custom (all-the-icons-scale-factor . 1.0))
+
 
 (leaf all-the-icons-dired
   :ensure t

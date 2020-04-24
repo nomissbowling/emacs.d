@@ -10,23 +10,6 @@
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode ("\\.md$'" . gfm-mode)
 
-  :init
-  ;; toc generater
-  (leaf markdown-toc :ensure t)
-  ;; markdown preview
-  (leaf livedown
-    :url "https://github.com/shime/emacs-livedown"
-    :el-get  shime/emacs-livedown
-    :bind ((:markdown-mode-map
-	    :package markdown-mode
-	    ("C-c p" . livedown-preview)
-	    ("C-c k" . livedown-kill)))
-    :require t
-    :custom ((livedown-autostart . nil)
-	     (livedown-open . t)
-	     (livedown-port . 1337)
-	     (livedown-browser . nil)))
-
   :custom-face
   (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
   (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))
@@ -35,9 +18,27 @@
   (markdown-link-face . '((t (:background "#0e1014" :foreground "#bd93f9"))))
   (markdown-list-face . '((t (:foreground "mediumpurple"))))
   (markdown-code-face . '((t (:background "#222" :inherit 'default))))
-  (markdown-pre-face . '((t (:foreground "#bd98fe"))))
+  (markdown-pre-face . '((t (:foreground "#bd98fe")))))
 
-  :config
+;; toc generater
+(leaf markdown-toc :ensure t)
+
+;; markdown preview
+(leaf livedown
+  :url "https://github.com/shime/emacs-livedown"
+  :el-get  shime/emacs-livedown
+  :bind ((:markdown-mode-map
+	  :package markdown-mode
+	  ("C-c p" . livedown-preview)
+	  ("C-c k" . livedown-kill)))
+  :require t
+  :custom ((livedown-autostart . nil)
+	   (livedown-open . t)
+	   (livedown-port . 1337)
+	   (livedown-browser . nil)))
+
+
+(leaf *hydra-markdown
   :hydra
   (hydra-markdown
    (:color red :hint nil)
@@ -56,7 +57,7 @@
    ("q" nil)))
 
 
-(leaf Pandoc
+(leaf *pandoc
   :config
   (defun md2pdf ()
     "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"

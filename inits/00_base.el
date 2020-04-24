@@ -9,7 +9,6 @@
 
 
 (leaf exec-path-from-shell
-  :require t
   :when  (memq window-system '(mac ns x))
   :hook (after-init-hook . exec-path-from-shell-initialize)
   :config
@@ -101,21 +100,21 @@
   :preface
   ;; Make it easy to see when it is the same name file
   (leaf uniquify
-    :custom ((uniquify-buffer-name-style . 'post-forward-angle-brackets)
-	     (uniquify-min-dir-content . 1)))
+    :config
+    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+	  uniquify-min-dir-content 1))
   ;; contains many mode setting
   (leaf generic-x)
   ;; Recentf
   (leaf recentf
     :hook (after-init-hook . recentf-mode)
-    :custom ((recentf-save-file . "~/.emacs.d/recentf")
-	     (recentf-max-saved-items . 200)
-	     (recentf-auto-cleanup . 'never)
-	     (recentf-exclude
-	      . '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-		  "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-		  (lambda (file) (file-in-directory-p file package-user-dir)))))
     :config
+    (setq recentf-save-file "~/.emacs.d/recentf"
+	  recentf-max-saved-items 200
+	  recentf-auto-cleanup 'never
+	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+			   (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude)))
 
 
@@ -128,9 +127,11 @@
 	 ("M-/" . kill-buffer)
 	 ("C-M-/" . kill-other-buffers))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit))
-  :custom (select-enable-clipboard . t)
-
   :config
+  ;; Use the X11 clipboard
+  (setq select-enable-clipboard t
+	select-enable-primary t)
+
   (defun my:clipboard-kill-region ()
     "If the region is active, `clipboard-kill-region'.
 If the region is inactive, `backward-kill-word'."
@@ -144,6 +145,7 @@ If the region is inactive, `backward-kill-word'."
     (interactive)
     (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
     (message "Killed other buffers!")))
+
 
 
 ;; M-x info-emacs-manual (C-h r or F1+r)

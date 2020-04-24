@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf Hydra-quick-menu
+(leaf *hydra-quick-menu
   :bind ("M-." . hydra-quick-menu/body)
   :hydra
   (hydra-quick-menu
@@ -53,19 +53,11 @@
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
-   ("M-." nil))
-
-  :init
-  (defun ftp-client ()
-    "Open Ftp application."
-    (interactive)
-    (when (getenv "WSLENV")
-      (shell-command "/mnt/c/\"Program Files\"/\"FileZilla FTP Client\"/filezilla.exe"))
-    (unless (getenv "WSENV")
-      (shell-command "filezilla"))))
+   ("M-." nil)))
 
 
-(leaf Hydra-work-menu
+
+(leaf *hydra-work-menu
   :chord (".." . hydra-work/body)
   :hydra
   (hydra-work
@@ -94,9 +86,19 @@
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("<left>" hydra-quick-menu/body)
-   ("q" keyboard-quit))
+   ("q" keyboard-quit)))
 
-  :init
+
+(leaf *user-command-defined
+  :config
+  (defun ftp-client ()
+    "Open Ftp application."
+    (interactive)
+    (when (getenv "WSLENV")
+      (shell-command "/mnt/c/\"Program Files\"/\"FileZilla FTP Client\"/filezilla.exe"))
+    (unless (getenv "WSENV")
+      (shell-command "filezilla")))
+
   (defun backup-melpa ()
     "Backup for melpa package."
     (interactive)

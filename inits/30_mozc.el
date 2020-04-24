@@ -12,22 +12,23 @@
   :init
   (setq default-input-method "japanese-mozc")
   (setq mozc-helper-program-name "mozc_emacs_helper")
-  (custom-set-variables '(mozc-leim-title "かな "))
+  (custom-set-variables '(mozc-leim-title "かな ")))
 
+(leaf mozc-cursor-color
+  :url "https://github.com/iRi-E/mozc-el-extensions"
+  :el-get iRi-E/mozc-el-extensions
+  :require t
+  :after mozc)
+
+(leaf mozc-posframe
+  :url "https://github.com/derui/mozc-posframe"
+  :el-get derui/mozc-posframe
   :config
-  (leaf mozc-cursor-color
-    :url "https://github.com/iRi-E/mozc-el-extensions"
-    :el-get iRi-E/mozc-el-extensions
-    :require t
-    :after mozc)
+  (mozc-posframe-register)
+  (setq mozc-candidate-style 'posframe))
 
-  (leaf mozc-posframe
-    :url "https://github.com/derui/mozc-posframe"
-    :el-get derui/mozc-posframe
-    :config
-    (mozc-posframe-register)
-    (setq mozc-candidate-style 'posframe))
-
+(leaf *use-mozc-defined
+  :config
   (defun mozc-word-regist ()
     "Mozc word regist."
     (interactive)

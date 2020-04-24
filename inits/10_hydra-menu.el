@@ -56,7 +56,6 @@
    ("M-." nil)))
 
 
-
 (leaf *hydra-work-menu
   :chord (".." . hydra-work/body)
   :hydra

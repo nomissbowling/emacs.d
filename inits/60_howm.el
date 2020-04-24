@@ -13,7 +13,6 @@
   (after-init-hook . howm-mode)
   :init
   (setq howm-view-title-header "#")
-
   :config
   (setq howm-directory "~/Dropbox/howm"
 	howm-file-name-format "%Y/%m/%Y%m%d%H%M.md"
@@ -49,88 +48,72 @@
    ("j" open-junk-file)
    ("q" nil)))
 
-;; My howm functions
-(defun my:howm-memo ()
-  "My howm remember for memo."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title memo: %cursor\n"))
-  (howm-remember))
-(defun my:howm-idea ()
-  "My howm remember for idea."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title idea: %cursor\n"))
-  (howm-create))
-(defun my:howm-hack ()
-  "My howm create for hack."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title hack: %cursor\nurl:\n"))
-  (howm-create))
-(defun my:howm-mail ()
-  "My howm remember for mail draft."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title mail: %cursor\n"))
-  (howm-create))
-(defun my:howm-blog ()
-  "My howm create for blog draft."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title blog: %cursor\n%date\n"))
-  (howm-create))
-(defun my:howm-dia ()
-  "My howm create for diary draft."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title 日記: %cursor\n%date\n"))
-  (howm-create))
-(defun my:howm-page ()
-  "My howm create for page draft."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title page: %cursor\n%date\n"))
-  (howm-create))
-(defun my:howm-note ()
-  "My howm create for note draft."
-  (interactive)
-  (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
-  (howm-create))
-(defun my:haiku-note ()
-  "Open haiku note file."
-  (interactive)
-  (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
-  (goto-char (point-min)))
-(defun my:haiku-note-post ()
-  "Insert template."
-  (interactive)
-  (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
-  (goto-char (point-min))
-  (forward-line 2)
-  (insert
-   (format-time-string "> %Y年%m月%d日 (%a)\n")
-   (format-time-string "PLACE:\n\n"))
-  (forward-line -2)
-  (forward-char 6))
-
 
 (leaf open-junk-file
   :ensure t
   :config
   (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d.")
-  (setq open-junk-file-find-file-function 'find-file)
-  ;; Automatically tag insertion
-  (defvar open-junk-ext-tags-alist
-    '(("el" ";;" "ELISP")
-      ("pl" "#" "PERL")
-      ("rb" "#" "RUBY")
-      ("py" "#" "PYTHON")
-      ("md" "#" "GFM")
-      ("txt" ";;" "TEXT")))
-  (defadvice open-junk-file
-      (after open-junk-file-insert-howm-comment-advice activate)
-    "After open-junk-file, insert a tag into the opened buffer
-to be searched by howm."
-    (let* ((ext (replace-regexp-in-string "^.*\\.\\([^\\.]+\\)$" "\\1" buffer-file-name))
-	   (asc (assoc ext open-junk-ext-tags-alist))
-	   (prefix (cadr asc))
-	   (tag (caddr asc)))
-      (insert prefix)
-      (insert " %" tag))))
+  (setq open-junk-file-find-file-function 'find-file))
+
+
+(leaf *user-howm-defined
+  :config
+  (defun my:howm-memo ()
+    "My howm remember for memo."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title memo: %cursor\n"))
+    (howm-remember))
+  (defun my:howm-idea ()
+    "My howm remember for idea."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title idea: %cursor\n"))
+    (howm-create))
+  (defun my:howm-hack ()
+    "My howm create for hack."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title hack: %cursor\nurl:\n"))
+    (howm-create))
+  (defun my:howm-mail ()
+    "My howm remember for mail draft."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title mail: %cursor\n"))
+    (howm-create))
+  (defun my:howm-blog ()
+    "My howm create for blog draft."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title blog: %cursor\n%date\n"))
+    (howm-create))
+  (defun my:howm-dia ()
+    "My howm create for diary draft."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title 日記: %cursor\n%date\n"))
+    (howm-create))
+  (defun my:howm-page ()
+    "My howm create for page draft."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title page: %cursor\n%date\n"))
+    (howm-create))
+  (defun my:howm-note ()
+    "My howm create for note draft."
+    (interactive)
+    (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
+    (howm-create))
+  (defun my:haiku-note ()
+    "Open haiku note file."
+    (interactive)
+    (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
+    (goto-char (point-min)))
+  (defun my:haiku-note-post ()
+    "Insert template."
+    (interactive)
+    (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
+    (goto-char (point-min))
+    (forward-line 2)
+    (insert
+     (format-time-string "> %Y年%m月%d日 (%a)\n")
+     (format-time-string "PLACE:\n\n"))
+    (forward-line -2)
+    (forward-char 6)))
 
 
 ;; Local Variables:

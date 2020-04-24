@@ -1,4 +1,4 @@
-;;; 80_twitter.el --- 80_twitter.el
+;;; 80_twitter.el --- 80_twitter.el  -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;; Code:
 ;;(setq debug-on-error t)
@@ -11,7 +11,7 @@
   	(expand-file-name "~/Dropbox/dotfiles/wsl/twittering-mode1.gpg"))
 
   ;; timeline to read on startup
-  (setq twittering-initial-timeline-spec-string '(":mentions" ":home" "minoruGH"))
+  (setq twittering-initial-timeline-spec-string '(":direct_messages" ":mentions" ":home" "minoruGH"))
   (setq twittering-use-master-password t)
   (setq twittering-use-ssl t)
   (setq twittering-timer-interval 40)
@@ -95,4 +95,5 @@
 ;; Local Variables:
 ;; byte-compile-warnings: (not free-vars callargs)
 ;; End:
+
 ;;; 80_twitter.el ends here

@@ -39,7 +39,6 @@
     :ensure t
     :init
     (leaf leaf-convert :ensure t)
-    (leaf bind-key :ensure t)
     (leaf hydra :ensure t)
     (leaf el-get :ensure t)
     :config
@@ -48,7 +47,7 @@
 
 (leaf macrostep
   :ensure t
-  :bind (("C-c e" . macrostep-expand)))
+  :bind (("<f2>" . macrostep-expand)))
 
 (leaf init-loader
   :ensure t

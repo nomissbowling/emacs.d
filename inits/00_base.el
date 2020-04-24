@@ -118,9 +118,7 @@
     (push (expand-file-name recentf-save-file) recentf-exclude)))
 
 
-;; Key modified
-(leaf bind-key
-  :ensure t
+(leaf *key-binding
   :bind (("C-." . xref-find-definitions)
 	 ("M-w" . clipboard-kill-ring-save)
 	 ("C-w" . my:clipboard-kill-region)

@@ -65,7 +65,7 @@
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
 
-(leaf kill-other-buffers
+(leaf bind-key
   :bind (("M-/" . kill-buffer)
 	 ("C-M-/" . kill-other-buffers))
   :init
@@ -76,7 +76,7 @@
     (message "Killed other buffers!")))
 
 
-(leaf my:toggle-scratch
+(leaf *toggle-scratch
   :doc "Toggle current buffer and scratch-buffer."
   :bind ([S-return] . toggle-scratch)
   :init

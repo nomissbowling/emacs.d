@@ -88,7 +88,7 @@
    ("q" keyboard-quit)))
 
 
-(leaf *user-command-defined
+(leaf *user-command-functiond
   :config
   (defun ftp-client ()
     "Open Ftp application."

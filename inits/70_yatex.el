@@ -20,8 +20,8 @@
   (add-hook 'yatex-mode-hook
 	    '(lambda ()
 	       (leaf yatexprc
-		 :bind (("M-c" . YaTeX-typeset-buffer)	;; Type set
-			("M-l" . YaTeX-lpr))))))	;; Open pdf
+		 :bind (("M-c" . YaTeX-typeset-buffer)	;; Type set buffer
+			("M-l" . YaTeX-lpr))))))	;; Open pdf veiwer
 
 
 ;; Dviprint-command-format

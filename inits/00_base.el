@@ -118,7 +118,8 @@
     (push (expand-file-name recentf-save-file) recentf-exclude)))
 
 
-(leaf *key-binding
+(leaf bind-key
+  :ensure t
   :bind (("C-." . xref-find-definitions)
 	 ("M-w" . clipboard-kill-ring-save)
 	 ("C-w" . my:clipboard-kill-region)
@@ -143,7 +144,6 @@ If the region is inactive, `backward-kill-word'."
     (interactive)
     (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
     (message "Killed other buffers!")))
-
 
 
 ;; M-x info-emacs-manual (C-h r or F1+r)

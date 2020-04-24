@@ -11,8 +11,7 @@
 	  ("w" . browse-weather)
 	  ("n" . browse-google-news)
 	  ("m" . browse-gmail)
-	  ("d" . browse-tweetdeck)
-	  ("t" . twit)
+	  ("t" . browse-tweetdeck)
 	  ("s" . browse-slack)
 	  ("h" . browse-homepage)
 	  ("p" . browse-pocket)
@@ -44,7 +43,7 @@
     (interactive)
     (insert (if (display-graphic-p)
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
-    (insert "    Calendar: (c)    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t.d)    Pocket: (p)    Slack: (s)    GH: (h) "))
+    (insert "    Calendar: (c)    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
   ;; user-browse-url-defined
   (defun browse-calendar ()

@@ -29,12 +29,10 @@
     (nyan-cat-face-number . 4)
     (nyan-animate-nyancat . t)))
 
-
 (leaf display-line-numbers
   :bind ("<f9>" . display-line-numbers-mode)
   :hook ((prog-mode-hook . display-line-numbers-mode)
 	 (text-mode-hook . display-line-numbers-mode)))
-
 
 (leaf darkroom
   :doc "Remove visual distractions and focus on writing."
@@ -64,7 +62,6 @@
 (leaf all-the-icons-dired
   :ensure t
   :url "https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el"
-;;  :after dired
   :commands dired-mode
   :hook (dired-mode-hook . all-the-icons-dired-mode)
   :custom

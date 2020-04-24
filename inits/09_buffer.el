@@ -3,11 +3,19 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; automatically save buffers in a decent way
 (leaf auto-save-buffers-enhanced
   :ensure t
   :custom (auto-save-buffers-enhanced-quiet-save-p . t)
-  :config (auto-save-buffers-enhanced t))
+  :config
+  ;; Auto Save *scratch* to be ~/.emacs.d/scratch
+  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t)
+  (setq auto-save-buffers-enhanced-file-related-with-scratch-buffer
+	(locate-user-emacs-file "scratch"))
+  (auto-save-buffers-enhanced t))
 
+
+;; automatically deleted in the background buffers
 (leaf tempbuf
   :require t
   :el-get emacswiki:tempbuf
@@ -17,6 +25,8 @@
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
   :custom (tempbuf-kill-message . nil))
 
+
+;; interactively flip between recently visited buffers
 (leaf iflipb
   :ensure t
   :bind (("<f8>" . iflipb-next-buffer)
@@ -24,11 +34,15 @@
   :custom (iflipb-wrap-around . t)
   :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
+
+;; Persistent undo history for GNU Emacs
 (leaf undohist
   :ensure t
   :hook (after-init-hook . undohist-initialize)
   :custom (undohist-ignored-files . '("/tmp" "COMMIT_EDITMSG")))
 
+
+;; Treat undo history as a tree
 (leaf undo-tree
   :el-get tarsiiformes/undo-tree
   :bind* (("C-_" . undo-tree-undo)
@@ -65,17 +79,7 @@
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
 
-(leaf bind-key
-  :bind (("M-/" . kill-buffer)
-	 ("C-M-/" . kill-other-buffers))
-  :init
-  (defun kill-other-buffers ()
-    "Kill all other buffers."
-    (interactive)
-    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-    (message "Killed other buffers!")))
-
-
+;; Toggle current buffer and *scratch* buffer
 (leaf *toggle-scratch
   :doc "Toggle current buffer and scratch-buffer."
   :bind ([S-return] . toggle-scratch)

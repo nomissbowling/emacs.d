@@ -14,11 +14,13 @@
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (custom-set-variables '(mozc-leim-title "かな ")))
 
+
 (leaf mozc-cursor-color
   :url "https://github.com/iRi-E/mozc-el-extensions"
   :el-get iRi-E/mozc-el-extensions
   :require t
   :after mozc)
+
 
 (leaf mozc-posframe
   :url "https://github.com/derui/mozc-posframe"
@@ -29,7 +31,8 @@
   :init
   (leaf posframe :ensure t))
 
-(leaf *use-mozc-defined
+
+(leaf *user-mozc-function
   :config
   (defun mozc-word-regist ()
     "Mozc word regist."

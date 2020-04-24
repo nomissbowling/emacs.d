@@ -20,8 +20,10 @@
   (markdown-code-face . '((t (:background "#222" :inherit 'default))))
   (markdown-pre-face . '((t (:foreground "#bd98fe")))))
 
+
 ;; toc generater
 (leaf markdown-toc :ensure t)
+
 
 ;; markdown preview
 (leaf livedown
@@ -57,7 +59,7 @@
    ("q" nil)))
 
 
-(leaf *pandoc
+(leaf *user-markdown-function
   :config
   (defun md2pdf ()
     "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"

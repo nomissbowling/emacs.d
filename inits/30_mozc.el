@@ -25,7 +25,9 @@
   :el-get derui/mozc-posframe
   :config
   (mozc-posframe-register)
-  (setq mozc-candidate-style 'posframe))
+  (setq mozc-candidate-style 'posframe)
+  :init
+  (leaf posframe :ensure t))
 
 (leaf *use-mozc-defined
   :config

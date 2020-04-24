@@ -9,8 +9,7 @@
   :chord ("@@" . howm-list-all)
   :bind (:howm-view-summary-mode-map
 	 ([backtab] . howm-view-summary-previous-section))
-  :hook
-  (after-init-hook . howm-mode)
+  :hook (after-init-hook . howm-mode)
   :init
   (setq howm-view-title-header "#")
   :config
@@ -56,7 +55,7 @@
   (setq open-junk-file-find-file-function 'find-file))
 
 
-(leaf *user-howm-defined
+(leaf *user-howm-function
   :config
   (defun my:howm-memo ()
     "My howm remember for memo."

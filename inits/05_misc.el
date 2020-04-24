@@ -74,12 +74,19 @@
   :mode (("\\.html?\\'" . web-mode)))
 
 
-(leaf leaf
-  :config
-  (leaf smex :ensure t)
-  (leaf posframe :ensure t)
-  (leaf restart-emacs :ensure t)
-  (leaf sudo-edit :ensure t))
+(leaf smex
+  :ensure t
+  :hook (after-init-hook . smex-initialize))
+
+
+(leaf restart-emacs
+  :ensure t
+  :bind (("C-x C-c" . restart-emacs)))
+
+
+(leaf sudo-edit
+  :ensure t
+  :bind (("C-c s" . sudo-edit)))
 
 
 ;; Local Variables:

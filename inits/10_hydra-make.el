@@ -19,7 +19,7 @@
    ("q" nil)))
 
 
-(leaf *user-make-defined
+(leaf *user-make-function
   :config
   (defun my:make-k ()
     "Make command default."

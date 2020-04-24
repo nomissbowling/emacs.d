@@ -19,6 +19,7 @@
 	  ("<home>" . quit-dashboard)))
   :hook
   (after-init-hook . dashboard-setup-startup-hook)
+
   :config
   (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
 	dashboard-set-heading-icons t
@@ -37,7 +38,11 @@
   ;; Insert custom item
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
   (add-to-list 'dashboard-items '(custom) t)
-  :preface
+  )
+
+
+(leaf *dashboard-local-function
+  :config
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
     (interactive)
@@ -45,7 +50,37 @@
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
     (insert "    Calendar: (c)    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
-  ;; user-browse-url-defined
+  (defun open-dashboard ()
+    "Open the *dashboard* buffer and jump to the first widget."
+    (interactive)
+    (delete-other-windows)
+    (setq default-directory "~/")
+    ;; Refresh dashboard buffer
+    (if (get-buffer dashboard-buffer-name)
+	(kill-buffer dashboard-buffer-name))
+    (dashboard-insert-startupify-lists)
+    (switch-to-buffer dashboard-buffer-name)
+    ;; Jump to the first section
+    (goto-char (point-min))
+    (dashboard-goto-recent-files))
+
+  (defun quit-dashboard ()
+    "Quit dashboard window."
+    (interactive)
+    (quit-window t)
+    (when (and dashboard-recover-layout-p
+	       (bound-and-true-p winner-mode))
+      (winner-undo)
+      (setq dashboard-recover-layout-p nil)))
+
+  (defun dashboard-goto-recent-files ()
+    "Go to recent files."
+    (interactive)
+    (funcall (local-key-binding "r"))))
+
+
+(leaf *user-browse-url-function
+  :config
   (defun browse-calendar ()
     "Open Google-calendar with chrome."
     (interactive)
@@ -79,34 +114,6 @@
     (interactive)
     (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
 
-;; user-dashboard-defined
-(defun open-dashboard ()
-  "Open the *dashboard* buffer and jump to the first widget."
-  (interactive)
-  (delete-other-windows)
-  (setq default-directory "~/")
-  ;; Refresh dashboard buffer
-  (if (get-buffer dashboard-buffer-name)
-      (kill-buffer dashboard-buffer-name))
-  (dashboard-insert-startupify-lists)
-  (switch-to-buffer dashboard-buffer-name)
-  ;; Jump to the first section
-  (goto-char (point-min))
-  (dashboard-goto-recent-files))
-
-(defun quit-dashboard ()
-  "Quit dashboard window."
-  (interactive)
-  (quit-window t)
-  (when (and dashboard-recover-layout-p
-	     (bound-and-true-p winner-mode))
-    (winner-undo)
-    (setq dashboard-recover-layout-p nil)))
-
-(defun dashboard-goto-recent-files ()
-  "Go to recent files."
-  (interactive)
-  (funcall (local-key-binding "r")))
 
 
 ;; Local Variables:

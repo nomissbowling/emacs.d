@@ -7,9 +7,11 @@
   :ensure t
   :hook (after-init-hook . popwin-mode))
 
+
 (leaf expand-region
   :ensure t
   :bind ("C-@" . er/expand-region))
+
 
 (leaf key-chord
   :el-get zk-phi/key-chord
@@ -18,15 +20,18 @@
 	  ("l;" . init-loader-show-log)
 	  ("hj" . undo)))
 
+
 (leaf sequential-command-config
   :hook (after-init-hook . sequential-command-setup-keys)
   :init (leaf sequential-command :ensure t))
+
 
 (leaf yasnippet
   :ensure t
   :hook (after-init-hook . yas-global-mode)
   :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets"))
   :init (leaf ivy-yasnippet :ensure t))
+
 
 (leaf prescient
   :ensure t
@@ -37,9 +42,11 @@
   (leaf ivy-prescient :ensure t
     :hook (after-init-hook . ivy-prescient-mode)))
 
+
 (leaf quickrun
   :ensure t
   :bind ("<f5>" . quickrun))
+
 
 (leaf which-key
   :ensure t
@@ -48,6 +55,7 @@
   ((which-key-max-description-length . 40)
    (which-key-use-C-h-commands . t)))
 
+
 (leaf projectile
   :ensure t
   :hook (after-init-hook . projectile-mode)
@@ -55,17 +63,21 @@
   (leaf counsel-projectile :ensure t
     :hook (after-init-hook . counsel-projectile-mode)))
 
+
 (leaf web-mode
   :ensure t
   :mode (("\\.html?\\'" . web-mode)))
+
 
 (leaf smex
   :ensure t
   :hook (after-init-hook . smex-initialize))
 
+
 (leaf restart-emacs
   :ensure t
   :bind (("C-x C-c" . restart-emacs)))
+
 
 (leaf sudo-edit
   :ensure t

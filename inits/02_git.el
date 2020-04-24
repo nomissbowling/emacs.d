@@ -8,8 +8,7 @@
   :bind (("C-x g" . hydra-magit/body)
 	 ("C-c v" . vc-diff))
   :custom
-  (magit-display-buffer-function
-   . #'magit-display-buffer-fullframe-status-v1)
+  (magit-display-buffer-function . #'magit-display-buffer-fullframe-status-v1)
   :init
   (leaf git-timemachine :ensure t)
 

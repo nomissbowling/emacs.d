@@ -6,6 +6,7 @@
 
 ;;; Commentary:
 ;;; Code:
+;; (setq debug-on-error t)
 
 ;; Quiet start
 (menu-bar-mode 0)

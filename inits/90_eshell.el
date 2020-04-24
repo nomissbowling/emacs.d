@@ -1,4 +1,4 @@
-;;; 90_eshell.el --- 90_eshell.el  -*- lexical-binding: t; -*-
+;;; 89_eshell.el --- 90_eshell.el -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -22,8 +22,11 @@
 		 (list "cl" "clear")
 		 (list "ll" "ls -ltr -S")
 		 (list "la" "ls -a -S")
-		 (list "ex" "exit"))))
+		 (list "ex" "exit")))))
 
+
+(leaf *user-eshell-defined
+  :config
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat (eshell/pwd)

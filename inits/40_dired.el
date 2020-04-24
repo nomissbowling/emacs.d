@@ -42,7 +42,7 @@
   :bind (:dired-mode-map
 	 ("C-c C-r" . dired-rsync)))
 
-(leaf *user-dired-defined
+(leaf *user-dired-function
   :config
   ;; Switching the display and non-display of hidden files
   (defun toggle-dired-listing-switches ()

@@ -8,10 +8,10 @@
   :ensure t
   :custom (auto-save-buffers-enhanced-quiet-save-p . t)
   :config
-  ;; Auto Save *scratch* to be ~/.emacs.d/scratch
+  ;; auto save *scratch* to ~/.emacs.d/scratch
   (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t)
   (setq auto-save-buffers-enhanced-file-related-with-scratch-buffer
-	(locate-user-emacs-file "scratch"))
+  	(locate-user-emacs-file "scratch"))
   (auto-save-buffers-enhanced t))
 
 

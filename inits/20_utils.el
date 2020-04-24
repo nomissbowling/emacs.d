@@ -28,11 +28,35 @@
   (defalias 'my:github-show 'browse-at-remote))
 
 
-(leaf *ps2pdf			;
-  :url "https://yohgami.hateblo.jp/entry/20130402/1364895193"
-  :custom
-  (my:pdfout-command-format . "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
+(leaf *user-utils-function
   :config
+  ;; current dir open of linux-filer
+  (bind-key "<f3>" 'filer-current-dir-open)
+  (defun filer-current-dir-open ()
+    "Open filer in current dir."
+    (interactive)
+    (shell-command (concat "xdg-open " default-directory)))
+
+  ;; current dir open of linux terminal
+  (bind-key "<f4>" 'term-current-dir-open)
+  (defun term-current-dir-open ()
+    "Open terminal application in current dir."
+    (interactive)
+    (let ((dir (directory-file-name default-directory)))
+      (shell-command (concat "gnome-terminal --working-directory " dir))))
+
+  ;; delete file if no contents
+  (defun my:delete-file-if-no-contents ()
+    (when (and (buffer-file-name (current-buffer))
+	       (= (point-min) (point-max)))
+      (delete-file
+       (buffer-file-name (current-buffer)))))
+  (if (not (memq 'my:delete-file-if-no-contents after-save-hook))
+      (setq after-save-hook
+	    (cons 'my:delete-file-if-no-contents after-save-hook)))
+
+  ;; pdf out from emacs
+  (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
   (defun my:pdfout-buffer ()
     "PDF out from buffer."
     (interactive)
@@ -42,34 +66,6 @@
     (interactive "r")
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
-
-(leaf *current-dir-open
-  :doc "current dir open of linux-filer and linux terminal"
-  :bind (("<f3>" . filer-current-dir-open)
-	 ("<f4>" . term-current-dir-open))
-  :init
-  (defun filer-current-dir-open ()
-    "Open filer in current dir."
-    (interactive)
-    (shell-command (concat "xdg-open " default-directory)))
-  (defun term-current-dir-open ()
-    "Open terminal application in current dir."
-    (interactive)
-    (let ((dir (directory-file-name default-directory)))
-      (shell-command (concat "gnome-terminal --working-directory " dir)))))
-
-
-(leaf *delete-no-contents
-  :init
-  (defun my:delete-file-if-no-contents ()
-    (when (and (buffer-file-name (current-buffer))
-	       (= (point-min) (point-max)))
-      (delete-file
-       (buffer-file-name (current-buffer)))))
-  :config
-  (if (not (memq 'my:delete-file-if-no-contents after-save-hook))
-      (setq after-save-hook
-            (cons 'my:delete-file-if-no-contents after-save-hook))))
 
 
 ;; Local Variables:

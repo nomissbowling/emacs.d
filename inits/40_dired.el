@@ -26,25 +26,24 @@
   :hook
   (dired-mode-hook . dired-my-append-buffer-name-hint)
   :custom
-  (dired-listing-switches . "-lgGhF")
+  (dired-listing-switches . "-lgGhF"))
 
+(leaf ls-lisp
+  :require t
+  :doc "Show directory first"
+  :after dired
   :config
-  (leaf ls-lisp
-    :require t
-    :doc "Show directory first"
-    :after dired
-    :config
-    (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
+  (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
 
-  (leaf dired-rsync
-    :ensure t
-    :doc "Allow rsync from dired buffers"
-    :url "https://github.com/stsquad/dired-rsync"
-    :bind (:dired-mode-map
-	   ("C-c C-r" . dired-rsync))))
+(leaf dired-rsync
+  :ensure t
+  :doc "Allow rsync from dired buffers"
+  :url "https://github.com/stsquad/dired-rsync"
+  :bind (:dired-mode-map
+	 ("C-c C-r" . dired-rsync)))
 
-(leaf Dired-extentions
-  :init
+(leaf *user-dired-defined
+  :config
   ;; Switching the display and non-display of hidden files
   (defun toggle-dired-listing-switches ()
     "Toggle `dired-mode' switch between with and without 'A' option to show or hide dot files."

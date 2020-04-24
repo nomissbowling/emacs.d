@@ -44,7 +44,7 @@
      @ : make a gist out of marked files"
 		   ("." nil)))
 
-(leaf Hydra-browse
+(leaf *hydra-browse
   :hydra
   (hydra-browse
    (:hint nil :exit t)
@@ -85,24 +85,24 @@
    ("w" browse-weather)
    ("h" browse-homepage)
    ("p" browse-pocket)
-   ("t" twit-1)
+   ("t" browse-tweetdeck)
    ("," browse-slack)
-   ("." nil))
+   ("." nil)))
 
-  :init
-  (leaf Browse-in-WSL
-    :doc "Emacs in WSL and opening links"
-    :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
-    :if (getenv "WSLENV")
 
-    :config
-    (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
-	  (cmd-args '("/c" "start")))
-      (when (file-exists-p cmd-exe)
-	(setq browse-url-generic-program  cmd-exe
-	      browse-url-generic-args     cmd-args
-	      browse-url-browser-function 'browse-url-generic
-	      search-web-default-browser 'browse-url-generic)))))
+(leaf *browse-in-WSL
+  :doc "Emacs in WSL and opening links"
+  :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
+  :if (getenv "WSLENV")
+
+  :config
+  (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
+	(cmd-args '("/c" "start")))
+    (when (file-exists-p cmd-exe)
+      (setq browse-url-generic-program  cmd-exe
+	    browse-url-generic-args     cmd-args
+	    browse-url-browser-function 'browse-url-generic
+	    search-web-default-browser 'browse-url-generic))))
 
 
 ;; Local Variables:

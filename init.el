@@ -39,6 +39,7 @@
     :ensure t
     :init
     (leaf leaf-convert :ensure t)
+    (leaf bind-key :ensure t)
     (leaf hydra :ensure t)
     (leaf el-get :ensure t)
     :config

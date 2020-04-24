@@ -39,13 +39,14 @@
     :init
     (leaf leaf-convert :ensure t)
     (leaf hydra :ensure t)
-    (leaf el-get :ensure t
-      :config (setq el-get-dir "~/.emacs.d/elisp"))
+    (leaf el-get :ensure t)
+    :config
+    (setq el-get-dir "~/.emacs.d/elisp")
     (leaf-keywords-init)))
 
 (leaf macrostep
   :ensure t
-  :bind (("<f2>" . macrostep-expand)))
+  :bind (("C-c e" . macrostep-expand)))
 
 (leaf init-loader
   :ensure t
@@ -53,9 +54,7 @@
   (custom-set-variables
    '(init-loader-show-log-after-init 'error-only))
   (init-loader-load "~/Dropbox/emacs.d/inits")
-  (setq custom-file (locate-user-emacs-file "custom.el"))
-  :init
-  (load "~/Dropbox/emacs.d/elisp/my-template.el"))
+  (setq custom-file (locate-user-emacs-file "custom.el")))
 
 
 (provide 'init)

@@ -31,7 +31,6 @@
   ((ivy-use-virtual-buffers . t)
    (ivy-use-selectable-prompt . t)
    (enable-recursive-minibuffers . t)
-
    (xref-show-xrefs-function . #'ivy-xref-show-xrefs)
    (counsel-find-file-ignore-regexp . ,(regexp-opt '("destop.ini" ".dropox")))
    (counsel-yank-pop-separator

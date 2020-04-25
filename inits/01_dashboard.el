@@ -1,6 +1,6 @@
 ;;; 01_dashboard.el --- 01_dashboard.el  -*- lexical-binding: t -*-
-;; an extensible emacs startup screen
-
+;;; Commentary: an extensible emacs startup screen
+;;; Code:
 ;; (setq debug-on-error t)
 
 (leaf dashboard

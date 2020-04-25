@@ -1,6 +1,6 @@
 ;;; 00_base.el --- 00_base.el -*- lexical-binding: t -*-
-;; emacs-base-setting
-
+;;; Commentary: emacs-base-setting
+;;; Code:
 ;; (setq debug-on-error t)
 
 (leaf exec-path-from-shell

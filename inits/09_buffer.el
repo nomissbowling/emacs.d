@@ -1,4 +1,4 @@
-;;; 09_buffer.el --- 09_buffer.el  -*- lexical-binding: t; -*-
+;;; 09_buffer.el --- 09_buffer.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -30,7 +30,8 @@
   :bind (("<f8>" . iflipb-next-buffer)
 	 ("<f7>" . iflipb-previous-buffer))
   :custom (iflipb-wrap-around . t)
-  :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
+  :config
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
 ;; Persistent undo history for GNU Emacs
 (leaf undohist
@@ -73,19 +74,26 @@
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
-;; Toggle current buffer and *scratch* buffer
-(leaf *toggle-scratch
-  :doc "Toggle current buffer and scratch-buffer."
-  :bind ([S-return] . toggle-scratch)
-  :init
-  (defun toggle-scratch()
+
+(leaf *define-buffer-functions
+  :config
+  ;; Toggle current buffer and *scratch* buffer
+  (bind-key [S-return] 'toggle-scratch)
+  (defun toggle-scratch ()
     "Toggle current buffer and *scratch* buffer."
     (interactive)
     (if (not (string= "*scratch*" (buffer-name)))
 	(progn
 	  (setq toggle-scratch-prev-buffer (buffer-name))
 	  (switch-to-buffer "*scratch*"))
-      (switch-to-buffer toggle-scratch-prev-buffer))))
+      (switch-to-buffer toggle-scratch-prev-buffer)))
+
+  ;; kill-oter-buffers
+  (defun kill-other-buffers ()
+    "Kill all other buffers."
+    (interactive)
+    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+    (message "Killed other buffers!")))
 
 
 ;; Local Variables:

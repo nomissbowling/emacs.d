@@ -42,7 +42,7 @@
   (setq scroll-preserve-screen-position t)
 
   ;; Suppress warnings for 'ad-handle-definition:'
-  (ad-redefinition-action 'accept)
+  (setq ad-redefinition-action 'accept)
 
   ;; between the lines
   (setq line-spacing 0.1)
@@ -59,28 +59,32 @@
   ;; Do not use auto save
   (setq auto-save-default nil)
   ;; Do not create lock file
-  (create-lockfiles . nil)
+  (setq create-lockfiles nil)
   ;; Do not record the same content in the history
-  (history-delete-duplicates . t)
+  (setq history-delete-duplicates t)
+  )
 
-  :hook
-  (;; Save hist
-   (after-init-hook . savehist-mode)
-   ;;Save place
-   (after-init-hook . save-place-mode)
-   ;; Automatic reloading of changed files
-   (after-init-hook . global-auto-revert-mode)
-   ;; Do not blink the cursor
-   (after-init-hook . blink-cursor-mode)
-   ;; font-lock
-   (after-init-hook . global-font-lock-mode)
-   ;; word wrapping is used
-   (after-init-hook . global-visual-line-mode)
 
-   ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
-   (makefile-mode-hook
-    (lambda ()
-      (fset 'makefile-warn-suspicious-lines 'ignore)))))
+(leaf *after-init-hook
+  :config
+  ;; Save hist
+  (add-hook 'after-init-hook 'savehist-mode)
+  ;;Save plae
+  (add-hook 'after-init-hook 'save-place-mode)
+  ;; Automatic reloading of changed files
+  (add-hook 'after-init-hook 'global-auto-revert-mode)
+  ;; Do not blink the cursor
+  (add-hook 'after-init-hook 'blink-cursor-mode)
+  ;; font-lock
+  (add-hook 'after-init-hook 'global-font-lock-mode)
+  ;; word wrapping is used
+  (add-hook 'after-init-hook 'global-visual-line-mode)
+
+  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
+  (add-hook 'makefile-mode-hook
+	    (lambda ()
+	      (fset 'makefile-warn-suspicious-lines 'ignore)))
+  )
 
 
 (leaf *user-configuration
@@ -111,7 +115,8 @@
   (with-current-buffer "*scratch*"
     (emacs-lock-mode 'kill))
   (with-current-buffer "*Messages*"
-    (emacs-lock-mode 'kill)))
+    (emacs-lock-mode 'kill))
+  )
 
 
 ;; Make it easy to see when it is the same name file

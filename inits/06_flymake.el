@@ -1,4 +1,4 @@
-;;; 06_flymake.el --- 06_flymake.el  -*- lexical-binding: t; -*-
+;;; 06_flymake.el --- 06_flymake.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -9,7 +9,8 @@
   (leaf flymake-diagnostic-at-point
     :ensure t
     :after flymake
-    :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)
+    :hook
+    (flymake-mode-hook . flymake-diagnostic-at-point-mode)
     (remove-hook 'flymake-diagnostic-functions 'flymake-proc-legacy-flymake))
 
   :config

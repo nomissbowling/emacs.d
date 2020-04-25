@@ -145,7 +145,7 @@
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit))
   :config
   ;; Use the X11 clipboard
-  (setq select-enable-lipboard t
+  (setq select-enable-clipboard t
 	select-enable-primary t)
 
   (defun my:clipboard-kill-region ()

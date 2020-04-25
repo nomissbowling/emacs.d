@@ -1,6 +1,6 @@
-;;; 00_base.el --- 00_base.el  -*- lexical-binding: t; -*-
-;;; Commentary:
-;;; Code:
+;;; 00_base.el --- 00_base.el -*- lexical-binding: t -*-
+;; emacs-base-setting
+
 ;; (setq debug-on-error t)
 
 (leaf exec-path-from-shell
@@ -135,13 +135,13 @@
 			 (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
 
+;; key modified
 (leaf bind-key
   :ensure t
   :bind (("C-." . xref-find-definitions)
 	 ("M-w" . clipboard-kill-ring-save)
 	 ("C-w" . my:clipboard-kill-region)
-	 ("M-/" . kill-buffer)
-	 ("C-M-/" . kill-other-buffers))
+	 ("M-/" . kill-buffer))
   :bind* (("<muhenkan>" . minibuffer-keyboard-quit))
   :config
   ;; Use the X11 clipboard
@@ -156,11 +156,14 @@ If the region is inactive, `backward-kill-word'."
 	(clipboard-kill-region (region-beginning) (region-end))
       (backward-kill-word 1)))
 
-  (defun kill-other-buffers ()
-    "Kill all other buffers."
-    (interactive)
-    (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-    (message "Killed other buffers!")))
+  ;; In kill-region, if the region is not selected
+  ;; to perform a backward-kill-ward
+  (defun my:kill-word-or-kill-region (f &rest args)
+    (if (and (called-interactively-p 'interactive) transient-mark-mode (not mark-active))
+	(backward-kill-word 1)
+      (apply f args)))
+  (advice-add 'kill-region :around 'my:kill-word-or-kill-region)
+  )
 
 
 ;; M-x info-emacs-manual (C-h r or F1+r)

@@ -1,4 +1,4 @@
-;;; 04_company.el --- 04_company.el  -*- lexical-binding: t; -*-
+;;; 04_company.el --- 04_company.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

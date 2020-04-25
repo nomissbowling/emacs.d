@@ -1,4 +1,4 @@
-;;; 60_howm.el --- 60_howm.el  -*- lexical-binding: t; -*-
+;;; 60_howm.el --- 60_howm.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

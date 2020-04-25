@@ -1,4 +1,4 @@
-;;; 90_search-web.el --- 90_search-web.el  -*- lexical-binding: t; -*-
+;;; 90_search-web.el --- 90_search-web.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

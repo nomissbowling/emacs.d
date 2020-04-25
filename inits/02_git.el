@@ -5,8 +5,7 @@
 
 (leaf magit
   :ensure t
-  :bind (("C-x g" . hydra-magit/body)
-	 ("C-c v" . vc-diff))
+  :bind (("C-x m" . hydra-magit/body))
   :custom
   (magit-display-buffer-function . #'magit-display-buffer-fullframe-status-v1)
   :init

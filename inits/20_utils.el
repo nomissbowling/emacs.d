@@ -75,7 +75,7 @@
 
 (leaf ivy-point-history
   :el-get SuzumiyaAoba/ivy-point-history
-  :bind (("C-<SPC>" . ivy-point-history)))
+  :bind (("C-x SPC" . ivy-point-history)))
 
 
 ;; Local Variables:

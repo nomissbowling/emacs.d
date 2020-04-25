@@ -42,7 +42,7 @@
 
 (leaf macrostep
   :ensure t
-  :bind (("<f2>" . macrostep-expand)))
+  :bind (("C-c e" . macrostep-expand)))
 
 (leaf init-loader
   :ensure t

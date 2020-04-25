@@ -18,7 +18,7 @@
 (prefer-coding-system 'utf-8)
 
 ;; font
-(add-to-list 'default-frame-alist '(font . "Cica-20.5"))
+(add-to-list 'default-frame-alist '(font . "Cica-15.5"))
 
 ;;; Faster rendering by not corresponding to right-to-left language
 (setq-default bidi-display-reordering nil)

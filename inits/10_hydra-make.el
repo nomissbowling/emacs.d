@@ -1,4 +1,4 @@
-;;; 10_hydra-make.el --- 10_hydra-make.el  -*- lexical-binding: t; -*-
+;;; 10_hydra-make.el --- 10_hydra-make.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -18,7 +18,7 @@
    ("e" next-error)
    ("q" nil)))
 
-
+;; make functions corresponding to the makefile
 (leaf *user-make-function
   :config
   (defun my:make-k ()

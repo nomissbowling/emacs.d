@@ -93,7 +93,8 @@
     "Kill all other buffers."
     (interactive)
     (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-    (message "Killed other buffers!")))
+    (message "Killed other buffers!"))
+  )
 
 
 ;; Local Variables:

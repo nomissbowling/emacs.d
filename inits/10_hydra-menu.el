@@ -1,4 +1,4 @@
-;;; 10_hydra-menu.el --- 10_hydra-menu.el  -*- lexical-binding: t; -*-
+;;; 10_hydra-menu.el --- 10_hydra-menu.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -88,7 +88,7 @@
    ("q" keyboard-quit)))
 
 
-(leaf *user-command-functiond
+(leaf *user-defined-function
   :config
   (defun ftp-client ()
     "Open Ftp application."

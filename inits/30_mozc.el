@@ -1,4 +1,4 @@
-;;; 30_mozc.el --- 30_mozc.el  -*- lexical-binding: t; -*-
+;;; 30_mozc.el --- 30_mozc.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

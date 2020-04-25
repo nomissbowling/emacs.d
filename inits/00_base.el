@@ -62,7 +62,7 @@
   (setq history-delete-duplicates t)
   )
 
-(leaf *hook-configuration
+(leaf *startup-hook-configuration
   :config
   ;; Save hist
   (add-hook 'after-init-hook 'savehist-mode)

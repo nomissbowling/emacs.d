@@ -3,7 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-
 (leaf exec-path-from-shell
   :when  (memq window-system '(mac ns x))
   :hook (after-init-hook . exec-path-from-shell-initialize)
@@ -67,19 +66,14 @@
   :hook
   (;; Save hist
    (after-init-hook . savehist-mode)
-
    ;;Save place
    (after-init-hook . save-place-mode)
-
    ;; Automatic reloading of changed files
    (after-init-hook . global-auto-revert-mode)
-
    ;; Do not blink the cursor
    (after-init-hook . blink-cursor-mode)
-
    ;; font-lock
    (after-init-hook . global-font-lock-mode)
-
    ;; word wrapping is used
    (after-init-hook . global-visual-line-mode)
 

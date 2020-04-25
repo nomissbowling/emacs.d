@@ -1,11 +1,12 @@
-;;; 07_ui.el --- 07_ui.el  -*- lexical-binding: t; -*-
+;;; 07_ui.el --- 07_ui.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
 
 (leaf doom-themes
   :ensure t
-  :config (load-theme 'doom-dracula t))
+  :config
+  (load-theme 'doom-dracula t))
 
 (leaf doom-modeline
   :ensure t

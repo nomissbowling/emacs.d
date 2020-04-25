@@ -14,13 +14,11 @@
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (custom-set-variables '(mozc-leim-title "かな ")))
 
-
 (leaf mozc-cursor-color
   :url "https://github.com/iRi-E/mozc-el-extensions"
   :el-get iRi-E/mozc-el-extensions
   :require t
   :after mozc)
-
 
 (leaf mozc-posframe
   :url "https://github.com/derui/mozc-posframe"
@@ -30,7 +28,6 @@
   (setq mozc-candidate-style 'posframe)
   :init
   (leaf posframe :ensure t))
-
 
 (leaf *user-mozc-function
   :config

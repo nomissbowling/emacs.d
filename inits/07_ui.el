@@ -29,6 +29,7 @@
     (nyan-cat-face-number . 4)
     (nyan-animate-nyancat . t)))
 
+
 (leaf display-line-numbers
   :bind ("<f9>" . display-line-numbers-mode)
   :hook ((prog-mode-hook . display-line-numbers-mode)

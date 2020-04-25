@@ -47,7 +47,7 @@
    ("." view-mode)))
 
 
-(leaf *edit-window-function
+(leaf *window-controle-function
   :config
   (defun other-window-or-split ()
     "If there is one window, open split window.

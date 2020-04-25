@@ -96,7 +96,7 @@
 
 
 ;; Emacs in WSL and opening links
-(leaf *browse-in-WSL
+(leaf *browse-url-in-WSL
   :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
   :if (getenv "WSLENV")
   :config

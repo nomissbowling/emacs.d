@@ -24,9 +24,6 @@
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
 
-  ;; Display file name in title bar: buffername-emacs-version
-  (setq frame-title-format "%b")
-
   ;; Point keeps its screen position when scroll
   (setq scroll-preserve-screen-position :always)
 
@@ -35,6 +32,10 @@
 
   ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
   (setq ring-bell-function 'ignore)
+
+  ;; It keeps going steadily the local mark ...  C-u C-SPC C-SPC
+  ;; It keeps going steadily the global mark ... C-x C-SPC C-SPC
+  (setq set-mark-command-repeat-pop t)
 
   ;; Do not change the position of the cursor when scrolling pages
   (setq scroll-preserve-screen-position t)
@@ -62,7 +63,7 @@
   (setq history-delete-duplicates t)
   )
 
-(leaf *startup-hook-configuration
+(leaf *custom-startup-hook
   :config
   ;; Save hist
   (add-hook 'after-init-hook 'savehist-mode)
@@ -95,6 +96,69 @@
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
 
+  ;; Display file name in title bar: buffername-emacs-version
+  (setq frame-title-format "%b")
+
+  ;; C-h is backspace
+  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
+
+  ;; Run M-/ same kill-buffer as C-x k
+  (bind-key "M-/" 'kill-buffer)
+
+  ;; xref-find-* key
+  (bind-key "C-," 'xref-find-references)
+  (bind-key "C-." 'xref-find-definitions)
+
+  ;; Run muheqka same minibuffer-keyboard-quit as C-g
+  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
+
+  ;; Use the X11 clipboard
+  (setq select-enable-clipboard  t)
+  (setq select-enable-primary  t)
+  (bind-key "M-w" 'clipboard-kill-ring-save)
+  (bind-key "C-w" 'my/clipboard-kill-region)
+  (bind-key "C-x C-x" 'my/exchange-point-and-mark)
+  (bind-key "M-c" 'my/capitalize-word)
+  (bind-key "M-l" 'my/downcase-word)
+  (bind-key "M-u" 'my/upcase-word)
+
+  (defun my:clipboard-kill-region ()
+    "If the region is active, `clipboard-kill-region'.
+If the region is inactive, `backward-kill-word'."
+    (interactive)
+    (if (use-region-p)
+	(clipboard-kill-region (region-beginning) (region-end))
+      (backward-kill-word 1)))
+
+  ;; In kill-region, if the region is not selected
+  ;; to perform a backward-kill-ward
+  (defun my:kill-word-or-kill-region (f &rest args)
+    (if (and (called-interactively-p 'interactive) transient-mark-mode (not mark-active))
+	(backward-kill-word 1)
+      (apply f args)))
+  (advice-add 'kill-region :around 'my:kill-word-or-kill-region)
+
+  (defun my/exchange-point-and-mark ()
+    "No mark active `exchange-point-and-mark'."
+    (interactive)
+    (exchange-point-and-mark)
+    (deactivate-mark))
+
+  (defun my/upcase-word (arg)
+    "Convert previous word (or ARG words) to upper case."
+    (interactive "p")
+    (upcase-word (- arg)))
+
+  (defun my/downcase-word (arg)
+    "Convert previous word (or ARG words) to down case."
+    (interactive "p")
+    (downcase-word (- arg)))
+
+  (defun my/capitalize-word (arg)
+    "Convert previous word (or ARG words) to capitalize."
+    (interactive "p")
+    (capitalize-word (- arg)))
+
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
 
@@ -112,57 +176,27 @@
     (emacs-lock-mode 'kill))
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill))
-  )
 
-;; Make it easy to see when it is the same name file
-(leaf uniquify
-  :config
-  (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-	uniquify-min-dir-content 1))
+  ;; Make it easy to see when it is the same name file
+  (leaf uniquify
+    :config
+    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+	  uniquify-min-dir-content 1))
 
-;; contains many mode setting
-(leaf generic-x)
+  ;; contains many mode setting
+  (leaf generic-x)
 
-;; Recentf
-(leaf recentf
-  :hook (after-init-hook . recentf-mode)
-  :config
-  (setq recentf-save-file "~/.emacs.d/recentf"
-	recentf-max-saved-items 200
-	recentf-auto-cleanup 'never
-	recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-			 (lambda (file) (file-in-directory-p file package-user-dir))))
-  (push (expand-file-name recentf-save-file) recentf-exclude))
-
-;; key modified
-(leaf bind-key
-  :ensure t
-  :bind (("C-." . xref-find-definitions)
-	 ("M-w" . clipboard-kill-ring-save)
-	 ("C-w" . my:clipboard-kill-region)
-	 ("M-/" . kill-buffer))
-  :bind* (("<muhenkan>" . minibuffer-keyboard-quit))
-  :config
-  ;; Use the X11 clipboard
-  (setq select-enable-clipboard t
-	select-enable-primary t)
-
-  (defun my:clipboard-kill-region ()
-    "If the region is active, `clipboard-kill-region'.
-If the region is inactive, `backward-kill-word'."
-    (interactive)
-    (if (use-region-p)
-	(clipboard-kill-region (region-beginning) (region-end))
-      (backward-kill-word 1)))
-
-  ;; In kill-region, if the region is not selected
-  ;; to perform a backward-kill-ward
-  (defun my:kill-word-or-kill-region (f &rest args)
-    (if (and (called-interactively-p 'interactive) transient-mark-mode (not mark-active))
-	(backward-kill-word 1)
-      (apply f args)))
-  (advice-add 'kill-region :around 'my:kill-word-or-kill-region)
+  ;; Recentf
+  (leaf recentf
+    :hook (after-init-hook . recentf-mode)
+    :config
+    (setq recentf-save-file "~/.emacs.d/recentf"
+	  recentf-max-saved-items 200
+	  recentf-auto-cleanup 'never
+	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+			   (lambda (file) (file-in-directory-p file package-user-dir))))
+    (push (expand-file-name recentf-save-file) recentf-exclude))
   )
 
 

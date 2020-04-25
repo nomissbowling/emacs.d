@@ -14,7 +14,6 @@
   	(locate-user-emacs-file "scratch"))
   (auto-save-buffers-enhanced t))
 
-
 ;; automatically deleted in the background buffers
 (leaf tempbuf
   :require t
@@ -25,7 +24,6 @@
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
   :custom (tempbuf-kill-message . nil))
 
-
 ;; interactively flip between recently visited buffers
 (leaf iflipb
   :ensure t
@@ -34,13 +32,11 @@
   :custom (iflipb-wrap-around . t)
   :config (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
-
 ;; Persistent undo history for GNU Emacs
 (leaf undohist
   :ensure t
   :hook (after-init-hook . undohist-initialize)
   :custom (undohist-ignored-files . '("/tmp" "COMMIT_EDITMSG")))
-
 
 ;; Treat undo history as a tree
 (leaf undo-tree
@@ -58,7 +54,6 @@
 	   (undo-tree-auto-save-history . nil)
 	   (undo-tree-history-directory-alist
 	    . `(("." . ,(concat user-emacs-directory "undo-tree-hist/")))))
-
   :config
   ;; FIXME: `undo-tree-visualizer-diff' is a local variable in *undo-tree* buffer.
   (defun undo-tree-visualizer-show-diff (&optional node)
@@ -77,7 +72,6 @@
     (setq-local undo-tree-visualizer-diff nil)
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
-
 
 ;; Toggle current buffer and *scratch* buffer
 (leaf *toggle-scratch

@@ -1,4 +1,4 @@
-;;; 70_yatex.el --- 70_yatex.el  -*- lexical-binding: t; -*-
+;;; 70_yatex.el --- 70_yatex.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

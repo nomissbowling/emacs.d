@@ -18,18 +18,7 @@
     (server-start)))
 
 
-;; font for main-machine
-(when (string-match "e590" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-  (if (getenv "WSLENV")
-      (add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-
-;; font for sub-machine
-(when (string-match "x250" (shell-command-to-string "uname -n"))
-  (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
-
-
-(leaf *basiccustom-start
+(leaf *standard-configuration
   :config
   ;; unable right-to-left language reordering
   (setq-default bidi-display-reordering nil)
@@ -97,9 +86,21 @@
    ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
    (makefile-mode-hook
     (lambda ()
-      (fset 'makefile-warn-suspicious-lines 'ignore))))
+      (fset 'makefile-warn-suspicious-lines 'ignore)))))
 
-  :init
+
+(leaf *user-configuration
+  :config
+  ;; font for main-machine
+  (when (string-match "e590" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+    (if (getenv "WSLENV")
+	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+
+  ;; font for sub-machine
+  (when (string-match "x250" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)
 
@@ -125,8 +126,10 @@
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets
 	uniquify-min-dir-content 1))
 
+
 ;; contains many mode setting
 (leaf generic-x)
+
 
 ;; Recentf
 (leaf recentf
@@ -139,6 +142,7 @@
 			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
 			 (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
+
 
 (leaf bind-key
   :ensure t

@@ -15,7 +15,6 @@
 	   (eshell-prompt-regexp . "^[^#$]*[$#] "))
   :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
-
   :config
   (setq eshell-command-aliases-list
 	(append (list

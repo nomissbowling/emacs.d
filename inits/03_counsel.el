@@ -22,7 +22,6 @@
 	 ("C-c r" . counsel-recentf)
 	 ([remap dired] . counsel-dired)
 	 ("<f6>" . find-counsel-in-m-x))
-
   :hook
   ((after-init-hook . ivy-mode)
    (ivy-mode-hook . counsel-mode)
@@ -38,7 +37,6 @@
    (counsel-yank-pop-separator
     . "\n------------------------------------------------------------\n")
    (ivy-format-functions-alist . '((t . my:ivy-format-function-arrow))))
-
   )
 
 (leaf *user-customize-function
@@ -70,11 +68,9 @@ If the region isn't selected, `swiper-isearch'."
 	(swiper-isearch)
       (swiper-isearch-thing-at-point))))
 
-
 (leaf ivy-rich
   :ensure t
   :hook (ivy-mode-hook . ivy-rich-mode))
-
 
 (leaf counsel-tramp
   :ensure t

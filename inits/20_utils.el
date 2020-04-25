@@ -10,7 +10,6 @@
   :custom ((migemo-command . "cmigemo")
 	   (migemo-dictionary . "/usr/share/cmigemo/utf-8/migemo-dict")))
 
-
 (leaf imenu-list
   :ensure t
   :bind (("<f10>" . imenu-list-smart-toggle))
@@ -21,12 +20,10 @@
     :ensure
     :hook (css-mode-hook . #'counsel-css-imenu-setup)))
 
-
 (leaf browse-at-remote
   :ensure t
   :config
   (defalias 'my:github-show 'browse-at-remote))
-
 
 (leaf *user-utils-function
   :config

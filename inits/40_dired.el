@@ -129,9 +129,9 @@
     (call-interactively 'revert-buffer)))
 
 
+;; Yet another dired for tree display
 (leaf direx
   :ensure t
-  :doc "Yet another dired for tree display."
   :after popwin
   :bind (("<f11>" . direx:jump-to-project-directory)
 	 (:direx:direx-mode-map

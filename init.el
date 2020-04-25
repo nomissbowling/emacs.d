@@ -1,4 +1,4 @@
-;;; init.el --- My init.el  -*- lexical-binding: t; -*-
+;;; init.el --- my init.el  -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2020  Naoya Yamashita
 ;; Author: Naoya Yamashita <conao3@gmail.com>
@@ -65,3 +65,4 @@
 ;; End:
 
 ;;; init.el ends here
+

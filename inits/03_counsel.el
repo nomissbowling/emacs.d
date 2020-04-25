@@ -1,4 +1,4 @@
-;;; 03_counsel.el --- 03_counsel.el  -*- lexical-binding: t; -*-
+;;; 03_counsel.el --- 03_counsel.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

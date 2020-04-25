@@ -1,6 +1,6 @@
 ;;; init.el --- init.el  -*- lexical-binding: t -*-
-;; emacs-initial-setting
-
+;;; Commentary: emacs-initial-setting
+;;; Code:
 ;; (setq debug-on-error t)
 
 ;; Quiet start

@@ -65,6 +65,19 @@
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
 
+(leaf point-history
+  :el-get blue0513/point-history
+  :config
+  (point-history-mode)
+  (setq point-history-save-timer 2)
+  (setq point-history-ignore-buffer "\\*[a-zA-Z0-9]")
+  (setq point-history-ignore-major-mode '(dired-mode direx:direx-mode)))
+
+(leaf ivy-point-history
+  :el-get SuzumiyaAoba/ivy-point-history
+  :bind (("C-<SPC>" . ivy-point-history)))
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

@@ -1,4 +1,4 @@
-;;; 20_utils.el --- 20_utils.el  -*- lexical-binding: t; -*-
+;;; 20_utils.el --- 20_utils.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)

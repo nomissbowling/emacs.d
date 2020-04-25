@@ -1,6 +1,6 @@
-;;; 02_git.el --- 02_git.el  -*- lexical-binding: t; -*-
-;;; Commentary:
-;;; Code:
+;;; 02_git.el --- 02_git.el  -*- lexical-binding: t -*-
+;; Git porcelain inside Emacs.
+
 ;; (setq debug-on-erro
 
 (leaf magit

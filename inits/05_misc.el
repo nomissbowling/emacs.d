@@ -1,4 +1,4 @@
-;;; 05_misc.el --- 05_misc.el  -*- lexical-binding: t; -*-
+;;; 05_misc.el --- 05_misc.el  -*- lexical-binding t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -15,7 +15,8 @@
 
 (leaf key-chord
   :el-get zk-phi/key-chord
-  :config (key-chord-mode 1)
+  :config
+  (key-chord-mode 1)
   :chord (("df" . counsel-descbinds)
 	  ("l;" . init-loader-show-log)
 	  ("hj" . undo)))
@@ -29,7 +30,8 @@
 (leaf yasnippet
   :ensure t
   :hook (after-init-hook . yas-global-mode)
-  :custom (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets"))
+  :custom
+  (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets"))
   :init (leaf ivy-yasnippet :ensure t))
 
 

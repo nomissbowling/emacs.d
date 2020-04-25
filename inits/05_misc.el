@@ -79,11 +79,6 @@
   :bind (("C-x C-c" . restart-emacs)))
 
 
-(leaf sudo-edit
-  :ensure t
-  :bind (("C-c s" . sudo-edit)))
-
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

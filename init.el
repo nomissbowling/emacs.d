@@ -1,11 +1,6 @@
-;;; init.el --- my init.el  -*- lexical-binding: t -*-
+;;; init.el --- init.el  -*- lexical-binding: t -*-
+;; emacs-initial-setting
 
-;; Copyright (C) 2020  Naoya Yamashita
-;; Author: Naoya Yamashita <conao3@gmail.com>
-;; Modified: Minoru Yamada <minorughgmail.com>
-
-;;; Commentary:
-;;; Code:
 ;; (setq debug-on-error t)
 
 ;; Quiet start
@@ -65,4 +60,3 @@
 ;; End:
 
 ;;; init.el ends here
-

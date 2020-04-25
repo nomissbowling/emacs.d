@@ -9,13 +9,11 @@
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
-
 (leaf server
   :require t
   :config
   (unless (server-running-p)
     (server-start)))
-
 
 (leaf *standard-configuration
   :config
@@ -64,7 +62,6 @@
   (setq history-delete-duplicates t)
   )
 
-
 (leaf *after-init-hook
   :config
   ;; Save hist
@@ -85,7 +82,6 @@
 	    (lambda ()
 	      (fset 'makefile-warn-suspicious-lines 'ignore)))
   )
-
 
 (leaf *user-configuration
   :config
@@ -118,17 +114,14 @@
     (emacs-lock-mode 'kill))
   )
 
-
 ;; Make it easy to see when it is the same name file
 (leaf uniquify
   :config
   (setq uniquify-buffer-name-style 'post-forward-angle-brackets
 	uniquify-min-dir-content 1))
 
-
 ;; contains many mode setting
 (leaf generic-x)
-
 
 ;; Recentf
 (leaf recentf
@@ -141,7 +134,6 @@
 			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
 			 (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
-
 
 (leaf bind-key
   :ensure t
@@ -182,10 +174,8 @@ If the region is inactive, `backward-kill-word'."
 	 args))
 (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
-
 ;; Load user defined elisp
 (load "~/Dropbox/emacs.d/elisp/user-defined.el")
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

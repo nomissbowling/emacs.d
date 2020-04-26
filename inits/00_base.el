@@ -32,9 +32,6 @@
   ;; Turn Off warning sound screen flash
   (setq visible-bell nil)
 
-  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
-  (setq ring-bell-function 'ignore)
-
   ;; It keeps going steadily the local mark ...  C-u C-SPC C-SPC
   ;; It keeps going steadily the global mark ... C-x C-SPC C-SPC
   (setq set-mark-command-repeat-pop t)
@@ -101,6 +98,9 @@
 
 (leaf *user-configuration
   :config
+  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
+  (setq ring-bell-function 'ignore)
+
   ;; font for main-machine
   (when (string-match "e590" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
@@ -117,15 +117,15 @@
   ;; C-h is backspace
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 
+  ;; Run muheqka same minibuffer-keyboard-quit as C-g
+  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
+
   ;; Run M-/ same kill-buffer as C-x k
   (bind-key "M-/" 'kill-buffer)
 
   ;; xref-find-* key
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)
-
-  ;; Run muheqka same minibuffer-keyboard-quit as C-g
-  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
 
   ;; Use the X11 clipboard
   (setq select-enable-clipboard  t)

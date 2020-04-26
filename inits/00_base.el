@@ -37,7 +37,6 @@
   ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
   (setq ring-bell-function 'ignore)
 
-  :config
   ;; unable right-to-left language reordering
   (setq-default bidi-display-reordering nil)
 
@@ -82,6 +81,7 @@
   ;; C-h is backspace
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 
+  :config
   ;; Make it easy to see when it is the same name file
   (leaf uniquify
     :config

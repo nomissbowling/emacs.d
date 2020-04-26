@@ -3,7 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(require 'cl-lib)
 
 ;; Functions to open any working directory
 (leaf *user-open-dir-function
@@ -218,10 +217,10 @@
     (forward-char 18)))
 
 
-(provide 'user-defined)
+(provide '99_user-defined)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; user-defined.el ends here
+;;; 99_user-defined.el ends here

@@ -29,15 +29,15 @@
     (leaf el-get :ensure t)
     :config
     (setq el-get-dir "~/.emacs.d/elisp")
-    (leaf-keywords-init)))
+    (leaf-keywords-init))
 
-(leaf init-loader
-  :ensure t
-  :config
-  (custom-set-variables
-   '(init-loader-show-log-after-init 'error-only))
-  (init-loader-load "~/Dropbox/emacs.d/inits")
-  (setq custom-file (locate-user-emacs-file "custom.el")))
+  (leaf init-loader
+    :ensure t
+    :config
+    (custom-set-variables
+     '(init-loader-show-log-after-init 'error-only))
+    (init-loader-load "~/Dropbox/emacs.d/inits")
+    (setq custom-file (locate-user-emacs-file "custom.el"))))
 
 
 (provide 'init)

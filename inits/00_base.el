@@ -9,11 +9,13 @@
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
+
 (leaf server
   :require t
   :config
   (unless (server-running-p)
     (server-start)))
+
 
 (leaf *standard-configuration
   :config
@@ -66,11 +68,18 @@
   (setq frame-title-format "%b")
 
   ;; C-h is backspace
-  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>")))
+  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 
+  ;; Make it easy to see when it is the same name file
+  (leaf uniquify
+    :config
+    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+	  uniquify-min-dir-content 1))
 
-(leaf *custom-startup-hook
-  :config
+  ;; contains many mode setting
+  (leaf generic-x)
+
+  :hook
   ;; Save hist
   (add-hook 'after-init-hook 'savehist-mode)
   ;;Save plae
@@ -185,16 +194,7 @@ If the region is inactive, `backward-kill-word'."
 	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
 			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
 			   (lambda (file) (file-in-directory-p file package-user-dir))))
-    (push (expand-file-name recentf-save-file) recentf-exclude))
-
-  ;; Make it easy to see when it is the same name file
-  (leaf uniquify
-    :config
-    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-	  uniquify-min-dir-content 1))
-
-  ;; contains many mode setting
-  (leaf generic-x))
+    (push (expand-file-name recentf-save-file) recentf-exclude)))
 
 
 ;; M-x info-emacs-manual (C-h r or F1+r)

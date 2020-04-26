@@ -115,7 +115,6 @@
     (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
 
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

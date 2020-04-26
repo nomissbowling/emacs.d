@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+
 (leaf exec-path-from-shell
   :when  (memq window-system '(mac ns x))
   :hook (after-init-hook . exec-path-from-shell-initialize)
@@ -18,13 +19,24 @@
 
 
 (leaf *standard-configuration
-  :config
-  ;; unable right-to-left language reordering
-  (setq-default bidi-display-reordering nil)
-
+  :init
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
+
+  ;; font for main-machine
+  (when (string-match "e590" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
+    (if (getenv "WSLENV")
+	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
+
+  ;; font for sub-machine
+  (when (string-match "x250" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+
+  :config
+  ;; unable right-to-left language reordering
+  (setq-default bidi-display-reordering nil)
 
   ;; Point keeps its screen position when scroll
   (setq scroll-preserve-screen-position :always)
@@ -100,16 +112,6 @@
   :config
   ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
   (setq ring-bell-function 'ignore)
-
-  ;; font for main-machine
-  (when (string-match "e590" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-15.5"))
-    (if (getenv "WSLENV")
-	(add-to-list 'default-frame-alist '(font . "Cica-18.5"))))
-
-  ;; font for sub-machine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
 
   ;; Display file name in title bar: buffername-emacs-version
   (setq frame-title-format "%b")

@@ -81,6 +81,11 @@
   :bind (("C-x C-c" . restart-emacs)))
 
 
+(leaf macrostep
+  :ensure t
+  :bind (("C-c e" . macrostep-expand)))
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

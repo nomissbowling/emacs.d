@@ -77,9 +77,6 @@
   ;; Display file name in title bar: buffername-emacs-version
   (setq frame-title-format "%b")
 
-  ;; C-h is backspace
-  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
-
   ;; Interface for display-line-numbers
   (leaf display-line-numbers
     :bind ("<f9>" . display-line-numbers-mode)
@@ -210,7 +207,7 @@ If the region is inactive, `backward-kill-word'."
     (emacs-lock-mode 'kill))
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill))
-
+  
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
   (defun Info-find-node--info-ja (orig-fn filename &rest args)

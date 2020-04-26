@@ -67,9 +67,18 @@ If the region isn't selected, `swiper-isearch'."
 	(swiper-isearch)
       (swiper-isearch-thing-at-point))))
 
+
+(leaf smex
+  :ensure t
+  :config
+  (setq smex-history-length 35)
+  (setq smex-completion-method 'ivy))
+
+
 (leaf ivy-rich
   :ensure t
   :hook (ivy-mode-hook . ivy-rich-mode))
+
 
 (leaf counsel-tramp
   :ensure t

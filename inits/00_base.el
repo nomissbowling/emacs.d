@@ -207,7 +207,7 @@ If the region is inactive, `backward-kill-word'."
     (emacs-lock-mode 'kill))
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill))
-  
+
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
   (defun Info-find-node--info-ja (orig-fn filename &rest args)

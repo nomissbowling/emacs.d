@@ -66,9 +66,7 @@
   (setq frame-title-format "%b")
 
   ;; C-h is backspace
-  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
-
-  )
+  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>")))
 
 
 (leaf *custom-startup-hook
@@ -89,8 +87,7 @@
   ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
   (add-hook 'makefile-mode-hook
 	    (lambda ()
-	      (fset 'makefile-warn-suspicious-lines 'ignore)))
-  )
+	      (fset 'makefile-warn-suspicious-lines 'ignore))))
 
 
 (leaf *user-configuration
@@ -178,15 +175,6 @@ If the region is inactive, `backward-kill-word'."
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill))
 
-  ;; Make it easy to see when it is the same name file
-  (leaf uniquify
-    :config
-    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-	  uniquify-min-dir-content 1))
-
-  ;; contains many mode setting
-  (leaf generic-x)
-
   ;; Recentf
   (leaf recentf
     :hook (after-init-hook . recentf-mode)
@@ -198,7 +186,15 @@ If the region is inactive, `backward-kill-word'."
 			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
 			   (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))
-  )
+
+  ;; Make it easy to see when it is the same name file
+  (leaf uniquify
+    :config
+    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+	  uniquify-min-dir-content 1))
+
+  ;; contains many mode setting
+  (leaf generic-x))
 
 
 ;; M-x info-emacs-manual (C-h r or F1+r)

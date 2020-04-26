@@ -12,15 +12,6 @@
   :hook ((emacs-lisp-mode-hook . aggressive-indent-mode)
 	 (css-mode-hook . aggressive-indent-mode)))
 
-(leaf paren
-  :custom (show-paren-style . 'mixed)
-  :config (show-paren-mode 1)
-  :custom-face
-  ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
-
-(leaf hi-line
-  :hook (after-init-hook . global-hl-line-mode))
-
 (leaf beacon
   :ensure t
   :hook (after-init-hook . beacon-mode)

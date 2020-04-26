@@ -35,8 +35,8 @@
    (counsel-find-file-ignore-regexp . ,(regexp-opt '("desktop.ini" ".dropox")))
    (counsel-yank-pop-separator
     . "\n------------------------------------------------------------\n")
-   (ivy-format-functions-alist . '((t . my:ivy-format-function-arrow))))
-  )
+   (ivy-format-functions-alist . '((t . my:ivy-format-function-arrow)))))
+
 
 (leaf *user-customize-function
   :config

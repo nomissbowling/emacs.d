@@ -14,6 +14,7 @@
   	(locate-user-emacs-file "scratch"))
   (auto-save-buffers-enhanced t))
 
+
 ;; automatically deleted in the background buffers
 (leaf tempbuf
   :require t
@@ -24,6 +25,7 @@
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
   :custom (tempbuf-kill-message . nil))
 
+
 ;; interactively flip between recently visited buffers
 (leaf iflipb
   :ensure t
@@ -33,11 +35,13 @@
   :config
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
+
 ;; Persistent undo history for GNU Emacs
 (leaf undohist
   :ensure t
   :hook (after-init-hook . undohist-initialize)
   :custom (undohist-ignored-files . '("/tmp" "COMMIT_EDITMSG")))
+
 
 ;; Treat undo history as a tree
 (leaf undo-tree
@@ -93,8 +97,7 @@
     "Kill all other buffers."
     (interactive)
     (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
-    (message "Killed other buffers!"))
-  )
+    (message "Killed other buffers!")))
 
 
 ;; Local Variables:

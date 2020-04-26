@@ -80,6 +80,12 @@
   ;; C-h is backspace
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 
+  ;; Interface for display-line-numbers
+  (leaf display-line-numbers
+    :bind ("<f9>" . display-line-numbers-mode)
+    :hook ((prog-mode-hook . display-line-numbers-mode)
+	   (text-mode-hook . display-line-numbers-mode)))
+
   ;; Show paren mode
   (leaf paren
     :custom (show-paren-style . 'mixed)

@@ -8,6 +8,7 @@
   :config
   (load-theme 'doom-dracula t))
 
+
 (leaf doom-modeline
   :ensure t
   :commands doom-modeline-def-modeline
@@ -29,12 +30,6 @@
     :custom
     (nyan-cat-face-number . 4)
     (nyan-animate-nyancat . t)))
-
-
-(leaf display-line-numbers
-  :bind ("<f9>" . display-line-numbers-mode)
-  :hook ((prog-mode-hook . display-line-numbers-mode)
-	 (text-mode-hook . display-line-numbers-mode)))
 
 
 ;; Remove visual distractions and focus on writing

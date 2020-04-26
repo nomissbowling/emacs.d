@@ -34,6 +34,9 @@
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
 
+  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
+  (setq ring-bell-function 'ignore)
+
   :config
   ;; unable right-to-left language reordering
   (setq-default bidi-display-reordering nil)
@@ -110,9 +113,6 @@
 
 (leaf *user-configuration
   :config
-  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
-  (setq ring-bell-function 'ignore)
-
   ;; Display file name in title bar: buffername-emacs-version
   (setq frame-title-format "%b")
 

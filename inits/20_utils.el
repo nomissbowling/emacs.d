@@ -70,8 +70,8 @@
   :config
   (point-history-mode)
   (setq point-history-save-timer 2)
-  (setq point-history-ignore-buffer "\\*[a-zA-Z0-9]")
-  (setq point-history-ignore-major-mode '(dired-mode direx:direx-mode)))
+  (setq point-history-ignore-buffer "\\*[a-zA-Z0-9]\\|^magit")
+  (setq point-history-ignore-major-mode '(magit-mode dired-mode direx:direx-mode)))
 
 (leaf ivy-point-history
   :el-get SuzumiyaAoba/ivy-point-history

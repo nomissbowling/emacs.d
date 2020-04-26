@@ -1,7 +1,10 @@
 ;;; 00_base.el --- 00_base.el -*- lexical-binding: t -*-
-;;; Commentary: emacs-base-setting
+;; emacs base setting.
+;; performs various variable settings and function executions
+;; for emacs standard attachment library.
 ;;; Code:
 ;; (setq debug-on-error t)
+
 
 (leaf *standard-configuration
   :init
@@ -197,10 +200,6 @@ If the region is inactive, `backward-kill-word'."
 
   ;; Set makefle mode
   (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
-
-  ;; Set web mode
-  (leaf web-mode :ensure t)
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
   ;; Set buffer that can not be killed
   (with-current-buffer "*scratch*"

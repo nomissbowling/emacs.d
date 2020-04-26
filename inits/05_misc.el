@@ -76,6 +76,11 @@
   :bind (("C-c e" . macrostep-expand)))
 
 
+(leaf web-mode
+  :ensure t
+  :mode (("\\.html?\\'" . web-mode)))
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

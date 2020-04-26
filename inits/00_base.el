@@ -4,7 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf *standard-configuration
-  :preface
+  :init
   ;; Emacs use the $PATH set up by the user's shell
   (leaf exec-path-from-shell
     :when  (memq window-system '(mac ns x))

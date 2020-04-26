@@ -61,7 +61,15 @@
   (setq create-lockfiles nil)
   ;; Do not record the same content in the history
   (setq history-delete-duplicates t)
+
+  ;; Display file name in title bar: buffername-emacs-version
+  (setq frame-title-format "%b")
+
+  ;; C-h is backspace
+  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
+
   )
+
 
 (leaf *custom-startup-hook
   :config
@@ -83,6 +91,7 @@
 	    (lambda ()
 	      (fset 'makefile-warn-suspicious-lines 'ignore)))
   )
+
 
 (leaf *user-configuration
   :config
@@ -116,11 +125,11 @@
   (setq select-enable-clipboard  t)
   (setq select-enable-primary  t)
   (bind-key "M-w" 'clipboard-kill-ring-save)
-  (bind-key "C-w" 'my/clipboard-kill-region)
-  (bind-key "C-x C-x" 'my/exchange-point-and-mark)
-  (bind-key "M-c" 'my/capitalize-word)
-  (bind-key "M-l" 'my/downcase-word)
-  (bind-key "M-u" 'my/upcase-word)
+  (bind-key "C-w" 'my:clipboard-kill-region)
+  (bind-key "C-x C-x" 'my:exchange-point-and-mark)
+  (bind-key "M-c" 'my:capitalize-word)
+  (bind-key "M-l" 'my:downcase-word)
+  (bind-key "M-u" 'my:upcase-word)
 
   (defun my:clipboard-kill-region ()
     "If the region is active, `clipboard-kill-region'.
@@ -130,31 +139,23 @@ If the region is inactive, `backward-kill-word'."
 	(clipboard-kill-region (region-beginning) (region-end))
       (backward-kill-word 1)))
 
-  ;; In kill-region, if the region is not selected
-  ;; to perform a backward-kill-ward
-  (defun my:kill-word-or-kill-region (f &rest args)
-    (if (and (called-interactively-p 'interactive) transient-mark-mode (not mark-active))
-	(backward-kill-word 1)
-      (apply f args)))
-  (advice-add 'kill-region :around 'my:kill-word-or-kill-region)
-
-  (defun my/exchange-point-and-mark ()
+  (defun my:exchange-point-and-mark ()
     "No mark active `exchange-point-and-mark'."
     (interactive)
     (exchange-point-and-mark)
     (deactivate-mark))
 
-  (defun my/upcase-word (arg)
+  (defun my:upcase-word (arg)
     "Convert previous word (or ARG words) to upper case."
     (interactive "p")
     (upcase-word (- arg)))
 
-  (defun my/downcase-word (arg)
+  (defun my:downcase-word (arg)
     "Convert previous word (or ARG words) to down case."
     (interactive "p")
     (downcase-word (- arg)))
 
-  (defun my/capitalize-word (arg)
+  (defun my:capitalize-word (arg)
     "Convert previous word (or ARG words) to capitalize."
     (interactive "p")
     (capitalize-word (- arg)))

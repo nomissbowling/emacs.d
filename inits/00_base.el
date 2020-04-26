@@ -80,6 +80,17 @@
   ;; C-h is backspace
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 
+  ;; Show paren mode
+  (leaf paren
+    :custom (show-paren-style . 'mixed)
+    :config (show-paren-mode 1)
+    :custom-face
+    ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
+
+  ;; Highlight the current line
+  (leaf hi-line
+    :hook (after-init-hook . global-hl-line-mode))
+
   ;; Make it easy to see when it is the same name file
   (leaf uniquify
     :config

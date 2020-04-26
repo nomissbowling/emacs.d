@@ -3,23 +3,22 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-
-(leaf exec-path-from-shell
-  :when  (memq window-system '(mac ns x))
-  :hook (after-init-hook . exec-path-from-shell-initialize)
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
-
-(leaf server
-  :require t
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
-
 (leaf *standard-configuration
-  :init
+  :preface
+  ;; Emacs use the $PATH set up by the user's shell
+  (leaf exec-path-from-shell
+    :when  (memq window-system '(mac ns x))
+    :hook (after-init-hook . exec-path-from-shell-initialize)
+    :config
+    (setq exec-path-from-shell-check-startup-files nil))
+
+  ;; Start the server in Emacs session
+  (leaf server
+    :require t
+    :config
+    (unless (server-running-p)
+      (server-start)))
+
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
@@ -81,7 +80,6 @@
   ;; C-h is backspace
   (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
 
-  :config
   ;; Make it easy to see when it is the same name file
   (leaf uniquify
     :config

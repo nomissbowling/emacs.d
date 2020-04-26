@@ -106,6 +106,18 @@
   ;; contains many mode setting
   (leaf generic-x)
 
+  ;; Recentf
+  (leaf recentf
+    :hook (after-init-hook . recentf-mode)
+    :config
+    (setq recentf-save-file "~/.emacs.d/recentf"
+	  recentf-max-saved-items 200
+	  recentf-auto-cleanup 'never
+	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+			   (lambda (file) (file-in-directory-p file package-user-dir))))
+    (push (expand-file-name recentf-save-file) recentf-exclude))
+
   :hook
   ;; Save hist
   (add-hook 'after-init-hook 'savehist-mode)
@@ -128,12 +140,6 @@
 
 (leaf *user-configuration
   :config
-  ;; Display file name in title bar: buffername-emacs-version
-  (setq frame-title-format "%b")
-
-  ;; C-h is backspace
-  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
-
   ;; Run muheqka same minibuffer-keyboard-quit as C-g
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
 
@@ -205,30 +211,17 @@ If the region is inactive, `backward-kill-word'."
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill))
 
-  ;; Recentf
-  (leaf recentf
-    :hook (after-init-hook . recentf-mode)
-    :config
-    (setq recentf-save-file "~/.emacs.d/recentf"
-	  recentf-max-saved-items 200
-	  recentf-auto-cleanup 'never
-	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-			   (lambda (file) (file-in-directory-p file package-user-dir))))
-    (push (expand-file-name recentf-save-file) recentf-exclude)))
-
-
-;; M-x info-emacs-manual (C-h r or F1+r)
-(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
-(defun Info-find-node--info-ja (orig-fn filename &rest args)
-  "Info as ORIG-FN FILENAME ARGS."
-  (apply orig-fn
-	 (pcase filename
-	   ("emacs" "emacs-ja.info")
-	   (_ filename))
-	 args))
-(advice-add 'Info-find-node :around 'Info-find-node--info-ja)
-
+  ;; M-x info-emacs-manual (C-h r or F1+r)
+  (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
+  (defun Info-find-node--info-ja (orig-fn filename &rest args)
+    "Info as ORIG-FN FILENAME ARGS."
+    (apply orig-fn
+	   (pcase filename
+	     ("emacs" "emacs-ja.info")
+	     (_ filename))
+	   args))
+  (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
+  )
 
 ;; Local Variables:
 ;; no-byte-compile: t

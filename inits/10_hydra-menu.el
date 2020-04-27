@@ -19,7 +19,7 @@
    ("p" hydra-package/body)
    ("o" browse-url-at-point)
    ("f" ftp-client)
-   ("t" my:tramp-xsrv)
+   ("t" counsel-tramp)
    ("q" my:tramp-quit)
    ("d" my:dropbox)
    ("i" my:inits-dir)

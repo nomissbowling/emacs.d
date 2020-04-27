@@ -34,7 +34,7 @@
    ("s" swiper-isearch-region)
    ("S" window-swap-states)
    ("/" kill-buffer)
-   ("v" vc-diff)
+   ("v" view-mode)
    ("f" counsel-find-file)
    ("0" delete-window)
    ("1" delete-other-windows)

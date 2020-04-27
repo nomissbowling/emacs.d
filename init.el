@@ -3,6 +3,14 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; this enables this running method
+;;   emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
+(eval-and-compile
+  (when (or load-file-name byte-compile-current-file)
+    (setq user-emacs-directory
+          (expand-file-name
+           (file-name-directory (or load-file-name byte-compile-current-file))))))
+
 ;; Quiet start
 (menu-bar-mode 0)
 (tool-bar-mode 0)
@@ -10,6 +18,8 @@
 (set-frame-parameter nil 'fullscreen 'maximized)
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
+
+;; Increase threshold to fire garbage collection
 (setq gc-cons-threshold (* 128 1024 1024))
 
 (eval-and-compile

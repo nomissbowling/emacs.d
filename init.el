@@ -11,18 +11,18 @@
           (expand-file-name
            (file-name-directory (or load-file-name byte-compile-current-file))))))
 
-;; Quiet start
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-(set-frame-parameter nil 'fullscreen 'maximized)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
-
-;; Increase threshold to fire garbage collection
-(setq gc-cons-threshold (* 128 1024 1024))
-
 (eval-and-compile
+  ;; Quiet start
+  (menu-bar-mode 0)
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0)
+  (set-frame-parameter nil 'fullscreen 'maximized)
+  (setq inhibit-splash-screen t)
+  (setq inhibit-startup-message t)
+
+  ;; Increase threshold to fire garbage collection
+  (setq gc-cons-threshold (* 128 1024 1024))
+
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")
                        ("melpa" . "https://melpa.org/packages/")))

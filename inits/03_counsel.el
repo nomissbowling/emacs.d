@@ -82,17 +82,12 @@ If the region isn't selected, `swiper-isearch'."
 
 (leaf counsel-tramp
   :ensure t
+  :bind (("C-c t" . counsel-tramp)
+	 ("C-c q" . my:tramp-quit))
   :custom ((tramp-default-method . "ssh")
 	   (counsel-tramp-custom-connections
 	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/)))
   :config
-  (defun my:tramp-xsrv ()
-    "Start tramp after closed all buffers."
-    (interactive)
-    (when (get-buffer "*tramp/scp xsrv*")
-      (counsel-tramp-quit))
-    (counsel-tramp))
-
   (defun my:tramp-quit ()
     "Quit tramp, if tramp connencted."
     (interactive)

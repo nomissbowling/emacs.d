@@ -140,7 +140,7 @@
 
 (leaf *user-configuration
   :config
-  ;; Run muheqka same minibuffer-keyboard-quit as C-g
+  ;; Run muhenkan same minibuffer-keyboard-quit as C-g
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
 
   ;; Run M-/ same kill-buffer as C-x k

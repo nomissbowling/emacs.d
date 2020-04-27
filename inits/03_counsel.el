@@ -86,7 +86,7 @@ If the region isn't selected, `swiper-isearch'."
 	 ("C-c q" . my:tramp-quit))
   :custom ((tramp-default-method . "ssh")
 	   (counsel-tramp-custom-connections
-	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/)))
+	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/)))
   :config
   (defun my:tramp-quit ()
     "Quit tramp, if tramp connencted."

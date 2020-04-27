@@ -27,6 +27,12 @@
 
 (leaf *user-utils-function
   :config
+  (bind-key "<f2>" 'my:find-file-current-dir)
+  (defun find-file-current-dir ()
+    "Find-file current directory"
+    (interactive)
+    (find-file default-directory))
+
   ;; current dir open of linux-filer
   (bind-key "<f3>" 'filer-current-dir-open)
   (defun filer-current-dir-open ()

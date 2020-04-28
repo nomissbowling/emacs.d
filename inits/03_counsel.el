@@ -13,7 +13,7 @@
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
 	 ("C-x C-f" . counsel-find-file)
-	 ("C-c a" . counsel-ag)
+	 ("C-c k" . counsel-ag)
 	 ("C-c f" . counsel-projectile-find-file)
 	 ("C-c g" . counsel-git)
 	 ("C-c j" . counsel-git-grep)

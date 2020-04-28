@@ -3,8 +3,7 @@
 ;;; Code:
 ;;(setq debug-on-error t)
 
-(leaf org-plus-contrib
-  :ensure t
+(leaf org
   :config
   (setq org-log-done 'time)
   (setq org-use-speed-commands t)
@@ -81,12 +80,10 @@
 	    (format-time-string "/%Y/%m/%Y%m%d%H%M.md" (current-time))))
 
   ;; Key-bind
-  (bind-key "<f7>" 'org-agenda)
-  (bind-key "<f8>" 'org-capture)
-  (bind-key "C-o" 'org-open-at-point)
-
+  (bind-key "C-c a" 'org-agenda)
+  (bind-key "C-c c" 'org-capture)
   ;; Capture file path
-  (setq capture-file (concat org-directory "capture.org"))
+  ;; (setq capture-file (concat org-directory "capture.org"))
   (setq remember-file (concat org-directory "remember.org"))
   (setq experiment-file (concat org-directory "experiment.org"))
   (setq idea-file (concat org-directory "idea.org"))
@@ -94,11 +91,7 @@
   (setq task-file (concat org-directory "task.org"))
 
   (setq org-capture-templates
-	'(;; ("p" " Capture" entry (file+headline capture-file "Capture")
-	  ;;  "* %^{Title} \nSOURCE: %:link\nCAPTURED: %U\n\n#+BEGIN_SRC emacs-lisp\n%i\n#+END_SRC\n" :prepend t)
-	  ;; ("L" "Protocol Link" entry (file+headline capture-file "Inbox")
-	  ;;  "* %? [[%:link][%:description]] \nCaptured On: %U" :prepend t)
-	  ("e" " Experiment" entry (file+headline experiment-file "Experiment")
+	'(("e" " Experiment" entry (file+headline experiment-file "Experiment")
 	   "* %? %U %i\n#+BEGIN_SRC emacs-lisp\n%i\n#+END_SRC" :prepend t)
 	  ("i" "👌 Idea" entry (file+headline idea-file "Idea")
 	   "* %? %U %i" :prepend t)
@@ -114,12 +107,6 @@
 		("~/Dropbox/howm/org/remember.org" :level . 1)
 		(memo-file :level . 1)
 		(task-file :level . 1))))
-
-  (leaf org-bullets
-    :ensure t
-    :custom (org-bullets-bullet-list '("" "" "" "" "" "" "" "" "" ""))
-    :init
-    (add-hook 'org-mode-hook 'org-bullets-mode))
   )
 
 

@@ -10,6 +10,7 @@
   :init
   ;; Emacs use the $PATH set up by the user's shell
   (leaf exec-path-from-shell
+    :ensure t
     :when  (memq window-system '(mac ns x))
     :hook (after-init-hook . exec-path-from-shell-initialize)
     :config

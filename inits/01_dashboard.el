@@ -25,24 +25,26 @@
 	dashboard-set-heading-icons t
 	dashboard-set-file-icons t
 	;; dashboard-page-separator "\n\f\f\n"
-	dashboard-items '((recents  . 10)))
+	;; dashboard-items '((recents  . 10))
+	show-week-agenda-p t
+	dashboard-items '((recents  . 5)
+			  (agenda . 5)))
   (setq dashboard-banner-logo-title
-  	(concat "GNU Emacs " emacs-version " kernel "
-  		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
-  		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
+	(concat "GNU Emacs " emacs-version " kernel "
+		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
+		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
 
   ;; Set the footer
   (setq dashboard-footer-icon
-  	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
 
   ;; Insert custom item
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
-  (add-to-list 'dashboard-items '(custom) t)
-  )
+  (add-to-list 'dashboard-items '(custom) t))
 
 
 (leaf *dashboard-local-function
-  :config
+  :init
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
     (interactive)
@@ -80,7 +82,7 @@
 
 
 (leaf *user-browse-url-function
-  :config
+  :init
   (defun browse-calendar ()
     "Open Google-calendar with chrome."
     (interactive)

@@ -1,5 +1,5 @@
 ;;; init.el --- init.el  -*- lexical-binding: t -*-
-;;; Commentary: emacs-initial-setting
+;;; emacs-initial-setting
 ;;; Code:
 ;; (setq debug-on-error t)
 

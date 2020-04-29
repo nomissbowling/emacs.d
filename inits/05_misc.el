@@ -78,7 +78,7 @@
 
 (leaf web-mode
   :ensure t
-  :mode (("\\.html?\\'" . web-mode)))
+  :mode "\\.js\\'" "\\.p.html?\\'")
 
 
 ;; Local Variables:

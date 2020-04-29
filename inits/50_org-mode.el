@@ -75,9 +75,6 @@
     (concat howm-directory
 	    (format-time-string "/%Y/%m/%Y%m%d%H%M.md" (current-time))))
 
-  ;; Key-bind
-  (bind-key "C-c a" 'org-agenda)
-  (bind-key "C-c c" 'org-capture)
   ;; Capture file path
   (setq remember-file (concat org-directory "remember.org"))
   (setq experiment-file (concat org-directory "experiment.org"))

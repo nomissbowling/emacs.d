@@ -15,7 +15,8 @@
   :ensure t
   :bind (("<f10>" . imenu-list-smart-toggle))
   :custom ((imenu-list-size . 30)
-	   (imenu-list-position . 'left))
+	   (imenu-list-position . 'left)
+	   (imenu-list-focus-after-activation . t))
   :config
   (leaf counsel-css
     :ensure

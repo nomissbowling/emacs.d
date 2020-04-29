@@ -10,9 +10,9 @@
    (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gi_s_t:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   isearch:_[_:_]_
-   git:_:_:_._   _a_g:🐾   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   howm:_,_:_@_   _t_ramp:_q_   work:_<right>_"
+  ---^^^^^^^^^^^^^^^^^^^---------------------------------------------------------------------------------------------------------------------------------
+   _d_ropbox^^   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gi_P_t:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_   isearch:_[_:_]_
+   git:_:_:_s_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   agenda_._^^   _a_g:🐾   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -33,7 +33,8 @@
    ("z" eshell)
    ("]" isearch-forward)
    ("[" isearch-backward)
-   ("." magit-status)
+   ("s" magit-status)
+   ("," org-agenda)
    ("m" hydra-markdown/body)
    (":" hydra-magit/body)
    (";" my:dot-emacs-dir)
@@ -43,9 +44,9 @@
    ("J" open-junk-file)
    ("j" my:open-junk-file-dir)
    ("@" howm-list-all)
-   ("," hydra-howm/body)
+   ("." org-capture)
    ("k" my:recompile)
-   ("s" gist-region-or-buffer)
+   ("P" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
@@ -104,6 +105,30 @@
     (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
       (shell-command "sh melpabackup.sh"))
     (message "Finished melpa buckup!")))
+
+;; (defun my:howm-note ()
+;;   "My howm create for note draft."
+;;   (interactive)
+;;   (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
+;;   (howm-create))
+
+(defun my:haiku-note ()
+  "Open haiku note file."
+  (interactive)
+  (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
+  (goto-char (point-min)))
+
+(defun my:haiku-note-post ()
+  "Insert template."
+  (interactive)
+  (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
+  (goto-char (point-min))
+  (forward-line 2)
+  (insert
+   (format-time-string "> %Y年%m月%d日 (%a)\n")
+   (format-time-string "PLACE:\n\n"))
+  (forward-line -2)
+  (forward-char 6))
 
 
 ;; Local Variables:

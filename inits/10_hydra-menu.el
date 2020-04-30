@@ -4,7 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf *hydra-quick-menu
-  :bind ("M-." . hydra-quick-menu/body)
+  :bind (("M-." . hydra-quick-menu/body))
   :hydra
   (hydra-quick-menu
    (:hint nil :exit t)
@@ -58,7 +58,7 @@
 
 
 (leaf *hydra-work-menu
-  :chord (".." . hydra-work/body)
+  :bind (("M-:" . hydra-work/body))
   :hydra
   (hydra-work
    (:hint nil :exit t)

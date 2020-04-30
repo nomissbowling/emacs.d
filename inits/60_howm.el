@@ -22,13 +22,14 @@
 	howm-normalizer 'howm-sort-items-by-reverse-date
 	howm-user-font-lock-keywords
 	'(("memo:" . (0 'dired-mark prepend))
+	  ("perl:" . (0 'diff-added prepend))
+	  ("emacs:" . (0 'diff-added prepend))
+	  ("linux:" . (0 'diff-added prepend))
 	  ("blog:" . (0 'error prepend))
 	  ("idea:" . (0 'diff-added prepend))
 	  ("hack:" . (0 'dired-marked prepend))
-	  ("mail:" . (0 'all-the-icons-silver prepend))
-	  ("page:" . (0 'all-the-icons-dgreen prepend))
-	  ("日記:" . (0 'diary prepend))
-	  ("note:" . (0 'diff-changed prepend)))))
+	  ("note:" . (0 'dired-mark prepend))
+	  ("日記:" . (0 'dired-mark prepend)))))
 
 
 (leaf open-junk-file

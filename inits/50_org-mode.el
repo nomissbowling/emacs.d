@@ -4,6 +4,7 @@
 ;;(setq debug-on-error t)
 
 (leaf org
+  :chord (("aa" . org-agenda))
   :config
   (setq org-log-done 'time)
   (setq org-use-speed-commands t)

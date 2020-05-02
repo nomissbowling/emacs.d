@@ -4,7 +4,6 @@
 ;;(setq debug-on-error t)
 
 (leaf org
-  :chord (("aa" . org-agenda))
   :config
   (setq org-log-done 'time)
   (setq org-use-speed-commands t)
@@ -26,6 +25,7 @@
   (add-hook 'org-capture-mode-hook 'delete-other-windows)
 
   ;; Agenda Settings
+  (bind-key "C-c a" 'org-agenda)
   (setq org-agenda-time-leading-zero t)
   (setq calendar-holidays nil)
   (setq org-log-done 'time)
@@ -104,12 +104,6 @@
 	  ("h" "📔 俳句" plain (file my:howm-create-file)
 	   "# 俳句: %?\n%U %i")))
   )
-
-;; (setq org-refile-targets
-;; 	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
-;; 		("~/Dropbox/howm/org/remember.org" :level . 1)
-;; 		(memo-file :level . 1)
-;; 		(task-file :level . 1)))))
 
 
 ;; Local Variables:

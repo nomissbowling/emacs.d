@@ -11,8 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^---------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox^^   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gi_P_t:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_   isearch:_[_:_]_
-   git:_:_:_s_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   agenda_._^^   _a_g:🐾   work:_<right>_"
+   _d_ropbox^^   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_   isearch:_[_:_]_
+   git:_:_:_._   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   hi_s_tory^^   _a_g:🐾   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -33,8 +33,8 @@
    ("z" eshell)
    ("]" isearch-forward)
    ("[" isearch-backward)
-   ("s" magit-status)
-   ("," org-agenda)
+   ("." magit-status)
+   ("s" ivy-point-history)
    ("m" hydra-markdown/body)
    (":" hydra-magit/body)
    (";" my:dot-emacs-dir)
@@ -44,9 +44,9 @@
    ("J" open-junk-file)
    ("j" my:open-junk-file-dir)
    ("@" howm-list-all)
-   ("." org-capture)
+   ("," org-capture)
    ("k" my:recompile)
-   ("P" gist-region-or-buffer)
+   ("G" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
@@ -58,7 +58,7 @@
 
 
 (leaf *hydra-work-menu
-  :bind (("C-:" . hydra-work/body))
+  :chord ((".." . hydra-work/body))
   :hydra
   (hydra-work
    (:hint nil :exit t)

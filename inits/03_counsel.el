@@ -7,7 +7,7 @@
   :ensure t
   :bind (("C-s" . swiper-isearch-region)
 	 ("C-r" . swiper-thing-at-point)
-	 ("C-;" . counsel-switch-buffer)
+	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
 	 ("M-x" . counsel-M-x)

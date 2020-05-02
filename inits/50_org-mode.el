@@ -11,16 +11,17 @@
   (setq org-src-fontify-natively t)
   (setq calendar-holidays nil)
   (setq org-clock-clocked-in-display 'frame-title)
+  (setq howm-directory "~/Dropbox/howm/")
   (setq org-directory "~/Dropbox/howm/org/")
   (setq org-agenda-files '("~/Dropbox/howm/org/task.org"
 			   "~/Dropbox/howm/org/schedule.org"))
 
   ;; Maximize the org-capture buffer
-  (defvar my-org-capture-before-config nil
+  (defvar my:org-capture-before-config nil
     "Window configuration before `org-capture'.")
   (defadvice org-capture (before save-config activate)
     "Save the window configuration before `org-capture'."
-    (setq my-org-capture-before-config (current-window-configuration)))
+    (setq my:org-capture-before-config (current-window-configuration)))
   (add-hook 'org-capture-mode-hook 'delete-other-windows)
 
   ;; Agenda Settings
@@ -77,8 +78,6 @@
 	    (format-time-string "/%Y/%m/%Y%m%d%H%M.md" (current-time))))
 
   ;; Capture file path
-  ;; (setq remember-file (concat org-directory "remember.org"))
-  ;; (setq experiment-file (concat org-directory "experiment.org"))
   (setq task-file (concat org-directory "task.org"))
   (setq schedule-file (concat org-directory "schedule.org"))
 
@@ -87,24 +86,29 @@
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("s" " Shedule" entry (file+headline schedule-file "Schedule")
 	   "** %?\n SCHEDULED: %^t \n" :prepend t)
+	  ("c" "📌 Code-Link" plain (file my:howm-create-file)
+	   "# code: %?\n%U %i\n\n>>>\n\n````code\n%i\n```")
 	  ("i" "👌 Idea" plain (file my:howm-create-file)
 	   "# idea: %? %U %i" :prepend t)
 	  ("m" " Memo" plain (file my:howm-create-file)
 	   "# memo: %?\n%U %i")
-	  ("e" "★ Hack-Emacs" plain (file my:howm-create-file)
+	  ("n" " Note" plain (file my:howm-create-file)
+	   "# note: %?\n%U %i")
+	  ("e" "★ Emacs" plain (file my:howm-create-file)
 	   "# emacs: %?\n%U %i\n\n````emacs-lisp\n%i\n```")
-	  ("u" "★ Hack-linux" plain (file my:howm-create-file)
-	   "# linux: %?\n%U %i\n\n````perl\n%i\n```")
-	  ("p" "★ Hack-Perl" plain (file my:howm-create-file)
-	   "# perl: %?\n%U %i\n\n````perl\n%i\n```")
-	  ("n" " Note (draft)" plain (file my:howm-create-file)
-	   "# note: %?\n%U %i"))))
+	  ("l" "★ Linux" plain (file my:howm-create-file)
+	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```")
+	  ("w" "★ Win10" plain (file my:howm-create-file)
+	   "# win10: %?\n%U %i\n\n````emacs-lisp\n%i\n```")
+	  ("h" "📔 俳句" plain (file my:howm-create-file)
+	   "# 俳句: %?\n%U %i")))
+  )
 
-  ;; (setq org-refile-targets
-  ;; 	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
-  ;; 		("~/Dropbox/howm/org/remember.org" :level . 1)
-  ;; 		(memo-file :level . 1)
-  ;; 		(task-file :level . 1)))))
+;; (setq org-refile-targets
+;; 	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
+;; 		("~/Dropbox/howm/org/remember.org" :level . 1)
+;; 		(memo-file :level . 1)
+;; 		(task-file :level . 1)))))
 
 
 ;; Local Variables:

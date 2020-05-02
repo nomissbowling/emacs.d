@@ -58,7 +58,7 @@
 
 
 (leaf *hydra-work-menu
-  :bind (("M-:" . hydra-work/body))
+  :bind (("C-:" . hydra-work/body))
   :hydra
   (hydra-work
    (:hint nil :exit t)

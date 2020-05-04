@@ -16,7 +16,7 @@
 
 (leaf imenu-list
   :ensure t
-  :bind (("<f10>" . imenu-list-smart-toggle))
+  :bind (("<f2>" . imenu-list-smart-toggle))
   :custom ((imenu-list-size . 30)
 	   (imenu-list-position . 'left)
 	   (imenu-list-focus-after-activation . t))
@@ -34,12 +34,6 @@
 
 (leaf *user-utils-function
   :config
-  (bind-key "<f2>" 'find-file-current-dir)
-  (defun find-file-current-dir ()
-    "Find-file current directory"
-    (interactive)
-    (find-file default-directory))
-
   ;; current dir open of linux-filer
   (bind-key "<f3>" 'filer-current-dir-open)
   (defun filer-current-dir-open ()

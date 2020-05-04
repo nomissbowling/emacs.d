@@ -129,27 +129,35 @@
     (call-interactively 'revert-buffer)))
 
 
-;; Yet another dired for tree display
-(leaf direx
+(leaf neotree
   :ensure t
-  :after popwin
-  :bind (("<f11>" . direx:jump-to-project-directory)
-	 (:direx:direx-mode-map
-	  ("<f11>" . quit-window)))
-
+  :bind (("<f10>" . neotree-find)
+	 (:neotree-mode-map
+	  ("RET" . neotree-enter-hide)
+	  ("a" . neotree-hidden-file-toggle)
+	  ("<left>" . neotree-select-up-node)
+	  ("<right>" . neotree-change-root)
+	  ("<f10>" . neotree-hide)))
+  :init
+  (setq-default neo-keymap-style 'concise)
   :config
-  (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
-  (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config)
+  (setq neo-create-file-auto-open t)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-  ;; https://blog.shibayu36.org/entry/2013/02/12/191459
-  (defun direx:jump-to-project-directory ()
-    "If in project, launch direx-project otherwise start direx."
-    (interactive)
-    (let ((result (ignore-errors
-		    (direx-project:jump-to-project-root-other-window)
-		    t)))
-      (unless result
-	(direx:jump-to-directory-other-window)))))
+  ;; neotree enter hide
+  ;; Tips from https://github.com/jaypei/emacs-neotree/issues/77
+  (defun neo-open-file-hide (full-path &optional arg)
+    "Open file and hiding neotree.
+The description of FULL-PATH & ARG is in `neotree-enter'."
+    (neo-global--select-mru-window arg)
+    (find-file full-path)
+    (neotree-hide))
+
+  (defun neotree-enter-hide (&optional arg)
+    "Neo-open-file-hide if file, Neo-open-dir if dir.
+The description of ARG is in `neo-buffer--execute'."
+    (interactive "P")
+    (neo-buffer--execute arg 'neo-open-file-hide 'neo-open-dir)))
 
 
 ;; Local Variables:

@@ -23,7 +23,7 @@
   :preface
   (leaf hide-mode-line
     :ensure t
-    :hook ((direx:direx-mode imenu-list-minor-mode diff-mode) . hide-mode-line-mode))
+    :hook ((neotree-mode imenu-list-minor-mode diff-mode ) . hide-mode-line-mode))
   (leaf nyan-mode
     :ensure t
     :hook (after-init-hook . nyan-mode)

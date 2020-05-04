@@ -129,6 +129,7 @@
     (call-interactively 'revert-buffer)))
 
 
+;; Yet another dired for tree display
 (leaf neotree
   :ensure t
   :bind (("<f10>" . neotree-find)

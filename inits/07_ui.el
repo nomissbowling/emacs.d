@@ -11,7 +11,6 @@
 
 (leaf doom-modeline
   :ensure t
-  :commands doom-modeline-def-modeline
   :hook (after-init-hook . doom-modeline-mode)
   :custom ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
 	   (doom-modeline-icon . t)

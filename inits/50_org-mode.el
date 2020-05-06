@@ -87,10 +87,8 @@
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("s" " Shedule" entry (file+headline schedule-file "Schedule")
 	   "** %?\n SCHEDULED: %^t \n" :prepend t)
-	  ("c" "📌 Code-Capture" plain (file my:howm-create-file)
+	  ("c" "📌 Code-capture" plain (file my:howm-create-file)
 	   "# code: %?\n%U %i\n\n>>>\n\n````code\n%i\n```")
-	  ;; ("i" "👌 Idea" plain (file my:howm-create-file)
-	  ;;  "# idea: %? %U %i" :prepend t)
 	  ("m" " Memo" plain (file my:howm-create-file)
 	   "# memo: %?\n%U %i")
 	  ("n" " Note" plain (file my:howm-create-file)
@@ -98,12 +96,7 @@
 	  ("e" "★ Emacs" plain (file my:howm-create-file)
 	   "# emacs: %?\n%U %i\n\n````emacs-lisp\n%i\n```")
 	  ("l" "★ Linux" plain (file my:howm-create-file)
-	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```")
-	  ;; ("w" "★ Win10" plain (file my:howm-create-file)
-	  ;; "# win10: %?\n%U %i\n\n````emacs-lisp\n%i\n```")
-	  ("h" "📔 俳句" plain (file my:howm-create-file)
-	   "# 俳句: %?\n%U %i")))
-  )
+	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```"))))
 
 
 ;; Local Variables:

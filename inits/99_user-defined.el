@@ -3,7 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-
 ;; Functions to open any working directory
 (leaf *user-open-dir-function
   :config

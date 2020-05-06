@@ -22,11 +22,11 @@
 	howm-normalizer 'howm-sort-items-by-reverse-date
 	howm-user-font-lock-keywords
 	'(("memo:" . (0 'dired-mark prepend))
-	  ("code:" . (0 'font-lock-keyword-face)) ;; magend
-	  ("idea:" . (0 'error prepend))
-	  ("emacs:" . (0 'diff-added prepend))
-	  ("linux:" . (0 'error prepend))
-	  ("note:" . (0 'font-lock-type-face)))))
+	  ("code:" . (0 'ivy-org))
+	  ("haiku:" . (0 'company-template-field))
+	  ("emacs:" . (0 'counsel-outline-2))
+	  ("linux:" . (0 'compilation-error))
+	  ("note:" . (0 'company-template-field)))))
 
 
 (leaf open-junk-file

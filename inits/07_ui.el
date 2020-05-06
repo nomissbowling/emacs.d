@@ -62,7 +62,6 @@
 (leaf all-the-icons-dired
   :ensure t
   :url "https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-dired.el"
-  :commands dired-mode
   :hook (dired-mode-hook . all-the-icons-dired-mode)
   :custom
   ((delete-by-moving-to-trash . t)

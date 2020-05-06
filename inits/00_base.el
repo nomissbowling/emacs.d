@@ -11,9 +11,10 @@
   (leaf exec-path-from-shell
     :ensure t
     :when  (memq window-system '(mac ns x))
-    :hook (after-init-hook . exec-path-from-shell-initialize)
+    :commands exec-path-from-shell-initialize
     :config
-    (setq exec-path-from-shell-check-startup-files nil))
+    (setq exec-path-from-shell-check-startup-files nil)
+    (exec-path-from-shell-initialize))
 
   ;; Start the server in Emacs session
   (leaf server
@@ -89,7 +90,7 @@
   ;; Show paren mode
   (leaf paren
     :custom (show-paren-style . 'mixed)
-    :config (show-paren-mode 1)
+    :hook (after-init-hook . show-paren-mode)
     :custom-face
     ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
 

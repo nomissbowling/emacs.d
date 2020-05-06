@@ -36,7 +36,7 @@
   :el-get joaotavora/darkroom
   :bind (("<f12>" . my:darkroom-mode-in)
 	 (:darkroom-mode-map
-	  ("<f12>" . my:darkroom-mode-out )))
+	  ("<f12>" . my:darkroom-mode-out)))
   :config
   (defun my:darkroom-mode-in ()
     "Darkroom mode in."

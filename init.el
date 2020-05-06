@@ -39,6 +39,7 @@
     (leaf el-get :ensure t)
     :config
     (setq el-get-dir "~/.emacs.d/elisp")
+    (add-to-list 'load-path "~/.emacs.d/elisp")
     (leaf-keywords-init))
 
   (leaf init-loader

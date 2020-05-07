@@ -10,11 +10,11 @@
   ;; Emacs use the $PATH set up by the user's shell
   (leaf exec-path-from-shell
     :ensure t
-    :when  (memq window-system '(mac ns x))
-    :commands exec-path-from-shell-initialize
+    :when (memq window-system '(mac ns x))
+    :hook (after-init-hook . exec-path-from-shell-initialize)
     :config
-    (setq exec-path-from-shell-check-startup-files nil)
-    (exec-path-from-shell-initialize))
+    (setq exec-path-from-shell-check-startup-files nil))
+
 
   ;; Start the server in Emacs session
   (leaf server

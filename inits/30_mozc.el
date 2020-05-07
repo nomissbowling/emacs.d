@@ -6,7 +6,7 @@
 (leaf mozc
   :ensure t
   :commands toggle-input-method
-  :bind (("C-c C-w" . mozc-word-regist)
+  :bind (("C-c w" . mozc-word-regist)
 	 ("C-c C-d" . mozc-config-dialog))
   :bind* (("<henkan>" . toggle-input-method))
   :init

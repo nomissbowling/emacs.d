@@ -1,4 +1,4 @@
-;;; rescue.el --- rescue.el
+;;; minimal-init.el --- rescue.el
 ;;; Commentary:
 ;;; Code:
 
@@ -115,4 +115,4 @@
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
-;;; rescue.el ends here
+;;; minimal-init.el ends here

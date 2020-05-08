@@ -18,6 +18,7 @@
   :config
   (setq neo-create-file-auto-open t)
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-hidden-regexp-list '("^\\." "\\.cs\\.meta$" "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^\\desktop.ini"))
 
   ;; neotree enter hide
   ;; Tips from https://github.com/jaypei/emacs-neotree/issues/77

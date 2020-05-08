@@ -3,24 +3,43 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; Highlight the current line
+(leaf hi-line
+  :hook ((after-init-hook . global-hl-line-mode)
+	 ((dashboard-mode-hook eshell-mode-hook) .
+	  (lambda () (setq-local global-hl-line-mode nil)))))
+
+;; Highlight matching parens
+(leaf paren
+  :custom (show-paren-style . 'mixed)
+  :hook (after-init-hook . show-paren-mode)
+  ;; :init (setq show-paren-when-point-inside-paren t
+  ;; 	      show-paren-when-point-in-periphery t)
+  :custom-face
+  ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
+
+;; A tomatically insert pairs
 (leaf smartparens
   :ensure t
   :hook (after-init-hook . smartparens-global-mode))
 
+;; Keeps code always indented
 (leaf aggressive-indent
   :ensure t
-  :hook ((emacs-lisp-mode-hook . aggressive-indent-mode)
-	 (css-mode-hook . aggressive-indent-mode)))
+  :hook ((emacs-lisp-mode-hook css-mode-hook) . aggressive-indent-mode))
 
+;; Highlight the cursor whenever the window scrolls
 (leaf beacon
   :ensure t
   :hook (after-init-hook . beacon-mode)
   :custom (beacon-color . "yellow"))
 
+;; Highlight brackets according to their depth
 (leaf rainbow-delimiters
   :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
 
+;; Highlight some operations
 (leaf volatile-highlights
   :ensure t
   :hook (after-init-hook . volatile-highlights-mode)

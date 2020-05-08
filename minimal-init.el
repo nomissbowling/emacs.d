@@ -1,7 +1,12 @@
-;;; minimal-init.el --- rescue.el
+;;; minimal-init.el --- minimal-init.el
 ;;; Commentary:
-;;; Code:
 
+;; This will start with typing miniemacs at shell with minimal emacs.
+;; Write below at .zshrc or .bashrc.
+;; alias miniemacs='emacs -q -l ~/.emacs.d/minimal-init.el'
+;; Use when test of package and my emacs don't start.
+
+;;; Code:
 (package-initialize)
 
 (menu-bar-mode 0)
@@ -112,7 +117,11 @@
 ;; contain many mode setting
 (require 'generic-x)
 
+
+(provide 'minimal-init)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; minimal-init.el ends here

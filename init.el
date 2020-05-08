@@ -1,10 +1,13 @@
 ;;; init.el --- init.el  -*- lexical-binding: t -*-
+;;; Commentary:
+
 ;; emacs-initial-setting
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
 ;; this enables this running method
-;;   emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
+;; emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
 (eval-and-compile
   (when (or load-file-name byte-compile-current-file)
     (setq user-emacs-directory

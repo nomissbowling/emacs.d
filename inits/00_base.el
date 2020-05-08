@@ -85,17 +85,6 @@
     :hook ((prog-mode-hook . display-line-numbers-mode)
 	   (text-mode-hook . display-line-numbers-mode)))
 
-  ;; Show paren mode
-  (leaf paren
-    :custom (show-paren-style . 'mixed)
-    :hook (after-init-hook . show-paren-mode)
-    :custom-face
-    ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
-
-  ;; Highlight the current line
-  (leaf hi-line
-    :hook (after-init-hook . global-hl-line-mode))
-
   ;; Make it easy to see when it is the same name file
   (leaf uniquify
     :config

@@ -1,5 +1,4 @@
 ;;; init.el --- init.el  -*- lexical-binding: t -*-
-;;; Commentary:
 
 ;; emacs-initial-setting
 

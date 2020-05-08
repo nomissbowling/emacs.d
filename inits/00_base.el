@@ -1,5 +1,4 @@
 ;;; 00_base.el --- 00_base.el -*- lexical-binding: t -*-
-;;; Commentary:
 
 ;; emacs base setting.
 ;; performs various variable settings and function executions
@@ -13,6 +12,7 @@
   ;; Emacs use the $PATH set up by the user's shell
   (leaf exec-path-from-shell
     :ensure t
+    :when (memq window-system '(mac ns x))
     :hook (after-init-hook . exec-path-from-shell-initialize)
     :config
     (setq exec-path-from-shell-check-startup-files nil))

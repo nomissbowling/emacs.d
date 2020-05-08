@@ -28,6 +28,14 @@
   :custom
   (dired-listing-switches . "-lgGhF"))
 
+;; omit desktop.ini
+(leaf dired-x
+  :require t
+  :config
+  (setq dired-omit-mode t)
+  (setq-default dired-omit-files-p t)
+  (setq dired-omit-files "^\\desktop.ini"))
+
 (leaf ls-lisp
   :require t
   :doc "Show directory first"
@@ -127,7 +135,6 @@
     (interactive)
     (call-interactively 'dired-unmark-all-marks)
     (call-interactively 'revert-buffer)))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

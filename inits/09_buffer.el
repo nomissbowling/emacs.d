@@ -38,9 +38,10 @@
 
 ;; Persistent undo history for GNU Emacs
 (leaf undohist
-  :ensure t
-  :commands undohist-initialize
+  :el-get emacsorphanage/undohist
+  :require t
   :config
+  (setq undohist-directory "~/Dropbox/dotfiles/undohist")
   (setq undohist-ignored-files '("/tmp" "COMMIT_EDITMSG"))
   (undohist-initialize))
 

@@ -7,12 +7,11 @@
 (leaf migemo
   :ensure t
   :when (executable-find "cmigemo")
-  :commands migemo-init
+  :hook (after-init-hook . migemo-init)
   :config
   (setq migemo-command (executable-find "cmigemo"))
   (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
-  (autoload 'migemo-init "migemo" nil t)
-  (migemo-init))
+  (autoload 'migemo-init "migemo" nil t))
 
 (leaf imenu-list
   :ensure t

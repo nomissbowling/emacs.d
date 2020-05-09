@@ -1,5 +1,4 @@
 ;;; minimal-init.el --- minimal-init.el
-;;; Commentary:
 
 ;; This will start with typing miniemacs at shell with minimal emacs.
 ;; Write below at .zshrc or .bashrc.

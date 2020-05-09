@@ -36,7 +36,7 @@
 	  ("c" "📌 Code-Links" plain (file my:howm-create-file)
 	   "# code: %?\n%U %i\n\n>>>\n\n````code\n%i\n```")
 	  ("n" " Note-Draft" plain (file my:howm-create-file)
-	   "# haiku: %?\n%U %i")
+	   "# note: %?\n%U %i")
 	  ("m" " Memo" plain (file my:howm-create-file)
 	   "# memo: %?\n%U %i")
 	  ("e" "★ Emacs" plain (file my:howm-create-file)

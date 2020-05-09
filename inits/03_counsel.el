@@ -5,8 +5,8 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-isearch-region)
-	 ("C-r" . swiper-thing-at-point)
+  :bind (("C-s" . swiper-isearch-region-or-isearch-forward)
+	 ("C-r" . swiper-thing-at-point-or-isearch-backward)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -67,6 +67,19 @@ If the region isn't selected, `swiper-isearch'."
 	(swiper-isearch)
       (swiper-isearch-thing-at-point))))
 
+(defun swiper-isearch-region-or-isearch-forward (arg)
+  "(as ARG) Put the `C-u' for 'isearch-forward'."
+  (interactive "p")
+  (case arg
+    (4 (isearch-forward))
+    (t (swiper-isearch-region))))
+
+(defun swiper-thing-at-point-or-isearch-backward (arg)
+  "(as ARG) Put the `C-u' for 'isearch-backward'."
+  (interactive "p")
+  (case arg
+    (4 (isearch-backward))
+    (t (swiper-thing-at-point))))
 
 (leaf smex
   :ensure t

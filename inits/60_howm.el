@@ -14,9 +14,7 @@
   (setq howm-view-title-header "#")
   :config
   (setq howm-directory "~/Dropbox/howm"
-	howm-file-name-format "%Y/%m/%Y%m%d%H%M.md"
-	howm-keyword-file "~/Dropbox/dotfiles/howm-conf/.howm-keys"
-	howm-history-file "~/Dropbox/dotfiles/howm-conf/.howm-history"
+	;; howm-file-name-format "%Y/%m/%Y%m%d%H%M.md"
 	howm-view-split-horizontally t
 	howm-view-summary-persistent nil
 	howm-normalizer 'howm-sort-items-by-reverse-date

@@ -54,7 +54,7 @@
 
 (leaf whitespace
   :ensure t
-  :bind ("C-c c" . my:cleanup-for-spaces)
+  :bind ("C-c C-c" . my:cleanup-for-spaces)
   :hook (prog-mode-hook . my:enable-trailing-mode)
   :custom (show-trailing-whitespace . nil)
   :config

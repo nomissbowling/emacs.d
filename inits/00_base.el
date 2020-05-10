@@ -14,15 +14,13 @@
     :ensure t
     :when (memq window-system '(mac ns x))
     :hook (after-init-hook . exec-path-from-shell-initialize)
-    :config
-    (setq exec-path-from-shell-check-startup-files nil))
+    :config (setq exec-path-from-shell-check-startup-files nil))
 
   ;; Start the server in Emacs session
   (leaf server
     :require t
-    :config
-    (unless (server-running-p)
-      (server-start)))
+    :config (unless (server-running-p)
+	      (server-start)))
 
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
@@ -90,9 +88,8 @@
 
   ;; Make it easy to see when it is the same name file
   (leaf uniquify
-    :config
-    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-	  uniquify-min-dir-content 1))
+    :config (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+		  uniquify-min-dir-content 1))
 
   ;; contains many mode setting
   (leaf generic-x)
@@ -100,13 +97,12 @@
   ;; Recentf
   (leaf recentf
     :hook (after-init-hook . recentf-mode)
-    :config
-    (setq recentf-save-file "~/.emacs.d/recentf"
-	  recentf-max-saved-items 200
-	  recentf-auto-cleanup 'never
-	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-			   (lambda (file) (file-in-directory-p file package-user-dir))))
+    :config (setq recentf-save-file "~/.emacs.d/recentf"
+		  recentf-max-saved-items 200
+		  recentf-auto-cleanup 'never
+		  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+				   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+				   (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))
 
   :hook

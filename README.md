@@ -59,7 +59,7 @@ rm ~/emacs-26.3.tar.gz
 
 ## Consept
 
-  * I installed 98 packages from melpa and downloaded some other elisp from github.
+  * I installed 96 packages from melpa and downloaded some other elisp from github.
   * We use lazy loading with 'leaf' and use 'after-init-hook' whenever possible for fast emacs startup.
   * This repository only discloses personal configuration information, and does not guarantee its operation.
 

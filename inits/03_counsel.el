@@ -65,21 +65,22 @@ If the region isn't selected, `swiper-isearch'."
     (interactive)
     (if (not (use-region-p))
 	(swiper-isearch)
-      (swiper-isearch-thing-at-point))))
+      (swiper-isearch-thing-at-point)))
 
-(defun swiper-isearch-region-or-isearch-forward (arg)
-  "(as ARG) Put the `C-u' for 'isearch-forward'."
-  (interactive "p")
-  (case arg
-    (4 (isearch-forward))
-    (t (swiper-isearch-region))))
+  (defun swiper-isearch-region-or-isearch-forward (arg)
+    "(as ARG) Put the `C-u' for 'isearch-forward'."
+    (interactive "p")
+    (case arg
+      (4 (isearch-forward))
+      (t (swiper-isearch-region))))
 
-(defun swiper-thing-at-point-or-isearch-backward (arg)
-  "(as ARG) Put the `C-u' for 'isearch-backward'."
-  (interactive "p")
-  (case arg
-    (4 (isearch-backward))
-    (t (swiper-thing-at-point))))
+  (defun swiper-thing-at-point-or-isearch-backward (arg)
+    "(as ARG) Put the `C-u' for 'isearch-backward'."
+    (interactive "p")
+    (case arg
+      (4 (isearch-backward))
+      (t (swiper-thing-at-point)))))
+
 
 (leaf smex
   :ensure t

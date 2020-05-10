@@ -1,5 +1,7 @@
 ;;; 99_user-defined.el -*- lexical-binding: t -*-
+
 ;; user-defined functions that are outer package independent
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -73,9 +75,7 @@
   (defun my:open-junk-file-dir ()
     "Open dot-emacs dir."
     (interactive)
-    (find-file "~/Dropbox/howm/junk/"))
-  )
-
+    (find-file "~/Dropbox/howm/junk/")))
 
 ;; Functions to insert user-template
 (leaf *user-template-function
@@ -141,7 +141,6 @@
     (forward-line -1)
     (forward-char 15))
 
-
   ;; Insert template for 'kinnei'
   (defun my:kinnei-new-post ()
     "Open kinnei file and insert template."
@@ -175,7 +174,6 @@
     (goto-char (point-min))
     (forward-line 4)
     (forward-char 18))
-
 
   ;; Insert template for ap.txt
   (defun my:ap-new-post ()

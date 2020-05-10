@@ -20,10 +20,8 @@
   (markdown-code-face . '((t (:background "#222" :inherit 'default))))
   (markdown-pre-face . '((t (:foreground "#bd98fe")))))
 
-
 ;; toc generater
 (leaf markdown-toc :ensure t)
-
 
 ;; markdown preview
 (leaf livedown
@@ -38,7 +36,6 @@
 	   (livedown-open . t)
 	   (livedown-port . 1337)
 	   (livedown-browser . nil)))
-
 
 (leaf *hydra-markdown
   :hydra
@@ -57,7 +54,6 @@
    ("p" md2pdf)
    ("d" md2docx)
    ("q" nil)))
-
 
 (leaf *user-markdown-function
   :config

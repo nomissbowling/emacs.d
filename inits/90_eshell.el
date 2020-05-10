@@ -23,7 +23,6 @@
 		 (list "la" "ls -a -S")
 		 (list "ex" "exit")))))
 
-
 (leaf *user-eshell-fonction
   :config
   (defun my:eshell-prompt ()

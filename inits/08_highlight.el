@@ -13,8 +13,8 @@
 (leaf paren
   :custom (show-paren-style . 'mixed)
   :hook (after-init-hook . show-paren-mode)
-  ;; :init (setq show-paren-when-point-inside-paren t
-  ;; 	      show-paren-when-point-in-periphery t)
+  :init (setq show-paren-when-point-inside-paren t
+  	      show-paren-when-point-in-periphery t)
   :custom-face
   ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
 

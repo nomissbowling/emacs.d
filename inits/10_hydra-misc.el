@@ -20,7 +20,6 @@
    ("l" package-list-packages)
    ("q" nil)))
 
-
 ;; Emacs integration for gist.github.com
 (leaf gist
   :ensure t
@@ -46,7 +45,6 @@
   🎲 In dired buffer
      @ : make a gist out of marked files"
 		   ("." nil)))
-
 
 ;; Open browser by favorite url
 (leaf *hydra-browse
@@ -93,7 +91,6 @@
    ("t" browse-tweetdeck)
    ("," browse-slack)
    ("." nil)))
-
 
 ;; Emacs in WSL and opening links
 (leaf *browse-url-in-WSL

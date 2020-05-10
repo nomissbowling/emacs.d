@@ -3,7 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-
 (leaf migemo
   :ensure t
   :when (executable-find "cmigemo")
@@ -24,12 +23,10 @@
     :ensure
     :hook (css-mode-hook . #'counsel-css-imenu-setup)))
 
-
 (leaf browse-at-remote
   :ensure t
   :config
   (defalias 'my:github-show 'browse-at-remote))
-
 
 (leaf *user-utils-function
   :config
@@ -69,7 +66,6 @@
     (interactive "r")
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
-
 
 (leaf point-history
   :el-get blue0513/point-history

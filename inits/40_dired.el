@@ -54,7 +54,6 @@
   :ensure t
   :bind (("C-c s" . sudo-edit)))
 
-
 (leaf *user-dired-function
   :config
   ;; Switching the display and non-display of hidden files

@@ -45,7 +45,6 @@
    (":" counsel-switch-buffer)
    ("." view-mode)))
 
-
 (leaf *window-controle-function
   :config
   (defun other-window-or-split ()

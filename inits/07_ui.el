@@ -8,7 +8,6 @@
   :config
   (load-theme 'doom-dracula t))
 
-
 (leaf doom-modeline
   :ensure t
   :hook (after-init-hook . doom-modeline-mode)
@@ -29,7 +28,6 @@
     :custom
     (nyan-cat-face-number . 4)
     (nyan-animate-nyancat . t)))
-
 
 ;; Remove visual distractions and focus on writing
 (leaf darkroom
@@ -52,11 +50,9 @@
     (flymake-mode 1)
     (display-line-numbers-mode 1)))
 
-
 (leaf all-the-icons
   :ensure t
   :custom (all-the-icons-scale-factor . 1.0))
-
 
 (leaf all-the-icons-dired
   :ensure t

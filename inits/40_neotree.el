@@ -1,9 +1,10 @@
 ;;; 40_neotree.el --- 40_neotree.el  -*- lexical-binding: t -*-
 ;;; Commentary:
-;;; Code:
-;; (setq debug-on-error t)
 
 ;; Yet another dired for tree display
+
+;;; Code:
+;; (setq debug-on-error t)
 (leaf neotree
   :ensure t
   :bind (("<f10>" . neotree-find)

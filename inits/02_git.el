@@ -13,7 +13,6 @@
   (magit-display-buffer-function . #'magit-display-buffer-fullframe-status-v1)
   :init
   (leaf git-timemachine :ensure t)
-
   :hydra
   (hydra-magit
    (:color red :hint nil)

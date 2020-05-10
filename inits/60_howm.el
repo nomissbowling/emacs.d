@@ -23,13 +23,11 @@
 	  ("emacs:" . (0 'counsel-outline-2))
 	  ("linux:" . (0 'compilation-error)))))
 
-
 (leaf open-junk-file
   :ensure t
   :config
   (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d.")
   (setq open-junk-file-find-file-function 'find-file))
-
 
 (leaf org
   :config

@@ -19,9 +19,10 @@
 	  ("e" . my:edit-easy-hugo)))
 
   ;; Sort-publishday on startup
-  :custom ((easy-hugo--sort-char-flg . nil)
-	   (easy-hugo--sort-time-flg . nil)
-	   (easy-hugo--sort-publishday-flg . 1))
+  :custom
+  ((easy-hugo--sort-char-flg . nil)
+   (easy-hugo--sort-time-flg . nil)
+   (easy-hugo--sort-publishday-flg . 1))
 
   :init
   ;; Main blog (=blog1)
@@ -65,8 +66,8 @@
 	   (easy-hugo-root . "/home/minorugh/wegh.net/public_html/ryo/"))))
 
   ;; Customize for my help menu
-  (setq easy-hugo-help-line 5)
-  (setq easy-hugo-help
+  (setq easy-hugo-help-line 5
+	easy-hugo-help
 	"  n .. New blog post    r .. Rename file     p .. Preview          g .. Refresh
   d .. Delete post      a .. Search blog ag  P .. Publish clever   e .. Edit easy-hugo
   u .. Sort publish     s .. Sort time       < .. Previous blog    > .. Next bloge

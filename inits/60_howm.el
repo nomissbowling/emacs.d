@@ -26,16 +26,16 @@
 (leaf open-junk-file
   :ensure t
   :config
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d.")
-  (setq open-junk-file-find-file-function 'find-file))
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d."
+	open-junk-file-find-file-function 'find-file))
 
 (leaf org
   :config
-  (setq org-log-done 'time)
-  (setq org-use-speed-commands t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-src-fontify-natively t)
-  (setq org-agenda-files '("~/Dropbox/howm/org/task.org"
+  (setq org-log-done 'time
+	org-use-speed-commands t
+	org-src-tab-acts-natively t
+	org-src-fontify-natively t
+	org-agenda-files '("~/Dropbox/howm/org/task.org"
 			   "~/Dropbox/howm/org/schedule.org"))
 
   (bind-key "C-c a" 'org-agenda)

@@ -6,13 +6,14 @@
 (leaf eshell
   :after popwin
   :bind* ("C-z" . eshell)
-  :custom ((eshell-cmpl-ignore-case . t)
-	   (eshell-ask-to-save-history . (quote always))
-	   (eshell-cmpl-cycle-completions . t)
-	   (eshell-cmpl-cycle-cutoff-length . 5)
-	   (eshell-hist-ignoredups . t)
-	   (eshell-prompt-function . 'my:eshell-prompt)
-	   (eshell-prompt-regexp . "^[^#$]*[$#] "))
+  :custom
+  ((eshell-cmpl-ignore-case . t)
+   (eshell-ask-to-save-history . (quote always))
+   (eshell-cmpl-cycle-completions . t)
+   (eshell-cmpl-cycle-cutoff-length . 5)
+   (eshell-hist-ignoredups . t)
+   (eshell-prompt-function . 'my:eshell-prompt)
+   (eshell-prompt-regexp . "^[^#$]*[$#] "))
   :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
   :config

@@ -32,10 +32,11 @@
 	  ("C-c p" . livedown-preview)
 	  ("C-c k" . livedown-kill)))
   :require t
-  :custom ((livedown-autostart . nil)
-	   (livedown-open . t)
-	   (livedown-port . 1337)
-	   (livedown-browser . nil)))
+  :custom
+  ((livedown-autostart . nil)
+   (livedown-open . t)
+   (livedown-port . 1337)
+   (livedown-browser . nil)))
 
 (leaf *hydra-markdown
   :hydra

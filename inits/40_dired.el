@@ -23,8 +23,7 @@
 	 ("t" . counsel-tramp)
 	 ("s" . sudo-edit)
 	 ("." . magit-status))
-  :hook
-  (dired-mode-hook . dired-my-append-buffer-name-hint)
+  :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
   :custom
   (dired-listing-switches . "-lgGhF"))
 

@@ -9,8 +9,8 @@
   :custom (auto-save-buffers-enhanced-quiet-save-p . t)
   :config
   ;; auto save *scratch* to ~/.emacs.d/scratch
-  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t)
-  (setq auto-save-buffers-enhanced-file-related-with-scratch-buffer
+  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t
+	auto-save-buffers-enhanced-file-related-with-scratch-buffer
   	(locate-user-emacs-file "scratch"))
   (auto-save-buffers-enhanced t))
 
@@ -22,14 +22,16 @@
   :hook ((dired-mode-hook . turn-on-tempbuf-mode)
 	 (magit-mode-hook . turn-on-tempbuf-mode)
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
-  :custom (tempbuf-kill-message . nil))
+  :custom
+  (tempbuf-kill-message . nil))
 
 ;; interactively flip between recently visited buffers
 (leaf iflipb
   :ensure t
   :bind (("<f8>" . iflipb-next-buffer)
 	 ("<f7>" . iflipb-previous-buffer))
-  :custom (iflipb-wrap-around . t)
+  :custom
+  (iflipb-wrap-around . t)
   :config
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
@@ -38,8 +40,8 @@
   :el-get emacsorphanage/undohist
   :require t
   :config
-  (setq undohist-directory "~/Dropbox/dotfiles/undohist")
-  (setq undohist-ignored-files '("/tmp" "COMMIT_EDITMSG"))
+  (setq undohist-directory "~/Dropbox/dotfiles/undohist"
+	undohist-ignored-files '("/tmp" "COMMIT_EDITMSG"))
   (undohist-initialize))
 
 ;; Treat undo history as a tree
@@ -52,12 +54,13 @@
 	  ("C-x u" . undo-tree-visualize))
   :hook ((prog-mode-hook . undo-tree-mode)
 	 (text-mode-hook . undo-tree-mode))
-  :custom ((undo-tree-visualizer-timestamps . t)
-	   (undo-tree-visualizer-diff . t)
-	   (undo-tree-enable-undo-in-region . nil)
-	   (undo-tree-auto-save-history . nil)
-	   (undo-tree-history-directory-alist
-	    . `(("." . ,(concat user-emacs-directory "undo-tree-hist/")))))
+  :custom
+  ((undo-tree-visualizer-timestamps . t)
+   (undo-tree-visualizer-diff . t)
+   (undo-tree-enable-undo-in-region . nil)
+   (undo-tree-auto-save-history . nil)
+   (undo-tree-history-directory-alist
+    . `(("." . ,(concat user-emacs-directory "undo-tree-hist/")))))
   :config
   ;; FIXME: `undo-tree-visualizer-diff' is a local variable in *undo-tree* buffer.
   (defun undo-tree-visualizer-show-diff (&optional node)

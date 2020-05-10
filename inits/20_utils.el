@@ -8,16 +8,17 @@
   :when (executable-find "cmigemo")
   :hook (after-init-hook . migemo-init)
   :config
-  (setq migemo-command (executable-find "cmigemo"))
-  (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
+  (setq migemo-command (executable-find "cmigemo")
+	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
   (autoload 'migemo-init "migemo" nil t))
 
 (leaf imenu-list
   :ensure t
   :bind (("<f2>" . imenu-list-smart-toggle))
-  :custom ((imenu-list-size . 30)
-	   (imenu-list-position . 'left)
-	   (imenu-list-focus-after-activation . t))
+  :custom
+  ((imenu-list-size . 30)
+   (imenu-list-position . 'left)
+   (imenu-list-focus-after-activation . t))
   :config
   (leaf counsel-css
     :ensure
@@ -71,9 +72,9 @@
   :el-get blue0513/point-history
   :config
   (point-history-mode)
-  (setq point-history-save-timer 2)
-  (setq point-history-ignore-buffer "\\*[a-zA-Z0-9]\\|^magit")
-  (setq point-history-ignore-major-mode '(magit-mode dired-mode direx:direx-mode)))
+  (setq point-history-save-timer 2
+	point-history-ignore-buffer "\\*[a-zA-Z0-9]\\|^magit"
+	point-history-ignore-major-mode '(magit-mode dired-mode direx:direx-mode)))
 
 (leaf ivy-point-history
   :el-get SuzumiyaAoba/ivy-point-history

@@ -17,9 +17,9 @@
   :init
   (setq-default neo-keymap-style 'concise)
   :config
-  (setq neo-create-file-auto-open t)
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-  (setq neo-hidden-regexp-list '("^\\." "\\.cs\\.meta$" "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^\\desktop.ini"))
+  (setq neo-create-file-auto-open t
+	neo-theme (if (display-graphic-p) 'icons 'arrow)
+	neo-hidden-regexp-list '("^\\." "\\.cs\\.meta$" "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "^\\desktop.ini"))
 
   ;; neotree enter hide
   ;; Tips from https://github.com/jaypei/emacs-neotree/issues/77
@@ -42,3 +42,4 @@ The description of ARG is in `neo-buffer--execute'."
 ;; End:
 
 ;;; 40_neotree.el ends here
+

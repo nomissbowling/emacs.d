@@ -3,6 +3,11 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; (leaf doom-themes
+;;   :ensure t
+;;   :config
+;;   (load-theme 'doom-dracula t))
+
 (leaf iceberg-theme
   :el-get apnsngr/iceberg-emacs
   :config

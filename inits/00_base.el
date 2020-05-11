@@ -14,8 +14,7 @@
     :ensure t
     :when (memq window-system '(mac ns x))
     :hook (after-init-hook . exec-path-from-shell-initialize)
-    :config
-    (setq exec-path-from-shell-check-startup-files nil))
+    :custom (exec-path-from-shell-check-startup-files . nil))
 
   ;; Start the server in Emacs session
   (leaf server
@@ -127,6 +126,7 @@
   (add-hook 'makefile-mode-hook
 	    (lambda ()
 	      (fset 'makefile-warn-suspicious-lines 'ignore))))
+
 
 
 (leaf *user-configuration

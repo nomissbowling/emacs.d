@@ -3,10 +3,11 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf doom-themes
-  :ensure t
+(leaf iceberg-theme
+  :el-get apnsngr/iceberg-emacs
   :config
-  (load-theme 'doom-dracula t))
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/iceberg-emacs/")
+  (load-theme 'iceberg t))
 
 (leaf doom-modeline
   :ensure t

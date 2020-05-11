@@ -3,6 +3,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; Highlight the Region in the selection.
+(set-face-background 'region "dark blue")
+
 ;; Highlight the current line
 (leaf hi-line
   :hook ((after-init-hook . global-hl-line-mode)

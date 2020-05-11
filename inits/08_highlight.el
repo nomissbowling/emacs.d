@@ -11,13 +11,8 @@
 
 ;; Highlight matching parens
 (leaf paren
-  :custom (show-paren-style . 'mixed)
   :hook (after-init-hook . show-paren-mode)
-  :init
-  (setq show-paren-when-point-inside-paren t
-	show-paren-when-point-in-periphery t)
-  :custom-face
-  ((show-paren-match '((nil (:background "lime green" :foreground "#f1fa8c"))))))
+  :config (setq show-paren-style 'mixed))
 
 ;; A tomatically insert pairs
 (leaf smartparens
@@ -33,8 +28,7 @@
 (leaf beacon
   :ensure t
   :hook (after-init-hook . beacon-mode)
-  :custom
-  (beacon-color . "yellow"))
+  :config (setq beacon-color "yellow"))
 
 ;; Highlight brackets according to their depth
 (leaf rainbow-delimiters
@@ -58,9 +52,8 @@
   :ensure t
   :bind ("C-c C-c" . my:cleanup-for-spaces)
   :hook (prog-mode-hook . my:enable-trailing-mode)
-  :custom
-  (show-trailing-whitespace . nil)
-  :config
+  :config (setq show-trailing-whitespace nil)
+  :preface
   (defun my:enable-trailing-mode ()
     "Show tail whitespace."
     (setq show-trailing-whitespace t))

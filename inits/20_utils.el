@@ -32,19 +32,19 @@
 (leaf *user-utils-function
   :config
   ;; current dir open of linux-filer
-  (bind-key "<f3>" 'filer-current-dir-open)
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)
     (shell-command (concat "xdg-open " default-directory)))
+  (bind-key "<f3>" 'filer-current-dir-open)
 
   ;; current dir open of linux terminal
-  (bind-key "<f4>" 'term-current-dir-open)
   (defun term-current-dir-open ()
     "Open terminal application in current dir."
     (interactive)
     (let ((dir (directory-file-name default-directory)))
       (shell-command (concat "gnome-terminal --working-directory " dir))))
+  (bind-key "<f4>" 'term-current-dir-open)
 
   ;; delete file if no contents
   (defun my:delete-file-if-no-contents ()

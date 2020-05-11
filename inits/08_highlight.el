@@ -39,8 +39,13 @@
 (leaf volatile-highlights
   :ensure t
   :hook (after-init-hook . volatile-highlights-mode)
-  :custom-face
-  ((vhl/default-face '((nil (:foreground "#FF3333" :background "#FFCDCD"))))))
+  :config
+  (with-no-warnings
+    (when (fboundp 'pulse-momentary-highlight-region)
+      (defun my-vhl-pulse (beg end &optional _buf face)
+        "Pulse the changes."
+        (pulse-momentary-highlight-region beg end face))
+      (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
 (leaf hiwin
   :ensure t

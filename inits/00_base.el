@@ -86,7 +86,7 @@
     :bind ("<f9>" . display-line-numbers-mode)
     :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode)
     :config
-    (set-face-attribute 'line-number nil :foreground "gray30")
+    (set-face-attribute 'line-number nil :foreground "#393f60" :background "#1e2132")
     (set-face-attribute 'line-number-current-line nil :foreground "#fff"))
 
   ;; Make it easy to see when it is the same name file
@@ -96,7 +96,7 @@
 	  uniquify-min-dir-content 1))
 
   ;; contains many mode setting
-  (leaf generic-x)
+  (leaf generic-x :require t)
 
   ;; Recentf
   (leaf recentf

@@ -8,7 +8,7 @@
 ;;   :config
 ;;   (load-theme 'doom-dracula t))
 
-(leaf iceberg-emacs
+(leaf iceberg-theme
   :el-get apnsngr/iceberg-emacs
   :config
   (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/iceberg-emacs/")

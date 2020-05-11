@@ -17,11 +17,11 @@
 	howm-view-summary-persistent nil
 	howm-normalizer 'howm-sort-items-by-reverse-date
 	howm-user-font-lock-keywords
-	'(("memo:" . (0 'dired-mark prepend))
-	  ("note:" . (0 'company-template-field))
-	  ("code:" . (0 'ivy-org))
-	  ("emacs:" . (0 'counsel-outline-2))
-	  ("linux:" . (0 'compilation-error)))))
+	'(("memo:" . (0 'gnus-group-mail-3))
+	  ("note:" . (0 'epa-mark))
+	  ("code:" . (0 'compilation-mode-line-exit))
+	  ("emacs:" . (0 'outline-7))
+	  ("linux:" . (0 'compilation-mode-line-fail)))))
 
 (leaf open-junk-file
   :ensure t

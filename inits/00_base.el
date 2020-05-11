@@ -87,8 +87,7 @@
     :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode)
     :config
     (set-face-attribute 'line-number nil :foreground "gray30")
-    (set-face-attribute 'line-number-current-line nil :foreground "#fff")
-    )
+    (set-face-attribute 'line-number-current-line nil :foreground "#fff"))
 
   ;; Make it easy to see when it is the same name file
   (leaf uniquify

@@ -71,6 +71,10 @@
   :ensure t
   :mode "\\.js\\'" "\\.p.html?\\'")
 
+(leaf php-mode
+  :ensure t
+  :mode "\\.php\\'")
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

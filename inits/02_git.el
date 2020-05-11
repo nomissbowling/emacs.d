@@ -9,8 +9,8 @@
   :ensure t
   :bind (("C-x m" . hydra-magit/body)
 	 ("C-x g" . magit-status))
-  :custom
-  (magit-display-buffer-function . #'magit-display-buffer-fullframe-status-v1)
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   :init
   (leaf git-timemachine :ensure t)
   :hydra

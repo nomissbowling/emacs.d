@@ -19,9 +19,9 @@
 	howm-user-font-lock-keywords
 	'(("memo:" . (0 'gnus-group-mail-3))
 	  ("note:" . (0 'epa-mark))
-	  ("code:" . (0 'compilation-mode-line-exit))
-	  ("emacs:" . (0 'outline-7))
-	  ("linux:" . (0 'compilation-mode-line-fail)))))
+	  ("code:" . (0 'compilation-info))
+	  ("emacs:" . (0 'compilation-mode-line-fail))
+	  ("linux:" . (0 'compilation-error)))))
 
 (leaf open-junk-file
   :ensure t

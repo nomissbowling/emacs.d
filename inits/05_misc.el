@@ -71,9 +71,7 @@
   :ensure t
   :mode "\\.js\\'" "\\.p.html?\\'")
 
-(leaf php-mode
-  :ensure t
-  :mode "\\.php\\'")
+(leaf php)
 
 
 ;; Local Variables:

@@ -5,6 +5,14 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; this enables this running method
+;;   emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
+(eval-and-compile
+  (when (or load-file-name byte-compile-current-file)
+    (setq user-emacs-directory
+          (expand-file-name
+           (file-name-directory (or load-file-name byte-compile-current-file))))))
+
 (eval-when-compile
   ;; Quiet start
   (menu-bar-mode 0)
@@ -38,10 +46,10 @@
   (leaf init-loader
     :ensure t
     :config
+    (setq el-get-dir "~/.emacs.d/elisp")
     (custom-set-variables
      '(init-loader-show-log-after-init 'error-only))
     (init-loader-load "~/Dropbox/emacs.d/inits")
-    (setq el-get-dir "~/.emacs.d/elisp")
     (setq custom-file (locate-user-emacs-file "custom.el"))))
 
 

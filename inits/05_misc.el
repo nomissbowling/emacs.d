@@ -74,7 +74,7 @@
 
 (leaf php-mode
   :el-get emacs-php/php-mode
-  :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'")
+  :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
 
 ;; Local Variables:

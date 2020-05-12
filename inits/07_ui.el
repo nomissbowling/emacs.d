@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *cycle-theme
+(leaf *cycle-my-theme
   :init
   (defun my-theme-cycle ()
     "Cycle custom theme."
@@ -14,6 +14,7 @@
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
   :config
+  ;;the themes I cycle among
   (setq my-themes (list 'iceberg 'doom-dracula))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)

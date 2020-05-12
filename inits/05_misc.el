@@ -13,6 +13,7 @@
 
 (leaf key-chord
   :el-get zk-phi/key-chord
+  :require t
   :config
   (key-chord-mode 1)
   :chord (("df" . counsel-descbinds)

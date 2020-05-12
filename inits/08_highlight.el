@@ -4,7 +4,7 @@
 ;; (setq debug-on-error t)
 
 ;; Highlight the Region in the selection.
-(set-face-background 'region "dark blue")
+(set-face-attribute 'region nil :background "#393f60" :foreground "#ffffff")
 
 ;; Highlight the current line
 (leaf hi-line

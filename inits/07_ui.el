@@ -3,16 +3,27 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; (leaf doom-themes
-;;   :ensure t
-;;   :config
-;;   (load-theme 'doom-dracula t))
-
-(leaf iceberg-theme
-  :el-get apnsngr/iceberg-emacs
+;; Cycle custom theme
+(leaf *my-theme
   :config
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/iceberg-emacs/")
-  (load-theme 'iceberg t))
+  (setq my-themes (list 'iceberg 'doom-dracula))
+  (setq curr-theme my-themes)
+  (load-theme (car curr-theme) t)
+  (defun my-theme-cycle ()
+    "Cycle custom theme."
+    (interactive)
+    (disable-theme (car curr-theme))
+    (setq curr-theme (cdr curr-theme))
+    (if (null curr-theme) (setq curr-theme my-themes))
+    (load-theme (car curr-theme) t)
+    (message "%s" (car curr-theme)))
+  (bind-key [f7] 'my-theme-cycle)
+  :init
+  (leaf iceberg-theme
+    :el-get apnsngr/iceberg-emacs
+    :config
+    (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/iceberg-emacs/"))
+  (leaf doom-themes :ensure t))
 
 (leaf doom-modeline
   :ensure t

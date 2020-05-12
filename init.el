@@ -5,7 +5,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(eval-and-compile
+(eval-when-compile
   ;; Quiet start
   (menu-bar-mode 0)
   (tool-bar-mode 0)
@@ -25,6 +25,7 @@
     (package-refresh-contents)
     (package-install 'leaf))
 
+
   (leaf leaf-keywords
     :ensure t
     :init
@@ -32,7 +33,6 @@
     (leaf hydra :ensure t)
     (leaf el-get :ensure t)
     :config
-    (setq el-get-dir "~/.emacs.d/elisp")
     (leaf-keywords-init))
 
   (leaf init-loader
@@ -41,6 +41,7 @@
     (custom-set-variables
      '(init-loader-show-log-after-init 'error-only))
     (init-loader-load "~/Dropbox/emacs.d/inits")
+    (setq el-get-dir "~/.emacs.d/elisp")
     (setq custom-file (locate-user-emacs-file "custom.el"))))
 
 

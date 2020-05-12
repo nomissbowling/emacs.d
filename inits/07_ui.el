@@ -3,12 +3,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; Cycle custom theme
-(leaf *my-theme
-  :config
-  (setq my-themes (list 'iceberg 'doom-dracula))
-  (setq curr-theme my-themes)
-  (load-theme (car curr-theme) t)
+(leaf *cycle-theme
+  :init
   (defun my-theme-cycle ()
     "Cycle custom theme."
     (interactive)
@@ -17,8 +13,12 @@
     (if (null curr-theme) (setq curr-theme my-themes))
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
-  (bind-key [f7] 'my-theme-cycle)
-  :init
+  :config
+  (setq my-themes (list 'iceberg 'doom-dracula))
+  (setq curr-theme my-themes)
+  (load-theme (car curr-theme) t)
+  (bind-key "<f8>" 'my-theme-cycle)
+  :preface
   (leaf iceberg-theme
     :el-get apnsngr/iceberg-emacs
     :config

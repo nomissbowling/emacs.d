@@ -70,6 +70,7 @@
 
 (leaf point-history
   :el-get blue0513/point-history
+  :require t
   :config
   (point-history-mode)
   (setq point-history-save-timer 2

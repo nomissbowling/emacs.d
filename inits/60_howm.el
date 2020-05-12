@@ -66,7 +66,7 @@
 	  ("m" " Memo" plain (file my:howm-create-file)
 	   "# memo: %?\n%U %i")
 	  ("e" "★ Emacs" plain (file my:howm-create-file)
-	   "# emacs: %?\n%U %i\n\n````emacs-lisp\n%i\n```")
+	   "# emacs: %?\n%U %i\n\n```emacs-lisp\n%i\n```")
 	  ("l" "★ Linux" plain (file my:howm-create-file)
 	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```"))))
 

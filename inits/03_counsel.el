@@ -5,8 +5,8 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-isearch-region-or-isearch-forward)
-	 ("C-r" . swiper-thing-at-point-or-isearch-backward)
+  :bind (("C-s" . swiper-isearch-region)
+	 ("C-r" . swiper-thing-at-point)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -65,22 +65,7 @@ If the region isn't selected, `swiper-isearch'."
     (interactive)
     (if (not (use-region-p))
 	(swiper-isearch)
-      (swiper-isearch-thing-at-point)))
-
-  (defun swiper-isearch-region-or-isearch-forward (arg)
-    "(as ARG) Put the `C-u' for 'isearch-forward'."
-    (interactive "p")
-    (case arg
-      (4 (isearch-forward))
-      (t (swiper-isearch-region))))
-
-  (defun swiper-thing-at-point-or-isearch-backward (arg)
-    "(as ARG) Put the `C-u' for 'isearch-backward'."
-    (interactive "p")
-    (case arg
-      (4 (isearch-backward))
-      (t (swiper-thing-at-point)))))
-
+      (swiper-isearch-thing-at-point))))
 
 (leaf smex
   :ensure t
@@ -88,11 +73,9 @@ If the region isn't selected, `swiper-isearch'."
   (setq smex-history-length 35)
   (setq smex-completion-method 'ivy))
 
-
 (leaf ivy-rich
   :ensure t
   :hook (ivy-mode-hook . ivy-rich-mode))
-
 
 (leaf counsel-tramp
   :ensure t

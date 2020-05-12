@@ -73,7 +73,8 @@
   :mode "\\.js\\'" "\\.p.html?\\'")
 
 (leaf php-mode
-  :el-get emacs-php/php-mode)
+  :el-get emacs-php/php-mode
+  :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'")
 
 
 ;; Local Variables:

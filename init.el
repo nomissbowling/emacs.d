@@ -5,14 +5,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; this enables this running method
-;;   emacs -q -l ~/.debug.emacs.d/{{pkg}}/init.el
-(eval-and-compile
-  (when (or load-file-name byte-compile-current-file)
-    (setq user-emacs-directory
-          (expand-file-name
-           (file-name-directory (or load-file-name byte-compile-current-file))))))
-
 (eval-when-compile
   ;; Quiet start
   (menu-bar-mode 0)

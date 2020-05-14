@@ -3,9 +3,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *cycle-my-theme
+(leaf *user-cycle-theme
   :init
-  (defun my-theme-cycle ()
+  (defun my-cycle-theme ()
     "Cycle custom theme."
     (interactive)
     (disable-theme (car curr-theme))
@@ -18,7 +18,7 @@
   (setq my-themes (list 'iceberg 'doom-dracula))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)
-  (bind-key "<f8>" 'my-theme-cycle)
+  (bind-key "<f8>" 'my-cycle-theme)
   :preface
   (leaf iceberg-theme
     :el-get apnsngr/iceberg-emacs

@@ -1,3 +1,4 @@
+
 ;;; 30_mozc.el --- 30_mozc.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
@@ -21,6 +22,7 @@
 (leaf mozc-posframe
   :url "https://github.com/derui/mozc-posframe"
   :el-get derui/mozc-posframe
+  :require t
   :config
   (mozc-posframe-register)
   (setq mozc-candidate-style 'posframe)

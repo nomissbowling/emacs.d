@@ -51,6 +51,7 @@
    ("l" gist-list)
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
+   ("P" hydra-package/body)
    ("<right>" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
@@ -64,11 +65,12 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  _b_ackup-melpa  quick-menu:_<left>_"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  bk:mel_p_a:el_g_et  quick-menu:_<left>_"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
-   ("b" backup-melpa)
+   ("p" backup-melpa)
+   ("g" backup-elget)
    ("d" my:diary)
    ("D" my:diary-new-post)
    ("o" my:otibo)
@@ -104,14 +106,15 @@
     "Backup for melpa package."
     (interactive)
     (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
-      (shell-command "sh melpabackup.sh"))
-    (message "Finished melpa buckup!")))
+      (shell-command "sh backup-melpa.sh"))
+    (message "Finished melpa buckuped!")))
 
-;; (defun my:howm-note ()
-;;   "My howm create for note draft."
-;;   (interactive)
-;;   (setq howm-template (concat howm-view-title-header "%title note: %cursor\n%date\n"))
-;;   (howm-create))
+(defun backup-elget ()
+  "Backup for melpa package."
+  (interactive)
+  (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
+    (shell-command "sh backup-elget.sh"))
+  (message "Finished el-get buckuped!"))
 
 (defun my:haiku-note ()
   "Open haiku note file."

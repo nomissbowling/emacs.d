@@ -38,6 +38,7 @@
   (leaf init-loader
     :ensure t
     :config
+    (setq load-prefer-newer t)
     (setq el-get-dir "~/.emacs.d/elisp")
     (custom-set-variables
      '(init-loader-show-log-after-init 'error-only))

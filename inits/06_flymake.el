@@ -39,6 +39,8 @@
       (add-hook hook #'flymake-posframe-hide-posframe nil t)))
   (advice-add 'flymake-diagnostic-at-point-display-popup :override 'my:flymake-diagnostic-at-point-display-popup))
 
+;; disabled frymake-mode at scratch-buffer
+(add-hook 'lisp-interaction-mode-hook '(lambda () (flymake-mode -1)))
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -21,7 +21,7 @@
     :require t
     :config
     (unless (server-running-p)
-      (server-start)))
+      (add-hook 'after-init-hook 'server-start)))
 
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
@@ -123,6 +123,9 @@
   (add-hook 'after-init-hook 'global-font-lock-mode)
   ;; word wrapping is used
   (add-hook 'after-init-hook 'global-visual-line-mode)
+
+  ;; disabled frymake-mode at scratch-buffer
+  (add-hook 'lisp-interaction-mode-hook '(lambda () (flymake-mode -1)))
 
   ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
   (add-hook 'makefile-mode-hook

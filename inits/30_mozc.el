@@ -11,8 +11,8 @@
   :bind* (("<henkan>" . toggle-input-method))
   :init
   (setq default-input-method "japanese-mozc"
-	mozc-helper-program-name "mozc_emacs_helper")
-  (custom-set-variables '(mozc-leim-title "かな ")))
+	mozc-helper-program-name "mozc_emacs_helper"
+	mozc-leim-title "♡かな"))
 
 (leaf mozc-cursor-color
   :url "https://github.com/iRi-E/mozc-el-extensions"

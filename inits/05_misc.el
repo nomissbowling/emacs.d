@@ -64,10 +64,6 @@
   :ensure t
   :bind (("C-x C-c" . restart-emacs)))
 
-(leaf macrostep
-  :ensure t
-  :bind (("C-c e" . macrostep-expand)))
-
 (leaf web-mode
   :ensure t
   :mode "\\.js\\'" "\\.p.html?\\'")

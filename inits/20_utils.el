@@ -68,19 +68,6 @@
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
-(leaf point-history
-  :el-get blue0513/point-history
-  :require t
-  :config
-  (point-history-mode)
-  (setq point-history-save-timer 2
-	point-history-ignore-buffer "\\*[a-zA-Z0-9]\\|^magit"
-	point-history-ignore-major-mode '(magit-mode dired-mode direx:direx-mode)))
-
-(leaf ivy-point-history
-  :el-get SuzumiyaAoba/ivy-point-history
-  :bind (("C-SPC" . ivy-point-history)))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

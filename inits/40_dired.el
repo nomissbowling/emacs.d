@@ -42,13 +42,6 @@
   :config
   (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
 
-(leaf dired-rsync
-  :ensure t
-  :doc "Allow rsync from dired buffers"
-  :url "https://github.com/stsquad/dired-rsync"
-  :bind (:dired-mode-map
-	 ("C-c C-r" . dired-rsync)))
-
 (leaf sudo-edit
   :ensure t
   :bind (("C-c s" . sudo-edit)))

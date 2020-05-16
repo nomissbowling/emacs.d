@@ -84,6 +84,11 @@
   ;; Display file name in title bar: buffername-emacs-version
   (setq frame-title-format "%b")
 
+  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
+  (add-hook 'makefile-mode-hook
+	    (lambda ()
+	      (fset 'makefile-warn-suspicious-lines 'ignore)))
+
   ;; Interface for display-line-numbers
   (leaf display-line-numbers
     :bind ("<f9>" . display-line-numbers-mode)
@@ -103,35 +108,26 @@
     :hook (after-init-hook . recentf-mode)
     :config
     (setq recentf-save-file "~/.emacs.d/recentf"
-	  recentf-max-saved-items 200
-	  recentf-auto-cleanup 'never
-	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-			   (lambda (file) (file-in-directory-p file package-user-dir))))
+  	  recentf-max-saved-items 200
+  	  recentf-auto-cleanup 'never
+  	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+  			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+  			   (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))
 
   :hook
   ;; Save hist
-  (add-hook 'after-init-hook 'savehist-mode)
+  (after-init-hook . savehist-mode)
   ;;Save plae
-  (add-hook 'after-init-hook 'save-place-mode)
+  (after-init-hook . save-place-mode)
   ;; Automatic reloading of changed files
-  (add-hook 'after-init-hook 'global-auto-revert-mode)
+  (after-init-hook . global-auto-revert-mode)
   ;; Do not blink the cursor
-  (add-hook 'after-init-hook 'blink-cursor-mode)
+  (after-init-hook . blink-cursor-mode)
   ;; font-lock
-  (add-hook 'after-init-hook 'global-font-lock-mode)
+  (after-init-hook . global-font-lock-mode)
   ;; word wrapping is used
-  (add-hook 'after-init-hook 'global-visual-line-mode)
-
-  ;; disabled frymake-mode at scratch-buffer
-  (add-hook 'lisp-interaction-mode-hook '(lambda () (flymake-mode -1)))
-
-  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
-  (add-hook 'makefile-mode-hook
-	    (lambda ()
-	      (fset 'makefile-warn-suspicious-lines 'ignore))))
-
+  (after-init-hook . global-visual-line-mode))
 
 
 (leaf *user-configuration

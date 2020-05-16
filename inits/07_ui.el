@@ -15,7 +15,7 @@
     (message "%s" (car curr-theme)))
   :config
   ;;the themes I cycle among
-  (setq my-themes (list 'iceberg 'doom-dracula))
+  (setq my-themes (list 'iceberg 'doom-dracula 'material))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my-cycle-theme)
@@ -24,7 +24,9 @@
     :el-get apnsngr/iceberg-emacs
     :config
     (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/iceberg-emacs/"))
-  (leaf doom-themes :ensure t))
+  (leaf doom-themes :ensure t)
+  (leaf material-theme :ensure t))
+
 
 (leaf doom-modeline
   :ensure t

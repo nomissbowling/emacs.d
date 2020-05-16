@@ -27,7 +27,6 @@
   (leaf doom-themes :ensure t)
   (leaf material-theme :ensure t))
 
-
 (leaf doom-modeline
   :ensure t
   :hook (after-init-hook . doom-modeline-mode)

@@ -12,11 +12,13 @@
 	  ("c" . browse-calendar)
 	  ("w" . browse-weather)
 	  ("n" . browse-google-news)
+	  ("k" . browse-keep)
 	  ("m" . browse-gmail)
 	  ("t" . browse-tweetdeck)
 	  ("s" . browse-slack)
 	  ("h" . browse-homepage)
 	  ("p" . browse-pocket)
+	  ("e" . easy-hugo)
 	  ("." . hydra-browse/body)
 	  ("<home>" . quit-dashboard)))
   :hook
@@ -52,7 +54,7 @@
     (interactive)
     (insert (if (display-graphic-p)
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
-    (insert "    Calendar: (c)    Weather: (w)   📰 News: (n)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+    (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
   (defun open-dashboard ()
     "Open the *dashboard* buffer and jump to the first widget."
@@ -101,6 +103,10 @@
     "Open pocket with chrome."
     (interactive)
     (browse-url "https://getpocket.com/a/queue/"))
+  (defun browse-keep ()
+    "Open pocket with chrome."
+    (interactive)
+    (browse-url "https://keep.new/"))
   (defun browse-homepage ()
     "Open my homepage."
     (interactive)

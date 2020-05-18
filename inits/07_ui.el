@@ -61,7 +61,7 @@
     (interactive)
     (display-line-numbers-mode 0)
     (flymake-mode 0)
-    (fringe-mode -1)
+    ;; (fringe-mode -1)
     (darkroom-mode 1))
 
   (defun my:darkroom-mode-out ()
@@ -69,7 +69,7 @@
     (interactive)
     (darkroom-mode 0)
     (flymake-mode 1)
-    (fringe-mode (cons 0 nil))
+    ;;    (fringe-mode (cons 0 nil))
     (display-line-numbers-mode 1)))
 
 (leaf all-the-icons

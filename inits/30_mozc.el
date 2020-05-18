@@ -19,12 +19,10 @@
   :el-get iRi-E/mozc-el-extensions
   :require t :after mozc)
 
-(leaf mozc-posframe
-  :url "https://github.com/derui/mozc-posframe"
-  :el-get derui/mozc-posframe
+(leaf mozc-cand-posframe
+  :ensure t
   :require t
   :config
-  (mozc-posframe-register)
   (setq mozc-candidate-style 'posframe)
   :init
   (leaf posframe :ensure t))

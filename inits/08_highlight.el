@@ -47,11 +47,26 @@
         (pulse-momentary-highlight-region beg end face))
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
-(leaf hiwin
-  :ensure t
+;; Visually highlight the selected buffer
+(leaf dimmer
+  :el-get gonewest818/dimmer.el
   :config
-  (hiwin-activate)
-  (set-face-background 'hiwin-face "#364456"))
+  (setq dimmer-fraction 0.5)
+  (dimmer-configure-which-key)
+  (dimmer-configure-gnus)
+  (dimmer-configure-hydra)
+  (dimmer-configure-magit)
+  (dimmer-configure-posframe)
+  (dimmer-mode t)
+  (with-eval-after-load "dimmer"
+    (defun dimmer-off ()
+      (dimmer-mode -1)
+      (dimmer-process-all))
+    (defun dimmer-on ()
+      (dimmer-mode 1)
+      (dimmer-process-all))
+    (add-hook 'focus-out-hook #'dimmer-off)
+    (add-hook 'focus-in-hook #'dimmer-on)))
 
 (leaf whitespace
   :ensure t

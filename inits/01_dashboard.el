@@ -53,7 +53,7 @@
     "Insert custom and set LIST-SIZE."
     (interactive)
     (insert (if (display-graphic-p)
-		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'error) " "))
+		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'hydra-face-red) " "))
     (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
   (defun open-dashboard ()

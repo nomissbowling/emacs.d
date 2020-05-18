@@ -62,9 +62,6 @@
   ;; between the lines
   (setq line-spacing 0.1)
 
-  ;; set the fringe-mode to right-only
-  (fringe-mode (cons 0 nil))
-
   ;; Do not distinguish uppercase and lowercase letters on completion
   (setq completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)

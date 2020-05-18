@@ -56,7 +56,6 @@
   (dimmer-configure-gnus)
   (dimmer-configure-hydra)
   (dimmer-configure-magit)
-  (dimmer-configure-posframe)
   (dimmer-mode t)
   (with-eval-after-load "dimmer"
     (defun dimmer-off ()

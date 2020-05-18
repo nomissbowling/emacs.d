@@ -72,6 +72,10 @@
   :el-get emacs-php/php-mode
   :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
+(leaf atomic-chrome
+  :ensure t
+  :hook (after-init-hook . atomic-chrome-start-server))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

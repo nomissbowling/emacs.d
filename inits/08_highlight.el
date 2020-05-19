@@ -9,20 +9,24 @@
 	 ((dashboard-mode-hook eshell-mode-hook) .
 	  (lambda () (setq-local global-hl-line-mode nil)))))
 
+
 ;; Highlight matching parens
 (leaf paren
   :hook (after-init-hook . show-paren-mode)
   :config (setq show-paren-style 'mixed))
+
 
 ;; A tomatically insert pairs
 (leaf smartparens
   :ensure t
   :hook (after-init-hook . smartparens-global-mode))
 
+
 ;; Keeps code always indented
 (leaf aggressive-indent
   :ensure t
   :hook ((emacs-lisp-mode-hook css-mode-hook) . aggressive-indent-mode))
+
 
 ;; Highlight the cursor whenever the window scrolls
 (leaf beacon
@@ -30,10 +34,12 @@
   :hook (after-init-hook . beacon-mode)
   :config (setq beacon-color "yellow"))
 
+
 ;; Highlight brackets according to their depth
 (leaf rainbow-delimiters
   :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
+
 
 ;; Highlight some operations
 (leaf volatile-highlights
@@ -47,16 +53,16 @@
         (pulse-momentary-highlight-region beg end face))
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
+
 ;; Visually highlight the selected buffer
 (leaf dimmer
   :el-get gonewest818/dimmer.el
+  :hook (after-init-hook . dimmer-mode)
   :config
-  (setq dimmer-fraction 0.5)
-  (dimmer-configure-which-key)
-  (dimmer-configure-gnus)
-  (dimmer-configure-hydra)
-  (dimmer-configure-magit)
-  (dimmer-mode t)
+  (setq dimmer-exclusion-regexp-list
+	'(".*Minibuf.*"	".*which-key.*"	".*NeoTree.*" ".*Messages.*" ".*LV.*" ".*magit.*" ".*org.*"))
+  (setq dimmer-fraction .6)
+  :preface
   (with-eval-after-load "dimmer"
     (defun dimmer-off ()
       (dimmer-mode -1)
@@ -66,6 +72,7 @@
       (dimmer-process-all))
     (add-hook 'focus-out-hook #'dimmer-off)
     (add-hook 'focus-in-hook #'dimmer-on)))
+
 
 (leaf whitespace
   :ensure t

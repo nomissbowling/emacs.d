@@ -15,7 +15,7 @@
     (message "%s" (car curr-theme)))
   :config
   ;;the themes I cycle among
-  (setq my-themes (list 'iceberg 'doom-dracula 'material))
+  (setq my-themes (list 'doom-dracula 'iceberg 'material))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my-cycle-theme)

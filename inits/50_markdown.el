@@ -9,34 +9,24 @@
 	 ("S-<tab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode ("\\.md$'" . gfm-mode)
+  :init
+  ;; toc generater
+  (leaf markdown-toc :ensure t))
 
-  :custom-face
-  (markdown-header-delimiter-face . '((t (:foreground "mediumpurple"))))
-  (markdown-header-face-1 . '((t (:foreground "violet" :weight bold :height 1.0))))
-  (markdown-header-face-2 . '((t (:foreground "lightslateblue" :weight bold :height 1.0))))
-  (markdown-header-face-3 . '((t (:foreground "mediumpurple1" :weight bold :height 1.0))))
-  (markdown-link-face . '((t (:background "#0e1014" :foreground "#bd93f9"))))
-  (markdown-list-face . '((t (:foreground "mediumpurple"))))
-  (markdown-code-face . '((t (:background "#222" :inherit 'default))))
-  (markdown-pre-face . '((t (:foreground "#bd98fe")))))
-
-;; toc generater
-(leaf markdown-toc :ensure t)
-
-;; markdown preview
-(leaf livedown
-  :url "https://github.com/shime/emacs-livedown"
-  :el-get  shime/emacs-livedown
-  :bind ((:markdown-mode-map
-	  :package markdown-mode
-	  ("C-c p" . livedown-preview)
-	  ("C-c k" . livedown-kill)))
-  :require t
-  :custom
-  ((livedown-autostart . nil)
-   (livedown-open . t)
-   (livedown-port . 1337)
-   (livedown-browser . nil)))
+  ;; markdown preview
+  (leaf livedown
+    :url "https://github.com/shime/emacs-livedown"
+    :el-get  shime/emacs-livedown
+    :bind ((:markdown-mode-map
+	    :package markdown-mode
+	    ("C-c p" . livedown-preview)
+	    ("C-c k" . livedown-kill)))
+    :require t
+    :custom
+    ((livedown-autostart . nil)
+     (livedown-open . t)
+     (livedown-port . 1337)
+     (livedown-browser . nil)))
 
 (leaf *hydra-markdown
   :hydra

@@ -6,9 +6,11 @@
 (leaf company
   :ensure t
   :bind (("C-<tab>" . company-complete)
+	 (:company-mode-map
+	  ("<backtab>" . company-yasnippet))
 	 (:company-active-map
 	  ("<tab>" . company-complete-common-or-cycle)
-	  ("<backtab>" . company-select-previous)
+	  ("<backtab>" . company-yasnippet)
 	  ("b" . company-select-previous)
 	  ("SPC" . company-select-next)
 	  ("C-d" . company-show-doc-buffer)))

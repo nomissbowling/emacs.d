@@ -6,27 +6,28 @@
 (leaf markdown-mode
   :ensure t
   :bind (:markdown-mode-map
-	 ("S-<tab>" . company-yasnippet))
+  	 ("<backtab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)
-  :mode ("\\.md$'" . gfm-mode)
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode))
   :init
-  ;; toc generater
   (leaf markdown-toc :ensure t))
 
-  ;; markdown preview
-  (leaf livedown
-    :url "https://github.com/shime/emacs-livedown"
-    :el-get  shime/emacs-livedown
-    :bind ((:markdown-mode-map
-	    :package markdown-mode
-	    ("C-c p" . livedown-preview)
-	    ("C-c k" . livedown-kill)))
-    :require t
-    :custom
-    ((livedown-autostart . nil)
-     (livedown-open . t)
-     (livedown-port . 1337)
-     (livedown-browser . nil)))
+;; markdown preview
+(leaf livedown
+  :url "https://github.com/shime/emacs-livedown"
+  :el-get  shime/emacs-livedown
+  :bind ((:markdown-mode-map
+	  :package markdown-mode
+	  ("C-c p" . livedown-preview)
+	  ("C-c k" . livedown-kill)))
+  :require t
+  :custom
+  ((livedown-autostart . nil)
+   (livedown-open . t)
+   (livedown-port . 1337)
+   (livedown-browser . nil)))
 
 (leaf *hydra-markdown
   :hydra

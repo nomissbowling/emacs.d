@@ -28,8 +28,8 @@
 ;; interactively flip between recently visited buffers
 (leaf iflipb
   :ensure t
-  :bind (("<f7>" . iflipb-next-buffer)
-	 ("S-<f7>" . iflipb-previous-buffer))
+  :bind (("C-<right>" . iflipb-next-buffer)
+	 ("C-<left>" . iflipb-previous-buffer))
   :custom
   (iflipb-wrap-around . t)
   :config

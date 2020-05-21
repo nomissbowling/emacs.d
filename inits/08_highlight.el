@@ -12,24 +12,20 @@
 	 ((dashboard-mode-hook eshell-mode-hook) .
 	  (lambda () (setq-local global-hl-line-mode nil)))))
 
-
 ;; Highlight matching parens
 (leaf paren
   :hook (after-init-hook . show-paren-mode)
   :config (setq show-paren-style 'mixed))
-
 
 ;; A tomatically insert pairs
 (leaf smartparens
   :ensure t
   :hook (after-init-hook . smartparens-global-mode))
 
-
 ;; Keeps code always indented
 (leaf aggressive-indent
   :ensure t
   :hook ((emacs-lisp-mode-hook css-mode-hook) . aggressive-indent-mode))
-
 
 ;; Highlight the cursor whenever the window scrolls
 (leaf beacon
@@ -37,12 +33,10 @@
   :hook (after-init-hook . beacon-mode)
   :config (setq beacon-color "yellow"))
 
-
 ;; Highlight brackets according to their depth
 (leaf rainbow-delimiters
   :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
-
 
 ;; Highlight some operations
 (leaf volatile-highlights
@@ -55,7 +49,6 @@
         "Pulse the changes."
         (pulse-momentary-highlight-region beg end face))
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
-
 
 ;; Visually highlight the selected buffer
 (leaf dimmer
@@ -75,7 +68,6 @@
       (dimmer-process-all))
     (add-hook 'focus-out-hook #'dimmer-off)
     (add-hook 'focus-in-hook #'dimmer-on)))
-
 
 (leaf whitespace
   :ensure t

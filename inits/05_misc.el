@@ -76,6 +76,10 @@
   :ensure t
   :hook (after-init-hook . atomic-chrome-start-server))
 
+(leaf rainbow-mode
+  :ensure t
+  :bind ("<f7>" . rainbow-mode))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

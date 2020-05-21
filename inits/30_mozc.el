@@ -23,7 +23,6 @@
   :require t
   :config
   (setq mozc-candidate-style 'posframe)
-  :init
   (leaf posframe :ensure t))
 
 (leaf *user-mozc-function

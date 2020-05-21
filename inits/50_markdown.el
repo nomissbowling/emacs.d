@@ -5,12 +5,9 @@
 
 (leaf markdown-mode
   :ensure t
-  :bind (:markdown-mode-map
-  	 ("<backtab>" . company-yasnippet))
   :hook (markdown-mode-hook . auto-fill-mode)
-  :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode))
+	 ("\\.md\\'" . markdown-mode))
   :init
   (leaf markdown-toc :ensure t))
 
@@ -18,16 +15,14 @@
 (leaf livedown
   :url "https://github.com/shime/emacs-livedown"
   :el-get  shime/emacs-livedown
-  :bind ((:markdown-mode-map
-	  :package markdown-mode
-	  ("C-c p" . livedown-preview)
-	  ("C-c k" . livedown-kill)))
   :require t
-  :custom
-  ((livedown-autostart . nil)
-   (livedown-open . t)
-   (livedown-port . 1337)
-   (livedown-browser . nil)))
+  :bind (("C-c p" . livedown-preview)
+	 ("C-c k" . livedown-kill))
+  :config
+  (setq livedown-autostart nil
+	livedown-open t
+	livedown-port 1337
+	livedown-browser nil))
 
 (leaf *hydra-markdown
   :hydra

@@ -3,6 +3,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; fringe-mode for right- only
+(fringe-mode (cons 0 nil))
+
 ;; Highlight the current line
 (leaf hi-line
   :hook ((after-init-hook . global-hl-line-mode)

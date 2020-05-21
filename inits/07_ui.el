@@ -19,10 +19,9 @@
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my-cycle-theme)
   :preface
-  (leaf iceberg-theme
-    :el-get apnsngr/iceberg-emacs
-    :config
-    (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/iceberg-emacs/"))
+  (leaf iceberg-theme :ensure nil
+    :init
+    (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-emacs/"))
   (leaf doom-themes :ensure t)
   (leaf material-theme :ensure t))
 
@@ -60,7 +59,7 @@
     (interactive)
     (display-line-numbers-mode 0)
     (flymake-mode 0)
-    ;; (fringe-mode -1)
+    (fringe-mode -1)
     (darkroom-mode 1))
 
   (defun my:darkroom-mode-out ()
@@ -68,7 +67,7 @@
     (interactive)
     (darkroom-mode 0)
     (flymake-mode 1)
-    ;;    (fringe-mode (cons 0 nil))
+    (fringe-mode (cons 0 nil))
     (display-line-numbers-mode 1)))
 
 (leaf all-the-icons

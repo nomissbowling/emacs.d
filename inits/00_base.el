@@ -105,9 +105,9 @@
     :hook (after-init-hook . recentf-mode)
     :config
     (setq recentf-save-file "~/.emacs.d/recentf"
-  	  recentf-max-saved-items 200
-  	  recentf-auto-cleanup 'never
-  	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+	  recentf-max-saved-items 200
+	  recentf-auto-cleanup 'never
+	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
   			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
   			   (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))

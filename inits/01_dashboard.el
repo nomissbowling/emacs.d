@@ -29,7 +29,6 @@
 	dashboard-set-heading-icons t
 	dashboard-set-file-icons t
 	;; dashboard-page-separator "\n\f\f\n"
-	;; dashboard-items '((recents  . 10))
 	show-week-agenda-p t
 	dashboard-items '((recents  . 8)
 			  (agenda . 5)))
@@ -37,6 +36,10 @@
 	(concat "GNU Emacs " emacs-version " kernel "
 		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
 		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
+  ;; for sub machine
+  (when (string-match "x250" (shell-command-to-string "uname -n"))
+    (setq dashboard-items '((recents  . 5)
+			    (agenda . 5))))
 
   ;; Set the footer
   (setq dashboard-footer-icon

@@ -6,7 +6,7 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
-  ;; Quiet start
+  ;; Basic config
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
   (menu-bar-mode 0)
@@ -15,6 +15,7 @@
   (setq inhibit-startup-message t)
 
   ;; Speed up startup
+  ;; Fork from https://github.com/seagle0128/.emacs.d/blob/master/init.el
   (defvar centaur-gc-cons-threshold (if (display-graphic-p) 16000000 1600000))
   (defvar centaur-gc-cons-upper-limit (if (display-graphic-p) 400000000 100000000))
   (defvar centaur-gc-timer (run-with-idle-timer 10 t #'garbage-collect))
@@ -22,16 +23,12 @@
   (setq file-name-handler-alist nil
         gc-cons-threshold centaur-gc-cons-upper-limit
         gc-cons-percentage 0.5)
-
   (add-hook 'emacs-startup-hook
             (lambda ()
               "Restore defalut values after startup."
               (setq file-name-handler-alist default-file-name-handler-alist
                     gc-cons-threshold centaur-gc-cons-threshold
                     gc-cons-percentage 0.1)))
-
-  ;; Increase threshold to fire garbage collection
-  ;; (setq gc-cons-threshold (* 128 1024 1024))
 
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")

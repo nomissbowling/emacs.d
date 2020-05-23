@@ -19,9 +19,8 @@
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my-cycle-theme)
   :preface
-  (leaf iceberg-theme :ensure nil
-    :init
-    (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-emacs/"))
+  (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-emacs/")
+  (leaf iceberg-theme :ensure nil)
   (leaf doom-themes :ensure t))
 
 
@@ -50,8 +49,8 @@
 
 (leaf all-the-icons
   :ensure t
-  :custom (all-the-icons-scale-factor . 1.0)
   :config
+  (setq all-the-icons-scale-factor 1.0)
   (leaf all-the-icons-dired
     :ensure t
     :hook (dired-mode-hook . all-the-icons-dired-mode)))
@@ -60,17 +59,15 @@
 ;; Remove visual distractions and focus on writing
 (leaf darkroom
   :el-get joaotavora/darkroom
-  :bind (("<f12>" . my:darkroom-mode-in)
-	 (:darkroom-mode-map
-	  ("<f12>" . my:darkroom-mode-out)))
+  :bind ("<f12>" . my:darkroom-mode-in)
   :config
   (defun my:darkroom-mode-in ()
     "Darkroom mode in."
     (interactive)
     (display-line-numbers-mode 0)
     (flymake-mode 0)
-    (darkroom-mode 1))
-
+    (darkroom-mode 1)
+    (bind-key "<f12>" 'my:darkroom-mode-out darkroom-mode-map))
   (defun my:darkroom-mode-out ()
     "Darkroom mode out."
     (interactive)

@@ -7,8 +7,8 @@
 ## Usage environment
 
 ### OS
-  * GNU Linux Debian 10.3
-  * GNU Linux Microsoft Debian 10.3 on WSL
+  * GNU Linux Debian 10.4
+  * GNU Linux Microsoft Debian 10.4 on WSL
 
 ### GNU Emacs
  * GNU Emacs 26.3

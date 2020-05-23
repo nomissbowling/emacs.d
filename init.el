@@ -25,7 +25,7 @@
         gc-cons-percentage 0.5)
   (add-hook 'emacs-startup-hook
             (lambda ()
-              "Restore defalut values after startup."
+              "Restore default values after startup."
               (setq file-name-handler-alist default-file-name-handler-alist
                     gc-cons-threshold centaur-gc-cons-threshold
                     gc-cons-percentage 0.1)))

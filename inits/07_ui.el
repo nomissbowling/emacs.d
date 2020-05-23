@@ -14,7 +14,7 @@
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
   :config
-  (setq my-themes (list 'iceberg 'doom-dracula 'material))
+  (setq my-themes (list 'iceberg 'doom-dracula))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my-cycle-theme)
@@ -22,8 +22,7 @@
   (leaf iceberg-theme :ensure nil
     :init
     (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-emacs/"))
-  (leaf doom-themes :ensure t)
-  (leaf material-theme :ensure t))
+  (leaf doom-themes :ensure t))
 
 
 (leaf doom-modeline

@@ -5,8 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-r" . swiper-thing-at-point)
-	 ("C-s" . swiper-isearch-region)
+  :bind (("C-s" . swiper-thing-or-isearch)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -40,13 +39,12 @@
 
 (leaf *user-customize-function
   :init
-  (defun swiper-isearch-region ()
-    "If region is selected, `swiper-isearch' with the keyword selected in region.
-If the region isn't selected, `swiper-isearch'."
-    (interactive)
-    (if (not (use-region-p))
-	(swiper-isearch))
-    (swiper-isearch-thing-at-point))
+  (defun swiper-thing-or-isearch (arg)
+    "Basic functions `swiper-thing-at-point'. `isearch-migemo' with C-u."
+    (interactive "p")
+    (case arg
+      (4  (isearch-forward))
+      (t  (swiper-thing-at-point))))
 
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."
@@ -65,15 +63,7 @@ If the region isn't selected, `swiper-isearch'."
   (defun find-counsel-in-m-x ()
     "Narrow the only counsel-command in M-x."
     (interactive)
-    (counsel-M-x "^counsel "))
-
-  (defun swiper-isearch-region ()
-    "If region is selected, `swiper-isearch-thing-at-point'.
-If the region isn't selected, `swiper-isearch'."
-    (interactive)
-    (if (not (use-region-p))
-	(swiper-isearch)
-      (swiper-isearch-thing-at-point))))
+    (counsel-M-x "^counsel ")))
 
 (leaf smex
   :ensure t

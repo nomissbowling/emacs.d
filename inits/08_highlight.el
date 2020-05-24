@@ -52,7 +52,7 @@
 
 ;; Visually highlight the selected buffer
 (leaf dimmer
-  :el-get gonewest818/dimmer.el
+  :ensure t
   :hook (after-init-hook . dimmer-mode)
   :config
   (setq dimmer-exclusion-regexp-list

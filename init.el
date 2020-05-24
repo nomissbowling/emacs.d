@@ -16,18 +16,18 @@
 
   ;; Speed up startup
   ;; Fork from https://github.com/seagle0128/.emacs.d/blob/master/init.el
-  (defvar centaur-gc-cons-threshold (if (display-graphic-p) 16000000 1600000))
-  (defvar centaur-gc-cons-upper-limit (if (display-graphic-p) 400000000 100000000))
-  (defvar centaur-gc-timer (run-with-idle-timer 10 t #'garbage-collect))
+  (defvar my:gc-cons-threshold (if (display-graphic-p) 16000000 1600000))
+  (defvar my:gc-cons-upper-limit (if (display-graphic-p) 400000000 100000000))
+  (defvar my:gc-timer (run-with-idle-timer 10 t #'garbage-collect))
   (defvar default-file-name-handler-alist file-name-handler-alist)
   (setq file-name-handler-alist nil
-        gc-cons-threshold centaur-gc-cons-upper-limit
+        gc-cons-threshold my:gc-cons-upper-limit
         gc-cons-percentage 0.5)
   (add-hook 'emacs-startup-hook
             (lambda ()
               "Restore default values after startup."
               (setq file-name-handler-alist default-file-name-handler-alist
-                    gc-cons-threshold centaur-gc-cons-threshold
+                    gc-cons-threshold my:gc-cons-threshold
                     gc-cons-percentage 0.1)))
 
   (customize-set-variable

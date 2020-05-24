@@ -24,7 +24,7 @@
    ("d" vc-diff)))
 
 
-;; local Variables:
+;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 

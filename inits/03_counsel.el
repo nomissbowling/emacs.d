@@ -5,8 +5,8 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-isearch-region)
-	 ("C-r" . swiper-thing-at-point)
+  :bind (("C-r" . swiper-thing-at-point)
+	 ("C-s" . swiper-isearch-region)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -39,7 +39,15 @@
 
 
 (leaf *user-customize-function
-  :config
+  :init
+  (defun swiper-isearch-region ()
+    "If region is selected, `swiper-isearch' with the keyword selected in region.
+If the region isn't selected, `swiper-isearch'."
+    (interactive)
+    (if (not (use-region-p))
+	(swiper-isearch))
+    (swiper-isearch-thing-at-point))
+
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."
     (ivy--format-function-generic

@@ -23,27 +23,28 @@
   (leaf iceberg-theme :ensure nil)
   (leaf doom-themes :ensure t))
 
-(leaf doom-modeline
-  :ensure t
-  :hook (after-init-hook . doom-modeline-mode)
-  :custom
-  ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
-   (doom-modeline-icon . t)
-   (doom-modeline-major-mode-icon . nil)
-   (doom-modeline-minor-modes . nil))
-  :config
-  (line-number-mode 0)
-  (column-number-mode 0)
-  :preface
-  (leaf hide-mode-line
+
+  (leaf doom-modeline
     :ensure t
-    :hook ((neotree-mode-hook imenu-list-minor-mode-hook diff-mode-hook ) . hide-mode-line-mode))
-  (leaf nyan-mode
-    :ensure t
-    :hook (after-init-hook . nyan-mode)
+    :hook (after-init-hook . doom-modeline-mode)
     :custom
-    ((nyan-cat-face-number . 4)
-     (nyan-animate-nyancat . t))))
+    ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
+     (doom-modeline-icon . t)
+     (doom-modeline-major-mode-icon . nil)
+     (doom-modeline-minor-modes . nil))
+    :config
+    (line-number-mode 0)
+    (column-number-mode 0)
+    :preface
+    (leaf hide-mode-line
+      :ensure t
+      :hook ((neotree-mode-hook imenu-list-minor-mode-hook diff-mode-hook ) . hide-mode-line-mode))
+    (leaf nyan-mode
+      :ensure t
+      :hook (after-init-hook . nyan-mode)
+      :custom
+      ((nyan-cat-face-number . 4)
+       (nyan-animate-nyancat . t))))
 
 
 (leaf all-the-icons

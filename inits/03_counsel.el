@@ -40,8 +40,7 @@
 (leaf *user-customize-function
   :init
   (defun swiper-thing-or-isearch (arg)
-    "Basic function `swiper-thing-at-point' or `migemo-isearch' with C-u."
-;;基本動作はほげ、
+    "Function for `swiper-thing-at-point' or `migemo-isearch' with C-u."
     (interactive "p")
     (case arg
       (4  (isearch-forward))

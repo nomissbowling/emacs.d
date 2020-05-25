@@ -12,6 +12,7 @@
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
 	mozc-leim-title "♡かな")
+
   :preface
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
@@ -21,10 +22,8 @@
     :require t
     :config
     (setq mozc-candidate-style 'posframe)
-    (leaf posframe :ensure t)))
+    (leaf posframe :ensure t))
 
-
-(leaf *user-mozc-function
   :config
   (defun mozc-word-regist ()
     "Mozc word regist."

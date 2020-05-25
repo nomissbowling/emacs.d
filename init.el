@@ -6,7 +6,7 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
-  ;; Basic config
+  ;; Basic configuration
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
   (menu-bar-mode 0)
@@ -30,6 +30,7 @@
                     gc-cons-threshold my:gc-cons-threshold
                     gc-cons-percentage 0.1)))
 
+  ;; Package
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")
                        ("melpa" . "https://melpa.org/packages/")

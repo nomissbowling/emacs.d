@@ -83,7 +83,7 @@
 	   (counsel-tramp-custom-connections
 	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/)))
   :config
-  (defuni my:tramp-quit ()
+  (defun my:tramp-quit ()
     "Quit tramp, if tramp connencted."
     (interactive)
     (when (get-buffer "*tramp/scp xsrv*")

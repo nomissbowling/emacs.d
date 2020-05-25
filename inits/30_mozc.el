@@ -11,19 +11,18 @@
   :init
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
-	mozc-leim-title "♡かな"))
+	mozc-leim-title "♡かな")
+  :preface
+  (leaf mozc-cursor-color
+    :el-get iRi-E/mozc-el-extensions
+    :require t :after mozc)
+  (leaf mozc-cand-posframe
+    :ensure t
+    :require t
+    :config
+    (setq mozc-candidate-style 'posframe)
+    (leaf posframe :ensure t)))
 
-(leaf mozc-cursor-color
-  :url "https://github.com/iRi-E/mozc-el-extensions"
-  :el-get iRi-E/mozc-el-extensions
-  :require t :after mozc)
-
-(leaf mozc-cand-posframe
-  :ensure t
-  :require t
-  :config
-  (setq mozc-candidate-style 'posframe)
-  (leaf posframe :ensure t))
 
 (leaf *user-mozc-function
   :config

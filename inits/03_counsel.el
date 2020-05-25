@@ -40,7 +40,8 @@
 (leaf *user-customize-function
   :init
   (defun swiper-thing-or-isearch (arg)
-    "Basic functions `swiper-thing-at-point'. `isearch-migemo' with C-u."
+    "Basic function `swiper-thing-at-point' or `migemo-isearch' with C-u."
+;;基本動作はほげ、
     (interactive "p")
     (case arg
       (4  (isearch-forward))
@@ -83,7 +84,7 @@
 	   (counsel-tramp-custom-connections
 	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/)))
   :config
-  (defun my:tramp-quit ()
+  (defuni my:tramp-quit ()
     "Quit tramp, if tramp connencted."
     (interactive)
     (when (get-buffer "*tramp/scp xsrv*")

@@ -46,7 +46,7 @@
 
 ;; Treat undo history as a tree
 (leaf undo-tree
-  :el-get tarsiiformes/undo-tree
+;;  :el-get tarsiiformes/undo-tree
   :bind* (("C-_" . undo-tree-undo)
 	  ("C-\\" . undo-tree-undo)
 	  ("M-_" . undo-tree-redo)

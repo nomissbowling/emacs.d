@@ -14,7 +14,7 @@
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
   :config
-  (setq my:themes (list 'iceberg 'doom-dracula 'doom-material))
+  (setq my:themes (list 'iceberg 'doom-dracula 'doom-material 'doom-one))
   (setq curr-theme my:themes)
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my:cycle-theme)
@@ -58,7 +58,7 @@
 
 ;; Remove visual distractions and focus on writing
 (leaf darkroom
-  :el-get joaotavora/darkroom
+  :ensure t
   :bind ("<f12>" . my:darkroom-mode-in)
   :config
   (defun my:darkroom-mode-in ()

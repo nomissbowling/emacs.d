@@ -46,8 +46,8 @@
   (with-no-warnings
     (when (fboundp 'pulse-momentary-highlight-region)
       (defun my-vhl-pulse (beg end &optional _buf face)
-        "Pulse the changes."
-        (pulse-momentary-highlight-region beg end face))
+	"Pulse the changes."
+	(pulse-momentary-highlight-region beg end face))
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
 ;; Visually highlight the selected buffer

@@ -69,7 +69,7 @@
   :mode "\\.js\\'" "\\.p.html?\\'")
 
 (leaf php-mode
-  :el-get emacs-php/php-mode
+  :ensure t
   :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
 (leaf atomic-chrome

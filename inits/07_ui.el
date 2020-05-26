@@ -5,19 +5,19 @@
 
 (leaf *user-cycle-theme
   :init
-  (defun my-cycle-theme ()
+  (defun my:cycle-theme ()
     "Cycle custom theme."
     (interactive)
     (disable-theme (car curr-theme))
     (setq curr-theme (cdr curr-theme))
-    (if (null curr-theme) (setq curr-theme my-themes))
+    (if (null curr-theme) (setq curr-theme my:themes))
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
   :config
-  (setq my-themes (list 'iceberg 'doom-dracula))
-  (setq curr-theme my-themes)
+  (setq my:themes (list 'iceberg 'doom-dracula 'doom-material))
+  (setq curr-theme my:themes)
   (load-theme (car curr-theme) t)
-  (bind-key "<f8>" 'my-cycle-theme)
+  (bind-key "<f8>" 'my:cycle-theme)
   :preface
   (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-emacs/")
   (leaf iceberg-theme :ensure nil)

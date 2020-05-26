@@ -11,6 +11,12 @@
   :init
   (leaf markdown-toc :ensure t))
 
+;; Syntaxhighlight in markdown-mode
+(leaf poly-markdown
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode)))
+
 ;; markdown preview
 (leaf livedown
   :url "https://github.com/shime/emacs-livedown"

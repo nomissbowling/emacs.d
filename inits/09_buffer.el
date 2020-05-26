@@ -37,7 +37,7 @@
 
 ;; Persistent undo history for GNU Emacs
 (leaf undohist
-  :el-get emacsorphanage/undohist
+  :ensure t
   :require t
   :config
   (setq undohist-directory "~/Dropbox/dotfiles/undohist"
@@ -46,7 +46,7 @@
 
 ;; Treat undo history as a tree
 (leaf undo-tree
-;;  :el-get tarsiiformes/undo-tree
+  :ensure t
   :bind* (("C-_" . undo-tree-undo)
 	  ("C-\\" . undo-tree-undo)
 	  ("M-_" . undo-tree-redo)

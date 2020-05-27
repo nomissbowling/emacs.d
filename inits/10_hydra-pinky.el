@@ -10,7 +10,7 @@
   (hydra-pinky
    (:color red :hint nil)
    "
- 🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._w_._@_._s_._S_._/_._v_._f_._0_._1_._2_._3_._x_._<_._>_._:_"
+  🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_._w_._q_._0_._1_._2_._3_._x_  utl:_f_ile _d_iff _s_wiper buffer_:_ winner_.__,_"
    ("h" backward-char)
    ("j" next-line)
    ("k" previous-line)
@@ -28,22 +28,20 @@
    ("g" beginning-of-buffer)
    ("G" end-of-buffer)
    ("o" other-window-or-split)
-   ("w" avy-goto-word-1)
    ("@" recenter-top-bottom)
-   ("s" swiper-isearch-region)
-   ("S" window-swap-states)
-   ("/" kill-buffer)
-   ("v" vc-diff)
+   ("s" swiper-thing-at-point)
+   ("w" window-swap-states)
+   ("q" kill-buffer)
+   ("d" vc-diff)
    ("f" counsel-find-file)
    ("0" delete-window)
    ("1" delete-other-windows)
    ("2" split-window-below)
    ("3" split-window-right)
    ("x" window-toggle-division)
-   ("<" iflipb-next-buffer)
-   (">" iflipb-previous-buffer)
-   (":" counsel-switch-buffer)
-   ("." view-mode)))
+   ("," winner-redo)
+   ("." winner-undo)
+   (":" counsel-switch-buffer)))
 
 (leaf *window-controle-function
   :config

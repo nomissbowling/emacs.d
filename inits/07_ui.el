@@ -19,7 +19,7 @@
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my:cycle-theme)
   :preface
-  (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-emacs/")
+  (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
   (leaf iceberg-theme :ensure nil)
   (leaf doom-themes :ensure t))
 
@@ -27,14 +27,13 @@
 (leaf doom-modeline
   :ensure t
   :hook (after-init-hook . doom-modeline-mode)
-  :custom
-  ((doom-modeline-buffer-file-name-style . 'truncate-with-project)
-   (doom-modeline-icon . t)
-   (doom-modeline-major-mode-icon . nil)
-   (doom-modeline-minor-modes . nil))
   :config
   (line-number-mode 0)
   (column-number-mode 0)
+  (setq doom-modeline-buffer-file-name-style 'truncate-with-project
+	doom-modeline-icon t
+	doom-modeline-major-mode-icon nil
+	doom-modeline-minor-modes nil)
   :preface
   (leaf hide-mode-line
     :ensure t

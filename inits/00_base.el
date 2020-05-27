@@ -121,6 +121,8 @@
   (after-init-hook . global-auto-revert-mode)
   ;; Do not blink the cursor
   (after-init-hook . blink-cursor-mode)
+  ;; Window configuration undo/redo
+  (after-init-hook . winner-mode)
   ;; font-lock
   (after-init-hook . global-font-lock-mode)
   ;; word wrapping is used

@@ -28,8 +28,8 @@
 (leaf yasnippet
   :ensure t
   :hook (after-init-hook . yas-global-mode)
-  :custom
-  (yas-snippet-dirs . '("~/Dropbox/emacs.d/snippets"))
+  :config
+  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
   :init
   (leaf ivy-yasnippet :ensure t))
 
@@ -49,9 +49,9 @@
 (leaf which-key
   :ensure t
   :hook (after-init-hook . which-key-mode)
-  :custom
-  ((which-key-max-description-length . 40)
-   (which-key-use-C-h-commands . t)))
+  :config
+  (setq which-key-max-description-length 40
+	which-key-use-C-h-commands t))
 
 (leaf projectile
   :ensure t

@@ -23,6 +23,13 @@
    ("t" git-timemachine :exit t)
    ("d" vc-diff)))
 
+(leaf diff-hl
+  :ensure t
+  :hook (after-init-hook . global-diff-hl-mode)
+  :config
+  (diff-hl-margin-mode)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -15,9 +15,10 @@
 	  ("SPC" . company-select-next)
 	  ("C-d" . company-show-doc-buffer)))
   :hook (after-init-hook . global-company-mode)
-  :custom ((company-minimum-prefix-length . 2)
-	   (company-selection-wrap-around . t)
-	   (company-tooltip-maximum-width . 50)))
+  :config
+  (setq company-minimum-prefix-length 2
+	company-selection-wrap-around t
+	company-tooltip-maximum-width 50))
 
 
 ;; Local Variables:

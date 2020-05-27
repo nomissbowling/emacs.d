@@ -6,8 +6,8 @@
 ;; automatically save buffers in a decent way
 (leaf auto-save-buffers-enhanced
   :ensure t
-  :custom (auto-save-buffers-enhanced-quiet-save-p . t)
   :config
+  (setq auto-save-buffers-enhanced-quiet-save-p t)
   ;; auto save *scratch* to ~/.emacs.d/scratch
   (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t
 	auto-save-buffers-enhanced-file-related-with-scratch-buffer
@@ -16,24 +16,23 @@
 
 ;; automatically deleted in the background buffers
 (leaf tempbuf
-  :require t
   :el-get emacswiki:tempbuf
   :doc "automatically kill unnecessary buffers"
+  :require t
   :hook ((dired-mode-hook . turn-on-tempbuf-mode)
 	 (magit-mode-hook . turn-on-tempbuf-mode)
 	 (compilation-mode-hook . turn-on-tempbuf-mode))
-  :custom
-  (tempbuf-kill-message . nil))
+  :config
+  (setq tempbuf-kill-message nil))
 
 ;; interactively flip between recently visited buffers
-(leaf iflipb
-  :ensure t
-  :bind (("C-<right>" . iflipb-next-buffer)
-	 ("C-<left>" . iflipb-previous-buffer))
-  :custom
-  (iflipb-wrap-around . t)
-  :config
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
+;; (leaf iflipb
+;;   :ensure t
+;;   :bind (("C-<right>" . iflipb-next-buffer)
+;; 	 ("C-<left>" . iflipb-previous-buffer))
+;;   :config
+;;   (setq iflipb-wrap-around t
+;; 	iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
 ;; Persistent undo history for GNU Emacs
 (leaf undohist

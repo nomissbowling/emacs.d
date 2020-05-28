@@ -25,15 +25,6 @@
   :config
   (setq tempbuf-kill-message nil))
 
-;; interactively flip between recently visited buffers
-;; (leaf iflipb
-;;   :ensure t
-;;   :bind (("C-<right>" . iflipb-next-buffer)
-;; 	 ("C-<left>" . iflipb-previous-buffer))
-;;   :config
-;;   (setq iflipb-wrap-around t
-;; 	iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
-
 ;; Persistent undo history for GNU Emacs
 (leaf undohist
   :ensure t

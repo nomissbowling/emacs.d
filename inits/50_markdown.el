@@ -14,8 +14,7 @@
 (leaf poly-markdown
   :doc "syntaxhighlight in markdown-mode"
   :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+  :mode ("\\.md" . poly-markdown-mode)
   :init
   (leaf polymode :ensure t))
 

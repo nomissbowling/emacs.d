@@ -11,8 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^---------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_
-   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   _s_cratch^^   _a_g:🐾   work:_._"
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_   buffer:_[_:_]_
+   git:_._:_:_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   _s_cratch^^   _a_g:🐾   work:_<right>_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -31,11 +31,10 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("." hydra-work/body)
    ("s" toggle-scratch)
    ("m" hydra-markdown/body)
-   ("M" hydra-magit/body)
-   (":" magit-status)
+   (":" hydra-magit/body)
+   ("." magit-status)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
@@ -50,6 +49,8 @@
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
    ("P" hydra-package/body)
+   ("[" previous-buffer)
+   ("]" next-buffer)
    ("<right>" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)

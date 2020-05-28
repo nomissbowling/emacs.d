@@ -27,8 +27,7 @@
   :ensure t
   :hook ((after-init-hook . global-diff-hl-mode)
 	 (magit-post-refresh-hook . diff-hl-magit-post-refresh))
-  :config
-  (diff-hl-margin-mode))
+  :config (diff-hl-margin-mode))
 
 
 ;; Local Variables:

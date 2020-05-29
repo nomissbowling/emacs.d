@@ -127,6 +127,7 @@
     (call-interactively 'dired-unmark-all-marks)
     (call-interactively 'revert-buffer)))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

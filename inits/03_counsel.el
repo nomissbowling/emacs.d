@@ -5,7 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-thing-or-isearch)
+  :bind (("C-s" . swiper-region-or-isearch)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -39,12 +39,15 @@
 
 (leaf *user-customize-function
   :init
-  (defun swiper-thing-or-isearch (arg)
-    "Function for `swiper-thing-at-point' or `migemo-isearch' with C-u."
+  (defun swiper-region-or-isearch (arg)
+    "If put 'C-u', `isearch-forward'.
+If put 'C-u C-u', `swiper-isearch'.
+Do not put anything, `swiper-thing-at-point'."
     (interactive "p")
     (case arg
-      (4  (isearch-forward))
-      (t  (swiper-thing-at-point))))
+      (4 (isearch-forward))
+      (16 (swiper-isearch))
+      (t (swiper-thing-at-point))))
 
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."

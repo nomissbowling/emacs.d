@@ -4,7 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf *hydra-quick-menu
-  :bind (("M-." . hydra-quick-menu/body))
+  :bind ("M-." . hydra-quick-menu/body)
   :hydra
   (hydra-quick-menu
    (:hint nil :exit t)
@@ -59,12 +59,12 @@
 
 
 (leaf *hydra-work-menu
-  :chord ((".." . hydra-work/body))
+  :bind ("M-," . hydra-work/body)
   :hydra
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  bk:mel_p_a:el_g_et  quick-menu:_<left>_"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  bk:mel_p_a:el_g_et  quick-menu:_<right>_"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -87,7 +87,7 @@
    (":" view-mode)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
-   ("<left>" hydra-quick-menu/body)
+   ("<right>" hydra-quick-menu/body)
    ("q" keyboard-quit)))
 
 

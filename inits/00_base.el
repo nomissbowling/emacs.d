@@ -14,7 +14,8 @@
     :ensure t
     :when (memq window-system '(mac ns x))
     :hook (after-init-hook . exec-path-from-shell-initialize)
-    :custom (exec-path-from-shell-check-startup-files . nil))
+    :config
+    (setq exec-path-from-shell-check-startup-files nil))
 
   ;; Start the server in Emacs session
   (leaf server

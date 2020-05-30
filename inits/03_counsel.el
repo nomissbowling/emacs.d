@@ -25,16 +25,14 @@
   ((after-init-hook . ivy-mode)
    (ivy-mode-hook . counsel-mode)
    (css-mode-hook . counsel-css-imenu-setup))
-
-  :custom
-  ((ivy-use-virtual-buffers . t)
-   (ivy-use-selectable-prompt . t)
-   (enable-recursive-minibuffers . t)
-   (xref-show-xrefs-function . #'ivy-xref-show-xrefs)
-   (counsel-find-file-ignore-regexp . ,(regexp-opt '("desktop.ini" ".dropox")))
-   (counsel-yank-pop-separator
-    . "\n------------------------------------------------------------\n")
-   (ivy-format-functions-alist . '((t . my:ivy-format-function-arrow)))))
+  :config
+  (setq ivy-use-virtual-buffers t
+	ivy-use-selectable-prompt t
+	enable-recursive-minibuffers t
+	xref-show-xrefs-function #'ivy-xref-show-xrefs
+	counsel-yank-pop-separator
+	"\n------------------------------------------------------------\n"
+	ivy-format-functions-alist '((t . my:ivy-format-function-arrow))))
 
 
 (leaf *user-customize-function
@@ -82,10 +80,14 @@ Do not put anything, `swiper-thing-at-point'."
   :ensure t
   :bind (("C-c t" . counsel-tramp)
 	 ("C-c q" . my:tramp-quit))
-  :custom ((tramp-default-method . "ssh")
-	   (counsel-tramp-custom-connections
-	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/)))
+  ;; :custom ((tramp-default-method . "ssh")
+  ;; 	   (counsel-tramp-custom-connections
+  ;; 	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/)))
   :config
+  (setq tramp-default-method "ssh"
+	counsel-tramp-custom-connections
+	'(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
+  :preface
   (defun my:tramp-quit ()
     "Quit tramp, if tramp connencted."
     (interactive)

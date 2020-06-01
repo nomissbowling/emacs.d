@@ -24,8 +24,11 @@
 	 ("s" . sudo-edit)
 	 ("." . magit-status))
   :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
-  :custom
-  (dired-listing-switches . "-lgGhF"))
+  :config
+  (setq dired-listing-switches "-lgGhF"
+	dired-dwim-target t
+	dired-recursive-copies 'always
+	dired-isearch-filenames t))
 
 ;; omit desktop.ini
 (leaf dired-x

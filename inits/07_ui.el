@@ -64,6 +64,7 @@
     "Darkroom mode in."
     (interactive)
     (display-line-numbers-mode 0)
+    (diff-hl-mode 0)
     (flymake-mode 0)
     (darkroom-mode 1)
     (bind-key "<f12>" 'my:darkroom-mode-out darkroom-mode-map))
@@ -72,6 +73,7 @@
     (interactive)
     (darkroom-mode 0)
     (flymake-mode 1)
+    (diff-hl-mode 1)
     (display-line-numbers-mode 1)))
 
 

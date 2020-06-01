@@ -14,7 +14,7 @@
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
   :config
-  (setq my:themes (list 'iceberg 'doom-dracula 'doom-material 'doom-one))
+  (setq my:themes (list 'iceberg 'doom-dracula))
   (setq curr-theme my:themes)
   (load-theme (car curr-theme) t)
   (bind-key "<f8>" 'my:cycle-theme)

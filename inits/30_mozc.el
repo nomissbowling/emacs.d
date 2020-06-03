@@ -16,7 +16,6 @@
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t :after mozc)
-
   (leaf mozc-cand-posframe
     :ensure t :require t
     :init

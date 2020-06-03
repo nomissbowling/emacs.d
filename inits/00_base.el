@@ -126,6 +126,8 @@
   (after-init-hook . winner-mode)
   ;; font-lock
   (after-init-hook . global-font-lock-mode)
+  ;; Highlight the current line
+  (after-init-hook . global-hl-line-mode)
   ;; word wrapping is used
   (after-init-hook . global-visual-line-mode))
 

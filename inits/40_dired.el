@@ -14,7 +14,6 @@
 	 ("<SPC>" . my:dired-toggle-mark)
 	 ("C-g" . my:dired-unmark-all)
 	 ("r" . wdired-change-to-wdired-mode)
-	 ("R" . dired-rsync)
 	 ("o" . dired-open-file)
 	 ("O" . dired-omit-mode)
 	 ("[" . dired-hide-details-mode)
@@ -41,9 +40,7 @@
     :doc "Show directory first"
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
-  (leaf sudo-edit
-    :ensure t
-    :bind (("C-c s" . sudo-edit))))
+  (leaf sudo-edit :ensure t))
 
 
 (leaf *user-dired-function

@@ -28,26 +28,23 @@
   (setq dired-listing-switches "-lgGhF"
 	dired-dwim-target t
 	dired-recursive-copies 'always
-	dired-isearch-filenames t))
+	dired-isearch-filenames t)
+  :preface
+  ;; omit desktop.ini
+  (leaf dired-x
+    :require t
+    :config
+    (setq dired-omit-mode t
+	  dired-omit-files "^\\desktop.ini"))
+  (leaf ls-lisp
+    :require t
+    :doc "Show directory first"
+    :config
+    (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
+  (leaf sudo-edit
+    :ensure t
+    :bind (("C-c s" . sudo-edit))))
 
-;; omit desktop.ini
-(leaf dired-x
-  :require t
-  :config
-  (setq dired-omit-mode t)
-  (setq-default dired-omit-files-p t)
-  (setq dired-omit-files "^\\desktop.ini"))
-
-(leaf ls-lisp
-  :require t
-  :doc "Show directory first"
-  :after dired
-  :config
-  (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
-
-(leaf sudo-edit
-  :ensure t
-  :bind (("C-c s" . sudo-edit)))
 
 (leaf *user-dired-function
   :config

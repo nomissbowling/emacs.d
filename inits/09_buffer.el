@@ -70,7 +70,7 @@
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
-(leaf *define-buffer-functions
+(leaf *user-buffer-functions
   :config
   ;; Toggle current buffer and *scratch* buffer
   (bind-key [S-return] 'toggle-scratch)

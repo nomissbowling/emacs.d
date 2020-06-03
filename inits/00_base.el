@@ -123,7 +123,9 @@
   ;; font-lock
   (after-init-hook . global-font-lock-mode)
   ;; Highlight the current line
-  (after-init-hook . global-hl-line-mode)
+  ((after-init-hook . global-hl-line-mode)
+   (dashboard-mode-hook eshell-mode-hook) .
+   (lambda () (setq-local global-hl-line-mode nil)))
   ;; word wrapping is used
   (after-init-hook . global-visual-line-mode))
 

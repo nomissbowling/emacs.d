@@ -11,8 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^---------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_   buffer:_[_:_]_
-   git:_._:_:_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   _s_cratch^^   _a_g:🐾   work:_<right>_"
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_
+   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   _s_cratch^^   _a_g:🐾"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -33,8 +33,8 @@
    ("z" eshell)
    ("s" toggle-scratch)
    ("m" hydra-markdown/body)
-   (":" hydra-magit/body)
-   ("." magit-status)
+   ("<right>" hydra-magit/body)
+   (":" magit-status)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
@@ -49,9 +49,7 @@
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
    ("P" hydra-package/body)
-   ("[" previous-buffer)
-   ("]" next-buffer)
-   ("<right>" hydra-work/body)
+   ("." hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -64,7 +62,7 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  bk:mel_p_a:el_g_et  quick-menu:_<right>_"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  bk:mel_p_a:el_g_et  quick-menu:_._"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -87,7 +85,7 @@
    (":" view-mode)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
-   ("<right>" hydra-quick-menu/body)
+   ("." hydra-quick-menu/body)
    ("q" keyboard-quit)))
 
 

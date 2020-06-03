@@ -12,11 +12,11 @@
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
 	mozc-leim-title "♡かな")
-
   :preface
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t :after mozc)
+
   (leaf mozc-cand-posframe
     :ensure t :require t
     :init

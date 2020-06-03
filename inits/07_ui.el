@@ -22,6 +22,7 @@
   (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
   (leaf iceberg-theme :ensure nil))
 
+
 (leaf doom-modeline
   :ensure t
   :hook (after-init-hook . doom-modeline-mode)

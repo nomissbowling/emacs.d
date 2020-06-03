@@ -195,12 +195,6 @@ If the region is inactive, `backward-kill-word'."
   ;; Set makefle mode
   (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
 
-  ;; Set buffer that can not be killed
-  (with-current-buffer "*scratch*"
-    (emacs-lock-mode 'kill))
-  (with-current-buffer "*Messages*"
-    (emacs-lock-mode 'kill))
-
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
   (defun Info-find-node--info-ja (orig-fn filename &rest args)

@@ -20,7 +20,10 @@
     :ensure t :require t
     :init
     (setq mozc-candidate-style 'posframe)
-    (leaf posframe :ensure t))
+    (leaf posframe :ensure t)))
+
+
+(leaf *user-mozc-function
   :config
   (defun mozc-word-regist ()
     "Mozc word regist."

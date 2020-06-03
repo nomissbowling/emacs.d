@@ -71,7 +71,8 @@
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
 (leaf *user-buffer-functions
-  :bind ([S-return] . toggle-scratch)
+  :bind (([S-return] . toggle-scratch)
+	 ("C-x /" . kill-other-buffers))
   :init
   (defun toggle-scratch ()
     "Toggle current buffer and *scratch* buffer."

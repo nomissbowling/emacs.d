@@ -6,16 +6,11 @@
 ;; fringe-mode for right- only
 (fringe-mode (cons 0 nil))
 
-;; Highlight the current line
-(leaf hi-line
-  :hook ((after-init-hook . global-hl-line-mode)
-	 ((dashboard-mode-hook eshell-mode-hook) .
-	  (lambda () (setq-local global-hl-line-mode nil)))))
-
 ;; Highlight matching parens
 (leaf paren
   :hook (after-init-hook . show-paren-mode)
-  :config (setq show-paren-style 'mixed))
+  :config
+  (setq show-paren-style 'mixed))
 
 ;; A tomatically insert pairs
 (leaf smartparens
@@ -50,7 +45,6 @@
 	(pulse-momentary-highlight-region beg end face))
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
-;; Visually highlight the selected buffer
 (leaf dimmer
   :ensure t
   :hook (after-init-hook . dimmer-mode)

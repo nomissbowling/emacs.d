@@ -3,8 +3,13 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *user-cycle-theme
+(leaf doom-themes
+  :ensure t
+  :bind ("<f8>" . my:cycle-theme)
   :init
+  (setq my:themes (list 'iceberg 'doom-dracula))
+  (setq curr-theme my:themes)
+  (load-theme (car curr-theme) t)
   (defun my:cycle-theme ()
     "Cycle custom theme."
     (interactive)
@@ -13,16 +18,9 @@
     (if (null curr-theme) (setq curr-theme my:themes))
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
-  :config
-  (setq my:themes (list 'iceberg 'doom-dracula))
-  (setq curr-theme my:themes)
-  (load-theme (car curr-theme) t)
-  (bind-key "<f8>" 'my:cycle-theme)
   :preface
   (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-  (leaf iceberg-theme :ensure nil)
-  (leaf doom-themes :ensure t))
-
+  (leaf iceberg-theme :ensure nil))
 
 (leaf doom-modeline
   :ensure t

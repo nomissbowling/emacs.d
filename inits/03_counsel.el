@@ -33,14 +33,23 @@
 	counsel-yank-pop-separator
 	"\n------------------------------------------------------------\n"
 	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
-  (leaf ivy-xref :ensure t))
+  :init
+  (leaf ivy-xref :ensure t)
+  (leaf smex
+    :ensure t
+    :config
+    (setq smex-history-length 35
+	  smex-completion-method 'ivy))
+  (leaf ivy-rich
+    :ensure t
+    :hook (ivy-mode-hook . ivy-rich-mode)))
 
 
 (leaf *user-customize-function
   :init
   (defun swiper-region-or-isearch (arg)
     "If put 'C-u', `isearch-forward'.
-If put 'C-u C-u', `swiper-isearch'.
+If pt 'C-u C-u', `swiper-isearch'.
 Do not put anything, `swiper-thing-at-point'."
     (interactive "p")
     (case arg
@@ -67,15 +76,6 @@ Do not put anything, `swiper-thing-at-point'."
     (interactive)
     (counsel-M-x "^counsel ")))
 
-(leaf smex
-  :ensure t
-  :config
-  (setq smex-history-length 35)
-  (setq smex-completion-method 'ivy))
-
-(leaf ivy-rich
-  :ensure t
-  :hook (ivy-mode-hook . ivy-rich-mode))
 
 (leaf counsel-tramp
   :ensure t

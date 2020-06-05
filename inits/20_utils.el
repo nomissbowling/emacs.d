@@ -14,12 +14,12 @@
 
 (leaf imenu-list
   :ensure t
-  :bind (("<f2>" . imenu-list-smart-toggle))
-  :custom
-  ((imenu-list-size . 30)
-   (imenu-list-position . 'left)
-   (imenu-list-focus-after-activation . t))
+  :bind (("C-c i" . imenu-list-smart-toggle))
   :config
+  (setq imenu-list-size 30
+	imenu-list-position 'left
+	imenu-list-focus-after-activation t)
+  :init
   (leaf counsel-css
     :ensure
     :hook (css-mode-hook . #'counsel-css-imenu-setup)))

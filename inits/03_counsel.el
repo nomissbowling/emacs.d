@@ -32,7 +32,8 @@
 	xref-show-xrefs-function #'ivy-xref-show-xrefs
 	counsel-yank-pop-separator
 	"\n------------------------------------------------------------\n"
-	ivy-format-functions-alist '((t . my:ivy-format-function-arrow))))
+	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
+  (leaf ivy-xref :ensure t))
 
 
 (leaf *user-customize-function

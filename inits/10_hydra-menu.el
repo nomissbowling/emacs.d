@@ -64,10 +64,11 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _s_:創作  _e_:Hugo  el_p_a:e_l_get:d_u_ser  menu:_._"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _s_:創作  _e_:Hugo  _b_k:el_p_a:e_l_get:_u_ser"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
+   ("b" my:backup-dir)
    ("p" backup-melpa)
    ("l" backup-elget)
    ("u" backup-duser)

@@ -80,6 +80,10 @@
   :ensure t
   :bind ("<f7>" . rainbow-mode))
 
+(leaf edit-indirect
+  :ensure t
+  :bind ("C-c i" . edit-indirect-region))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

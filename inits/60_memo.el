@@ -1,4 +1,4 @@
-;;; 60_howm.el --- 60_howm.el  -*- lexical-binding: t -*-
+;;; 60_memo.el --- 60_memo.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -23,13 +23,11 @@
 	  ("emacs:" . (0 'compilation-mode-line-fail))
 	  ("linux:" . (0 'compilation-error)))))
 
-(leaf open-junk-file
-  :ensure t
-  :config
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d."
-	open-junk-file-find-file-function 'find-file))
 
 (leaf org
+  :ensure nil
+  :bind (("C-c a" . org-agenda)
+	 ("C-c c" . org-capture))
   :config
   (setq org-log-done 'time
 	org-use-speed-commands t
@@ -37,23 +35,6 @@
 	org-src-fontify-natively t
 	org-agenda-files '("~/Dropbox/howm/org/task.org"
 			   "~/Dropbox/howm/org/schedule.org"))
-
-  (bind-key "C-c a" 'org-agenda)
-  (bind-key "C-c c" 'org-capture)
-
-  ;; Maximize the org-capture buffer
-  (defvar my:org-capture-before-config nil
-    "Window configuration before 'org-capture'.")
-  (defadvice org-capture (before save-config activate)
-    "Save the window configuration before 'org-capture'."
-    (setq my:org-capture-before-config (current-window-configuration)))
-  (add-hook 'org-capture-mode-hook 'delete-other-windows)
-
-  (defun my:howm-create-file ()
-    "Make howm create file with 'org-capture'."
-    (interactive)
-    (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time)))
-
   (setq org-capture-templates
 	'(("t" " Task" entry (file+headline "~/Dropbox/howm/org/task.org" "Task")
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
@@ -68,11 +49,46 @@
 	  ("e" "★ Emacs" plain (file my:howm-create-file)
 	   "# emacs: %?\n%U %i\n\n```emacs-lisp\n%i\n```")
 	  ("l" "★ Linux" plain (file my:howm-create-file)
-	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```"))))
+	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```")))
+  :preface
+  ;; Maximize the org-capture buffer
+  (defvar my:org-capture-before-config nil
+    "Window configuration before 'org-capture'.")
+
+  (defadvice org-capture (before save-config activate)
+    "Save the window configuration before 'org-capture'."
+    (setq my:org-capture-before-config (current-window-configuration)))
+  (add-hook 'org-capture-mode-hook 'delete-other-windows)
+
+  (defun my:howm-create-file ()
+    "Make howm create file with 'org-capture'."
+    (interactive)
+    (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time))))
+
+
+(leaf open-junk-file
+  :ensure t
+  :config
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d."
+	open-junk-file-find-file-function 'find-file))
+
+
+;; ChangeLog memo
+(leaf clmemo
+  :ensure t
+  :bind ("C-x m" . clmemo)
+  :config
+  (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
+  (setq clmemo-file-name "~/Dropbox/howm/ChangeLog"
+	clmemo-title-list '("emacs" "win10" "debian" "memo" "idea" "GH"))
+  (add-hook 'change-log-mode-hook
+	    '(lambda ()
+	       (leaf blgrep :ensure t)
+	       (bind-key "C-c C-g" 'clgrep change-log-mode-map))))
 
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; 60_howm.el ends here
+;;; 60_memo.el ends here

@@ -29,6 +29,10 @@
   "Open inits dir."
   (interactive)
   (find-file "~/Dropbox/emacs.d/inits/"))
+(defun my:backup-dir ()
+  "Open backup dir."
+  (interactive)
+  (find-file "~/Dropbox/backup/"))
 (defun my:otibo ()
   "Open otibo dir."
   (interactive)

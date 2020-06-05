@@ -81,9 +81,6 @@ Do not put anything, `swiper-thing-at-point'."
   :ensure t
   :bind (("C-c t" . counsel-tramp)
 	 ("C-c q" . my:tramp-quit))
-  ;; :custom ((tramp-default-method . "ssh")
-  ;; 	   (counsel-tramp-custom-connections
-  ;; 	    . '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/)))
   :config
   (setq tramp-default-method "ssh"
 	counsel-tramp-custom-connections

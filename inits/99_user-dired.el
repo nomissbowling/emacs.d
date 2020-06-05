@@ -39,10 +39,20 @@
   (interactive)
   (find-file "~/Dropbox/GH/dia/diary.txt")
   (goto-char (point-min)))
-(defun my:d_kukai ()
-  "Open dkukai minoru_seq file."
+(defun my:diary ()
+  "Open diary dir."
   (interactive)
-  (find-file "~/Dropbox/GH/d_select/tex/minoru_sen.txt")
+  (find-file "~/Dropbox/GH/dia/diary.txt")
+  (goto-char (point-min)))
+(defun my:clmemo ()
+  "Open changelog file."
+  (interactive)
+  (find-file "~/Dropbox/howm/ChangeLog")
+  (goto-char (point-min)))
+(defun my:w_kukai ()
+  "Open wkukai minoru_seq file."
+  (interactive)
+  (find-file "~/Dropbox/GH/w_select/tex/minoru_sen.txt")
   (goto-char (point-min)))
 (defun my:m_kukai ()
   "Open mkukai minoru_sen file."

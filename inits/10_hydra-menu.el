@@ -11,8 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^---------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_;_2_   howm_@_
-   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   _s_cratch^^   _a_g:🐾"
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_:_2_   howm_@_
+   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   Log:_[_:_]_^^   _a_g:🐾"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -49,6 +49,8 @@
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
    ("P" hydra-package/body)
+   ("]" clmemo)
+   ("[" my:clmemo)
    ("." hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
@@ -62,26 +64,28 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:WEB  _t_:定例  _s_:吟行  _o_:落穂  _k_:近詠  _n_:創作  _e_:Hugo  bk:mel_p_a:el_g_et  quick-menu:_._"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _s_:創作  _e_:Hugo  el_p_a:e_l_get:d_u_ser  menu:_._"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
    ("p" backup-melpa)
-   ("g" backup-elget)
+   ("l" backup-elget)
+   ("u" backup-duser)
    ("d" my:diary)
    ("D" my:diary-new-post)
    ("o" my:otibo)
    ("O" my:otibo-new-post)
    ("t" my:teirei)
    ("T" my:teirei-new-post)
-   ("s" my:swan)
-   ("S" my:swan-new-post)
-   ("k" my:kinnei)
-   ("K" my:kinnei-new-post)
+   ("g" my:swan)
+   ("G" my:swan-new-post)
+   ("n" my:kinnei)
+   ("N" my:kinnei-new-post)
    ("m" my:d_kukai)
-   ("w" my:m_kukai)
-   ("n" my:haiku-note)
-   ("N" my:haiku-note-post)
+   ("w" my:w_kukai)
+   ("k" my:m_kukai)
+   ("s" my:haiku-note)
+   ("S" my:haiku-note-post)
    (":" view-mode)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
@@ -112,6 +116,13 @@
   (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
     (shell-command "sh backup-elget.sh"))
   (message "Finished el-get buckuped!"))
+
+(defun backup-duser ()
+  "Backup for user-passwd-file."
+  (interactive)
+  (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
+    (shell-command "sh backup-duser.sh"))
+  (message "Finished duser buckuped!"))
 
 (defun my:haiku-note ()
   "Open haiku note file."

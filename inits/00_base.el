@@ -56,9 +56,6 @@
   ;; Suppress warnings for 'ad-handle-definition:'
   (setq ad-redefinition-action 'accept)
 
-  ;; between the lines
-  (setq line-spacing 0.1)
-
   ;; Do not distinguish uppercase and lowercase letters on completion
   (setq completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
@@ -147,10 +144,6 @@
   (setq select-enable-primary  t)
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'my:clipboard-kill-region)
-  (bind-key "C-x C-x" 'my:exchange-point-and-mark)
-  (bind-key "M-c" 'my:capitalize-word)
-  (bind-key "M-l" 'my:downcase-word)
-  (bind-key "M-u" 'my:upcase-word)
 
   (defun my:clipboard-kill-region ()
     "If the region is active, `clipboard-kill-region'.
@@ -159,27 +152,6 @@ If the region is inactive, `backward-kill-word'."
     (if (use-region-p)
 	(clipboard-kill-region (region-beginning) (region-end))
       (backward-kill-word 1)))
-
-  (defun my:exchange-point-and-mark ()
-    "No mark active `exchange-point-and-mark'."
-    (interactive)
-    (exchange-point-and-mark)
-    (deactivate-mark))
-
-  (defun my:upcase-word (arg)
-    "Convert previous word (or ARG words) to upper case."
-    (interactive "p")
-    (upcase-word (- arg)))
-
-  (defun my:downcase-word (arg)
-    "Convert previous word (or ARG words) to down case."
-    (interactive "p")
-    (downcase-word (- arg)))
-
-  (defun my:capitalize-word (arg)
-    "Convert previous word (or ARG words) to capitalize."
-    (interactive "p")
-    (capitalize-word (- arg)))
 
   ;; Exit Emacs with M-x exitle
   (defalias 'exit 'save-buffers-kill-emacs)

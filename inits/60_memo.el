@@ -81,10 +81,14 @@
   (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
   (setq clmemo-file-name "~/Dropbox/howm/ChangeLog"
 	clmemo-title-list '("emacs" "win10" "debian" "memo" "idea" "GH"))
-  (add-hook 'change-log-mode-hook
-	    '(lambda ()
-	       (leaf blgrep :ensure t)
-	       (bind-key "C-c C-g" 'clgrep change-log-mode-map))))
+  :preface
+  (leaf blgrep
+    :ensure t
+    :config
+    (autoload 'clgrep "clgrep" "grep mode for ChangeLog file." t)
+    (add-hook 'change-log-mode-hook
+	      '(lambda ()
+		 (bind-key "C-c C-g" 'clgrep change-log-mode-map)))))
 
 
 ;; Local Variables:

@@ -18,6 +18,7 @@
   (key-chord-mode 1)
   :chord (("df" . counsel-descbinds)
 	  ("l;" . init-loader-show-log)
+	  ("::" . rainbow-mode)
 	  ("hj" . undo)))
 
 (leaf sequential-command-config

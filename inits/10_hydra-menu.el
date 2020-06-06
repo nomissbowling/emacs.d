@@ -10,7 +10,7 @@
    (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^---------------------------------------------------------------------------------------------------------------------------------
+  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _G_ist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_:_2_   howm_@_
    magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _j_unk   _y_as:_n_:_v_   _g_ithub   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   Log:_[_:_]_^^   _a_g:🐾"
    ("1" my:pdfout-buffer)
@@ -33,7 +33,6 @@
    ("z" eshell)
    ("s" toggle-scratch)
    ("m" hydra-markdown/body)
-   ("<right>" hydra-magit/body)
    (":" magit-status)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)

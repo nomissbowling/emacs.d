@@ -78,7 +78,7 @@
 
 (leaf rainbow-mode
   :ensure t
-  :bind ("<f7>" . rainbow-mode))
+  :bind ("C-c b" . rainbow-mode))
 
 (leaf edit-indirect
   :ensure t

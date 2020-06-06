@@ -31,14 +31,12 @@
 
 (leaf *user-utils-function
   :config
-  ;; current dir open of linux-filer
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)
     (shell-command (concat "xdg-open " default-directory)))
   (bind-key "<f3>" 'filer-current-dir-open)
 
-  ;; current dir open of linux terminal
   (defun term-current-dir-open ()
     "Open terminal application in current dir."
     (interactive)
@@ -56,7 +54,8 @@
   	    ([f7] . calendar-exit)))
     :config
     (leaf japanese-holidays
-      :ensure t :require t
+      :ensure t
+      :require t
       :after calendar
       :config
       (setq calendar-holidays

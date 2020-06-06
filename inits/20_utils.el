@@ -46,6 +46,33 @@
       (shell-command (concat "gnome-terminal --working-directory " dir))))
   (bind-key "<f4>" 'term-current-dir-open)
 
+  (leaf calendar
+    :bind (([f7] . calendar)
+  	   (:calendar-mode-map
+  	    ("h" . calendar-forward-week)
+  	    ("l" . calendar-backward-week)
+  	    ("j" . calendar-forward-day)
+  	    ("k" . calendar-backward-day)
+  	    ([f7] . calendar-exit)))
+    :config
+    (leaf japanese-holidays
+      :ensure t :require t
+      :after calendar
+      :config
+      (setq calendar-holidays
+	    (append japanese-holidays holiday-local-holidays holiday-other-holidays))
+      (setq calendar-mark-holidays-flag t)
+      ;; display Saturday and Sunday as a holiday
+      (setq japanese-holiday-weekend '(0 6)
+	    japanese-holiday-weekend-marker
+	    '(holiday nil nil nil nil nil japanese-holiday-saturday))
+      (add-hook 'calendar-today-visible-hook 'japanese-holiday-mark-weekend)
+      (add-hook 'calendar-today-invisible-hook 'japanese-holiday-mark-weekend)
+      ;; mark the today
+      (add-hook 'calendar-today-visible-hook 'calendar-mark-today)
+      ;; view holiday in org-agenda
+      (setq org-agenda-include-diary t)))
+
   ;; delete file if no contents
   (defun my:delete-file-if-no-contents ()
     (when (and (buffer-file-name (current-buffer))

@@ -13,7 +13,7 @@
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
 
-  ;; Speed up startup
+  ;; Startup optimizations
   ;; Fork from https://github.com/seagle0128/.emacs.d/blob/master/init.el
   (defvar my:gc-cons-threshold (if (display-graphic-p) 16000000 1600000))
   (defvar my:gc-cons-upper-limit (if (display-graphic-p) 400000000 100000000))

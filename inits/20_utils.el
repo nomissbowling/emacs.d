@@ -14,7 +14,7 @@
 
 (leaf imenu-list
   :ensure t
-  :bind (("C-c i" . imenu-list-smart-toggle))
+  :bind (("S-<f2>" . imenu-list-smart-toggle))
   :config
   (setq imenu-list-size 30
 	imenu-list-position 'left

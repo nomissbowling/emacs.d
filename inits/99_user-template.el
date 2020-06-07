@@ -27,46 +27,49 @@
   (forward-line -5)
   (forward-char 18))
 
-;; Insert template for minoru_sen
-(defun my:teirei-new-post ()
-  "Open teirei file and insert template."
-  (interactive)
-  (find-file "~/Dropbox/GH/teirei/tex/teirei.txt")
-  (my:minoru_sen))
-(defun my:swan-new-post ()
-  "Open swan file and insert template."
-  (interactive)
-  (find-file "~/Dropbox/GH/swan/tex/swan.txt")
-  (my:minoru_sen))
-(defun my:otibo-new-post ()
-  "Open otibo file and insert template."
-  (interactive)
-  (find-file "~/Dropbox/GH/otibo/tex/otibo.txt")
-  (goto-char 0)
-  ;; Insert a new date if the date has changed
-  (defvar string (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
-  (unless (string-match (format-time-string "%Y:") string)
+
+(leaf *template-for-minoru_sen
+  :config
+  (defun my:teirei-new-post ()
+    "Open teirei file and insert template."
+    (interactive)
+    (find-file "~/Dropbox/GH/teirei/tex/teirei.txt")
+    (my:minoru_sen))
+
+  (defun my:swan-new-post ()
+    "Open swan file and insert template."
+    (interactive)
+    (find-file "~/Dropbox/GH/swan/tex/swan.txt")
+    (my:minoru_sen))
+
+  (defun my:otibo-new-post ()
+    "Open otibo file and insert template."
+    (interactive)
+    (find-file "~/Dropbox/GH/otibo/tex/otibo.txt")
+    (goto-char 0)
+    ;; Insert a new date if the date has changed
+    (defvar string (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
+    (unless (string-match (format-time-string "%Y:") string)
+      (forward-line -1)
+      (insert (format-time-string "%Y:\n")))
+    ;; Insert template
+    (goto-char (point-min))
+    (forward-line)
+    (insert
+     (format-time-string "%Y年%m月%d日（参加者 名）\n"))
     (forward-line -1)
-    (insert (format-time-string "%Y:\n")))
-  ;; Insert template
-  (goto-char (point-min))
-  (forward-line)
-  (insert
-   (format-time-string "%Y年%m月%d日（参加者 名）\n"))
-  (forward-line -1)
-  (forward-char 15))
+    (forward-char 15))
 
-(defun my:minoru_sen ()
-  "Insert template."
-  (interactive)
-  (goto-char (point-min))
-  (insert
-   (format-time-string "%Y%m:\n")
-   (format-time-string "%Y年%m月%d日（参加者 名）\n"))
-  (forward-line -1)
-  (forward-char 15))
+  (defun my:minoru_sen ()
+    "Insert template."
+    (interactive)
+    (goto-char (point-min))
+    (insert
+     (format-time-string "%Y%m:\n")
+     (format-time-string "%Y年%m月%d日（参加者 名）\n"))
+    (forward-line -1)
+    (forward-char 15)))
 
-;; Insert template for 'kinnei'
 (defun my:kinnei-new-post ()
   "Open kinnei file and insert template."
   (interactive)
@@ -100,7 +103,6 @@
   (forward-line 4)
   (forward-char 18))
 
-;; Insert template for ap.txt
 (defun my:ap-new-post ()
   "Open ap file and insert template."
   (interactive)
@@ -115,7 +117,6 @@
   (forward-line -14)
   (forward-char 1))
 
-;; Insert template for apsh.txt
 (defun my:apsh-new-post ()
   "Open apsh file and insert template."
   (interactive)

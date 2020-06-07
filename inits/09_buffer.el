@@ -10,7 +10,7 @@
   (setq auto-save-buffers-enhanced-quiet-save-p t)
   ;; auto save *scratch* to ~/.emacs.d/scratch
   (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t
-	auto-save-buffers-enhanced-file-related-with-scratch-buffer
+  	auto-save-buffers-enhanced-file-related-with-scratch-buffer
   	(locate-user-emacs-file "scratch"))
   (auto-save-buffers-enhanced t))
 

@@ -39,7 +39,7 @@
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("s" " Shedule" entry (file+headline "~/Dropbox/howm/org/schedule.org" "Schedule")
 	   "** %?\n SCHEDULED: %^t \n" :prepend t)
-	  ("c" "📌 Code-Links" plain (file my:howm-create-file)
+	  ("e" "📌 Experiment" plain (file my:howm-create-file)
 	   "# code: %?\n%U %i\n\n>>>\n\n````code\n%i\n```")
 	  ("n" " Note-Draft" plain (file my:howm-create-file)
 	   "# note: %?\n%U %i")
@@ -85,8 +85,7 @@
     (add-hook 'change-log-mode-hook
 	      '(lambda ()
 		 (bind-key* "C-c C-c" 'clmemo-exit change-log-mode-map)
-		 (bind-key "C-c C-g" 'clgrep change-log-mode-map)
-		 ))))
+		 (bind-key "C-c C-g" 'clgrep change-log-mode-map)))))
 
 
 ;; Local Variables:

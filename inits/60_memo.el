@@ -31,7 +31,6 @@
   :config
   (setq org-log-done 'time
 	org-use-speed-commands t
-	org-src-tab-acts-natively t
 	org-src-fontify-natively t
 	org-agenda-files '("~/Dropbox/howm/org/task.org"
 			   "~/Dropbox/howm/org/schedule.org"))
@@ -50,6 +49,10 @@
 	   "# emacs: %?\n%U %i\n\n```emacs-lisp\n%i\n```")
 	  ("l" "★ Linux" plain (file my:howm-create-file)
 	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```")))
+  (setq org-refile-targets
+	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
+		("~/Dropbox/howme/org/schedule.org" :level . 1)
+		("~/Dropbox/howm/org/task.org" :level . 1))))
   :preface
   ;; Maximize the org-capture buffer
   (defvar my:org-capture-before-config nil
@@ -64,13 +67,6 @@
     "Make howm create file with 'org-capture'."
     (interactive)
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time))))
-
-
-(leaf open-junk-file
-  :ensure t
-  :config
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d."
-	open-junk-file-find-file-function 'find-file))
 
 
 ;; ChangeLog memo
@@ -88,7 +84,9 @@
     (autoload 'clgrep "clgrep" "grep mode for ChangeLog file." t)
     (add-hook 'change-log-mode-hook
 	      '(lambda ()
-		 (bind-key "C-c C-g" 'clgrep change-log-mode-map)))))
+		 (bind-key* "C-c C-c" 'clmemo-exit change-log-mode-map)
+		 (bind-key "C-c C-g" 'clgrep change-log-mode-map)
+		 ))))
 
 
 ;; Local Variables:

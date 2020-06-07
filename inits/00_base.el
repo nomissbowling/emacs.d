@@ -46,10 +46,6 @@
   ;; Turn Off warning sound screen flash
   (setq visible-bell nil)
 
-  ;; It keeps going steadily the local mark ...  C-u C-SPC C-SPC
-  ;; It keeps going steadily the global mark ... C-x C-SPC C-SPC
-  (setq set-mark-command-repeat-pop t)
-
   ;; Do not change the position of the cursor when scrolling pages
   (setq scroll-preserve-screen-position t)
 

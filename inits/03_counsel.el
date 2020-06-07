@@ -11,6 +11,7 @@
 	 ("C-x b" . counsel-switch-buffer)
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
+	 ("s-z" . counsel-linux-app)
 	 ("C-x C-f" . counsel-find-file)
 	 ("C-c k" . counsel-ag)
 	 ("C-c f" . counsel-projectile-find-file)
@@ -35,11 +36,9 @@
 	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
   :init
   (leaf ivy-xref :ensure t)
-  (leaf smex
+  (leaf amx
     :ensure t
-    :config
-    (setq smex-history-length 35
-	  smex-completion-method 'ivy))
+    :init (setq amx-history-length 20))
   (leaf ivy-rich
     :ensure t
     :hook (ivy-mode-hook . ivy-rich-mode)))

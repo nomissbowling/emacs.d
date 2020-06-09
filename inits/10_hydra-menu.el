@@ -47,9 +47,9 @@
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
    ("P" hydra-package/body)
+   ("." hydra-work/body)
    ("]" clmemo)
    ("[" my:clmemo)
-   ("." hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -62,7 +62,7 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _s_:創作  _e_:Hugo  _b_ackup:open-di_r_"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _s_:創作  _e_:Hugo  _b_ackup:di_r_"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -90,6 +90,7 @@
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
+   ("<henkan>" nil)
    ("q" keyboard-quit)))
 
 

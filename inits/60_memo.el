@@ -19,7 +19,9 @@
 	howm-user-font-lock-keywords
 	'(("memo:" . (0 'gnus-group-mail-3))
 	  ("note:" . (0 'epa-mark))
-	  ("code:" . (0 'compilation-info))
+	  ("idea:" . (0 'epa-mark))
+	  ("haiku:" . (0 'compilation-mode-line-exit))
+	  ("perl:" . (0 'compilation-info))
 	  ("emacs:" . (0 'compilation-mode-line-fail))
 	  ("linux:" . (0 'compilation-error)))))
 
@@ -39,20 +41,18 @@
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("s" " Shedule" entry (file+headline "~/Dropbox/howm/org/schedule.org" "Schedule")
 	   "** %?\n SCHEDULED: %^t \n" :prepend t)
-	  ("e" "📌 Experiment" plain (file my:howm-create-file)
-	   "# code: %?\n%U %i\n\n>>>\n\n````code\n%i\n```")
-	  ("n" " Note-Draft" plain (file my:howm-create-file)
-	   "# note: %?\n%U %i")
 	  ("m" " Memo" plain (file my:howm-create-file)
 	   "# memo: %?\n%U %i")
+	  ("n" " Note" plain (file my:howm-create-file)
+	   "# note: %?\n%U %i")
+	  ("i" "✌ Idea" item (file my:howm-create-file)
+	   "# idea: %?\n%U %i")
 	  ("e" "★ Emacs" plain (file my:howm-create-file)
 	   "# emacs: %?\n%U %i\n\n```emacs-lisp\n%i\n```")
+	  ("p" "★ Perl" plain (file my:howm-create-file)
+	   "# Perl: %?\n%U %i\n\n>>>\n\n```perl\n%i\n```")
 	  ("l" "★ Linux" plain (file my:howm-create-file)
-	   "# linux: %?\n%U %i\n\n````emacs-lisp\n%i\n```")))
-  (setq org-refile-targets
-	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
-		("~/Dropbox/howme/org/schedule.org" :level . 1)
-		("~/Dropbox/howm/org/task.org" :level . 1))))
+	   "# linux: %?\n%U %i")))
   :preface
   ;; Maximize the org-capture buffer
   (defvar my:org-capture-before-config nil
@@ -67,25 +67,6 @@
     "Make howm create file with 'org-capture'."
     (interactive)
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time))))
-
-
-;; ChangeLog memo
-(leaf clmemo
-  :ensure t
-  :bind ("C-x m" . clmemo)
-  :config
-  (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
-  (setq clmemo-file-name "~/Dropbox/howm/ChangeLog"
-	clmemo-title-list '("emacs" "win10" "debian" "memo" "idea" "GH"))
-  :preface
-  (leaf blgrep
-    :ensure t
-    :config
-    (autoload 'clgrep "clgrep" "grep mode for ChangeLog file." t)
-    (add-hook 'change-log-mode-hook
-	      '(lambda ()
-		 (bind-key* "C-c C-c" 'clmemo-exit change-log-mode-map)
-		 (bind-key "C-c C-g" 'clgrep change-log-mode-map)))))
 
 
 ;; Local Variables:

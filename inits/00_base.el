@@ -12,7 +12,6 @@
   ;; Emacs use the $PATH set up by the user's shell
   (leaf exec-path-from-shell
     :ensure t
-    :when (memq window-system '(mac ns x))
     :hook (after-init-hook . exec-path-from-shell-initialize)
     :config
     (setq exec-path-from-shell-check-startup-files nil))
@@ -61,10 +60,13 @@
 
   ;; Do not make a backup filie like *.~
   (setq make-backup-files nil)
+
   ;; Do not use auto save
   (setq auto-save-default nil)
+
   ;; Do not create lock file
   (setq create-lockfiles nil)
+
   ;; Do not record the same content in the history
   (setq history-delete-duplicates t)
 
@@ -95,7 +97,7 @@
     :hook (after-init-hook . recentf-mode)
     :config
     (setq recentf-save-file "~/.emacs.d/recentf"
-	  recentf-max-saved-items 200
+  	  recentf-max-saved-items 200
   	  recentf-auto-cleanup 'never
   	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
   			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
@@ -105,20 +107,27 @@
   :hook
   ;; Save hist
   (after-init-hook . savehist-mode)
+
   ;;Save plae
   (after-init-hook . save-place-mode)
+
   ;; Automatic reloading of changed files
   (after-init-hook . global-auto-revert-mode)
+
   ;; Do not blink the cursor
   (after-init-hook . blink-cursor-mode)
+
   ;; Window configuration undo/redo
   (after-init-hook . winner-mode)
+
   ;; font-lock
   (after-init-hook . global-font-lock-mode)
+
   ;; Highlight the current line
   ((after-init-hook . global-hl-line-mode)
    (dashboard-mode-hook eshell-mode-hook) .
    (lambda () (setq-local global-hl-line-mode nil)))
+
   ;; word wrapping is used
   (after-init-hook . global-visual-line-mode))
 

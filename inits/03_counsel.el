@@ -19,7 +19,7 @@
 	 ("C-c j" . counsel-git-grep)
 	 ("C-c i" . counsel-imenu)
 	 ("C-c t" . counsel-tramp)
-	 ("C-c r" . counsel-recentf)
+	 ("C-c C-r" . counsel-recentf)
 	 ([remap dired] . counsel-dired)
 	 ("<f6>" . find-counsel-in-m-x))
   :hook
@@ -69,6 +69,15 @@ Do not put anything, `swiper-thing-at-point'."
        (concat (propertize " " 'display `(space :align-to 2)) str))
      cands
      "\n"))
+
+  ;; Search using the word at the cursor position
+  (defun ad:counsel-ag (f &optional initial-input initial-directory extra-ag-args ag-prompt caller)
+    (apply f (or initial-input (ivy-thing-at-point))
+	   (unless current-prefix-arg
+	     (or initial-directory default-directory))
+	   extra-ag-args ag-prompt caller))
+
+  (advice-add 'counsel-ag :around #'ad:counsel-ag)
 
   (defun find-counsel-in-m-x ()
     "Narrow the only counsel-command in M-x."

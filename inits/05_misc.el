@@ -18,7 +18,7 @@
   (key-chord-mode 1)
   :chord (("df" . counsel-descbinds)
 	  ("l;" . init-loader-show-log)
-	  ("::" . rainbow-mode)
+	  (".." . hydra-work/body)
 	  ("hj" . undo)))
 
 (leaf sequential-command-config
@@ -73,13 +73,9 @@
   :ensure t
   :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
-(leaf atomic-chrome
-  :ensure t
-  :hook (after-init-hook . atomic-chrome-start-server))
-
 (leaf rainbow-mode
   :ensure t
-  :bind ("C-c b" . rainbow-mode))
+  :bind ("C-c r" . rainbow-mode))
 
 (leaf edit-indirect
   :ensure t

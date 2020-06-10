@@ -10,9 +10,9 @@
    (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _g_ithub   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   pdf:_1_:_2_   howm_@_
-   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _b_ook   _y_as:_n_:_v_   _s_earch   make:_k_^^   _c_ompile   _o_pen-url   capture_,_^^   Log:_[_:_]_^^   _a_g:🐾"
+  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------------------------------------
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _g_ithub   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   howm_@_
+   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _b_ook   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   _a_g:🐾"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -48,8 +48,6 @@
    ("p" hydra-pinky/body)
    ("P" hydra-package/body)
    ("." hydra-work/body)
-   ("]" clmemo)
-   ("[" my:clmemo)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -68,9 +66,6 @@
    ("e" easy-hugo)
    ("b" my:backup-all)
    ("r" my:backup-dir)
-   ;; ("p" backup-melpa)
-   ;; ("l" backup-elget)
-   ;; ("u" backup-duser)
    ("d" my:diary)
    ("D" my:diary-new-post)
    ("o" my:otibo)

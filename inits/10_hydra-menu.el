@@ -104,24 +104,6 @@
       (shell-command "sh backup-all.sh"))
     (message "Finished buckuped!"))
 
-  (defun my:haiku-note ()
-    "Open haiku note file."
-    (interactive)
-    (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
-    (goto-char (point-min)))
-
-  (defun my:haiku-note-post ()
-    "Insert template."
-    (interactive)
-    (find-file (format-time-string "~/Dropbox/howm/haiku/haikunote.%Y.md"))
-    (goto-char (point-min))
-    (forward-line 2)
-    (insert
-     (format-time-string "> %Y年%m月%d日 (%a)\n")
-     (format-time-string "PLACE:\n\n"))
-    (forward-line -2)
-    (forward-char 6)))
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -39,6 +39,9 @@
   (leaf amx
     :ensure t
     :init (setq amx-history-length 20))
+  (leaf all-the-icons-ivy-rich
+    :ensure t
+    :hook (after-init-hook . all-the-icons-ivy-rich-mode))
   (leaf ivy-rich
     :ensure t
     :hook (ivy-mode-hook . ivy-rich-mode)))

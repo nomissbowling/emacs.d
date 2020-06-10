@@ -6,19 +6,19 @@
 (leaf company
   :ensure t
   :bind (("C-<tab>" . company-complete)
-	 (:company-mode-map
-	  ("<backtab>" . company-yasnippet))
 	 (:company-active-map
 	  ("<tab>" . company-complete-common-or-cycle)
-	  ("<backtab>" . company-yasnippet)
+	  ("<backtab>" . company-select-previous)
 	  ("b" . company-select-previous)
 	  ("SPC" . company-select-next)
 	  ("C-d" . company-show-doc-buffer)))
   :hook (after-init-hook . global-company-mode)
   :config
-  (setq company-minimum-prefix-length 2
+  (setq company-transformers '(company-sort-by-backend-importance)
+	company-minimum-prefix-length 3
 	company-selection-wrap-around t
-	company-tooltip-maximum-width 50))
+	completion-ignore-case t
+	company-dabbrev-downcase nil))
 
 
 ;; Local Variables:

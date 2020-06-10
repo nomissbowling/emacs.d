@@ -36,6 +36,9 @@
 	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
   :init
   (leaf ivy-xref :ensure t)
+  (leaf avy
+    :ensure t
+    :bind ("C-r" . avy-goto-word-1))
   (leaf amx
     :ensure t
     :init (setq amx-history-length 20))

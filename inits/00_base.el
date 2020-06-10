@@ -137,9 +137,6 @@
   ;; Run muhenkan same minibuffer-keyboard-quit as C-g
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
 
-  ;; Run M-/ same kill-buffer as C-x k
-  (bind-key "M-/" 'kill-buffer)
-
   ;; xref-find-* key
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)

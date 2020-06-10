@@ -5,7 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-or-isearch-forword)
+  :bind (("C-s" . swiper-thing-at-point)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -36,9 +36,6 @@
 	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
   :init
   (leaf ivy-xref :ensure t)
-  (leaf avy
-    :ensure t
-    :bind ("C-r" . avy-goto-word-1))
   (leaf amx
     :ensure t
     :init (setq amx-history-length 20))
@@ -49,13 +46,19 @@
 
 (leaf *user-customize-function
   :init
-  (defun swiper-or-isearch-forword (arg)
-    "Default, `swiper-thing-at-point'.
-If put 'C-u', `isearch-forward'."
-    (interactive "p")
-    (case arg
-      (4 (isearch-forward))
-      (t (swiper-thing-at-point))))
+  (defun ytn-ivy-migemo-re-builder (str)
+    "Function to search by using a migemo."
+    (let* ((sep " \\|\\^\\|\\.\\|\\*")
+	   (splitted (--map (s-join "" it)
+			    (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
+					    (s-split "" str t)))))
+      (s-join "" (--map (cond ((s-equals? it " ") ".*?")
+			      ((s-matches? sep it) it)
+			      (t (migemo-get-pattern it)))
+			splitted))))
+  ;; Using migemo function with `swiper' to the key
+  (setq ivy-re-builders-alist '((t . ivy--regex-plus)
+				(swiper . ytn-ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."

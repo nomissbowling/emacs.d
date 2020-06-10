@@ -5,7 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-region-or-isearch)
+  :bind (("C-s" . swiper-or-isearch)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -49,14 +49,12 @@
 
 (leaf *user-customize-function
   :init
-  (defun swiper-region-or-isearch (arg)
-    "If put 'C-u', `isearch-forward'.
-If pt 'C-u C-u', `swiper-isearch'.
-Do not put anything, `swiper-thing-at-point'."
+  (defun swiper-or-isearch (arg)
+    "Default, `swiper-thing-at-point'.
+If put 'C-u', `isearch-forward'."
     (interactive "p")
     (case arg
       (4 (isearch-forward))
-      (16 (swiper-isearch))
       (t (swiper-thing-at-point))))
 
   (defun my:ivy-format-function-arrow (cands)

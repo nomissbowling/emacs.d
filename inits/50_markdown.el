@@ -23,8 +23,8 @@
   :url "https://github.com/shime/emacs-livedown"
   :el-get  shime/emacs-livedown
   :require t
-  :bind (("C-c p" . livedown-preview)
-	 ("C-c k" . livedown-kill))
+  :bind (("C-c C-p" . livedown-preview)
+	 ("C-c C-k" . livedown-kill))
   :config
   (setq livedown-autostart nil
 	livedown-open t

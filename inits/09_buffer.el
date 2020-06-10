@@ -45,8 +45,7 @@
   :ensure t
   :bind* (("C-_" . undo-tree-undo)
 	  ("C-\\" . undo-tree-undo)
-	  ("M-_" . undo-tree-redo)
-	  ("M-\\" . undo-tree-redo)
+	  ("C-/" . undo-tree-redo)
 	  ("C-x u" . undo-tree-visualize))
   :hook ((prog-mode-hook . undo-tree-mode)
 	 (text-mode-hook . undo-tree-mode))
@@ -78,7 +77,7 @@
 
 (leaf *user-buffer-functions
   :bind (([S-return] . toggle-scratch)
-	 ("C-x /" . kill-other-buffers))
+	 ("M-/" . kill-buffer))
   :init
   (defun toggle-scratch ()
     "Toggle current buffer and *scratch* buffer."

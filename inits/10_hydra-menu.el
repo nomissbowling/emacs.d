@@ -12,7 +12,7 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _g_ithub   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   howm_@_
-   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _b_ook   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   _a_g:🐾"
+   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _b_ook   _y_as:_n_:_v_   _s_wiper   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   _a_g:🐾"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -30,7 +30,7 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("s" hydra-search/body)
+   ("s" swiper)
    ("m" hydra-markdown/body)
    (":" magit-status)
    (";" my:dot-emacs-dir)

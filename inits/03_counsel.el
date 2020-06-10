@@ -5,7 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-or-isearch)
+  :bind (("C-s" . swiper-or-isearch-forword)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -52,7 +52,7 @@
 
 (leaf *user-customize-function
   :init
-  (defun swiper-or-isearch (arg)
+  (defun swiper-or-isearch-forword (arg)
     "Default, `swiper-thing-at-point'.
 If put 'C-u', `isearch-forward'."
     (interactive "p")

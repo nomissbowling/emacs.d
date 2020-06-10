@@ -49,9 +49,13 @@
   :ensure t
   :config
   (setq all-the-icons-scale-factor 1.0)
+  :init
   (leaf all-the-icons-dired
     :ensure t
-    :hook (dired-mode-hook . all-the-icons-dired-mode)))
+    :hook (dired-mode-hook . all-the-icons-dired-mode))
+  (leaf all-the-icons-ivy-rich
+    :ensure t
+    :hook (after-init-hook . all-the-icons-ivy-rich-mode)))
 
 
 ;; Remove visual distractions and focus on writing

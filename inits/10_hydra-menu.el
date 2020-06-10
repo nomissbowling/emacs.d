@@ -16,7 +16,6 @@
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
-   ("p" hydra-package/body)
    ("o" browse-url-at-point)
    ("f" ftp-client)
    ("t" counsel-tramp)
@@ -46,7 +45,6 @@
    ("l" gist-list)
    ("u" undo-tree-visualize)
    ("p" hydra-pinky/body)
-   ("P" hydra-package/body)
    ("." hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
@@ -85,7 +83,6 @@
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
-   ("<henkan>" nil)
    ("q" keyboard-quit)))
 
 

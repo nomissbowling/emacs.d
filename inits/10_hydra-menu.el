@@ -83,7 +83,8 @@
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
-   ("q" keyboard-quit)))
+   ("q" keyboard-quit)
+   ("M-," nil)))
 
 
 (leaf *user-defined-function

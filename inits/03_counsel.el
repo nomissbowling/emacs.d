@@ -46,8 +46,8 @@
 
 (leaf *user-customize-function
   :init
-  (defun ytn-ivy-migemo-re-builder (str)
-    "Function to search by using a migemo."
+  (defun my:ivy-migemo-re-builder (str)
+    "Own function for my:ivy-migemo."
     (let* ((sep " \\|\\^\\|\\.\\|\\*")
 	   (splitted (--map (s-join "" it)
 			    (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
@@ -56,9 +56,8 @@
 			      ((s-matches? sep it) it)
 			      (t (migemo-get-pattern it)))
 			splitted))))
-  ;; Using migemo function with `swiper' to the key
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
-				(swiper . ytn-ivy-migemo-re-builder)))
+				(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."

@@ -57,6 +57,12 @@
   (find-file "~/Dropbox/GH/dia/diary.txt")
   (goto-char (point-min)))
 
+(defun my:clmemo ()
+  "Open changelog file."
+  (interactive)
+  (find-file "~/Dropbox/howm/ChangeLog")
+  (goto-char (point-min)))
+
 (defun my:d_kukai ()
   "Open dkukai minoru_seq file."
   (interactive)

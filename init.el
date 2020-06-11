@@ -14,20 +14,15 @@
   (setq inhibit-startup-message t)
 
   ;; Startup optimizations
+  (defvar default-gc-cons-threshold gc-cons-threshold)
   (defvar default-file-name-handler-alist file-name-handler-alist)
   (setq file-name-handler-alist nil)
-  (setq gc-cons-threshold 80000000)
+  (setq gc-cons-threshold 100000000)
   (add-hook 'emacs-startup-hook
 	    (lambda ()
 	      "Restore defalut values after init."
 	      (setq file-name-handler-alist default-file-name-handler-alist)
-	      (setq gc-cons-threshold 800000)
-	      (if (boundp 'after-focus-change-function)
-		  (add-function :after after-focus-change-function
-				(lambda ()
-				  (unless (frame-focus-state)
-				    (garbage-collect))))
-		(add-hook 'focus-out-hook 'garbage-collect))))
+	      (setq gc-cons-threshold default-gc-cons-threshold)))
 
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")

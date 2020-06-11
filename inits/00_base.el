@@ -21,7 +21,7 @@
     :require t
     :config
     (unless (server-running-p)
-      (add-hook 'after-init-hook 'server-start)))
+      (add-hook 'emacs-startup-hook 'server-start)))
 
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")

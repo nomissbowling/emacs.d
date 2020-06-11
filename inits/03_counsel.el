@@ -65,6 +65,7 @@ If the region isn't selected, `swiper' with migemo."
 			      (t (migemo-get-pattern it)))
 			splitted))))
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
+				(counsel-web . my:ivy-migemo-re-builder)
   				(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)
@@ -110,6 +111,12 @@ If the region isn't selected, `swiper' with migemo."
     (when (get-buffer "*tramp/scp xsrv*")
       (counsel-tramp-quit)
       (message "Now tramp-quit!"))))
+
+(leaf counsel-web
+  :ensure t
+  :config
+  (setq counsel-web-search-action #'browse-url
+	counsel-web-engine 'google))
 
 
 ;; Local Variables:

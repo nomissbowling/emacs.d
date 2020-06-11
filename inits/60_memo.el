@@ -36,17 +36,24 @@
 	org-src-fontify-natively t
 	org-agenda-files '("~/Dropbox/howm/org/task.org"
 			   "~/Dropbox/howm/org/schedule.org"))
+  (setq org-refile-targets
+	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
+		("~/Dropbox/howm/org/remember.org" :level . 1)
+		("~/Dropbox/howm/org/idea.org" :level . 1)
+		("~/Dropbox/howm/org/task.org" :level . 1))))
   (setq org-capture-templates
 	'(("t" " Task" entry (file+headline "~/Dropbox/howm/org/task.org" "Task")
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("s" " Shedule" entry (file+headline "~/Dropbox/howm/org/schedule.org" "Schedule")
 	   "** %?\n SCHEDULED: %^t \n" :prepend t)
+	  ("i" "✌ Idea" entry (file+headline "~/Dropbox/howm/org/idea.org" "Idea")
+	   "* %? %U %i" :prepend)
+	  ("r" "🐾 Remember" entry (file+headline "~/Dropbox/howm/org/remember.org" "Remember")
+	   "* %? %U %i" :prepend)
 	  ("m" " Memo" plain (file my:howm-create-file)
 	   "# memo: %?\n%U %i")
 	  ("n" " Note" plain (file my:howm-create-file)
 	   "# note: %?\n%U %i")
-	  ("i" "✌ Idea" plain (file my:howm-create-file)
-	   "# idea: %?\n%U %i")
 	  ("p" "★ Perl" plain (file my:howm-create-file)
 	   "# Perl: %?\n%U %i\n\n>>>\n\n```perl\n%i\n```")
 	  ("e" "★ Emacs" plain (file my:howm-create-file)
@@ -69,25 +76,16 @@
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time))))
 
 
-;; ChangeLog memo
 (leaf clmemo
   :ensure t
-  :bind ("C-x m" . clmemo)
+  :bind (("C-x m" . clmemo)
+	 (:clmemo-mode-map
+	  ("C-c C-c" . clmemo-exit)))
   :config
   (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
   (setq clmemo-file-name "~/Dropbox/howm/ChangeLog"
 	clmemo-title-list '("emacs" "win10" "debian" "memo" "idea" "GH")
-	clmemo-time-string-with-weekday 't)
-  :preface
-  (leaf blgrep
-    :ensure t
-    :after clmemo
-    :config
-    (autoload 'clgrep "clgrep" "grep mode for ChangeLog file." t)
-    (add-hook 'change-log-mode-hook
-	      '(lambda ()
-		 (bind-key "C-c C-c" 'clmemo-exit change-log-mode-map)
-		 (bind-key* "C-c C-g" 'clgrep change-log-mode-map)))))
+	clmemo-time-string-with-weekday 't))
 
 
 ;; Local Variables:

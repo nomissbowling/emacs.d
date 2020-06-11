@@ -14,19 +14,25 @@
   (setq inhibit-startup-message t)
 
   ;; Startup optimizations
-  (setq gc-cons-threshold 100000000)
-  (setq default-file-name-handler-alist file-name-handler-alist)
+  (defvar default-file-name-handler-alist file-name-handler-alist)
   (setq file-name-handler-alist nil)
-  ;; after-init-hook to reset them
-  (add-hook 'after-init-hook
-            (lambda ()
-              (setq gc-cons-threshold 800000)
-              (setq file-name-handler-alist default-file-name-handler-alist)))
+  (setq gc-cons-threshold  (* 1024 1024 100))
+  (add-hook 'emacs-startup-hook
+	    (lambda ()
+	      "Restore defalut values after init."
+	      (setq file-name-handler-alist default-file-name-handler-alist)
+	      (setq gc-cons-threshold  (* 1024 1024 1024))
+	      (if (boundp 'after-focus-change-function)
+		  (add-function :after after-focus-change-function
+				(lambda ()
+				  (unless (frame-focus-state)
+				    (garbage-collect))))
+		(add-hook 'focus-out-hook 'garbage-collect))))
 
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")
-                       ("melpa" . "https://melpa.org/packages/")
-                       ("gnu"   . "https://elpa.gnu.org/packages/")))
+		       ("melpa" . "https://melpa.org/packages/")
+		       ("gnu"   . "https://elpa.gnu.org/packages/")))
 
   (package-initialize)
   (unless (package-installed-p 'leaf)

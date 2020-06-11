@@ -5,7 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-thing-at-point)
+  :bind (("C-s" . my:swiper-migemo-region)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -46,6 +46,14 @@
 
 (leaf *user-customize-function
   :init
+  (defun my:swiper-migemo-region ()
+    "If region is selected, `swiper' with the keyword selected in region.
+If the region isn't selected, `swiper' with migemo."
+    (interactive)
+    (if (not (use-region-p))
+	(swiper)
+      (swiper-thing-at-point)))
+
   (defun my:ivy-migemo-re-builder (str)
     "Own function for my:ivy-migemo."
     (let* ((sep " \\|\\^\\|\\.\\|\\*")
@@ -57,7 +65,7 @@
 			      (t (migemo-get-pattern it)))
 			splitted))))
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
-				(swiper . my:ivy-migemo-re-builder)))
+  				(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)
     "Transform CANDS into a string for minibuffer."

@@ -53,12 +53,6 @@
   :bind ("<f5>" . quickrun))
 
 
-(leaf dumb-jump
-  :ensure t
-  :hook (after-init-hook . dumb-jump-mode)
-  :config (setq dumb-jump-selector 'ivy))
-
-
 (leaf which-key
   :ensure t
   :hook (after-init-hook . which-key-mode)
@@ -73,6 +67,12 @@
   :config
   (leaf counsel-projectile :ensure t
     :hook (after-init-hook . counsel-projectile-mode)))
+
+
+(leaf espy
+  :ensure t
+  :config
+  (setq espy-password-file "~/Dropbox/backup/passwd/password.org.gpg"))
 
 
 (leaf restart-emacs

@@ -12,7 +12,7 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   _a_g:🐾   _g_rep:🐾   _p_ackage
-   magit:_._   _t_ramp:_q_   dumb_j_   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   Log:_[_:_]_   github_:_"
+   magit:_._   _t_ramp:_q_   es_-_py   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   Log:_[_:_]_   github_:_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -31,6 +31,7 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
+   ("-" find-espy-in-m-x)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
    ("." magit-status)
@@ -100,6 +101,11 @@
       (shell-command "/mnt/c/\"Program Files\"/\"FileZilla FTP Client\"/filezilla.exe"))
     (unless (getenv "WSENV")
       (shell-command "filezilla")))
+
+  (defun find-espy-in-m-x ()
+    "Narrow the only counsel-command in M-x."
+    (interactive)
+    (counsel-M-x "^espy"))
 
   (defun my:backup-all ()
     "Backup for melpa package."

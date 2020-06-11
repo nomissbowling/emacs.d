@@ -10,15 +10,16 @@
    (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _g_ithub   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   howm_@_
-   magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _b_ook   _y_as:_n_:_v_   _s_wiper   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   _a_g:🐾"
+  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _G_ithub   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   _a_g:🐾   _g_rep:🐾
+   magit:_:_   _t_ramp:_q_   dumb_j_   _f_tp   _b_ook   _y_as:_n_:_v_   _s_wiper   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   _p_ackage"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
    ("t" counsel-tramp)
+   ("g" counsel-git-grep)
    ("q" my:tramp-quit)
    ("d" my:dropbox)
    ("i" my:inits-dir)
@@ -30,21 +31,22 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("s" swiper)
+   ("s" swiper-thing-at-point)
    ("m" hydra-markdown/body)
    (":" magit-status)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("B" hydra-browse/body)
+   ("p" hydra-package/body)
    ("b" my:book-dir)
-   ("g" my:github-show)
+   ("G" my:github-show)
    ("@" howm-list-all)
    ("," org-capture)
    ("k" my:recompile)
    ("L" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)
-   ("p" hydra-pinky/body)
+   ("j" dumb-jump-go)
    ("." hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)

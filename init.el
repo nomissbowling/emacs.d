@@ -14,8 +14,8 @@
   (setq inhibit-startup-message t)
 
   ;; Startup optimizations
-  (defvar default-gc-cons-threshold gc-cons-threshold)
   (defvar default-file-name-handler-alist file-name-handler-alist)
+  (defvar default-gc-cons-threshold gc-cons-threshold)
   (setq file-name-handler-alist nil)
   (setq gc-cons-threshold 100000000)
   (add-hook 'emacs-startup-hook

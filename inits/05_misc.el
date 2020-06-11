@@ -55,6 +55,12 @@
   :bind ("<f5>" . quickrun))
 
 
+(leaf dumb-jump
+  :ensure t
+  :hook (after-init-hook . dumb-jump-mode)
+  :config (setq dumb-jump-selector 'ivy))
+
+
 (leaf which-key
   :ensure t
   :hook (after-init-hook . which-key-mode)

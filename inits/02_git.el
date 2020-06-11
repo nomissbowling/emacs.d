@@ -25,9 +25,12 @@
 
 (leaf diff-hl
   :ensure t
-  :hook ((after-init-hook . global-diff-hl-mode)
-	 (magit-post-refresh-hook . diff-hl-magit-post-refresh))
-  :config (diff-hl-margin-mode))
+  :hook
+  (((after-init-hook prog-mode-hook) . diff-hl-mode)
+   (magit-post-refresh-hook . diff-hl-magit-post-refresh))
+  :config
+  (diff-hl-margin-mode))
+
 
 
 ;; Local Variables:

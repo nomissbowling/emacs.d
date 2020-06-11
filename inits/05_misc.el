@@ -19,9 +19,7 @@
   :config
   (key-chord-mode 1)
   :chord (("df" . counsel-descbinds)
-	  ("l;" . init-loader-show-log)
-	  (".." . hydra-work/body)
-	  ("hj" . undo)))
+	  ("l;" . init-loader-show-log)))
 
 
 (leaf sequential-command-config

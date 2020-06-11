@@ -14,20 +14,14 @@
   (setq inhibit-startup-message t)
 
   ;; Startup optimizations
-  ;; Fork from https://github.com/seagle0128/.emacs.d/blob/master/init.el
-  (defvar my:gc-cons-threshold (if (display-graphic-p) 16000000 1600000))
-  (defvar my:gc-cons-upper-limit (if (display-graphic-p) 400000000 100000000))
-  (defvar my:gc-timer (run-with-idle-timer 10 t #'garbage-collect))
-  (defvar default-file-name-handler-alist file-name-handler-alist)
-  (setq file-name-handler-alist nil
-        gc-cons-threshold my:gc-cons-upper-limit
-        gc-cons-percentage 0.5)
-  (add-hook 'emacs-startup-hook
+  (setq gc-cons-threshold 100000000)
+  (setq default-file-name-handler-alist file-name-handler-alist)
+  (setq file-name-handler-alist nil)
+  ;; after-init-hook to reset them
+  (add-hook 'after-init-hook
             (lambda ()
-              "Restore default values after startup."
-              (setq file-name-handler-alist default-file-name-handler-alist
-                    gc-cons-threshold my:gc-cons-threshold
-                    gc-cons-percentage 0.1)))
+              (setq gc-cons-threshold 800000)
+              (setq file-name-handler-alist default-file-name-handler-alist)))
 
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")
@@ -63,7 +57,7 @@
 (provide 'init)
 
 ;; Local Variables:
-;; indent-tabs-mode: nil
+;; no-byte-compile: t
 ;; End:
 
 ;;; init.el ends here

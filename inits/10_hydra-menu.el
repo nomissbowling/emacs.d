@@ -11,8 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _G_ithub   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   _a_g:🐾   _g_rep:🐾
-   magit:_:_   _t_ramp:_q_   dumb_j_   _f_tp   _b_ook   _y_as:_n_:_v_   _s_wiper   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   _p_ackage"
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   githu_b_   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   _a_g:🐾   _g_rep:🐾
+   magit:_:_   _t_ramp:_q_   dumb_j_   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   _p_ackage"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -31,15 +31,15 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("s" swiper-thing-at-point)
+   ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
    (":" magit-status)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("B" hydra-browse/body)
    ("p" hydra-package/body)
-   ("b" my:book-dir)
-   ("G" my:github-show)
+   ("x" xref-find-definitions)
+   ("b" my:github-show)
    ("@" howm-list-all)
    ("," org-capture)
    ("k" my:recompile)

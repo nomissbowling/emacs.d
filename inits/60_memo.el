@@ -69,6 +69,27 @@
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time))))
 
 
+;; ChangeLog memo
+(leaf clmemo
+  :ensure t
+  :bind ("C-x m" . clmemo)
+  :config
+  (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
+  (setq clmemo-file-name "~/Dropbox/howm/ChangeLog"
+	clmemo-title-list '("emacs" "win10" "debian" "memo" "idea" "GH")
+	clmemo-time-string-with-weekday 't)
+  :preface
+  (leaf blgrep
+    :ensure t
+    :after clmemo
+    :config
+    (autoload 'clgrep "clgrep" "grep mode for ChangeLog file." t)
+    (add-hook 'change-log-mode-hook
+	      '(lambda ()
+		 (bind-key "C-c C-c" 'clmemo-exit change-log-mode-map)
+		 (bind-key* "C-c C-g" 'clgrep change-log-mode-map)))))
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

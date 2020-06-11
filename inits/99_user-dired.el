@@ -61,6 +61,7 @@
   "Open changelog file."
   (interactive)
   (find-file "~/Dropbox/howm/ChangeLog")
+  (clmemo-mode 1)
   (goto-char (point-min)))
 
 (defun my:d_kukai ()

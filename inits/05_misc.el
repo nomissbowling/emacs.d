@@ -41,7 +41,7 @@
 (leaf prescient
   :ensure t
   :hook (after-init-hook . prescient-persist-mode)
-  :config
+  :init
   (leaf company-prescient :ensure t
     :hook (after-init-hook . company-prescient-mode))
   (leaf ivy-prescient :ensure t
@@ -64,7 +64,7 @@
 (leaf projectile
   :ensure t
   :hook (after-init-hook . projectile-mode)
-  :config
+  :init
   (leaf counsel-projectile :ensure t
     :hook (after-init-hook . counsel-projectile-mode)))
 

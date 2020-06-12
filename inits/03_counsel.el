@@ -6,7 +6,7 @@
 (leaf counsel
   :ensure t
   :bind (("C-r" . swiper-thing-at-point)
-	 ("C-s" . swiper-migemo-or-swiper-region)
+	 ("C-s" . swiper-migemo-or-region)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -47,7 +47,7 @@
 
 (leaf *user-customize-function
   :init
-  (defun swiper-migemo-or-swiper-region ()
+  (defun swiper-migemo-or-region ()
     "If region is selected, `swiper' with the keyword selected in region.
 If the region isn't selected, `swiper' with migemo."
     (interactive)
@@ -56,7 +56,7 @@ If the region isn't selected, `swiper' with migemo."
       (swiper-thing-at-point)))
 
   (defun my:ivy-migemo-re-builder (str)
-    "Own function for my:ivy-migemo."
+    "Own ivy-migemo-re-build for swiper."
     (let* ((sep " \\|\\^\\|\\.\\|\\*")
 	   (splitted (--map (s-join "" it)
 			    (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
@@ -98,27 +98,29 @@ If the region isn't selected, `swiper' with migemo."
     (counsel-M-x "^counsel ")))
 
 
-(leaf counsel-tramp
-  :ensure t
-  :bind (("C-c t" . counsel-tramp)
-	 ("C-c q" . my:tramp-quit))
-  :config
-  (setq tramp-default-method "ssh"
-	counsel-tramp-custom-connections
-	'(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
-  :preface
-  (defun my:tramp-quit ()
-    "Quit tramp, if tramp connencted."
-    (interactive)
-    (when (get-buffer "*tramp/scp xsrv*")
-      (counsel-tramp-quit)
-      (message "Now tramp-quit!"))))
+(leaf *user-counsel-other-tool
+  :init
+  (leaf counsel-tramp
+    :ensure t
+    :bind (("C-c t" . counsel-tramp)
+	   ("C-c q" . my:tramp-quit))
+    :config
+    (setq tramp-default-method "ssh"
+	  counsel-tramp-custom-connections
+	  '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
+    :preface
+    (defun my:tramp-quit ()
+      "Quit tramp, if tramp connencted."
+      (interactive)
+      (when (get-buffer "*tramp/scp xsrv*")
+	(counsel-tramp-quit)
+	(message "Now tramp-quit!"))))
 
-(leaf counsel-web
-  :ensure t
-  :config
-  (setq counsel-web-search-action #'browse-url
-	counsel-web-engine 'google))
+  (leaf counsel-web
+    :ensure t
+    :config
+    (setq counsel-web-search-action #'browse-url
+	  counsel-web-engine 'google)))
 
 
 ;; Local Variables:

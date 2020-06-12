@@ -24,8 +24,9 @@
 		 (list "la" "ls -a -S")
 		 (list "ex" "exit")))))
 
+
 (leaf *user-eshell-fonction
-  :config
+  :init
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat (eshell/pwd)

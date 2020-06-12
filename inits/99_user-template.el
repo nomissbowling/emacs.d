@@ -29,7 +29,7 @@
 
 
 (leaf *template-for-minoru_sen
-  :config
+  :init
   (defun my:teirei-new-post ()
     "Open teirei file and insert template."
     (interactive)

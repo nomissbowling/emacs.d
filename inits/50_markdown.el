@@ -8,30 +8,6 @@
   :hook (markdown-mode-hook . auto-fill-mode)
   :mode (("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode))
-  :init
-  (leaf markdown-toc :ensure t))
-
-(leaf poly-markdown
-  :doc "syntaxhighlight in markdown-mode"
-  :ensure t
-  :mode ("\\.md" . poly-markdown-mode)
-  :init
-  (leaf polymode :ensure t))
-
-(leaf livedown
-  :doc "markdown preview"
-  :url "https://github.com/shime/emacs-livedown"
-  :el-get  shime/emacs-livedown
-  :require t
-  :bind (("C-c C-p" . livedown-preview)
-	 ("C-c C-k" . livedown-kill))
-  :config
-  (setq livedown-autostart nil
-	livedown-open t
-	livedown-port 1337
-	livedown-browser nil))
-
-(leaf *hydra-markdown
   :hydra
   (hydra-markdown
    (:color red :hint nil)
@@ -47,7 +23,29 @@
    ;; Pndoc
    ("p" md2pdf)
    ("d" md2docx)
-   ("q" nil)))
+   ("q" nil))
+
+  :init
+  (leaf markdown-toc :ensure t)
+  (leaf poly-markdown
+    :doc "syntaxhighlight in markdown-mode"
+    :ensure t
+    :mode ("\\.md" . poly-markdown-mode)
+    :init
+    (leaf polymode :ensure t))
+  (leaf livedown
+    :doc "markdown preview"
+    :url "https://github.com/shime/emacs-livedown"
+    :el-get  shime/emacs-livedown
+    :require t
+    :bind (("C-c C-p" . livedown-preview)
+	   ("C-c C-k" . livedown-kill))
+    :config
+    (setq livedown-autostart nil
+	  livedown-open t
+	  livedown-port 1337
+	  livedown-browser nil)))
+
 
 (leaf *user-markdown-function
   :config

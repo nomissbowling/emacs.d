@@ -6,7 +6,6 @@
 ;; Interactive extensions for package.el
 (leaf package-utils
   :ensure t
-  :bind ("C-c p" . hydra-package/body)
   :chord ("p@" . hydra-package/body)
   :hydra
   (hydra-package

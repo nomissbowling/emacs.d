@@ -5,7 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . my:swiper-migemo-region)
+  :bind (("C-s" . swiper-migemo-region)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -21,7 +21,7 @@
 	 ("C-c t" . counsel-tramp)
 	 ("C-c C-r" . counsel-recentf)
 	 ([remap dired] . counsel-dired)
-	 ("<f6>" . find-counsel-in-m-x))
+	 ("<f6>" . select-counsel-command))
   :hook
   ((after-init-hook . ivy-mode)
    (ivy-mode-hook . counsel-mode)
@@ -46,7 +46,7 @@
 
 (leaf *user-customize-function
   :init
-  (defun my:swiper-migemo-region ()
+  (defun swiper-migemo-region ()
     "If region is selected, `swiper' with the keyword selected in region.
 If the region isn't selected, `swiper' with migemo."
     (interactive)
@@ -90,7 +90,7 @@ If the region isn't selected, `swiper' with migemo."
 	   extra-ag-args ag-prompt caller))
   (advice-add 'counsel-ag :around #'my:counsel-ag)
 
-  (defun find-counsel-in-m-x ()
+  (defun select-counsel-command ()
     "Narrow the only counsel-command in M-x."
     (interactive)
     (counsel-M-x "^counsel ")))

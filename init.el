@@ -20,7 +20,7 @@
   (setq gc-cons-threshold 100000000)
   (add-hook 'emacs-startup-hook
 	    (lambda ()
-	      "Restore defalut values after init."
+	      "Restore defalut values after startup."
 	      (setq file-name-handler-alist default-file-name-handler-alist)
 	      (setq gc-cons-threshold default-gc-cons-threshold)))
 

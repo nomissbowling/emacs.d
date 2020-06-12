@@ -26,31 +26,37 @@
     (interactive)
     (setq compile-command "make -k")
     (my:recompile))
+
   (defun my:make-upftp ()
     "Make command for upftp."
     (interactive)
     (setq compile-command "make up")
     (my:recompile))
+
   (defun my:make-move ()
     "Make command for move."
     (interactive)
     (setq compile-command "make mv")
     (my:recompile))
+
   (defun my:make-bklog ()
     "Make command for bklog."
     (interactive)
     (setq compile-command "make bk")
     (my:recompile))
+
   (defun my:make-git ()
     "Make command for git."
     (interactive)
     (setq compile-command "make git")
     (my:recompile))
+
   (defun my:make-clean ()
     "Make command for clean."
     (interactive)
     (setq compile-command "make clean")
     (my:recompile))
+
   (defun my:recompile ()
     "Restore compile command after recompile."
     (interactive)

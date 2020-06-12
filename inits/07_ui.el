@@ -69,6 +69,7 @@
     (display-line-numbers-mode 0)
     (diff-hl-mode 0)
     (flymake-mode 0)
+    (setq line-spacing 0.4)
     (darkroom-mode 1)
     (bind-key "<f12>" 'my:darkroom-mode-out darkroom-mode-map))
   (defun my:darkroom-mode-out ()
@@ -77,6 +78,7 @@
     (darkroom-mode 0)
     (flymake-mode 1)
     (diff-hl-mode 1)
+    (setq line-spacing 0.1)
     (display-line-numbers-mode 1)))
 
 

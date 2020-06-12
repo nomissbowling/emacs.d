@@ -31,7 +31,7 @@
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
    ("z" eshell)
-   ("-" find-espy-in-m-x)
+   ("-" select-espy-command)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
    ("." magit-status)
@@ -101,8 +101,8 @@
     (unless (getenv "WSENV")
       (shell-command "filezilla")))
 
-  (defun find-espy-in-m-x ()
-    "Narrow the only counsel-command in M-x."
+  (defun select-espy-command ()
+    "Narrow the only espy command in M-x."
     (interactive)
     (counsel-M-x "^espy"))
 

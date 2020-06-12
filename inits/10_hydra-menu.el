@@ -58,7 +58,7 @@
 
 
 (leaf *hydra-work-menu
-  :bind ("<henkan>" . hydra-work/body)
+  :bind ("<hiragana-katakana>" . hydra-work/body)
   :hydra
   (hydra-work
    (:hint nil :exit t)
@@ -88,7 +88,7 @@
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
    ("q" keyboard-quit)
-   ("<henkan>" nil)))
+   ("<hiragana-katakana>" nil)))
 
 
 (leaf *user-defined-function

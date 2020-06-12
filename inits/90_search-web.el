@@ -7,8 +7,6 @@
   :ensure t
   :url "https://github.com/tomoya/search-web.el"
   :bind ("M-s" . hydra-search/body)
-  :commands search-web-dwim
-
   :config
   (add-to-list 'search-web-engines '("weblio" "https://www.weblio.jp/content/%s" nil))
   (add-to-list 'search-web-engines '("kobun" "https://kobun.weblio.jp/content/%s" nil))

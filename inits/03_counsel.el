@@ -5,7 +5,7 @@
 
 (leaf counsel
   :ensure t
-  :bind (("C-s" . swiper-migemo-region)
+  :bind (("C-s" . swiper-region-or-swiper-migemo)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
 	 ("C-x b" . counsel-switch-buffer)
@@ -46,13 +46,14 @@
 
 (leaf *user-customize-function
   :init
-  (defun swiper-migemo-region ()
+  (defun swiper-region-or-swiper-migemo (arg)
     "If region is selected, `swiper' with the keyword selected in region.
-If the region isn't selected, `swiper' with migemo."
-    (interactive)
-    (if (not (use-region-p))
-	(swiper)
-      (swiper-thing-at-point)))
+If the region isn't selected, `swiper-thing-at-point'.
+When put the C-u, `swiper' with migemo."
+    (interactive "p")
+    (case arg
+      (4  (swiper))
+      (t  (swiper-thing-at-point))))
 
   (defun my:ivy-migemo-re-builder (str)
     "Own function for my:ivy-migemo."

@@ -7,7 +7,8 @@
   :ensure t
   :bind (("C-c C-w" . mozc-word-regist)
 	 ("C-c C-d" . mozc-config-dialog))
-  :bind* ("<henkan>" . toggle-input-method)
+  :bind* (("<hiragana-katakana>" . toggle-input-method)
+	  ("<henkan>" . toggle-input-method))
   :init
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"

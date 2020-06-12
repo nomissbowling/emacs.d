@@ -17,7 +17,7 @@
    (YaTeX-use-LaTeX2e . t)
    (YaTeX-use-font-lock . t)
    (YaTeX-default-pop-window-height . 20))
-  :config
+  :init
   (add-hook 'yatex-mode-hook
 	    '(lambda ()
 	       (leaf yatexprc

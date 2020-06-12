@@ -16,7 +16,12 @@
   :preface
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
-    :require t :after mozc)
+    :require t :after mozc
+    :config
+    (setq mozc-cursor-color-alist
+	  '((direct . "#bd93f9")
+	    (read-only . "lime green")
+	    (hiragana . "#cc3333"))))
   (leaf mozc-cand-posframe
     :ensure t :require t
     :init

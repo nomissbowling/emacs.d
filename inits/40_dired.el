@@ -26,7 +26,7 @@
 	dired-dwim-target t
 	dired-recursive-copies 'always
 	dired-isearch-filenames t)
-  :preface
+  :init
   ;; omit desktop.ini
   (leaf dired-x
     :require t

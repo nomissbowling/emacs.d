@@ -5,7 +5,7 @@
 
 (leaf search-web
   :ensure t
-  :url "https://github.com/tomoya/search-web.el"
+  :require t
   :bind ("M-s" . hydra-search/body)
   :config
   (add-to-list 'search-web-engines '("weblio" "https://www.weblio.jp/content/%s" nil))

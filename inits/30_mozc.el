@@ -51,7 +51,6 @@
       ad-do-it
       (setq input-method-function input-method-function-save)))
 
-  ;; https://www2.ninjal.ac.jp/kubota/mozc.html
   (defun mozc-insert-str (str)
     "If punctuation marks, immediately confirm."
     (mozc-handle-event 'enter)

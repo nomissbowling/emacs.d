@@ -2,7 +2,7 @@
 
 ## Screen Shot
 
-![Alt Text](https://live.staticflickr.com/65535/50000735561_23509cff03_b.jpg)
+![Alt Text](https://live.staticflickr.com/65535/50002999041_ede7526494_b.jpg)
 
 ## Usage environment
 

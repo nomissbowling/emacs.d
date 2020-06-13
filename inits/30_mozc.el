@@ -53,7 +53,7 @@
 
   ;; https://www2.ninjal.ac.jp/kubota/mozc.html
   (defun mozc-insert-str (str)
-    "Set the argument `STR'."
+    "If punctuation marks, immediately confirm."
     (mozc-handle-event 'enter)
     (toggle-input-method)
     (insert str)

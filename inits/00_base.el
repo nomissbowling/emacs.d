@@ -162,7 +162,7 @@ If the region is inactive, `backward-kill-word'."
   (defalias 'yes-or-no-p 'y-or-n-p)
 
   ;; Set transparency (active inactive)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.8)))
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
 
   ;; Set makefle mode
   (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))

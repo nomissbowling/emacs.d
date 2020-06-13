@@ -20,9 +20,9 @@
 	'(("memo:" . (0 'gnus-group-mail-3))
 	  ("note:" . (0 'epa-mark))
 	  ("idea:" . (0 'epa-mark))
-	  ("perl:" . (0 'compilation-info))
+	  ("perl:" . (0 'diff-refine-added))
 	  ("haiku:" . (0 'compilation-mode-line-exit))
-	  ("emacs:" . (0 'compilation-mode-line-fail))
+	  ("emacs:" . (0 'compilation-info))
 	  ("linux:" . (0 'compilation-error)))))
 
 

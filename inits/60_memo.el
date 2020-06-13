@@ -76,18 +76,6 @@
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time))))
 
 
-(leaf clmemo
-  :ensure t
-  :bind (("C-x m" . clmemo)
-	 (:clmemo-mode-map
-	  ("C-c C-c" . clmemo-exit)))
-  :config
-  (autoload 'clmemo "clmemo" "ChangeLog memo mode." t)
-  (setq clmemo-file-name "~/Dropbox/howm/ChangeLog"
-	clmemo-title-list '("emacs" "win10" "debian" "memo" "idea" "GH")
-	clmemo-time-string-with-weekday 't))
-
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

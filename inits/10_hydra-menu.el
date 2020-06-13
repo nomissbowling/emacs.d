@@ -58,7 +58,7 @@
 
 
 (leaf *hydra-work-menu
-  :bind ("s-x" . hydra-work/body)
+  :bind ("s-z" . hydra-work/body)
   :hydra
   (hydra-work
    (:hint nil :exit t)
@@ -88,7 +88,7 @@
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
    ("q" keyboard-quit)
-   ("s-x" nil)))
+   ("s-z" nil)))
 
 
 (leaf *user-defined-function

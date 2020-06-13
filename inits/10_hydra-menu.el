@@ -12,7 +12,7 @@
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------------
    _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   _a_g:🐾   _g_rep:🐾   _p_ackage
-   magit:_._   _t_ramp:_q_   es_-_py   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   Log:_[_:_]_   github_:_"
+   magit:_._   _t_ramp:_q_   es_-_py   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   Note:_[__]_   github_:_"
    ("1" my:pdfout-buffer)
    ("2" my:pdfout-region)
    ("a" counsel-ag)
@@ -48,8 +48,8 @@
    ("l" gist-list)
    ("u" undo-tree-visualize)
    ("j" dumb-jump-go)
-   ("]" clmemo)
-   ("[" my:clmemo)
+   ("[" my:haiku-note)
+   ("]" my:haiku-note-post)
    ("<right>" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
@@ -63,7 +63,7 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _s_:創作  _e_:Hugo  _b_ackup"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _e_:Hugo  _b_ackup"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -80,8 +80,6 @@
    ("m" my:d_kukai)
    ("w" my:w_kukai)
    ("k" my:m_kukai)
-   ("s" my:haiku-note)
-   ("S" my:haiku-note-post)
    ("b" my:backup-all)
    (":" view-mode)
    ("/" kill-other-buffers)

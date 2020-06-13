@@ -16,16 +16,22 @@
   :preface
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
-    :require t :after mozc
+    :require t
     :config
     (setq mozc-cursor-color-alist
 	  '((direct . "#bd93f9")
 	    (read-only . "lime green")
 	    (hiragana . "#cc3333"))))
   (leaf mozc-cand-posframe
-    :ensure t :require t
-    :init
+    :ensure t
+    :require t
+    :config
+    (custom-set-faces
+     '(mozc-cand-posframe-normal-face ((t (:background "#282D43" :foreground "#C7C9D1"))))
+     '(mozc-cand-posframe-focused-face ((t (:background "#393F60" :foreground "#C7C9D1"))))
+     '(mozc-cand-posframe-footer-face ((t (:background "#282D43" :foreground "#454D73")))))
     (setq mozc-candidate-style 'posframe)
+    :init
     (leaf posframe :ensure t)))
 
 

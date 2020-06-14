@@ -20,7 +20,7 @@
     :config
     (setq mozc-cursor-color-alist
 	  '((direct . "#bd93f9")
-	    (read-only . "lime green")
+	    (read-only . "#84A0C6")
 	    (hiragana . "#cc3333"))))
   (leaf mozc-cand-posframe
     :ensure t

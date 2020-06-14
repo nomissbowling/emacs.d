@@ -11,13 +11,20 @@
   (hydra-package
    (:color red :hint nil)
    "
- 📦 Package: _i_nstall   _u_pgrade   _r_emove   _a_ll-update   _l_ist"
+ 📦 Package: _i_nstall   _u_pgrade   _r_emove   _a_ll-update   _l_ist  _e_l-get"
    ("i" package-install)
    ("u" package-utils-list-upgrades)
    ("r" package-utils-remove-by-name)
    ("a" package-utils-upgrade-all-and-restart)
    ("l" package-list-packages)
-   ("q" nil)))
+   ("e" select-elget-command)
+   ("q" nil))
+  :init
+  (defun select-elget-command ()
+    "Narrow the only el-get command in M-x."
+    (interactive)
+    (counsel-M-x "^el-get ")))
+
 
 ;; Emacs integration for gist.github.com
 (leaf gist

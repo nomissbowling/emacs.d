@@ -3,24 +3,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf doom-themes
-  :ensure t
-  :bind ("<f8>" . my:cycle-theme)
+(leaf *user-custom-theme
   :init
-  (setq my:themes (list 'iceberg 'doom-dracula))
-  (setq curr-theme my:themes)
-  (load-theme (car curr-theme) t)
-  (defun my:cycle-theme ()
-    "Cycle custom theme."
-    (interactive)
-    (disable-theme (car curr-theme))
-    (setq curr-theme (cdr curr-theme))
-    (if (null curr-theme) (setq curr-theme my:themes))
-    (load-theme (car curr-theme) t)
-    (message "%s" (car curr-theme)))
-  :preface
   (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-  (leaf iceberg-theme :ensure nil))
+  (load-theme 'iceberg t))
 
 
 (leaf doom-modeline
@@ -58,7 +44,6 @@
     :hook (after-init-hook . all-the-icons-ivy-rich-mode)))
 
 
-;; Remove visual distractions and focus on writing
 (leaf darkroom
   :ensure t
   :bind ("<f12>" . my:darkroom-mode-in)

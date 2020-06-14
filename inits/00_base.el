@@ -132,7 +132,7 @@
   (after-init-hook . global-visual-line-mode))
 
 
-(leaf *user-configuration
+(leaf *user-custom-configuration
   :init
   ;; Run muhenkan same minibuffer-keyboard-quit as C-g
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)

@@ -78,7 +78,7 @@
 	    (lambda ()
 	      (fset 'makefile-warn-suspicious-lines 'ignore)))
 
-  ;; Interface for display-line-numbers
+  ;; Interface for display-line-numbers (emacs version >=26)
   (leaf display-line-numbers
     :bind ("<f9>" . display-line-numbers-mode)
     :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))

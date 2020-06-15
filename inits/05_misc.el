@@ -82,7 +82,7 @@
 
 (leaf web-mode
   :ensure t
-  :mode "\\.js\\'" "\\.p.html?\\'")
+  :mode "\\.js\\'" "\\.html?\\'")
 
 
 (leaf php-mode

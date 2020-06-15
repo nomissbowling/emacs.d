@@ -11,10 +11,8 @@
    "
    🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gist:_l_   _r_estart   _m_arkdown   _u_ndotree^^   _a_g:🐾   _g_rep:🐾   _p_ackage
-   magit:_._   _t_ramp:_q_   es_-_py   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_^^   howm_@_   Note:_[__]_   github_:_"
-   ("1" my:pdfout-buffer)
-   ("2" my:pdfout-region)
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gist:_l_   _r_estart   _m_arkdown   _u_ndotree   _p_inky   github_:_   _P_ackage
+   magit:_._   _t_ramp:_q_   es_-_py   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   howm_@_   Note:_[__]_   _a_g:_g_rep"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -38,7 +36,8 @@
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
-   ("p" hydra-package/body)
+   ("p" hydra-pinky/body)
+   ("P" hydra-package/body)
    ("x" xref-find-definitions)
    (":" my:github-show)
    ("@" howm-list-all)
@@ -47,7 +46,6 @@
    ("L" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)
-   ("j" dumb-jump-go)
    ("[" my:haiku-note)
    ("]" my:haiku-note-post)
    ("<right>" hydra-work/body)

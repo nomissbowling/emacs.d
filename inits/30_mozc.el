@@ -5,15 +5,15 @@
 
 (leaf mozc
   :ensure t
-  :bind (("C-c C-w" . mozc-word-regist)
-	 ("C-c C-d" . mozc-config-dialog))
-  :bind* (("<hiragana-katakana>" . toggle-input-method)
-	  ("<henkan>" . toggle-input-method))
-  :init
+  :bind* ("<hiragana-katakana>" . toggle-input-method)
+  :config
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
 	mozc-leim-title "♡かな")
-  :preface
+  :init
+  (leaf mozc-temp
+    :ensure t
+    :bind* ("<henkan>" . mozc-temp-convert))
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t
@@ -32,19 +32,7 @@
 
 
 (leaf *user-mozc-function
-  :config
-  (defun mozc-word-regist ()
-    "Mozc word regist."
-    (interactive)
-    (shell-command-to-string
-     "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
-
-  (defun mozc-config-dialog ()
-    "Mozc config dialog."
-    (interactive)
-    (shell-command-to-string
-     "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
-
+  :init
   (defadvice toggle-input-method (around toggle-input-method-around activate)
     "Input method function in key-chord.el not to be nil."
     (let ((input-method-function-save input-method-function))

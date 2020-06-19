@@ -5,7 +5,7 @@
 
 (leaf markdown-mode
   :ensure t
-  :hook (markdown-mode-hook . auto-fill-mode)
+
   :mode (("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode))
   :hydra

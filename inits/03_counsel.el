@@ -118,6 +118,7 @@ If the region isn't selected, `swiper' with migemo."
 
   (leaf counsel-web
     :ensure t
+    :bind ("s-s" . counsel-web-suggest)
     :config
     (setq counsel-web-search-action #'browse-url
 	  counsel-web-engine 'google)))

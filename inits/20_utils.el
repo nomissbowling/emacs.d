@@ -15,7 +15,7 @@
 
 (leaf imenu-list
   :ensure t
-  :bind (("S-<f2>" . imenu-list-smart-toggle))
+  :bind (("<f7>" . imenu-list-smart-toggle))
   :config
   (setq imenu-list-size 30
 	imenu-list-position 'left

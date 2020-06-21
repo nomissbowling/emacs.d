@@ -40,7 +40,7 @@
    (":" my:github-show)
    ("@" howm-list-all)
    ("," org-capture)
-   ("k" my:recompile)
+   ("k" my:make-k)
    ("L" gist-region-or-buffer)
    ("l" gist-list)
    ("u" undo-tree-visualize)

@@ -77,10 +77,12 @@
    ("w" my:w_kukai)
    ("k" my:m_kukai)
    ("b" my:backup-all)
+   ("B" my:backup-dir)
    (":" view-mode)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
+   ("<right>" hydra-quick-menu/body)
    ("q" keyboard-quit)
    ("s-z" nil)))
 

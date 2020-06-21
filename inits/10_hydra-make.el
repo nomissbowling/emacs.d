@@ -16,52 +16,48 @@
    ("g" my:make-git)
    ("c" my:make-clean)
    ("e" next-error)
-   ("q" nil)))
+   ("q" my:make-quit)))
 
 ;; make functions corresponding to the makefile
 (leaf *user-make-function
+  :init
+  (setq compilation-always-kill t)
   :config
   (defun my:make-k ()
     "Make command default."
     (interactive)
-    (setq compile-command "make -k")
-    (my:recompile))
+    (compile "make -k"))
 
   (defun my:make-upftp ()
     "Make command for upftp."
     (interactive)
-    (setq compile-command "make up")
-    (my:recompile))
+    (compile "make up"))
 
   (defun my:make-move ()
     "Make command for move."
     (interactive)
-    (setq compile-command "make mv")
-    (my:recompile))
+    (compile "make mv"))
 
   (defun my:make-bklog ()
     "Make command for bklog."
     (interactive)
-    (setq compile-command "make bk")
-    (my:recompile))
+    (compile "make bk"))
 
   (defun my:make-git ()
     "Make command for git."
     (interactive)
-    (setq compile-command "make git")
-    (my:recompile))
+    (compile "make git"))
 
   (defun my:make-clean ()
     "Make command for clean."
     (interactive)
-    (setq compile-command "make clean")
-    (my:recompile))
+    (compile "make clean"))
 
-  (defun my:recompile ()
-    "Restore compile command after recompile."
+  (defun my:make-quit ()
+    "Make command for clean."
     (interactive)
-    (recompile)
-    (setq compile-command "make -k")))
+    (setq compile-command "make -k")
+    (delete-other-windows)))
 
 
 ;; Local Variables:

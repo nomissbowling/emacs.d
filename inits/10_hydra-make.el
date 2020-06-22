@@ -8,7 +8,7 @@
   (hydra-compile
    (:color red :hint nil)
    "
- 🗿 Compile: make:_k_  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _q_uit  _e_rror 🐾 "
+ 🗿 Compile: make:_k_  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _e_rror 🐾 "
    ("k" my:make-k)
    ("u" my:make-upftp)
    ("m" my:make-move)
@@ -18,10 +18,21 @@
    ("e" next-error)
    ("q" my:make-quit)))
 
-;; make functions corresponding to the makefile
+
 (leaf *user-make-function
   :init
-  (setq compilation-always-kill t)
+  (defun bury-compile-buffer-if-successful (buffer string)
+    "Delete a compilation window if succeeded without warnings."
+    (if (and
+	 (string-match "compilation" (buffer-name buffer))
+	 (string-match "finished" string)
+	 (not
+	  (with-current-buffer buffer
+	    (search-forward "warning" nil t))))
+	(run-with-timer 1 nil
+			(lambda ()
+			  (delete-other-windows)))))
+  (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
   :config
   (defun my:make-k ()
     "Make command default."
@@ -51,13 +62,7 @@
   (defun my:make-clean ()
     "Make command for clean."
     (interactive)
-    (compile "make clean"))
-
-  (defun my:make-quit ()
-    "Make command for clean."
-    (interactive)
-    (setq compile-command "make -k")
-    (delete-other-windows)))
+    (compile "make clean")))
 
 
 ;; Local Variables:

@@ -18,7 +18,7 @@
    '(lambda ()
       (leaf yatexprc
   	:bind (("M-c" . YaTeX-typeset-buffer)	;; Type set buffer
-  	       ("M-l" . YaTeX-lpr))))))		;; Open pdf veiwer
+  	       ("M-v" . YaTeX-lpr))))))		;; Open pdf veiwer
 
 
 ;; Dviprint-command-format

@@ -54,7 +54,7 @@
 
 
 (leaf *hydra-work-menu
-  :bind ("s-z" . hydra-work/body)
+  :bind ("s-x" . hydra-work/body)
   :hydra
   (hydra-work
    (:hint nil :exit t)
@@ -84,7 +84,7 @@
    ("." hydra-quick-menu/body)
    ("<right>" hydra-quick-menu/body)
    ("q" keyboard-quit)
-   ("s-z" nil)))
+   ("s-x" nil)))
 
 
 (leaf *user-defined-function

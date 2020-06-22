@@ -12,7 +12,7 @@
 	 ("C-x b" . counsel-switch-buffer)
 	 ("M-x" . counsel-M-x)
 	 ("M-y" . counsel-yank-pop)
-	 ("s-x" . counsel-linux-app)
+	 ("s-a" . counsel-linux-app)
 	 ("C-x C-f" . counsel-find-file)
 	 ("C-c k" . counsel-ag)
 	 ("C-c f" . counsel-projectile-find-file)

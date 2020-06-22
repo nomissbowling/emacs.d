@@ -25,7 +25,6 @@
     :ensure
     :hook (css-mode-hook . #'counsel-css-imenu-setup)))
 
-
 (leaf browse-at-remote
   :ensure t
   :config
@@ -37,14 +36,14 @@
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)
-    (shell-command (concat "xdg-open " default-directory)))
+    (compile (concat "Thunar " default-directory)))
   (bind-key "<f3>" 'filer-current-dir-open)
 
   (defun term-current-dir-open ()
     "Open terminal application in current dir."
     (interactive)
     (let ((dir (directory-file-name default-directory)))
-      (shell-command (concat "gnome-terminal --working-directory " dir))))
+      (compile (concat "gnome-terminal --working-directory " dir))))
   (bind-key "<f4>" 'term-current-dir-open)
 
 

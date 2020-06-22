@@ -5,7 +5,8 @@
 
 (leaf mozc
   :ensure t
-  :bind* ("<hiragana-katakana>" . toggle-input-method)
+  :bind* (("<hiragana-katakana>" . toggle-input-method)
+	  ("<henkan>" . toggle-input-method))
   :bind ("<f8>" . my:select-mozc-tool)
   :config
   (setq default-input-method "japanese-mozc"

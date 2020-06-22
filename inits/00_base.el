@@ -134,6 +134,9 @@
 
 (leaf *user-custom-configuration
   :init
+  ;; Text-scale-adjust
+  (bind-key "s-z" 'text-scale-adjust)
+
   ;; Run muhenkan same minibuffer-keyboard-quit as C-g
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
 

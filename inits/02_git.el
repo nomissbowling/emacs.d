@@ -8,7 +8,7 @@
 (leaf magit
   :ensure t
   :bind (("C-x g" . magit-status)
-	 ("<f2>" . hydra-magit/body))
+	 ("<f7>" . hydra-magit/body))
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   :hydra
@@ -19,7 +19,8 @@
    ("s" magit-status :exit t)
    ("b" magit-blame :exit t)
    ("t" git-timemachine :exit t)
-   ("d" vc-diff))
+   ("d" vc-diff)
+   ("<f7>" nil))
   :init
   (leaf git-timemachine :ensure t)
   (leaf diff-hl

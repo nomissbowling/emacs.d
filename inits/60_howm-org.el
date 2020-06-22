@@ -35,19 +35,16 @@
 	org-use-speed-commands t
 	org-src-fontify-natively t
 	org-agenda-files '("~/Dropbox/howm/org/task.org"
-			   "~/Dropbox/howm/org/schedule.org"))
+			   "~/Dropbox/howm/org/memo.org"))
   (setq org-refile-targets
 	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
 		("~/Dropbox/howm/org/remember.org" :level . 1)
-		("~/Dropbox/howm/org/idea.org" :level . 1)
 		("~/Dropbox/howm/org/task.org" :level . 1))))
   (setq org-capture-templates
 	'(("t" " Task" entry (file+headline "~/Dropbox/howm/org/task.org" "Task")
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
-	  ("s" " Shedule" entry (file+headline "~/Dropbox/howm/org/schedule.org" "Schedule")
+	  ("d" "✌ Diary" entry (file+headline "~/Dropbox/howm/org/memo.org" "Diary")
 	   "** %?\n SCHEDULED: %^t \n" :prepend t)
-	  ("i" "✌ Idea" entry (file+headline "~/Dropbox/howm/org/idea.org" "Idea")
-	   "* %? %U %i" :prepend)
 	  ("r" "🐾 Remember" entry (file+headline "~/Dropbox/howm/org/remember.org" "Remember")
 	   "* %? %U %i" :prepend)
 	  ("m" " Memo" plain (file my:howm-create-file)

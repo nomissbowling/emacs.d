@@ -29,9 +29,6 @@
 	      (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
 	      (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
   :init
-  (leaf mozc-temp
-    :ensure t
-    :bind* ("<henkan>" . mozc-temp-convert))
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t
@@ -50,7 +47,7 @@
 
 
 (leaf *user-mozc-tool
-  :init
+  :config
   (defun my:select-mozc-tool ()
     "Narrow the only espy command in M-x."
     (interactive)
@@ -59,26 +56,22 @@
   (defun my:mozc-config-dialog ()
     "Run the mozc-tool in the background."
     (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=config_dialog")
-    (delete-other-windows))
+    (compile "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
 
   (defun my:mozc-dictionary-tool ()
     "Run the mozc-tool in the background."
     (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=dictionary_tool")
-    (delete-other-windows))
+    (compile "/usr/lib/mozc/mozc_tool --mode=dictionary_tool"))
 
   (defun my:mozc-word-regist ()
     "Run the mozc-tool in the background."
     (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog")
-    (delete-other-windows))
+    (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
 
   (defun my:mozc-hand-writing ()
     "Run the mozc-tool in the background."
     (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")
-    (delete-other-windows)))
+    (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")))
 
 
 ;; Local Variables:

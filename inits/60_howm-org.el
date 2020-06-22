@@ -43,7 +43,7 @@
   (setq org-capture-templates
 	'(("t" " Task" entry (file+headline "~/Dropbox/howm/org/task.org" "Task")
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
-	  ("d" "✌ Diary" entry (file+headline "~/Dropbox/howm/org/memo.org" "Diary")
+	  ("d" "📕 Diary" entry (file+headline "~/Dropbox/howm/org/memo.org" "Diary")
 	   "** %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("r" "🐾 Remember" entry (file+headline "~/Dropbox/howm/org/remember.org" "Remember")
 	   "* %? %U %i" :prepend)

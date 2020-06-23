@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *hydra-compile
+(leaf *user-make-function
   :hydra
   (hydra-compile
    (:color red :hint nil)
@@ -16,10 +16,32 @@
    ("g" my:make-git)
    ("c" my:make-clean)
    ("e" next-error)
-   ("q" nil)))
-
-
-(leaf *user-make-function
+   ("q" nil))
+  :config
+  (defun my:make-k ()
+    "Make command default."
+    (interactive)
+    (compile "make -k"))
+  (defun my:make-upftp ()
+    "Make command for upftp."
+    (interactive)
+    (compile "make up"))
+  (defun my:make-move ()
+    "Make command for move."
+    (interactive)
+    (compile "make mv"))
+  (defun my:make-bklog ()
+    "Make command for bklog."
+    (interactive)
+    (compile "make bk"))
+  (defun my:make-git ()
+    "Make command for git."
+    (interactive)
+    (compile "make git"))
+  (defun my:make-clean ()
+    "Make command for clean."
+    (interactive)
+    (compile "make clean"))
   :init
   ;; https://gist.github.com/EricCrosson/fa41233f327403ea2a5a
   (defun close-compile-window-if-successful (buffer string)
@@ -33,37 +55,7 @@
       (run-with-timer 1 nil
 		      (lambda ()
 			(delete-other-windows)))))
-  (add-hook 'compilation-finish-functions 'close-compile-window-if-successful)
-  :config
-  (defun my:make-k ()
-    "Make command default."
-    (interactive)
-    (compile "make -k"))
-
-  (defun my:make-upftp ()
-    "Make command for upftp."
-    (interactive)
-    (compile "make up"))
-
-  (defun my:make-move ()
-    "Make command for move."
-    (interactive)
-    (compile "make mv"))
-
-  (defun my:make-bklog ()
-    "Make command for bklog."
-    (interactive)
-    (compile "make bk"))
-
-  (defun my:make-git ()
-    "Make command for git."
-    (interactive)
-    (compile "make git"))
-
-  (defun my:make-clean ()
-    "Make command for clean."
-    (interactive)
-    (compile "make clean")))
+  (add-hook 'compilation-finish-functions 'close-compile-window-if-successful))
 
 
 ;; Local Variables:

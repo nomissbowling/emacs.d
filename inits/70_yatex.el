@@ -11,7 +11,7 @@
 	dviprint-command-format "dvpd.sh %s"
 	YaTeX-kanji-code nil
 	YaTeX-latex-message-code 'utf-8
-	YaTeX-default-pop-window-height 25)
+	YaTeX-default-pop-window-height 15)
   :init
   (add-hook
    'yatex-mode-hook

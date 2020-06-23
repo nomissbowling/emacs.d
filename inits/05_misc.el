@@ -95,11 +95,6 @@
   :bind ("C-c r" . rainbow-mode))
 
 
-(leaf edit-indirect
-  :ensure t
-  :bind ("C-c i" . edit-indirect-region))
-
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

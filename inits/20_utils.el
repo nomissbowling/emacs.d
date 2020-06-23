@@ -19,11 +19,8 @@
   :config
   (setq imenu-list-size 30
 	imenu-list-position 'left
-	imenu-list-focus-after-activation t)
-  :init
-  (leaf counsel-css
-    :ensure
-    :hook (css-mode-hook . #'counsel-css-imenu-setup)))
+	imenu-list-focus-after-activation t))
+
 
 (leaf browse-at-remote
   :ensure t

@@ -10,9 +10,9 @@
    (:hint nil :exit t)
    "
    🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^---------------------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gist:_l_   _r_estart   _m_arkdown   _u_ndotree   _p_inky   github_:_   _a_g🐾
-   magit:_._   _t_ramp:_q_   es_-_py   _f_tp   _x_ref   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   howm_@_   Note:_[__]_   _g_rep"
+  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------------------
+   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gist:_l_   _r_estart   _m_arkdown   _u_ndotree   github_:_   _a_g🐾
+   magit:_._   _t_ramp:_q_   _p_inky   _f_tp   h_@_wm   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   Note:_[__]_   _g_rep"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -28,7 +28,6 @@
    ("n" yas/new-snippet)
    ("v" yas/visit-snippet-file)
    ("r" restart-emacs)
-   ("-" select-espy-command)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
    ("." magit-status)
@@ -36,7 +35,6 @@
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
    ("p" hydra-pinky/body)
-   ("x" xref-find-definitions)
    (":" my:github-show)
    ("@" howm-list-all)
    ("," org-capture)
@@ -59,7 +57,7 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _e_:Hugo  _b_ackup"
+ 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _e_:Hugo  junk  _b_ackup"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)

@@ -28,11 +28,8 @@
   :init
   (leaf markdown-toc :ensure t)
   (leaf poly-markdown
-    :doc "syntaxhighlight in markdown-mode"
     :ensure t
-    :mode ("\\.md" . poly-markdown-mode)
-    :init
-    (leaf polymode :ensure t))
+    :mode ("\\.md" . poly-markdown-mode))
   (leaf livedown
     :doc "markdown preview"
     :url "https://github.com/shime/emacs-livedown"
@@ -48,7 +45,7 @@
 
 
 (leaf *user-markdown-function
-  :config
+  :init
   (defun md2pdf ()
     "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"
     (interactive)
@@ -59,16 +56,10 @@
 	       " -f markdown -t html5 -o "
 	       (file-name-sans-extension filename)
 	       ".pdf"))
-      (when (eq system-type 'gnu/linux)   ;; for Debian
-	(shell-command-to-string
-	 (concat "evince "
-		 (file-name-sans-extension filename)
-		 ".pdf")))
-      (when (eq system-type 'darwin)      ;; for macOS
-	(shell-command-to-string
-	 (concat "open -a preview.app "
-		 (file-name-sans-extension filename)
-		 ".pdf")))))
+      (shell-command-to-string
+       (concat "evince "
+	       (file-name-sans-extension filename)
+	       ".pdf"))))
 
   (defun md2docx ()
     "Generate docx from currently open markdown."
@@ -81,16 +72,10 @@
 	       (file-name-sans-extension filename)
 	       ;; ".docx -V mainfont=IPAPGothic -V fontsize=16pt --toc --highlight-style=zenburn"))
 	       ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
-      (when (eq system-type 'gnu/linux)
-	(shell-command-to-string
-	 (concat "xdg-open "
-		 (file-name-sans-extension filename)
-		 ".docx")))
-      (when (eq system-type 'darwin)
-	(shell-command-to-string
-	 (concat "open -a pages.app "
-		 (file-name-sans-extension filename)
-		 ".docx"))))))
+      (shell-command-to-string
+       (concat "xdg-open "
+	       (file-name-sans-extension filename)
+	       ".docx")))))
 
 
 ;; Local Variables:

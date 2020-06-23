@@ -72,6 +72,12 @@
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time))))
 
 
+(leaf open-junk-file
+  :ensure t
+  :config
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y/%Y%m%d."))
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

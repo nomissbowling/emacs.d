@@ -69,12 +69,6 @@
     :hook (after-init-hook . counsel-projectile-mode)))
 
 
-(leaf espy
-  :ensure t
-  :config
-  (setq espy-password-file "~/Dropbox/backup/passwd/password.org.gpg"))
-
-
 (leaf restart-emacs
   :ensure t
   :bind (("C-x C-c" . restart-emacs)))

@@ -36,7 +36,6 @@
 	"\n------------------------------------------------------------\n"
 	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
   :init
-  (leaf ivy-xref :ensure t)
   (leaf amx
     :ensure t
     :init (setq amx-history-length 20))

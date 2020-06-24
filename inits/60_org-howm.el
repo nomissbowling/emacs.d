@@ -33,13 +33,14 @@
   (setq org-log-done 'time
 	org-use-speed-commands t
 	org-src-fontify-natively t
-	org-agenda-files '("~/Dropbox/howm/org/task.org"
-			   "~/Dropbox/howm/org/memo.org"))
-  (setq org-refile-targets
-	(quote (("~/Dropbox/howm/org/archives.org" :level . 1)
-		("~/Dropbox/howm/org/remember.org" :level . 1)
-		("~/Dropbox/howm/org/task.org" :level . 1))))
-  (setq org-capture-templates
+	org-agenda-files
+	'(("~/Dropbox/howm/org/task.org")
+	  ("~/Dropbox/howm/org/memo.org"))
+	org-refile-targets
+	'(("~/Dropbox/howm/org/archives.org" :level . 1)
+	  ("~/Dropbox/howm/org/remember.org" :level . 1)
+	  ("~/Dropbox/howm/org/task.org" :level . 1))
+	org-capture-templates
 	'(("t" " Task" entry (file+headline "~/Dropbox/howm/org/task.org" "Task")
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("d" "📕 Diary" entry (file+headline "~/Dropbox/howm/org/memo.org" "Diary")
@@ -60,7 +61,6 @@
   ;; Maximize the org-capture buffer
   (defvar my:org-capture-before-config nil
     "Window configuration before 'org-capture'.")
-
   (defadvice org-capture (before save-config activate)
     "Save the window configuration before 'org-capture'."
     (setq my:org-capture-before-config (current-window-configuration)))

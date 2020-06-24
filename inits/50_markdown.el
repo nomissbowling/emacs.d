@@ -24,10 +24,13 @@
    ("p" md2pdf)
    ("d" md2docx)
    ("q" nil))
-
   :init
   (leaf markdown-toc :ensure t)
-  (leaf edit-indirect :ensure t)
+  (leaf edit-indirect
+    :ensure t
+    :bind (("s-c" . markdown-edit-code-block)
+	   (:edit-indirect-mode-map
+	    ("s-c" . edit-indirect-abort))))
   (leaf poly-markdown
     :ensure t
     :mode ("\\.md" . poly-markdown-mode))

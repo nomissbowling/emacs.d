@@ -12,12 +12,13 @@
   (hydra-markdown
    (:color red :hint nil)
    "
- _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _v_iewer:_k_  md2_p_df  md2_d_ocx"
+ _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  edit-code:_._  _v_iewer:_k_  md2_p_df  md2_d_ocx"
    ("i" markdown-insert-italic)
    ("x" markdown-insert-strike-through)
    ("t" markdown-insert-table)
    ("o" markdown-toc-generate-or-refresh-toc)
    ("f" markdown-insert-footnote)
+   ("." markdown-edit-code-block)
    ("v" livedown-preview)
    ("k" livedown-kill)
    ;; Pndoc
@@ -26,6 +27,7 @@
    ("q" nil))
 
   :init
+  (leaf edit-indirect :ensure t)
   (leaf markdown-toc :ensure t)
   (leaf poly-markdown
     :ensure t

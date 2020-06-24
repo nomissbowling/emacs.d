@@ -27,14 +27,11 @@
    ("q" nil))
 
   :init
-  (leaf edit-indirect :ensure t)
   (leaf markdown-toc :ensure t)
-  (leaf poly-markdown
-    :ensure t
+  (leaf edit-indirect :ensure t)
+  (leaf poly-markdown :ensure t
     :mode ("\\.md" . poly-markdown-mode))
   (leaf livedown
-    :doc "markdown preview"
-    :url "https://github.com/shime/emacs-livedown"
     :el-get  shime/emacs-livedown
     :require t
     :bind (("C-c C-p" . livedown-preview)

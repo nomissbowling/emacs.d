@@ -25,8 +25,8 @@
 	  ("linux:" . (0 'compilation-error)))))
 
 
-(leaf org
-  :ensure nil
+(leaf org-plus-contrib
+  :ensure t
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture))
   :config

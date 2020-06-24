@@ -5,14 +5,13 @@
 
 (leaf markdown-mode
   :ensure t
-
   :mode (("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode))
   :hydra
   (hydra-markdown
    (:color red :hint nil)
    "
- _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  edit-code:_._  _v_iewer:_k_  md2_p_df  md2_d_ocx"
+  Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  edit-code:_._  _v_iewer:_k_  md2_p_df  md2_d_ocx"
    ("i" markdown-insert-italic)
    ("x" markdown-insert-strike-through)
    ("t" markdown-insert-table)
@@ -29,7 +28,8 @@
   :init
   (leaf markdown-toc :ensure t)
   (leaf edit-indirect :ensure t)
-  (leaf poly-markdown :ensure t
+  (leaf poly-markdown
+    :ensure t
     :mode ("\\.md" . poly-markdown-mode))
   (leaf livedown
     :el-get  shime/emacs-livedown

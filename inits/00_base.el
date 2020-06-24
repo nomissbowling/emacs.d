@@ -9,20 +9,38 @@
 
 (leaf *standard-configuration
   :init
-  ;; Emacs use the $PATH set up by the user's shell
-  (leaf exec-path-from-shell
-    :ensure t
-    :hook (after-init-hook . exec-path-from-shell-initialize)
-    :config
-    (setq exec-path-from-shell-check-startup-files nil))
+  (add-hook
+   'after-init-hook
+   (lambda ()
+     ;; Save hist
+     (savehist-mode)
+     ;;Save plae
+     (save-place-mode)
+     ;; Automatic reloading of changed files
+     (global-auto-revert-mode)
+     ;; Do not blink the cursor
+     (blink-cursor-mode)
+     ;; Window configuration undo/redo
+     (winner-mode)
+     ;; font-lock
+     (global-font-lock-mode)
+     ;; word wrapping is used
+     (global-visual-line-mode))
 
-  ;; Start the server in Emacs session
-  (leaf server
-    :ensure nil
-    :require t
-    :config
-    (unless (server-running-p)
-      (add-hook 'emacs-startup-hook 'server-start)))
+   ;; Emacs use the $PATH set up by the user's shell
+   (leaf exec-path-from-shell
+     :ensure t
+     :hook (after-init-hook . exec-path-from-shell-initialize)
+     :config
+     (setq exec-path-from-shell-check-startup-files nil))
+
+   ;; Start the server in Emacs session
+   (leaf server
+     :ensure nil
+     :require t
+     :config
+     (unless (server-running-p)
+       (add-hook 'emacs-startup-hook 'server-start))))
 
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
@@ -106,34 +124,7 @@
                            "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
                            (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))
-
-  :hook
-  ;; Save hist
-  (after-init-hook . savehist-mode)
-
-  ;;Save plae
-  (after-init-hook . save-place-mode)
-
-  ;; Automatic reloading of changed files
-  (after-init-hook . global-auto-revert-mode)
-
-  ;; Do not blink the cursor
-  (after-init-hook . blink-cursor-mode)
-
-  ;; Window configuration undo/redo
-  (after-init-hook . winner-mode)
-
-  ;; font-lock
-  (after-init-hook . global-font-lock-mode)
-
-  ;; Highlight the current line
-  ((after-init-hook . global-hl-line-mode)
-   (dashboard-mode-hook eshell-mode-hook) .
-   (lambda () (setq-local global-hl-line-mode nil)))
-
-  ;; word wrapping is used
-  (after-init-hook . global-visual-line-mode))
-
+  )
 
 (leaf *user-custom-configuration
   :init

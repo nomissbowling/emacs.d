@@ -5,8 +5,11 @@
 
 (leaf *user-custom-theme
   :init
-  (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-  (load-theme 'iceberg t))
+  (add-hook
+   'after-init-hook
+   (lambda ()
+     (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
+     (load-theme 'iceberg t))))
 
 
 (leaf doom-modeline

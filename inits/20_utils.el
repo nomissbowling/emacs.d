@@ -43,6 +43,15 @@
       (compile (concat "gnome-terminal --working-directory " dir))))
   (bind-key "<f4>" 'term-current-dir-open)
 
+  (defun my:delete-file-if-no-contents ()
+    "Automatic deletion for empty files (Valid in all modes)."
+    (when (and (buffer-file-name (current-buffer))
+	       (= (point-min) (point-max)))
+      (delete-file
+       (buffer-file-name (current-buffer)))))
+  (if (not (memq 'my:delete-file-if-no-contents after-save-hook))
+      (setq after-save-hook
+	    (cons 'my:delete-file-if-no-contents after-save-hook)))
 
   ;; pdf out from emacs
   (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")

@@ -57,7 +57,7 @@
   (hydra-work
    (:hint nil :exit t)
    "
- 📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _e_:Hugo  _j_unk  _b_ackup"
+   📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _e_:Hugo  _j_unk  _b_ackup"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)

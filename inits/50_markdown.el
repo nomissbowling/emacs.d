@@ -11,7 +11,7 @@
   (hydra-markdown
    (:color red :hint nil)
    "
-  Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  edit-code:_._  _v_iewer:_k_  md2_p_df  md2_d_ocx"
+    Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  edit-code:_._  _v_iewer:_k_  md2_p_df  md2_d_ocx"
    ("i" markdown-insert-italic)
    ("x" markdown-insert-strike-through)
    ("t" markdown-insert-table)

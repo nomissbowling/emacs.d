@@ -25,22 +25,23 @@
 	  ("linux:" . (0 'compilation-error)))))
 
 
-(leaf org-plus-contrib
-  :ensure t
+(leaf org
+  :ensure nil
   :bind (("C-c a" . org-agenda)
 	 ("C-c c" . org-capture))
   :config
   (setq org-log-done 'time
 	org-use-speed-commands t
 	org-src-fontify-natively t
-	org-agenda-files
-	'(("~/Dropbox/howm/org/task.org")
-	  ("~/Dropbox/howm/org/memo.org"))
-	org-refile-targets
+	org-agenda-files '("~/Dropbox/howm/org/task.org"
+			   "~/Dropbox/howm/org/memo.org"))
+
+  (setq org-refile-targets
 	'(("~/Dropbox/howm/org/archives.org" :level . 1)
 	  ("~/Dropbox/howm/org/remember.org" :level . 1)
-	  ("~/Dropbox/howm/org/task.org" :level . 1))
-	org-capture-templates
+	  ("~/Dropbox/howm/org/task.org" :level . 1)))
+
+  (setq org-capture-templates
 	'(("t" " Task" entry (file+headline "~/Dropbox/howm/org/task.org" "Task")
 	   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 	  ("d" "📕 Diary" entry (file+headline "~/Dropbox/howm/org/memo.org" "Diary")
@@ -57,6 +58,7 @@
 	   "# emacs: %?\n%U %i\n\n```emacs-lisp\n%i\n```")
 	  ("l" "★ Linux" plain (file my:howm-create-file)
 	   "# linux: %?\n%U %i")))
+
   :preface
   ;; Maximize the org-capture buffer
   (defvar my:org-capture-before-config nil
@@ -82,4 +84,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 60_memo.el ends here
+;;; 60_org-howm.el ends here

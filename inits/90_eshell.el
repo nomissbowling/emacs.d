@@ -4,6 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf eshell
+  :ensure nil
   :after popwin
   :bind* ("C-z" . eshell)
   :custom

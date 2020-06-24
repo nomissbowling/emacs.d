@@ -8,6 +8,7 @@
 
 ;; Highlight matching parens
 (leaf paren
+  :ensure nil
   :hook (after-init-hook . show-paren-mode)
   :config
   (setq show-paren-style 'mixed))

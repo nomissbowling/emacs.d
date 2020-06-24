@@ -18,6 +18,7 @@
 
   ;; Start the server in Emacs session
   (leaf server
+    :ensure nil
     :require t
     :config
     (unless (server-running-p)
@@ -85,15 +86,17 @@
 
   ;; Make it easy to see when it is the same name file
   (leaf uniquify
+    :ensure nil
     :config
     (setq uniquify-buffer-name-style 'post-forward-angle-brackets
 	  uniquify-min-dir-content 1))
 
   ;; contains many mode setting
-  (leaf generic-x :require t)
+  (leaf generic-x :ensure nil :require t)
 
   ;; Recentf
   (leaf recentf
+    :ensure nil
     :hook (after-init-hook . recentf-mode)
     :config
     (setq recentf-save-file "~/.emacs.d/recentf"

@@ -4,6 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf dired
+  :ensure nil
   :bind (:dired-mode-map
 	 ("j" . dired-next-line)
 	 ("k" . dired-previous-line)
@@ -29,6 +30,7 @@
   :init
   ;; omit desktop.ini
   (leaf dired-x
+    :ensure nil
     :require t
     :config
     (setq dired-omit-mode t

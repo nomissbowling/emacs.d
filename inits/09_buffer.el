@@ -23,7 +23,6 @@
 ;; automatically deleted in the background buffers
 (leaf tempbuf
   :el-get emacswiki:tempbuf
-  :doc "automatically kill unnecessary buffers"
   :require t
   :hook ((dired-mode-hook . turn-on-tempbuf-mode)
 	 (magit-mode-hook . turn-on-tempbuf-mode)

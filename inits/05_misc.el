@@ -84,11 +84,6 @@
   :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
 
-(leaf rainbow-mode
-  :ensure t
-  :bind ("C-c r" . rainbow-mode))
-
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

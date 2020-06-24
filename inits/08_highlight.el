@@ -33,6 +33,11 @@
   :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
 
+;; Colorize color names in buffers
+(leaf rainbow-mode
+  :ensure t
+  :bind ("C-c r" . rainbow-mode))
+
 ;; Highlight some operations
 (leaf volatile-highlights
   :ensure t

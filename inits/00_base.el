@@ -7,7 +7,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *standard-configuration
+(leaf *basic-configuration
   :init
   (add-hook
    'after-init-hook
@@ -125,6 +125,7 @@
                            (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))
   )
+
 
 (leaf *user-custom-configuration
   :init

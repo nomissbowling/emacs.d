@@ -12,6 +12,21 @@
   (add-hook
    'after-init-hook
    (lambda ()
+     ;; Emacs use the $PATH set up by the user's shell
+     (leaf exec-path-from-shell
+       :ensure t
+       :config
+       (setq exec-path-from-shell-check-startup-files nil)
+       (exec-path-from-shell-initialize))
+
+     ;; Start the server in Emacs session
+     (leaf server
+       :ensure nil
+       :require t
+       :config
+       (unless (server-running-p)
+	 (server-start)))
+
      ;; Save hist
      (savehist-mode)
      ;;Save plae
@@ -25,22 +40,7 @@
      ;; font-lock
      (global-font-lock-mode)
      ;; word wrapping is used
-     (global-visual-line-mode))
-
-   ;; Emacs use the $PATH set up by the user's shell
-   (leaf exec-path-from-shell
-     :ensure t
-     :hook (after-init-hook . exec-path-from-shell-initialize)
-     :config
-     (setq exec-path-from-shell-check-startup-files nil))
-
-   ;; Start the server in Emacs session
-   (leaf server
-     :ensure nil
-     :require t
-     :config
-     (unless (server-running-p)
-       (add-hook 'emacs-startup-hook 'server-start))))
+     (global-visual-line-mode)))
 
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")

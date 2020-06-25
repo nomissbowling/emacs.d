@@ -22,16 +22,17 @@
 	doom-modeline-icon t
 	doom-modeline-major-mode-icon nil
 	doom-modeline-minor-modes nil)
-  :preface
+  :init
   (leaf hide-mode-line
     :ensure t
     :hook ((neotree-mode-hook imenu-list-minor-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode
     :ensure t
-    :hook (after-init-hook . nyan-mode)
-    :custom
-    ((nyan-cat-face-number . 4)
-     (nyan-animate-nyancat . t))))
+    :hook
+    :config
+    (nyan-mode)
+    (setq nyan-cat-face-number 4
+	  nyan-animate-nyancat t)))
 
 
 (leaf all-the-icons

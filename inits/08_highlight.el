@@ -6,6 +6,11 @@
 ;; fringe-mode for right- only
 (fringe-mode (cons 0 nil))
 
+;; Highlight the current line
+(add-hook 'after-init-hook 'global-hl-line-mode)
+(make-variable-buffer-local 'global-hl-line-mode)
+(add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
+
 ;; Highlight matching parens
 (leaf paren
   :ensure nil

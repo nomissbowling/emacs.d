@@ -9,7 +9,7 @@
   :config
   (setq tex-command "platex"
 	dviprint-command-format "dvpd.sh %s"
-	YaTeX-kanji-code nil
+	YaTeX-kanji-code ni
 	YaTeX-latex-message-code 'utf-8
 	YaTeX-default-pop-window-height 15)
   :init
@@ -18,7 +18,7 @@
    '(lambda ()
       (leaf yatexprc
   	:bind (("M-c" . YaTeX-typeset-buffer)	;; Type set buffer
-  	       ("M-v" . YaTeX-lpr))))))		;; Open pdf veiwer
+  	       ("M-l" . YaTeX-lpr))))))		;; Open pdf veiwer
 
 
 ;; Dviprint-command-format

@@ -28,17 +28,14 @@
     :hook ((neotree-mode-hook imenu-list-minor-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode
     :ensure t
-    :hook
-    :config
-    (nyan-mode)
-    (setq nyan-cat-face-number 4
-	  nyan-animate-nyancat t)))
+    :hook (after-init-hook . nyan-mode)
+    :custom ((nyan-cat-face-number . 4)
+	     (nyan-animate-nyancat . t))))
 
 
 (leaf all-the-icons
   :ensure t
-  :config
-  (setq all-the-icons-scale-factor 1.0)
+  :custom (all-the-icons-scale-factor . 1.0)
   :init
   (leaf all-the-icons-dired
     :ensure t

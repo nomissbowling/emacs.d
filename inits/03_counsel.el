@@ -120,12 +120,12 @@ If the region isn't selected, `swiper' with migemo."
     :bind ("s-s" . counsel-web-suggest)
     :config
     (setq counsel-web-search-action #'browse-url
-	  counsel-web-engine 'google)))
+	  counsel-web-engine 'google))
 
-(leaf counsel-css
-  :ensure t
-  :config
-  (add-hook 'css-mode-hook #'counsel-css-imenu-setup))
+  (leaf counsel-css
+    :ensure t
+    :config
+    (add-hook 'css-mode-hook #'counsel-css-imenu-setup)))
 
 
 ;; Local Variables:

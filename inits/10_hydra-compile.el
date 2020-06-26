@@ -1,4 +1,4 @@
-;;; 10_hydra-make.el --- 10_hydra-make.el  -*- lexical-binding: t -*-
+;;; 10_hydra-compile.el --- 10_hydra-compile.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -67,4 +67,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 10_hydra-make.el ends here
+;;; 10_hydra-compile.el ends here

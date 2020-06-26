@@ -8,13 +8,6 @@
 (leaf magit
   :ensure t
   :bind ("C-x g" . hydra-magit/body)
-  :custom ((magit-bury-buffer-function quote magit-mode-quit-window)
-	   (magit-buffer-name-format . "%x%M%v: %t%x")
-	   (magit-refresh-verbose . t)
-	   (magit-commit-ask-to-stage quote stage)
-	   (magit-clone-set-remote\.pushDefault . t)
-	   (magit-clone-default-directory . "~/dev/forks/")
-	   (magit-remote-add-set-remote\.pushDefault quote ask))
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   :hydra

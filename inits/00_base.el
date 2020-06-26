@@ -9,8 +9,31 @@
 
 (leaf *basic-configuration
   :init
+  ;; Save the file specified code with basic utf-8 if it exists
+  (set-language-environment "Japanese")
+  (prefer-coding-system 'utf-8)
+
+  ;; font
+  (add-to-list 'default-frame-alist '(font . "Cica-18"))
+  ;; for sub-machine
+  (when (string-match "x250" (shell-command-to-string "uname -n"))
+    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+
+  ;; Recentf
+  (leaf recentf
+    :hook (after-init-hook . recentf-mode)
+    :config
+    (setq recentf-save-file "~/.emacs.d/recentf"
+	  recentf-max-saved-items 200
+	  recentf-auto-cleanup 'never
+	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
+			   (lambda (file) (file-in-directory-p file package-user-dir))))
+    (push (expand-file-name recentf-save-file) recentf-exclude))
+
+  ;; Startup-hook-sections
   (add-hook
-   'after-init-hook
+   'emacs-startup-hook
    (lambda ()
      ;; Emacs use the $PATH set up by the user's shell
      (leaf exec-path-from-shell
@@ -21,7 +44,6 @@
 
      ;; Start the server in Emacs session
      (leaf server
-       :ensure nil
        :require t
        :config
        (unless (server-running-p)
@@ -40,92 +62,58 @@
      ;; font-lock
      (global-font-lock-mode)
      ;; word wrapping is used
-     (global-visual-line-mode)))
+     (global-visual-line-mode)
 
-  ;; Save the file specified code with basic utf-8 if it exists
-  (set-language-environment "Japanese")
-  (prefer-coding-system 'utf-8)
+     ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
+     (setq ring-bell-function 'ignore)
 
-  ;; font
-  (add-to-list 'default-frame-alist '(font . "Cica-18"))
-  ;; for sub-machine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+     ;; unable right-to-left language reordering
+     (setq-default bidi-display-reordering nil)
 
-  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
-  (setq ring-bell-function 'ignore)
+     ;; Point keeps its screen position when scroll
+     (setq scroll-preserve-screen-position :always)
 
-  ;; unable right-to-left language reordering
-  (setq-default bidi-display-reordering nil)
+     ;; Turn Off warning sound screen flash
+     (setq visible-bell nil)
 
-  ;; Point keeps its screen position when scroll
-  (setq scroll-preserve-screen-position :always)
+     ;; Do not change the position of the cursor when scrolling pages
+     (setq scroll-preserve-screen-position t)
 
-  ;; Turn Off warning sound screen flash
-  (setq visible-bell nil)
+     ;; Suppress warnings for 'ad-handle-definition:'
+     (setq ad-redefinition-action 'accept)
 
-  ;; Do not change the position of the cursor when scrolling pages
-  (setq scroll-preserve-screen-position t)
+     ;; Do not distinguish uppercase and lowercase letters on completion
+     (setq completion-ignore-case t)
+     (setq read-file-name-completion-ignore-case t)
 
-  ;; Suppress warnings for 'ad-handle-definition:'
-  (setq ad-redefinition-action 'accept)
+     ;; Copy with mouse drag
+     (setq mouse-drag-copy-region t)
 
-  ;; Do not distinguish uppercase and lowercase letters on completion
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
+     ;; Do not make a backup filie like *.~
+     (setq make-backup-files nil)
 
-  ;; Copy with mouse drag
-  (setq mouse-drag-copy-region t)
+     ;; Do not use auto save
+     (setq auto-save-default nil)
 
-  ;; Do not make a backup filie like *.~
-  (setq make-backup-files nil)
+     ;; Do not create lock file
+     (setq create-lockfiles nil)
 
-  ;; Do not use auto save
-  (setq auto-save-default nil)
+     ;; Do not record the same content in the history
+     (setq history-delete-duplicates t)
 
-  ;; Do not create lock file
-  (setq create-lockfiles nil)
+     ;; Display file name in title bar: buffername-emacs-version
+     (setq frame-title-format "%b")
 
-  ;; Do not record the same content in the history
-  (setq history-delete-duplicates t)
+     ;; Make it easy to see when it is the same name file
+     (leaf uniquify
+       :config
+       (setq uniquify-buffer-name-style 'post-forward-angle-brackets
+	     uniquify-min-dir-content 1))
 
-  ;; Display file name in title bar: buffername-emacs-version
-  (setq frame-title-format "%b")
+     ;; contains many mode setting
+     (leaf generic-x :require t)
 
-  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
-  (add-hook 'makefile-mode-hook
-            (lambda ()
-              (fset 'makefile-warn-suspicious-lines 'ignore)))
-
-  ;; Interface for display-line-numbers (emacs version >=26)
-  (leaf display-line-numbers
-    :bind ("<f9>" . display-line-numbers-mode)
-    :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
-
-  ;; Make it easy to see when it is the same name file
-  (leaf uniquify
-    :ensure nil
-    :config
-    (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-          uniquify-min-dir-content 1))
-
-  ;; contains many mode setting
-  (leaf generic-x :ensure nil :require t)
-
-  ;; Recentf
-  (leaf recentf
-    :ensure nil
-    :hook (after-init-hook . recentf-mode)
-    :config
-    (setq recentf-save-file "~/.emacs.d/recentf"
-          recentf-max-saved-items 200
-          recentf-auto-cleanup 'never
-          recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-                           "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:" "^/scp"
-                           (lambda (file) (file-in-directory-p file package-user-dir))))
-    (push (expand-file-name recentf-save-file) recentf-exclude))
-  )
-
+     )))
 
 (leaf *user-custom-configuration
   :init

@@ -6,6 +6,11 @@
 ;; fringe-mode for right- only
 (fringe-mode (cons 0 nil))
 
+;; Interface for display-line-numbers (emacs version >=26)
+(leaf display-line-numbers
+  :bind ("<f9>" . display-line-numbers-mode)
+  :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
+
 ;; Highlight the current line
 (add-hook 'after-init-hook 'global-hl-line-mode)
 (make-variable-buffer-local 'global-hl-line-mode)
@@ -13,7 +18,6 @@
 
 ;; Highlight matching parens
 (leaf paren
-  :ensure nil
   :hook (after-init-hook . show-paren-mode)
   :config
   (setq show-paren-style 'mixed))

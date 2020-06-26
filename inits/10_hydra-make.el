@@ -43,6 +43,11 @@
     (interactive)
     (compile "make clean"))
   :init
+  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
+  (add-hook 'makefile-mode-hook
+            (lambda ()
+              (fset 'makefile-warn-suspicious-lines 'ignore)))
+
   ;; https://gist.github.com/EricCrosson/fa41233f327403ea2a5a
   (defun close-compile-window-if-successful (buffer string)
     "Close a compilation window if succeeded without warnings."

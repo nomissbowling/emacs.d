@@ -30,6 +30,7 @@
 	;; dashboard-page-separator "\n\f\f\n"
 	show-week-agenda-p t
 	dashboard-items '((recents  . 8)
+			  ;; (bookmarks .5)
 			  (agenda . 5)))
   (setq dashboard-banner-logo-title
 	(concat "GNU Emacs " emacs-version " kernel "
@@ -57,7 +58,7 @@
     (interactive)
     (insert (if (display-graphic-p)
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
-    (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+    (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
   (defun open-dashboard ()
     "Open the *dashboard* buffer and jump to the first widget."
@@ -117,7 +118,7 @@
   (defun browse-gmail ()
     "Open gmail with chrome."
     (interactive)
-    (browse-url "https://mail.google.com/mail/u/0/?tab=rm#inbox"))
+    (browse-url "https://mail.google.com/mail/"))
   (defun browse-tweetdeck ()
     "Open tweetdeck with chrome."
     (interactive)

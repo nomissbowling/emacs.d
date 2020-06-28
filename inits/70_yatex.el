@@ -9,7 +9,7 @@
   :config
   (setq tex-command "platex"
 	dviprint-command-format "dvpd.sh %s"
-	YaTeX-kanji-code ni
+	YaTeX-kanji-code nil
 	YaTeX-latex-message-code 'utf-8
 	YaTeX-default-pop-window-height 15)
   :init

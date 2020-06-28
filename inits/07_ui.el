@@ -25,7 +25,7 @@
   :init
   (leaf hide-mode-line
     :ensure t
-    :hook ((neotree-mode-hook imenu-list-minor-mode-hook diff-mode-hook) . hide-mode-line-mode))
+    :hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode
     :ensure t
     :hook (after-init-hook . nyan-mode)

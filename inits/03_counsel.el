@@ -104,8 +104,13 @@ If the region isn't selected, `swiper' with migemo."
       "Quit tramp, if tramp connencted."
       (interactive)
       (when (get-buffer "*tramp/scp xsrv*")
+	(tramp-cleanup-all-connections)
 	(counsel-tramp-quit)
-	(message "Now tramp-quit!"))))
+	(message "Now tramp-quit!")))
+    (defadvice tramp-handle-vc-registered (around tramp-handle-vc-registered-around activate)
+      "When tramp vc registed, reduce vc-handled-backend."
+      ;; default is '(RCS CVS SVN SCCS Bzr Git Hg Mtn Arch)
+      (let ((vc-handled-backends '(SVN Git))) ad-do-it)))
 
   (leaf counsel-web
     :ensure t

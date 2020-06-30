@@ -173,6 +173,7 @@ If the region is inactive, `backward-kill-word'."
 	   args))
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

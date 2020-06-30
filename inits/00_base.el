@@ -119,7 +119,9 @@
 	     uniquify-min-dir-content 1))
 
      ;; contains many mode setting
-     (leaf generic-x :require t))))
+     (leaf generic-x :require t))
+
+   ))
 
 
 (leaf *user-custom-configuration

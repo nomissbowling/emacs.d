@@ -6,13 +6,6 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
-  (set-frame-parameter nil 'fullscreen 'maximized)
-  (scroll-bar-mode 0)
-  (menu-bar-mode 0)
-  (tool-bar-mode 0)
-  (setq inhibit-splash-screen t)
-  (setq inhibit-startup-message t)
-
   ;; Startup optimizations
   (defvar default-file-name-handler-alist file-name-handler-alist)
   (setq file-name-handler-alist nil)

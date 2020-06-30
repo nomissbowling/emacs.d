@@ -9,6 +9,14 @@
 
 (leaf *basic-configuration
   :init
+  ;; Quietly start
+  (set-frame-parameter nil 'fullscreen 'maximized)
+  (scroll-bar-mode 0)
+  (menu-bar-mode 0)
+  (tool-bar-mode 0)
+  (setq inhibit-splash-screen t)
+  (setq inhibit-startup-message t)
+
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)

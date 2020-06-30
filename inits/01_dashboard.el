@@ -30,7 +30,6 @@
 	;; dashboard-page-separator "\n\f\f\n"
 	show-week-agenda-p t
 	dashboard-items '((recents  . 8)
-			  ;; (bookmarks .5)
 			  (agenda . 5)))
   (setq dashboard-banner-logo-title
 	(concat "GNU Emacs " emacs-version " kernel "

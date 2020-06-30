@@ -83,14 +83,6 @@ If the region isn't selected, `swiper' with migemo."
      cands
      "\n"))
 
-  ;; Search using the word at the cursor position
-  (defun my:counsel-ag (f &optional initial-input initial-directory extra-ag-args ag-prompt caller)
-    (apply f (or initial-input (ivy-thing-at-point))
-  	   (unless current-prefix-arg
-  	     (or initial-directory default-directory))
-  	   extra-ag-args ag-prompt caller))
-  (advice-add 'counsel-ag :around #'my:counsel-ag)
-
   (defun select-counsel-command ()
     "Narrow the only counsel-command in M-x."
     (interactive)

@@ -5,8 +5,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-
-
 (eval-when-compile
   ;; Startup optimizations
   (defvar default-file-name-handler-alist file-name-handler-alist)

@@ -59,16 +59,22 @@
 
      ;; Save hist
      (savehist-mode)
+
      ;;Save plae
      (save-place-mode)
+
      ;; Automatic reloading of changed files
      (global-auto-revert-mode)
+
      ;; Do not blink the cursor
      (blink-cursor-mode)
+
      ;; Window configuration undo/redo
      (winner-mode)
+
      ;; font-lock
      (global-font-lock-mode)
+
      ;; word wrapping is used
      (global-visual-line-mode)
 

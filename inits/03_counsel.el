@@ -89,7 +89,7 @@ If the region isn't selected, `swiper' with migemo."
     (counsel-M-x "^counsel ")))
 
 
-(leaf *user-counsel-other-tool
+(leaf *counsel-tools
   :init
   (leaf counsel-tramp
     :ensure t

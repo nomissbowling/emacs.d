@@ -56,7 +56,7 @@
     (goto-char (point-min))
     (forward-line)
     (insert
-     (format-time-string "%Y年%m月%d日（参加者 名）\n"))
+     (format-time-string "%Y年%-m月%-d日（参加者 名）\n"))
     (forward-line -1)
     (forward-char 15))
 
@@ -66,7 +66,7 @@
     (goto-char (point-min))
     (insert
      (format-time-string "%Y%m:\n")
-     (format-time-string "%Y年%m月%d日（参加者 名）\n"))
+     (format-time-string "%Y年%-m月%-d日（参加者 名）\n"))
     (forward-line -1)
     (forward-char 15)))
 
@@ -152,7 +152,8 @@
   (goto-char (point-min))
   (forward-line 2)
   (insert
-   (format-time-string "> %Y年%m月%d日 (%a)\n")
+   ;; (format-time-string "> %Y年%-m月%-d日 (%a)\n")
+   (format-time-string "> %Y年%-m月%-d日 (%a)\n")
    (format-time-string "PLACE:\n\n"))
   (forward-line -2)
   (forward-char 6))

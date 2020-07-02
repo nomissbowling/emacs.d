@@ -20,7 +20,7 @@
   (forward-line)
   (insert
    ";--------------------------------------------------------\n"
-   (format-time-string "*[%Y%m%d]%Y年%m月%d日\n")
+   (format-time-string "*[%Y%m%d]%Y年%-m月%-d日\n")
    ";--------------------------------------------------------\n"
    (format-time-string "-*[%Y%m%d%H%M%S]\n")
    "-(\n\n-)\n\n")
@@ -85,7 +85,7 @@
   (forward-line)
   (insert
    ";-------------------------------------------------------------------\n"
-   (format-time-string "*[%Y%m%d]%Y年%m月%d日\n")
+   (format-time-string "*[%Y%m%d]%Y年%-m月%-d日\n")
    ";-------------------------------------------------------------------\n"
    (format-time-string "-*[%Y%m%d%H%M%S]\n")
    "-(\n<div class=\"vertical\">\n"
@@ -132,7 +132,7 @@
   (forward-line)
   (insert
    ";--------------------------------------------------------------------\n"
-   (format-time-string "*[%Y%m%d]%m月%d日\n")
+   (format-time-string "*[%Y%m%d]%-m月%-d日\n")
    ";--------------------------------------------------------------------\n"
    (format-time-string "-*[%Y%m%d%H%M%S]\n")
    "<small>\n()\n</small>\n-(\n=[\n= 合評\n-[\n- 投稿いただいた記事は編集してここに転記されます。\n-]\n=]\n-)\n-elink\n")

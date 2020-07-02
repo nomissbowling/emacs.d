@@ -56,7 +56,7 @@
        (unless (server-running-p)
 	 (server-start)))
 
-     ;; no menu-bar
+     ;; Hide the menu-bar
      (menu-bar-mode 0)
 
      ;; Save hist

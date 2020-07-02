@@ -12,7 +12,6 @@
   ;; Quietly start
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
-  (menu-bar-mode 0)
   (tool-bar-mode 0)
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
@@ -56,6 +55,9 @@
        :config
        (unless (server-running-p)
 	 (server-start)))
+
+     ;; no menu-bar
+     (menu-bar-mode 0)
 
      ;; Save hist
      (savehist-mode)

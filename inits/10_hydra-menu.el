@@ -9,15 +9,14 @@
   (hydra-quick-menu
    (:hint nil :exit t)
    "
-   🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------------------------------------------------------------------------------------
-   _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   gist:_l_   _r_estart   _m_arkdown   _u_ndotree   github_:_   _a_g🐾
-   magit:_._   _t_ramp:_q_   _p_inky   _f_tp   h_@_wm   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   Note:_[__]_   _g_rep"
+  🐳 Quick Menu
+  ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------
+    _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
+    magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _a_g🐾   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   work:_._"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
    ("t" counsel-tramp)
-   ("g" counsel-git-grep)
    ("q" my:tramp-quit)
    ("d" my:dropbox)
    ("i" my:inits-dir)
@@ -30,21 +29,18 @@
    ("r" restart-emacs)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
-   ("." magit-status)
+   (":" magit-status)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
    ("p" hydra-pinky/body)
-   (":" my:github-show)
+   ("g" my:github-show)
    ("@" howm-list-all)
    ("," org-capture)
    ("k" my:make-k)
-   ("L" gist-region-or-buffer)
-   ("l" gist-list)
    ("u" undo-tree-visualize)
-   ("[" my:haiku-note)
-   ("]" my:haiku-note-post)
-   ("<right>" hydra-work/body)
+   ("." hydra-work/body)
+   ("x" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -57,7 +53,7 @@
   (hydra-work
    (:hint nil :exit t)
    "
-   📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  _e_:Hugo  _j_unk  _b_ackup"
+   📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_  _e_:Hugo  _j_unk  _b_ackup"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -82,7 +78,9 @@
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
-   ("<right>" hydra-quick-menu/body)
+   ("x" hydra-quick-menu/body)
+   ("[" my:haiku-note)
+   ("]" my:haiku-note-post)
    ("q" keyboard-quit)
    ("s-x" nil)))
 

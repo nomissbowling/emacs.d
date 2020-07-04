@@ -108,7 +108,6 @@ If the region isn't selected, `swiper' with migemo."
 	(counsel-tramp-quit)
 	(message "Now tramp-quit!"))))
 
-
   (leaf counsel-web
     :ensure t
     :bind ("s-s" . counsel-web-suggest)

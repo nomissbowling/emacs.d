@@ -6,7 +6,7 @@
 (leaf mozc
   :ensure t
   :bind* (("<hiragana-katakana>" . toggle-input-method)
-	  ("<henkan>" . toggle-input-method))
+	  ("<henkan>" . mozc-temp-convert))
   :bind (("<f8>" . my:mozc-word-regist)
 	 ("<f7>" . my:select-mozc-tool))
   :config
@@ -45,7 +45,17 @@
     :config
     (setq mozc-candidate-style 'posframe)
     :init
-    (leaf posframe :ensure t)))
+    (leaf posframe :ensure t))
+  (leaf mozc-temp
+    :ensure t
+    :config
+    (add-hook
+     'yatex-mode-hook
+     '(lambda ()
+	(custom-set-variables
+	 '(mozc-temp-prefix-regexp
+	   (let ((convertibles "][,.:0-9A-Za-z-"))
+	     (format "\\(?:^\\|[^%s]\\)\\([%s]+\\)\\=" convertibles convertibles))))))))
 
 
 (leaf *user-mozc-tool

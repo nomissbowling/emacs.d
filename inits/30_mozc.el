@@ -31,7 +31,6 @@
     (toggle-input-method))
   :init
   (leaf mozc-temp :ensure t)
-  (leaf posframe :ensure t)
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t

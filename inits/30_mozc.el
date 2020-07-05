@@ -13,6 +13,12 @@
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
 	mozc-leim-title "♡かな")
+  (add-hook
+   'mozc-mode-hook
+   (lambda ()
+     (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+     (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+     (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
   :preface
   (defadvice toggle-input-method (around toggle-input-method-around activate)
     "Input method function in key-chord.el not to be nil."
@@ -25,12 +31,9 @@
     (toggle-input-method)
     (insert str)
     (toggle-input-method))
-  (add-hook 'mozc-mode-hook
-	    (lambda ()
-	      (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
-	      (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-	      (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
   :init
+  (leaf mozc-temp :ensure t)
+  (leaf posframe :ensure t)
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t
@@ -43,19 +46,7 @@
     :ensure t
     :require t
     :config
-    (setq mozc-candidate-style 'posframe)
-    :init
-    (leaf posframe :ensure t))
-  (leaf mozc-temp
-    :ensure t
-    :config
-    (add-hook
-     'yatex-mode-hook
-     '(lambda ()
-	(custom-set-variables
-	 '(mozc-temp-prefix-regexp
-	   (let ((convertibles "][,.:0-9A-Za-z-"))
-	     (format "\\(?:^\\|[^%s]\\)\\([%s]+\\)\\=" convertibles convertibles))))))))
+    (setq mozc-candidate-style 'posframe)))
 
 
 (leaf *user-mozc-tool

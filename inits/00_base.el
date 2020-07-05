@@ -123,8 +123,7 @@
      ;; Make it easy to see when it is the same name file
      (leaf uniquify
        :config
-       (setq uniquify-buffer-name-style 'post-forward-angle-brackets
-	     uniquify-min-dir-content 1))
+       (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
 
      ;; contains many mode setting
      (leaf generic-x :require t))

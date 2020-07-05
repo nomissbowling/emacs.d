@@ -84,6 +84,16 @@
   :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
 
+(leaf espy
+  :ensure t
+  :init
+  (setq espy-password-file "~/Dropbox/backup/passwd/password.org.gpg")
+  (defun select-espy-command ()
+    "Narrow the only espy-get-command in M-x."
+    (interactive)
+    (counsel-M-x "^espy-get ")))
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

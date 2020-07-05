@@ -12,7 +12,7 @@
   🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------
     _d_ropbox   _e_macs.d^^   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    magit:_:_   _t_ramp:_q_   _p_inky   _f_tp   _a_g🐾   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   work:_._"
+    magit:_:_   _t_ramp:_q_   e2_p_df   _f_tp   _a_g🐾   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   work:_._"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -33,7 +33,7 @@
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
-   ("p" hydra-pinky/body)
+   ("p" my:pdfout-buffer)
    ("g" my:github-show)
    ("@" howm-list-all)
    ("," org-capture)

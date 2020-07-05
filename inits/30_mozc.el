@@ -48,15 +48,14 @@
 
 
 (leaf *user-mozc-tool
-  :bind ("<f8>" . my:mozc-word-regist)
+  :bind (("<f8>" . my:mozc-word-regist)
+	 ("<f7>" . select-mozc-tool))
   :init
-  (bind-key
-   "<f7>"
-   (lambda ()
-     "Select mozc tool command."
-     (interactive)
-     (counsel-M-x "my:mozc ")))
-  :preface
+  (defun select-mozc-tool ()
+    "Select mozc tool command."
+    (interactive)
+    (counsel-M-x "my:mozc "))
+
   (defun my:mozc-config-dialog ()
     "Run the mozc-tool in the background."
     (interactive)

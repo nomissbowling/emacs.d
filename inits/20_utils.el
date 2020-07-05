@@ -55,6 +55,7 @@
 
   ;; pdf out from emacs
   (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
+  ;; (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | lpr")
   (defun my:pdfout-buffer ()
     "PDF out from buffer."
     (interactive)
@@ -62,6 +63,7 @@
   (defun my:pdfout-region (begin end)
     "PDF out from BEGIN to END of region."
     (interactive "r")
+    ;; (shell-command-on-region begin end my:pdfout-command-format)))
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 

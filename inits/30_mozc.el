@@ -53,6 +53,7 @@
   (bind-key
    "<f7>"
    (lambda ()
+     "Select mozc tool command."
      (interactive)
      (counsel-M-x "my:mozc ")))
   :preface

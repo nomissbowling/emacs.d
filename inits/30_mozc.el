@@ -7,8 +7,6 @@
   :ensure t
   :bind* (("<hiragana-katakana>" . toggle-input-method)
 	  ("<henkan>" . mozc-temp-convert))
-  :bind (("<f8>" . my:mozc-word-regist)
-	 ("<f7>" . my:select-mozc-tool))
   :config
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
@@ -50,12 +48,14 @@
 
 
 (leaf *user-mozc-tool
-  :config
-  (defun my:select-mozc-tool ()
-    "Narrow the only espy command in M-x."
-    (interactive)
-    (counsel-M-x "^my:mozc "))
-
+  :bind ("<f8>" . my:mozc-word-regist)
+  :init
+  (bind-key
+   "<f7>"
+   (lambda ()
+     (interactive)
+     (counsel-M-x "my:mozc ")))
+  :preface
   (defun my:mozc-config-dialog ()
     "Run the mozc-tool in the background."
     (interactive)

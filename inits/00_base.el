@@ -114,12 +114,12 @@
 
      ;; Do not make a backup filie like *.~
      (setq make-backup-files nil)
-
      ;; Do not use auto save
      (setq auto-save-default nil)
-
      ;; Do not create lock file
      (setq create-lockfiles nil)
+     ;; Open symbolic link directly
+     (setq vc-follow-symlinks t)
 
      ;; Do not record the same content in the history
      (setq history-delete-duplicates t)

@@ -92,7 +92,7 @@ If the region isn't selected, `swiper' with migemo."
     :bind (("C-c t" . counsel-tramp)
 	   ("C-c q" . my:tramp-quit))
     :config
-    (setq tramp-default-method "ssh"
+    (setq tramp-default-method "scp"
 	  counsel-tramp-custom-connections
 	  '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
     :preface

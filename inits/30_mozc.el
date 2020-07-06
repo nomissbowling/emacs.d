@@ -16,18 +16,6 @@
      (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
      (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
      (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
-  :preface
-  (defadvice toggle-input-method (around toggle-input-method-around activate)
-    "Input method function in key-chord.el not to be nil."
-    (let ((input-method-function-save input-method-function))
-      ad-do-it
-      (setq input-method-function input-method-function-save)))
-  (defun mozc-insert-str (str)
-    "If punctuation marks, immediately confirm."
-    (mozc-handle-event 'enter)
-    (toggle-input-method)
-    (insert str)
-    (toggle-input-method))
   :init
   (leaf mozc-temp :ensure t)
   (leaf mozc-cursor-color
@@ -41,7 +29,20 @@
   (leaf mozc-cand-posframe :ensure t
     :require t
     :config
-    (setq mozc-candidate-style 'posframe)))
+    (setq mozc-candidate-style 'posframe))
+  :preface
+  (defadvice toggle-input-method (around toggle-input-method-around activate)
+    "Input method function in key-chord.el not to be nil."
+    (let ((input-method-function-save input-method-function))
+      ad-do-it
+      (setq input-method-function input-method-function-save)))
+
+  (defun mozc-insert-str (str)
+    "If punctuation marks, immediately confirm."
+    (mozc-handle-event 'enter)
+    (toggle-input-method)
+    (insert str)
+    (toggle-input-method)))
 
 
 (leaf *user-mozc-tool

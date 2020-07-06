@@ -36,7 +36,7 @@
   :require t
   :config
   (setq undohist-directory "~/Dropbox/dotfiles/undohist"
-	undohist-ignored-files '("/tmp" "COMMIT_EDITMSG"))
+	undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG"))
   (undohist-initialize))
 
 ;; Treat undo history as a tree

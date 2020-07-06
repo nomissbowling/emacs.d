@@ -20,10 +20,12 @@
 	company-dabbrev-downcase nil)
   :init
   (leaf company-quickhelp :ensure t
+    :hook (after-init-hook . company-quickhelp-mode)
     :config
-    (company-quickhelp-mode 1)
-    :custom
-    (company-quickhelp-delay . 0.5)))
+    (setq company-quickhelp-color-foreground "#C7C9D1")
+    (setq company-quickhelp-color-background "#393F60")
+    (setq company-quickhelp-max-lines 5)
+    (company-quickhelp-mode)))
 
 
 ;; Local Variables:

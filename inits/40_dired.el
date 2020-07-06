@@ -3,7 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf dired
+(leaf dired :require t
   :bind (:dired-mode-map
 	 ("j" . dired-next-line)
 	 ("k" . dired-previous-line)
@@ -21,21 +21,21 @@
 	 ("s" . sudo-edit)
 	 ("." . magit-status))
   :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
-  :config
-  (setq dired-listing-switches "-lgGhF"
-	dired-dwim-target t
-	dired-recursive-copies 'always
-	dired-isearch-filenames t)
+  :custom
+  ;; Use dired as 2-screen filer
+  (dired-dwim-target . t)
+  ;; Always to perform the delete/copy of directories recursively
+  (dired-recursive-copies . 'always)
+  (dired-recursive-deletes . 'always)
+  (dired-listing-switches . "-lgGhF")
   :init
-  ;; omit desktop.ini
-  (leaf dired-x
-    :require t
+  (leaf wdired :require t)
+  (leaf dired-x :require t
     :config
     (setq dired-omit-mode t
 	  dired-omit-files "^\\desktop.ini"))
-  (leaf ls-lisp
-    :require t
-    :doc "Show directory first"
+  ;; Show directory first
+  (leaf ls-lisp :require t
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
   (leaf sudo-edit :ensure t))

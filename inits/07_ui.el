@@ -12,8 +12,7 @@
      (load-theme 'iceberg t))))
 
 
-(leaf doom-modeline
-  :ensure t
+(leaf doom-modeline :ensure t
   :hook (after-init-hook . doom-modeline-mode)
   :config
   (line-number-mode 0)
@@ -23,30 +22,24 @@
 	doom-modeline-major-mode-icon nil
 	doom-modeline-minor-modes nil)
   :init
-  (leaf hide-mode-line
-    :ensure t
+  (leaf hide-mode-line :ensure t
     :hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
-  (leaf nyan-mode
-    :ensure t
+  (leaf nyan-mode :ensure t
     :hook (after-init-hook . nyan-mode)
     :custom ((nyan-cat-face-number . 4)
 	     (nyan-animate-nyancat . t))))
 
 
-(leaf all-the-icons
-  :ensure t
+(leaf all-the-icons :ensure t
   :custom (all-the-icons-scale-factor . 1.0)
   :init
-  (leaf all-the-icons-dired
-    :ensure t
+  (leaf all-the-icons-dired :ensure t
     :hook (dired-mode-hook . all-the-icons-dired-mode))
-  (leaf all-the-icons-ivy-rich
-    :ensure t
+  (leaf all-the-icons-ivy-rich :ensure t
     :hook (after-init-hook . all-the-icons-ivy-rich-mode)))
 
 
-(leaf darkroom
-  :ensure t
+(leaf darkroom :ensure t
   :bind ("<f12>" . my:darkroom-mode-in)
   :config
   (defun my:darkroom-mode-in ()

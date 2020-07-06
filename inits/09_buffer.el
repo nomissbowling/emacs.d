@@ -4,8 +4,7 @@
 ;; (setq debug-on-error t)
 
 ;; automatically save buffers in a decent way
-(leaf auto-save-buffers-enhanced
-  :ensure t
+(leaf auto-save-buffers-enhanced :ensure t
   :config
   (setq auto-save-buffers-enhanced-quiet-save-p t)
   ;; auto save *scratch* to ~/.emacs.d/scratch
@@ -33,8 +32,7 @@
   (setq tempbuf-kill-message nil))
 
 ;; Persistent undo history for GNU Emacs
-(leaf undohist
-  :ensure t
+(leaf undohist :ensure t
   :require t
   :config
   (setq undohist-directory "~/Dropbox/dotfiles/undohist"
@@ -42,8 +40,7 @@
   (undohist-initialize))
 
 ;; Treat undo history as a tree
-(leaf undo-tree
-  :ensure t
+(leaf undo-tree :ensure t
   :bind* (("C-_" . undo-tree-undo)
 	  ("C-\\" . undo-tree-undo)
 	  ("C-/" . undo-tree-redo)

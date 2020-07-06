@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf counsel
-  :ensure t
+(leaf counsel :ensure t
   :bind (("C-r" . swiper-thing-at-point)
 	 ("C-s" . swiper-migemo-or-region)
 	 ("C-:" . counsel-switch-buffer)
@@ -36,11 +35,9 @@
 	"\n------------------------------------------------------------\n"
 	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
   :init
-  (leaf amx
-    :ensure t
+  (leaf amx :ensure t
     :init (setq amx-history-length 20))
-  (leaf ivy-rich
-    :ensure t
+  (leaf ivy-rich :ensure t
     :hook (ivy-mode-hook . ivy-rich-mode)))
 
 
@@ -91,8 +88,7 @@ If the region isn't selected, `swiper' with migemo."
 
 (leaf *counsel-tools
   :init
-  (leaf counsel-tramp
-    :ensure t
+  (leaf counsel-tramp :ensure t
     :bind (("C-c t" . counsel-tramp)
 	   ("C-c q" . my:tramp-quit))
     :config
@@ -108,15 +104,13 @@ If the region isn't selected, `swiper' with migemo."
 	(counsel-tramp-quit)
 	(message "Now tramp-quit!"))))
 
-  (leaf counsel-web
-    :ensure t
+  (leaf counsel-web :ensure t
     :bind ("s-s" . counsel-web-suggest)
     :config
     (setq counsel-web-search-action #'browse-url
 	  counsel-web-engine 'google))
 
-  (leaf counsel-css
-    :ensure t
+  (leaf counsel-css :ensure t
     :config
     (add-hook 'css-mode-hook #'counsel-css-imenu-setup)))
 

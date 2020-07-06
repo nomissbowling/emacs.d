@@ -35,8 +35,7 @@
     :config
     (leaf-keywords-init))
 
-  (leaf init-loader
-    :ensure t
+  (leaf init-loader :ensure t
     :config
     (setq load-prefer-newer t)
     (setq el-get-dir "~/.emacs.d/elisp")

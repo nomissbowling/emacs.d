@@ -3,14 +3,12 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf open-junk-file
-  :ensure t
+(leaf open-junk-file :ensure t
   :config
   (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
 
 
-(leaf howm
-  :ensure t
+(leaf howm :ensure t
   :chord ("@@" . howm-list-all)
   :bind (:howm-view-summary-mode-map
 	 ([backtab] . howm-view-summary-previous-section))

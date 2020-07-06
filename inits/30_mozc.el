@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf mozc
-  :ensure t
+(leaf mozc :ensure t
   :bind* (("<hiragana-katakana>" . toggle-input-method)
 	  ("<henkan>" . mozc-temp-convert))
   :config
@@ -39,8 +38,7 @@
 	  '((direct . "#BD93F9")
 	    (read-only . "#84A0C6")
 	    (hiragana . "#CC3333"))))
-  (leaf mozc-cand-posframe
-    :ensure t
+  (leaf mozc-cand-posframe :ensure t
     :require t
     :config
     (setq mozc-candidate-style 'posframe)))

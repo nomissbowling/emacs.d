@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf easy-hugo
-  :ensure t
+(leaf easy-hugo :ensure t
   :bind (("C-c C-e" . easy-hugo)
 	 ("C-x p" . easy-hugo-preview)
 	 ("C-x P" . easy-hugo-publish)

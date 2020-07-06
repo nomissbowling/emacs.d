@@ -26,35 +26,29 @@
      (setq show-paren-style 'mixed))
 
    ;; A tomatically insert pairs
-   (leaf smartparens
-     :ensure t
+   (leaf smartparens :ensure t
      :config (smartparens-global-mode))
 
    ;; Keeps code always indented
-   (leaf aggressive-indent
-     :ensure t
+   (leaf aggressive-indent :ensure t
      :hook ((emacs-lisp-mode-hook css-mode-hook) . aggressive-indent-mode))
 
    ;; Highlight the cursor whenever the window scrolls
-   (leaf beacon
-     :ensure t
+   (leaf beacon :ensure t
      :config
      (beacon-mode)
      (setq beacon-color "yellow"))
 
    ;; Highlight brackets according to their depth
-   (leaf rainbow-delimiters
-     :ensure t
+   (leaf rainbow-delimiters :ensure t
      :config (rainbow-delimiters-mode))
 
    ;; Colorize color names in buffers
-   (leaf rainbow-mode
-     :ensure t
+   (leaf rainbow-mode :ensure t
      :bind ("C-c r" . rainbow-mode))
 
    ;; Highlight some operations
-   (leaf volatile-highlights
-     :ensure t
+   (leaf volatile-highlights :ensure t
      :config
      (volatile-highlights-mode)
      (with-no-warnings
@@ -64,8 +58,7 @@
 	   (pulse-momentary-highlight-region beg end face))
 	 (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
-   (leaf dimmer
-     :ensure t
+   (leaf dimmer :ensure t
      :config
      (dimmer-mode)
      (setq dimmer-exclusion-regexp-list
@@ -82,8 +75,7 @@
        (add-hook 'focus-out-hook #'dimmer-off)
        (add-hook 'focus-in-hook #'dimmer-on)))
 
-   (leaf whitespace
-     :ensure t
+   (leaf whitespace :ensure t
      :bind ("C-c C-c" . my:cleanup-for-spaces)
      :hook (prog-mode-hook . my:enable-trailing-mode)
      :config (setq show-trailing-whitespace nil)

@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf markdown-mode
-  :ensure t
+(leaf markdown-mode :ensure t
   :mode (("README\\.md\\'" . gfm-mode)
 	 ("\\.md\\'" . markdown-mode))
   :hydra
@@ -26,13 +25,8 @@
    ("q" nil))
   :init
   (leaf markdown-toc :ensure t)
-  (leaf edit-indirect
-    :ensure t
-    :bind (("s-c" . markdown-edit-code-block)
-	   (:edit-indirect-mode-map
-	    ("s-c" . edit-indirect-abort))))
-  (leaf poly-markdown
-    :ensure t
+  (leaf edit-indirect :ensure t)
+  (leaf poly-markdown :ensure t
     :mode ("\\.md" . poly-markdown-mode))
   (leaf livedown
     :el-get  shime/emacs-livedown

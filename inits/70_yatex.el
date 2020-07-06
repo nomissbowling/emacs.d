@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf yatex
-  :ensure t
+(leaf yatex :ensure t
   :mode ("\\.tex\\'" . yatex-mode)
   :config
   (setq tex-command "platex"

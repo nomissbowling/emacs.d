@@ -5,8 +5,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf dashboard
-  :ensure t
+(leaf dashboard :ensure t
   :bind (("<home>" . open-dashboard)
 	 (:dashboard-mode-map
 	  ("c" . browse-calendar)

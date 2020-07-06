@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf search-web
-  :ensure t
+(leaf search-web :ensure t
   :require t
   :bind ("M-s" . hydra-search/body)
   :config

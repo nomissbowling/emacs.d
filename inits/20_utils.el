@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf migemo
-  :ensure t
+(leaf migemo :ensure t
   :when (executable-find "cmigemo")
   :hook (after-init-hook . migemo-init)
   :config
@@ -13,8 +12,7 @@
   (autoload 'migemo-init "migemo" nil t))
 
 
-(leaf imenu-list
-  :ensure t
+(leaf imenu-list :ensure t
   :bind (("<f2>" . imenu-list-smart-toggle))
   :config
   (setq imenu-list-size 30
@@ -22,8 +20,7 @@
 	imenu-list-focus-after-activation t))
 
 
-(leaf browse-at-remote
-  :ensure t
+(leaf browse-at-remote :ensure t
   :config
   (defalias 'my:github-show 'browse-at-remote))
 

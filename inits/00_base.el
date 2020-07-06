@@ -43,22 +43,19 @@
    'emacs-startup-hook
    (lambda ()
      ;; Emacs use the $PATH set up by the user's shell
-     (leaf exec-path-from-shell
-       :ensure t
+     (leaf exec-path-from-shell :ensure t
        :config
        (setq exec-path-from-shell-check-startup-files nil)
        (exec-path-from-shell-initialize))
 
      ;; Start the server in Emacs session
-     (leaf server
-       :require t
+     (leaf server :require t
        :config
        (unless (server-running-p)
 	 (server-start)))
 
      ;; Password management
-     (leaf espy
-       :ensure t
+     (leaf espy :ensure t
        :init
        (setq espy-password-file "~/Dropbox/backup/passwd/password.org.gpg")
        (defun select-espy-command ()

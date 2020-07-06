@@ -5,8 +5,7 @@
 ;;; Code:
 ;; (setq debug-on-erro t)
 
-(leaf magit
-  :ensure t
+(leaf magit :ensure t
   :bind ("C-x g" . hydra-magit/body)
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
@@ -22,8 +21,7 @@
    ("q" nil))
   :init
   (leaf git-timemachine :ensure t)
-  (leaf diff-hl
-    :ensure t
+  (leaf diff-hl :ensure t
     :hook
     (((after-init-hook prog-mode-hook) . diff-hl-mode)
      (magit-post-refresh-hook . diff-hl-magit-post-refresh))

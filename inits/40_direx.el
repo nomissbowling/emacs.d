@@ -3,8 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf direx
-  :ensure t
+(leaf direx :ensure t
   :after popwin
   :bind (("<f10>" . direx:jump-to-project-directory)
 	 (:direx:direx-mode-map

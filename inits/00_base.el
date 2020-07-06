@@ -185,7 +185,9 @@ If the region is inactive, `backward-kill-word'."
 	     ("emacs" "emacs-ja.info")
 	     (_ filename))
 	   args))
-  (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
+  (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
+
+  )
 
 
 ;; Local Variables:

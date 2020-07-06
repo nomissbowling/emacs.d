@@ -15,7 +15,8 @@
    (lambda ()
      (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
      (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-     (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
+     (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
+     (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))))
   :init
   (leaf mozc-temp :ensure t)
   (leaf mozc-cursor-color

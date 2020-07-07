@@ -57,7 +57,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
     Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
-    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  _p_ackage  _j_unk-file  "
+    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  _p_ackage  _j_unk "
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -82,6 +82,7 @@
    ("j" open-junk-file)
    ("J" my:junk-file-dir)
    (":" view-mode)
+   ("r" counsel-rg)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)

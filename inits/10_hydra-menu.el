@@ -89,7 +89,7 @@
    ("x" hydra-quick-menu/body)
    ("[" my:haiku-note)
    ("]" my:haiku-note-post)
-   ("q" keyboard-quit)
+   ("q" nil)
    ("s-x" nil)))
 
 

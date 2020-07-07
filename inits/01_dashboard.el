@@ -58,6 +58,9 @@
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
     (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
+  (defvar dashboard-recover-layout-p nil
+    "Wether recovers the layout.")
+
   (defun open-dashboard ()
     "Open the *dashboard* buffer and jump to the first widget."
     (interactive)
@@ -65,7 +68,7 @@
     (setq default-directory "~/")
     ;; Refresh dashboard buffer
     (if (get-buffer dashboard-buffer-name)
-	(kill-buffer dashboard-buffer-name))
+  	(kill-buffer dashboard-buffer-name))
     (dashboard-insert-startupify-lists)
     (switch-to-buffer dashboard-buffer-name)
     ;; Jump to the first section

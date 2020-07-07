@@ -28,7 +28,7 @@
 	dashboard-set-file-icons t
 	;; dashboard-page-separator "\n\f\f\n"
 	show-week-agenda-p t
-	dashboard-items '((recents  . 8)
+	dashboard-items '((recents  . 10)
 			  (agenda . 5)))
   (setq dashboard-banner-logo-title
 	(concat "GNU Emacs " emacs-version " kernel "

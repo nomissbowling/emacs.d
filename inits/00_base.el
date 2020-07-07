@@ -9,7 +9,6 @@
 
 (leaf *basic-configuration
   :init
-  ;; Display
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
   (tool-bar-mode 0)

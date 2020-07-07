@@ -14,6 +14,7 @@
 	 ("s-a" . counsel-linux-app)
 	 ("C-x C-f" . counsel-find-file)
 	 ("C-c k" . counsel-ag)
+	 ("C-c w" . counsel-rg)
 	 ("C-c f" . counsel-projectile-find-file)
 	 ("C-c g" . counsel-git)
 	 ("C-c j" . counsel-git-grep)
@@ -64,6 +65,7 @@ If the region isn't selected, `swiper' with migemo."
 
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
 				(counsel-web . my:ivy-migemo-re-builder)
+  				(counsel-rg . my:ivy-migemo-re-builder)
   				(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)

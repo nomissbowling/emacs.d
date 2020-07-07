@@ -65,25 +65,18 @@
 
      ;; Hide the menu-bar
      (menu-bar-mode 0)
-
      ;; Save hist
      (savehist-mode)
-
      ;;Save plae
      (save-place-mode)
-
      ;; Automatic reloading of changed files
      (global-auto-revert-mode)
-
      ;; Do not blink the cursor
      (blink-cursor-mode)
-
      ;; Window configuration undo/redo
      (winner-mode)
-
      ;; font-lock
      (global-font-lock-mode)
-
      ;; word wrapping is used
      (global-visual-line-mode)
 
@@ -111,7 +104,6 @@
 
      ;; Copy with mouse drag
      (setq mouse-drag-copy-region t)
-
      ;; Do not make a backup filie like *.~
      (setq make-backup-files nil)
      ;; Do not use auto save
@@ -120,9 +112,6 @@
      (setq create-lockfiles nil)
      ;; Open symbolic link directly
      (setq vc-follow-symlinks t)
-
-     ;; Do not record the same content in the history
-     (setq history-delete-duplicates t)
 
      ;; Display file name in title bar: buffername-emacs-version
      (setq frame-title-format "%b")

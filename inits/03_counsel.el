@@ -106,7 +106,7 @@ If the region isn't selected, `swiper' with migemo."
       (when (get-buffer "*tramp/scp xsrv*")
 	(tramp-cleanup-all-connections)
 	(counsel-tramp-quit)
-	(message "Now tramp-quit!"))))
+	(message "Tramp Quit!"))))
 
   (leaf counsel-web :ensure t
     :bind ("s-s" . counsel-web-suggest)

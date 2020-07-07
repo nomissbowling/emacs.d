@@ -54,7 +54,10 @@
   (hydra-work
    (:hint nil :exit t)
    "
-   📝 Work: _a_:合評  _d_:日記  _m_:毎日  _w_:毎週  _k_:兼題  _t_:定例  _g_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_  _e_:Hugo  _j_unk  _b_ackup"
+  ✌ Sub Menu
+  --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
+    Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
+    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  _p_ackage  _j_unk-file  "
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -64,7 +67,7 @@
    ("O" my:otibo-new-post)
    ("t" my:teirei)
    ("T" my:teirei-new-post)
-   ("g" my:swan)
+   ("s" my:swan)
    ("G" my:swan-new-post)
    ("n" my:kinnei)
    ("N" my:kinnei-new-post)
@@ -73,6 +76,9 @@
    ("k" my:m_kukai)
    ("b" my:backup-all)
    ("B" my:backup-dir)
+   ("g" gist-region-or-buffer)
+   ("l" gist-list)
+   ("p" hydra-package/body)
    ("j" open-junk-file)
    ("J" my:junk-file-dir)
    (":" view-mode)

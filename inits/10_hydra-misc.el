@@ -11,7 +11,7 @@
   (hydra-package
    (:color red :hint nil)
    "
- 📦 Package: _i_nstall   _u_pgrade   _r_emove   _a_ll-update   _l_ist  _e_l-get"
+ 📦 Package: _l_ist   _i_nstall   _u_pgrade-list   _a_ll-upgrade   _r_emove   _e_l-get"
    ("i" package-install)
    ("u" package-utils-list-upgrades)
    ("r" package-utils-remove-by-name)

@@ -96,11 +96,9 @@ If the region isn't selected, `swiper' with migemo."
 	  counsel-tramp-custom-connections
 	  '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
     (add-hook 'counsel-tramp-pre-command-hook
-	      '(lambda () (global-aggressive-indent-mode 0)
-		 (projectile-mode 0)))
+	      '(lambda () (projectile-mode 0)))
     (add-hook 'counsel-tramp-quit-hook
-	      '(lambda () (global-aggressive-indent-mode 1)
-		 (projectile-mode 1)))
+	      '(lambda () (projectile-mode 1)))
     :preface
     (defun my:tramp-quit ()
       "Quit tramp, if tramp connencted."

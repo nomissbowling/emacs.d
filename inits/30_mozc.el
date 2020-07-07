@@ -5,7 +5,7 @@
 
 (leaf mozc :ensure t
   :bind* (("<hiragana-katakana>" . toggle-input-method)
-	  ("<henkan>" . mozc-temp-convert))
+	  ("<henkan>" . toggle-input-method))
   :config
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
@@ -18,7 +18,6 @@
      (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
      (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))))
   :init
-  (leaf mozc-temp :ensure t)
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t

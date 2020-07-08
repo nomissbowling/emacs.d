@@ -5,7 +5,7 @@
 
 (leaf *hydra-pinky
   :bind (("C-q" . other-window-or-split))
-  :chord (("jk" . hydra-pinky/body))
+  :chord ("jk" . hydra-pinky/body)
   :hydra
   (hydra-pinky
    (:color red :hint nil)
@@ -26,6 +26,7 @@
    ("<next>" scroll-up-command)
    ("<prior>" scroll-down-command)
    ("g" beginning-of-buffer)
+   ("<end>" end-of-buffer)
    ("G" end-of-buffer)
    ("o" other-window-or-split)
    ("@" recenter-top-bottom)

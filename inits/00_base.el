@@ -132,7 +132,7 @@
   (bind-key "s-z" 'text-scale-adjust)
 
   ;; Run muhenkan same as C-g
-  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit)
+  (bind-key "<muhenkan>" 'minibuffer-keyboard-quit)
 
   ;; xref-find-* key
   (bind-key "C-," 'xref-find-references)

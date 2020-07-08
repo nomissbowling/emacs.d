@@ -12,7 +12,7 @@
   🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------
     _d_ropbox   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _j_unk   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    e_2_pdf🐾   magit:_:_   _t_ramp   _f_tp   _y_as:_n_:_v_   _a_g🐾   _r_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
+    e_2_pdf🐾   magit:_:_   _t_ramp   _f_tp   _y_as:_n_:_v_   _a_g🐾   ca_l_c   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -20,14 +20,15 @@
    ("q" my:tramp-quit)
    ("d" my:dropbox)
    ("i" my:inits-dir)
+   ("l" open-calculator)
    ("e" my:emacs-dir)
    ("w" my:www-dir)
    ("h" my:gh-dir)
    ("y" ivy-yasnippet)
    ("n" yas/new-snippet)
    ("v" yas/visit-snippet-file)
-   ("r" counsel-rg)
-   ("]" restart-emacs)
+   ("]" counsel-rg)
+   ("r" restart-emacs)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
    (":" magit-status)
@@ -35,7 +36,7 @@
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
    ("2" my:pdfout-buffer)
-   ("p" select-espy-command)
+   ("p" open-keepass)
    ("g" my:github-show)
    ("@" howm-list-all)
    ("," org-capture)
@@ -60,7 +61,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
     Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
-    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾"
+    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g🐾🐾"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -81,6 +82,7 @@
    ("B" my:backup-dir)
    ("g" gist-region-or-buffer)
    ("l" gist-list)
+   ("r" counsel-rg)
    ("p" hydra-package/body)
    (":" view-mode)
    ("/" kill-other-buffers)
@@ -103,11 +105,16 @@
     (unless (getenv "WSENV")
       (shell-command "filezilla")))
 
-  (defun select-espy-command ()
+  (defun open-keepass ()
     "Narrow the only espy command in M-x."
     (interactive)
-    (counsel-M-x "^espy"))
+    (compile "keepassxc"))
 
+  (defun open-calculator ()
+    "Narrow the only espy command in M-x."
+    (interactive)
+    (compile "gnome-calculator"))
+  
   (defun my:backup-all ()
     "Backup for melpa package."
     (interactive)

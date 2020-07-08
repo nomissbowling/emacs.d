@@ -10,9 +10,9 @@
    (:hint nil :exit t)
    "
   🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------
-    _d_ropbox   _e_macs.d   _i_nits   _w_eb   GH:_h_   .emacs_;_^^^^   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    e_2_pdf🐾   magit:_:_   _t_ramp   _f_tp   _a_g🐾   _y_as:_n_:_v_   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
+  ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------
+    _d_ropbox   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _j_unk   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
+    e_2_pdf🐾   magit:_:_   _t_ramp   _f_tp   _y_as:_n_:_v_   _a_g🐾   _r_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -26,7 +26,8 @@
    ("y" ivy-yasnippet)
    ("n" yas/new-snippet)
    ("v" yas/visit-snippet-file)
-   ("r" restart-emacs)
+   ("r" counsel-rg)
+   ("]" restart-emacs)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
    (":" magit-status)
@@ -42,6 +43,8 @@
    ("u" undo-tree-visualize)
    ("." hydra-work/body)
    ("x" hydra-work/body)
+   ("j" open-junk-file)
+   ("J" my:junk-file-dir)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -57,7 +60,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
     Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
-    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  _p_ackage  _j_unk "
+    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -68,7 +71,7 @@
    ("t" my:teirei)
    ("T" my:teirei-new-post)
    ("s" my:swan)
-   ("G" my:swan-new-post)
+   ("S" my:swan-new-post)
    ("n" my:kinnei)
    ("N" my:kinnei-new-post)
    ("m" my:d_kukai)
@@ -79,10 +82,7 @@
    ("g" gist-region-or-buffer)
    ("l" gist-list)
    ("p" hydra-package/body)
-   ("j" open-junk-file)
-   ("J" my:junk-file-dir)
    (":" view-mode)
-   ("r" counsel-rg)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)

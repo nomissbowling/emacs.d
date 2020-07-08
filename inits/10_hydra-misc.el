@@ -18,7 +18,7 @@
    ("a" package-utils-upgrade-all-and-restart)
    ("l" package-list-packages)
    ("e" select-elget-command)
-   ("q" nil))
+   ("<muhenkan>" nil))
   :init
   (defun select-elget-command ()
     "Narrow the only el-get command in M-x."
@@ -96,6 +96,7 @@
    ("p" browse-pocket)
    ("t" browse-tweetdeck)
    ("," browse-slack)
+   ("<muhenkan>" nil)
    ("." nil)))
 
 ;; Emacs in WSL and opening links

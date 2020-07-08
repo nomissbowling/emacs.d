@@ -22,7 +22,7 @@
    ;; Pndoc
    ("p" md2pdf)
    ("d" md2docx)
-   ("q" nil))
+   ("<muhenkan>" nil))
   :init
   (leaf markdown-toc :ensure t)
   (leaf edit-indirect :ensure t)

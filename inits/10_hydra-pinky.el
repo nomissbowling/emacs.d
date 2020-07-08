@@ -42,7 +42,8 @@
    ("x" window-toggle-division)
    ("," winner-redo)
    ("." winner-undo)
-   (":" counsel-switch-buffer)))
+   (":" counsel-switch-buffer)
+   ("<muhenkan>" nil)))
 
 
 (leaf *window-controle-function

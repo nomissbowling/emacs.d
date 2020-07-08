@@ -16,7 +16,7 @@
    ("g" my:make-git)
    ("c" my:make-clean)
    ("e" next-error)
-   ("q" nil))
+   ("<muhenkan>" nil))
   :config
   (defun my:make-k ()
     "Make command default."

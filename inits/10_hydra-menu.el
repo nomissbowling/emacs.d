@@ -49,6 +49,7 @@
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
+   ("<muhenkan>" nil)
    ("M-." nil)))
 
 
@@ -91,7 +92,7 @@
    ("x" hydra-quick-menu/body)
    ("[" my:haiku-note)
    ("]" my:haiku-note-post)
-   ("q" nil)
+   ("<muhenkan>" nil)
    ("s-x" nil)))
 
 

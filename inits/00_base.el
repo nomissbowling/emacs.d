@@ -123,7 +123,6 @@
   (bind-key "s-z" 'text-scale-adjust)
 
   ;; Run muhenkan same as C-g
-  ;; (bind-key "<muhenkan>" 'keyboard-quit)
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
 
   ;; xref-find-* key

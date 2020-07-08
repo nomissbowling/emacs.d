@@ -53,15 +53,6 @@
        (unless (server-running-p)
 	 (server-start)))
 
-     ;; Password management
-     (leaf espy :ensure t
-       :init
-       (setq espy-password-file "~/Dropbox/backup/passwd/password.org.gpg")
-       (defun select-espy-command ()
-	 "Narrow the espy-command in the M-x."
-	 (interactive)
-	 (counsel-M-x "^espy-get ")))
-
      ;; Hide the menu-bar
      (menu-bar-mode 0)
      ;; Save hist
@@ -132,7 +123,8 @@
   (bind-key "s-z" 'text-scale-adjust)
 
   ;; Run muhenkan same as C-g
-  (bind-key "<muhenkan>" 'minibuffer-keyboard-quit)
+  ;; (bind-key "<muhenkan>" 'keyboard-quit)
+  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
 
   ;; xref-find-* key
   (bind-key "C-," 'xref-find-references)

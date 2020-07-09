@@ -62,7 +62,7 @@
      :config
      (dimmer-mode)
      (setq dimmer-exclusion-regexp-list
-	   '(".*Minibuf.*"	".*which-key.*"	".*NeoTree.*" ".*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*"))
+	   '(".*Minibuf.*" ".*which-key.*" ".*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*"))
      (setq dimmer-fraction 0.5)
      :preface
      (with-eval-after-load "dimmer"

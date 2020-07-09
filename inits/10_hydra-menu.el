@@ -62,7 +62,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
     Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
-    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g(mi)"
+    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g(mi)  plint_:_"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -85,7 +85,7 @@
    ("l" gist-list)
    ("r" counsel-rg)
    ("p" hydra-package/body)
-   (":" view-mode)
+   (":" my:ps-print)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)
@@ -98,6 +98,11 @@
 
 (leaf *user-defined-function
   :config
+  (defun my:ps-print ()
+    "Narrow the only counsel-command in M-x."
+    (interactive)
+    (counsel-M-x "^ps-print "))
+
   (defun ftp-client ()
     "Open Ftp application."
     (interactive)

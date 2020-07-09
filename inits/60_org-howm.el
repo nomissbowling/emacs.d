@@ -4,9 +4,14 @@
 ;; (setq debug-on-error t)
 
 (leaf open-junk-file :ensure t
+  :bind* ("C-x m" . my:clmemo)
   :config
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
-
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")
+  (defun my:clmemo ()
+    (interactive)
+    (add-change-log-entry
+     nil
+     (expand-file-name "~/Dropbox/howm/clmemo.txt"))))
 
 (leaf howm :ensure t
   :chord ("@@" . howm-list-all)

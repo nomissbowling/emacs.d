@@ -74,6 +74,13 @@
   :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
 
+;; (leaf bitly
+;;   :ensure t
+;;   :require t
+;;   :config
+;;   (setq bitly-access-token "6c5b86ec43799c49659a576dd78c13dd3c97f099"))
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

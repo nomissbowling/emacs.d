@@ -10,9 +10,9 @@
    (:hint nil :exit t)
    "
   🐳 Quick Menu
-  ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------
-    _d_ropbox^^   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _j_unk   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    _t_ramp:_q_   magit._:_   linu_x_   _f_tp   _y_as:_n_:_v_   _a_g🐾   c_l_og   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
+  ---^^^^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------------
+    _d_ropbox^^   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
+    _t_ramp:_q_   magit._:_   linu_x_   _f_tp   _y_as:_n_:_v_   _a_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -20,7 +20,6 @@
    ("q" my:tramp-quit)
    ("d" my:dropbox)
    ("i" my:inits-dir)
-   ("l" my:clmemo)
    ("e" my:emacs-dir)
    ("w" my:www-dir)
    ("h" my:gh-dir)
@@ -45,8 +44,6 @@
    ("u" undo-tree-visualize)
    ("." hydra-work/body)
    ;; ("x" hydra-work/body)
-   ("j" open-junk-file)
-   ("J" my:junk-file-dir)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)
@@ -63,7 +60,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
     Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
-    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g(mi)  ps_2_pdf  print_:_"
+    Tool: _g_ist:_l_  _e_:Hugo  _j_unk🐾  _b_ackup  el_p_a🐾   _r_g(mi)  ps_2_pdf  print_:_"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -94,6 +91,8 @@
    ("x" hydra-quick-menu/body)
    ("[" my:haiku-note)
    ("]" my:haiku-note-post)
+   ("j" open-junk-file)
+   ("J" my:junk-file-dir)
    ("<muhenkan>" nil)
    ("s-x" nil)))
 

@@ -16,8 +16,8 @@
   	      (setq gc-cons-threshold 800000)))
 
   (customize-set-variable
-   'package-archives '(("melpa" . "https://melpa.org/packages/")
-		       ("org"   . "https://orgmode.org/elpa/")
+   'package-archives '(("org"   . "https://orgmode.org/elpa/")
+		       ("melpa" . "https://melpa.org/packages/")
 		       ("gnu"   . "https://elpa.gnu.org/packages/")))
 
   (package-initialize)

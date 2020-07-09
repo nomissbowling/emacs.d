@@ -4,19 +4,20 @@
 ;; (setq debug-on-error t)
 
 (leaf markdown-mode :ensure t
-  :mode (("README\\.md\\'" . gfm-mode)
-	 ("\\.md\\'" . markdown-mode))
+  :mode "\\.md\\'"
+  :bind ("C-c '" . markdown-edit-code-block)
   :hydra
   (hydra-markdown
    (:color red :hint nil)
    "
-    Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  edit-code:_._  _v_iewer:_k_  md2_p_df  md2_d_ocx"
+    Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _c_ode:_a_bort  _v_iew:_k_ill  md2_p_df  md2_d_ocx"
    ("i" markdown-insert-italic)
    ("x" markdown-insert-strike-through)
    ("t" markdown-insert-table)
    ("o" markdown-toc-generate-or-refresh-toc)
    ("f" markdown-insert-footnote)
-   ("." markdown-edit-code-block)
+   ("c" markdown-edit-code-block)
+   ("a" edit-indirect-abort)
    ("v" livedown-preview)
    ("k" livedown-kill)
    ;; Pndoc

@@ -64,6 +64,18 @@
     (shell-command-on-region begin end (format my:pdfout-command-format
 					       (concat (read-from-minibuffer "File name:") ".pdf")))))
 
+;; ps-print-buffer
+(leaf ps-print :ensure nil
+  :config
+  (setq ps-paper-type 'a4
+	ps-font-size 9
+	ps-printer-name nil
+	ps-print-header nil
+	ps-show-n-of-n t
+	ps-line-number t
+	ps-print-footer nil
+	))
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

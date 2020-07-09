@@ -12,7 +12,7 @@
   🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------
     _d_ropbox^^   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _j_unk   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    _t_ramp:_q_   magit._:_   e_2_pdf   _f_tp   _y_as:_n_:_v_   _a_g🐾   ca_l_c   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
+    _t_ramp:_q_   magit._:_   linu_x_   _f_tp   _y_as:_n_:_v_   _a_g🐾   c_l_og   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -20,7 +20,7 @@
    ("q" my:tramp-quit)
    ("d" my:dropbox)
    ("i" my:inits-dir)
-   ("l" open-calculator)
+   ("l" my:clmemo)
    ("e" my:emacs-dir)
    ("w" my:www-dir)
    ("h" my:gh-dir)
@@ -41,9 +41,10 @@
    ("@" howm-list-all)
    ("," org-capture)
    ("k" my:make-k)
+   ("x" counsel-linux-app)
    ("u" undo-tree-visualize)
    ("." hydra-work/body)
-   ("x" hydra-work/body)
+   ;; ("x" hydra-work/body)
    ("j" open-junk-file)
    ("J" my:junk-file-dir)
    ("/" kill-other-buffers)
@@ -62,7 +63,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
     Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
-    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g(mi)  plint_:_"
+    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g(mi)  ps_2_pdf  print_:_"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -85,6 +86,7 @@
    ("l" gist-list)
    ("r" counsel-rg)
    ("p" hydra-package/body)
+   ("2" my:pdfout-buffer)
    (":" my:ps-print)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
@@ -120,7 +122,7 @@
     "Narrow the only espy command in M-x."
     (interactive)
     (compile "gnome-calculator"))
-  
+
   (defun my:backup-all ()
     "Backup for melpa package."
     (interactive)

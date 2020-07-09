@@ -68,18 +68,9 @@
   (add-hook 'org-capture-mode-hook 'delete-other-windows))
 
 
-(leaf *user-life-log
-  :bind* ("C-x m" . my:clmemo)
+(leaf open-junk-file :ensure t
   :config
-  (leaf open-junk-file :ensure t
-    :config
-    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
-  :init
-  (defun my:clmemo ()
-    (interactive)
-    (add-change-log-entry
-     nil
-     (expand-file-name "~/Dropbox/howm/clmemo.txt"))))
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
 
 
 ;; Local Variables:

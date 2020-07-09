@@ -10,13 +10,10 @@
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"
 	mozc-leim-title "♡かな")
-  (add-hook
-   'mozc-mode-hook
-   (lambda ()
-     (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
-     (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-     (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
-     (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))))
+  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
+  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
   :init
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions

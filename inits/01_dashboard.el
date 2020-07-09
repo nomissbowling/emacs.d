@@ -133,7 +133,7 @@
   (defun browse-homepage ()
     "Open my homepage."
     (interactive)
-    (browse-url "https://gospel-haiku.com/"))
+    (browse-url "https://gospel-haiku.com/update/"))
   (defun browse-gmail ()
     "Open gmail with chrome."
     (interactive)

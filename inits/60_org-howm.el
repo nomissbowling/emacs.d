@@ -3,16 +3,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf open-junk-file :ensure t
-  :bind* ("C-x m" . my:clmemo)
-  :config
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")
-  (defun my:clmemo ()
-    (interactive)
-    (add-change-log-entry
-     nil
-     (expand-file-name "~/Dropbox/howm/clmemo.txt"))))
-
 (leaf howm :ensure t
   :chord ("@@" . howm-list-all)
   :bind (:howm-view-summary-mode-map
@@ -76,6 +66,20 @@
     "Save the window configuration before 'org-capture'."
     (setq my:org-capture-before-config (current-window-configuration)))
   (add-hook 'org-capture-mode-hook 'delete-other-windows))
+
+
+(leaf *user-life-memo
+  :bind* ("C-x m" . my:clmemo)
+  :config
+  (leaf open-junk-file :ensure t
+    :config
+    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
+  :init
+  (defun my:clmemo ()
+    (interactive)
+    (add-change-log-entry
+     nil
+     (expand-file-name "~/Dropbox/howm/clmemo.txt"))))
 
 
 ;; Local Variables:

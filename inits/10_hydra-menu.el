@@ -11,8 +11,8 @@
    "
   🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------------------------
-    _d_ropbox   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _j_unk   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    e_2_pdf🐾   magit:_:_   _t_ramp   _f_tp   _y_as:_n_:_v_   _a_g🐾   ca_l_c   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
+    _d_ropbox^^   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _j_unk   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
+    _t_ramp:_q_   magit._:_   e_2_pdf   _f_tp   _y_as:_n_:_v_   _a_g🐾   ca_l_c   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -62,7 +62,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------------------------------------------------
     Work: _a_:合評^^  _d_:日記  _m_:毎日  _w_:毎週   _k_:兼題  _t_:定例  _s_:吟行  _o_:落穂  _n_:近詠  創作:_[_:_]_
-    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g🐾🐾"
+    Tool: _g_ist:_l_  _e_:Hugo  _b_ackup  el_p_a🐾   _r_g(mi)"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)

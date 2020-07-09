@@ -68,7 +68,7 @@
   (add-hook 'org-capture-mode-hook 'delete-other-windows))
 
 
-(leaf *user-life-memo
+(leaf *user-life-log
   :bind* ("C-x m" . my:clmemo)
   :config
   (leaf open-junk-file :ensure t

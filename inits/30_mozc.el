@@ -4,8 +4,7 @@
 ;; (setq debug-on-error t)
 
 (leaf mozc :ensure t
-  :bind* (("<hiragana-katakana>" . toggle-input-method)
-	  ("<henkan>" . toggle-input-method))
+  :bind* ("<hiragana-katakana>" . toggle-input-method)
   :config
   (setq default-input-method "japanese-mozc"
 	mozc-helper-program-name "mozc_emacs_helper"

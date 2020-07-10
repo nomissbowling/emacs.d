@@ -6,7 +6,7 @@
 ;; (setq debug-on-erro t)
 
 (leaf magit :ensure t
-  :bind ("C-x g" . hydra-magit/body)
+  :bind* ("M-g" . hydra-magit/body)
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   :hydra

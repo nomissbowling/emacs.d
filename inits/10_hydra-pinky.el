@@ -11,7 +11,7 @@
   (hydra-pinky
    (:color red :hint nil)
    "
-   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_._w_._q_._0_._1_._2_._3_._x_  🐾🐾 _f_ile  _d_iff  _s_wiper  buffer:_[__:__]_"
+   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_._w_._q_._0_._1_._2_._3_._x_  🐾🐾  _f_ile  _d_iff  _s_wiper  buffer:_[__:__]_"
    ("h" backward-char)
    ("j" next-line)
    ("k" previous-line)

@@ -5,12 +5,13 @@
 
 (leaf *hydra-pinky
   :bind (("C-q" . other-window-or-split))
-  :chord ("jk" . hydra-pinky/body)
+  :chord (("jk" . hydra-pinky/body)
+	  ("::" . hydra-pinky/body))
   :hydra
   (hydra-pinky
    (:color red :hint nil)
    "
-   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_._w_._q_._0_._1_._2_._3_._x_  🐾🐾: _f_ile  _d_iff  _s_wiper  buffer_:_  winner_.__,_"
+   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_._w_._q_._0_._1_._2_._3_._x_  🐾🐾: _f_ile  _d_iff  _s_wiper  buffer:_[__:__]_"
    ("h" backward-char)
    ("j" next-line)
    ("k" previous-line)
@@ -30,7 +31,7 @@
    ("G" end-of-buffer)
    ("o" other-window-or-split)
    ("@" recenter-top-bottom)
-   ("s" swiper-thing-at-point)
+   ("s" swiper-migemo-or-region)
    ("w" window-swap-states)
    ("q" kill-buffer)
    ("d" vc-diff)
@@ -40,8 +41,8 @@
    ("2" split-window-below)
    ("3" split-window-right)
    ("x" window-toggle-division)
-   ("," winner-redo)
-   ("." winner-undo)
+   ("[" winner-redo)
+   ("]" winner-undo)
    (":" counsel-switch-buffer)
    ("<muhenkan>" nil)))
 

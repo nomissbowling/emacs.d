@@ -23,7 +23,7 @@
   (add-to-list 'default-frame-alist '(font . "Cica-18"))
   ;; for sub-machine
   (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-14.5")))
+    (add-to-list 'default-frame-alist '(font . "Cica-15")))
 
   ;; Recentf
   (leaf recentf

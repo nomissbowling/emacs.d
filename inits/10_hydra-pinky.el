@@ -4,9 +4,9 @@
 ;; (setq debug-on-error t)
 
 (leaf *hydra-pinky
-  :bind (("C-q" . other-window-or-split))
-  :chord (("jk" . hydra-pinky/body)
-	  ("::" . hydra-pinky/body))
+  :bind (("C-q" . other-window-or-split)
+	 ("<henkan>" . hydra-pinky/body))
+  :chord ("jk" . hydra-pinky/body)
   :hydra
   (hydra-pinky
    (:color red :hint nil)

@@ -12,7 +12,7 @@
   🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------
     _d_ropbox^^   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    _t_ramp:_q_   magit._:_   linu_x_   _f_tp   _y_as:_n_:_v_   _a_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
+    _t_ramp:_q_   magit._:_   _l_inux   _f_tp   _y_as:_n_:_v_   _a_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_asswd"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -40,10 +40,10 @@
    ("@" howm-list-all)
    ("," org-capture)
    ("k" my:make-k)
-   ("x" counsel-linux-app)
+   ("l" counsel-linux-app)
    ("u" undo-tree-visualize)
    ("." hydra-work/body)
-   ;; ("x" hydra-work/body)
+   ("x" hydra-work/body)
    ("/" kill-other-buffers)
    ("\\" delete-other-windows)
    ("_" delete-other-windows)

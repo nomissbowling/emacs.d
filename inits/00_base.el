@@ -112,9 +112,10 @@
        (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
 
      ;; contains many mode setting
-     (leaf generic-x :require t))
+     (leaf generic-x :require t)
 
-   ))
+     ))
+  )
 
 
 (leaf *user-custom-configuration
@@ -160,10 +161,10 @@ If the region is inactive, `backward-kill-word'."
   (defun Info-find-node--info-ja (orig-fn filename &rest args)
     "Info as ORIG-FN FILENAME ARGS."
     (apply orig-fn
-	   (pcase filename
-	     ("emacs" "emacs-ja.info")
-	     (_ filename))
-	   args))
+  	   (pcase filename
+  	     ("emacs" "emacs-ja.info")
+  	     (_ filename))
+  	   args))
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
   )

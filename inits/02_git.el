@@ -19,7 +19,7 @@
    ("b" magit-blame :exit t)
    ("t" git-timemachine :exit t)
    ("d" vc-diff)
-   ("q" nil))
+   ("<muhenkan>" nil))
   :init
   (leaf git-timemachine :ensure t)
   (leaf diff-hl :ensure t

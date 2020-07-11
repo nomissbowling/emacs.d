@@ -15,32 +15,20 @@
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
 
-  ;; Save the file specified code with basic utf-8 if it exists
-  (set-language-environment "Japanese")
-  (prefer-coding-system 'utf-8)
-
-  ;; font
-  (add-to-list 'default-frame-alist '(font . "Cica-18"))
-  ;; for sub-machine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (add-to-list 'default-frame-alist '(font . "Cica-15")))
-
-  ;; Recentf
-  (leaf recentf
-    :hook (after-init-hook . recentf-mode)
-    :config
-    (setq recentf-save-file "~/.emacs.d/recentf"
-  	  recentf-max-saved-items 200
-  	  recentf-auto-cleanup 'never
-  	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-  			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:"
-  			   (lambda (file) (file-in-directory-p file package-user-dir))))
-    (push (expand-file-name recentf-save-file) recentf-exclude))
-
   ;; Startup-hook-sections
   (add-hook
    'emacs-startup-hook
    (lambda ()
+     ;; Save the file specified code with basic utf-8 if it exists
+     (set-language-environment "Japanese")
+     (prefer-coding-system 'utf-8)
+
+     ;; font
+     (add-to-list 'default-frame-alist '(font . "Cica-18"))
+     ;; for sub-machine
+     (when (string-match "x250" (shell-command-to-string "uname -n"))
+       (add-to-list 'default-frame-alist '(font . "Cica-15")))
+
      ;; Emacs use the $PATH set up by the user's shell
      (leaf exec-path-from-shell :ensure t
        :config
@@ -52,6 +40,18 @@
        :config
        (unless (server-running-p)
 	 (server-start)))
+
+     ;; Recentf
+     (leaf recentf
+       :config
+       (recentf-mode)
+       (setq recentf-save-file "~/.emacs.d/recentf"
+	     recentf-max-saved-items 200
+	     recentf-auto-cleanup 'never
+	     recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+			      "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:"
+			      (lambda (file) (file-in-directory-p file package-user-dir))))
+       (push (expand-file-name recentf-save-file) recentf-exclude))
 
      ;; Hide the menu-bar
      (menu-bar-mode 0)

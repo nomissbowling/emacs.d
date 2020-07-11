@@ -11,7 +11,7 @@
   (hydra-pinky
    (:color red :hint nil)
    "
-   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_  Zoom:_<__-__>_  Window:_0_._1_._2_._3_._x_._s_  Buffer:_[__:__/__]_  🐾 _f_ile _d_iff swiper_._"
+   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_  zoom:_<__-__>_  window:_0_._1_._2_._3_._x_._S_  buffer:_[__:__/__]_  🐾 _f_ile _d_iff _s_wiper"
    ("h" backward-char)
    ("j" next-line)
    ("k" previous-line)
@@ -31,8 +31,8 @@
    ("G" end-of-buffer)
    ("o" other-window-or-split)
    ("@" recenter-top-bottom)
-   ("." swiper-migemo-or-region)
-   ("s" window-swap-states)
+   ("s" swiper-migemo-or-region)
+   ("S" window-swap-states)
    ("/" kill-buffer)
    ("d" vc-diff)
    ("f" counsel-find-file)
@@ -49,16 +49,6 @@
    (":" counsel-switch-buffer)
    ("<henkan>" nil)
    ("<muhenkan>" nil)))
-
-;; (bind-key
-;;  "<f11>"
-;;  (defhydra hydra-zoom
-;;    (:color red :hint nil)
-;;    "
-;;  📦 Zoom: _g_:in   out:_l_   _r_eset"
-;;    ("g" text-scale-increase)
-;;    ("l" text-scale-decrease)
-;;    ("r" (text-scale-set 0))))
 
 
 (leaf *window-controle-function
@@ -85,9 +75,9 @@ If there are two or more windows, it will go to another window."
 	(split-window-horizontally))
       (other-window 1)
       (switch-to-buffer other-buf)
-      (other-window -1)))
+      (other-window -1))))
 
- 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

@@ -11,7 +11,7 @@
   (hydra-pinky
    (:color red :hint nil)
    "
-   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_  diff:_n_:_p_:_v_  zoom:_<__-__>_  window:_0_._1_._2_._3_._x_._S_  buffer:_[__:__/__]_  🐾 _f_ile  _s_wiper"
+   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_._0_._1_._2_._3_._x_._S_  diff:_n_._p_._v_  zoom:_<__-__>_  buffer:_[__:__/__]_  🐾 _f_ile  _s_wiper"
    ("h" backward-char)
    ("l" next-line)
    ("j" previous-line)
@@ -38,7 +38,7 @@
    ("w" clipboard-kill-ring-save)
    ("/" kill-buffer)
    ("v" vc-diff)
-   ("f" counsel-find-file)
+   ("f" counsel-projectile-find-file)
    ("0" delete-window)
    ("1" delete-other-windows)
    ("2" split-window-below)

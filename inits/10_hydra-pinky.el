@@ -86,9 +86,11 @@ If there are two or more windows, it will go to another window."
 
 (leaf iflipb
   :ensure t
+  :bind(("M-]" . iflipb-next-buffer)
+	("M-[" . iflipb-previous-buffer))
   :config
-  (setq iflipb-wrap-around t
-	iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
+  (setq iflipb-wrap-around t)
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
 
 
 ;; Local Variables:

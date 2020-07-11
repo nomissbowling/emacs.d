@@ -84,6 +84,7 @@ If there are two or more windows, it will go to another window."
   :init
   (leaf sequential-command :ensure t))
 
+
 (leaf iflipb
   :ensure t
   :bind(("M-]" . iflipb-next-buffer)

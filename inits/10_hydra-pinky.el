@@ -20,8 +20,8 @@
    ("<down>" next-line)
    ("<up>" previous-line)
    ("<right>" forward-char)
-   ("a" beginning-of-line)
-   ("e" end-of-line)
+   ("a" seq-home)
+   ("e" seq-end)
    ("SPC" scroll-up-command)
    ("b" scroll-down-command)
    ("<next>" scroll-up-command)
@@ -33,6 +33,7 @@
    ("@" recenter-top-bottom)
    ("s" swiper-migemo-or-region)
    ("S" window-swap-states)
+   ("w" clipboard-kill-ring-save)
    ("/" kill-buffer)
    ("d" vc-diff)
    ("f" counsel-find-file)
@@ -48,11 +49,9 @@
    ("-" (text-scale-set 0))
    (":" counsel-switch-buffer)
    ("<henkan>" nil)
-   ("<muhenkan>" nil)))
+   ("<muhenkan>" nil))
 
-
-(leaf *window-controle-function
-  :config
+  :init
   (defun other-window-or-split ()
     "If there is one window, open split window.
 If there are two or more windows, it will go to another window."
@@ -76,6 +75,14 @@ If there are two or more windows, it will go to another window."
       (other-window 1)
       (switch-to-buffer other-buf)
       (other-window -1))))
+
+
+(leaf sequential-command-config
+  :hook (after-init-hook . sequential-command-setup-keys)
+  :bind (("C-a" . seq-home)
+	 ("C-e" . seq-end))
+  :init
+  (leaf sequential-command :ensure t))
 
 
 ;; Local Variables:

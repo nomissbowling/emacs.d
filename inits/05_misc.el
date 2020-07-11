@@ -20,12 +20,6 @@
 	  ("l;" . init-loader-show-log)))
 
 
-(leaf sequential-command-config
-  :hook (after-init-hook . sequential-command-setup-keys)
-  :init
-  (leaf sequential-command :ensure t))
-
-
 (leaf yasnippet :ensure t
   :bind ("<backtab>" . ivy-yasnippet)
   :hook (after-init-hook . yas-global-mode)

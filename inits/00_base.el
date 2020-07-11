@@ -7,15 +7,14 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *basic-configuration
-  :init
-  (set-frame-parameter nil 'fullscreen 'maximized)
-  (scroll-bar-mode 0)
-  (tool-bar-mode 0)
-  (setq inhibit-splash-screen t)
-  (setq inhibit-startup-message t)
+(set-frame-parameter nil 'fullscreen 'maximized)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 
-  ;; Startup-hook-sections
+(leaf *startup-hook-sections
+  :init
   (add-hook
    'emacs-startup-hook
    (lambda ()

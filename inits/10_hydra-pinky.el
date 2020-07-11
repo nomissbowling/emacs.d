@@ -42,8 +42,8 @@
    ("2" split-window-below)
    ("3" split-window-right)
    ("x" window-toggle-division)
-   ("[" winner-redo)
-   ("]" winner-undo)
+   ("[" iflipb-previous-buffer)
+   ("]" iflipb-next-buffer)
    (">" text-scale-increase)
    ("<" text-scale-decrease)
    ("-" (text-scale-set 0))
@@ -83,6 +83,12 @@ If there are two or more windows, it will go to another window."
 	 ("C-e" . seq-end))
   :init
   (leaf sequential-command :ensure t))
+
+(leaf iflipb
+  :ensure t
+  :config
+  (setq iflipb-wrap-around t
+	iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
 
 ;; Local Variables:

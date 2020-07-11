@@ -11,11 +11,11 @@
   (hydra-pinky
    (:color red :hint nil)
    "
-   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_  zoom:_<__-__>_  window:_0_._1_._2_._3_._x_._S_  buffer:_[__:__/__]_  🐾 _f_ile _d_iff _s_wiper"
+   🐳 Pinky: _h_._l_._j_._k_._a_._e_._SPC_._b_._g_._G_._o_._@_  diff:_n_:_p_:_v_  zoom:_<__-__>_  window:_0_._1_._2_._3_._x_._S_  buffer:_[__:__/__]_  🐾 _f_ile  _s_wiper"
    ("h" backward-char)
-   ("j" next-line)
-   ("k" previous-line)
-   ("l" forward-char)
+   ("l" next-line)
+   ("j" previous-line)
+   ("k" forward-char)
    ("<left>" backward-char)
    ("<down>" next-line)
    ("<up>" previous-line)
@@ -26,6 +26,8 @@
    ("b" scroll-down-command)
    ("<next>" scroll-up-command)
    ("<prior>" scroll-down-command)
+   ("n" diff-hl-next-hunk)
+   ("p" diff-hl-previous-hunk)
    ("g" beginning-of-buffer)
    ("<end>" end-of-buffer)
    ("G" end-of-buffer)
@@ -35,7 +37,7 @@
    ("S" window-swap-states)
    ("w" clipboard-kill-ring-save)
    ("/" kill-buffer)
-   ("d" vc-diff)
+   ("v" vc-diff)
    ("f" counsel-find-file)
    ("0" delete-window)
    ("1" delete-other-windows)

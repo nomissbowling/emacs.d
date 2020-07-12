@@ -157,7 +157,9 @@
    (format-time-string "> %Y年%-m月%-d日 (%a)\n")
    (format-time-string "PLACE:\n\n"))
   (forward-line -2)
-  (forward-char 6)))
+  (forward-char 6))
+
+)
 
 
 (provide '99_user-template)

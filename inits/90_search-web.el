@@ -19,7 +19,6 @@
     (add-to-list 'search-web-engines '("yodobashi" "https://www.yodobashi.com/?word=%s" nil))
     (add-to-list 'search-web-engines '("yahoo jp" "http://search.yahoo.co.jp/search?p=%s" nil))
     (add-to-list 'search-web-engines '("eijiro" "http://eow.alc.co.jp/%s/UTF-8/" nil))  ;; hydra
-
     :hydra
     (hydra-search
      (:hint nil :exit t)

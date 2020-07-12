@@ -81,23 +81,22 @@ If there are two or more windows, it will go to another window."
 	(other-window -1))))
 
 
-(leaf sequential-command-config
-  :hook (after-init-hook . sequential-command-setup-keys)
-  :bind (("C-a" . seq-home)
-	 ("C-e" . seq-end))
-  :init
-  (leaf sequential-command :ensure t))
+  (leaf sequential-command-config
+    :hook (after-init-hook . sequential-command-setup-keys)
+    :bind (("C-a" . seq-home)
+	   ("C-e" . seq-end))
+    :init
+    (leaf sequential-command :ensure t))
 
+  (leaf iflipb
+    :ensure t
+    :bind(("M-]" . iflipb-next-buffer)
+	  ("M-[" . iflipb-previous-buffer))
+    :config
+    (setq iflipb-wrap-around t)
+    (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
 
-(leaf iflipb
-  :ensure t
-  :bind(("M-]" . iflipb-next-buffer)
-	("M-[" . iflipb-previous-buffer))
-  :config
-  (setq iflipb-wrap-around t)
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
-
-)
+  )
 
 
 ;; Local Variables:

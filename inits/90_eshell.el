@@ -24,28 +24,25 @@
 		   (list "ll" "ls -ltr -S")
 		   (list "la" "ls -a -S")
 		   (list "ex" "exit")))))
+  :init
+  (defun my:eshell-prompt ()
+    "Prompt change string."
+    (concat (eshell/pwd)
+	    (if (= (user-uid) 0) "\n# " "\n$ ")))
 
+  (defun eshell/clear ()
+    "Clear the current buffer, leaving one prompt at the top."
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)))
 
-  (leaf *user-eshell-fonction
-    :init
-    (defun my:eshell-prompt ()
-      "Prompt change string."
-      (concat (eshell/pwd)
-	      (if (= (user-uid) 0) "\n# " "\n$ ")))
-
-    (defun eshell/clear ()
-      "Clear the current buffer, leaving one prompt at the top."
-      (interactive)
-      (let ((inhibit-read-only t))
-	(erase-buffer)))
-
-    (defun eshell-on-current-buffer ()
-      "Set the eshell directory to the current buffer."
-      (interactive)
-      (let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
-	(with-current-buffer "*eshell*"
-	  (cd path)
-	  (eshell-emit-prompt)))))
+  (defun eshell-on-current-buffer ()
+    "Set the eshell directory to the current buffer."
+    (interactive)
+    (let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
+      (with-current-buffer "*eshell*"
+	(cd path)
+	(eshell-emit-prompt))))
 
   )
 

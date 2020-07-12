@@ -26,7 +26,7 @@
   (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
 	dashboard-set-heading-icons t
 	dashboard-set-file-icons t
-	dashboard-page-separator "\n\f\f\n"
+	;; dashboard-page-separator "\n\f\f\n"
 	show-week-agenda-p t
 	dashboard-items '((recents  . 10)
 			  (agenda . 5)))

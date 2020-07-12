@@ -7,14 +7,13 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(set-frame-parameter nil 'fullscreen 'maximized)
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
+(eval-when-compile
+  (set-frame-parameter nil 'fullscreen 'maximized)
+  (scroll-bar-mode 0)
+  (tool-bar-mode 0)
+  (setq inhibit-splash-screen t)
+  (setq inhibit-startup-message t)
 
-(leaf *startup-hook-sections
-  :init
   (add-hook
    'emacs-startup-hook
    (lambda ()
@@ -113,59 +112,55 @@
      ;; contains many mode setting
      (leaf generic-x :require t)
 
-     ))
-  )
+     ;; Text-scale-adjust
+     (bind-key "s-z" 'text-scale-adjust)
 
+     ;; Run muhenkan same as C-g
+     (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
 
-(leaf *user-custom-configuration
-  :init
-  ;; Text-scale-adjust
-  (bind-key "s-z" 'text-scale-adjust)
+     ;; xref-find-* key
+     (bind-key "C-," 'xref-find-references)
+     (bind-key "C-." 'xref-find-definitions)
 
-  ;; Run muhenkan same as C-g
-  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
+     ;; Use the X11 clipboard
+     (setq select-enable-clipboard  t)
+     (setq select-enable-primary  t)
+     (bind-key "M-w" 'clipboard-kill-ring-save)
+     (bind-key "C-w" 'my:clipboard-kill-region)
 
-  ;; xref-find-* key
-  (bind-key "C-," 'xref-find-references)
-  (bind-key "C-." 'xref-find-definitions)
-
-  ;; Use the X11 clipboard
-  (setq select-enable-clipboard  t)
-  (setq select-enable-primary  t)
-  (bind-key "M-w" 'clipboard-kill-ring-save)
-  (bind-key "C-w" 'my:clipboard-kill-region)
-
-  (defun my:clipboard-kill-region ()
-    "If the region is active, `clipboard-kill-region'.
+     (defun my:clipboard-kill-region ()
+       "If the region is active, `clipboard-kill-region'.
 If the region is inactive, `backward-kill-word'."
-    (interactive)
-    (if (use-region-p)
-	(clipboard-kill-region (region-beginning) (region-end))
-      (backward-kill-word 1)))
+       (interactive)
+       (if (use-region-p)
+	   (clipboard-kill-region (region-beginning) (region-end))
+	 (backward-kill-word 1)))
 
-  ;; Exit Emacs with M-x exitle
-  (defalias 'exit 'save-buffers-kill-emacs)
+     ;; Exit Emacs with M-x exitle
+     (defalias 'exit 'save-buffers-kill-emacs)
 
-  ;; Input yes or no to y or n (even SPC OK instead of y)
-  (defalias 'yes-or-no-p 'y-or-n-p)
+     ;; Input yes or no to y or n (even SPC OK instead of y)
+     (defalias 'yes-or-no-p 'y-or-n-p)
 
-  ;; Set transparency (active inactive)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
+     ;; Set transparency (active inactive)
+     (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
 
-  ;; Set makefle mode
-  (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
+     ;; Set makefle mode
+     (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
 
-  ;; M-x info-emacs-manual (C-h r or F1+r)
-  (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
-  (defun Info-find-node--info-ja (orig-fn filename &rest args)
-    "Info as ORIG-FN FILENAME ARGS."
-    (apply orig-fn
-  	   (pcase filename
-  	     ("emacs" "emacs-ja.info")
-  	     (_ filename))
-  	   args))
-  (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
+     ;; M-x info-emacs-manual (C-h r or F1+r)
+     (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/info/")
+     (defun Info-find-node--info-ja (orig-fn filename &rest args)
+       "Info as ORIG-FN FILENAME ARGS."
+       (apply orig-fn
+	      (pcase filename
+		("emacs" "emacs-ja.info")
+		(_ filename))
+	      args))
+     (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
+     ;; Startup-hook end
+     ))
   )
 
 

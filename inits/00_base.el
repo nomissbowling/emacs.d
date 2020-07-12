@@ -29,9 +29,10 @@
 	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
 			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/scp:"
 			   (lambda (file) (file-in-directory-p file package-user-dir))))
-    (push (expand-file-name recentf-save-file) recentf-exclude))
+    (push (expand-file-name recentf-save-file) recentf-exclude)))
 
 
+(eval-when-compile
   (add-hook
    'emacs-startup-hook
    (lambda ()
@@ -161,9 +162,7 @@ If the region is inactive, `backward-kill-word'."
 	      args))
      (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
-     ;; Startup-hook end
-     ))
-  )
+     )))
 
 
 ;; Local Variables:

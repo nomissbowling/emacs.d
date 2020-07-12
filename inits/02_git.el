@@ -28,9 +28,7 @@
       (((after-init-hook prog-mode-hook) . diff-hl-mode)
        (magit-post-refresh-hook . diff-hl-magit-post-refresh))
       :config
-      (diff-hl-margin-mode)))
-
-  )
+      (diff-hl-margin-mode))))
 
 
 ;; Local Variables:

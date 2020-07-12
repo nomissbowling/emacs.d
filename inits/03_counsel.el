@@ -3,43 +3,44 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf counsel :ensure t
-  :bind (("C-r" . swiper-thing-at-point)
-	 ("C-s" . swiper-migemo-or-region)
-	 ("C-:" . counsel-switch-buffer)
-	 ("C-x C-b" . counsel-switch-buffer)
-	 ("C-x b" . counsel-switch-buffer)
-	 ("M-x" . counsel-M-x)
-	 ("M-y" . counsel-yank-pop)
-	 ("s-a" . counsel-linux-app)
-	 ("C-x C-f" . counsel-find-file)
-	 ("C-c k" . counsel-ag)
-	 ("C-c w" . counsel-rg)
-	 ("C-c f" . counsel-projectile-find-file)
-	 ("C-c g" . counsel-git)
-	 ("C-c j" . counsel-git-grep)
-	 ("C-c i" . counsel-imenu)
-	 ("C-c t" . counsel-tramp)
-	 ("C-c C-r" . counsel-recentf)
-	 ([remap dired] . counsel-dired)
-	 ("<f6>" . select-counsel-command))
-  :hook
-  ((after-init-hook . ivy-mode)
-   (ivy-mode-hook . counsel-mode)
-   (css-mode-hook . counsel-css-imenu-setup))
-  :config
-  (setq ivy-use-virtual-buffers t
-	ivy-use-selectable-prompt t
-	enable-recursive-minibuffers t
-	xref-show-xrefs-function #'ivy-xref-show-xrefs
-	counsel-yank-pop-separator
-	"\n------------------------------------------------------------\n"
-	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
-  :init
-  (leaf amx :ensure t
-    :init (setq amx-history-length 20))
-  (leaf ivy-rich :ensure t
-    :hook (ivy-mode-hook . ivy-rich-mode)))
+(eval-when-compile
+  (leaf counsel :ensure t
+    :bind (("C-r" . swiper-thing-at-point)
+	   ("C-s" . swiper-migemo-or-region)
+	   ("C-:" . counsel-switch-buffer)
+	   ("C-x C-b" . counsel-switch-buffer)
+	   ("C-x b" . counsel-switch-buffer)
+	   ("M-x" . counsel-M-x)
+	   ("M-y" . counsel-yank-pop)
+	   ("s-a" . counsel-linux-app)
+	   ("C-x C-f" . counsel-find-file)
+	   ("C-c k" . counsel-ag)
+	   ("C-c w" . counsel-rg)
+	   ("C-c f" . counsel-projectile-find-file)
+	   ("C-c g" . counsel-git)
+	   ("C-c j" . counsel-git-grep)
+	   ("C-c i" . counsel-imenu)
+	   ("C-c t" . counsel-tramp)
+	   ("C-c C-r" . counsel-recentf)
+	   ([remap dired] . counsel-dired)
+	   ("<f6>" . select-counsel-command))
+    :hook
+    ((after-init-hook . ivy-mode)
+     (ivy-mode-hook . counsel-mode)
+     (css-mode-hook . counsel-css-imenu-setup))
+    :config
+    (setq ivy-use-virtual-buffers t
+	  ivy-use-selectable-prompt t
+	  enable-recursive-minibuffers t
+	  xref-show-xrefs-function #'ivy-xref-show-xrefs
+	  counsel-yank-pop-separator
+	  "\n------------------------------------------------------------\n"
+	  ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
+    :init
+    (leaf amx :ensure t
+      :init (setq amx-history-length 20))
+    (leaf ivy-rich :ensure t
+      :hook (ivy-mode-hook . ivy-rich-mode)))
 
 
 (leaf *user-customize-function
@@ -119,6 +120,8 @@ If the region isn't selected, `swiper' with migemo."
   (leaf counsel-css :ensure t
     :config
     (add-hook 'css-mode-hook #'counsel-css-imenu-setup)))
+
+)
 
 
 ;; Local Variables:

@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+(eval-when-compile
 ;; Interactive extensions for package.el
 (leaf package-utils
   :ensure t
@@ -111,6 +112,8 @@
 	    browse-url-generic-args     cmd-args
 	    browse-url-browser-function 'browse-url-generic
 	    search-web-default-browser 'browse-url-generic))))
+
+)
 
 
 ;; Local Variables:

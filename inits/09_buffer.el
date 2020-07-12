@@ -3,6 +3,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+(eval-when-compile
 ;; automatically save buffers in a decent way
 (leaf auto-save-buffers-enhanced :ensure t
   :config
@@ -88,6 +89,8 @@
     (when (get-buffer "*tramp/scp xsrv*")
       (counsel-tramp-quit))
     (message "Killed Other Buffers!")))
+
+)
 
 
 ;; Local Variables:

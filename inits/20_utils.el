@@ -3,13 +3,14 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf migemo :ensure t
-  :when (executable-find "cmigemo")
-  :hook (after-init-hook . migemo-init)
-  :config
-  (setq migemo-command (executable-find "cmigemo")
-	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
-  (autoload 'migemo-init "migemo" nil t))
+(eval-when-compile
+  (leaf migemo :ensure t
+    :when (executable-find "cmigemo")
+    :hook (after-init-hook . migemo-init)
+    :config
+    (setq migemo-command (executable-find "cmigemo")
+	  migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
+    (autoload 'migemo-init "migemo" nil t))
 
 
 (leaf imenu-list :ensure t
@@ -74,6 +75,8 @@
 	ps-show-n-of-n t
 	ps-line-number t
 	ps-print-footer nil))
+
+)
 
 
 ;; Local Variables:

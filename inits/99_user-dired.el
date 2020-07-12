@@ -5,10 +5,11 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(defun my:dot-emacs-dir ()
-  "Open dot-emacs dir."
-  (interactive)
-  (find-file "~/.emacs.d/"))
+(eval-when-compile
+  (defun my:dot-emacs-dir ()
+    "Open dot-emacs dir."
+    (interactive)
+    (find-file "~/.emacs.d/"))
 
 (defun my:dropbox ()
   "Open dropbox dir."
@@ -102,7 +103,7 @@
   "Open apsh file."
   (interactive)
   (find-file "~/Dropbox/GH/apsh/apsh.txt")
-  (goto-char (point-min)))
+  (goto-char (point-min))))
 
 
 (provide '99_user-dired)

@@ -3,29 +3,30 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf howm :ensure t
-  :chord ("@@" . howm-list-all)
-  :bind (:howm-view-summary-mode-map
-	 ([backtab] . howm-view-summary-previous-section))
-  :hook (after-init-hook . howm-mode)
-  :init
-  (setq howm-view-title-header "#")
-  (defun my:howm-create-file ()
-    "Make howm create file with 'org-capture'."
-    (interactive)
-    (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time)))
-  :config
-  (setq howm-directory "~/Dropbox/howm"
-	howm-view-split-horizontally t
-	howm-view-summary-persistent nil
-	howm-normalizer 'howm-sort-items-by-reverse-date
-	howm-user-font-lock-keywords
-	'(("memo:" . (0 'gnus-group-mail-3))
-	  ("note:" . (0 'epa-mark))
-	  ("perl:" . (0 'diff-refine-added))
-	  ("haiku:" . (0 'compilation-mode-line-exit))
-	  ("emacs:" . (0 'compilation-info))
-	  ("linux:" . (0 'compilation-error)))))
+(eval-when-compile
+  (leaf howm :ensure t
+    :chord ("@@" . howm-list-all)
+    :bind (:howm-view-summary-mode-map
+	   ([backtab] . howm-view-summary-previous-section))
+    :hook (after-init-hook . howm-mode)
+    :init
+    (setq howm-view-title-header "#")
+    (defun my:howm-create-file ()
+      "Make howm create file with 'org-capture'."
+      (interactive)
+      (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time)))
+    :config
+    (setq howm-directory "~/Dropbox/howm"
+	  howm-view-split-horizontally t
+	  howm-view-summary-persistent nil
+	  howm-normalizer 'howm-sort-items-by-reverse-date
+	  howm-user-font-lock-keywords
+	  '(("memo:" . (0 'gnus-group-mail-3))
+	    ("note:" . (0 'epa-mark))
+	    ("perl:" . (0 'diff-refine-added))
+	    ("haiku:" . (0 'compilation-mode-line-exit))
+	    ("emacs:" . (0 'compilation-info))
+	    ("linux:" . (0 'compilation-error)))))
 
 
 (leaf org
@@ -71,6 +72,8 @@
 (leaf open-junk-file :ensure t
   :config
   (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
+
+)
 
 
 ;; Local Variables:

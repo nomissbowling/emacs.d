@@ -5,27 +5,28 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(defun my:diary-new-post ()
-  "Open diary file and insert template."
-  (interactive)
-  (find-file (expand-file-name "diary.txt" "~/Dropbox/GH/dia/"))
-  (goto-char 0)
-  ;; Insert a new date if the date has changed
-  (defvar string (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
-  (unless (string-match (format-time-string "%Y%m:") string)
-    (forward-line -1)
-    (insert (format-time-string "%Y%m:\n")))
-  ;; Insert template
-  (goto-char (point-min))
-  (forward-line)
-  (insert
-   ";--------------------------------------------------------\n"
-   (format-time-string "*[%Y%m%d]%Y年%-m月%-d日\n")
-   ";--------------------------------------------------------\n"
-   (format-time-string "-*[%Y%m%d%H%M%S]\n")
-   "-(\n\n-)\n\n")
-  (forward-line -5)
-  (forward-char 18))
+(eval-when-compile
+  (defun my:diary-new-post ()
+    "Open diary file and insert template."
+    (interactive)
+    (find-file (expand-file-name "diary.txt" "~/Dropbox/GH/dia/"))
+    (goto-char 0)
+    ;; Insert a new date if the date has changed
+    (defvar string (buffer-substring-no-properties (point-at-bol) (point-at-eol)))
+    (unless (string-match (format-time-string "%Y%m:") string)
+      (forward-line -1)
+      (insert (format-time-string "%Y%m:\n")))
+    ;; Insert template
+    (goto-char (point-min))
+    (forward-line)
+    (insert
+     ";--------------------------------------------------------\n"
+     (format-time-string "*[%Y%m%d]%Y年%-m月%-d日\n")
+     ";--------------------------------------------------------\n"
+     (format-time-string "-*[%Y%m%d%H%M%S]\n")
+     "-(\n\n-)\n\n")
+    (forward-line -5)
+    (forward-char 18))
 
 
 (leaf *template-for-minoru_sen
@@ -156,7 +157,7 @@
    (format-time-string "> %Y年%-m月%-d日 (%a)\n")
    (format-time-string "PLACE:\n\n"))
   (forward-line -2)
-  (forward-char 6))
+  (forward-char 6)))
 
 
 (provide '99_user-template)

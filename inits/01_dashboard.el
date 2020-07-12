@@ -5,48 +5,49 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf dashboard :ensure t
-  :bind (("<home>" . open-dashboard)
-	 (:dashboard-mode-map
-	  ("c" . browse-calendar)
-	  ("w" . browse-weather)
-	  ("n" . browse-google-news)
-	  ("k" . browse-keep)
-	  ("m" . browse-gmail)
-	  ("t" . browse-tweetdeck)
-	  ("s" . browse-slack)
-	  ("h" . browse-homepage)
-	  ("p" . browse-pocket)
-	  ("e" . easy-hugo)
-	  ("." . hydra-browse/body)
-	  ("<home>" . quit-dashboard)))
-  :hook
-  (after-init-hook . dashboard-setup-startup-hook)
-  :config
-  (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
-	dashboard-set-heading-icons t
-	dashboard-set-file-icons t
-	;; dashboard-page-separator "\n\f\f\n"
-	show-week-agenda-p t
-	dashboard-items '((recents  . 10)
-			  (agenda . 5)))
-  (setq dashboard-banner-logo-title
-	(concat "GNU Emacs " emacs-version " kernel "
-		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
-		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
-  ;; for sub machine
-  (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (setq dashboard-items '((recents  . 5)
-			    (agenda . 5))))
+(eval-when-compile
+  (leaf dashboard :ensure t
+    :bind (("<home>" . open-dashboard)
+	   (:dashboard-mode-map
+	    ("c" . browse-calendar)
+	    ("w" . browse-weather)
+	    ("n" . browse-google-news)
+	    ("k" . browse-keep)
+	    ("m" . browse-gmail)
+	    ("t" . browse-tweetdeck)
+	    ("s" . browse-slack)
+	    ("h" . browse-homepage)
+	    ("p" . browse-pocket)
+	    ("e" . easy-hugo)
+	    ("." . hydra-browse/body)
+	    ("<home>" . quit-dashboard)))
+    :hook
+    (after-init-hook . dashboard-setup-startup-hook)
+    :config
+    (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
+	  dashboard-set-heading-icons t
+	  dashboard-set-file-icons t
+	  ;; dashboard-page-separator "\n\f\f\n"
+	  show-week-agenda-p t
+	  dashboard-items '((recents  . 10)
+			    (agenda . 5)))
+    (setq dashboard-banner-logo-title
+	  (concat "GNU Emacs " emacs-version " kernel "
+		  (car (split-string (shell-command-to-string "uname -r")))  " Debian "
+		  (car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
+    ;; for sub machine
+    (when (string-match "x250" (shell-command-to-string "uname -n"))
+      (setq dashboard-items '((recents  . 5)
+			      (agenda . 5))))
 
-  ;; Set the footer
-  (setq dashboard-footer-icon
-	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
-  (setq dashboard-footer-messages '("Always be joyful. Never stop praying. Be thankful in all circumstances!"))
+    ;; Set the footer
+    (setq dashboard-footer-icon
+	  (all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+    (setq dashboard-footer-messages '("Always be joyful. Never stop praying. Be thankful in all circumstances!"))
 
-  ;; Insert custom item
-  (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
-  (add-to-list 'dashboard-items '(custom) t))
+    ;; Insert custom item
+    (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
+    (add-to-list 'dashboard-items '(custom) t))
 
 
 (leaf *dashboard-local-function
@@ -146,6 +147,8 @@
     "Open slack with chrome."
     (interactive)
     (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
+
+)
 
 
 ;; Local Variables:

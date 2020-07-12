@@ -3,13 +3,15 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *user-custom-theme
-  :init
-  (add-hook
-   'after-init-hook
-   (lambda ()
-     (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-     (load-theme 'iceberg t))))
+
+(eval-when-compile
+  (leaf *user-custom-theme
+    :init
+    (add-hook
+     'after-init-hook
+     (lambda ()
+       (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
+       (load-theme 'iceberg t))))
 
 
 (leaf doom-modeline :ensure t
@@ -59,6 +61,8 @@
     (diff-hl-mode 1)
     (setq line-spacing 0.1)
     (display-line-numbers-mode 1)))
+
+)
 
 
 ;; Local Variables:

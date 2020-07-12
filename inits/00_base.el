@@ -8,18 +8,18 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
+  ;; Quiet Startup
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
-  (menu-bar-mode 0)
   (tool-bar-mode 0)
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
+  (set-language-environment "Japanese")
 
   (add-hook
    'emacs-startup-hook
    (lambda ()
      ;; Save the file specified code with basic utf-8 if it exists
-     (set-language-environment "Japanese")
      (prefer-coding-system 'utf-8)
 
      ;; font
@@ -52,6 +52,8 @@
 			      (lambda (file) (file-in-directory-p file package-user-dir))))
        (push (expand-file-name recentf-save-file) recentf-exclude))
 
+     ;; Hide menu-bar
+     (menu-bar-mode 0)
      ;; Save hist
      (savehist-mode)
      ;;Save plae

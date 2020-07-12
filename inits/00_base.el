@@ -10,6 +10,7 @@
 (eval-when-compile
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
+  (menu-bar-mode 0)
   (tool-bar-mode 0)
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
@@ -51,8 +52,6 @@
 			      (lambda (file) (file-in-directory-p file package-user-dir))))
        (push (expand-file-name recentf-save-file) recentf-exclude))
 
-     ;; Hide the menu-bar
-     (menu-bar-mode 0)
      ;; Save hist
      (savehist-mode)
      ;;Save plae

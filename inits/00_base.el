@@ -19,6 +19,19 @@
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
 
+  ;; Recentf
+  (leaf recentf
+    :hook (after-init-hook . recentf-mode)
+    :config
+    (setq recentf-save-file "~/.emacs.d/recentf"
+	  recentf-max-saved-items 200
+	  recentf-auto-cleanup 'never
+	  recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
+			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:"
+			   (lambda (file) (file-in-directory-p file package-user-dir))))
+    (push (expand-file-name recentf-save-file) recentf-exclude))
+
+
   (add-hook
    'emacs-startup-hook
    (lambda ()
@@ -39,18 +52,6 @@
        :config
        (unless (server-running-p)
 	 (server-start)))
-
-     ;; Recentf
-     (leaf recentf
-       :config
-       (recentf-mode)
-       (setq recentf-save-file "~/.emacs.d/recentf"
-	     recentf-max-saved-items 200
-	     recentf-auto-cleanup 'never
-	     recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-			      "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/ssh:"
-			      (lambda (file) (file-in-directory-p file package-user-dir))))
-       (push (expand-file-name recentf-save-file) recentf-exclude))
 
      ;; Hide menu-bar
      (menu-bar-mode 0)

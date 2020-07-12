@@ -69,9 +69,7 @@
     (defun my:mozc-hand-writing ()
       "Run the mozc-tool in the background."
       (interactive)
-      (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")))
-
-  )
+      (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing"))))
 
 
   ;; Local Variables:

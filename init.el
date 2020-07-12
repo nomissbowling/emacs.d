@@ -36,9 +36,10 @@
     (leaf-keywords-init))
 
   (leaf init-loader :ensure t
-    :config
-    (setq el-get-dir "~/.emacs.d/elisp")
+    :init
     (setq load-prefer-newer t)
+    (setq el-get-dir "~/.emacs.d/elisp")
+    :config
     (custom-set-variables
      '(init-loader-show-log-after-init 'error-only))
     (init-loader-load "~/Dropbox/emacs.d/inits")

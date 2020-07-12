@@ -69,9 +69,7 @@
 
   (leaf open-junk-file :ensure t
     :config
-    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
-
-  )
+    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")))
 
 
 ;; Local Variables:

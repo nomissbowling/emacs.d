@@ -121,9 +121,7 @@
       "Dired unmark all."
       (interactive)
       (call-interactively 'dired-unmark-all-marks)
-      (call-interactively 'revert-buffer)))
-
-  )
+      (call-interactively 'revert-buffer))))
 
 
 ;; Local Variables:

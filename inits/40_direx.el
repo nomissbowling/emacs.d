@@ -21,9 +21,7 @@
 		      (direx-project:jump-to-project-root-other-window)
 		      t)))
 	(unless result
-	  (direx:jump-to-directory-other-window)))))
-
-  )
+	  (direx:jump-to-directory-other-window))))))
 
 
 ;; Local Variables:

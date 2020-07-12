@@ -42,9 +42,7 @@
     (let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
       (with-current-buffer "*eshell*"
 	(cd path)
-	(eshell-emit-prompt))))
-
-  )
+	(eshell-emit-prompt)))))
 
 
 ;; Local Variables:

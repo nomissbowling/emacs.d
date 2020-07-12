@@ -55,9 +55,7 @@
     :mode "\\.js\\'" "\\.html?\\'")
 
   (leaf php-mode :ensure t
-    :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
-
-  )
+    :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'"))
 
 
 ;; Local Variables:

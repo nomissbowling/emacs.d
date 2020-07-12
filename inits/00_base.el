@@ -14,14 +14,14 @@
   (tool-bar-mode 0)
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
+
+  ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
+  (prefer-coding-system 'utf-8)
 
   (add-hook
    'emacs-startup-hook
    (lambda ()
-     ;; Save the file specified code with basic utf-8 if it exists
-     (prefer-coding-system 'utf-8)
-
      ;; font
      (add-to-list 'default-frame-alist '(font . "Cica-18"))
      ;; for sub-machine

@@ -95,8 +95,7 @@
 	     (goto-char (point-max))
 	     (delete-blank-lines)))))
 
-     ))
-  )
+     )))
 
 
 ;; Local Variables:

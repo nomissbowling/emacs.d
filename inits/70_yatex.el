@@ -1,5 +1,6 @@
 ;;; 70_yatex.el --- 70_yatex.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -18,7 +19,7 @@
      '(lambda ()
 	(leaf yatexprc
 	  :bind (("M-c" . YaTeX-typeset-buffer)	;; Type set buffer
-		 ("M-l" . YaTeX-lpr)))))))	;; Open pdf veiwer
+		 ("M-l" . YaTeX-lpr))))))	;; Open pdf veiwer
 
 
   ;; Dviprint-command-format
@@ -41,6 +42,8 @@
   ;; |rm *.au* *.dv* *.lo*
   ;;
   ;; ------------------------------------------------------------------------
+
+  )
 
 
 ;; Local Variables:

@@ -1,6 +1,6 @@
 ;;; 90_translate.el --- 90_translate.el  -*- lexical-binding: t -*-
-;;; Commentary:
-;;; README is here : https://github.com/atykhonov/google-translate
+;; README is here : https://github.com/atykhonov/google-translate
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -31,31 +31,32 @@
 	       string)
 	    (google-translate-translate
 	     "ja" "en"
-	     string)))))))
+	     string))))))
 
 
-;; Fix error of "Failed to search TKK"
-;; (defun google-translate--get-b-d1 ()
-;;   "Search TKK."
-;;   (list 427110 1469889687))
+  ;; Fix error of "Failed to search TKK"
+  ;; (defun google-translate--get-b-d1 ()
+  ;;   "Search TKK."
+  ;;   (list 427110 1469889687))
 
 
-;; Fix error of "args out of range"
-;; ---------------------------------------------------------------
-;; https://qiita.com/akicho8/items/cae976cb3286f51e4632
-;; ---------------------------------------------------------------
-;; --- a/google-translate-core.el
-;; +++ b/google-translate-core.el
-;; @@ -252,7 +252,7 @@ speech."
-;; does matter when translating misspelled word. So instead of
-;; translation it is possible to get suggestion."
-;; (let ((info (aref json 7)))
-;; - (when info
-;; + (when (and info (> (length info) 0))
-;; (aref info 1))))
-;; (defun google-translate-version ()
-;; -----------------------------------------------------------------
+  ;; Fix error of "args out of range"
+  ;; ---------------------------------------------------------------
+  ;; https://qiita.com/akicho8/items/cae976cb3286f51e4632
+  ;; ---------------------------------------------------------------
+  ;; --- a/google-translate-core.el
+  ;; +++ b/google-translate-core.el
+  ;; @@ -252,7 +252,7 @@ speech."
+  ;; does matter when translating misspelled word. So instead of
+  ;; translation it is possible to get suggestion."
+  ;; (let ((info (aref json 7)))
+  ;; - (when info
+  ;; + (when (and info (> (length info) 0))
+  ;; (aref info 1))))
+  ;; (defun google-translate-version ()
+  ;; -----------------------------------------------------------------
 
+  )
 
 ;; Local Variables:
 ;; no-byte-compile: t

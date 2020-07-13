@@ -1,5 +1,6 @@
 ;;; 10_hydra-compile.el --- 10_hydra-compile.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -61,7 +62,9 @@
 	(run-with-timer 1 nil
 			(lambda ()
 			  (delete-other-windows)))))
-    (add-hook 'compilation-finish-functions 'close-compile-window-if-successful)))
+    (add-hook 'compilation-finish-functions 'close-compile-window-if-successful))
+
+  )
 
 
 ;; Local Variables:

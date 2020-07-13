@@ -1,5 +1,6 @@
 ;;; 40_dired.el --- 40_dired.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -122,7 +123,9 @@
       "Dired unmark all."
       (interactive)
       (call-interactively 'dired-unmark-all-marks)
-      (call-interactively 'revert-buffer))))
+      (call-interactively 'revert-buffer)))
+
+  )
 
 
 ;; Local Variables:

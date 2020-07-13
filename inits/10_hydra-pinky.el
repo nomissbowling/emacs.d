@@ -1,5 +1,6 @@
 ;;; 10_hydra-pinky.el --- 10_hydra-pinky.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -94,7 +95,9 @@ If there are two or more windows, it will go to another window."
 	  ("M-[" . iflipb-previous-buffer))
     :config
     (setq iflipb-wrap-around t)
-    (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org"))))
+    (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
+
+  )
 
 
 ;; Local Variables:

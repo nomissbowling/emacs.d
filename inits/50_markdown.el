@@ -1,5 +1,6 @@
 ;;; 50_markdown.el --- 50_markdown.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -73,7 +74,9 @@
 	(shell-command-to-string
 	 (concat "xdg-open "
 		 (file-name-sans-extension filename)
-		 ".docx"))))))
+		 ".docx")))))
+
+  )
 
 
 ;; Local Variables:

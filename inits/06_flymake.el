@@ -1,5 +1,6 @@
 ;;; 06_flymake.el --- 06_flymake.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -37,7 +38,9 @@
 		   :poshandler 'posframe-poshandler-window-bottom-left-corner)
     (dolist (hook flymake-posframe-hide-posframe-hooks)
       (add-hook hook #'flymake-posframe-hide-posframe nil t)))
-  (advice-add 'flymake-diagnostic-at-point-display-popup :override 'my:flymake-diagnostic-at-point-display-popup))
+  (advice-add 'flymake-diagnostic-at-point-display-popup :override 'my:flymake-diagnostic-at-point-display-popup)
+
+  )
 
 
 ;; Local Variables:

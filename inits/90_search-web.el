@@ -1,5 +1,6 @@
 ;;; 90_search-web.el --- 90_search-web.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -34,7 +35,9 @@
      ("p" (search-web-dwim "post"))
      ("k" (search-web-dwim "kobun"))
      ("y" (search-web-dwim "yodobashi"))
-     ("r" (search-web-dwim "ruigo")))))
+     ("r" (search-web-dwim "ruigo"))))
+
+  )
 
 
 ;; Local Variables:

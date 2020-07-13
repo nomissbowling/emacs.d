@@ -1,5 +1,6 @@
 ;;; 89_eshell.el --- 90_eshell.el -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -42,7 +43,9 @@
     (let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
       (with-current-buffer "*eshell*"
 	(cd path)
-	(eshell-emit-prompt)))))
+	(eshell-emit-prompt))))
+
+  )
 
 
 ;; Local Variables:

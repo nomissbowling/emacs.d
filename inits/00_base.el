@@ -1,5 +1,4 @@
 ;;; 00_base.el --- 00_base.el -*- lexical-binding: t -*-
-
 ;; emacs base setting.
 ;; performs various variable settings and function executions
 ;; for emacs standard attachment library.

@@ -146,7 +146,9 @@
   (defun browse-slack ()
     "Open slack with chrome."
     (interactive)
-    (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/"))))
+    (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
+
+)
 
 
 ;; Local Variables:

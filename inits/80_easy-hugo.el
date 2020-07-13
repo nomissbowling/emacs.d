@@ -1,5 +1,6 @@
 ;;; 80_easy-hugo.el --- 80_easy-hugo.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -83,7 +84,9 @@
     (defun inseart-date ()
       "Inseart date now."
       (interactive)
-      (insert (format-time-string "%Y-%m-%dT%H:%M:%S+09:00")))))
+      (insert (format-time-string "%Y-%m-%dT%H:%M:%S+09:00"))))
+
+  )
 
 
 ;; Local Variables:

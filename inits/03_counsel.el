@@ -1,5 +1,6 @@
 ;;; 03_counsel.el --- 03_counsel.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -119,7 +120,9 @@ If the region isn't selected, `swiper' with migemo."
 
     (leaf counsel-css :ensure t
       :config
-      (add-hook 'css-mode-hook #'counsel-css-imenu-setup))))
+      (add-hook 'css-mode-hook #'counsel-css-imenu-setup)))
+
+  )
 
 
 ;; Local Variables:

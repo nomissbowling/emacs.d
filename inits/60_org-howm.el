@@ -1,5 +1,6 @@
 ;;; 60_memo.el --- 60_memo.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -69,7 +70,9 @@
 
   (leaf open-junk-file :ensure t
     :config
-    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")))
+    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
+
+  )
 
 
 ;; Local Variables:

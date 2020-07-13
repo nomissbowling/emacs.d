@@ -1,5 +1,6 @@
 ;;; 30_mozc.el --- 30_mozc.el  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -69,7 +70,9 @@
     (defun my:mozc-hand-writing ()
       "Run the mozc-tool in the background."
       (interactive)
-      (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing"))))
+      (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")))
+
+  )
 
 
   ;; Local Variables:

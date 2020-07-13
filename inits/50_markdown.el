@@ -5,6 +5,39 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
+  (defun md2pdf ()
+    "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"
+    (interactive)
+    (let ((filename (buffer-file-name (current-buffer))))
+      (shell-command-to-string
+       (concat "pandoc "
+	       filename
+	       " -f markdown -t html5 -o "
+	       (file-name-sans-extension filename)
+	       ".pdf"))
+      (shell-command-to-string
+       (concat "evince "
+	       (file-name-sans-extension filename)
+	       ".pdf"))))
+
+
+  (defun md2docx ()
+    "Generate docx from currently open markdown."
+    (interactive)
+    (let ((filename (buffer-file-name (current-buffer))))
+      (shell-command-to-string
+       (concat "pandoc "
+	       filename
+	       " -t docx -o "
+	       (file-name-sans-extension filename)
+	       ;; ".docx -V mainfont=IPAPGothic -V fontsize=16pt --toc --highlight-style=zenburn"))
+	       ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
+      (shell-command-to-string
+       (concat "xdg-open "
+	       (file-name-sans-extension filename)
+	       ".docx"))))
+
+
   (leaf markdown-mode :ensure t
     :mode "\\.md\\'"
     :bind ("C-c '" . markdown-edit-code-block)
@@ -40,43 +73,7 @@
       (setq livedown-autostart nil
 	    livedown-open t
 	    livedown-port 1337
-	    livedown-browser nil)))
-
-
-  (leaf *user-markdown-function
-    :init
-    (defun md2pdf ()
-      "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"
-      (interactive)
-      (let ((filename (buffer-file-name (current-buffer))))
-	(shell-command-to-string
-	 (concat "pandoc "
-		 filename
-		 " -f markdown -t html5 -o "
-		 (file-name-sans-extension filename)
-		 ".pdf"))
-	(shell-command-to-string
-	 (concat "evince "
-		 (file-name-sans-extension filename)
-		 ".pdf"))))
-
-    (defun md2docx ()
-      "Generate docx from currently open markdown."
-      (interactive)
-      (let ((filename (buffer-file-name (current-buffer))))
-	(shell-command-to-string
-	 (concat "pandoc "
-		 filename
-		 " -t docx -o "
-		 (file-name-sans-extension filename)
-		 ;; ".docx -V mainfont=IPAPGothic -V fontsize=16pt --toc --highlight-style=zenburn"))
-		 ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
-	(shell-command-to-string
-	 (concat "xdg-open "
-		 (file-name-sans-extension filename)
-		 ".docx")))))
-
-  )
+	    livedown-browser nil))))
 
 
 ;; Local Variables:

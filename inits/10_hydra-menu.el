@@ -130,9 +130,7 @@
       (interactive)
       (let* ((default-directory (expand-file-name "~/Dropbox/backup")))
 	(shell-command "sh backup-all.sh"))
-      (message "Finished buckuped!")))
-
-  )
+      (message "Finished buckuped!"))))
 
 
 ;; Local Variables:

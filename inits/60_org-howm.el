@@ -29,6 +29,7 @@
 	    ("emacs:" . (0 'compilation-info))
 	    ("linux:" . (0 'compilation-error)))))
 
+
   (leaf org
     :bind (("C-c a" . org-agenda)
 	   ("C-c c" . org-capture))
@@ -68,11 +69,10 @@
       (setq my:org-capture-before-config (current-window-configuration)))
     (add-hook 'org-capture-mode-hook 'delete-other-windows))
 
+
   (leaf open-junk-file :ensure t
     :config
-    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
-
-  )
+    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")))
 
 
 ;; Local Variables:

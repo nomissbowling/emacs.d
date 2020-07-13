@@ -67,26 +67,23 @@
 
     ;; Customize for my help menu
     (setq easy-hugo-help-line 5
-	  easy-hugo-help
-	  "  n .. New blog post    r .. Rename file     p .. Preview          g .. Refresh
+	  easy-hugo-help "  n .. New blog post    r .. Rename file     p .. Preview          g .. Refresh
   d .. Delete post      a .. Search blog ag  P .. Publish clever   e .. Edit easy-hugo
   u .. Sort publish     s .. Sort time       < .. Previous blog    > .. Next bloge
   T .. publish timer    m .. Magit status    c .. Open config      f .. Open file
   N .. No help [tab]    / .. Select postdir  o .. Open base dir    v .. View other window
   ")
-
     :preface
     (defun my:edit-easy-hugo ()
       "Edit setting file for 'easy-hugo'."
       (interactive)
       (find-file "~/Dropbox/emacs.d/inits/80_easy-hugo.el")
       (forword-line 2))
+
     (defun inseart-date ()
       "Inseart date now."
       (interactive)
-      (insert (format-time-string "%Y-%m-%dT%H:%M:%S+09:00"))))
-
-  )
+      (insert (format-time-string "%Y-%m-%dT%H:%M:%S+09:00")))))
 
 
 ;; Local Variables:

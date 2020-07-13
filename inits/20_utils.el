@@ -13,6 +13,7 @@
 	  migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
     (autoload 'migemo-init "migemo" nil t))
 
+
   (leaf imenu-list :ensure t
     :bind (("<f2>" . imenu-list-smart-toggle))
     :config
@@ -20,9 +21,11 @@
 	  imenu-list-position 'left
 	  imenu-list-focus-after-activation t))
 
+
   (leaf browse-at-remote :ensure t
     :config
     (defalias 'my:github-show 'browse-at-remote))
+
 
   (leaf *user-utils-function
     :config
@@ -49,6 +52,7 @@
 	(setq after-save-hook
 	      (cons 'my:delete-file-if-no-contents after-save-hook)))
 
+
     ;; pdf out from emacs
     (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
     ;; (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | lpr")
@@ -63,6 +67,7 @@
       (shell-command-on-region begin end (format my:pdfout-command-format
 						 (concat (read-from-minibuffer "File name:") ".pdf")))))
 
+
   ;; ps-print-buffer
   (leaf ps-print :ensure nil
     :config
@@ -72,9 +77,7 @@
 	  ps-print-header nil
 	  ps-show-n-of-n t
 	  ps-line-number t
-	  ps-print-footer nil))
-
-  )
+	  ps-print-footer nil)))
 
 
 ;; Local Variables:

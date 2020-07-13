@@ -13,6 +13,7 @@
      (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
      (load-theme 'iceberg t)
 
+
      (leaf doom-modeline :ensure t
        :config
        (doom-modeline-mode)
@@ -40,6 +41,7 @@
 	 (leaf all-the-icons-ivy-rich :ensure t
 	   :config
 	   (all-the-icons-ivy-rich-mode)))
+
 
        (leaf darkroom :ensure t
 	 :bind ("<f12>" . my:darkroom-mode-in)

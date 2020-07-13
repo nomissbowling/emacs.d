@@ -17,6 +17,7 @@
     (setq auto-save-buffers-enhanced-exclude-regexps '("^/ssh:" "^/scp:" "/sudo:"))
     (auto-save-buffers-enhanced t))
 
+
   ;; automatically deleted in the background buffers
   (leaf tempbuf
     :el-get emacswiki:tempbuf
@@ -27,6 +28,7 @@
     :config
     (setq tempbuf-kill-message nil))
 
+
   ;; Persistent undo history for GNU Emacs
   (leaf undohist :ensure t
     :require t
@@ -34,6 +36,7 @@
     (setq undohist-directory "~/Dropbox/dotfiles/undohist"
 	  undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG"))
     (undohist-initialize))
+
 
   ;; Treat undo history as a tree
   (leaf undo-tree :ensure t
@@ -90,9 +93,7 @@
       (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
       (when (get-buffer "*tramp/scp xsrv*")
 	(counsel-tramp-quit))
-      (message "Killed Other Buffers!")))
-
-  )
+      (message "Killed Other Buffers!"))))
 
 
 ;; Local Variables:

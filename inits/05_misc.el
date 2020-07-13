@@ -12,15 +12,10 @@
        :config
        (popwin-mode))
 
+
      (leaf expand-region :ensure t
        :bind ("C-@" . er/expand-region))
 
-     (leaf key-chord
-       :el-get zk-phi/key-chord
-       :config
-       (key-chord-mode 1)
-       :chord (("df" . counsel-descbinds)
-	       ("l;" . init-loader-show-log)))
 
      (leaf yasnippet :ensure t
        :bind ("<backtab>" . ivy-yasnippet)
@@ -29,6 +24,7 @@
        (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
        :init
        (leaf ivy-yasnippet :ensure t))
+
 
      (leaf prescient :ensure t
        :config
@@ -41,14 +37,17 @@
 	 :config
 	 (ivy-prescient-mode)))
 
+
      (leaf quickrun :ensure t
        :bind ("<f5>" . quickrun))
+
 
      (leaf which-key :ensure t
        :config
        (which-key-mode)
        (setq which-key-max-description-length 40
 	     which-key-use-C-h-commands t))
+
 
      (leaf projectile :ensure t
        :config
@@ -57,11 +56,14 @@
        (leaf counsel-projectile :ensure t
 	 :config (counsel-projectile-mode)))
 
+
      (leaf restart-emacs :ensure t
        :bind (("C-x C-c" . restart-emacs)))
 
+
      (leaf web-mode :ensure t
        :mode "\\.js\\'" "\\.html?\\'")
+
 
      (leaf php-mode :ensure t
        :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")

@@ -35,9 +35,7 @@
      ("p" (search-web-dwim "post"))
      ("k" (search-web-dwim "kobun"))
      ("y" (search-web-dwim "yodobashi"))
-     ("r" (search-web-dwim "ruigo"))))
-
-  )
+     ("r" (search-web-dwim "ruigo")))))
 
 
 ;; Local Variables:

@@ -102,12 +102,10 @@
     "Open apsh file."
     (interactive)
     (find-file "~/Dropbox/GH/apsh/apsh.txt")
-    (goto-char (point-min)))
+    (goto-char (point-min))))
 
-  )
 
 (provide '99_user-dired)
-
 
 ;; Local Variables:
 ;; no-byte-compile: t

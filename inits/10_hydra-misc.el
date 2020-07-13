@@ -54,6 +54,7 @@
      @ : make a gist out of marked files"
 		     ("." nil)))
 
+
   ;; Open browser by favorite url
   (leaf *hydra-browse
     :hydra
@@ -101,6 +102,7 @@
      ("<muhenkan>" nil)
      ("." nil)))
 
+
   ;; Emacs in WSL and opening links
   (leaf *browse-url-in-WSL
     :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
@@ -112,9 +114,7 @@
 	(setq browse-url-generic-program  cmd-exe
 	      browse-url-generic-args     cmd-args
 	      browse-url-browser-function 'browse-url-generic
-	      search-web-default-browser 'browse-url-generic))))
-
-  )
+	      search-web-default-browser 'browse-url-generic)))))
 
 
 ;; Local Variables:

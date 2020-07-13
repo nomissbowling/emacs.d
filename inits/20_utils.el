@@ -71,9 +71,7 @@
 	  ps-print-header nil
 	  ps-show-n-of-n t
 	  ps-line-number t
-	  ps-print-footer nil))
-
-  )
+	  ps-print-footer nil)))
 
 
 ;; Local Variables:

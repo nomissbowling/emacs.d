@@ -111,9 +111,7 @@
 	(setq browse-url-generic-program  cmd-exe
 	      browse-url-generic-args     cmd-args
 	      browse-url-browser-function 'browse-url-generic
-	      search-web-default-browser 'browse-url-generic))))
-
-  )
+	      search-web-default-browser 'browse-url-generic)))))
 
 
 ;; Local Variables:

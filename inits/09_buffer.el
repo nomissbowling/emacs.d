@@ -89,9 +89,7 @@
       (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
       (when (get-buffer "*tramp/scp xsrv*")
 	(counsel-tramp-quit))
-      (message "Killed Other Buffers!")))
-
-  )
+      (message "Killed Other Buffers!"))))
 
 
 ;; Local Variables:

@@ -98,12 +98,13 @@
 	      (find-alternate-file up)
 	      (dired-goto-file dir)))))
 
+    ;; https://www.emacswiki.org/emacs/OperatingOnFilesInDired
     (defun dired-open-file ()
-      "Open file in relation to the extension."
+      "In dired, open the file named on this line."
       (interactive)
-      (let ((fn (dired-get-file-for-visit)))
+      (let* ((file (dired-get-filename nil t)))
 	(unless (getenv "WSLENV")
-	  (call-process "xdg-open" nil 0 nil fn))
+	  (call-process "xdg-open" nil 0 nil file))
 	;; use wsl-utils:https://github.com/smzht/wsl-utils
 	(when (getenv "WSLENV")
 	  (call-process "wslstart" nil 0 nil fn))))

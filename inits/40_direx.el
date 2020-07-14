@@ -31,6 +31,7 @@
 	   ("C-x C-j" . direx:jump-to-project-directory)
 	   (:direx:direx-mode-map
 	    ("o" . direx:open-file)
+	    ("SPC" . direx:find-item-other-window)
 	    ("<f10>" . quit-window)))
     :config
     (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")

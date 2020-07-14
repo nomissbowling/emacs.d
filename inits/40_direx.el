@@ -16,10 +16,19 @@
 	(direx:jump-to-directory-other-window))))
 
 
+  (defun direx:open-file ()
+    (interactive)
+    (let* ((item (direx:item-at-point!))
+	   (file (direx:item-tree item))
+	   (file-full-name (direx:file-full-name file)))
+      (call-process "xdg-open" nil 0 nil file-full-name)))
+
+
   (leaf direx :ensure t
     :after popwin
     :bind (("<f10>" . direx:jump-to-project-directory)
 	   (:direx:direx-mode-map
+	    ("o" . direx:open-file)
 	    ("<f10>" . quit-window)))
     :config
     (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")

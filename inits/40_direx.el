@@ -17,6 +17,7 @@
 
 
   (defun direx:open-file ()
+    "In direx, open the file in associated application."
     (interactive)
     (let* ((item (direx:item-at-point!))
 	   (file (direx:item-tree item))

@@ -68,7 +68,7 @@
 
   ;; https://www.emacswiki.org/emacs/OperatingOnFilesInDired
   (defun dired-open-file ()
-    "In dired, open the file named on this line."
+    "In dired, open the file in associated application."
     (interactive)
     (let* ((file (dired-get-filename nil t)))
       (unless (getenv "WSLENV")

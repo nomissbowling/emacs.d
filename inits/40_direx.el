@@ -28,6 +28,7 @@
   (leaf direx :ensure t
     :after popwin
     :bind (("<f10>" . direx:jump-to-project-directory)
+	   ("C-x C-j" . direx:jump-to-project-directory)
 	   (:direx:direx-mode-map
 	    ("o" . direx:open-file)
 	    ("<f10>" . quit-window)))

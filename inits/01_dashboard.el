@@ -44,117 +44,113 @@
     (setq dashboard-footer-icon
 	  (all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
     (setq dashboard-footer-messages '("Always be joyful. Never stop praying. Be thankful in all circumstances!"))
-
     ;; Insert custom item
     (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
-    (add-to-list 'dashboard-items '(custom) t))
+    (add-to-list 'dashboard-items '(custom) t)
+    :init
+    (defun dashboard-insert-custom (list-size)
+      "Insert custom and set LIST-SIZE."
+      (interactive)
+      (insert (if (display-graphic-p)
+		  (all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
+      (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
+    (defvar dashboard-recover-layout-p nil
+      "Wether recovers the layout.")
 
-(leaf *dashboard-local-function
-  :init
-  (defun dashboard-insert-custom (list-size)
-    "Insert custom and set LIST-SIZE."
-    (interactive)
-    (insert (if (display-graphic-p)
-		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
-    (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+    (defun restore-previous-session ()
+      "Restore the previous session."
+      (interactive)
+      (when (bound-and-true-p persp-mode)
+	(restore-session persp-auto-save-fname)))
 
-  (defvar dashboard-recover-layout-p nil
-    "Wether recovers the layout.")
+    (defun restore-session (fname)
+      "Restore the specified session."
+      (interactive (list (read-file-name "Load perspectives from a file: "
+					 persp-save-dir)))
+      (when (bound-and-true-p persp-mode)
+	(message "Restoring session...")
+	(quit-window t)
+	(condition-case-unless-debug err
+	    (persp-load-state-from-file fname)
+	  (error "Error: Unable to restore session -- %s" err))
+	(message "Done")))
 
-  (defun restore-previous-session ()
-    "Restore the previous session."
-    (interactive)
-    (when (bound-and-true-p persp-mode)
-      (restore-session persp-auto-save-fname)))
+    (defun open-dashboard ()
+      "Open the *dashboard* buffer and jump to the first widget."
+      (interactive)
+      (delete-other-windows)
+      (setq default-directory "~/")
+      ;; Refresh dashboard buffer
+      (if (get-buffer dashboard-buffer-name)
+	  (kill-buffer dashboard-buffer-name))
+      (dashboard-insert-startupify-lists)
+      (switch-to-buffer dashboard-buffer-name)
+      ;; Jump to the first section
+      (goto-char (point-min))
+      (dashboard-goto-recent-files))
 
-  (defun restore-session (fname)
-    "Restore the specified session."
-    (interactive (list (read-file-name "Load perspectives from a file: "
-				       persp-save-dir)))
-    (when (bound-and-true-p persp-mode)
-      (message "Restoring session...")
+    (defun quit-dashboard ()
+      "Quit dashboard window."
+      (interactive)
       (quit-window t)
-      (condition-case-unless-debug err
-	  (persp-load-state-from-file fname)
-	(error "Error: Unable to restore session -- %s" err))
-      (message "Done")))
+      (when (and dashboard-recover-layout-p
+		 (bound-and-true-p winner-mode))
+	(winner-undo)
+	(setq dashboard-recover-layout-p nil)))
 
-  (defun open-dashboard ()
-    "Open the *dashboard* buffer and jump to the first widget."
-    (interactive)
-    (delete-other-windows)
-    (setq default-directory "~/")
-    ;; Refresh dashboard buffer
-    (if (get-buffer dashboard-buffer-name)
-  	(kill-buffer dashboard-buffer-name))
-    (dashboard-insert-startupify-lists)
-    (switch-to-buffer dashboard-buffer-name)
-    ;; Jump to the first section
-    (goto-char (point-min))
-    (dashboard-goto-recent-files))
+    (defun dashboard-goto-recent-files ()
+      "Go to recent files."
+      (interactive)
+      (funcall (local-key-binding "r")))
 
-  (defun quit-dashboard ()
-    "Quit dashboard window."
-    (interactive)
-    (quit-window t)
-    (when (and dashboard-recover-layout-p
-	       (bound-and-true-p winner-mode))
-      (winner-undo)
-      (setq dashboard-recover-layout-p nil)))
+    (defun browse-calendar ()
+      "Open Google-calendar with chrome."
+      (interactive)
+      (browse-url "https://calendar.google.com/calendar/r"))
 
-  (defun dashboard-goto-recent-files ()
-    "Go to recent files."
-    (interactive)
-    (funcall (local-key-binding "r"))))
+    (defun browse-weather ()
+      "Open tenki.jp with chrome."
+      (interactive)
+      (browse-url "https://tenki.jp/week/6/31/"))
 
+    (defun browse-google-news ()
+      "Open Google-news with chrome."
+      (interactive)
+      (browse-url "https://news.google.com/topstories?hl=ja&gl=JP&ceid=JP:ja"))
 
-(leaf *user-browse-url-function
-  :init
-  (defun browse-calendar ()
-    "Open Google-calendar with chrome."
-    (interactive)
-    (browse-url "https://calendar.google.com/calendar/r"))
+    (defun browse-pocket ()
+      "Open pocket with chrome."
+      (interactive)
+      (browse-url "https://getpocket.com/a/queue/"))
 
-  (defun browse-weather ()
-    "Open tenki.jp with chrome."
-    (interactive)
-    (browse-url "https://tenki.jp/week/6/31/"))
+    (defun browse-keep ()
+      "Open pocket with chrome."
+      (interactive)
+      (browse-url "https://keep.new/"))
 
-  (defun browse-google-news ()
-    "Open Google-news with chrome."
-    (interactive)
-    (browse-url "https://news.google.com/topstories?hl=ja&gl=JP&ceid=JP:ja"))
+    (defun browse-homepage ()
+      "Open my homepage."
+      (interactive)
+      (browse-url "https://gospel-haiku.com/update/"))
 
-  (defun browse-pocket ()
-    "Open pocket with chrome."
-    (interactive)
-    (browse-url "https://getpocket.com/a/queue/"))
+    (defun browse-gmail ()
+      "Open gmail with chrome."
+      (interactive)
+      (browse-url "https://mail.google.com/mail/"))
 
-  (defun browse-keep ()
-    "Open pocket with chrome."
-    (interactive)
-    (browse-url "https://keep.new/"))
+    (defun browse-tweetdeck ()
+      "Open tweetdeck with chrome."
+      (interactive)
+      (browse-url "https://tweetdeck.twitter.com/"))
 
-  (defun browse-homepage ()
-    "Open my homepage."
-    (interactive)
-    (browse-url "https://gospel-haiku.com/update/"))
+    (defun browse-slack ()
+      "Open slack with chrome."
+      (interactive)
+      (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
 
-  (defun browse-gmail ()
-    "Open gmail with chrome."
-    (interactive)
-    (browse-url "https://mail.google.com/mail/"))
+  )
 
-  (defun browse-tweetdeck ()
-    "Open tweetdeck with chrome."
-    (interactive)
-    (browse-url "https://tweetdeck.twitter.com/"))
-
-  (defun browse-slack ()
-    "Open slack with chrome."
-    (interactive)
-    (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/"))))
 
 
 ;; Local Variables:

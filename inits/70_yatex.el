@@ -5,6 +5,9 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
+  (add-hook
+   'emacs-startup-hook
+   (lambda ()
   (leaf yatex :ensure t
     :mode ("\\.tex\\'" . yatex-mode)
     :config
@@ -43,7 +46,7 @@
   ;;
   ;; ------------------------------------------------------------------------
 
-  )
+  )))
 
 
 ;; Local Variables:

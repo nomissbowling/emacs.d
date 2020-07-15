@@ -68,7 +68,8 @@
      (leaf php-mode :ensure t
        :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
-     )))
+     ))
+  )
 
 
 ;; Local Variables:

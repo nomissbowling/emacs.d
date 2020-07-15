@@ -5,6 +5,9 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
+  (add-hook
+   'emacs-startup-hook
+   (lambda ()
   (leaf howm :ensure t
     :chord ("@@" . howm-list-all)
     :bind (:howm-view-summary-mode-map
@@ -72,7 +75,9 @@
 
   (leaf open-junk-file :ensure t
     :config
-    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")))
+    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
+
+  )))
 
 
 ;; Local Variables:

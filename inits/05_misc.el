@@ -18,11 +18,12 @@
 
 
      (leaf yasnippet :ensure t
-       :bind ("<backtab>" . ivy-yasnippet)
+       :bind ("C-x y" . ivy-yasnippet)
        :config
        (yas-global-mode)
        (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
        :init
+       (leaf yasnippet-snippets :ensure t)
        (leaf ivy-yasnippet :ensure t))
 
 
@@ -68,8 +69,8 @@
      (leaf php-mode :ensure t
        :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
-     ))
-  )
+     )))
+
 
 
 ;; Local Variables:

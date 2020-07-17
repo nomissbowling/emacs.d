@@ -102,8 +102,11 @@
     (defun dashboard-goto-recent-files ()
       "Go to recent files."
       (interactive)
-      (funcall (local-key-binding "r")))
+      (funcall (local-key-binding "r"))))
 
+
+  (leaf *user-browse-function
+    :init
     (defun browse-calendar ()
       "Open Google-calendar with chrome."
       (interactive)
@@ -147,7 +150,9 @@
     (defun browse-slack ()
       "Open slack with chrome."
       (interactive)
-      (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
+      (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/"))
+
+    )
 
   )
 

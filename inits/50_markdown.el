@@ -42,7 +42,7 @@
 
      (leaf markdown-mode :ensure t
        :mode "\\.md\\'"
-       :bind ("C-c '" . markdown-edit-code-block)
+       :bind (("C-c '" . markdown-edit-code-block))
        :hydra
        (hydra-markdown
 	(:color red :hint nil)

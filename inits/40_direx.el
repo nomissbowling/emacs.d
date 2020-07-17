@@ -25,7 +25,11 @@
        (let* ((item (direx:item-at-point!))
 	      (file (direx:item-tree item))
 	      (file-full-name (direx:file-full-name file)))
-	 (call-process "xdg-open" nil 0 nil file-full-name)))
+	 (unless (getenv "WSLENV")
+	   (call-process "xdg-open" nil 0 nil file-full-name))
+	 ;; use wsl-utils:https://github.com/smzht/wsl-utils
+	 (when (getenv "WSLENV")
+	   (call-process "wslstart" nil 0 nil file-full-name))))
 
 
      (leaf direx :ensure t

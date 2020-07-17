@@ -2,4 +2,4 @@
 # name: youtube
 # key: youtube
 # --
-{{< youtube %0 >}} 
+{{< youtube %0 >}}

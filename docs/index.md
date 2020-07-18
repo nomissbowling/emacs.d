@@ -31,4 +31,15 @@
 
 > blockquote
 
+```eval_rst
+=====  =====  =======
+A      B      A and B
+=====  =====  =======
+False  False  False
+True   False  False
+False  True   False
+True   True   True
+=====  =====  =======
+```
+
 * hoihoi 日本語

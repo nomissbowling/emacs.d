@@ -1,14 +1,8 @@
-<div style="text-align: center; font-size:200%; font-weight:bold">
+<div style="text-align: center; font-size:200%; font-weight:bold;margin-botom:1em;">
 Configurations for GNU Emacs
 </div>
 
-
-.. init.el documentation master file, created by
-   sphinx-quickstart on Sat Jul 18 10:53:20 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-# Welcome to init.el's documentation!
+# 1 Welcome to init.el's documentation!
 
 .. toctree::
    :maxdepth: 2

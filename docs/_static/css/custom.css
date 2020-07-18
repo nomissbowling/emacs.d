@@ -16,10 +16,10 @@
 /*     display: none; */
 /* } */
 
-[role="navication"] {
-    display: none;
+/* [role="navication"] { */
+/*     display: none; */
 
-    /* //表示状態 */
-    /* [aria-hidden="false"] { */
-    /*     display: block; */
-}
+/*     /\* //表示状態 *\/ */
+/*     /\* [aria-hidden="false"] { *\/ */
+/*     /\*     display: block; *\/ */
+/* } */

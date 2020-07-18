@@ -1,6 +1,4 @@
-<div style="text-align: center;">
-<h1>Configurations for GNU Emacs</h1>
-</div>
+<h1 style="text-align: center;">Configurations for GNU Emacs</h1>
 
 ## 1 Welcome to init.el's documentation!
 

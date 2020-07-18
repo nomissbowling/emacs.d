@@ -1,11 +1,7 @@
 @import url("theme.css");
 
-/* [role="navigation"] { */
-/*     display: none; */
 
-/* } */
-
-ul.wy-breadcrumbs {
+.wy-breadcrumbs {
     display: none;
 
 }

@@ -48,7 +48,20 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 #
 source_suffix = ['.rst', '.md']
-# source_suffix = '.rst'
+source_parsers = {
+   '.md': 'recommonmark.parser.CommonMarkParser',
+}
+
+from recommonmark.transform import AutoStructify
+def setup(app):
+    app.add_config_value('recommonmark_config', {
+            'auto_toc_tree_section': 'Contents',
+            }, True)
+    app.add_transform(AutoStructify)
+
+extensions = [
+    'sphinx_markdown_tables',
+]
 
 # The master toctree document.
 master_doc = 'index'

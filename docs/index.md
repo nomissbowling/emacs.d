@@ -9,9 +9,13 @@
 * 本ドキュメントの構成は、[Takaaki Ishikawa](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事に倣いました。感謝！ 
 
 ## 2. ディレクトリ構成
-以下のとおりです。
+
+パッケージ類は、git管理する必要なく、Dropboxの負担も減らすために、それぞれの端末の `~/.emacs.d` の置きました。
+
+構成は以下のとおりです。
 ```
 ~/.emacs.d
+├── el-get/
 ├── elisp/
 │   ├── emacs-livedown/
 │   ├── key-chord/

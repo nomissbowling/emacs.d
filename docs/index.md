@@ -1,3 +1,8 @@
+<div style="text-align: center;">
+# Configurations for GNU Emacs
+</div>
+
+
 .. init.el documentation master file, created by
    sphinx-quickstart on Sat Jul 18 10:53:20 2020.
    You can adapt this file completely to your liking, but it should at least

@@ -41,7 +41,7 @@ True   True   True
 
 * <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> hoihoi 日本語
 
-## 自動ビルドの確認
+## 2 自動ビルドの確認
 
 ### title1
 

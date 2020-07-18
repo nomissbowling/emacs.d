@@ -2,7 +2,7 @@
 Configurations for GNU Emacs
 </div>
 
-# 1 Welcome to init.el's documentation!
+## 1 Welcome to init.el's documentation!
 
 .. toctree::
    :maxdepth: 2
@@ -10,14 +10,14 @@ Configurations for GNU Emacs
 
 
 
-## Indices and tables
+### Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
 
 
-## hoge
+### hoge
 
 [GH](http://gospel-haiku.com)
 

@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to init.el's documentation!
+# Welcome to init.el's documentation!
 ===================================
 
 .. toctree::
@@ -12,7 +12,7 @@ Welcome to init.el's documentation!
 
 
 
-Indices and tables
+## Indices and tables
 ==================
 
 * :ref:`genindex`
@@ -20,7 +20,7 @@ Indices and tables
 * :ref:`search`
 
 
-hoge
+## hoge
 ==================
 
 * hoihoi 日本語

@@ -12,54 +12,31 @@
 以下のとおりです。
 ```
 ~/.emacs.d
-├── .gitignore
-├── ddskk/
-│   ├── dic/
-│   ├── emacs-id
-│   ├── init
-│   ├── jisyo
-│   ├── record
-│   └── study
 ├── elisp/
-│   ├── auto-install/
-│   └── work/
+│   ├── emacs-livedown/
+│   ├── key-chord/
+│   ├── mozc-el-extensions/
+│   └── tempbuf/
 ├── elpa/
-├── init.el
-├── inits/
-│   ├── 000_init.el
-│   ├── 00_command-keymap.el
-│   ├── 00_misc.el
-│   ├── ...
-│   ├── 99_overriding-minor-mode-keymap.el
-│   └── lin-conf.el
-└── snippets/
-
+└── init.el （シンボリック）
 
 
 ~/Dropbox/emacs.d
 ├── .gitignore
-├── ddskk/
-│   ├── dic/
-│   ├── emacs-id
-│   ├── init
-│   ├── jisyo
-│   ├── record
-│   └── study
+├── docs/
+├── info/
 ├── elisp/
-│   ├── auto-install/
-│   └── work/
-├── elpa/
+│   └── iceberg-theme/
 ├── init.el
+├── minimaru-init.el
 ├── inits/
-│   ├── 000_init.el
-│   ├── 00_command-keymap.el
-│   ├── 00_misc.el
+│   ├── 00_base.el
+│   ├── 01_dashboard.el
+│   ├── 02_git.el
 │   ├── ...
-│   ├── 99_overriding-minor-mode-keymap.el
-│   └── lin-conf.el
+│   ├── 99_user-dired.el
+│   └── 99_user-template.el
 └── snippets/
-
-
 
 ```
 

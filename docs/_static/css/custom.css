@@ -1,2 +1,5 @@
 @import url("theme.css");
 
+[role="navigation"] {
+    display: none;
+}

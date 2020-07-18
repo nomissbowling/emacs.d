@@ -22,4 +22,4 @@ Indices and tables
 # hoge test
 
 
-hoihoi 日本語
+* hoihoi 日本語

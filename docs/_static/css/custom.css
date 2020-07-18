@@ -12,8 +12,8 @@
     display: none;
 }
 
-a.icon, a.icon-home {
-    content: " ";
+.icon-home:before{
+    content:" ";
     font-size:120%;
     font-weight:bold;
-}
+    }

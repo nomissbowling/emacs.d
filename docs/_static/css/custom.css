@@ -13,11 +13,12 @@
 }
 
 .icon-home:before{
-    content:" ";
-    }
+    content:"🐳";
+}
 
 .icon-home {
-    font-family:Verdana;
-    font-size:150%;
-    font-weight:bold;
+    font-family: Cooper;
+    font-size: 150%;
+    font-weight: bold;
 }
+

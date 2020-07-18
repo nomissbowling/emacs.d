@@ -66,8 +66,8 @@ def setup(app):
 #     'sphinx_markdown_tables',
 # ]
 
-import sphinx_fontawesome
-extensions = ['sphinx_fontawesome']
+# import sphinx_fontawesome
+# extensions = ['sphinx_fontawesome']
 
 # The master toctree document.
 master_doc = 'index'

@@ -19,7 +19,7 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-# hoge test
 
+# hoge test
 
 * hoihoi 日本語

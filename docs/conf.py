@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'init.el'
+project = u'minorugh'
 copyright = u'2020, minoru yamada'
 author = u'minoru yamada'
 

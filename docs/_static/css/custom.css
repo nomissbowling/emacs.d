@@ -1,10 +1,5 @@
 @import url("theme.css");
 
-[role="navigation"] {
+[aria-label="breadcrumbs navigation"] {
     display: none;
-}
-
-.wy-breadcrumbs {
-    display: none;
-
 }

@@ -42,4 +42,4 @@ True   True   True
 =====  =====  =======
 ```
 
-* hoihoi 日本語
+* <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> hoihoi 日本語

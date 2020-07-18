@@ -20,11 +20,7 @@ Indices and tables
 * :ref:`search`
 
 
-ere are source codes::
-
-  a = 1
-  execute(a)
-
-# hoge test
+hoge
+==================
 
 * hoihoi 日本語

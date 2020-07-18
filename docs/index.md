@@ -1,5 +1,5 @@
-<div style="text-align: center;">
-# Configurations for GNU Emacs
+<div style="text-align: center; font-size:20px font-weight:bold">
+Configurations for GNU Emacs
 </div>
 
 

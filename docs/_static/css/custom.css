@@ -1,5 +1,11 @@
 @import url("theme.css");
 
-[role="navigation"] {
+/* [role="navigation"] { */
+/*     display: none; */
+
+/* } */
+
+.wy-breadcrumbs {
     display: none;
+
 }

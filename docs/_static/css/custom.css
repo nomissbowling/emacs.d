@@ -3,3 +3,11 @@
 [aria-label="breadcrumbs navigation"] {
     display: none;
 }
+
+.version {
+    display: none;
+}
+
+[role="search"]{
+    display: none;
+}

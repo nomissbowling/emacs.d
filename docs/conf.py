@@ -62,9 +62,9 @@ def setup(app):
             }, True)
     app.add_transform(AutoStructify)
 
-extensions = [
-    'sphinx_markdown_tables',
-]
+# extensions = [
+#     'sphinx_markdown_tables',
+# ]
 
 # The master toctree document.
 master_doc = 'index'

@@ -6,7 +6,7 @@
 * 複数端末で共有するため、設定ファイルは全て `~/Dropbox/emacs.d/` に置いています。
 * init.el のシンボリックを `~/.emacs.d` に置き init-loader で inits のファイル群を読込みます。
 * 全てのファイルは [GitHub](https://github.com/minorugh/emacs.d) に公開しています。 
-* 本ドキュメントの構成は、[Takaaki Ishikawa](https://twitter.com/takaxp) さんの [takaxp.github.io](https://takaxp.github.io/) の記事に倣いました。感謝！ 
+* 本ドキュメントの構成は、[Takaaki Ishikawa](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事に倣いました。感謝！ 
 
 ## 2 ディレクトリ構成
 以下のとおりです。

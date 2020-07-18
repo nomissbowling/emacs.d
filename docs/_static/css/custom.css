@@ -11,3 +11,8 @@
 [role="search"]{
     display: none;
 }
+
+.icon-home {
+    content: "";
+    font-size:110%;
+}

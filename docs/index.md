@@ -1,5 +1,5 @@
-<div style="text-align: center; font-size:200%; font-weight:bold;margin-botom:1em;">
-Configurations for GNU Emacs
+<div style="text-align: center;">
+<h1>Configurations for GNU Emacs</h1>
 </div>
 
 ## 1 Welcome to init.el's documentation!

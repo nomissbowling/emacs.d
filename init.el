@@ -41,9 +41,34 @@
     (setq el-get-dir "~/.emacs.d/elisp")
     :config
     (custom-set-variables
+
      '(init-loader-show-log-after-init 'error-only))
     (init-loader-load "~/Dropbox/emacs.d/inits")
-    (setq custom-file (locate-user-emacs-file "custom.el"))))
+    (setq custom-file (locate-user-emacs-file "custom.el")))
+
+  (leaf *user-emacs-init-time
+    :hook (after-init-hook . my:emacs-init-time)
+    :init
+    (defun my:emacs-init-time ()
+      "Emacs booting time in msec."
+      (message "Emacs booting time: %.0f [msec] = `emacs-init-time'."
+	       (* 1000
+		  (float-time (time-subtract
+			       after-init-time
+			       before-init-time)))))
+
+    (with-eval-after-load "time"
+      (defun ad:emacs-init-time ()
+	"Return a string giving the duration of the Emacs initialization."
+	(interactive)
+	(let ((str
+	       (format "%.3f seconds"
+		       (float-time
+			(time-subtract after-init-time before-init-time)))))
+	  (if (called-interactively-p 'interactive)
+	      (message "%s" str)
+	    str)))
+      (advice-add 'emacs-init-time :override #'ad:emacs-init-time))))
 
 
 (provide 'init)

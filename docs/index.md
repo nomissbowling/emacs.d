@@ -6,3 +6,58 @@
 * 複数端末で共有するため、設定ファイルは全て `~/Dropbox/emacs.d/` に置いています。
 * init.el のシンボリックを `~/.emacs.d` に置き init-loader で inits のファイル群を読込みます。
 * 全てのファイルは [GitHub](https://github.com/minorugh/emacs.d) に公開しています。 
+
+## 2 ディレクトリ構成
+以下のとおりです。
+```
+~/.emacs.d
+├── .gitignore
+├── ddskk/
+│   ├── dic/
+│   ├── emacs-id
+│   ├── init
+│   ├── jisyo
+│   ├── record
+│   └── study
+├── elisp/
+│   ├── auto-install/
+│   └── work/
+├── elpa/
+├── init.el
+├── inits/
+│   ├── 000_init.el
+│   ├── 00_command-keymap.el
+│   ├── 00_misc.el
+│   ├── ...
+│   ├── 99_overriding-minor-mode-keymap.el
+│   └── lin-conf.el
+└── snippets/
+
+
+
+~/Dropbox/emacs.d
+├── .gitignore
+├── ddskk/
+│   ├── dic/
+│   ├── emacs-id
+│   ├── init
+│   ├── jisyo
+│   ├── record
+│   └── study
+├── elisp/
+│   ├── auto-install/
+│   └── work/
+├── elpa/
+├── init.el
+├── inits/
+│   ├── 000_init.el
+│   ├── 00_command-keymap.el
+│   ├── 00_misc.el
+│   ├── ...
+│   ├── 99_overriding-minor-mode-keymap.el
+│   └── lin-conf.el
+└── snippets/
+
+
+
+```

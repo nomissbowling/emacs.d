@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'minorugh.readthedocs.io'
+project = u'minorugh.rtfd.io'
 copyright = u'2020, minoru yamada'
 author = u'minoru yamada'
 

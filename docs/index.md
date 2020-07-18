@@ -4,7 +4,6 @@
    contain the root `toctree` directive.
 
 # Welcome to init.el's documentation!
-===================================
 
 .. toctree::
    :maxdepth: 2
@@ -13,7 +12,6 @@
 
 
 ## Indices and tables
-==================
 
 * :ref:`genindex`
 * :ref:`modindex`
@@ -21,6 +19,5 @@
 
 
 ## hoge
-==================
 
 * hoihoi 日本語

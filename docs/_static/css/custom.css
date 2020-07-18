@@ -1,5 +1,8 @@
 @import url("theme.css");
 
+[role="navigation"] {
+    display: none;
+}
 
 .wy-breadcrumbs {
     display: none;

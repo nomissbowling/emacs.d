@@ -1,6 +1,6 @@
 <h1 style="text-align: center;">Configurations for GNU Emacs</h1>
 
-## 1 Welcome to init.el's documentation!
+## 1 はじめに
 
 .. toctree::
    :maxdepth: 2

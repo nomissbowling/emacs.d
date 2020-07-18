@@ -144,17 +144,3 @@ $ sudo tlmgr restore （パッケージ名） （リビジョン番号）
 とすることで以前のバージョンに戻すことができます．
 
 
-### ※ My-styを追加する場所
-
-```shell
- /usr/local/texlive/2019/texmf-dist/tex/platex
-```
-
-Dropboxからシンボリックを貼る
-
-```shell
-sudo ln -s /home/minoru/Dropox/dotfiles/tex/platex/my-sty /usr/local/texlive/2019/texmf-dist/tex/platex 
-```
-そのあと、`sudo mktexlsr` する。
-
-

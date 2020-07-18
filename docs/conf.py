@@ -69,6 +69,8 @@ def setup(app):
 # import sphinx_fontawesome
 # extensions = ['sphinx_fontawesome']
 
+html_style = "css/custom.css"
+
 # The master toctree document.
 master_doc = 'index'
 

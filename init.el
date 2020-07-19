@@ -11,7 +11,6 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
-
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (setq gc-cons-threshold 100000000)
@@ -21,18 +20,20 @@
 	    (setq file-name-handler-alist default-file-name-handler-alist)
 	    (setq gc-cons-threshold 800000)))
 
-
 (customize-set-variable
  'package-archives '(("org"   . "https://orgmode.org/elpa/")
 		     ("melpa" . "https://melpa.org/packages/")
 		     ("gnu"   . "https://elpa.gnu.org/packages/")))
-
 
 (package-initialize)
 (unless (package-installed-p 'leaf)
   (package-refresh-contents)
   (package-install 'leaf))
 
+(leaf exec-path-from-shell :ensure t
+  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :config
+  (setq exec-path-from-shell-check-startup-files nil))
 
 (leaf leaf-keywords
   :ensure t
@@ -43,18 +44,12 @@
   :config
   (leaf-keywords-init))
 
-
-(leaf exec-path-from-shell :ensure t
-  :hook (after-init-hook . exec-path-from-shell-initialize)
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
-
 (leaf init-loader :ensure t
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (load "~/Dropbox/emacs.d/elisp/dashboard.el")
+  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+  (require 'dashboard)
   :config
   (add-hook
    'emacs-startup-hook

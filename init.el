@@ -5,11 +5,11 @@
 ;; (setq debug-on-error t)
 
 ;; Quiet Startup
-(set-frame-parameter nil 'fullscreen 'maximized)
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
+;; (set-frame-parameter nil 'fullscreen 'maximized)
+;; (scroll-bar-mode 0)
+;; (tool-bar-mode 0)
+;; (setq inhibit-splash-screen t)
+;; (setq inhibit-startup-message t)
 
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
@@ -43,7 +43,8 @@
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (load "~/Dropbox/emacs.d/elisp/dashboard.el")
+  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+  (load "init-window.el")
   :config
   (add-hook
    'emacs-startup-hook

@@ -41,8 +41,8 @@
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
   (add-to-list 'load-path "~/Dropbox/emacs.d/conf")
-  (require 'emacs-base-setting)
-  (require 'emacs-dashboard)
+  (require 'init-startup)
+  (require 'init-dashboard)
   :config
   (add-hook
    'emacs-startup-hook

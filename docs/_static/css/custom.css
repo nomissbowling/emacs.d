@@ -13,6 +13,7 @@
 }
 
 .icon-home:before{
-    content:"📕";
+    content:" ";
+    margin-left: -1em;
 }
 

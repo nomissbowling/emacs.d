@@ -1,4 +1,4 @@
-;;; init-dashboard.el --- init-dashboard.el  -*- lexical-binding: t -*-
+;;; dashboard.el --- dashboard.el  -*- lexical-binding: t -*-
 
 ;; an extensible emacs startup screen
 
@@ -157,4 +157,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; init-dashboard.el ends here
+;;; dashboard.el ends here

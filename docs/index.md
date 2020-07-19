@@ -65,6 +65,3 @@
 ## 13. おわりに
 
 
-<div class="rst-versions">
-      <span class="fa fa-book"> Minoru YAMADA.</span>
-	  </div>

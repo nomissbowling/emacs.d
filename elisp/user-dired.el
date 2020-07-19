@@ -1,4 +1,4 @@
-;;; 99_user-dired.el -*- lexical-binding: t -*-
+;;; user-dired.el -*- lexical-binding: t -*-
 ;; open user directory
 
 ;;; Code:
@@ -104,10 +104,8 @@
   (goto-char (point-min)))
 
 
-(provide '99_user-dired)
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; 99_user-dired.el ends here
+;;; user-dired.el ends here

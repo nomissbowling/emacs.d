@@ -1,4 +1,4 @@
-;;; 99_user-template.el -*- lexical-binding: t -*-
+;;; user-template.el -*- lexical-binding: t -*-
 ;; user-template functions
 
 ;;; Code:
@@ -158,10 +158,8 @@
   (forward-char 6))
 
 
-(provide '99_user-template)
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; 99_user-template.el ends here
+;;; user-template.el ends here

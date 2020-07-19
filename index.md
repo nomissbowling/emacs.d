@@ -1,1 +1,0 @@
-/home/minoru/Dropbox/emacs.d/docs/index.md

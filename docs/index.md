@@ -24,6 +24,7 @@
 
 
 ~/Dropbox/emacs.d
+├── docs/
 ├── elisp/
 │   ├── iceberg-theme/
 │   ├── info/
@@ -34,10 +35,10 @@
 │   ├── ...
 │   ├── 99_user-dired.el
 │   └── 99_user-template.el
+├── snippets/
 ├── .gitignore
 ├── init.el
-├── minimaru-init.el
-└── snippets/
+└── minimaru-init.el
 
 ```
 

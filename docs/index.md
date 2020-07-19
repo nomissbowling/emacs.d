@@ -65,7 +65,6 @@
 ## 13. おわりに
 
 
-<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+<div class="rst-versions">
       <span class="fa fa-book"> Minoru YAMADA.</span>
 	  </div>

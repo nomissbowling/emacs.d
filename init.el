@@ -35,20 +35,21 @@
   :config
   (leaf-keywords-init))
 
+
 (leaf init-loader :ensure t
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (add-to-list 'load-path "~/Dropbox/emacs.d")
-  (require 'init-startup)
-  (require 'init-dashboard)
+  (add-to-list 'load-path "~/Dropbox/emacs.d/conf")
+  (require 'emacs-base-setting)
+  (require 'emacs-dashboard)
   :config
   (add-hook
    'emacs-startup-hook
    (lambda ()
      (custom-set-variables '(init-loader-show-log-after-init 'error-only))
-     (init-loader-load "~/Dropbox/emacs.d/inits")
-     (setq custom-file (locate-user-emacs-file "custom.el")))))
+     (init-loader-load "~/Dropbox/emacs.d/inits")))
+  (setq custom-file (locate-user-emacs-file "custom.el")))
 
 
 (provide 'init)

@@ -26,18 +26,19 @@
 ~/Dropbox/emacs.d
 ├── .gitignore
 ├── docs/
-├── info/
-├── elisp/
-│   └── iceberg-theme/
-├── init.el
-├── minimaru-init.el
+├── conf/
+│   ├── iceberg-theme/
+│   ├── info/
+│   ├── emacs-base-setting.el
+│   └── emacs-dashboard.el
 ├── inits/
-│   ├── 00_base.el
-│   ├── 01_dashboard.el
+│   ├── 01_base.el
 │   ├── 02_git.el
 │   ├── ...
 │   ├── 99_user-dired.el
 │   └── 99_user-template.el
+├── init.el
+├── minimaru-init.el
 └── snippets/
 
 ```

@@ -44,7 +44,7 @@
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
   (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-  (load "init-window.el")
+  (load "init-ui.el")
   :config
   (add-hook
    'emacs-startup-hook

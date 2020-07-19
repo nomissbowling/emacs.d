@@ -1,9 +1,38 @@
-;;; dashboard.el --- dashboard.el  -*- lexical-binding: t -*-
+;;; init-window.el --- init-window.el  -*- lexical-binding: t -*-
 
 ;; an extensible emacs startup screen
 
 ;;; Code:
 ;; (setq debug-on-error t)
+
+;; Quiet Startup
+(set-frame-parameter nil 'fullscreen 'maximized)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+
+(with-eval-after-load "time"
+  (defun ad:emacs-init-time ()
+    "Return a string giving the duration of the Emacs initialization."
+    (interactive)
+    (let ((str
+           (format "%.3f seconds"
+                   (float-time
+                    (time-subtract after-init-time before-init-time)))))
+      (if (called-interactively-p 'interactive)
+          (message "%s" str)
+        str)))
+  (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
+
+
+;; exec-path-from-shell
+(leaf exec-path-from-shell :ensure t
+  :config
+  (add-hook 'after-init-hook 'exec-path-from-shell-initialize)
+  (setq exec-path-from-shell-check-startup-files nil))
+
 
 (leaf dashboard :ensure t
   :bind (("<home>" . open-dashboard)
@@ -103,58 +132,56 @@
     (funcall (local-key-binding "r"))))
 
 
-   (leaf *user-browse-function
-     :init
-     (defun browse-calendar ()
-       "Open Google-calendar with chrome."
-       (interactive)
-       (browse-url "https://calendar.google.com/calendar/r"))
+(leaf *user-browse-function
+  :init
+  (defun browse-calendar ()
+    "Open Google-calendar with chrome."
+    (interactive)
+    (browse-url "https://calendar.google.com/calendar/r"))
 
-     (defun browse-weather ()
-       "Open tenki.jp with chrome."
-       (interactive)
-       (browse-url "https://tenki.jp/week/6/31/"))
+  (defun browse-weather ()
+    "Open tenki.jp with chrome."
+    (interactive)
+    (browse-url "https://tenki.jp/week/6/31/"))
 
-     (defun browse-google-news ()
-       "Open Google-news with chrome."
-       (interactive)
-       (browse-url "https://news.google.com/topstories?hl=ja&gl=JP&ceid=JP:ja"))
+  (defun browse-google-news ()
+    "Open Google-news with chrome."
+    (interactive)
+    (browse-url "https://news.google.com/topstories?hl=ja&gl=JP&ceid=JP:ja"))
 
-     (defun browse-pocket ()
-       "Open pocket with chrome."
-       (interactive)
-       (browse-url "https://getpocket.com/a/queue/"))
+  (defun browse-pocket ()
+    "Open pocket with chrome."
+    (interactive)
+    (browse-url "https://getpocket.com/a/queue/"))
 
-     (defun browse-keep ()
-       "Open pocket with chrome."
-       (interactive)
-       (browse-url "https://keep.new/"))
+  (defun browse-keep ()
+    "Open pocket with chrome."
+    (interactive)
+    (browse-url "https://keep.new/"))
 
-     (defun browse-homepage ()
-       "Open my homepage."
-       (interactive)
-       (browse-url "https://gospel-haiku.com/update/"))
+  (defun browse-homepage ()
+    "Open my homepage."
+    (interactive)
+    (browse-url "https://gospel-haiku.com/update/"))
 
-     (defun browse-gmail ()
-       "Open gmail with chrome."
-       (interactive)
-       (browse-url "https://mail.google.com/mail/"))
+  (defun browse-gmail ()
+    "Open gmail with chrome."
+    (interactive)
+    (browse-url "https://mail.google.com/mail/"))
 
-     (defun browse-tweetdeck ()
-       "Open tweetdeck with chrome."
-       (interactive)
-       (browse-url "https://tweetdeck.twitter.com/"))
+  (defun browse-tweetdeck ()
+    "Open tweetdeck with chrome."
+    (interactive)
+    (browse-url "https://tweetdeck.twitter.com/"))
 
-     (defun browse-slack ()
-       "Open slack with chrome."
-       (interactive)
-       (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
+  (defun browse-slack ()
+    "Open slack with chrome."
+    (interactive)
+    (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
 
-
-(provide 'init-dashboard)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; dashboard.el ends here
+;;; init-window.el ends here

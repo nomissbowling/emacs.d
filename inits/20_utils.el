@@ -4,11 +4,12 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf migemo :ensure t)
-(when (and (executable-find "cmigemo")
-	   (require 'migemo nil t))
-  (setq migemo-options '("-q" "--emacs"))
-  (setq migemo-command (executable-find "cmigemo")
+(leaf migemo :ensure t
+  :require t
+  :when (executable-find "cmigemo")
+  :config
+  (setq migemo-options '("-q" "--emacs")
+	migemo-command (executable-find "cmigemo")
 	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
   (migemo-init))
 

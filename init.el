@@ -49,7 +49,7 @@
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (load "~/Dropbox/emacs.d/elisp/init-dashboard.el")
+  (load "~/Dropbox/emacs.d/elisp/dashboard.el")
   :config
   (add-hook
    'emacs-startup-hook

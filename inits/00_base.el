@@ -7,6 +7,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; Save the file specified code with basic utf-8 if it exists
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+
 ;; font
 (add-to-list 'default-frame-alist '(font . "Cica-18"))
 ;; for sub-machine
@@ -27,7 +31,6 @@
 
 ;; Recentf
 (leaf recentf
-  ;; :hook (after-init-hook . recentf-mode)
   :config
   (recentf-mode)
   (setq recentf-save-file "~/.emacs.d/recentf"
@@ -136,7 +139,7 @@ If the region is inactive, `backward-kill-word'."
 (add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
 
 ;; M-x info-emacs-manual (C-h r or F1+r)
-(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/conf/info/")
+(add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")
 (defun Info-find-node--info-ja (orig-fn filename &rest args)
   "Info as ORIG-FN FILENAME ARGS."
   (apply orig-fn

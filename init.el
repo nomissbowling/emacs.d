@@ -30,11 +30,6 @@
   (package-refresh-contents)
   (package-install 'leaf))
 
-(leaf exec-path-from-shell :ensure t
-  :hook (after-init-hook . exec-path-from-shell-initialize)
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
 (leaf leaf-keywords
   :ensure t
   :init

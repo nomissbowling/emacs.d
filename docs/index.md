@@ -29,8 +29,8 @@
 ├── conf/
 │   ├── iceberg-theme/
 │   ├── info/
-│   ├── emacs-base-setting.el
-│   └── emacs-dashboard.el
+│   ├── init-startup.el
+│   └── init-dashboard.el
 ├── inits/
 │   ├── 01_base.el
 │   ├── 02_git.el

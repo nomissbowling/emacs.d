@@ -15,5 +15,6 @@
 .icon-home:before{
     content:" ";
     margin-left: -1em;
+    padding-bottom: -1em;
 }
 

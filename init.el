@@ -14,6 +14,7 @@
 	      (setq file-name-handler-alist default-file-name-handler-alist)
 	      (setq gc-cons-threshold 800000)))
 
+
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")
 		       ("melpa" . "https://melpa.org/packages/")

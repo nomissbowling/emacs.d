@@ -24,11 +24,10 @@
 
 
 ~/Dropbox/emacs.d
-├── conf/
+├── elisp/
 │   ├── iceberg-theme/
 │   ├── info/
-│   ├── init-startup.el
-│   └── init-dashboard.el
+│   └── dashboard.el
 ├── inits/
 │   ├── 01_base.el
 │   ├── 02_git.el

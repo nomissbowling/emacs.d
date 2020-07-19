@@ -1,4 +1,4 @@
-;;; init-window.el --- init-window.el  -*- lexical-binding: t -*-
+;;; init-ui.el --- init-ui.el  -*- lexical-binding: t -*-
 
 ;; an extensible emacs startup screen
 
@@ -14,6 +14,7 @@
 (setq inhibit-startup-message t)
 
 
+;; Hack emacs-init-time. (%.1f >> %.3f)
 (with-eval-after-load "time"
   (defun ad:emacs-init-time ()
     "Return a string giving the duration of the Emacs initialization."
@@ -185,4 +186,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; init-window.el ends here
+;;; init-ui.el ends here

@@ -23,12 +23,6 @@
   (unless (server-running-p)
     (server-start)))
 
-;; exec-path-from-shell
-(leaf exec-path-from-shell :ensure t
-  :hook (after-init-hook . exec-path-from-shell-initialize)
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
 ;; Recentf
 (leaf recentf
   :config
@@ -41,20 +35,25 @@
 			 (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
 
-;; Hide menu-bar
-(menu-bar-mode 0)
+
 ;; Save hist
 (savehist-mode)
+
 ;;Save plae
 (save-place-mode)
+
 ;; Automatic reloading of changed files
 (global-auto-revert-mode)
+
 ;; Do not blink the cursor
 (blink-cursor-mode)
+
 ;; Window configuration undo/redo
 (winner-mode)
+
 ;; font-lock
 (global-font-lock-mode)
+
 ;; word wrapping is used
 (global-visual-line-mode)
 

@@ -9,6 +9,7 @@
 (set-frame-parameter nil 'fullscreen 'maximized)
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
+(menu-bar-mode 0)
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
@@ -29,8 +30,8 @@
 
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
+  :hook (after-init-hook . exec-path-from-shell-initialize)
   :config
-  (add-hook 'after-init-hook 'exec-path-from-shell-initialize)
   (setq exec-path-from-shell-check-startup-files nil))
 
 

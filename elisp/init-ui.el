@@ -1,4 +1,4 @@
-;;; init-ui.el --- init-ui.el  -*- lexical-binding: t -*-
+;;; init-ui.el   -*- lexical-binding: t -*-
 
 ;; an extensible emacs startup screen
 
@@ -36,6 +36,16 @@
   (setq exec-path-from-shell-check-startup-files nil))
 
 
+;; Load user functions
+(add-hook
+ 'emacs-startup-hook
+ (lambda ()
+   (load "user-browse-url.el")
+   (load "user-dired.el")
+   (load "user-template.el")))
+
+
+;; Custom dashboard
 (leaf dashboard :ensure t
   :bind (("<home>" . open-dashboard)
 	 (:dashboard-mode-map

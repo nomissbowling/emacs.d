@@ -23,6 +23,12 @@
   (unless (server-running-p)
     (server-start)))
 
+;; exec-path-from-shell
+(leaf exec-path-from-shell :ensure t
+  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :config
+  (setq exec-path-from-shell-check-startup-files nil))
+
 ;; Recentf
 (leaf recentf
   :config

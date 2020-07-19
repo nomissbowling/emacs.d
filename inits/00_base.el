@@ -17,12 +17,6 @@
 (when (string-match "x250" (shell-command-to-string "uname -n"))
   (add-to-list 'default-frame-alist '(font . "Cica-15")))
 
-;; Emacs use the $PATH set up by the user's shell
-(leaf exec-path-from-shell :ensure t
-  :config
-  (setq exec-path-from-shell-check-startup-files nil)
-  (exec-path-from-shell-initialize))
-
 ;; Start the server in Emacs session
 (leaf server :require t
   :config

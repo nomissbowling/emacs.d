@@ -28,7 +28,7 @@
 ├── elisp/
 │   ├── iceberg-theme/
 │   ├── info/
-│   └── dashboard.el
+│   └── init-ui.el
 ├── inits/
 │   ├── 01_base.el
 │   ├── 02_git.el

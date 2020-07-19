@@ -1,4 +1,4 @@
-;;; emacs-base-setting.el --- emacs-base-setting.el -*- lexical-binding: t -*-
+;;; init-startup.el --- init-startup.el -*- lexical-binding: t -*-
 ;; emacs startup settings.
 
 ;;; Code:
@@ -54,10 +54,10 @@
 ;;   (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
 
 
-(provide 'emacs-base-setting)
+(provide 'init-startup)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; emacs-base-setting.el ends here
+;;; init-startup.el ends here

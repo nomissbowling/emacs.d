@@ -1,4 +1,4 @@
-;;; emacs-dashboard.el --- emacs-dashboard.el  -*- lexical-binding: t -*-
+;;; init-dashboard.el --- init-dashboard.el  -*- lexical-binding: t -*-
 
 ;; an extensible emacs startup screen
 
@@ -152,10 +152,10 @@
     (browse-url "https://emacs-jp.slack.com/messages/C1B73BWPJ/")))
 
 
-(provide 'emacs-dashboard)
+(provide 'init-dashboard)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; emacs-dashboard.el ends here
+;;; init-dashboard.el ends here

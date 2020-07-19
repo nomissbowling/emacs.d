@@ -5,7 +5,7 @@
 ;; (setq debug-on-error t)
 
 ;; custom-theme
-(add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/conf/iceberg-theme")
+(add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
 (load-theme 'iceberg t)
 
 

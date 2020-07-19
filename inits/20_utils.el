@@ -4,13 +4,14 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; (leaf migemo :ensure t
-;;   :when (executable-find "cmigemo")
-;;   :hook (after-init-hook . migemo-init)
-;;   :config
-;;   (setq migemo-command (executable-find "cmigemo")
-;; 	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
-;;   (autoload 'migemo-init "migemo" nil t))
+(leaf migemo :ensure t
+  :when (executable-find "cmigemo")
+  :hook (after-init-hook . migemo-init)
+  :config
+  (setq migemo-command (executable-find "cmigemo")
+	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict"))
+(migemo-init)
+
 
 (leaf imenu-list :ensure t
   :bind (("<f2>" . imenu-list-smart-toggle))

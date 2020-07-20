@@ -48,6 +48,7 @@
 (add-hook
  'emacs-startup-hook
  (lambda ()
+   (require 'user-test)
    (require 'user-dired)
    (require 'user-template)))
 

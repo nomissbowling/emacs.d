@@ -41,7 +41,8 @@
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (load "~/Dropbox/emacs.d/init-config.el")
+  (add-to-list 'load-path "~/Dropbox/emacs.d")
+  (require 'init-config)
   :config
   (add-hook
    'after-init-hook

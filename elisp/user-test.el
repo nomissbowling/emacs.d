@@ -1,8 +1,4 @@
 ;;; user-test.el -*- lexical-binding: t -*-
-;; open user directory
-
-;;; Code:
-;; (setq debug-on-error t)
 
 ;; Write a trial settings
 
@@ -19,7 +15,6 @@
           (message "%s" str)
         str)))
   (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
-
 
 
 (provide 'user-test)

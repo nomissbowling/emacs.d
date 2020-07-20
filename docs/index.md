@@ -142,7 +142,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (load "~/Dropbox/emacs.d/init-config.el") ;; 先読み設定
+  (load "~/Dropbox/emacs.d/init-config.el") ;; 先読みさせる設定
   :config
   (add-hook
    'after-init-hook

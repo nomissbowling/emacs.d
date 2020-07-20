@@ -131,6 +131,8 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 
 ### 3.5 after-init-hook / emacs-startup-hook：遅延読み込み
 
+* [after-init-hook と emacs-startup-hook の違いを読み解く](https://minosjp.hatenablog.com/entry/2019/10/08/232215) 
+
 これらの遅延読み込みを設定しても正常動作するものは積極的に使っています。個別に設定してもいいのですが私の場合は、`emacs-startup-hook` で `init-loarder` を走らせ `inits/` フォルダーにまとめた設定を全て遅延で読み込むようにしています。
 
 ``` emacs-lisp
@@ -141,7 +143,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
   (load "~/Dropbox/emacs.d/init-config.el") ;; 先読み設定
   :config
   (add-hook
-   'emacs-startup-hook
+   'after-init-hook
    (lambda ()
 	 (custom-set-variables '(init-loader-show-log-after-init 'error-only))
 	 (init-loader-load "~/Dropbox/emacs.d/inits")))
@@ -164,13 +166,13 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 (leaf server :require t
   :config
   (unless (server-running-p)
-    (add-hook 'after-init-hook 'server-start)))
+    (add-hook 'emacs-startup-hook 'server-start)))
 
 
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
   :when (memq window-system '(mac ns x))
-  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
@@ -179,7 +181,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
 (require 'user-test)
 (add-hook
- 'emacs-startup-hook
+ 'after-init-hook
  (lambda ()
    (require 'user-dired)
    (require 'user-template)))

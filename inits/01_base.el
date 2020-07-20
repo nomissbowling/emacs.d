@@ -17,12 +17,6 @@
 (when (string-match "x250" (shell-command-to-string "uname -n"))
   (add-to-list 'default-frame-alist '(font . "Cica-15")))
 
-;; Start the server in Emacs session
-(leaf server :require t
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
 ;; Recentf
 (leaf recentf
   :config

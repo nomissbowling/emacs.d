@@ -18,13 +18,13 @@
 (leaf server :require t
   :config
   (unless (server-running-p)
-    (add-hook 'after-init-hook 'server-start)))
+    (add-hook 'emacs-startup-hook 'server-start)))
 
 
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
   :when (memq window-system '(mac ns x))
-  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 
@@ -33,7 +33,7 @@
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
 (require 'user-test)
 (add-hook
- 'emacs-startup-hook
+ 'after-init-hook
  (lambda ()
    (require 'user-dired)
    (require 'user-template)))

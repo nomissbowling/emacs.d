@@ -44,7 +44,7 @@
   (load "~/Dropbox/emacs.d/init-config.el")
   :config
   (add-hook
-   'emacs-startup-hook
+   'after-init-hook
    (lambda ()
      (custom-set-variables '(init-loader-show-log-after-init 'error-only))
      (init-loader-load "~/Dropbox/emacs.d/inits")))

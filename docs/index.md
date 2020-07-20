@@ -50,7 +50,7 @@
 
 1. `init.el` の読み込み 
 2. `init-config.el` の読み込み
-3. `inits/` に配置したファイル群の読み込み `init-loader` 使用
+3. `inits/` に配置したファイル群の読み込み （`init-loader` 使用）
 
 `init-config.el` には、遅延起動できない設定群を書いて先読み込させます。
 

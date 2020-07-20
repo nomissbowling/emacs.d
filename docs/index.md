@@ -3,10 +3,10 @@
 ## 1. はじめに
 * [Leaf](https://github.com/conao3/leaf.el) に乗り換えたのを機に大幅に整理したので RTD にまとめました。
 * もし参考になるとしたら [init.el](https://github.com/minorugh/emacs.d/blob/master/init.el) と [inits](https://github.com/minorugh/emacs.d/tree/master/inits) 内のファイル群かと思います。
-* 設定ファイルは全て `~/Dropbox/emacs.d/` に置いてGit管理しています。
-* init.el のシンボリックを `~/.emacs.d` に置くことで複数端末のEmacsで共有しています。
+* 設定ファイルは全て `~/Dropbox/emacs.d/` に置いて Git管理しています。
+* init.el のシンボリックを `~/.emacs.d` に置くことで複数端末から共有できます。
 * 全てのファイルは [GitHub](https://github.com/minorugh/emacs.d) に公開しています。
-* 本ドキュメントの構成は、[@Takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事に倣いました。感謝！
+* 本ドキュメントの構成は、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事に倣いました。感謝！
 
 ## 2. ディレクトリ構成
 

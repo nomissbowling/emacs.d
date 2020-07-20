@@ -58,7 +58,7 @@ Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs
 
 遅延起動できるものは `inits/` フォルダーに配置し、[init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込みます。
 
-init-loader を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
+init-loader の是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ### 3.1 minimal-init.el：最小限のEmacsを起動
 

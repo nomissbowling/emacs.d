@@ -56,7 +56,18 @@
 
 `user-dired.el` , `user-template.el` などの別設定もここから読み込ませます。`user-test.el` は、ちょこっと思いついた設定を書いて動作確認するための空ファイルです。他の設定ファイルを汚すことなくテストできるので便利です。
 
-遅延起動できるものは `inits/` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
+``` emacs-lisp
+;; Load user functions
+(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+(require 'user-test)
+(add-hook
+ 'after-init-hook
+ (lambda ()
+   (require 'user-dired)
+   (require 'user-template)))
+```
+
+その他の遅延起動できるものは `inits/` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ### 3.1 minimal-init.el：最小限のEmacsを起動
 
@@ -171,24 +182,68 @@ Emacs起動時の初期画面表示のための設定 `init-config.el` を `init
 (setq inhibit-startup-message t)
 ```
 
-;; Load user functions
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(require 'user-test)
-(add-hook
- 'after-init-hook
- (lambda ()
-   (require 'user-dired)
-   (require 'user-template)))
+初期画面には、`Dashboard` を表示させています。愛着あるこのバッファーもうっかり Killすると消えてしまうので再生できるように設定しています。
 
-
-;; user custom dashboard
-(leaf dashboard :ensure t
-  ...
-  ...
-
-```
+`[Home]` を押すことで、前に開いていたバッファーと Dashboard画面とをトグル表示します。(winner-mode使用)
 
 ``` emacs-lisp
+;; user custom dashboard
+(leaf dashboard :ensure t
+  :bind (("<home>" . open-dashboard)
+		 (:dashboard-mode-map
+		  ("<home>" . quit-dashboard)))
+  :hook (after-init-hook . dashboard-setup-startup-hook)
+  :config
+  ...
+  ...
+  (defvar dashboard-recover-layout-p nil
+    "Wether recovers the layout.")
+
+  (defun restore-previous-session ()
+    "Restore the previous session."
+    (interactive)
+    (when (bound-and-true-p persp-mode)
+      (restore-session persp-auto-save-fname)))
+
+  (defun restore-session (fname)
+    "Restore the specified session."
+    (interactive (list (read-file-name "Load perspectives from a file: "
+									   persp-save-dir)))
+    (when (bound-and-true-p persp-mode)
+      (message "Restoring session...")
+      (quit-window t)
+      (condition-case-unless-debug err
+		  (persp-load-state-from-file fname)
+		(error "Error: Unable to restore session -- %s" err))
+      (message "Done")))
+
+  (defun open-dashboard ()
+    "Open the *dashboard* buffer and jump to the first widget."
+    (interactive)
+    (delete-other-windows)
+    (setq default-directory "~/")
+    ;; Refresh dashboard buffer
+    (if (get-buffer dashboard-buffer-name)
+		(kill-buffer dashboard-buffer-name))
+    (dashboard-insert-startupify-lists)
+    (switch-to-buffer dashboard-buffer-name)
+    ;; Jump to the first section
+    (goto-char (point-min))
+    (dashboard-goto-recent-files))
+
+  (defun quit-dashboard ()
+    "Quit dashboard window."
+    (interactive)
+    (quit-window t)
+    (when (and dashboard-recover-layout-p
+			   (bound-and-true-p winner-mode))
+      (winner-undo)
+      (setq dashboard-recover-layout-p nil)))
+
+  (defun dashboard-goto-recent-files ()
+    "Go to recent files."
+    (interactive)
+    (funcall (local-key-binding "r"))))
 
 ```
 

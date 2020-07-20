@@ -90,7 +90,25 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 
 ### 3.3 GCサイズの最適化
+通常は以下のように設定している事例が多いです。
 
+``` emacs-lisp
+(setq gc-cons-threshold (* 128 1024 1024)) ;; 128MB
+```
+さほど変わりませんが、以下のように設定すると 0.06秒程度起動時間を早くできます。
+
+``` emacs-lisp
+;; Speed up startup
+(defvar default-file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
+(setq gc-cons-threshold 100000000)
+(add-hook 'emacs-startup-hook
+		  (lambda ()
+			"Restore defalut values after startup."
+			(setq file-name-handler-alist default-file-name-handler-alist)
+			(setq gc-cons-threshold 800000)))
+
+```
 
 
 ## 4. コア設定

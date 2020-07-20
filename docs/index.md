@@ -54,22 +54,9 @@ Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs
 2. `init-config.el` の読み込み
 3. `inits/` に配置したファイル群の遅延読み込み （init-loader 使用）
 
-`init-config.el` には、遅延起動できないもの、させたくないものを設定しています。
+[init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) には、遅延起動できないもの、させたくないものを設定しています。
 
-`user-dired.el` , `user-template.el` などの別設定もここから読み込ませます。`user-test.el` は、ちょこっと思いついた設定を書いて動作確認するための空ファイルです。他の設定ファイルを汚すことなくテストできるので便利です。
-
-``` emacs-lisp
-;; Load user functions
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(require 'user-test)
-(add-hook
- 'after-init-hook
- (lambda ()
-   (require 'user-dired)
-   (require 'user-template)))
-```
-
-その他の遅延起動できるものは `inits/` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
+遅延起動できるものは `inits/` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ### 3.1 minimal-init.el：最小限のEmacsを起動
 

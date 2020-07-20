@@ -59,7 +59,8 @@
 遅延起動できるものは `inits` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ### 3.1 minimal-init.el
-最小限のemacsでシェルから `eq` を入力することで起動することがでます。
+
+シェルから `eq` を入力することで最小限の emacs を起動することがでます。
 
 以下を `.zshrc` または `.bashrc` に書き込みます。
 

@@ -61,12 +61,12 @@ init-loader の是非は諸説ありますが、[多くの恩恵](http://emacs.r
 
 ### 3.1 minimal-init.el：最小限のEmacsを起動
 
-最小限の emacs を起動させるための設定です。シェルから `eq` を入力することで起動することがでます。
+最小限の emacs を起動させるための設定です。シェルから `resq` を入力することで起動することがでます。
 
 以下を `.zshrc` または `.bashrc` に書き込みます。
 
 ```shell
-alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
+alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。Packageのテストや emacsが起動しない場合に使用します。

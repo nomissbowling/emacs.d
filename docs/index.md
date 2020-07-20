@@ -124,7 +124,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
   :when (memq window-system '(mac ns x))
-  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 

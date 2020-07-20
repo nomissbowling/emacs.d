@@ -5,8 +5,8 @@
 * もし参考になるとしたら [init.el](https://github.com/minorugh/emacs.d/blob/master/init.el) と [inits](https://github.com/minorugh/emacs.d/tree/master/inits) 内のファイル群かと思います。
 * 複数端末で共有するため、設定ファイルは全て `~/Dropbox/emacs.d/` に置いています。
 * init.el のシンボリックを `~/.emacs.d` に置き init-loader で inits のファイル群を読込みます。
-* 全てのファイルは [GitHub](https://github.com/minorugh/emacs.d) に公開しています。 
-* 本ドキュメントの構成は、[Takaaki Ishikawa](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事に倣いました。感謝！ 
+* 全てのファイルは [GitHub](https://github.com/minorugh/emacs.d) に公開しています。
+* 本ドキュメントの構成は、[Takaaki Ishikawa](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事に倣いました。感謝！
 
 ## 2. ディレクトリ構成
 
@@ -48,7 +48,7 @@
 ## 3. 起動設定
 基本的には `init.el` を読み込むことで制御しています。 読み込み手順は以下のとおり。
 
-1. `init.el` の読み込み 
+1. `init.el` の読み込み
 2. `init-config.el` の読み込み
 3. `inits/` に配置したファイル群の読み込み （init-loader 使用）
 
@@ -138,7 +138,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (load "~/Dropbox/emacs.d/init-config.el")
+  (load "~/Dropbox/emacs.d/init-config.el") ;; 先読み設定
   :config
   (add-hook
    'emacs-startup-hook
@@ -148,6 +148,49 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
   (setq custom-file (locate-user-emacs-file "custom.el")))
 ```
 
+### 3.5 先読み設定
+
+``` emacs-lisp
+;; Quiet Startup
+(set-frame-parameter nil 'fullscreen 'maximized)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+
+;; Start the server in Emacs session
+(leaf server :require t
+  :config
+  (unless (server-running-p)
+    (add-hook 'after-init-hook 'server-start)))
+
+
+;; exec-path-from-shell
+(leaf exec-path-from-shell :ensure t
+  :when (memq window-system '(mac ns x))
+  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :config
+  (setq exec-path-from-shell-check-startup-files nil))
+
+
+;; Load user functions
+(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+(require 'user-test)
+(add-hook
+ 'emacs-startup-hook
+ (lambda ()
+   (require 'user-dired)
+   (require 'user-template)))
+
+
+;; user custom dashboard
+(leaf dashboard :ensure t
+  ...
+  ...
+
+````
 
 ## 4. コア設定
 
@@ -174,4 +217,3 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
 hoge
 </div>
-

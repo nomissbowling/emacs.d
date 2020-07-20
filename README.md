@@ -39,7 +39,7 @@
 ├── snippets/
 ├── .gitignore
 ├── init.el
-├── init-ui.el
+├── init-conf.el
 └── minimaru-init.el
 
 ```

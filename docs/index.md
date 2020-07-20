@@ -64,7 +64,7 @@
 
 以下を `.zshrc` または `.bashrc` に書き込みます。
 
-``` shell
+```shell
 alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 

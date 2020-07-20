@@ -95,7 +95,7 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ``` emacs-lisp
 (setq gc-cons-threshold (* 128 1024 1024)) ;; 128MB
 ```
-劇的な効果はありませんが、以下のように設定すると 0.06秒ほど起動時間を早くできます。
+劇的な効果は期待できませんが、以下のように設定すると 0.06秒ほど起動時間を早くできます。
 
 ``` emacs-lisp
 ;; Speed up startup

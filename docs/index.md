@@ -159,6 +159,8 @@ Emacs起動時の初期画面表示のための設定 `init-config.el` を `init
 
 ![Dashboard by iceberg-theme](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg) 
 
+起動時にギクシャクした画面をみたくないので、まず冒頭に以下を設定しています。
+
 ``` emacs-lisp
 ;; Quiet Startup
 (set-frame-parameter nil 'fullscreen 'maximized)
@@ -167,15 +169,7 @@ Emacs起動時の初期画面表示のための設定 `init-config.el` を `init
 (menu-bar-mode 0)
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
-
-
-;; exec-path-from-shell
-(leaf exec-path-from-shell :ensure t
-  :when (memq window-system '(mac ns x))
-  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
+```
 
 ;; Load user functions
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")

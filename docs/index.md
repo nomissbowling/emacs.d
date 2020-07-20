@@ -154,6 +154,8 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 ```
 
 ### 3.5 初期画面設定
+遅延読み込みの前に起動時の初期画面表示のための設定 `init-config.el` を先に読み込みします。
+
 
 ![Dashboard](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg) 
 

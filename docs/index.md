@@ -148,7 +148,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
   (setq custom-file (locate-user-emacs-file "custom.el")))
 ```
 
-### 3.5 先読み設定
+### 3.5 init-config.el：先読み設定
 
 ``` emacs-lisp
 ;; Quiet Startup

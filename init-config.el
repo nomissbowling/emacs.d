@@ -1,4 +1,4 @@
-;;; init-conf.el   -*- lexical-binding: t -*-
+;;; init-config.el   -*- lexical-binding: t -*-
 
 ;; an extensible emacs startup screen
 
@@ -150,11 +150,11 @@
     (interactive)
     (funcall (local-key-binding "r"))))
 
-(provide 'init-conf)
+(provide 'init-config)
 
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; init-conf.el ends here
+;;; init-config.el ends here

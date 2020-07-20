@@ -56,7 +56,7 @@
 
 `user-dired.el` , `user-template.el` などの別設定もここから読み込ませます。`user-test.el` は、ちょこっと思いついた設定を書いて動作確認するための空ファイルです。他の設定ファイルを汚すことなくテストできるので便利です。
 
-遅延起動できるものは `inits` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
+遅延起動できるものは `inits/` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ### 3.1 minimal-init.el
 
@@ -69,6 +69,10 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。Package のテストや emacs が起動しない場合に使用します。
+
+### 3.2 起動時間の計測
+
+
 
 ## 4. コア設定
 

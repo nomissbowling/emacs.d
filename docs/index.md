@@ -182,7 +182,9 @@ Emacs起動時の初期画面表示のための設定 `init-config.el` を `init
 (setq inhibit-startup-message t)
 ```
 
-初期画面には、`Dashboard` を表示させています。愛着あるこのバッファーもうっかり Killすると消えてしまうので再生できるように設定しています。
+初期画面には、`Dashboard` を表示させています。
+
+愛着あるこのバッファーですが、うっかり Killすると消えてしまうので再生できるように設定しています。
 
 `[Home]` を押すことで、前に開いていたバッファーと Dashboard画面とをトグル表示します。(winner-mode使用)
 

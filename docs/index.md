@@ -89,6 +89,9 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
   (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
 ```
 
+### 3.3 GCサイズの最適化
+
+
 
 ## 4. コア設定
 

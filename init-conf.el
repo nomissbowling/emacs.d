@@ -48,8 +48,8 @@
 (add-hook
  'emacs-startup-hook
  (lambda ()
-   (load "user-dired.el")
-   (load "user-template.el")))
+   (require 'user-dired)
+   (require 'user-template)))
 
 
 ;; user custom dashboard

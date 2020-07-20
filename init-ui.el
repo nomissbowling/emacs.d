@@ -37,6 +37,7 @@
 
 
 ;; Load user functions
+(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
 (add-hook
  'emacs-startup-hook
  (lambda ()

@@ -134,7 +134,7 @@ init.el に直接 PATHを書くことでも対応できますが、私の場合�
 
 * [after-init-hook と emacs-startup-hook の違いを読み解く](https://minosjp.hatenablog.com/entry/2019/10/08/232215)
 
-遅延読み込みしても正常動作するものは積極的に使っています。
+遅延読み込みしても問題ないものは積極的に使っています。
 個別に設定してもいいのですが、私の場合は `inits/` フォルダー内の設定群をまとめて遅延読み込みしています。
 
 以下の設定例では `after-init-hook` で `init-loarder` が始動します。

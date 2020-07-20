@@ -52,7 +52,7 @@
 2. `init-config.el` の読み込み
 3. `inits/` のファイル群の読み込み
 
-`init-config.el` には、遅延起動させない設定群をまとめて先読み込させます。個人的な設定 `user-test.el`、`user-dired.el`、`user-template.el` などをここから読み込みます。
+`init-config.el` には、遅延起動させない設定群をまとめて先読み込させます。個人的な設定 `user-test.el` , `user-dired.el` , `user-template.el` などをここから読み込みます。
 
 `user-test.el` は、ちょこっと思いついた設定を書いて動作確認するための空ファイルです。他の設定を汚すことなくテストできるので便利です。
 

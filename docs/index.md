@@ -28,7 +28,8 @@
 ├── elisp/
 │   ├── iceberg-theme/
 │   ├── info/
-│   └── init-ui.el
+│   ├── user-dired.el
+│   └── user-template.el
 ├── inits/
 │   ├── 01_base.el
 │   ├── 02_git.el
@@ -38,6 +39,7 @@
 ├── snippets/
 ├── .gitignore
 ├── init.el
+├── init-ui.el
 └── minimaru-init.el
 
 ```

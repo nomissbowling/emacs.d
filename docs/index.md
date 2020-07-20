@@ -115,7 +115,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 
 * [https://github.com/purcell/exec-path-from-shell](https://github.com/purcell/exec-path-from-shell)
 
-`exec-path-from-shell` は，シェルに設定した PATHの情報を継承して exec-path や PATH を設定してくれます。私の場合、TexLive や Perlbrew をはじめ shell-command でいろいろ作業させるので必須のツールです。
+`exec-path-from-shell` は，シェルに設定した PATHの情報を Emacsでも継承してくれます。これを使わないで設定ファイル PATHを書くことも対応できますが、私の場合、TexLive や Perlbrew をはじめ shell-command でいろいろ作業させるので必須のツールです。
 
 ``` emacs-lisp
 ;; exec-path-from-shell

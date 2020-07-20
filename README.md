@@ -1,71 +1,69 @@
-# My private emacs configuration files
+<h1 style="text-align:center;">Configurations for GNU Emacs</h1>
 
-## Screen Shot
+## 1. はじめに
+* [use-package](https://github.com/jwiegley/use-package) から [Leaf](https://github.com/conao3/leaf.el) に乗り換えたのを機に大幅に整理したので RTD にまとめました。
+* もし参考になるとしたら [init.el](https://github.com/minorugh/emacs.d/blob/master/init.el) と [inits](https://github.com/minorugh/emacs.d/tree/master/inits) 内のファイル群かと思います。
+* 複数端末で共有するため、設定ファイルは全て `~/Dropbox/emacs.d/` に置いています。
+* init.el のシンボリックを `~/.emacs.d` に置き init-loader で inits のファイル群を読込みます。
+* 全てのファイルは [GitHub](https://github.com/minorugh/emacs.d) に公開しています。 
+* 本ドキュメントの構成は、[Takaaki Ishikawa](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事に倣いました。感謝！ 
 
-![Alt Text](https://live.staticflickr.com/65535/50002999041_ede7526494_b.jpg)
+## 2. ディレクトリ構成
 
-## Usage environment
+パッケージ類は、Git管理する必要もなく、Dropboxの負担を減らすために、それぞれの端末の `~/.emacs.d` に配置しました。構成は以下のとおりです。
+```
+~/.emacs.d
+├── el-get/
+├── elisp/
+│   ├── emacs-livedown/
+│   ├── key-chord/
+│   ├── mozc-el-extensions/
+│   └── tempbuf/
+├── elpa/
+└── init.el （シンボリック）
 
-### OS
-  * GNU Linux Debian 10.4
-  * GNU Linux Microsoft Debian 10.4 on WSL
 
-### GNU Emacs
- * GNU Emacs 26.3
-
-## Install Emacs
-
-This installs all dependencies for Emacs and then installs Emacs 26.3:
-
-### install dependencies (got those from all over the net)
-
-``` shell
-sudo apt install -y autoconf automake autotools-dev bsd-mailx build-essential \
-    diffstat gnutls-dev imagemagick libasound2-dev libc6-dev libdatrie-dev \
-    libdbus-1-dev libgconf2-dev libgif-dev libgnutls28-dev libgpm-dev libgtk2.0-dev \
-    libgtk-3-dev libice-dev libjpeg-dev liblockfile-dev liblqr-1-0 libm17n-dev \
-    libmagickwand-dev libncurses5-dev libncurses-dev libotf-dev libpng-dev \
-    librsvg2-dev libsm-dev libthai-dev libtiff5-dev libtiff-dev libtinfo-dev libtool \
-    libx11-dev libxext-dev libxi-dev libxml2-dev libxmu-dev libxmuu-dev libxpm-dev \
-    libxrandr-dev libxt-dev libxtst-dev libxv-dev quilt sharutils texinfo xaw3dg \
-    xaw3dg-dev xorg-dev xutils-dev zlib1g-dev
+~/Dropbox/emacs.d
+├── docs/
+├── elisp/
+│   ├── iceberg-theme/
+│   ├── info/
+│   ├── user-dired.el
+│   └── user-template.el
+├── inits/
+│   ├── 01_base.el
+│   ├── 02_git.el
+│   ├── ...
+│   ├── 99_user-dired.el
+│   └── 99_user-template.el
+├── snippets/
+├── .gitignore
+├── init.el
+├── init-ui.el
+└── minimaru-init.el
 
 ```
 
-### download and install
+## 3. 起動設定
 
-``` shell
-cd ~
-wget https://ftp.gnu.org/pub/gnu/emacs/emacs-26.3.tar.gz
-tar -xzvf emacs-26.3.tar.gz
-cd emacs-26.3
-./configure
-make
-sudo make install
+## 4. コア設定
 
-cd ~
-rm -rf ~/emacs-26.3
-rm ~/emacs-26.3.tar.gz
+## 5. カーソル移動
 
-```
+## 6. 編集サポート
 
-### Configuration file placement
+## 7. 表示サポート
 
-* Put all files under emacs.d in '~/Dropbox' directory
-* Then put a symboliclink of 'init.el' to  '~/.emacs.d'
+## 8. 履歴 / ファイル管理
 
->By executing the above settings for gnu/Linux and Windows Subsystem for Linux,
->You can use Emacs with the same operation from either environment.
+## 9. 開発サポート
 
-## Consept
+## 10. Org Mode / Howm Mode
 
-  * I installed 98 packages from melpa and downloaded some other elisp from github.
-  * We use lazy loading with 'leaf' and use 'after-init-hook' whenever possible for fast emacs startup.
-  * This repository only discloses personal configuration information, and does not guarantee its operation.
+## 11. フォント / 配色関係
 
-## Referenced code and article
+## 12. ユーティリティー関数
 
-  * [Github: masasam/dotfiles](https://github.com/masasam/dotfiles)
-  * [Github: seagle0128/.emacs.d](https://github.com/seagle0128/.emacs.d)
-  * [Qiita: Emacsモダン化計画](https://qiita.com/Ladicle/items/feb5f9dce9adf89652cf)
-  * [Qiita: Emacs入門から始めるleaf.el入門](https://qiita.com/conao3/items/347d7e472afd0c58fbd7) 
+## 13. おわりに
+
+

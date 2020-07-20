@@ -61,7 +61,7 @@ init-loader の是非は諸説ありますが、[多くの恩恵](http://emacs.r
 
 ### 3.1 minimal-init.el：最小限のEmacsを起動
 
-最小限の emacs を起動させるための設定です。シェルから `resq` を入力することで起動することがでます。
+[minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。シェルから `resq` を入力することで起動することがでます。
 
 以下を `.zshrc` または `.bashrc` に書き込みます。
 

@@ -4,13 +4,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; Quiet Startup
-;; (set-frame-parameter nil 'fullscreen 'maximized)
-;; (scroll-bar-mode 0)
-;; (tool-bar-mode 0)
-;; (setq inhibit-splash-screen t)
-;; (setq inhibit-startup-message t)
-
+;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (setq gc-cons-threshold 100000000)
@@ -20,6 +14,8 @@
 	    (setq file-name-handler-alist default-file-name-handler-alist)
 	    (setq gc-cons-threshold 800000)))
 
+
+;; Package
 (customize-set-variable
  'package-archives '(("org"   . "https://orgmode.org/elpa/")
 		     ("melpa" . "https://melpa.org/packages/")
@@ -30,6 +26,7 @@
   (package-refresh-contents)
   (package-install 'leaf))
 
+
 (leaf leaf-keywords
   :ensure t
   :init
@@ -38,6 +35,7 @@
   (leaf el-get :ensure t)
   :config
   (leaf-keywords-init))
+
 
 (leaf init-loader :ensure t
   :init

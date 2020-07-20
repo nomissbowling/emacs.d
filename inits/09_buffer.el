@@ -20,7 +20,6 @@
 ;; automatically deleted in the background buffers
 (leaf tempbuf
   :el-get emacswiki:tempbuf
-  :require t
   :hook ((dired-mode-hook . turn-on-tempbuf-mode)
 	 (magit-mode-hook . turn-on-tempbuf-mode)
 	 (compilation-mode-hook . turn-on-tempbuf-mode))

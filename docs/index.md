@@ -46,13 +46,13 @@
 ```
 
 ## 3. 起動設定
-基本的には `init.el` を読み込むことで制御しています。 読み込み手順は以下のとおりです。
+基本的には `init.el` を読み込むことで制御しています。 読み込み手順は以下のとおり。
 
 1. `init.el` の読み込み 
-2. `init-config` の読み込み
+2. `init-config.el` の読み込み
 3. `inits/` のファイル群の読み込み
 
-`init-config` には、遅延起動させない初期設定群をまとめています。
+`init-config.el` には、遅延起動させない初期設定群をまとめて先読み込みします。極めて個人的な設定 `user-test.el`,`user-dired.el`,`user-template.el` などをここから読み込みます。`user-test.el` は、ちょこっと思いついた設定を書き込んでテストできるようにしています。
 
 遅延起動できるものは `inits` フォルダーに配置して `init-loader` で順次読み込みます。`init-loader` を使うことの是非はあるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 

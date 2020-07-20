@@ -95,7 +95,7 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ``` emacs-lisp
 (setq gc-cons-threshold (* 128 1024 1024)) ;; 128MB
 ```
-さほど変わりませんが、以下のように設定すると 0.06秒ほど起動時間を早くできます。
+劇的な効果はありませんが、以下のように設定すると 0.06秒ほど起動時間を早くできます。
 
 ``` emacs-lisp
 ;; Speed up startup
@@ -109,7 +109,7 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 			(setq gc-cons-threshold 800000)))
 
 ```
-Emacs起動時に思いっきり GCを減らし、startup後に通常の値に戻しています。この設定は `init.el` の先頭に記述しないと効果は少ないです。
+Emacs起動時に思いっきり GCを減らし、startup後に通常の値に戻しています。この設定は `init.el` の先頭に記述しないと効果は少ないです。元ネタは [Vincent Zhang](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
 
 ## 4. コア設定
 

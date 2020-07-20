@@ -155,6 +155,8 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 
 ### 3.5 初期画面設定
 
+![Dashboard](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg) 
+
 ``` emacs-lisp
 ;; Quiet Startup
 (set-frame-parameter nil 'fullscreen 'maximized)

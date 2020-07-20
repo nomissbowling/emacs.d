@@ -111,6 +111,22 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に戻しています。`init.el` の先頭に記述しないと効果は少ないです。元ネタは [Vincent Zhang](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
 
+### 3.4 exec-path-from-shell：PATH設定をシェルから継承する
+
+* https://github.com/purcell/exec-path-from-shell
+
+`exec-path-from-shell` は，シェルに設定した PATHの情報を継承して exec-path や PATH を設定してくれます。私の場合、TexLive や Perlbrew をはじめ shell-command でいろいろ作業させるので必須のツールです。
+
+``` emacs-lisp
+;; exec-path-from-shell
+(leaf exec-path-from-shell :ensure t
+  :when (memq window-system '(mac ns x))
+  :hook (after-init-hook . exec-path-from-shell-initialize)
+  :config
+  (setq exec-path-from-shell-check-startup-files nil))
+
+```
+
 ## 4. コア設定
 
 ## 5. カーソル移動

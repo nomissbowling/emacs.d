@@ -170,3 +170,8 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 ## 13. おわりに
 
 
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+hoge
+</div>
+

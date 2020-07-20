@@ -29,6 +29,13 @@
   (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
 
 
+;; Start the server in Emacs session
+(leaf server :require t
+  :config
+  (unless (server-running-p)
+    (add-hook 'after-init-hook 'server-start)))
+
+
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
   :hook (after-init-hook . exec-path-from-shell-initialize)
@@ -45,7 +52,7 @@
    (load "user-template.el")))
 
 
-;; Custom dashboard
+;; user custom dashboard
 (leaf dashboard :ensure t
   :bind (("<home>" . open-dashboard)
 	 (:dashboard-mode-map

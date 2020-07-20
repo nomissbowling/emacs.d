@@ -158,6 +158,8 @@
   (forward-char 6))
 
 
+(provide 'user-template)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

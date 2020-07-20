@@ -150,6 +150,8 @@
     (interactive)
     (funcall (local-key-binding "r"))))
 
+(provide 'init-conf)
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

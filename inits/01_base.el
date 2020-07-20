@@ -7,6 +7,13 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+;; Start the server in Emacs session
+(leaf server :require t
+  :config
+  (unless (server-running-p)
+    (server-start)))
+
+
 ;; Save the file specified code with basic utf-8 if it exists
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)

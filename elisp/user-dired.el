@@ -104,6 +104,8 @@
   (goto-char (point-min)))
 
 
+(provide 'user-dired)
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

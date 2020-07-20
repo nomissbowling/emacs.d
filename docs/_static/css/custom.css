@@ -22,5 +22,6 @@ wy-side-nav-search {
 }
 
 .pre {
+    margin-top: -1px;
     color: #111;
 }

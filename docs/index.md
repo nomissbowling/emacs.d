@@ -50,7 +50,7 @@
 
 1. `init.el` の読み込み 
 2. `init-config.el` の読み込み
-3. `inits/` に配置したファイル群の読み込み （init-loader使用）
+3. `inits/` に配置したファイル群の読み込み （init-loader 使用）
 
 `init-config.el` には、遅延起動できない設定群を書いて先読み込させます。
 
@@ -67,7 +67,7 @@
 alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 
-ファイルの PATH は、ご自分の環境に応じて修正が必要です。Packageのテストやemacsが起動しない場合に使用します。
+ファイルの PATH は、ご自分の環境に応じて修正が必要です。Package のテストや emacs が起動しない場合に使用します。
 
 ## 4. コア設定
 

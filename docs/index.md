@@ -56,7 +56,7 @@
 
 `user-dired.el` , `user-template.el` などの個人的な設定もここから読み込みます。`user-test.el` は、ちょこっと思いついた設定を書いて動作確認するための空ファイルです。他の設定を汚すことなくテストできるので便利です。
 
-遅延起動できるものは `inits` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非はあるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
+遅延起動できるものは `inits` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ## 4. コア設定
 

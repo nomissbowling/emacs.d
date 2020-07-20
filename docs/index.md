@@ -135,7 +135,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 
 これらの遅延読み込みを設定しても正常動作するものは積極的に使っています。
 
-個別に設定してもいいのですが私の場合は、`emacs-startup-hook` で `init-loarder` を走らせ `inits/` フォルダーにまとめた設定を全て遅延で読み込むようにしています。
+個別に設定してもいいのですが私の場合は、`after-init-hook` で `init-loarder` を起動し `inits/` フォルダーにまとめた設定群をまとめて遅延読み込みしています。
 
 ``` emacs-lisp
 (leaf init-loader :ensure t

@@ -55,9 +55,9 @@ Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs
 3. `inits/` に配置したファイル群の遅延読み込み （init-loader 使用）
 
 [init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) には、遅延起動させたくないものを設定しています。
-遅延起動できるものは `inits/` フォルダーに配置し、[init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込みます。
+遅延起動でも問題の生じないものは `inits/` フォルダー内にまとめて、[init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込みます。
 
-init-loader の是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
+init-loader の是非は諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ### 3.1 minimal-init.el：最小限のEmacsを起動
 

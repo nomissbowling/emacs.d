@@ -58,6 +58,17 @@
 
 遅延起動できるものは `inits` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非は、諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
+### 3.1 minimar-init.el
+最小限のemacsでシェルから `eq` を入力することで起動することがでます。
+
+以下を `.zshrc` または `.bashrc` に書き込みます。
+
+``` shell
+alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
+```
+
+ファイルの PATH は、ご自分の環境に応じて修正が必要です。Packageのテストやemacsが起動しない場合に使用します。
+
 ## 4. コア設定
 
 ## 5. カーソル移動

@@ -69,7 +69,7 @@ init-loader の是非は諸説ありますが、[多くの恩恵](http://emacs.r
 alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 
-ファイルの PATH は、ご自分の環境に応じて修正が必要です。Packageのテストや emacsが起動しない場合に使用します。
+ファイルの PATH は、ご自分の環境に応じて修正が必要です。Packageのテストや Emacsが起動しない場合に使用します。
 
 ### 3.2 起動時間の計測
 `M-x emacs-init-time` を実行すると Emacsの起動にかかった時間が表示されますが、小数点以下三桁まで表示させたいのでハッキングします。元ネタは [takaxp.github.io](https://takaxp.github.io/init.html#orga09727ae) からです。感謝！

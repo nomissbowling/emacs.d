@@ -14,15 +14,7 @@
 (setq inhibit-startup-message t)
 
 
-;; exec-path-from-shell
-(leaf exec-path-from-shell :ensure t
-  :when (memq window-system '(mac ns x))
-  :hook (after-init-hook . exec-path-from-shell-initialize)
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
-
-;; Load user functions
+;; Load user Functions
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
 (require 'user-test)
 (add-hook
@@ -32,7 +24,7 @@
    (require 'user-template)))
 
 
-;; user custom dashboard
+;; Custom Dashboard
 (leaf dashboard :ensure t
   :bind (("<home>" . open-dashboard)
 	 (:dashboard-mode-map

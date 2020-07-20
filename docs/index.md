@@ -54,9 +54,9 @@
 
 `init-config.el` には、遅延起動させない設定群をまとめて先読み込させます。個人的な設定 `user-test.el`、`user-dired.el`、`user-template.el` などをここから読み込みます。
 
-`user-test.el` は、ちょこっと思いついた設定を書いて動作確認できるようにしています。他の設定ファイルを汚すことなくテストできるので便利です。
+`user-test.el` は、ちょこっと思いついた設定を書いて動作確認するための空ファイルです。他の設定を汚すことなくテストできるので便利です。
 
-遅延起動できるものは `inits` フォルダーに配置して `init-loader` で順次読み込みます。`init-loader` を使うことの是非はあるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
+遅延起動できるものは `inits` フォルダーに配置して順次読み込みます。`init-loader` を使うことの是非はあるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/) もあるので私には必須ツールです。
 
 ## 4. コア設定
 

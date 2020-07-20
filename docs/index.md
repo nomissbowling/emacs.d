@@ -165,13 +165,6 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 (setq inhibit-startup-message t)
 
 
-;; Start the server in Emacs session
-(leaf server :require t
-  :config
-  (unless (server-running-p)
-    (add-hook 'emacs-startup-hook 'server-start)))
-
-
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
   :when (memq window-system '(mac ns x))
@@ -202,7 +195,7 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 ```
 
 
-  
+
 ## 4. コア設定
 
 ## 5. カーソル移動

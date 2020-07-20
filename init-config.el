@@ -14,21 +14,6 @@
 (setq inhibit-startup-message t)
 
 
-;; Hack emacs-init-time. (%.1f >> %.3f)
-(with-eval-after-load "time"
-  (defun ad:emacs-init-time ()
-    "Return a string giving the duration of the Emacs initialization."
-    (interactive)
-    (let ((str
-           (format "%.3f seconds"
-                   (float-time
-                    (time-subtract after-init-time before-init-time)))))
-      (if (called-interactively-p 'interactive)
-          (message "%s" str)
-        str)))
-  (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
-
-
 ;; Start the server in Emacs session
 (leaf server :require t
   :config
@@ -45,10 +30,10 @@
 
 ;; Load user functions
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+(require 'user-test)
 (add-hook
  'emacs-startup-hook
  (lambda ()
-   (require 'user-test)
    (require 'user-dired)
    (require 'user-template)))
 

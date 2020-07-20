@@ -129,6 +129,26 @@ Emacs起動時に思いっきり GCを減らし、Startup後に通常の値に�
 
 ```
 
+### 3.5 emacs-startup-hook：遅延読み込み
+
+`after-init-hook` や `emacs-startuo-hook` でも正常に動作するものは積極的に使うようにしています。個別に設定してもいいのですが私の場合は、`inits/` フォルダーにまとめて、`init-loader` で読み込むようにしています。
+
+``` emacs-lisp
+(leaf init-loader :ensure t
+  :init
+  (setq load-prefer-newer t)
+  (setq el-get-dir "~/.emacs.d/elisp")
+  (load "~/Dropbox/emacs.d/init-config.el")
+  :config
+  (add-hook
+   'emacs-startup-hook
+   (lambda ()
+	 (custom-set-variables '(init-loader-show-log-after-init 'error-only))
+	 (init-loader-load "~/Dropbox/emacs.d/inits")))
+  (setq custom-file (locate-user-emacs-file "custom.el")))
+```
+
+
 ## 4. コア設定
 
 ## 5. カーソル移動

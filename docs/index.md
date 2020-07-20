@@ -71,7 +71,23 @@ alias eq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。Package のテストや emacs が起動しない場合に使用します。
 
 ### 3.2 起動時間の計測
+`M-x emacs-init-time` を実行すると，Emacsの起動にかかった時間が表示されますが、小数点以下三桁まで表示させたいのでハッキングします。元ネタは [takaxp.github.io](https://takaxp.github.io/init.html#orga09727ae) からです。感謝！
 
+``` emacs-lisp
+(with-eval-after-load "time"
+  (defun ad:emacs-init-time ()
+    "Return a string giving the duration of the Emacs initialization."
+    (interactive)
+    (let ((str
+           (format "%.3f seconds"
+                   (float-time
+                    (time-subtract after-init-time before-init-time)))))
+      (if (called-interactively-p 'interactive)
+          (message "%s" str)
+        str)))
+
+  (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
+```
 
 
 ## 4. コア設定

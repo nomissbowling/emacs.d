@@ -273,23 +273,9 @@ Emacs を操作して文書編集する上で必要な設定。
 ```
 ### 4.2 日本語入力
 
-私の場合、メイン機：Thinkpad E590、サブ機：Thinkpad X250 とも Windows 10 と Debian 10 をデュアルブートでインストールしました。
+Debian10 にインストールした Emacs上で [emacs-mozc](https://packages.debian.org/ja/jessie/emacs-mozc) を使っています。
 
-Windows 10 では、Google日本語入力を使いますので、将来的なユーザー辞書の共有を踏まえて、Debian 10 の日本語環境にも Mozcを使います。
-
-
-Emacs や Mozc はDebianのパッケージマネージャーを使ってもインストールできますがターミナルからのほうが簡単で早いです。
-
-```shell
-$ sudo apt install fcitx-mozc emacs-mozc
-```
-fcitx-mozc emacs-mozc と一緒にEmacsもインストールされます最新版ではありませんので、最新版にこだわる場合は、あとからビルドする必要があります。
-
-emacs-mozcをインストルすると/usr/local/bin に自動的にemacs-mozc-helperが生成されるので確認しておきましょう。
-
-
-キーボードはいづれもjp106（日本語JISキーボード）ですので、fcitx-mozcのON/OFFは、<ka>。
-
+Emacsはソースからビルドしたのですが、`--without-xim` しなかったので、`.Xresources` XIMを無効化しています。
 
 ```bash
 ! ~/.Xresources
@@ -297,13 +283,10 @@ emacs-mozcをインストルすると/usr/local/bin に自動的にemacs-mozc-he
 Emacs*useXIM: false
 
 ```
+- [http://linux.ikoinoba.net/index.php?UID=1336059496](http://linux.ikoinoba.net/index.php?UID=1336059496) 
+- [https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources](https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources) 
 
-- http://linux.ikoinoba.net/index.php?UID=1336059496
-- https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources
-
-
-
-
+これで、Emacsのときでもそうでないときでも日本語入力の ON/OFFに <hiragana-katakana> を設定できます。デュアルブートのWindows 10とも統一できるので快適です。 
 
 ``` emacs-lisp
 (leaf mozc :ensure t
@@ -326,7 +309,10 @@ Emacs*useXIM: false
     :config
     (setq mozc-candidate-style 'posframe)))
 
-````
+```
+- [mozc-cursor-color.el](https://github.com/iRi-E/mozc-el-extensions/blob/master/mozc-cursor-color.el) は Mozcのカーソルの色を任意に変更できます。 
+- [mozc-cand-posframe](https://github.com/akirak/mozc-posframe) は変換候補を posframe表示させるものです。 
+
 
 ## 5. カーソル移動
 

@@ -10,8 +10,8 @@
 
 
 (leaf doom-modeline :ensure t
+  :hook (emacs-startup-hook . doom-modeline-mode)
   :config
-  (add-hook 'emacs-startup-hook 'doom-modeline-mode)
   (line-number-mode 0)
   (column-number-mode 0)
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project
@@ -23,7 +23,7 @@
     :hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode :ensure t
     :config
-    (nyan-mode)
+    (add-hook' emacs-startup-hook 'nyan-mode)
     (setq nyan-cat-face-number 4
   	  nyan-animate-nyancat t)))
 

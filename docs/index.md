@@ -280,7 +280,7 @@ Emacs を操作して文書編集する上で必要な設定。
 キーボードはいづれもjp106（日本語JISキーボード）です。
 
 
-```shell
+```bash
 ! ~/.Xresources
 ! Emacs XIMを無効化
 Emacs*useXIM: false

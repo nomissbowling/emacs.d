@@ -56,7 +56,7 @@ Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs
 
 [init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) には、遅延起動させたくないものを設定しています。
 
-`user-dired` , `user-template` などの個人的な設定もここから読み込ませます。
+個人的な設定ファイルもここから読み込ませます。
 
 ``` emacs-lisp
 ;; Load user Functions

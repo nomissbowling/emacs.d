@@ -179,10 +179,10 @@ Emacs起動時の初期画面表示のための設定ファイル [init-config.e
 
 愛着あるこのバッファーですが、うっかり Killすると消えてしまうので再生できるように設定しています。
 
-下記設定例では `<Home>` キーを押すことで、前に開いていたバッファー画面とDashboard画面とをトグル表示します。(winner-mode 使用)
+下記設定例では `<Home>` キーを押すことで、前に開いていたバッファー画面とDashboard画面とをトグル表示させています。(winner-mode 使用)
 
 ``` emacs-lisp
-;; user custom dashboard
+;; Custom dashboard
 (leaf dashboard :ensure t
   :bind (("<home>" . open-dashboard)
 		 (:dashboard-mode-map

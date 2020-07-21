@@ -159,9 +159,6 @@ init.el に直接 PATHを書くことでも対応できますが、私の場合�
 ### 3.5 初期画面設定
 Emacs起動時の初期画面表示のための設定ファイル `init-config.el` を遅延読み込みより前に先読み込みします。（前項の設定を参照）
 
-
-![Dashboard by iceberg-theme](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg) 
-
 起動時にギクシャクした画面をみたくないので、まず冒頭に以下を設定しています。
 
 ``` emacs-lisp
@@ -175,6 +172,9 @@ Emacs起動時の初期画面表示のための設定ファイル `init-config.e
 ```
 
 初期画面には、`Dashboard` を表示させています。
+
+![Dashboard by iceberg-theme](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg) 
+
 愛着あるこのバッファーですが、うっかり Killすると消えてしまうので再生できるように設定しています。
 
 下記設定例では `<Home>` キーを押すことで、前に開いていたバッファー画面とDashboard画面とをトグル表示します。(winner-mode 使用)

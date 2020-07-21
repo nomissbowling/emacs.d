@@ -273,11 +273,22 @@ Emacs を操作して文書編集する上で必要な設定。
 ```
 ### 4.2 日本語入力
 
-メイン機（Thinkpad E590）、サブ機（Thinkpad X250）とも Debian（GNU/Linux）です。
+私の場合、メイン機：Thinkpad E590、サブ機：Thinkpad X250 とも Windows 10 と Debian 10 をデュアルブートでインストールしました。
 
-日本語入力は Emacsでは emacs-mozcを、Emacs 以外のアプリでは、fcitx-mozcを使っています。
+Windows 10 では、Google日本語入力を使いますので、将来的なユーザー辞書の共有を踏まえて、Debian 10 の日本語環境にも Mozcを使います。
 
-キーボードはいづれもjp106（日本語JISキーボード）です。
+
+Emacs や Mozc はDebianのパッケージマネージャーを使ってもインストールできますがターミナルからのほうが簡単で早いです。
+
+```shell
+$ sudo apt install fcitx-mozc emacs-mozc
+```
+fcitx-mozc emacs-mozc と一緒にEmacsもインストールされます最新版ではありませんので、最新版にこだわる場合は、あとからビルドする必要があります。
+
+emacs-mozcをインストルすると/usr/local/bin に自動的にemacs-mozc-helperが生成されるので確認しておきましょう。
+
+
+キーボードはいづれもjp106（日本語JISキーボード）ですので、fcitx-mozcのON/OFFは、<ka>。
 
 
 ```bash

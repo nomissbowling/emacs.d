@@ -91,7 +91,7 @@ If there are two or more windows, it will go to another window."
    ("w" clipboard-kill-ring-save)
    ("/" kill-buffer)
    ("v" vc-diff)
-   ("f" counsel-projectile-find-file)
+   ("f" counsel-find-file)
    ("0" delete-window)
    ("1" delete-other-windows)
    ("2" split-window-below)

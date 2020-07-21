@@ -275,7 +275,7 @@ Emacs を操作して文書編集する上で必要な設定。
 
 Debian10 にインストールした Emacs上で [emacs-mozc](https://packages.debian.org/ja/jessie/emacs-mozc) を使っています。
 
-Emacsはソースからビルドしたのですが、`--without-xim` しなかったので、`.Xresources` XIMを無効化しています。これで、Emacsのときでもそうでないときでも日本語入力の ON/OFFに <hiragana-katakana> を設定できます。デュアルブートのWindows 10とも統一できるので快適です。 
+Emacsはソースからビルドしたのですが、`--without-xim` しなかったので、`.Xresources` XIMを無効化しています。これで、Emacsのときでもそうでないときでも `ひらがなカタカナ` キーに日本語入力の ON/OFFを割り当てることができます。デュアルブートのWindows 10とも統一できるので快適です。 
 
 
 ```bash
@@ -309,7 +309,7 @@ Emacs*useXIM: false
 
 ```
 - [mozc-cursor-color.el](https://github.com/iRi-E/mozc-el-extensions/blob/master/mozc-cursor-color.el) は Mozcのカーソルの色を任意に変更できます。 
-- [mozc-cand-posframe](https://github.com/akirak/mozc-posframe) は変換候補を posframe表示させるものです。 
+- [mozc-cand-posframe.el](https://github.com/akirak/mozc-posframe) は変換候補を posframe表示させるものです。 
 
 
 ## 5. カーソル移動

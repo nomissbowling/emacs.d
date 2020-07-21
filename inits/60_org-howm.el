@@ -8,7 +8,7 @@
   :chord ("@@" . howm-list-all)
   :bind (:howm-view-summary-mode-map
 	 ([backtab] . howm-view-summary-previous-section))
-  :hook (after-init-hook . howm-mode)
+  :hook (emacs-startup-hook . howm-mode)
   :init
   (setq howm-view-title-header "#")
   (defun my:howm-create-file ()

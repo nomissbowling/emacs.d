@@ -265,7 +265,7 @@ Emacs を操作して文書編集する上で必要な設定。
 
 ### 4.1 言語 / 文字コード
 
-シンプルが好きなので、これだけです。
+シンプルにこれだけです。
 
 ``` emacs-lisp
 (set-language-environment "Japanese")

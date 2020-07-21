@@ -190,6 +190,7 @@ Emacs起動時の初期画面表示のための設定ファイル [init-config.e
   :hook (after-init-hook . dashboard-setup-startup-hook)
   :config
   ...
+  （中略）
   ...
   (defvar dashboard-recover-layout-p nil
     "Wether recovers the layout.")

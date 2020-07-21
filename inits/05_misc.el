@@ -47,11 +47,10 @@
 
 
 (leaf projectile :ensure t
-  :config
-  (add-hook 'emacs-startup-hook 'projectile-mode)
+  :hook (emacs-startup-hook . projectile-mode)
   :init
   (leaf counsel-projectile :ensure t
-    :config (counsel-projectile-mode)))
+    :hook (emacs-startup-hook . counsel-projectile-mode)))
 
 
 (leaf restart-emacs :ensure t

@@ -275,7 +275,8 @@ Emacs を操作して文書編集する上で必要な設定。
 
 Debian10 にインストールした Emacs上で [emacs-mozc](https://packages.debian.org/ja/jessie/emacs-mozc) を使っています。
 
-Emacsはソースからビルドしたのですが、`--without-xim` しなかったので、`.Xresources` XIMを無効化しています。
+Emacsはソースからビルドしたのですが、`--without-xim` しなかったので、`.Xresources` XIMを無効化しています。これで、Emacsのときでもそうでないときでも日本語入力の ON/OFFに <hiragana-katakana> を設定できます。デュアルブートのWindows 10とも統一できるので快適です。 
+
 
 ```bash
 ! ~/.Xresources
@@ -283,10 +284,7 @@ Emacsはソースからビルドしたのですが、`--without-xim` しなか�
 Emacs*useXIM: false
 
 ```
-- [http://linux.ikoinoba.net/index.php?UID=1336059496](http://linux.ikoinoba.net/index.php?UID=1336059496) 
-- [https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources](https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources) 
 
-これで、Emacsのときでもそうでないときでも日本語入力の ON/OFFに <hiragana-katakana> を設定できます。デュアルブートのWindows 10とも統一できるので快適です。 
 
 ``` emacs-lisp
 (leaf mozc :ensure t

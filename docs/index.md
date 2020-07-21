@@ -274,19 +274,21 @@ Emacs を操作して文書編集する上で必要な設定。
 ### 4.2 日本語入力
 
 メイン機（Thinkpad E590）、サブ機（Thinkpad X250）とも Debian（GNU/Linux）です。
+
 日本語入力は Emacsでは emacs-mozcを、Emacs 以外のアプリでは、fcitx-mozcを使っています。
 
 キーボードはいづれもjp106（日本語JISキーボード）です。
 
 
-``` shell
+```shell
 ! ~/.Xresources
 ! Emacs XIMを無効化
-!  http://linux.ikoinoba.net/index.php?UID=1336059496
-!  https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources
 Emacs*useXIM: false
 
 ```
+
+- http://linux.ikoinoba.net/index.php?UID=1336059496
+- https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources
 
 
 

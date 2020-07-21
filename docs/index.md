@@ -261,6 +261,23 @@ Emacs起動時の初期画面表示のための設定ファイル [init-config.e
 
 
 ## 4. コア設定
+Emacs を操作して文書編集する上で必要な設定。
+
+### 4.1 言語 / 文字コード
+
+シンプルが好きなので、これだけです。
+
+``` emacs-lisp
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
+```
+### 4.2 日本語入力
+
+メイン機（Thinkpad E590）、サブ機（Thinkpad X250）とも Debian（GNU/Linux）です。
+日本語入力は Emacsでは emacs-mozcを、Emacs 以外のアプリでは、fcitx-mozcを使っています。
+
+キーボードはいづれもjp106（日本語JISキーボード）です。
+
 
 ## 5. カーソル移動
 

@@ -279,6 +279,42 @@ Emacs を操作して文書編集する上で必要な設定。
 キーボードはいづれもjp106（日本語JISキーボード）です。
 
 
+``` shell
+! ~/.Xresources
+! Emacs XIMを無効化
+!  http://linux.ikoinoba.net/index.php?UID=1336059496
+!  https://www.gnu.org/software/emacs/manual/html_node/emacs/Table-of-Resources.html#Table-of-Resources
+Emacs*useXIM: false
+
+```
+
+
+
+
+
+``` emacs-lisp
+(leaf mozc :ensure t
+  :bind* ("<hiragana-katakana>" . toggle-input-method)
+  :config
+  (setq default-input-method "japanese-mozc"
+		mozc-helper-program-name "mozc_emacs_helper"
+		mozc-leim-title "♡かな")
+  :init
+  (leaf mozc-cursor-color
+    :el-get iRi-E/mozc-el-extensions
+    :require t
+    :config
+    (setq mozc-cursor-color-alist
+		  '((direct . "#BD93F9")
+			(read-only . "#84A0C6")
+			(hiragana . "#CC3333"))))
+  (leaf mozc-cand-posframe :ensure t
+    :require t
+    :config
+    (setq mozc-candidate-style 'posframe)))
+
+````
+
 ## 5. カーソル移動
 
 ## 6. 編集サポート

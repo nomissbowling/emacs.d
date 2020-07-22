@@ -1247,20 +1247,12 @@ If the region isn't selected, `swiper' with migemo."
       (eshell-emit-prompt))))
 ```
 
-### 13.6 [sudo-edit]
-``` emacs-lisp
-(leaf sudo-edit :ensure t)
-```
-
 ### 13.7 [restart-emacs]Emacsを再起動する
+`C-x C-c` は、デフォルトで `(save-buffers-kill-emacs)` に割り当てられていますが、Emacsの再起動にリバインドしました。
+
 ``` emacs-lisp
 (leaf restart-emacs :ensure t
   :bind (("C-x C-c" . restart-emacs)))
-
-```
-
-### 13.8 [hydra-brows-url]任意のURLをEmacsから開く
-``` emacs-lisp
 
 ```
 

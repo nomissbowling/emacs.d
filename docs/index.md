@@ -424,7 +424,7 @@ If there are two or more windows, it will go to another window."
   :bind ("C-@" . er/expand-region))
 ```
 
-### 6.2 [swiper]選択リージョンを使って検索
+### 6.2 [swiper]リージョンを使って検索
 
 ### 6.3 markdown-mode
 

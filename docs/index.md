@@ -517,7 +517,7 @@ If there are two or more windows, it will go to another window."
 ## 10. Org Mode / Howm Mode
 
 
-## 11. Easy-Hugo
+## 11. Hugo
 
 ## 12. フォント / 配色関係
 

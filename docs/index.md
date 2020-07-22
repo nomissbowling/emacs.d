@@ -415,21 +415,27 @@ If there are two or more windows, it will go to another window."
 
 
 ## 6. 編集サポート
-### 6.1 矩形編集
 
-### [expand-region]
+### ６.1 [expand-region]
+er/expand-regionを実行する度にリージョンの範囲が広がっていくというものです。
+
+昔は、[@m2ym](https://twitter.com/m2ym) さんの [thingopt.el](https://github.com/emacsorphanage/thingopt) を使っていました。
 
 ``` emacs-lisp
 (leaf expand-region :ensure t
-  :bind ("C-@" . er/expand-region))
+  :bind (("C-@" . er/expand-region)
+		 ("C-M-@" . er/contract-region))
 ```
 
 ### 6.2 [swiper]リージョンを使って検索
+[swiper.el](https://github.com/abo-abo/swiper) があれば isearch も helm も不要になりました。
+
+region 選択された状態でこの関数を起動すると swiper-thing-at-point として機能します。
 
 ``` emacs-lisp
 (defun swiper-or-region ()
   "If region is selected, `swiper' with the keyword selected in region.
-If the region isn't selected, `swiper' with migemo."
+If the region isn't selected, `swiper'."
   (interactive)
   (if (not (use-region-p))
       (swiper)
@@ -462,6 +468,10 @@ If the region isn't selected, `swiper' with migemo."
 ```
 
 ### 6.8 [darkroom-mode]執筆モード
+[darkroom.el](https://github.com/joaotavora/darkroom)  は、画面の余計な項目を最小限にして、文章の執筆に集中できるようにするパッケージです。
+
+基本機能は、文字サイズが大きくなり、モード行が消えるだけですが、設定例では、行番号表示、diff-hl、flymake も消しています。併せて文字間隔も少し大きくして読みやすくしました。[F12] キーで IN/OUT をトグルしています。
+
 ``` emacs-lisp
 (leaf darkroom :ensure t
   :bind ("<f12>" . my:darkroom-mode-in)

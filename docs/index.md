@@ -312,14 +312,17 @@ Windows10 では `Google日本語入力` を使います。WSLも含めて複数
 カーソルの移動は、原則デフォルトで使っています。
 
 ```eval_rst
-=====  =====  =======
-A      B      A and B
-=====  =====  =======
-False  False  False
-True   False  False
-False  True   False
-True   True   True
-=====  =====  =======
+=====  =====
+動作 キーバインド
+=====  =====
+行移動  False
+ページ移動（スクロール）   False
+ウインドウ移動  True
+バッファー切り替え   True
+バッファー先頭/末尾 true
+編集点の移動 true
+タグジャンプ true
+=====  =====
 ```
 
 

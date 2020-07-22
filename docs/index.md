@@ -542,6 +542,7 @@ If there are two or more windows, it will go to another window."
 
 ### [restart-emacs]
 
+### [hydra-brows-url]
 
 ## 14. おわりに
 

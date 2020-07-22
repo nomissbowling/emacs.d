@@ -327,7 +327,7 @@ Windows10 では `Google日本語入力` を使います。WSLも含めて複数
 
 ```eval_rst
 =====  =====  =======
-A      B      A and B
+動作   B      A and B
 =====  =====  =======
 False  False  False
 True   False  False

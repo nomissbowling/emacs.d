@@ -417,24 +417,45 @@ If there are two or more windows, it will go to another window."
 ## 6. 編集サポート
 ### 6.1 矩形編集
 
-### 6.2 選択リージョンを使って検索
+### [expand-region]
 
-### 6.3 ファイルの自動保存
+``` emacs-lisp
+(leaf expand-region :ensure t
+  :bind ("C-@" . er/expand-region))
+```
 
-### 6.3 空のファイルを自動的に削除
+### 6.2 [swiper]選択リージョンを使って検索
 
 ### 6.3 markdown-mode
+
+### [hydra-quick-menu]
+
+### [hydra-work-menu]
+
+### [hydra-pinky]
+
+### [howm-mode / org-mode]メモ環境
+
+### [darkroom-mode]執筆モード
+
+### [yatex]YaTexでTex編集
+
+### [yasnippet]
+
+### [google-translate]
+
+### [web-search]
 
 
 ## 7. 表示サポート
 
-### 行番号の表示
+### [display-line-numbers]行番号の表示
 
-### モードラインをカスタマイズ
+### [doom-modeline]モードラインをカスタマイズ
 
-### scratch を消さない/自動保存
+### [emacs-lock-mode]scratch を消さない/自動保存
 
-### 対応する括弧をハイライト
+### [oaren]対応する括弧をハイライト
 
 ### [migemo]ローマ字入力で日本語を検索
 
@@ -444,23 +465,85 @@ If there are two or more windows, it will go to another window."
 
 ### [all-the-icons]フォントでアイコン表示
 
+### [rainbow-delimiters]対応する括弧に色をつける
+
+### [beacon]
+
 ### [imenu-list]サイドバー的にファイルの目次要素を表示
 
 ### [dimmer]現在のバッファー以外の輝度を落とす
 
-### [dark-mode]
-
 ## 8. 履歴 / ファイル管理
+### 6.3 [auto-save-buffer]ファイルの自動保存
+
+### 6.3 空のファイルを自動的に削除
+
+### [undo-tree]
+
+### [direx]
+
+### [counsel-ag]
+
+### [git-timemachine]
 
 ## 9. 開発サポート
+
+### [company]
+
+### [magit]
+
+### [counsel-tramp]
+
+### [quickrun]
+
+### [flymake]
+
+### [browse-at-remote]
+
+### [ps-print]
+
+### [ps2pdf]
+
+### [md2pdf / md2docx]
+
+### [gist]
+
+### [easy-hugo]
+
+### [hydra-compile]
+
+### [hydra-misc]
 
 ## 10. Org Mode / Howm Mode
 
 ## 11. フォント / 配色関係
 
+### フォント設定
+### 行間を制御する
+### [rainbow-mode]配色のリアルタイム確認
+### [volatile-highlight]コピペした領域を強調
+
+
+### カーソル行に色をつける
+
 ## 12. ユーティリティー関数
+
+### gnome-terminal を Emacsから呼び出す
+
+### thunar を Emacsから呼び出す
+
+### mozc辞書Tool を Emacsから呼び出す
+
+### [eshell]
+
+### [sudo-edit]
+
+### [restart-emacs]
+
 
 ## 13. おわりに
 
+以上が私の init.el とその説明です。
 
+まだまだ不勉強、未熟な点が多々あると思いますが備忘録として育てていきたいと願っています。
 

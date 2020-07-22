@@ -547,5 +547,5 @@ If there are two or more windows, it will go to another window."
 
 以上が私の init.el とその説明です。
 
-まだまだ不勉強な点が多々ありますが備忘録として育てていきたいと願っています。
+まだまだ不勉強な点が多々ありますが学びながら育てていきたいと願っています。
 

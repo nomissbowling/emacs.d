@@ -864,26 +864,103 @@ If the region isn't selected, `swiper' with migemo."
 
 ### 9.6 [browse-at-remote]
 ``` emacs-lisp
+(leaf browse-at-remote :ensure t
+  :config
+  (defalias 'my:github-show 'browse-at-remote))
 
 ```
 
 ### 9.7 [ps-print]
 ``` emacs-lisp
-
+(leaf ps-print :ensure nil
+  :config
+  (setq ps-paper-type 'a4
+		ps-font-size 9
+		ps-printer-name nil
+		ps-print-header nil
+		ps-show-n-of-n t
+		ps-line-number t
+		ps-print-footer nil))
 ```
 
 ### 9.8 [ps2pdf]
 ``` emacs-lisp
+(setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
+;; (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | lpr")
+(defun my:pdfout-buffer ()
+  "PDF out from buffer."
+  (interactive)
+  (my:pdfout-region (point-min) (point-max)))
+(defun my:pdfout-region (begin end)
+  "PDF out from BEGIN to END of region."
+  (interactive "r")
+  ;; (shell-command-on-region begin end my:pdfout-command-format)))
+  (shell-command-on-region begin end (format my:pdfout-command-format
+											 (concat (read-from-minibuffer "File name:") ".pdf"))))
 
 ```
 
 ### 9.9 [md2pdf / md2docx]
 ``` emacs-lisp
+(defun md2pdf ()
+  "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"
+  (interactive)
+  (let ((filename (buffer-file-name (current-buffer))))
+    (shell-command-to-string
+     (concat "pandoc "
+			 filename
+			 " -f markdown -t html5 -o "
+			 (file-name-sans-extension filename)
+			 ".pdf"))
+    (shell-command-to-string
+     (concat "evince "
+			 (file-name-sans-extension filename)
+			 ".pdf"))))
 
+
+(defun md2docx ()
+  "Generate docx from currently open markdown."
+  (interactive)
+  (let ((filename (buffer-file-name (current-buffer))))
+    (shell-command-to-string
+     (concat "pandoc "
+			 filename
+			 " -t docx -o "
+			 (file-name-sans-extension filename)
+			 ;; ".docx -V mainfont=IPAPGothic -V fontsize=16pt --toc --highlight-style=zenburn"))
+			 ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
+    (shell-command-to-string
+     (concat "xdg-open "
+			 (file-name-sans-extension filename)
+			 ".docx"))))
 ```
 
 ### 9.10 [gist]
 ``` emacs-lisp
+(leaf gist
+  :ensure t
+  :bind (("C-c g" . gist-region-or-buffer)
+		 ("C-c l" . gist-list)
+		 (:tabulated-list-mode-map
+		  ("." . hydra-gist-help/body)))
+  :hydra
+  (hydra-gist-help ()
+				   "
+  🎲 Function for gist
+     M-x gist-list: Lists your gists in a new buffer
+     M-x gist-region-or-buffer: Post either the current region or buffer
+    -----------------------------
+  🎲 In gist-list buffer
+     RET:fetch  e:edit-description  g:list-reload  b:browse current  y:print current url
+     +:add file to current  -:remove file from current  k:delete current
+    -----------------------------
+  🎲 In fetch file buffer
+     C-x C-s : save a new version of the gist
+     C-x C-w : rename some file
+    -----------------------------
+  🎲 In dired buffer
+     @ : make a gist out of marked files"
+				   ("." nil)))
 
 ```
 
@@ -894,19 +971,146 @@ If the region isn't selected, `swiper' with migemo."
 
 ### 9.12 [hydra-compile]
 ``` emacs-lisp
+(defun close-compile-window-if-successful (buffer string)
+  "Close a compilation window if succeeded without warnings."
+  (when (and
+		 (string-match "compilation" (buffer-name buffer))
+		 (string-match "finished" string)
+		 (not
+		  (with-current-buffer buffer
+			(search-forward "warning" nil t))))
+    (run-with-timer 1 nil
+					(lambda ()
+					  (delete-other-windows)))))
+(add-hook 'compilation-finish-functions 'close-compile-window-if-successful)
+
+
+;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
+(add-hook 'makefile-mode-hook
+		  (lambda ()
+			(fset 'makefile-warn-suspicious-lines 'ignore)))
+
+
+(leaf *user-make-function
+  :hydra
+  (hydra-compile
+   (:color red :hint nil)
+   "
+   🗿 Compile: make:_k_  _u_pftp  _m_ove  _b_klog  _g_it  _c_lean  _e_rror 🐾 "
+   ("k" my:make-k)
+   ("u" my:make-upftp)
+   ("m" my:make-move)
+   ("b" my:make-bklog)
+   ("g" my:make-git)
+   ("c" my:make-clean)
+   ("e" next-error)
+   ("<muhenkan>" nil))
+  :config
+  (defun my:make-k ()
+    "Make command default."
+    (interactive)
+    (compile "make -k"))
+  (defun my:make-upftp ()
+    "Make command for upftp."
+    (interactive)
+    (compile "make up"))
+  (defun my:make-move ()
+    "Make command for move."
+    (interactive)
+    (compile "make mv"))
+  (defun my:make-bklog ()
+    "Make command for bklog."
+    (interactive)
+    (compile "make bk"))
+  (defun my:make-git ()
+    "Make command for git."
+    (interactive)
+    (compile "make git"))
+  (defun my:make-clean ()
+    "Make command for clean."
+    (interactive)
+    (compile "make clean")))
 
 ```
 
 ### 9.13 [hydra-misc]
 ``` emacs-lisp
+(leaf package-utils
+  :ensure t
+  :chord ("p@" . hydra-package/body)
+  :hydra
+  (hydra-package
+   (:color red :hint nil)
+   "
+ 📦 Package: _l_ist   _i_nstall   _u_pgrade-list   _a_ll-upgrade   _r_emove   _e_l-get"
+   ("i" package-install)
+   ("u" package-utils-list-upgrades)
+   ("r" package-utils-remove-by-name)
+   ("a" package-utils-upgrade-all-and-restart)
+   ("l" package-list-packages)
+   ("e" select-elget-command)
+   ("<muhenkan>" nil))
+  :init
+  (defun select-elget-command ()
+    "Narrow the only el-get command in M-x."
+    (interactive)
+    (counsel-M-x "^el-get ")))
 
 ```
+``` emacs-lisp
+(leaf *hydra-browse
+  :hydra
+  (hydra-browse
+   (:hint nil :exit t)
+   "
+  💰 Shop^        ^💭 SNS^        ^🔃 Repos^       ^🏠 GH^        ^🙌 Favorite^    ^📝 Others^    ^💣 Github^^      Google
+  ^^^^^^^^^^----------------------------------------------------------------------------------------------------------------
+  _a_: Amazon      _t_: Twitter    _g_: github      _h_: HOME      _j_: Jorudan     _c_: Chrome    _1_: masasam     _5_: Keep
+  _r_: Rakuten     _u_: Youtube    _0_: gist        _b_: Hatena    _n_: News        _p_: Pocket    _2_: abo-abo     _6_: Map
+  _y_: Yodobashi   _f_: Flickr     _d_: Dropbox     _e_: Essay     _w_: Weather     _q_: Qiita     _3_: blue        _7_: Drive
+  _k_: Kakaku      _l_: Tumblr     _x_: Xserver     _:_: Blog      _s_: SanyoBas    _,_: Slack     _4_: seagle      _8_: Photo"
+   ("a" (browse-url "https://www.amazon.co.jp/"))
+   ("r" (browse-url "https://www.rakuten.co.jp/"))
+   ("y" (browse-url "https://www.yodobashi.com/"))
+   ("k" (browse-url "http://kakaku.com/"))
+   ("u" (browse-url "https://www.youtube.com/channel/UCnwoipb9aTyORVKHeTw159A/videos"))
+   ("f" (browse-url "https://www.flickr.com/photos/minorugh/"))
+   ("g" (browse-url "https://github.com/minorugh/emacs.d"))
+   ("0" (browse-url "https://gist.github.com/minorugh"))
+   ("1" (browse-url "https://github.com/masasam/dotfiles/tree/master/.emacs\.d"))
+   ("2" (browse-url "https://github.com/abo-abo/hydra/wiki"))
+   ("3" (browse-url "https://github.com/blue0513?tab=repositories"))
+   ("4" (browse-url "https://github.com/seagle0128/.emacs\.d/tree/master/lisp"))
+   ("5" (browse-url "https://keep.google.com/u/0/"))
+   ("6" (browse-url "https://www.google.co.jp/maps"))
+   ("7" (browse-url "https://drive.google.com/drive/u/0/my-drive"))
+   (":" (browse-url "http://blog.wegh.net/"))
+   ("e" (browse-url "http://essay.wegh.net/"))
+   ("b" (browse-url "https://minoru.hatenablog.com/"))
+   ("s" (browse-url "http://www.sanyo-bus.co.jp/pdf/20191028tarusan_schedule.pdf"))
+   ("j" (browse-url "https://www.jorudan.co.jp/"))
+   ("n" (browse-url "https://news.yahoo.co.jp/"))
+   ("x" (browse-url "https://www.xserver.ne.jp/login_server.php"))
+   ("d" (browse-url "https://www.dropbox.com/home"))
+   ("q" (browse-url "https://qiita.com/tags/emacs"))
+   ("8" (browse-url "https://photos.google.com/?pageId=none"))
+   ("c" (browse-url "https://google.com"))
+   ("l" (browse-url "https://minorugh.tumblr.com"))
+   ("w" browse-weather)
+   ("h" browse-homepage)
+   ("p" browse-pocket)
+   ("t" browse-tweetdeck)
+   ("," browse-slack)
+   ("<muhenkan>" nil)
+   ("." nil)))
 
+
+
+```
 ## 10. Org Mode / Howm Mode
 ``` emacs-lisp
 
 ```
-
 
 ## 11. Hugo
 ``` emacs-lisp
@@ -917,6 +1121,11 @@ If the region isn't selected, `swiper' with migemo."
 
 ### 12.1 フォント設定
 ``` emacs-lisp
+(add-to-list 'default-frame-alist '(font . "Cica-18"))
+;; for sub-machine
+(when (string-match "x250" (shell-command-to-string "uname -n"))
+  (add-to-list 'default-frame-alist '(font . "Cica-15")))
+
 
 ```
 ### 12.2 行間を制御する
@@ -943,31 +1152,110 @@ If the region isn't selected, `swiper' with migemo."
 
 ### 13.1 Terminal を Emacsから呼び出す
 ``` emacs-lisp
-
+(defun term-current-dir-open ()
+  "Open terminal application in current dir."
+  (interactive)
+  (let ((dir (directory-file-name default-directory)))
+    (compile (concat "gnome-terminal --working-directory " dir))))
+(bind-key "<f4>" 'term-current-dir-open)
 ```
 
 ### 13.2 Thunar を Emacsから呼び出す
 ``` emacs-lisp
+(defun filer-current-dir-open ()
+  "Open filer in current dir."
+  (interactive)
+  (compile (concat "Thunar " default-directory)))
+(bind-key "<f3>" 'filer-current-dir-open)
 
 ```
 
 ### 13.4 mozc-tool を Emacsから呼び出す
 ``` emacs-lisp
+(leaf *user-mozc-tool
+  :bind (("<f8>" . my:mozc-word-regist)
+		 ("<f7>" . select-mozc-tool))
+  :init
+  (defun select-mozc-tool ()
+    "Select mozc tool command."
+    (interactive)
+    (counsel-M-x "my:mozc "))
+
+  (defun my:mozc-config-dialog ()
+    "Run the mozc-tool in the background."
+    (interactive)
+    (compile "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
+
+  (defun my:mozc-dictionary-tool ()
+    "Run the mozc-tool in the background."
+    (interactive)
+    (compile "/usr/lib/mozc/mozc_tool --mode=dictionary_tool"))
+
+  (defun my:mozc-word-regist ()
+    "Run the mozc-tool in the background."
+    (interactive)
+    (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
+
+  (defun my:mozc-hand-writing ()
+    "Run the mozc-tool in the background."
+    (interactive)
+    (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")))
 
 ```
 
 ### 13.5 [eshell]Emacsのバッファーでシェルを使う
-``` emacs-lisp
 
+``` emacs-lisp
+(leaf eshell
+  :after popwin
+  :bind* ("C-z" . eshell)
+  :custom
+  ((eshell-cmpl-ignore-case . t)
+   (eshell-ask-to-save-history . (quote always))
+   (eshell-cmpl-cycle-completions . t)
+   (eshell-cmpl-cycle-cutoff-length . 5)
+   (eshell-hist-ignoredups . t)
+   (eshell-prompt-function . 'my:eshell-prompt)
+   (eshell-prompt-regexp . "^[^#$]*[$#] "))
+  :init
+  (push '("*eshell*" :height 0.6) popwin:special-display-config)
+  :config
+  (setq eshell-command-aliases-list
+		(append (list
+				 (list "cl" "clear")
+				 (list "ll" "ls -ltr -S")
+				 (list "la" "ls -a -S")
+				 (list "ex" "exit")))))
+:init
+(defun my:eshell-prompt ()
+  "Prompt change string."
+  (concat (eshell/pwd)
+		  (if (= (user-uid) 0) "\n# " "\n$ ")))
+
+(defun eshell/clear ()
+  "Clear the current buffer, leaving one prompt at the top."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
+
+(defun eshell-on-current-buffer ()
+  "Set the eshell directory to the current buffer."
+  (interactive)
+  (let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
+    (with-current-buffer "*eshell*"
+      (cd path)
+      (eshell-emit-prompt))))
 ```
 
 ### 13.6 [sudo-edit]
 ``` emacs-lisp
-
+(leaf sudo-edit :ensure t)
 ```
 
 ### 13.7 [restart-emacs]Emacsを再起動する
 ``` emacs-lisp
+(leaf restart-emacs :ensure t
+  :bind (("C-x C-c" . restart-emacs)))
 
 ```
 

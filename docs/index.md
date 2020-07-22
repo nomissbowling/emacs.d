@@ -404,7 +404,7 @@ If there are two or more windows, it will go to another window."
 
 ### 5.5 タグジャンプ
 この機能もごく稀にしか使いません。
-一等地にあるデフォルトの `M-.` は、頻繁に使う [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。
+一等地にあるデフォルトの `M-.` は、もっとも頻繁に使う [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。
 
 ``` emacs-lisp
 ;; xref-find-* key

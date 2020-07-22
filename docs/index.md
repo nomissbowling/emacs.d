@@ -428,7 +428,7 @@ er/expand-regionを実行する度にリージョンの範囲が広がってい�
 ```
 
 ### 6.2 [swiper]リージョンを使って検索
-[swiper-thing-at-point.el](https://github.com/abo-abo/swiper) の機能で目的は果たせるが、設定例では region が選択されていないときは swiper として動作する。
+`M-x swiper-thing-at-point` とすることで目的は果たせるが、設定例では region が選択されていないときは [swiper](https://github.com/abo-abo/swiper) として動作する。
 
 ``` emacs-lisp
 (defun swiper-or-region ()

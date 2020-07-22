@@ -516,7 +516,10 @@ If there are two or more windows, it will go to another window."
 
 ## 10. Org Mode / Howm Mode
 
-## 11. フォント / 配色関係
+
+## 11. Easy-Hugo
+
+## 12. フォント / 配色関係
 
 ### フォント設定
 ### 行間を制御する
@@ -526,7 +529,7 @@ If there are two or more windows, it will go to another window."
 
 ### カーソル行に色をつける
 
-## 12. ユーティリティー関数
+## 13. ユーティリティー関数
 
 ### gnome-terminal を Emacsから呼び出す
 
@@ -541,7 +544,7 @@ If there are two or more windows, it will go to another window."
 ### [restart-emacs]
 
 
-## 13. おわりに
+## 14. おわりに
 
 以上が私の init.el とその説明です。
 

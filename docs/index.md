@@ -331,6 +331,7 @@ Windows10 では `Google日本語入力` を使います。WSLも含めて複数
 
 
 ### 5.1 ウインドウの移動
+
 私の場合、二分割以上の作業はしないので `C-q` だけで便利に使えるこの関数は宝物です。
 
 ``` emacs-lisp
@@ -345,6 +346,7 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.2 バッファー切り替え
+
 [iflipb.el](https://github.com/jrosdahl/iflipb) を使うと tabbar感覚の操作感になります。
 
 - [タブを使わない究極のバーファー移動](https://qiita.com/minoruGH/items/aa96e92c1434f87940d6)
@@ -385,6 +387,7 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.4 編集点の移動
+
 ``` emacs-lisp
 (defun my:exchange-point-and-mark ()
   "No mark active `exchange-point-and-mark'."
@@ -395,6 +398,7 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.5 タグジャンプ
+
 一等地にある `M-.` を便利な [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。 
 
 ``` emacs-lisp

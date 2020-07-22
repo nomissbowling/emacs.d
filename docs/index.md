@@ -54,9 +54,7 @@ Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs
 2. `init-config.el` の読み込み
 3. `inits/` に配置したファイル群の遅延読み込み （init-loader 使用）
 
-[init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) には、遅延起動させたくないものを設定しています。
-
-個人的な設定ファイルもここから読み込ませます。
+[init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) には、主に Emacs起動時の画面設定を書いていますが、個人的な設定ファイルなどもここから読み込ませます。
 
 ``` emacs-lisp
 ;; Load user Functions

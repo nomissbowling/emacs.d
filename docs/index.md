@@ -309,6 +309,19 @@ Mozcと連動してカーソルの色をカスタマイズするために [mozc-
 Windows10 では `Google日本語入力` を使います。WSLも含めて複数環境で Emacsを動かしています。これら全ての環境で Mozcユーザー辞書を共有できるようにしたいと思考中です。
 
 ## 5. カーソル移動
+カーソルの移動は、原則デフォルトで使っています。
+
+```eval_rst
+=====  =====  =======
+A      B      A and B
+=====  =====  =======
+False  False  False
+True   False  False
+False  True   False
+True   True   True
+=====  =====  =======
+```
+
 
 ## 6. 編集サポート
 

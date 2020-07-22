@@ -534,7 +534,7 @@ If there are two or more windows, it will go to another window."
 
 ### Thunar を Emacsから呼び出す
 
-### mozc-Tool を Emacsから呼び出す
+### mozc-tool を Emacsから呼び出す
 
 ### [eshell]
 

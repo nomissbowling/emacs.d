@@ -375,18 +375,23 @@ If there are two or more windows, it will go to another window."
 
 ### 5.3 バッファー先頭・末尾
 
-[sequential-command.el](URL ) 
+[sequential-command.el](https://rubikitch.hatenadiary.org/entry/20090219/sequential_command) は地味なながら一度使うと便利すぎて止められません。melpからインストールできるのですが、私は下記の改良版を el-getで入れてます。 
+
+- [sequential-command をもう少し賢く](https://hke7.wordpress.com/2012/04/08/sequential-command-%E3%82%92%E3%82%82%E3%81%86%E5%B0%91%E3%81%97%E8%B3%A2%E3%81%8F/) 
 
 ``` emacs-lisp
 (leaf sequential-command-config
-  :hook (after-init-hook . sequential-command-setup-keys)
+  :hook (emacs-startup-hook . sequential-command-setup-keys)
   :bind (("C-a" . seq-home)
 		 ("C-e" . seq-end))
   :init
-  (leaf sequential-command :ensure t))
+  (leaf sequential-command
+	:el-get HKey/sequential-command))
 ```
 
 ### 5.4 編集点の移動
+プログラマーではない私の場合、ポイントを変遷するというような高度な作業はしないので、
+[Mark Ringを活用する](https://solist.work/blog/posts/mark-ring/) の記事にある `"一手前に戻る汎用的な方法"` というのだけ採用しています。
 
 ``` emacs-lisp
 (defun my:exchange-point-and-mark ()
@@ -398,8 +403,8 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.5 タグジャンプ
-
-一等地にある `M-.` を便利な [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。 
+この機能もごく稀にしか使いません。
+一等地にあるデフォルトの `M-.` を頻繁に使う [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。 
 
 ``` emacs-lisp
 ;; xref-find-* key

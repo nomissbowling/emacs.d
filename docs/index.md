@@ -390,7 +390,7 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.4 編集点の移動
-ポイントを変遷するというような高度な作業はしないので、"一手前に戻る汎用的な方法" だけ採用しています。元ネタは [@masasam](https://twitter.com/SolistWork) さんのブログ記事
+ポイントを変遷するような高度な作業はしないので、"一手前に戻る汎用的な方法" だけ採用しています。元ネタは [@masasam](https://twitter.com/SolistWork) さんのブログ記事
 [Mark Ringを活用する](https://solist.work/blog/posts/mark-ring/) からです。感謝！
 
 ``` emacs-lisp

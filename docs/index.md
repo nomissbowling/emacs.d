@@ -188,7 +188,7 @@ init.el に直接 PATHを書くことでも対応できますが、私の場合�
 
 初期画面には、`Dashboard` を表示させています。
 
-![Dashboard by iceberg-theme](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg) 
+![Dashboard by iceberg-theme](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg)
 
 愛着あるこのバッファーですが、うっかり Killすると消えてしまうので再生できるように設定しました。作業が一段落したらここへ戻ります。
 
@@ -364,7 +364,7 @@ If there are two or more windows, it will go to another window."
 ```
 [tempbf.el](https://github.com/jrosdahl/iflipb) を使うと不要なbufferを自動的にKillしてくれるので更に便利になります。
 
-- [不要なバッファーを自動的にkillする](https://qiita.com/minoruGH/items/d7f6f1bd76c046a85927) 
+- [不要なバッファーを自動的にkillする](https://qiita.com/minoruGH/items/d7f6f1bd76c046a85927)
 
 ``` emacs-lisp
 ;; automatically kill unnecessary buffers
@@ -375,9 +375,9 @@ If there are two or more windows, it will go to another window."
 
 ### 5.3 バッファー先頭・末尾
 
-[sequential-command.el](https://rubikitch.hatenadiary.org/entry/20090219/sequential_command) は地味なながら一度使うと便利すぎて止められません。melpからインストールできるのですが、私は下記の改良版を el-getで入れてます。 
+[sequential-command.el](https://rubikitch.hatenadiary.org/entry/20090219/sequential_command) は地味なながら一度使うと便利すぎて止められません。melpからインストールできるのですが、私は下記の改良版を el-getで入れてます。
 
-- [sequential-command をもう少し賢く](https://hke7.wordpress.com/2012/04/08/sequential-command-%E3%82%92%E3%82%82%E3%81%86%E5%B0%91%E3%81%97%E8%B3%A2%E3%81%8F/) 
+- [sequential-command をもう少し賢く](https://hke7.wordpress.com/2012/04/08/sequential-command-%E3%82%92%E3%82%82%E3%81%86%E5%B0%91%E3%81%97%E8%B3%A2%E3%81%8F/)
 
 ``` emacs-lisp
 (leaf sequential-command-config
@@ -390,7 +390,7 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.4 編集点の移動
-私の場合、ポイントを変遷するというような高度な作業はしないので、[@masasam](https://twitter.com/SolistWork) ブログ記事 
+私の場合、ポイントを変遷するというような高度な作業はしないので、[@masasam](https://twitter.com/SolistWork) さんのブログ記事
 [Mark Ringを活用する](https://solist.work/blog/posts/mark-ring/) にある **"一手前に戻る汎用的な方法"** というのだけ採用しています。
 
 ``` emacs-lisp
@@ -404,7 +404,7 @@ If there are two or more windows, it will go to another window."
 
 ### 5.5 タグジャンプ
 この機能もごく稀にしか使いません。
-一等地にあるデフォルトの `M-.` を頻繁に使う [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。 
+一等地にあるデフォルトの `M-.` を頻繁に使う [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。
 
 ``` emacs-lisp
 ;; xref-find-* key

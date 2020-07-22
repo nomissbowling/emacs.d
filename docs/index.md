@@ -359,7 +359,7 @@ If there are two or more windows, it will go to another window."
 		("M-[" . iflipb-previous-buffer))
   :config
   (setq iflipb-wrap-around t)
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
 ```
 [tempbf.el](https://github.com/jrosdahl/iflipb) を使うと不要なbufferを自動的にKillしてくれるので更に便利になります。

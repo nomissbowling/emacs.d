@@ -432,6 +432,3 @@ If there are two or more windows, it will go to another window."
 
 
 
-<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
-hoge
-</div>

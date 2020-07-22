@@ -426,123 +426,555 @@ If there are two or more windows, it will go to another window."
 
 ### 6.2 [swiper]リージョンを使って検索
 
+``` emacs-lisp
+(defun swiper-or-region ()
+  "If region is selected, `swiper' with the keyword selected in region.
+If the region isn't selected, `swiper' with migemo."
+  (interactive)
+  (if (not (use-region-p))
+      (swiper)
+    (swiper-thing-at-point)))
+```
+
 ### 6.3 markdown-mode
+``` emacs-lisp
+
+```
 
 ### 6.4 [hydra-quick-menu]
+``` emacs-lisp
+
+```
 
 ### 6.5 [hydra-work-menu]
+``` emacs-lisp
+
+```
 
 ### 6.6 [hydra-pinky]
+``` emacs-lisp
+
+```
 
 ### 6.7 [howm-mode / org-mode]メモ環境
+``` emacs-lisp
+
+```
 
 ### 6.8 [darkroom-mode]執筆モード
+``` emacs-lisp
+(leaf darkroom :ensure t
+  :bind ("<f12>" . my:darkroom-mode-in)
+  :config
+  (defun my:darkroom-mode-in ()
+    "Darkroom mode in."
+    (interactive)
+    (display-line-numbers-mode 0)
+    (diff-hl-mode 0)
+    (flymake-mode 0)
+    (setq line-spacing 0.4)
+    (darkroom-mode 1)
+    (bind-key "<f12>" 'my:darkroom-mode-out darkroom-mode-map))
+  (defun my:darkroom-mode-out ()
+    "Darkroom mode out."
+    (interactive)
+    (darkroom-mode 0)
+    (flymake-mode 1)
+    (diff-hl-mode 1)
+    (setq line-spacing 0.1)
+    (display-line-numbers-mode 1)))
+```
 
 ### 6.9 [yatex]YaTexでTex編集
+``` emacs-lisp
+(leaf yatex :ensure t
+  :mode ("\\.tex\\'" . yatex-mode)
+  :config
+  (setq tex-command "platex"
+		dviprint-command-format "dvpd.sh %s"
+		YaTeX-kanji-code nil
+		YaTeX-latex-message-code 'utf-8
+		YaTeX-default-pop-window-height 15)
+  :init
+  (add-hook
+   'yatex-mode-hook
+   '(lambda ()
+      (leaf yatexprc
+		:bind (("M-c" . YaTeX-typeset-buffer)	;; Type set buffer
+			   ("M-l" . YaTeX-lpr))))))	;; Open pdf veiwer
+
+
+;; Dviprint-command-format
+;; -----------------------------------------------------------------------
+;; dvpd.sh for Linux
+;; Create dvpd.sh and execute 'chmod +x', and place it in `/usr/local/bin'
+;;
+;; for Linux
+;; | #!/bin/bash
+;; | name=$1
+;; | dvipdfmx $1 && evince ${name%.*}.pdf
+;; |# Delete unnecessary files
+;; |rm *.au* *.dv* *.lo*
+;;
+;; for WSL
+;; | #!/bin/bash
+;; | name=$1
+;; | dvipdfmx $1 && wslstart ${name%.*}.pdf
+;; |# Delete unnecessary files
+;; |rm *.au* *.dv* *.lo*
+;;
+;; ------------------------------------------------------------------------
+
+```
 
 ### 6.10 [yasnippet]
+``` emacs-lisp
+(leaf yasnippet :ensure t
+  :bind ("<f11>" . ivy-yasnippet)
+  :config
+  (yas-global-mode)
+  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
+  :init
+  (leaf yasnippet-snippets :ensure t)
+  (leaf ivy-yasnippet :ensure t))
+
+```
 
 ### 6.11 [google-translate]
+``` emacs-lisp
+(leaf google-translate :ensure t
+  :bind ("C-t" . google-translate-auto)
+  :config
+  (defun google-translate-auto ()
+    "Automatically recognize and translate Japanese and English."
+    (interactive)
+    (if (use-region-p)
+		(let ((string (buffer-substring-no-properties (region-beginning) (region-end))))
+		  (deactivate-mark)
+		  (if (string-match (format "\\`[%s]+\\'" "[:ascii:]")
+							string)
+			  (google-translate-translate
+			   "en" "ja"
+			   string)
+			(google-translate-translate
+			 "ja" "en"
+			 string)))
+      (let ((string (read-string "Google Translate: ")))
+		(if (string-match
+			 (format "\\`[%s]+\\'" "[:ascii:]")
+			 string)
+			(google-translate-translate
+			 "en" "ja"
+			 string)
+		  (google-translate-translate
+		   "ja" "en"
+		   string))))))
+
+
+```
 
 ### 6.12 [web-search]
+``` emacs-lisp
+
+```
 
 
 ## 7. 表示サポート
 
 ### 7.1 [display-line-numbers]行番号の表示
+``` emacs-lisp
+(leaf display-line-numbers
+  :bind ("<f9>" . display-line-numbers-mode)
+  :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
+```
 
 ### 7.2 [doom-modeline]モードラインをカスタマイズ
+``` emacs-lisp
 
-### 7.3 [emacs-lock-mode]scratch を消さない/自動保存
+```
+
+### 7.3 [emacs-lock-mode]scratch を消さない
+``` emacs-lisp
+;; Set buffer that can not be killed
+(with-current-buffer "*scratch*"
+  (emacs-lock-mode 'kill))
+(with-current-buffer "*Messages*"
+  (emacs-lock-mode 'kill))
+
+```
 
 ### 7.4 [paren]対応する括弧をハイライト
+``` emacs-lisp
+
+```
 
 ### 7.5 [migemo]ローマ字入力で日本語を検索
+``` emacs-lisp
+(defun my:ivy-migemo-re-builder (str)
+  "Own ivy-migemo-re-build for swiper."
+  (let* ((sep " \\|\\^\\|\\.\\|\\*")
+		 (splitted (--map (s-join "" it)
+						  (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
+										  (s-split "" str t)))))
+    (s-join "" (--map (cond ((s-equals? it " ") ".*?")
+							((s-matches? sep it) it)
+							(t (migemo-get-pattern it)))
+					  splitted))))
+
+(setq ivy-re-builders-alist '((t . ivy--regex-plus)
+							  (counsel-web . my:ivy-migemo-re-builder)
+							  (counsel-rg . my:ivy-migemo-re-builder)
+							  (swiper . my:ivy-migemo-re-builder)))
+```
 
 ### 7.6 [dif-hl]編集差分をフレーム端で視覚化
 
+``` emacs-lisp
+(leaf diff-hl :ensure t
+  :config
+  (global-diff-hl-mode)
+  (diff-hl-margin-mode)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+
+```
+
 ### 7.7 [which-key]キーバインドの選択肢をポップアップ
+``` emacs-lisp
+(leaf which-key :ensure t
+  :config
+  (which-key-mode)
+  (setq which-key-max-description-length 40
+		which-key-use-C-h-commands t))
+```
 
 ### 7.8 [all-the-icons]フォントでアイコン表示
+``` emacs-lisp
+(leaf all-the-icons :ensure t
+  :config
+  (setq all-the-icons-scale-factor 1.0)
+  :init
+  (leaf all-the-icons-dired :ensure t
+    :hook (dired-mode-hook . all-the-icons-dired-mode))
+  (leaf all-the-icons-ivy-rich :ensure t
+    :config
+    (all-the-icons-ivy-rich-mode)))
+
+```
 
 ### 7.9 [rainbow-delimiters]対応する括弧に色をつける
+``` emacs-lisp
+(leaf rainbow-delimiters :ensure t
+  :config (rainbow-delimiters-mode))
+
+```
 
 ### 7.10 [beacon]
+``` emacs-lisp
+(leaf beacon :ensure t
+  :config
+  (beacon-mode)
+  (setq beacon-color "yellow"))
+```
 
 ### 7.11 [imenu-list]サイドバー的にファイルの目次要素を表示
+``` emacs-lisp
+(leaf imenu-list :ensure t
+  :bind (("<f2>" . imenu-list-smart-toggle))
+  :config
+  (setq imenu-list-size 30
+		imenu-list-position 'left
+		imenu-list-focus-after-activation t))
+```
 
 ### 7.12 [dimmer]現在のバッファー以外の輝度を落とす
+``` emacs-lisp
+(leaf dimmer :ensure t
+  :config
+  (dimmer-mode)
+  (setq dimmer-exclusion-regexp-list
+		'(".*Minibuf.*" ".*which-key.*" "*direx:direx.*" "*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*"))
+  (setq dimmer-fraction 0.5)
+  :preface
+  (with-eval-after-load "dimmer"
+    (defun dimmer-off ()
+      (dimmer-mode -1)
+      (dimmer-process-all))
+    (defun dimmer-on ()
+      (dimmer-mode 1)
+      (dimmer-process-all))
+    (add-hook 'focus-out-hook #'dimmer-off)
+    (add-hook 'focus-in-hook #'dimmer-on)))
+
+```
 
 
 ## 8. 履歴 / ファイル管理
-### 8.3 [auto-save-buffer]ファイルの自動保存
+### 8.3 [auto-save-buffer-enhanced]ファイルの自動保存
+``` emacs-lisp
+(leaf auto-save-buffers-enhanced :ensure t
+  :config
+  (setq auto-save-buffers-enhanced-quiet-save-p t)
+  ;; auto save *scratch* to ~/.emacs.d/scratch
+  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t
+		auto-save-buffers-enhanced-file-related-with-scratch-buffer
+		(locate-user-emacs-file "scratch"))
+  ;; Exclusion of the auto-save-buffers
+  (setq auto-save-buffers-enhanced-exclude-regexps '("^/ssh:" "^/scp:" "/sudo:"))
+  (auto-save-buffers-enhanced t))
+
+```
 
 ### 8.4 空のファイルを自動的に削除
+``` emacs-lisp
+(defun my:delete-file-if-no-contents ()
+  "Automatic deletion for empty files (Valid in all modes)."
+  (when (and (buffer-file-name (current-buffer))
+			 (= (point-min) (point-max)))
+    (delete-file
+     (buffer-file-name (current-buffer)))))
+(if (not (memq 'my:delete-file-if-no-contents after-save-hook))
+    (setq after-save-hook
+		  (cons 'my:delete-file-if-no-contents after-save-hook)))
+
+```
 
 ### 8.5 [undo-tree]
+``` emacs-lisp
+
+```
 
 ### 8.6 [direx]
+``` emacs-lisp
+(defun direx:jump-to-project-directory ()
+  "If in project, launch direx-project otherwise start direx."
+  (interactive)
+  (let ((result (ignore-errors
+				  (direx-project:jump-to-project-root-other-window)
+				  t)))
+    (unless result
+      (direx:jump-to-directory-other-window))))
+
+
+(defun direx:open-file ()
+  "In direx, open the file in associated application."
+  (interactive)
+  (let* ((item (direx:item-at-point!))
+		 (file (direx:item-tree item))
+		 (file-full-name (direx:file-full-name file)))
+    (unless (getenv "WSLENV")
+      (call-process "xdg-open" nil 0 nil file-full-name))
+    ;; use wsl-utils:https://github.com/smzht/wsl-utils
+    (when (getenv "WSLENV")
+      (call-process "wslstart" nil 0 nil file-full-name))))
+
+
+(leaf direx :ensure t
+  :after popwin
+  :bind (("<f10>" . direx:jump-to-project-directory)
+		 ("C-x C-j" . direx:jump-to-project-directory)
+		 (:direx:direx-mode-map
+		  ("o" . direx:open-file)
+		  ("SPC" . direx:find-item-other-window)
+		  ("<f10>" . quit-window)))
+  :config
+  (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
+  (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config))
+
+
+```
 
 ### 8.7 [counsel-ag]
+``` emacs-lisp
+
+```
 
 ### 8.8 [git-timemachine]
+``` emacs-lisp
+(leaf git-timemachine :ensure t)
+```
 
 ## 9. 開発サポート
 
 ### 9.1 [company]
+``` emacs-lisp
+
+```
 
 ### 9.2 [magit]
+``` emacs-lisp
+(leaf magit :ensure t
+  :bind (("C-x g" . magit-status)
+		 ("M-g" . hydra-magit/body))
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  :hydra
+  (hydra-magit
+   (:color red :hint nil)
+   "
+ 📦 Git: _s_tatus  _b_lame  _t_imemachine  _d_iff"
+   ("s" magit-status :exit t)
+   ("b" magit-blame :exit t)
+   ("t" git-timemachine :exit t)
+   ("d" vc-diff)
+   ("<muhenkan>" nil))
+  :init
+  (leaf git-timemachine :ensure t)
+  (leaf diff-hl :ensure t
+    :config
+    (global-diff-hl-mode)
+    (diff-hl-margin-mode)
+    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
+
+```
 
 ### 9.3 [counsel-tramp]
+``` emacs-lisp
+(leaf counsel-tramp :ensure t
+  :bind (("C-c t" . counsel-tramp)
+		 ("C-c q" . my:tramp-quit))
+  :config
+  (setq tramp-default-method "scp"
+		counsel-tramp-custom-connections
+		'(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
+  (add-hook 'counsel-tramp-pre-command-hook
+			'(lambda () (projectile-mode 0)))
+  (add-hook 'counsel-tramp-quit-hook
+			'(lambda () (projectile-mode 1)))
+  :preface
+  (defun my:tramp-quit ()
+    "Quit tramp, if tramp connencted."
+    (interactive)
+    (when (get-buffer "*tramp/scp xsrv*")
+      (tramp-cleanup-all-connections)
+      (counsel-tramp-quit)
+      (message "Tramp Quit!"))))
+```
 
 ### 9.4 [quickrun]
+``` emacs-lisp
+(leaf quickrun :ensure t
+  :bind ("<f5>" . quickrun))
+
+```
 
 ### 9.5 [flymake]
+``` emacs-lisp
+
+```
 
 ### 9.6 [browse-at-remote]
+``` emacs-lisp
+
+```
 
 ### 9.7 [ps-print]
+``` emacs-lisp
+
+```
 
 ### 9.8 [ps2pdf]
+``` emacs-lisp
+
+```
 
 ### 9.9 [md2pdf / md2docx]
+``` emacs-lisp
+
+```
 
 ### 9.10 [gist]
+``` emacs-lisp
+
+```
 
 ### 9.11 [edit-indirect]
+``` emacs-lisp
+
+```
 
 ### 9.12 [hydra-compile]
+``` emacs-lisp
+
+```
 
 ### 9.13 [hydra-misc]
+``` emacs-lisp
+
+```
 
 ## 10. Org Mode / Howm Mode
+``` emacs-lisp
+
+```
 
 
 ## 11. Hugo
+``` emacs-lisp
+
+```
 
 ## 12. フォント / 配色関係
 
 ### 12.1 フォント設定
+``` emacs-lisp
+
+```
 ### 12.2 行間を制御する
+``` emacs-lisp
+
+```
 ### 12.3 [hl-line]カーソル行に色をつける
+``` emacs-lisp
+
+```
 ### 12.4 [rainbow-mode]配色のリアルタイム確認
+``` emacs-lisp
+
+```
 ### 12.5 [volatile-highlight]コピペした領域を強調
+``` emacs-lisp
+
+```
 
 ## 13. ユーティリティー関数
+``` emacs-lisp
+
+```
 
 ### 13.1 Terminal を Emacsから呼び出す
+``` emacs-lisp
+
+```
 
 ### 13.2 Thunar を Emacsから呼び出す
+``` emacs-lisp
+
+```
 
 ### 13.4 mozc-tool を Emacsから呼び出す
+``` emacs-lisp
+
+```
 
 ### 13.5 [eshell]Emacsのバッファーでシェルを使う
+``` emacs-lisp
+
+```
 
 ### 13.6 [sudo-edit]
+``` emacs-lisp
+
+```
 
 ### 13.7 [restart-emacs]Emacsを再起動する
+``` emacs-lisp
+
+```
 
 ### 13.8 [hydra-brows-url]任意のURLをEmacsから開く
+``` emacs-lisp
+
+```
 
 ## 14. おわりに
 

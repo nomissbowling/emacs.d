@@ -17,7 +17,6 @@
 ;; Write a trial settings
 
 
-
 (provide 'user-test)
 
 ;; Local Variables:

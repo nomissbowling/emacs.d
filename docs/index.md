@@ -328,7 +328,10 @@ Windows10 では `Google日本語入力` を使います。WSLも含めて複数
 | タグジャンプ             | C-, / C-. |
 +--------------------------+-----------+
 ```
+
+
 ### 5.1 ウインドウの移動
+私の場合、二分割以上の作業はしないので `C-q` だけで便利に使えるこの関数は宝物です。
 
 ``` emacs-lisp
 (defun other-window-or-split ()
@@ -342,6 +345,10 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.2 バッファー切り替え
+[iflipb.el](https://github.com/jrosdahl/iflipb) を使うと tabbar感覚の操作感になります。
+
+- [タブを使わない究極のバーファー移動](https://qiita.com/minoruGH/items/aa96e92c1434f87940d6)
+
 
 ``` emacs-lisp
 (leaf iflipb
@@ -353,8 +360,21 @@ If there are two or more windows, it will go to another window."
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
 
 ```
+[tempbf.el](https://github.com/jrosdahl/iflipb) を使うと不要なbufferを自動的にKillしてくれるので更に便利になります。
+
+- [不要なバッファーを自動的にkillする](https://qiita.com/minoruGH/items/d7f6f1bd76c046a85927) 
+
+``` emacs-lisp
+;; automatically kill unnecessary buffers
+(use-package tempbuf)
+(add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)
+(add-hook 'magit-mode-hook 'turn-on-tempbuf-mode)
+```
 
 ### 5.3 バッファー先頭・末尾
+
+[sequential-command.el](URL ) 
+
 ``` emacs-lisp
 (leaf sequential-command-config
   :hook (after-init-hook . sequential-command-setup-keys)

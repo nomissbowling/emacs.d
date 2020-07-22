@@ -390,8 +390,8 @@ If there are two or more windows, it will go to another window."
 ```
 
 ### 5.4 編集点の移動
-私の場合、ポイントを変遷するというような高度な作業はしないので、
-[Mark Ringを活用する](https://solist.work/blog/posts/mark-ring/) の記事にある **"一手前に戻る汎用的な方法"** というのだけ採用しています。
+私の場合、ポイントを変遷するというような高度な作業はしないので、[@masasam](https://twitter.com/SolistWork) ブログ記事 
+[Mark Ringを活用する](https://solist.work/blog/posts/mark-ring/) にある **"一手前に戻る汎用的な方法"** というのだけ採用しています。
 
 ``` emacs-lisp
 (defun my:exchange-point-and-mark ()

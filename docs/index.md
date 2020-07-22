@@ -328,6 +328,61 @@ Windows10 では `Google日本語入力` を使います。WSLも含めて複数
 | タグジャンプ             | C-, / C-. |
 +--------------------------+-----------+
 ```
+### 5.1 ウインドウの移動
+
+``` emacs-lisp
+(defun other-window-or-split ()
+  "If there is one window, open split window.
+If there are two or more windows, it will go to another window."
+  (interactive)
+  (when (one-window-p)
+    (split-window-horizontally))
+  (other-window 1))
+(bind-key "C-q" 'other-window-or-split)
+```
+
+### 5.2 バッファー切り替え
+
+``` emacs-lisp
+(leaf iflipb
+  :ensure t
+  :bind(("M-]" . iflipb-next-buffer)
+		("M-[" . iflipb-previous-buffer))
+  :config
+  (setq iflipb-wrap-around t)
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
+
+```
+
+### 5.3 バッファー先頭・末尾
+``` emacs-lisp
+(leaf sequential-command-config
+  :hook (after-init-hook . sequential-command-setup-keys)
+  :bind (("C-a" . seq-home)
+		 ("C-e" . seq-end))
+  :init
+  (leaf sequential-command :ensure t))
+```
+
+### 5.4 編集点の移動
+``` emacs-lisp
+(defun my:exchange-point-and-mark ()
+  "No mark active `exchange-point-and-mark'."
+  (interactive)
+  (exchange-point-and-mark)
+  (deactivate-mark))
+(bind-key "C-x C-x" 'my:exchange-point-and-mark)
+```
+
+### 5.5 タグジャンプ
+一等地にある `M-.` を便利な [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) に使いたいので変更しています。 
+
+``` emacs-lisp
+;; xref-find-* key
+(bind-key "C-," 'xref-find-references)
+(bind-key "C-." 'xref-find-definitions)
+
+```
 
 
 ## 6. 編集サポート

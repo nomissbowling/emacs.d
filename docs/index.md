@@ -508,7 +508,6 @@ If there are two or more windows, it will go to another window."
 
 ### [gist]
 
-### [easy-hugo]
 
 ### [hydra-compile]
 
@@ -531,11 +530,11 @@ If there are two or more windows, it will go to another window."
 
 ## 13. ユーティリティー関数
 
-### gnome-terminal を Emacsから呼び出す
+### Terminal を Emacsから呼び出す
 
-### thunar を Emacsから呼び出す
+### Thunar を Emacsから呼び出す
 
-### mozc辞書Tool を Emacsから呼び出す
+### mozc-Tool を Emacsから呼び出す
 
 ### [eshell]
 

@@ -428,90 +428,92 @@ If there are two or more windows, it will go to another window."
 
 ### 6.3 markdown-mode
 
-### [hydra-quick-menu]
+### 6.4 [hydra-quick-menu]
 
-### [hydra-work-menu]
+### 6.5 [hydra-work-menu]
 
-### [hydra-pinky]
+### 6.6 [hydra-pinky]
 
-### [howm-mode / org-mode]メモ環境
+### 6.7 [howm-mode / org-mode]メモ環境
 
-### [darkroom-mode]執筆モード
+### 6.8 [darkroom-mode]執筆モード
 
-### [yatex]YaTexでTex編集
+### 6.9 [yatex]YaTexでTex編集
 
-### [yasnippet]
+### 6.10 [yasnippet]
 
-### [google-translate]
+### 6.11 [google-translate]
 
-### [web-search]
+### 6.12 [web-search]
 
 
 ## 7. 表示サポート
 
-### [display-line-numbers]行番号の表示
+### 7.1 [display-line-numbers]行番号の表示
 
-### [doom-modeline]モードラインをカスタマイズ
+### 7.2 [doom-modeline]モードラインをカスタマイズ
 
-### [emacs-lock-mode]scratch を消さない/自動保存
+### 7.3 [emacs-lock-mode]scratch を消さない/自動保存
 
-### [oaren]対応する括弧をハイライト
+### 7.4 [paren]対応する括弧をハイライト
 
-### [migemo]ローマ字入力で日本語を検索
+### 7.5 [migemo]ローマ字入力で日本語を検索
 
-### [dif-hl]編集差分をフレーム端で視覚化
+### 7.6 [dif-hl]編集差分をフレーム端で視覚化
 
-### [which-key]キーバインドの選択肢をポップアップ
+### 7.7 [which-key]キーバインドの選択肢をポップアップ
 
-### [all-the-icons]フォントでアイコン表示
+### 7.8 [all-the-icons]フォントでアイコン表示
 
-### [rainbow-delimiters]対応する括弧に色をつける
+### 7.9 [rainbow-delimiters]対応する括弧に色をつける
 
-### [beacon]
+### 7.10 [beacon]
 
-### [imenu-list]サイドバー的にファイルの目次要素を表示
+### 7.11 [imenu-list]サイドバー的にファイルの目次要素を表示
 
-### [dimmer]現在のバッファー以外の輝度を落とす
+### 7.12 [dimmer]現在のバッファー以外の輝度を落とす
+
 
 ## 8. 履歴 / ファイル管理
-### 6.3 [auto-save-buffer]ファイルの自動保存
+### 8.3 [auto-save-buffer]ファイルの自動保存
 
-### 6.3 空のファイルを自動的に削除
+### 8.4 空のファイルを自動的に削除
 
-### [undo-tree]
+### 8.5 [undo-tree]
 
-### [direx]
+### 8.6 [direx]
 
-### [counsel-ag]
+### 8.7 [counsel-ag]
 
-### [git-timemachine]
+### 8.8 [git-timemachine]
 
 ## 9. 開発サポート
 
-### [company]
+### 9.1 [company]
 
-### [magit]
+### 9.2 [magit]
 
-### [counsel-tramp]
+### 9.3 [counsel-tramp]
 
-### [quickrun]
+### 9.4 [quickrun]
 
-### [flymake]
+### 9.5 [flymake]
 
-### [browse-at-remote]
+### 9.6 [browse-at-remote]
 
-### [ps-print]
+### 9.7 [ps-print]
 
-### [ps2pdf]
+### 9.8 [ps2pdf]
 
-### [md2pdf / md2docx]
+### 9.9 [md2pdf / md2docx]
 
-### [gist]
+### 9.10 [gist]
 
+### 9.11 [edit-indirect]
 
-### [hydra-compile]
+### 9.12 [hydra-compile]
 
-### [hydra-misc]
+### 9.13 [hydra-misc]
 
 ## 10. Org Mode / Howm Mode
 
@@ -520,29 +522,27 @@ If there are two or more windows, it will go to another window."
 
 ## 12. フォント / 配色関係
 
-### フォント設定
-### 行間を制御する
-### [rainbow-mode]配色のリアルタイム確認
-### [volatile-highlight]コピペした領域を強調
-
-
-### カーソル行に色をつける
+### 12.1 フォント設定
+### 12.2 行間を制御する
+### 12.3 [hl-line]カーソル行に色をつける
+### 12.4 [rainbow-mode]配色のリアルタイム確認
+### 12.5 [volatile-highlight]コピペした領域を強調
 
 ## 13. ユーティリティー関数
 
-### Terminal を Emacsから呼び出す
+### 13.1 Terminal を Emacsから呼び出す
 
-### Thunar を Emacsから呼び出す
+### 13.2 Thunar を Emacsから呼び出す
 
-### mozc-tool を Emacsから呼び出す
+### 13.4 mozc-tool を Emacsから呼び出す
 
-### [eshell]
+### 13.5 [eshell]Emacsのバッファーでシェルを使う
 
-### [sudo-edit]
+### 13.6 [sudo-edit]
 
-### [restart-emacs]
+### 13.7 [restart-emacs]Emacsを再起動する
 
-### [hydra-brows-url]
+### 13.8 [hydra-brows-url]任意のURLをEmacsから開く
 
 ## 14. おわりに
 

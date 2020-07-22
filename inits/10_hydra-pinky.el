@@ -39,11 +39,12 @@ If there are two or more windows, it will go to another window."
 
 
 (leaf sequential-command-config
-  :hook (after-init-hook . sequential-command-setup-keys)
+  :hook (emacs-startup-hook . sequential-command-setup-keys)
   :bind (("C-a" . seq-home)
 	 ("C-e" . seq-end))
   :init
-  (leaf sequential-command :ensure t))
+  (leaf sequential-command
+    :el-get HKey/sequential-command))
 
 
 (leaf iflipb

@@ -93,8 +93,8 @@
   (call-interactively 'dired-unmark-all-marks)
   (call-interactively 'revert-buffer))
 
-
-(leaf dired :require t
+(leaf dired
+  :require t
   :bind (:dired-mode-map
 	 ("j" . dired-next-line)
 	 ("k" . dired-previous-line)

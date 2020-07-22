@@ -319,16 +319,6 @@ Windows10 では `Google日本語入力` を使います。WSLも含めて複数
 +-------+-----+
 ```
 
-```eval_rst
-======	=====	=======
-動作	B		A and B
-======	=====	=======
-行移動	False  False
-False	True   False
-True	True   True
-======	=====	=======
-```
-
 
 ## 6. 編集サポート
 

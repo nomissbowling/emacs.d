@@ -62,9 +62,17 @@ def setup(app):
             }, True)
     app.add_transform(AutoStructify)
 
-# extensions = [
-#     'sphinx_markdown_tables',
-# ]
+extensions = [
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.todo',
+    'sphinx.ext.ifconfig',
+    'tagging',
+    'toggle',
+    'newpage',
+    'recommonmark',
+    'sphinx-markdown-tables',
+]
+
 
 # import sphinx_fontawesome
 # extensions = ['sphinx_fontawesome']

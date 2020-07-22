@@ -428,9 +428,7 @@ er/expand-regionを実行する度にリージョンの範囲が広がってい�
 ```
 
 ### 6.2 [swiper]リージョンを使って検索
-[swiper.el](https://github.com/abo-abo/swiper) があれば isearch も helm も不要になりました。
-
-region 選択された状態でこの関数を起動すると swiper-thing-at-point として機能します。
+[swiper-thing-at-point.el](https://github.com/abo-abo/swiper) の機能で目的は果たせるが、設定例では region が選択されていないときは swiper として動作する。
 
 ``` emacs-lisp
 (defun swiper-or-region ()

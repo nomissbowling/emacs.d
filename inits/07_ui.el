@@ -23,7 +23,7 @@
     :hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode :ensure t
     :config
-    (add-hook' emacs-startup-hook 'nyan-mode)
+    (nyan-mode)
     (setq nyan-cat-face-number 4
   	  nyan-animate-nyancat t)))
 
@@ -35,8 +35,7 @@
   (leaf all-the-icons-dired :ensure t
     :hook (dired-mode-hook . all-the-icons-dired-mode))
   (leaf all-the-icons-ivy-rich :ensure t
-    :config
-    (all-the-icons-ivy-rich-mode)))
+    :config (add-hook 'emacs-startup-hook 'all-the-icons-ivy-rich-mode)))
 
 
 (leaf darkroom :ensure t

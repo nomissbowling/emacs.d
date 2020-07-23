@@ -434,6 +434,15 @@ er/expand-regionを実行する度にリージョンの範囲が広がってい�
 					  (upcase (url-hexify-string str)))))
 ```
 
+日本語文章の編集中に即、辞書登録できるように、`mozc-word-regist` も設定しています。
+
+```emacs-lisp
+(defun my:mozc-word-regist ()
+  "Run the mozc-tool in the background."
+  (interactive)
+  (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
+```
+
 
 ### 6.3 [hydra-quick-menu]
 

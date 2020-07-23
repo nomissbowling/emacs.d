@@ -17,13 +17,6 @@
   (auto-save-buffers-enhanced t))
 
 
-;; Set buffer that can not be killed
-(with-current-buffer "*scratch*"
-  (emacs-lock-mode 'kill))
-(with-current-buffer "*Messages*"
-  (emacs-lock-mode 'kill))
-
-
 ;; automatically deleted in the background buffers
 (leaf tempbuf
   :el-get emacswiki:tempbuf

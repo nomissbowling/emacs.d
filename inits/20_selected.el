@@ -8,10 +8,12 @@
   :bind (:selected-keymap
 	 (";" . comment-dwim)
 	 ("c" . clipboard-kill-ring-save)
-	 ("k" . my:clipboard-kill-region)
+	 ("K" . my:clipboard-kill-region)
 	 ("d" . my:mozc-word-regist)
 	 ("e" . eijiro)
 	 ("w" . weblio)
+	 ("k" . weblio-kobun)
+	 ("r" . weblio-ruigo)
 	 ("p" . post-number)
 	 ("m" . google-map)
 	 ("y" . yahoo)

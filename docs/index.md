@@ -389,10 +389,11 @@ er/expand-regionを実行する度にリージョンの範囲が広がってい�
 
 ### 6.2 [selected]リージョン選択時のアクションを制御
 
-- ネタ元は、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/init.html#orgbc8501cf) です。 
-
 選択領域に対するスピードコマンドです。
+
 [counsel-selected](https://github.com/takaxp/counsel-selected) は、emacsバッファーで領域を選択した後、単に "h" と入力すると、コマンドメニューがポップアップ表示されます。`activate-mark-hook` は、日本語IMEが有効な時にもシングルキーで機能するためのものみたいですね。
+
+- ネタ元は、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/init.html#orgbc8501cf) です。 感謝！
 
 ```emacs-lisp
 (leaf selected :ensure t

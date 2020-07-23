@@ -29,7 +29,11 @@
 
 ;; A tomatically insert pairs
 (leaf smartparens :ensure t
-  :config (smartparens-global-mode))
+  :config
+  (smartparens-global-mode)
+  (sp-pair "`" nil :actions :rem)
+  (sp-pair "'" nil :actions :rem)
+  (sp-pair "[" nil :actions :rem))
 
 
 ;; Keeps code always indented
@@ -46,7 +50,7 @@
 
 ;; Highlight brackets according to their depth
 (leaf rainbow-delimiters :ensure t
-  :config (rainbow-delimiters-mode))
+  :hook (prog-mode-hook . rainbow-delimiters-mode))
 
 
 ;; Colorize color names in buffers
@@ -56,8 +60,8 @@
 
 ;; Highlight some operations
 (leaf volatile-highlights :ensure t
+  :hook (emacs-startup-hook . volatile-highlights-mode)
   :config
-  (volatile-highlights-mode)
   (with-no-warnings
     (when (fboundp 'pulse-momentary-highlight-region)
       (defun my-vhl-pulse (beg end &optional _buf face)

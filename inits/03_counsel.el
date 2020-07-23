@@ -14,7 +14,7 @@ If the region isn't selected, `swiper' with migemo."
 
 
 (defun my:ivy-migemo-re-builder (str)
-  "Own ivy-migemo-re-build for swiper."
+  "Own ivy-migemo-re-build for swiper argument is STR."
   (let* ((sep " \\|\\^\\|\\.\\|\\*")
 	 (splitted (--map (s-join "" it)
 			  (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
@@ -46,7 +46,7 @@ If the region isn't selected, `swiper' with migemo."
 
 
 (defun select-counsel-command ()
-  "Narrow the only counsel-command in M-x."
+  "Narrow the only counsel-command in `M-x'."
   (interactive)
   (counsel-M-x "^counsel "))
 

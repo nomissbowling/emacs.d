@@ -5,12 +5,14 @@
 ;; (setq debug-on-error t)
 
 (leaf migemo
+  :ensure t
   :if (executable-find "cmigemo")
   :config
   (setq migemo-command (executable-find "cmigemo")
 	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
   (autoload 'migemo-init "migemo" nil t)
   (migemo-init))
+
 
 
 (leaf imenu-list :ensure t

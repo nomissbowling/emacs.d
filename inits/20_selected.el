@@ -31,7 +31,7 @@
 
 (leaf *user-search-function
   :init
-  ;; weblio
+  ;; Weblio
   (defun weblio (str)
     "Search weblio."
     (interactive (list
@@ -39,7 +39,7 @@
     (browse-url (format "http://www.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
 
-  ;; 古文
+  ;; Kobun
   (defun weblio-kobun (str)
     "Search weblio kobun."
     (interactive (list
@@ -47,7 +47,7 @@
     (browse-url (format "https://kobun.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
 
-  ;; 類語
+  ;; Ruigo
   (defun weblio-ruigo (str)
     "Search weblio ruigo."
     (interactive (list
@@ -55,7 +55,7 @@
     (browse-url (format "https://thesaurus.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
 
-  ;; 英辞郎
+  ;; Eijiro
   (defun eijiro (str)
     "Search eijiro-web."
     (interactive (list
@@ -79,7 +79,7 @@
     (browse-url (format "http://www.google.com/search?hl=ja&q=%s/"
 			(upcase (url-hexify-string str)))))
 
-  ;; Google Map
+  ;; Google map
   (defun google-map (str)
     "Serach google-map."
     (interactive (list
@@ -87,7 +87,7 @@
     (browse-url (format "http://maps.google.co.jp/maps?hl=ja&q=%s/"
 			(upcase (url-hexify-string str)))))
 
-  ;; Search Yahoo
+  ;; Yahoo
   (defun yahoo (str)
     "Search yahoo."
     (interactive (list
@@ -96,13 +96,13 @@
 			(upcase (url-hexify-string str)))))
 
   (defun region-or-read-string (prompt &optional initial history default inherit)
-    "PROMPT INITIAL HISTORY DEFAULT INHERIT are arguments."
+    "If region is specified, get that string, otherwise call `read-string'."
     (if (not (region-active-p))
-	(read-string prompt initial history default inherit)
+  	(read-string prompt initial history default inherit)
       (prog1
-	  (buffer-substring-no-properties (region-beginning) (region-end))
-	(deactivate-mark)
-	(message "")))))
+  	  (buffer-substring-no-properties (region-beginning) (region-end))
+  	(deactivate-mark)
+  	(message "")))))
 
 
 ;; Local Variables:

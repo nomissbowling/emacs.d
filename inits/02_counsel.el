@@ -25,7 +25,6 @@ If the region isn't selected, `swiper' with migemo."
 		      splitted))))
 
 (setq ivy-re-builders-alist '((t . ivy--regex-plus)
-			      (counsel-web . my:ivy-migemo-re-builder)
 			      (counsel-rg . my:ivy-migemo-re-builder)
 			      (swiper . my:ivy-migemo-re-builder)))
 
@@ -109,13 +108,6 @@ If the region isn't selected, `swiper' with migemo."
       (tramp-cleanup-all-connections)
       (counsel-tramp-quit)
       (message "Tramp Quit!"))))
-
-
-(leaf counsel-web :ensure t
-  :bind ("M-s" . counsel-web-suggest)
-  :config
-  (setq counsel-web-search-action #'browse-url
-	counsel-web-engine 'google))
 
 
 (leaf counsel-css :ensure t

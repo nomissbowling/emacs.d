@@ -11,21 +11,8 @@
     (setq input-method-function input-method-function-save)))
 
 
-(defun mozc-insert-str (str)
-  "If punctuation marks, immediately confirm."
-  (mozc-handle-event 'enter)
-  (toggle-input-method)
-  (insert str)
-  (toggle-input-method))
-(define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
-(define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-(define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
-(define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
-
-
 (leaf *user-mozc-tool
-  :bind (("<f8>" . my:mozc-word-regist)
-	 ("<f7>" . select-mozc-tool))
+  :bind ("<f7>" . select-mozc-tool)
   :init
   (defun select-mozc-tool ()
     "Select mozc tool command."
@@ -71,7 +58,18 @@
   (leaf mozc-cand-posframe :ensure t
     :require t
     :config
-    (setq mozc-candidate-style 'posframe)))
+    (setq mozc-candidate-style 'posframe))
+  :preface
+  (defun mozc-insert-str (str)
+    "If punctuation marks, immediately confirm."
+    (mozc-handle-event 'enter)
+    (toggle-input-method)
+    (insert str)
+    (toggle-input-method))
+  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
+  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！"))))
 
 
 ;; Local Variables:

@@ -110,7 +110,7 @@ alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻します。
 
-`init.el` の先頭に記述しないと効果は少ないです。元ネタは [Vincent Zhang](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
+`init.el` の先頭に記述しないと効果は少ないです。元ネタは [seagle0123](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
 
 ### 3.3 after-init-hook / emacs-startup-hook：遅延読み込み
 

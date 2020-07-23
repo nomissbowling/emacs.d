@@ -1,4 +1,4 @@
-<h1 style="text-align:center;">Minoru's Emacs Configuration</h1>
+<h1 style="text-align:center;">@minorugh Emacs Configuration</h1>
 
 ## 1. はじめに
 * [Leaf](https://github.com/conao3/leaf.el) に乗り換えたのを機に大幅に整理したので RTD にまとめました。

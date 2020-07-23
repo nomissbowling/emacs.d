@@ -10,8 +10,9 @@
 
 
 (leaf expand-region :ensure t
-  :bind (("C-@" . er/expand-region)
-	 ("C-M-@" . er/contract-region)))
+  :bind ("C-M-SPC" . er/expand-region)
+  :config
+  (push 'er/mark-outside-pairs er/try-expand-list))
 
 
 (leaf yasnippet :ensure t

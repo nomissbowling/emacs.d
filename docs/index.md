@@ -377,12 +377,13 @@ If there are two or more windows, it will go to another window."
 ## 6. 編集サポート
 
 ### 6.1 [expand-region]
-er/expand-regionを実行する度にリージョンの範囲が広がっていくというものです。
+`er/expand-region` を呼ぶと、カーソル位置を起点として前後に選択範囲を広げてくれます。2回以上呼ぶとその回数だけ賢く選択範囲が広がりますが、2回目以降は設定したキーバインドの最後の一文字を連打すればOKです。その場合、選択範囲を狭める時は - を押し， 0 を押せばリセットされます。
 
 ```emacs-lisp
 (leaf expand-region :ensure t
-  :bind (("C-@" . er/expand-region)
-		 ("C-M-@" . er/contract-region))
+  :bind ("C-M-SPC" . er/expand-region)
+  :confug
+  (push 'er/mark-outside-pairs er/try-expand-list))
 ```
 [@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) では [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) が紹介されています。
 

@@ -536,7 +536,7 @@ If the region isn't selected, `swiper'."
 ```
 
 ### 6.10 [yasnippet]
-``` emacs-lisp
+```emacs-lisp
 (leaf yasnippet :ensure t
   :bind ("<f11>" . ivy-yasnippet)
   :config
@@ -549,7 +549,7 @@ If the region isn't selected, `swiper'."
 ```
 
 ### 6.11 [google-translate]
-``` emacs-lisp
+```emacs-lisp
 (leaf google-translate :ensure t
   :bind ("C-t" . google-translate-auto)
   :config

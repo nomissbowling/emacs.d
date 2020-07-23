@@ -10,7 +10,8 @@
 
 
 (leaf expand-region :ensure t
-  :bind ("C-@" . er/expand-region))
+  :bind (("C-@" . er/expand-region)
+	 ("C-M-@" . er/contract-region)))
 
 
 (leaf yasnippet :ensure t
@@ -24,15 +25,12 @@
 
 
 (leaf prescient :ensure t
-  :config
-  (prescient-persist-mode)
+  :hook (emacs-startup-hook . prescient-persist-mode)
   :init
   (leaf company-prescient :ensure t
-    :config
-    (company-prescient-mode))
+    :hook (emacs-startuo-hook . company-prescient-mode))
   (leaf ivy-prescient :ensure t
-    :config
-    (ivy-prescient-mode)))
+    :hook (emacs-startuo-hook . ivy-prescient-mode)))
 
 
 (leaf quickrun :ensure t

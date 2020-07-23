@@ -1268,7 +1268,7 @@ If the region isn't selected, `swiper'."
 
 以上が私の init.el とその説明です。
 
-八十路も近い老骨ながら、[@masasam](https://twitter.com/SolistWork) さんや [@takaxp](https://twitter.com/takaxp) さんのご指導を得て、盲目的なパッチワークから多少なりとも自力でカスタマイズできるまでスキルを上げることができました。感謝！
+八十路も近い老骨ながら、[@masasam](https://twitter.com/SolistWork) さん、[@takaxp](https://twitter.com/takaxp) さんのご指導を得て、盲目的なパッチワークから多少なりとも自力でカスタマイズできるまでスキルを上げることができました。感謝！
 
 私の Emacsは、Webページのメンテナンスがメインで、プログラムミング・エディタというよりは、「賢くて多機能なワープロ」という存在です。ありえない…ような
 邪道キーバインドや未熟な点も多々ありますが、諸先輩に学びながら育てていきたいと願っています。

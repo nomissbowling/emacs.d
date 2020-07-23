@@ -6,7 +6,7 @@
 * init.el のシンボリックを `~/.emacs.d` に置くことで複数端末から共有しています。
 * 全てのファイルは [GitHub](https://github.com/minorugh/emacs.d) に公開しています。
 * 設定並びに本ドキュメントは、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事から多くを吸収した模倣版です。
-本家と重複する説明は省き、執筆用途にカスタマイズしたポイントを補足説明ます。
+本家と重複する説明は省き、執筆用途にカスタマイズしたポイントのみ補足説明します。
 
 ## 2. ディレクトリ構成
 

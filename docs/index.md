@@ -1268,8 +1268,8 @@ If the region isn't selected, `swiper'."
 
 以上が私の init.el とその説明です。
 
-私の Emacs は執筆とWebページのメンテナンス用に使っていて、どちらかといえば「賢くて多機能なワープロ」という存在です。ありえない…ような
-邪道キーバインドをはじめ未熟な点も多々ありますが、諸先輩に学びながら育てていきたいと願っています。
+私の Emacsは、執筆とWebページのメンテナンス用に使っていて、どちらかといえば「賢くて多機能なワープロ」という存在です。ありえない…ような
+邪道キーバインドをはじめ、未熟な点も多々ありますが諸先輩に学びながら育てていきたいと願っています。
 
 <div style="flort:left">
 &ensp;<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ .Permalink }}" data-via="minorugh" data-text="{{ .Params.Title }}" data-lang="jp" data-count="horizontal">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

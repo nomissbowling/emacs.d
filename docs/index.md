@@ -389,9 +389,51 @@ er/expand-regionを実行する度にリージョンの範囲が広がってい�
 
 ### 6.2 [selected]リージョン選択時のアクションを制御
 
+- ネタ元は、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/init.html#orgbc8501cf) です。 
+
+選択領域に対するスピードコマンドです。
+[counsel-selected](https://github.com/takaxp/counsel-selected) は、emacsバッファーで領域を選択した後、単に "h" と入力すると、コマンドメニューがポップアップ表示されます。`activate-mark-hook` は、日本語IMEが有効な時にもシングルキーで機能するためのものみたいですね。
+
 ```emacs-lisp
+(leaf selected :ensure t
+  :bind (:selected-keymap
+		 (";" . comment-dwim)
+		 ("c" . clipboard-kill-ring-save)
+		 ("K" . my:clipboard-kill-region)
+		 ("d" . my:mozc-word-regist)
+		 ("e" . eijiro)
+		 ("w" . weblio)
+		 ("k" . weblio-kobun)
+		 ("r" . weblio-ruigo)
+		 ("p" . post-number)
+		 ("m" . google-map)
+		 ("y" . yahoo)
+		 ("g" . google)
+		 ("h" . counsel-selected)
+		 ("q" . selected-off))
+  :config
+  (selected-global-mode)
+  :init
+  (leaf counsel-selected :el-get takaxp/counsel-selected)
+  (defun my-activate-selected ()
+    (selected-global-mode 1)
+    (selected--on) ;; must call expclitly here
+    (remove-hook 'activate-mark-hook #'my-activate-selected))
+  (add-hook 'activate-mark-hook #'my-activate-selected))
 
 ```
+
+検索結果を browse-url で表示させるコマンドです。検索urlのフォーマとさえ分かれば、お好みのマイコマンドを作成で済ます。以下は、Webkio串刺し検索の例です。
+
+```emacs-lisp
+(defun weblio (str)
+  "Search weblio."
+  (interactive (list
+				(region-or-read-string "Weblio: ")))
+  (browse-url (format "http://www.weblio.jp/content/%s"
+					  (upcase (url-hexify-string str)))))
+```
+
 
 ### 6.3 [hydra-quick-menu]
 

@@ -379,13 +379,13 @@ If there are two or more windows, it will go to another window."
 ### 6.1 [expand-region]
 er/expand-regionを実行する度にリージョンの範囲が広がっていくというものです。
 
-[@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) では [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) が紹介されています。
-
 ```emacs-lisp
 (leaf expand-region :ensure t
   :bind (("C-@" . er/expand-region)
 		 ("C-M-@" . er/contract-region))
 ```
+[@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) では [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) が紹介されています。
+
 
 ### 6.2 [selected]リージョン選択時のアクションを制御
 

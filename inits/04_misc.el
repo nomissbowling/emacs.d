@@ -28,9 +28,9 @@
   :hook (emacs-startup-hook . prescient-persist-mode)
   :init
   (leaf company-prescient :ensure t
-    :hook (emacs-startuo-hook . company-prescient-mode))
+    :config (company-prescient-mode))
   (leaf ivy-prescient :ensure t
-    :hook (emacs-startuo-hook . ivy-prescient-mode)))
+    :config (ivy-prescient-mode)))
 
 
 (leaf quickrun :ensure t

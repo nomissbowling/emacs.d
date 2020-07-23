@@ -18,6 +18,7 @@
 	 ("m" . google-map)
 	 ("y" . yahoo)
 	 ("g" . google)
+	 ("h" . hydra-selected/body)
 	 ("l" . counsel-selected)
 	 ("q" . selected-off))
   :config
@@ -28,7 +29,21 @@
     (selected-global-mode 1)
     (selected--on) ;; must call expclitly here
     (remove-hook 'activate-mark-hook #'my-activate-selected))
-  (add-hook 'activate-mark-hook #'my-activate-selected))
+  (add-hook 'activate-mark-hook #'my-activate-selected)
+  :hydra
+  (hydra-selected
+   (:color red :hint nil)
+   "
+ 🔍 _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ost-num  _m_ap  _y_ahoo  _g_oogle  _q_uit"
+   ("e" eijiro)
+   ("w" weblio)
+   ("k" weblio-kobun)
+   ("r" weblio-ruigo)
+   ("p" post-number)
+   ("m" google-map)
+   ("y" yahoo)
+   ("g" google)
+   ("q" nil)))
 
 
 (leaf *user-search-function

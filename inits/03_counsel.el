@@ -52,7 +52,7 @@ If the region isn't selected, `swiper' with migemo."
 
 
 (leaf counsel :ensure t
-  :bind (("C-r" . swiper-thing-at-point)
+  :bind (("s-s" . swiper-thing-at-point)
 	 ("C-s" . swiper-migemo-or-region)
 	 ("C-:" . counsel-switch-buffer)
 	 ("C-x C-b" . counsel-switch-buffer)
@@ -112,7 +112,7 @@ If the region isn't selected, `swiper' with migemo."
 
 
 (leaf counsel-web :ensure t
-  :bind ("s-s" . counsel-web-suggest)
+  :bind ("M-s" . counsel-web-suggest)
   :config
   (setq counsel-web-search-action #'browse-url
 	counsel-web-engine 'google))

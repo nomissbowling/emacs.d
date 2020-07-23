@@ -11,9 +11,8 @@
 	  ("b" . company-select-previous)
 	  ("SPC" . company-select-next)
 	  ("C-d" . company-show-doc-buffer)))
-  ;; :hook (after-init-hook . global-company-mode)
+  :hook (emacs-startup-hook . global-company-mode)
   :config
-  (global-company-mode)
   (setq company-transformers '(company-sort-by-backend-importance)
 	company-minimum-prefix-length 3
 	company-selection-wrap-around t
@@ -21,7 +20,6 @@
 	company-dabbrev-downcase nil)
   :init
   (leaf company-quickhelp :ensure t
-    ;; :hook (after-init-hook . company-quickhelp-mode)
     :config
     (company-quickhelp-mode)
     (setq company-quickhelp-color-foreground "#C7C9D1")

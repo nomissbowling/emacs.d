@@ -8,6 +8,10 @@
 * 設定内容も本ドキュメントも、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/) の記事から多くを吸収した模倣版です。
 本家と重複する説明は省き、執筆用途にカスタマイズしたポイントのみ補足説明します。
 
+
+八十路も近い老骨ながら、[@masasam](https://twitter.com/SolistWork) さん、[@takaxp](https://twitter.com/takaxp) さんのご指導を得て、盲目的なパッチワークから多少なりとも自力でカスタマイズできるまでスキルを上げることができました。感謝！
+
+
 ## 2. ディレクトリ構成
 
 Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs.d` に配置しました。
@@ -1267,8 +1271,6 @@ If the region isn't selected, `swiper'."
 ## 14. おわりに
 
 以上が私の init.el とその説明です。
-
-八十路も近い老骨ながら、[@masasam](https://twitter.com/SolistWork) さん、[@takaxp](https://twitter.com/takaxp) さんのご指導を得て、盲目的なパッチワークから多少なりとも自力でカスタマイズできるまでスキルを上げることができました。感謝！
 
 私の Emacsは、Webページのメンテナンスがメインで、プログラムミング・エディタというよりは、「賢くて多機能なワープロ」という存在です。ありえない…ような
 邪道キーバインドや未熟な点も多々ありますが、諸先輩に学びながら育てていきたいと願っています。

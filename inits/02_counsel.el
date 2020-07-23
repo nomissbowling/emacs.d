@@ -1,4 +1,4 @@
-;;; 03_counsel.el --- 03_counsel.el  -*- lexical-binding: t -*-
+;;; 02_counsel.el --- 02_counsel.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -127,4 +127,4 @@ If the region isn't selected, `swiper' with migemo."
 ;; no-byte-compile: t
 ;; End:
 
-;;; 03_counsel.el ends here
+;;; 02_counsel.el ends here

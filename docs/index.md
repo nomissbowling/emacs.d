@@ -1067,18 +1067,26 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 [hydra.el](https://github.com/abo-abo/hydra) は、Emacs のキーバインド問題を解決してくれる救世主です。私はおもに８種の hydra を設定しています。それぞれを呼び出すための相関図は下記のとおりです。 
 
 ```
-┌──────────────────┐               ┌──────────────────┐ 
-│ hydra-quick-menu │ <<- crank ->> │ hydra-work-menu  │ 
-└──────────────────┘			   └──────────────────┘ 
-  │								     │					 
-  ├── hydra-compile					 └── hydra-pinky	 
-  ├── hydra-markdown
-  ├── hydra-package
-  ├── hydra-magit    <<- Dired からも呼び出せる						 					 
-  └── hydra-browse   <<- Dashboard からも呼び出せる
+┌──────────────────┐ 
+│ hydra-quick-menu │ 
+└──────────────────┘
+  ￪│   │					
+  ││   ├── hydra-compile	
+  ││   ├── hydra-markdown
+  ││   ├── hydra-package
+  ││   ├── hydra-magit    <<- Dired からも呼び出せる						 					 
+  ││   └── hydra-browse   <<- Dashboard からも呼び出せる
+  ││
+  │￬
+ ┌──────────────────┐ 
+ │ hydra-work-menu  │ 
+ └──────────────────┘ 
+   │					
+   └── hydra-pinky
 
 ```
-- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+ 
+ - [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
 - [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
 - [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el) 
 - [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el) 

@@ -400,24 +400,22 @@ If there are two or more windows, it will go to another window."
 
 ```emacs-lisp
 (leaf selected :ensure t
-  :bind (:selected-keymap
-		 (";" . comment-dwim)
-		 ("c" . clipboard-kill-ring-save)
-		 ("." . my:mozc-word-regist)
-		 ("e" . my:eijiro)
-		 ("w" . my:weblio)
-		 ("k" . my:kobun)
-		 ("r" . my:ruigo)
-		 ("p" . my:postal)
-		 ("t" . my:translate)
-		 ("m" . my:g-map)
-		 ("y" . my:yahoo)
-		 ("g" . my:google)
-		 ("l" . counsel-selected)
-		 ("?" . hydra-selected/body)
-		 ("q" . selected-off))
   :config
   (selected-global-mode)
+  (bind-key ";" 'comment-dwim selected-keymap)
+  (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
+  (bind-key "." 'my:mozc-word-regist selected-keymap)
+  (bind-key "e" 'my:eijiro selected-keymap)
+  (bind-key "w" 'my:weblio selected-keymap)
+  (bind-key "k" 'my:kobun selected-keymap)
+  (bind-key "r" 'my:ruigo selected-keymap)
+  (bind-key "p" 'my:postal selected-keymap)
+  (bind-key "t" 'my:translate selected-keymap)
+  (bind-key "m" 'my:g-map selected-keymap)
+  (bind-key "g" 'my:google selected-keymap)
+  (bind-key "l" 'counsel-selected selected-keymap)
+  (bind-key "?" 'hydra-selected/body selected-keymap)
+  (bind-key "q" 'selected-off selected-keymap)
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected)
   (defun my-activate-selected ()
@@ -425,15 +423,11 @@ If there are two or more windows, it will go to another window."
     (selected--on) ;; must call expclitly here
     (remove-hook 'activate-mark-hook #'my-activate-selected))
   (add-hook 'activate-mark-hook #'my-activate-selected)
-  (defun my:translate ()
-    "Automatically recognize and translate Japanese and English."
-    (interactive)
-    (google-translate-auto))
   :hydra
   (hydra-selected
    (:color red :hint nil)
    "
- 🔍 _t_ranslate  _g_oogle  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _l_ist  mozc:_._"
+ 🔍 _t_ranslate  _g_oogle  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _l_ist"
    ("t" my:translate)
    ("e" my:eijiro)
    ("w" my:weblio)
@@ -441,12 +435,7 @@ If there are two or more windows, it will go to another window."
    ("r" my:ruigo)
    ("p" my:postal)
    ("m" my:g-map)
-   ("y" my:yahoo)
-   ("g" my:google)
-   ("." my:mozc-word-regist)
-   (";" comment-dwim)
-   ("l" cunsel-selected)
-   ("c" clipboard-kill-ring-save)))
+   ("l" cunsel-selected)))
 
 ```
 

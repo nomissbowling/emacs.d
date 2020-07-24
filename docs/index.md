@@ -252,18 +252,17 @@ Mozcと連動してカーソルの色をカスタマイズするために [mozc-
 (leaf mozc :ensure t
   :bind* ("<hiragana-katakana>" . toggle-input-method)
   :config
-  (setq default-input-method "japanese-mozc"
-		mozc-helper-program-name "mozc_emacs_helper"
-		mozc-leim-title "♡かな")
+  (setq default-input-method "japanese-mozc")
+  (setq mozc-helper-program-name "mozc_emacs_helper")
+  (setq mozc-leim-title "♡かな")
   :init
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t
     :config
-    (setq mozc-cursor-color-alist
-		  '((direct . "#BD93F9")
-			(read-only . "#84A0C6")
-			(hiragana . "#CC3333"))))
+    (setq mozc-cursor-color-alist '((direct . "#BD93F9")
+									(read-only . "#84A0C6")
+									(hiragana . "#CC3333"))))
   (leaf mozc-cand-posframe :ensure t
     :require t
     :config

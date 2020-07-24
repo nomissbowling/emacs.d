@@ -16,7 +16,6 @@
 
 ;; Load user Functions
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(require 'user-test)
 (add-hook
  'after-init-hook
  (lambda ()

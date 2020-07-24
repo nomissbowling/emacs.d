@@ -10,7 +10,7 @@
 
 
 (leaf expand-region :ensure t
-  :bind ("C-M-SPC" . er/expand-region)
+  :bind ("C-@" . er/expand-region)
   :config
   (push 'er/mark-outside-pairs er/try-expand-list))
 

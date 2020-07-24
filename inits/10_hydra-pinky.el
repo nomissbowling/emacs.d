@@ -34,14 +34,15 @@ If there are two or more windows, it will go to another window."
   :el-get zk-phi/key-chord
   :config
   (key-chord-mode 1)
-  :chord (("df" . counsel-descbinds)
-	  ("l;" . init-loader-show-log)))
+  (key-chord-define-global "df" 'counsel-descbinds)
+  (key-chord-define-global "l;" 'init-loader-show-log))
 
 
 (leaf sequential-command-config
   :hook (emacs-startup-hook . sequential-command-setup-keys)
-  :bind (("C-a" . seq-home)
-	 ("C-e" . seq-end))
+  :config
+  (bind-key "C-a" 'seq-home)
+  (bind-key "C-e" 'seq-end)
   :init
   (leaf sequential-command
     :el-get HKey/sequential-command))
@@ -49,17 +50,18 @@ If there are two or more windows, it will go to another window."
 
 (leaf iflipb
   :ensure t
-  :bind(("M-]" . iflipb-next-buffer)
-	("M-[" . iflipb-previous-buffer))
   :config
+  (bind-key "M-]" 'iflipb-next-buffer)
+  (bind-key "M-[" 'iflipb-previous-buffer)
   (setq iflipb-wrap-around t)
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
 
 
 (leaf *hydra-pinky
-  :bind (("C-q" . other-window-or-split)
-	 ("<henkan>" . hydra-pinky/body))
-  :chord ("jk" . hydra-pinky/body)
+  :config
+  (bind-key "C-q" 'other-window-or-split)
+  (bind-key "<henkan>" 'hydra-pinky/body)
+  (key-chord-define-global "jk" 'hydra-pinky/body)
   :hydra
   (hydra-pinky
    (:color red :hint nil)

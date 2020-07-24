@@ -6,22 +6,21 @@
 
 (leaf easy-hugo :ensure t
   :bind (("C-c C-e" . easy-hugo)
-	 ("C-x p" . easy-hugo-preview)
-	 ("C-x P" . easy-hugo-publish)
-	 ("C-c d" . inseart-date)
-	 (:easy-hugo-mode-map
-	  ([tab] . easy-hugo-no-help)
-	  ("v" . easy-hugo-view-other-window)
-	  ("o" . easy-hugo-open-basedir)
-	  ("m" . asy-hugo-magit)
-	  ("r" . easy-hugo-rename)
-	  ("e" . my:edit-easy-hugo)))
-
+  	 ("C-x p" . easy-hugo-preview)
+  	 ("C-x P" . easy-hugo-publish)
+  	 ("C-c d" . inseart-date)
+  	 (:easy-hugo-mode-map
+  	  ([tab] . easy-hugo-no-help)
+  	  ("v" . easy-hugo-view-other-window)
+  	  ("o" . easy-hugo-open-basedir)
+  	  ("m" . asy-hugo-magit)
+  	  ("r" . easy-hugo-rename)
+  	  ("e" . my:edit-easy-hugo)))
   ;; Sort-publishday on startup
-  :custom
-  ((easy-hugo--sort-char-flg . nil)
-   (easy-hugo--sort-time-flg . nil)
-   (easy-hugo--sort-publishday-flg . 1))
+  :config
+  (setq easy-hugo--sort-char-flg nil)
+  (setq easy-hugo--sort-time-flg nil)
+  (setq easy-hugo--sort-publishday-flg 1)
 
   :init
   ;; Main blog (=blog1)

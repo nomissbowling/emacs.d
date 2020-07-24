@@ -392,7 +392,7 @@ If there are two or more windows, it will go to another window."
 選択領域に対するスピードコマンドです。Emacsバッファーで領域を選択した後、バインドしたと入力するとコマンドが実行されます。`activate-mark-hook` は、日本語IMEが有効な時にもシングルキーで機能するためのものみたいですね。
 元ネタは、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/init.html#orgbc8501cf) です。 感謝！
 
-[counsel-selected](https://github.com/takaxp/counsel-selected) を使うと、コマンドメニューがミニバッファーにポップアップ表示されますが、私は Hydraで Help-menuぽくしてみました。
+[counsel-selected](https://github.com/takaxp/counsel-selected) を使うと、ミニバッファーにコマンドメニューがポップアップ表示されますが、私は Hydraで Help-menuぽくしてみました。
 
 ```emacs-lisp
 (leaf selected :ensure t

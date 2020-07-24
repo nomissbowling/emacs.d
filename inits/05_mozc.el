@@ -48,6 +48,17 @@
 	mozc-helper-program-name "mozc_emacs_helper"
 	mozc-leim-title "♡かな")
   :init
+  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
+  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
+  (defun mozc-insert-str (str)
+    "If punctuation marks, immediately confirm."
+    (mozc-handle-event 'enter)
+    (toggle-input-method)
+    (insert str)
+    (toggle-input-method))
+  :preface
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t
@@ -59,18 +70,7 @@
   (leaf mozc-cand-posframe :ensure t
     :require t
     :config
-    (setq mozc-candidate-style 'posframe))
-  :preface
-  (defun mozc-insert-str (str)
-    "If punctuation marks, immediately confirm."
-    (mozc-handle-event 'enter)
-    (toggle-input-method)
-    (insert str)
-    (toggle-input-method))
-  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
-  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
-  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！"))))
+    (setq mozc-candidate-style 'posframe)))
 
 
 ;; Local Variables:

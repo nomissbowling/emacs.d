@@ -818,10 +818,8 @@ If there are two or more windows, it will go to another window."
 (defun direx:jump-to-project-directory ()
   "If in project, launch direx-project otherwise start direx."
   (interactive)
-  (let ((result
-		 (ignore-errors	(direx-project:jump-to-project-root-other-window) t)))
-    (unless result
-      (direx:jump-to-directory-other-window))))
+  (let ((result	(ignore-errors (direx-project:jump-to-project-root-other-window) t)))
+    (unless result (direx:jump-to-directory-other-window))))
 
 (defun direx:open-file ()
   "In direx, open the file in associated application."

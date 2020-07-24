@@ -847,7 +847,7 @@ If there are two or more windows, it will go to another window."
 		  ("<f10>" . quit-window)))
   :config
   (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
-  (push '(direx:direx-mode :position left :width 25	:dedicated t)
+  (push '(direx:direx-mode :position left :width 25 :dedicated t)
 		popwin:special-display-config))
 ```
 

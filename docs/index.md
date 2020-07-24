@@ -493,7 +493,7 @@ If there are two or more windows, it will go to another window."
   (add-hook
    'yatex-mode-hook
    (lambda()
-     (leaf yatexprc :require t)
+     (require 'yatexprc)
      (bind-key "M-c" 'YaTeX-typeset-buffer)	;; Type set
      (bind-key "M-l" 'YaTeX-lpr))))		;; Open PDF file
 ```

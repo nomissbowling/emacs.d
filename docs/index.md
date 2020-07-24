@@ -165,14 +165,11 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 ```emacs-lisp
 ;; Custom dashboard
 (leaf dashboard :ensure t
-  :bind (("<home>" . open-dashboard)
-		 (:dashboard-mode-map
-		  ("<home>" . quit-dashboard)))
   :hook (after-init-hook . dashboard-setup-startup-hook)
   :config
-  ;;  ...
+  (bind-key "<home>" 'open-dashboard)
+  (bind-key "<home>" 'quit-dashboard dashboard-mode-map)
   ;;  （中略）
-  ;;  ...
   (defvar dashboard-recover-layout-p nil
     "Wether recovers the layout.")
 

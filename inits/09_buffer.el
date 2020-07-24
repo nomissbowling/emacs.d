@@ -38,12 +38,9 @@
 
 ;; Treat undo history as a tree
 (leaf undo-tree :ensure t
-  :bind* (("C-_" . undo-tree-undo)
-	  ("C-\\" . undo-tree-undo)
-	  ("C-/" . undo-tree-redo)
-	  ("C-x u" . undo-tree-visualize))
-  :hook ((prog-mode-hook . undo-tree-mode)
-	 (text-mode-hook . undo-tree-mode))
+  :hook
+  (prog-mode-hook . undo-tree-mode)
+  (text-mode-hook . undo-tree-mode)
   :custom
   ((undo-tree-visualizer-timestamps . t)
    (undo-tree-visualizer-diff . t)
@@ -52,7 +49,11 @@
    (undo-tree-history-directory-alist
     . `(("." . ,(concat user-emacs-directory "undo-tree-hist/")))))
   :config
-  ;; FIXME: `undo-tree-visualizer-diff' is a local variable in *undo-tree* buffer.
+  (bind-key* "C-_" 'undo-tree-undo)
+  (bind-key* "C-\\" 'undo-tree-undo)
+  (bind-key* "C-/" 'undo-tree-redo)
+  (bind-key* "C-x u" 'undo-tree-visualize)
+  :init
   (defun undo-tree-visualizer-show-diff (&optional node)
     ;; show visualizer diff display
     (setq-local undo-tree-visualizer-diff t)

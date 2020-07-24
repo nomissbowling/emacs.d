@@ -552,11 +552,11 @@ If there are two or more windows, it will go to another window."
   (emacs-lock-mode 'kill))
 ```
 
-### 7.2 [migemo]ローマ字入力で日本語を検索
+### 7.2 [swiper-migemo]ローマ字入力で日本語を検索
+
 
 ```emacs-lisp
 (defun my:ivy-migemo-re-builder (str)
-  "Own ivy-migemo-re-build for swiper."
   (let* ((sep " \\|\\^\\|\\.\\|\\*")
 		 (splitted
 		  (--map (s-join "" it)
@@ -571,21 +571,8 @@ If there are two or more windows, it will go to another window."
 
 (setq ivy-re-builders-alist
 	  '((t . ivy--regex-plus)
-		(counsel-web . my:ivy-migemo-re-builder)
-		(counsel-rg . my:ivy-migemo-re-builder)
 		(swiper . my:ivy-migemo-re-builder)))
 ```
-
-
-### 7.3 [beacon]
-
-```emacs-lisp
-(leaf beacon :ensure t
-  :config
-  (beacon-mode)
-  (setq beacon-color "yellow"))
-```
-
 
 ## 8. 履歴 / ファイル管理
 

@@ -8,8 +8,8 @@
   :ensure t
   :if (executable-find "cmigemo")
   :config
-  (setq migemo-command (executable-find "cmigemo")
-	migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
+  (setq migemo-command (executable-find "cmigemo"))
+  (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
   (autoload 'migemo-init "migemo" nil t)
   (migemo-init))
 
@@ -18,9 +18,9 @@
 (leaf imenu-list :ensure t
   :bind (("<f2>" . imenu-list-smart-toggle))
   :config
-  (setq imenu-list-size 30
-	imenu-list-position 'left
-	imenu-list-focus-after-activation t))
+  (setq imenu-list-size 30)
+  (setq imenu-list-position 'left)
+  (setq imenu-list-focus-after-activation t))
 
 
 (leaf browse-at-remote :ensure t
@@ -31,13 +31,13 @@
 ;; ps-print-buffer
 (leaf ps-print :ensure nil
   :config
-  (setq ps-paper-type 'a4
-	ps-font-size 9
-	ps-printer-name nil
-	ps-print-header nil
-	ps-show-n-of-n t
-	ps-line-number t
-	ps-print-footer nil))
+  (setq ps-paper-type 'a4)
+  (setq ps-font-size 9)
+  (setq ps-printer-name nil)
+  (setq ps-print-header nil)
+  (setq ps-show-n-of-n t)
+  (setq ps-line-number t)
+  (setq ps-print-footer nil))
 
 
 ;; pdf out from emacs

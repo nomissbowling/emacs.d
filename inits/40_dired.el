@@ -93,38 +93,36 @@
   (call-interactively 'dired-unmark-all-marks)
   (call-interactively 'revert-buffer))
 
-(leaf dired
-  :require t
-  :bind (:dired-mode-map
-	 ("j" . dired-next-line)
-	 ("k" . dired-previous-line)
-	 ("<left>" . dired-up-alternate-directory)
-	 ("<right>" . dired-open-in-accordance-with-situation)
-	 ("RET" . dired-open-in-accordance-with-situation)
-	 ("<SPC>" . my:dired-toggle-mark)
-	 ("C-g" . my:dired-unmark-all)
-	 ("r" . wdired-change-to-wdired-mode)
-	 ("o" . dired-open-file)
-	 ("[" . dired-hide-details-mode)
-	 ("a" . toggle-dired-listing-switches)
-	 ("q" . dired-dwim-quit-window)
-	 ("t" . counsel-tramp)
-	 ("s" . sudo-edit)
-	 ("." . magit-status))
+(leaf dired :require t
   :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
-  :custom
+  :config
+  (bind-key "j" 'dired-next-line dired-mode-map)
+  (bind-key "k" 'dired-previous-line dired-mode-map)
+  (bind-key "<left>" 'dired-up-alternate-directory dired-mode-map)
+  (bind-key "<right>" 'dired-open-in-accordance-with-situation dired-mode-map)
+  (bind-key "RET"'dired-open-in-accordance-with-situation dired-mode-map)
+  (bind-key "SPC" 'my:dired-toggle-mark dired-mode-map)
+  (bind-key "C-g" 'my:dired-unmark-all dired-mode-map)
+  (bind-key "r" 'wdired-change-to-wdired-mode dired-mode-map)
+  (bind-key "o" 'dired-open-file dired-mode-map)
+  (bind-key "[" 'dired-hide-details-mode dired-mode-map)
+  (bind-key "a" 'toggle-dired-listing-switches dired-mode-map)
+  (bind-key "q" 'dired-dwim-quit-window dired-mode-map)
+  (bind-key "t" 'counsel-tramp dired-mode-map)
+  (bind-key "s" 'sudo-edit dired-mode-map)
+  (bind-key "." 'magit-status dired-mode-map)
   ;; Use dired as 2-screen filer
-  (dired-dwim-target . t)
+  (setq dired-dwim-target t)
   ;; Always to perform the delete/copy of directories recursively
-  (dired-recursive-copies . 'always)
-  (dired-recursive-deletes . 'always)
-  (dired-listing-switches . "-lgGhF")
+  (setq dired-recursive-copies 'always)
+  (setq dired-recursive-deletes 'always)
+  (setq dired-listing-switches "-lgGhF")
   :init
   (leaf wdired :require t)
   (leaf dired-x :require t
     :config
-    (setq dired-omit-mode t
-	  dired-omit-files "^\\desktop.ini"))
+    (setq dired-omit-mode t)
+    (setq dired-omit-files "^\\desktop.ini"))
   ;; Show directory first
   (leaf ls-lisp :require t
     :config

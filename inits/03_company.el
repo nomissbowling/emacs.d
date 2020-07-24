@@ -4,20 +4,19 @@
 ;; (setq debug-on-error t)
 
 (leaf company :ensure t
-  :bind (("C-<tab>" . company-complete)
-	 (:company-active-map
-	  ("<tab>" . company-complete-common-or-cycle)
-	  ("<backtab>" . company-select-previous)
-	  ("b" . company-select-previous)
-	  ("SPC" . company-select-next)
-	  ("C-d" . company-show-doc-buffer)))
   :hook (emacs-startup-hook . global-company-mode)
   :config
-  (setq company-transformers '(company-sort-by-backend-importance)
-	company-minimum-prefix-length 3
-	company-selection-wrap-around t
-	completion-ignore-case t
-	company-dabbrev-downcase nil)
+  (bind-key "C-<tab>" 'company-complete)
+  (define-key company-active-map "<tab>" 'company-complete-common-or-cycle)
+  (define-key company-active-map "<backtab>" 'company-select-previous)
+  (define-key company-active-map "b" 'company-select-previous)
+  (define-key company-active-map "SPC" 'company-select-next)
+  (define-key company-active-map "C-d" 'company-show-doc-buffer)
+  (setq company-transformers '(company-sort-by-backend-importance))
+  (setq company-minimum-prefix-length 3)
+  (setq company-selection-wrap-around t)
+  (setq completion-ignore-case t)
+  (setq company-dabbrev-downcase nil)
   :init
   (leaf company-quickhelp :ensure t
     :config

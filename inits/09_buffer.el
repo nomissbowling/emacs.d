@@ -20,9 +20,10 @@
 ;; automatically deleted in the background buffers
 (leaf tempbuf
   :el-get emacswiki:tempbuf
-  :hook ((dired-mode-hook . turn-on-tempbuf-mode)
-	 (magit-mode-hook . turn-on-tempbuf-mode)
-	 (compilation-mode-hook . turn-on-tempbuf-mode))
+  :hook
+  (dired-mode-hook . turn-on-tempbuf-mode)
+  (magit-mode-hook . turn-on-tempbuf-mode)
+  (compilation-mode-hook . turn-on-tempbuf-mode)
   :config
   (setq tempbuf-kill-message nil))
 
@@ -31,8 +32,8 @@
 (leaf undohist :ensure t
   :require t
   :config
-  (setq undohist-directory "~/Dropbox/dotfiles/undohist"
-	undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG"))
+  (setq undohist-directory "~/Dropbox/dotfiles/undohist")
+  (setq undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG"))
   (undohist-initialize))
 
 
@@ -73,9 +74,9 @@
 
 
 (leaf *user-buffer-functions
-  :bind (([S-return] . toggle-scratch)
-	 ("M-/" . kill-buffer))
-  :init
+  :config
+  (bind-key [S-return] 'toggle-scratch)
+  (bind-key "M-/" 'kill-buffer)
   (defun toggle-scratch ()
     "Toggle current buffer and *scratch* buffer."
     (interactive)

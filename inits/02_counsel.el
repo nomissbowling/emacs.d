@@ -51,35 +51,36 @@ If the region isn't selected, `swiper' with migemo."
 
 
 (leaf counsel :ensure t
-  :bind (("s-s" . swiper-thing-at-point)
-	 ("C-s" . swiper-migemo-or-region)
-	 ("C-:" . counsel-switch-buffer)
-	 ("C-x C-b" . counsel-switch-buffer)
-	 ("C-x b" . counsel-switch-buffer)
-	 ("M-x" . counsel-M-x)
-	 ("M-y" . counsel-yank-pop)
-	 ("s-a" . counsel-linux-app)
-	 ("C-x C-f" . counsel-find-file)
-	 ("C-c k" . counsel-ag)
-	 ("C-c w" . counsel-rg)
-	 ("C-c f" . counsel-projectile-find-file)
-	 ("C-c g" . counsel-git)
-	 ("C-c j" . counsel-git-grep)
-	 ("C-c i" . counsel-imenu)
-	 ("C-c t" . counsel-tramp)
-	 ("C-c C-r" . counsel-recentf)
-	 ([remap dired] . counsel-dired)
-	 ("<f6>" . select-counsel-command))
   :hook
-  ((ivy-mode-hook . counsel-mode)
-   (css-mode-hook . counsel-css-imenu-setup))
+  (ivy-mode-hook . counsel-mode)
+  (css-mode-hook . counsel-css-imenu-setup)
   :config
   (ivy-mode)
-  (setq ivy-use-virtual-buffers t
-	ivy-use-selectable-prompt t
-	enable-recursive-minibuffers t
-	xref-show-xrefs-function #'ivy-xref-show-xrefs
-	counsel-yank-pop-separator
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-use-selectable-prompt t)
+  (setq enable-recursive-minibuffers t)
+  (bind-key "s-s" 'swiper-thing-at-point)
+  (bind-key "C-s" 'swiper-migemo-or-region)
+  (bind-key "C-:" 'counsel-switch-buffer)
+  (bind-key "C-x C-b" 'counsel-switch-buffer)
+  (bind-key "C-x b" 'counsel-switch-buffer)
+  (bind-key "M-x" 'counsel-M-x)
+  (bind-key "M-y" 'counsel-yank-pop)
+  (bind-key "s-a" 'counsel-linux-app)
+  (bind-key "C-x C-f" 'counsel-find-file)
+  (bind-key "C-c k" 'counsel-ag)
+  (bind-key "C-c w" 'counsel-rg)
+  (bind-key "C-c f" 'counsel-projectile-find-file)
+  (bind-key "C-c g" 'counsel-git)
+  (bind-key "C-c j" 'counsel-git-grep)
+  (bind-key "C-c i" 'counsel-imenu)
+  (bind-key "C-c t" 'counsel-tramp)
+  (bind-key "C-c C-r" 'counsel-recentf)
+  (bind-key [remap dired] 'counsel-dired)
+  (bind-key "<f6>" 'select-counsel-command)
+  (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
+  (setq counsel-yank-pop-separator
 	"\n------------------------------------------------------------\n"
 	ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
   :init
@@ -90,11 +91,11 @@ If the region isn't selected, `swiper' with migemo."
 
 
 (leaf counsel-tramp :ensure t
-  :bind (("C-c t" . counsel-tramp)
-	 ("C-c q" . my:tramp-quit))
   :config
-  (setq tramp-default-method "scp"
-	counsel-tramp-custom-connections
+  (bind-key "C-c t" 'counsel-tramp)
+  (bind-key "C-c q" 'my:tramp-quit)
+  (setq tramp-default-method "scp")
+  (setq counsel-tramp-custom-connections
 	'(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
   (add-hook 'counsel-tramp-pre-command-hook
 	    '(lambda () (projectile-mode 0)))

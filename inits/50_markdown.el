@@ -65,13 +65,13 @@
   (leaf livedown
     :el-get  shime/emacs-livedown
     :require t
-    :bind (("C-c C-p" . livedown-preview)
-	   ("C-c C-k" . livedown-kill))
     :config
-    (setq livedown-autostart nil
-	  livedown-open t
-	  livedown-port 1337
-	  livedown-browser nil)))
+    (bind-key "C-c C-p" 'livedown-preview)
+    (bind-key "C-c C-k" 'livedown-kill)
+    (setq livedown-autostart nil)
+    (setq livedown-open t)
+    (setq livedown-port 1337)
+    (setq livedown-browser nil)))
 
 
 ;; Local Variables:

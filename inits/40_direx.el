@@ -26,13 +26,13 @@
 
 (leaf direx :ensure t
   :after popwin
-  :bind (("<f10>" . direx:jump-to-project-directory)
-	 ("C-x C-j" . direx:jump-to-project-directory)
-	 (:direx:direx-mode-map
-	  ("o" . direx:open-file)
-	  ("SPC" . direx:find-item-other-window)
-	  ("<f10>" . quit-window)))
+  :require t
   :config
+  (bind-key "<f10>" 'direx:jump-to-project-directory)
+  (bind-key "C-x C-j" 'direx:jump-to-project-directory)
+  (define-key direx:direx-mode-map "o" 'direx:open-file)
+  (define-key direx:direx-mode-map "SPC" 'direx:find-item-other-window)
+  (define-key direx:direx-mode-map "<f10>" 'quit-window)
   (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
   (push '(direx:direx-mode :position left :width 25 :dedicated t)
 	popwin:special-display-config))

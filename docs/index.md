@@ -1059,23 +1059,50 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
    ("<muhenkan>" nil)
    ("." nil)))
 
+```
+## 10. Hydra
+
+多種雑多なユーザー関数を作るとバインドするべきキーが足らなくなりますし、それ以前にとても覚えきれません。
+
+[hydra.el](https://github.com/abo-abo/hydra) は、Emacs のキーバインド問題を解決してくれる救世主です。私はおもに８種の hydra を設定しています。それぞれを呼び出すための相関図は下記のとおりです。 
 
 ```
-## 10. Org Mode / Howm Mode
+┌──────────────────┐               ┌──────────────────┐ 
+│ hydra-quick-menu │ <<- crank ->> │ hydra-work-menu  │ 
+└──────────────────┘			   └──────────────────┘ 
+  │								     │					 
+  ├── hydra-compile					 └── hydra-pinky	 
+  ├── hydra-markdown
+  ├── hydra-package
+  ├── hydra-magit    <<- Dired からも呼び出せる						 					 
+  └── hydra-browse   <<- Dashboard からも呼び出せる
+
+```
+- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+- [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+- [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el) 
+- [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el) 
+- [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el) 
+- [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el) 
+- [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
+- [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
+
+
+## 11. Org Mode / Howm Mode
 
 ```emacs-lisp
 
 ```
 
-## 11. Hugo
+## 12. Hugo
 
 ```emacs-lisp
 
 ```
 
-## 12. フォント / 配色関係
+## 13. フォント / 配色関係
 
-### 12.1 フォント設定
+### 13.1 フォント設定
 
 ```emacs-lisp
 (add-to-list 'default-frame-alist '(font . "Cica-18"))
@@ -1083,15 +1110,15 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 (when (string-match "x250" (shell-command-to-string "uname -n"))
   (add-to-list 'default-frame-alist '(font . "Cica-15")))
 ```
-### 12.2 [volatile-highlight]コピペした領域を強調
+### 13.2 [volatile-highlight]コピペした領域を強調
 
 ```emacs-lisp
 
 ```
 
-## 13. ユーティリティー関数
+## 14. ユーティリティー関数
 
-### 13.1 Terminal を Emacsから呼び出す
+### 14.1 Terminal を Emacsから呼び出す
 
 ```emacs-lisp
 (defun term-current-dir-open ()
@@ -1102,7 +1129,7 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 (bind-key "<f4>" 'term-current-dir-open)
 ```
 
-### 13.2 Thunar を Emacsから呼び出す
+### 14.2 Thunar を Emacsから呼び出す
 
 ```emacs-lisp
 (defun filer-current-dir-open ()
@@ -1113,7 +1140,7 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 
 ```
 
-### 13.7 [restart-emacs]Emacsを再起動する
+### 15.7 [restart-emacs]Emacsを再起動する
 `C-x C-c` は、デフォルトで `(save-buffers-kill-emacs)` に割り当てられていますが、Emacsの再起動にリバインドしました。
 
 ```emacs-lisp
@@ -1122,7 +1149,7 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 
 ```
 
-## 14. おわりに
+## 16. おわりに
 
 以上が私の init.el とその説明です。
 

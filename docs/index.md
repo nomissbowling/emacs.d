@@ -317,9 +317,9 @@ If there are two or more windows, it will go to another window."
 ```emacs-lisp
 (leaf iflipb
   :ensure t
-  :bind(("M-]" . iflipb-next-buffer)
-		("M-[" . iflipb-previous-buffer))
   :config
+  (bind-key "M-]" 'iflipb-next-buffer)
+  (bind-key "M-[" 'iflipb-previous-buffer)
   (setq iflipb-wrap-around t)
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
@@ -343,8 +343,9 @@ If there are two or more windows, it will go to another window."
 ```emacs-lisp
 (leaf sequential-command-config
   :hook (emacs-startup-hook . sequential-command-setup-keys)
-  :bind (("C-a" . seq-home)
-		 ("C-e" . seq-end))
+  :config
+  (bind-key "C-a" 'seq-home)
+  (bind-key "C-e" 'seq-end)
   :init
   (leaf sequential-command
 	:el-get HKey/sequential-command))

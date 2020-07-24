@@ -78,22 +78,22 @@
     (browse-url (format "http://eow.alc.co.jp/%s/UTF-8/"
 			(upcase (url-hexify-string str)))))
 
-  ;; Post number
+  ;; Postal code
   (defun my:postal (str)
     (interactive (list (region-or-read-string nil)))
-    (browse-url (format "https://postcode.goo.ne.jp/search/q/%s/"
+    (browse-url (format "https://postcode.goo.ne.jp/search/q/%s"
 			(upcase (url-hexify-string str)))))
 
   ;; Google
   (defun my:google (str)
     (interactive (list (region-or-read-string nil)))
-    (browse-url (format "http://www.google.com/search?hl=ja&q=%s/"
+    (browse-url (format "http://www.google.com/search?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
 
   ;; Google map
   (defun my:g-map (str)
     (interactive (list (region-or-read-string nil)))
-    (browse-url (format "http://maps.google.co.jp/maps?hl=ja&q=%s/"
+    (browse-url (format "http://maps.google.co.jp/maps?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
 
   (defun region-or-read-string (prompt &optional initial history default inherit)

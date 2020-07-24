@@ -7,7 +7,6 @@
 (leaf selected :ensure t
   :config
   (selected-global-mode)
-  (selected-global-mode)
   (define-key selected-keymap ";" 'comment-dwim )
   (define-key selected-keymap "c" 'clipboard-kill-ring-save)
   (define-key selected-keymap "." 'my:mozc-word-regist)

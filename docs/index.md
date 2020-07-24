@@ -643,6 +643,7 @@ rm *.au* *.dv* *.lo*
   (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
   (push '(direx:direx-mode :position left :width 25 :dedicated t)
 		popwin:special-display-config))
+
 ```
 
 

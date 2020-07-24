@@ -400,27 +400,47 @@ If there are two or more windows, it will go to another window."
   :bind (:selected-keymap
 		 (";" . comment-dwim)
 		 ("c" . clipboard-kill-ring-save)
-		 ("K" . my:clipboard-kill-region)
-		 ("d" . my:mozc-word-regist)
-		 ("e" . eijiro)
-		 ("w" . weblio)
-		 ("k" . weblio-kobun)
-		 ("r" . weblio-ruigo)
-		 ("p" . post-number)
-		 ("m" . google-map)
-		 ("y" . yahoo)
-		 ("g" . google)
-		 ("h" . counsel-selected)
+		 ("j" . my:mozc-word-regist)
+		 ("e" . my:eijiro)
+		 ("w" . my:weblio)
+		 ("k" . my:kobun)
+		 ("r" . my:ruigo)
+		 ("p" . my:post-num)
+		 ("t" . my:translate)
+		 ("m" . my:g-map)
+		 ("y" . my:yahoo)
+		 ("g" . my:google)
+		 ("?" . hydra-selected/body)
 		 ("q" . selected-off))
   :config
   (selected-global-mode)
   :init
-  (leaf counsel-selected :el-get takaxp/counsel-selected)
   (defun my-activate-selected ()
     (selected-global-mode 1)
     (selected--on) ;; must call expclitly here
     (remove-hook 'activate-mark-hook #'my-activate-selected))
-  (add-hook 'activate-mark-hook #'my-activate-selected))
+  (add-hook 'activate-mark-hook #'my-activate-selected)
+  (defun my:translate ()
+    "Hoge."
+    (interactive)
+    (google-translate-auto))
+  :hydra
+  (hydra-selected
+   (:color red :hint nil)
+   "
+ 🔍 _t_ranslate  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ost-num  google-_m_ap  _y_ahoo  _g_oogle 🐾 _c_lipboard  mozc._j_  comment_;_"
+   ("t" my:translate)
+   ("e" my:eijiro)
+   ("w" my:weblio)
+   ("k" my:kobun)
+   ("r" my:ruigo)
+   ("p" my:post-num)
+   ("m" my:g-map)
+   ("y" my:yahoo)
+   ("g" my:google)
+   ("j" my:mozc-word-regist)
+   (";" comment-dwim)
+   ("c" clipboard-kill-ring-save)))
 
 ```
 

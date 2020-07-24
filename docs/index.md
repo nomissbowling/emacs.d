@@ -446,7 +446,7 @@ If there are two or more windows, it will go to another window."
 
 ```
 
-検索結果を browse-url で表示させるユーザーコマンドは、検索urlのフォーマとさえ分かれば、パッケージツールに頼らずともお好みのマイコマンドを作成できます。以下は、Webkio串刺し検索の例です。
+検索結果を browse-url で表示させるユーザーコマンドは、検索urlのフォーマとさえ解れば、パッケージツールに頼らずともお好みのマイコマンドを作成できます。以下は、Webkio串刺し検索の例です。
 
 ```emacs-lisp
 (defun weblio (str)

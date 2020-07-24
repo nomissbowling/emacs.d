@@ -899,34 +899,17 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
   (interactive)
   (let ((filename (buffer-file-name (current-buffer))))
     (shell-command-to-string
-     (concat "pandoc "
-			 filename
-			 " -f markdown -t html5 -o "
-			 (file-name-sans-extension filename)
-			 ".pdf"))
+     (concat
+	  "pandoc "
+	  filename
+	  " -f markdown -t html5 -o "
+	  (file-name-sans-extension filename) ".pdf"))
     (shell-command-to-string
-     (concat "evince "
-			 (file-name-sans-extension filename)
-			 ".pdf"))))
+     (concat
+	  "evince "
+	  (file-name-sans-extension filename) ".pdf"))))
 ```
 
-
-```emacs-lisp
-(defun md2pdf ()
-  "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"
-  (interactive)
-  (let ((filename (buffer-file-name (current-buffer))))
-    (shell-command-to-string
-     (concat "pandoc "
-			 filename
-			 " -f markdown -t html5 -o "
-			 (file-name-sans-extension filename)
-			 ".pdf"))
-    (shell-command-to-string
-     (concat "evince "
-			 (file-name-sans-extension filename)
-			 ".pdf"))))
-```
 
 ```emacs-lisp
 (defun md2docx ()
@@ -934,16 +917,16 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
   (interactive)
   (let ((filename (buffer-file-name (current-buffer))))
 	(shell-command-to-string
-	 (concat "pandoc "
-			 filename
-			 " -t docx -o "
-			 (file-name-sans-extension filename)
-			 ;; ".docx -V mainfont=IPAPGothic -V fontsize=16pt --toc --highlight-style=zenburn"))
-			 ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
+	 (concat
+	  "pandoc "
+	  filename
+	  " -t docx -o "
+	  (file-name-sans-extension filename)
+	  ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
 	(shell-command-to-string
-	 (concat "xdg-open "
-			 (file-name-sans-extension filename)
-			 ".docx"))))
+	 (concat
+	  "xdg-open "
+	  (file-name-sans-extension filename) ".docx"))))
 ```
 
 ## 10. Hydra
@@ -954,7 +937,7 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 私はおもに8種の hydra を設定しています。それぞれを呼び出すための相関図は下記のとおりです。
 
 ```
-┌──────────────────┐ 
+┌──────────────────┐
 │ hydra-work-menu  │ ワークテーブル分岐
 └──────────────────┘
 ￬￪ 相互に行き来できる

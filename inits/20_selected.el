@@ -18,7 +18,7 @@
 	 ("m" . my:g-map)
 	 ("y" . my:yahoo)
 	 ("g" . my:google)
-	 ("." . hydra-selected/body)
+	 ("?" . hydra-selected/body)
 	 ("q" . selected-off))
   :config
   (selected-global-mode)

@@ -13,7 +13,7 @@
 	 ("w" . my:weblio)
 	 ("k" . my:kobun)
 	 ("r" . my:ruigo)
-	 ("p" . my:post-num)
+	 ("p" . my:postal)
 	 ("t" . my:translate)
 	 ("m" . my:g-map)
 	 ("y" . my:yahoo)
@@ -29,20 +29,21 @@
     (remove-hook 'activate-mark-hook #'my-activate-selected))
   (add-hook 'activate-mark-hook #'my-activate-selected)
   (defun my:translate ()
-    "Hoge."
+    "Automatically recognize and translate Japanese and English."
     (interactive)
     (google-translate-auto))
   :hydra
   (hydra-selected
    (:color red :hint nil)
    "
- 🔍 _t_ranslate  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ost-num  google-_m_ap  _y_ahoo  _g_oogle 🐾 _c_lipboard  mozc._j_  comment_;_"
+ 🔍 _t_ranslate  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ostal  _m_ap  _y_ahoo  _g_oogle
+ 🐾 _c_lipboard  mozc._j_  comment_;_"
    ("t" my:translate)
    ("e" my:eijiro)
    ("w" my:weblio)
    ("k" my:kobun)
    ("r" my:ruigo)
-   ("p" my:post-num)
+   ("p" my:postal)
    ("m" my:g-map)
    ("y" my:yahoo)
    ("g" my:google)
@@ -86,8 +87,8 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Post number
-  (defun my:post-num (str)
-    "Search post number."
+  (defun my:postal (str)
+    "Search postal code."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
     (browse-url (format "https://postcode.goo.ne.jp/search/q/%s/"

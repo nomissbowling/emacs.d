@@ -51,58 +51,60 @@
    ("c" clipboard-kill-ring-save)))
 
 
-(leaf *user-search-function
-  :init
-  ;; Weblio
-  (defun my:weblio (str)
-    (interactive (list (region-or-read-string nil)))
-    (browse-url (format "http://www.weblio.jp/content/%s"
-			(upcase (url-hexify-string str)))))
+(eval-when-compile
+  (leaf *user-search-function
+    :init
+    ;; Weblio
+    (defun my:weblio (str)
+      (interactive (list (region-or-read-string nil)))
+      (browse-url (format "http://www.weblio.jp/content/%s"
+			  (upcase (url-hexify-string str)))))
 
-  ;; Kobun
-  (defun my:kobun (str)
-    (interactive (list (region-or-read-string nil)))
-    (browse-url (format "https://kobun.weblio.jp/content/%s"
-			(upcase (url-hexify-string str)))))
+    ;; Kobun
+    (defun my:kobun (str)
+      (interactive (list (region-or-read-string nil)))
+      (browse-url (format "https://kobun.weblio.jp/content/%s"
+			  (upcase (url-hexify-string str)))))
 
-  ;; Ruigo
-  (defun my:ruigo (str)
-    (interactive (list (region-or-read-string nil)))
-    (browse-url (format "https://thesaurus.weblio.jp/content/%s"
-			(upcase (url-hexify-string str)))))
+    ;; Ruigo
+    (defun my:ruigo (str)
+      (interactive (list (region-or-read-string nil)))
+      (browse-url (format "https://thesaurus.weblio.jp/content/%s"
+			  (upcase (url-hexify-string str)))))
 
-  ;; Eijiro
-  (defun my:eijiro (str)
-    (interactive (list (region-or-read-string nil)))
-    (browse-url (format "http://eow.alc.co.jp/%s/UTF-8/"
-			(upcase (url-hexify-string str)))))
+    ;; Eijiro
+    (defun my:eijiro (str)
+      (interactive (list (region-or-read-string nil)))
+      (browse-url (format "http://eow.alc.co.jp/%s/UTF-8/"
+			  (upcase (url-hexify-string str)))))
 
-  ;; Postal code
-  (defun my:postal (str)
-    (interactive (list (region-or-read-string nil)))
-    (browse-url (format "https://postcode.goo.ne.jp/search/q/%s"
-			(upcase (url-hexify-string str)))))
+    ;; Postal code
+    (defun my:postal (str)
+      (interactive (list (region-or-read-string nil)))
+      (browse-url (format "https://postcode.goo.ne.jp/search/q/%s"
+			  (upcase (url-hexify-string str)))))
 
-  ;; Google
-  (defun my:google (str)
-    (interactive (list (region-or-read-string nil)))
-    (browse-url (format "http://www.google.com/search?hl=ja&q=%s"
-			(upcase (url-hexify-string str)))))
+    ;; Google
+    (defun my:google (str)
+      (interactive (list (region-or-read-string nil)))
+      (browse-url (format "http://www.google.com/search?hl=ja&q=%s"
+			  (upcase (url-hexify-string str)))))
 
-  ;; Google map
-  (defun my:g-map (str)
-    (interactive (list (region-or-read-string nil)))
-    (browse-url (format "http://maps.google.co.jp/maps?hl=ja&q=%s"
-			(upcase (url-hexify-string str)))))
+    ;; Google map
+    (defun my:g-map (str)
+      (interactive (list (region-or-read-string nil)))
+      (browse-url (format "http://maps.google.co.jp/maps?hl=ja&q=%s"
+			  (upcase (url-hexify-string str)))))
 
-  (defun region-or-read-string (prompt &optional initial history default inherit)
-    "If region is specified, get that string, otherwise call `read-string'."
-    (if (not (region-active-p))
-  	(read-string prompt initial history default inherit)
-      (prog1
-  	  (buffer-substring-no-properties (region-beginning) (region-end))
-  	(deactivate-mark)
-  	(message "")))))
+    (defun region-or-read-string (prompt &optional initial history default inherit)
+      "If region is specified, get that string, otherwise call `read-string'."
+      (if (not (region-active-p))
+	  (read-string prompt initial history default inherit)
+	(prog1
+	    (buffer-substring-no-properties (region-beginning) (region-end))
+	  (deactivate-mark)
+	  (message ""))))))
+
 
 
 ;; Local Variables:

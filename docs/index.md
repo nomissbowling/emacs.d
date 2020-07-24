@@ -695,13 +695,13 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 ```emacs-lisp
 (leaf ps-print :ensure nil
   :config
-  (setq ps-paper-type 'a4
-		ps-font-size 9
-		ps-printer-name nil
-		ps-print-header nil
-		ps-show-n-of-n t
-		ps-line-number t
-		ps-print-footer nil))
+  (setq ps-paper-type 'a4)
+  (setq ps-font-size 9)
+  (setq ps-printer-name nil)
+  (setq ps-print-header nil)
+  (setq ps-show-n-of-n t)
+  (setq ps-line-number t)
+  (setq ps-print-footer nil))
 ```
 
 ### 9.3 [ps2pdf]

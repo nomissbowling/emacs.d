@@ -406,7 +406,7 @@ If there are two or more windows, it will go to another window."
 		 ("w" . my:weblio)
 		 ("k" . my:kobun)
 		 ("r" . my:ruigo)
-		 ("p" . my:post-num)
+		 ("p" . my:postal)
 		 ("t" . my:translate)
 		 ("m" . my:g-map)
 		 ("y" . my:yahoo)

@@ -181,8 +181,8 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 
   (defun restore-session (fname)
     "Restore the specified session."
-    (interactive (list (read-file-name "Load perspectives from a file: "
-									   persp-save-dir)))
+    (interactive (list
+				  (read-file-name "Load perspectives from a file: " persp-save-dir)))
     (when (bound-and-true-p persp-mode)
       (message "Restoring session...")
       (quit-window t)

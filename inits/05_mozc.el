@@ -12,7 +12,8 @@
 
 
 (leaf *user-mozc-tool
-  :bind ("<f7>" . select-mozc-tool)
+  :bind (("<f7>" . select-mozc-tool)
+	 ("<f8>" . my:mozc-word-regist))
   :init
   (defun select-mozc-tool ()
     "Select mozc tool command."

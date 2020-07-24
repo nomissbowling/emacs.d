@@ -494,9 +494,8 @@ If there are two or more windows, it will go to another window."
    'yatex-mode-hook
    '(lambda ()
       (leaf yatexprc
-		:config
-		(bind-key "M-c" 'YaTeX-typeset-buffer)	;; Type set buffer
-		(bind-key "M-l" 'YaTeX-lpr)))))		;; Open pdf veiwer
+		:bind (("M-c" . YaTeX-typeset-buffer)	;; Type set buffer
+			   ("M-l" . YaTeX-lpr))))))	;; Open pdf veiwer
 ```
 
 ```sh

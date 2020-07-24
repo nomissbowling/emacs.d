@@ -887,8 +887,9 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
   (interactive "r")
   ;; (shell-command-on-region begin end my:pdfout-command-format)))
   (shell-command-on-region
-   begin end (format my:pdfout-command-format
-					 (concat (read-from-minibuffer "File name:") ".pdf"))))
+   begin end
+   (format my:pdfout-command-format
+		   (concat (read-from-minibuffer "File name:") ".pdf"))))
 ```
 
 ### 9.4 [md2pdf / md2docx]

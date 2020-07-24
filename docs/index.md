@@ -1083,14 +1083,28 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
    └── hydra-pinky
 
 ```
- 
- - [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+10.1 hydra-work-menu 
 - [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+
+10.2 hydra-quick-menu
+- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+
+10.3 hydra-pinky
 - [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el) 
+
+10.4 hydra-compile
 - [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el) 
+
+10.5 hydra-markdown
 - [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el) 
+
+10.6 hydra-magit
 - [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el) 
+
+10.7 hydra-package
 - [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
+
+10.8 hydra-browse
 - [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
 
 

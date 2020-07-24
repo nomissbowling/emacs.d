@@ -1070,17 +1070,17 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 ┌──────────────────┐ 
 │ hydra-quick-menu │ 
 └──────────────────┘
-  ￪   │					
-  │   ├── hydra-compile	
-  │   ├── hydra-markdown
-  │   ├── hydra-package
-  │   ├── hydra-magit    <<- Dired からも呼び出せる						 					 
-  │   └── hydra-browse   <<- Dashboard からも呼び出せる
-  │
-  ￬
- ┌──────────────────┐ 
- │ hydra-work-menu  │ 
- └──────────────────┘ 
+   ￪   │					
+   │   ├── hydra-compile	
+   │   ├── hydra-markdown
+   │   ├── hydra-package
+   │   ├── hydra-magit    <<- Dired からも呼び出せる						 					 
+   │   └── hydra-browse   <<- Dashboard からも呼び出せる
+   │
+   ￬
+┌──────────────────┐ 
+│ hydra-work-menu  │ 
+└──────────────────┘ 
    │					
    └── hydra-pinky
 

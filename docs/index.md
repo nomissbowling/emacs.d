@@ -101,11 +101,12 @@ alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
 (setq gc-cons-threshold 100000000)
-(add-hook 'emacs-startup-hook
-		  (lambda ()
-			"Restore defalut values after startup."
-			(setq file-name-handler-alist default-file-name-handler-alist)
-			(setq gc-cons-threshold 800000)))
+(add-hook
+ 'emacs-startup-hook
+ (lambda ()
+   "Restore defalut values after startup."
+   (setq file-name-handler-alist default-file-name-handler-alist)
+   (setq gc-cons-threshold 800000)))
 
 ```
 Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻します。

@@ -34,7 +34,6 @@ Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs
 ├── elisp/
 │   ├── iceberg-theme/
 │   ├── info/
-│   ├── user-test.el
 │   ├── user-dired.el
 │   └── user-template.el
 ├── inits/
@@ -63,15 +62,12 @@ Dropboxの負担を減らすためにパッケージ類は各端末の `~/.emacs
 ```emacs-lisp
 ;; Load user Functions
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(require 'user-test)
 (add-hook
  'after-init-hook
  (lambda ()
    (require 'user-dired)
    (require 'user-template)))
 ```
-
-[user-test.el](https://github.com/minorugh/emacs.d/blob/master/elisp/user-test.el) は、ちょこっとした設定を試すための空ファイルです。こうしておくことで他の設定を汚すこと無くテストできるので便利です。
 
 遅延起動でも問題ないものは `inits/` フォルダーに配置し [init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込みます。
 init-loader の是非は諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。

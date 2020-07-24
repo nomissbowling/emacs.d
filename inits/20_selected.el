@@ -8,7 +8,7 @@
   :bind (:selected-keymap
 	 (";" . comment-dwim)
 	 ("c" . clipboard-kill-ring-save)
-	 ("j" . my:mozc-word-regist)
+	 ("." . my:mozc-word-regist)
 	 ("e" . my:eijiro)
 	 ("w" . my:weblio)
 	 ("k" . my:kobun)
@@ -18,11 +18,13 @@
 	 ("m" . my:g-map)
 	 ("y" . my:yahoo)
 	 ("g" . my:google)
+	 ("l" . counsel-selected)
 	 ("?" . hydra-selected/body)
 	 ("q" . selected-off))
   :config
   (selected-global-mode)
   :init
+  (leaf counsel-selected :el-get takaxp/counsel-selected)
   (defun my-activate-selected ()
     (selected-global-mode 1)
     (selected--on) ;; must call expclitly here
@@ -36,8 +38,7 @@
   (hydra-selected
    (:color red :hint nil)
    "
- 🔍 _t_ranslate  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ostal  _m_ap  _y_ahoo  _g_oogle
- 🐾 _c_lipboard  mozc._j_  comment_;_"
+ 🔍 _t_ranslate  _g_oogle  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _l_ist  mozc:_._"
    ("t" my:translate)
    ("e" my:eijiro)
    ("w" my:weblio)
@@ -47,8 +48,9 @@
    ("m" my:g-map)
    ("y" my:yahoo)
    ("g" my:google)
-   ("j" my:mozc-word-regist)
+   ("." my:mozc-word-regist)
    (";" comment-dwim)
+   ("l" cunsel-selected)
    ("c" clipboard-kill-ring-save)))
 
 

@@ -950,9 +950,8 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 ## 10. Hydra
 
 [hydra.el](https://github.com/abo-abo/hydra) は、連続して操作するときにプレフィクスキーをキャンセルさせるための elispです。
-一昔まえは、[smartrep.el](http://sheephead.homelinux.org/2011/12/19/6930/) が有名でしたが、hydra.elも同様の機能を提供します。
 
-
+ひと昔まえは、[smartrep.el](http://sheephead.homelinux.org/2011/12/19/6930/) が有名でしたが、hydra.elも同様の機能を提供します。
 私はおもに8種の hydra を設定しています。それぞれを呼び出すための相関図は下記のとおりです。
 
 ```

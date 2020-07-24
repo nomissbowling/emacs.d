@@ -818,7 +818,7 @@ If there are two or more windows, it will go to another window."
 (defun direx:jump-to-project-directory ()
   "If in project, launch direx-project otherwise start direx."
   (interactive)
-  (let ((result (ignore-errors
+  (let ((result	(ignore-errors
 				  (direx-project:jump-to-project-root-other-window)
 				  t)))
     (unless result
@@ -847,7 +847,10 @@ If there are two or more windows, it will go to another window."
 		  ("<f10>" . quit-window)))
   :config
   (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
-  (push '(direx:direx-mode :position left :width 25 :dedicated t) popwin:special-display-config))
+  (push '(direx:direx-mode
+		  :position left
+		  :width 25
+		  :dedicated t) popwin:special-display-config))
 ```
 
 

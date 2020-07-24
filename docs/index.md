@@ -389,11 +389,10 @@ If there are two or more windows, it will go to another window."
 
 ### 6.1 [selected]リージョン選択時のアクションを制御
 
-選択領域に対するスピードコマンドです。
+選択領域に対するスピードコマンドです。Emacsバッファーで領域を選択した後、バインドしたと入力するとコマンドが実行されます。`activate-mark-hook` は、日本語IMEが有効な時にもシングルキーで機能するためのものみたいですね。
+ネタ元は、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/init.html#orgbc8501cf) です。 感謝！
 
-[counsel-selected](https://github.com/takaxp/counsel-selected) は、emacsバッファーで領域を選択した後、単に "h" と入力すると、コマンドメニューがポップアップ表示されます。`activate-mark-hook` は、日本語IMEが有効な時にもシングルキーで機能するためのものみたいですね。
-
-- ネタ元は、[@takaxp](https://twitter.com/takaxp) さんの [init.el](https://takaxp.github.io/init.html#orgbc8501cf) です。 感謝！
+[counsel-selected](https://github.com/takaxp/counsel-selected) を使うと、コマンドメニューがポップアップ表示されますが、私は Hydraで Help-menuぽくしてみました*。
 
 ```emacs-lisp
 (leaf selected :ensure t

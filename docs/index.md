@@ -718,18 +718,22 @@ If there are two or more windows, it will go to another window."
 (defun my:ivy-migemo-re-builder (str)
   "Own ivy-migemo-re-build for swiper."
   (let* ((sep " \\|\\^\\|\\.\\|\\*")
-		 (splitted (--map (s-join "" it)
-						  (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
-										  (s-split "" str t)))))
-    (s-join "" (--map (cond ((s-equals? it " ") ".*?")
-							((s-matches? sep it) it)
-							(t (migemo-get-pattern it)))
+		 (splitted
+		  (--map (s-join "" it)
+				 (--partition-by
+				  (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
+				  (s-split "" str t)))))
+    (s-join "" (--map (cond
+					   ((s-equals? it " ") ".*?")
+					   ((s-matches? sep it) it)
+					   (t (migemo-get-pattern it)))
 					  splitted))))
 
-(setq ivy-re-builders-alist '((t . ivy--regex-plus)
-							  (counsel-web . my:ivy-migemo-re-builder)
-							  (counsel-rg . my:ivy-migemo-re-builder)
-							  (swiper . my:ivy-migemo-re-builder)))
+(setq ivy-re-builders-alist
+	  '((t . ivy--regex-plus)
+		(counsel-web . my:ivy-migemo-re-builder)
+		(counsel-rg . my:ivy-migemo-re-builder)
+		(swiper . my:ivy-migemo-re-builder)))
 ```
 
 

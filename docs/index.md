@@ -631,9 +631,7 @@ rm *.au* *.dv* *.lo*
     (when (getenv "WSLENV")
       (call-process "wslstart" nil 0 nil file-full-name))))
 
-(leaf direx :ensure t
-  :after popwin
-  :require t
+(leaf direx :ensure t :require t
   :config
   (bind-key "<f10>" 'direx:jump-to-project-directory)
   (bind-key "C-x C-j" 'direx:jump-to-project-directory)

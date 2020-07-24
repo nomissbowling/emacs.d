@@ -372,12 +372,12 @@ If there are two or more windows, it will go to another window."
 (bind-key "C-." 'xref-find-definitions)
 
 ```
-### 5.6 [expand-region]カーソル箇所を起点に選択範囲を賢く広げる
+### 5.6 [expand-region]カーソル位置を起点に選択範囲を賢く広げる
 `er/expand-region` を呼ぶと、カーソル位置を起点として前後に選択範囲を広げてくれます。2回以上呼ぶとその回数だけ賢く選択範囲が広がりますが、2回目以降は設定したキーバインドの最後の一文字を連打すればOKです。その場合、選択範囲を狭める時は - を押し， 0 を押せばリセットされます。
 
 ```emacs-lisp
 (leaf expand-region :ensure t
-  :bind ("C-M-SPC" . er/expand-region)
+  :bind ("C-@" . er/expand-region)
   :confug
   (push 'er/mark-outside-pairs er/try-expand-list))
 ```

@@ -476,8 +476,8 @@ If there are two or more windows, it will go to another window."
 
 ```emacs-lisp
 (leaf darkroom :ensure t
-  :bind ("<f12>" . my:darkroom-mode-in)
   :config
+  (bind-key "<f12>" 'my:darkroom-mode-in)
   (defun my:darkroom-mode-in ()
     "Darkroom mode in."
     (interactive)

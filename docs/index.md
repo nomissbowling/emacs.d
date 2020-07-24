@@ -452,9 +452,7 @@ If there are two or more windows, it will go to another window."
 
 ```emacs-lisp
 (defun weblio (str)
-  "Search weblio."
-  (interactive (list
-				(region-or-read-string "Weblio: ")))
+  (interactive (list (region-or-read-string "Weblio: ")))
   (browse-url (format "http://www.weblio.jp/content/%s"
 					  (upcase (url-hexify-string str)))))
 ```

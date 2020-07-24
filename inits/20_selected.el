@@ -8,48 +8,53 @@
   :bind (:selected-keymap
 	 (";" . comment-dwim)
 	 ("c" . clipboard-kill-ring-save)
-	 ("K" . my:clipboard-kill-region)
-	 ("d" . my:mozc-word-regist)
-	 ("e" . eijiro)
-	 ("w" . weblio)
-	 ("k" . weblio-kobun)
-	 ("r" . weblio-ruigo)
-	 ("p" . post-number)
-	 ("m" . google-map)
-	 ("y" . yahoo)
-	 ("g" . google)
-	 ("h" . hydra-selected/body)
-	 ("l" . counsel-selected)
+	 ("j" . my:mozc-word-regist)
+	 ("e" . my:eijiro)
+	 ("w" . my:weblio)
+	 ("k" . my:kobun)
+	 ("r" . my:ruigo)
+	 ("p" . my:post-num)
+	 ("t" . my:translate)
+	 ("m" . my:g-map)
+	 ("y" . my:yahoo)
+	 ("g" . my:google)
+	 ("." . hydra-selected/body)
 	 ("q" . selected-off))
   :config
   (selected-global-mode)
   :init
-  (leaf counsel-selected :el-get takaxp/counsel-selected)
   (defun my-activate-selected ()
     (selected-global-mode 1)
     (selected--on) ;; must call expclitly here
     (remove-hook 'activate-mark-hook #'my-activate-selected))
   (add-hook 'activate-mark-hook #'my-activate-selected)
+  (defun my:translate ()
+    "Hoge."
+    (interactive)
+    (google-translate-auto))
   :hydra
   (hydra-selected
    (:color red :hint nil)
    "
- 🔍 _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ost-num  _m_ap  _y_ahoo  _g_oogle  _q_uit"
-   ("e" eijiro)
-   ("w" weblio)
-   ("k" weblio-kobun)
-   ("r" weblio-ruigo)
-   ("p" post-number)
-   ("m" google-map)
-   ("y" yahoo)
-   ("g" google)
-   ("q" nil)))
+ 🔍 _t_ranslate  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ost-num  google-_m_ap  _y_ahoo  _g_oogle 🐾 _c_lipboard  mozc._j_  comment_;_"
+   ("t" my:translate)
+   ("e" my:eijiro)
+   ("w" my:weblio)
+   ("k" my:kobun)
+   ("r" my:ruigo)
+   ("p" my:post-num)
+   ("m" my:g-map)
+   ("y" my:yahoo)
+   ("g" my:google)
+   ("j" my:mozc-word-regist)
+   (";" comment-dwim)
+   ("c" clipboard-kill-ring-save)))
 
 
 (leaf *user-search-function
   :init
   ;; Weblio
-  (defun weblio (str)
+  (defun my:weblio (str)
     "Search weblio."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
@@ -57,7 +62,7 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Kobun
-  (defun weblio-kobun (str)
+  (defun my:kobun (str)
     "Search weblio kobun."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
@@ -65,7 +70,7 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Ruigo
-  (defun weblio-ruigo (str)
+  (defun my:ruigo (str)
     "Search weblio ruigo."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
@@ -73,7 +78,7 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Eijiro
-  (defun eijiro (str)
+  (defun my:eijiro (str)
     "Search eijiro-web."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
@@ -81,7 +86,7 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Post number
-  (defun post-number (str)
+  (defun my:post-num (str)
     "Search post number."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
@@ -89,7 +94,7 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Google
-  (defun google (str)
+  (defun my:google (str)
     "Serach googe."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
@@ -97,7 +102,7 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Google map
-  (defun google-map (str)
+  (defun my:g-map (str)
     "Serach google-map."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))
@@ -105,7 +110,7 @@
 			(upcase (url-hexify-string str)))))
 
   ;; Yahoo
-  (defun yahoo (str)
+  (defun my:yahoo (str)
     "Search yahoo."
     (interactive (list
 		  (region-or-read-string "Weblio: ")))

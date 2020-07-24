@@ -12,8 +12,9 @@
 
 
 (leaf *user-mozc-tool
-  :bind (("<f7>" . select-mozc-tool)
-	 ("<f8>" . my:mozc-word-regist))
+  :config
+  (bind-key "<f7>" 'select-mozc-tool)
+  (bind-key "<f8>" 'my:mozc-word-regist)
   :init
   (defun select-mozc-tool ()
     "Select mozc tool command."
@@ -42,11 +43,11 @@
 
 
 (leaf mozc :ensure t
-  :bind* ("<hiragana-katakana>" . toggle-input-method)
   :config
-  (setq default-input-method "japanese-mozc"
-	mozc-helper-program-name "mozc_emacs_helper"
-	mozc-leim-title "♡かな")
+  (bind-key* "<hiragana-katakana>" 'toggle-input-method)
+  (setq default-input-method "japanese-mozc")
+  (setq mozc-helper-program-name "mozc_emacs_helper")
+  (setq mozc-leim-title "♡かな")
   :init
   (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
   (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
@@ -61,12 +62,7 @@
   :preface
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
-    :require t
-    :config
-    (setq mozc-cursor-color-alist
-	  '((direct . "#BD93F9")
-	    (read-only . "#84A0C6")
-	    (hiragana . "#CC3333"))))
+    :require t)
   (leaf mozc-cand-posframe :ensure t
     :require t
     :config
@@ -77,4 +73,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 30_mozc.el ends here
+;;; 05_mozc.el ends here

@@ -91,7 +91,8 @@
 (leaf whitespace :ensure t
   :bind ("C-c C-c" . my:cleanup-for-spaces)
   :hook (prog-mode-hook . my:enable-trailing-mode)
-  :config (setq show-trailing-whitespace nil)
+  :config
+  (setq show-trailing-whitespace nil)
   :preface
   (defun my:enable-trailing-mode ()
     "Show tail whitespace."

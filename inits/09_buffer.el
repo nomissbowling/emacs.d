@@ -42,18 +42,17 @@
   :hook
   (prog-mode-hook . undo-tree-mode)
   (text-mode-hook . undo-tree-mode)
-  :custom
-  ((undo-tree-visualizer-timestamps . t)
-   (undo-tree-visualizer-diff . t)
-   (undo-tree-enable-undo-in-region . nil)
-   (undo-tree-auto-save-history . nil)
-   (undo-tree-history-directory-alist
-    . `(("." . ,(concat user-emacs-directory "undo-tree-hist/")))))
   :config
   (bind-key* "C-_" 'undo-tree-undo)
   (bind-key* "C-\\" 'undo-tree-undo)
   (bind-key* "C-/" 'undo-tree-redo)
   (bind-key* "C-x u" 'undo-tree-visualize)
+  (setq undo-tree-visualizer-timestamps t)
+  (setq undo-tree-visualizer-diff t)
+  (setq undo-tree-enable-undo-in-region nil)
+  (setq undo-tree-auto-save-history nil)
+  (setq undo-tree-history-directory-alist
+	`(("." . ,(concat user-emacs-directory "undo-tree-hist/"))))
   :init
   (defun undo-tree-visualizer-show-diff (&optional node)
     ;; show visualizer diff display

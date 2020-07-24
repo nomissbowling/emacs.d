@@ -15,6 +15,7 @@
   (push 'er/mark-outside-pairs er/try-expand-list))
 
 
+
 (leaf yasnippet :ensure t
   :bind ("<f11>" . ivy-yasnippet)
   :config
@@ -53,7 +54,7 @@
 
 
 (leaf restart-emacs :ensure t
-  :bind (("C-x C-c" . restart-emacs)))
+  :bind ("C-x C-c" . restart-emacs))
 
 
 (leaf web-mode :ensure t

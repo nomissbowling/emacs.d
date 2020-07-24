@@ -5,9 +5,6 @@
 ;; (setq debug-on-error t)
 
 (leaf howm :ensure t
-  :chord ("@@" . howm-list-all)
-  :bind (:howm-view-summary-mode-map
-	 ([backtab] . howm-view-summary-previous-section))
   :hook (emacs-startup-hook . howm-mode)
   :init
   (setq howm-view-title-header "#")
@@ -16,6 +13,8 @@
     (interactive)
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time)))
   :config
+  (key-chord-define-global "@@" 'howm-list-all)
+  (bind-key [backtab] 'howm-view-summary-previous-section howm-view-summary-mode-map)
   (setq howm-directory "~/Dropbox/howm")
   (setq howm-view-split-horizontally t)
   (setq howm-view-summary-persistent nil)

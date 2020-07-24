@@ -5,23 +5,22 @@
 ;; (setq debug-on-error t)
 
 (leaf easy-hugo :ensure t
-  :bind (("C-c C-e" . easy-hugo)
-  	 ("C-x p" . easy-hugo-preview)
-  	 ("C-x P" . easy-hugo-publish)
-  	 ("C-c d" . inseart-date)
-  	 (:easy-hugo-mode-map
-  	  ([tab] . easy-hugo-no-help)
-  	  ("v" . easy-hugo-view-other-window)
-  	  ("o" . easy-hugo-open-basedir)
-  	  ("m" . asy-hugo-magit)
-  	  ("r" . easy-hugo-rename)
-  	  ("e" . my:edit-easy-hugo)))
-  ;; Sort-publishday on startup
   :config
+  ;; Sort-publishday on startup
   (setq easy-hugo--sort-char-flg nil)
   (setq easy-hugo--sort-time-flg nil)
   (setq easy-hugo--sort-publishday-flg 1)
-
+  (bind-key "C-c C-e" 'easy-hugo)
+  (bind-key "C-x p" 'easy-hugo-preview)
+  (bind-key "C-x P" 'easy-hugo-publish)
+  (bind-key "C-c d" 'inseart-date)
+  (with-eval-after-load 'easy-hugo
+    (bind-key [tab] 'easy-hugo-no-help easy-hugo-mode-map)
+    (bind-key "v" 'easy-hugo-view-other-window easy-hugo-mode-map)
+    (bind-key "o" 'easy-hugo-open-basedir easy-hugo-mode-map)
+    (bind-key "m" 'asy-hugo-magit easy-hugo-mode-map)
+    (bind-key "r" 'easy-hugo-rename easy-hugo-mode-map)
+    (bind-key "e" 'my:edit-easy-hugo easy-hugo-mode-map))
   :init
   ;; Main blog (=blog1)
   (setq easy-hugo-basedir "~/Dropbox/web/wegh/topics/"
@@ -29,7 +28,6 @@
 	easy-hugo-sshdomain "xsrv"
 	easy-hugo-root "/home/minorugh/wegh.net/public_html/topics/"
 	easy-hugo-previewtime "300")
-
   ;; Bloglist
   (setq easy-hugo-bloglist
 	;; blog2 setting

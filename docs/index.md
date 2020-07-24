@@ -258,12 +258,7 @@ Mozcと連動してカーソルの色をカスタマイズするために [mozc-
   :init
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
-    :require t
-    :config
-    (setq mozc-cursor-color-alist
-		  '((direct . "#BD93F9")
-			(read-only . "#84A0C6")
-			(hiragana . "#CC3333"))))
+    :require t)
   (leaf mozc-cand-posframe :ensure t
     :require t
     :config

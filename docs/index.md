@@ -445,6 +445,39 @@ If there are two or more windows, it will go to another window."
   (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
 ```
 
+### 6.2 [selected]IMEのオン・オフを自動制御する
+
+selected.el の最大の欠点は、IMEとの相性が悪いことです。IMEオンのまま選択領域に対するコマンドを選択すると、押下キーがバッファにそのまま入力されてしまいます。
+
+領域を選択し始める時にIMEをオフにして、コマンド発行後にIMEを元に戻すという例が、
+[@takaxp](https://qiita.com/takaxp) さんの [Qiitaの記事](https://qiita.com/takaxp/items/00245794d46c3a5fcaa8) にあったので、私の環境（emacs-mozc ）にあうように設定したら、すんなり動いてくれました。感謝！
+
+```emacs-lisp
+(leaf  *control-mozc-when-region-seleceted
+  :init
+  (defun my-activate-selected ()
+    (selected-global-mode 1)
+    (selected--on) ;; must call expclitly here
+    (remove-hook 'activate-mark-hook #'my-activate-selected))
+  (add-hook 'activate-mark-hook #'my-activate-selected)
+  (defun my:ime-on ()
+    (interactive)
+    (when (null current-input-method) (toggle-input-method)))
+  (defun my:ime-off ()
+    (interactive)
+    (inactivate-input-method))
+  ;; mark-hook
+  (add-hook
+   'activate-mark-hook
+   #'(lambda ()
+       (setq my:ime-flag current-input-method) (my:ime-off)))
+  (add-hook
+   'deactivate-mark-hook
+   #'(lambda ()
+       (unless (null my:ime-flag) (my:ime-on)))))
+```
+
+
 
 ### 6.5 [darkroom-mode]執筆モード
 [darkroom.el](https://github.com/joaotavora/darkroom)  は、画面の余計な項目を最小限にして、文章の執筆に集中できるようにするパッケージです。

@@ -21,7 +21,7 @@
     (bind-key "m" 'my:g-map selected-keymap)
     (bind-key "g" 'my:google selected-keymap)
     (bind-key "l" 'counsel-selected selected-keymap)
-    (bind-key "?" 'hydra-selected/body selected-keymap)
+    (bind-key "h" 'hydra-selected/body selected-keymap)
     (bind-key "q" 'selected-off selected-keymap)
     :init
     (leaf counsel-selected :el-get takaxp/counsel-selected)

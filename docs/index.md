@@ -377,7 +377,7 @@ If there are two or more windows, it will go to another window."
 ## 6. 編集サポート
 
 
-### 6.1 [selected]リージョン選択時のアクションを制御
+### 6.1 [selected] リージョン選択時のアクションを制御
 
 選択領域に対するスピードコマンドです。Emacsバッファーで領域を選択した後、バインドしたと入力するとコマンドが実行されます。
 
@@ -445,7 +445,7 @@ If there are two or more windows, it will go to another window."
   (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
 ```
 
-### 6.2 [selected] imput-method のオン・オフを自動制御する
+### 6.2 [selected] IME のオン・オフを自動制御する
 
 selected.el の最大の欠点は、IMEとの相性が悪いことです。IMEオンのまま選択領域に対するコマンドを選択すると、押下キーがバッファにそのまま入力されてしまいます。
 
@@ -479,7 +479,7 @@ selected.el の最大の欠点は、IMEとの相性が悪いことです。IME�
 
 
 
-### 6.5 [darkroom-mode]執筆モード
+### 6.3 [darkroom-mode] 執筆モード
 [darkroom.el](https://github.com/joaotavora/darkroom)  は、画面の余計な項目を最小限にして、文章の執筆に集中できるようにするパッケージです。
 
 基本機能は、文字サイズが大きくなり、モード行が消えるだけですが、設定例では、行番号表示、diff-hl、flymake も消しています。併せて文字間隔も少し大きくして読みやすくしました。[F12] キーで IN/OUT をトグルしています。
@@ -507,7 +507,9 @@ selected.el の最大の欠点は、IMEとの相性が悪いことです。IME�
     (display-line-numbers-mode 1)))
 ```
 
-### 6.6 [yatex]YaTexでTex編集
+### 6.4 [yatex] YaTexでTex編集
+
+ごく一般的な設定例ですが、参考になるとしたら [yatexprc](https://www.yatex.org/gitbucket/yuuji/yatex/blob/c45e2a0187b702c5e817bf3023816dde154f0de9/yatexprc.el) の `M-x YaTeX-lpr` を使って一気にPDF作成まで自動化している点でしょうか。
 
 ```emacs-lisp
 (leaf yatex :ensure t
@@ -526,6 +528,8 @@ selected.el の最大の欠点は、IMEとの相性が悪いことです。IME�
      (bind-key "M-c" 'YaTeX-typeset-buffer)	;; Type set
      (bind-key "M-l" 'YaTeX-lpr))))		;; Open PDF file
 ```
+`YaTeX-lpr` は、`dviprint-command-format` を呼び出すコマンドです。dviファイルからdvipdfmx でPDF作成したあと、PDFビューアーを起動させて表示させるところまでをバッチファイルに書き、PATHの通ったところに置きます。私は、`/usr/loca/bin` に置きました。
+
 
 ```sh
 #!/bin/bash
@@ -533,6 +537,11 @@ name=$1
 dvipdfmx $1 && evince ${name%.*}.pdf
 # Delete unnecessary files
 rm *.au* *.dv* *.lo*
+```
+上記の例では、ビューアーに Linux の evince を設定していますが、mac でプレビューを使う場合は、下記のようになるかと思います。
+
+```sh
+dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 ```
 
 ## 7. 表示サポート

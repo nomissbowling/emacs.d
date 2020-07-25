@@ -161,8 +161,6 @@ Emacs 起動時の初期画面には、`Dashboard` を表示させています�
 
 また、Dashboard は、読み取り専用バッファーなので簡単なお気に入りを開くためのワンキーリンクを設定できます。hydra で更に多くのBookMark リンクを表示させても便利です。
 
-- [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el) 
-
 
 ```emacs-lisp
 ;; Custom dashboard
@@ -222,7 +220,7 @@ Emacs 起動時の初期画面には、`Dashboard` を表示させています�
     (funcall (local-key-binding "r"))))
 
 ```
-
+- [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el)は、ここを見て下さい。 
 
 
 

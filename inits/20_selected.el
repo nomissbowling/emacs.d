@@ -57,7 +57,7 @@
   (defun my:ime-off ()
     (interactive)
     (inactivate-input-method))
-  ;; activate-mark-hook
+  ;; mark-hook
   (add-hook
    'activate-mark-hook
    #'(lambda ()
@@ -113,7 +113,7 @@
       (prog1
 	  (buffer-substring-no-properties (region-beginning) (region-end))
 	(deactivate-mark)
-	(message ""))))))
+	(message "")))))
 
 
 ;; Local Variables:

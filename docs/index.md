@@ -514,7 +514,7 @@ selected.el の最大の欠点は、IMEとの相性が悪いことです。IME�
 ```emacs-lisp
 (leaf yatex :ensure t
   :mode ("\\.tex\\'" . yatex-mode)
-  :config
+										;fa-  :config
   (setq tex-command "platex")
   (setq dviprint-command-format "dvpd.sh %s")
   (setq YaTeX-kanji-code nil)
@@ -548,7 +548,9 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 
 ## 7. 表示サポート
 
-### 7.1 [emacs-lock-mode]scratch を消さない
+### 7.1 [emacs-lock-mode] scratch バッファーを消さない
+
+難しい関数を設定せずとも内蔵コマンドで簡単に実現できます。
 
 ```emacs-lisp
 ;; Set buffer that can not be killed
@@ -558,7 +560,14 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
   (emacs-lock-mode 'kill))
 ```
 
-### 7.2 [swiper-migemo]ローマ字入力で日本語を検索
+### 7.2 swiper を migemo 化してローマ字入力で日本語を検索
+
+昔は、[avy-migemo-e.g.swiper.el](https://github.com/momomo5717/avy-migemo) を使って出来ていたのですが、２年ほど前からメンテナンスが止まってしまっていて、その後 swiper.el の更新が続いて対応しなくなっています。
+
+つい最近、avyを使わない Tipsを見つけたので試した処、機嫌よく動いてくれています。
+
+- [avy-migemoを使わずにswiper-migemoを実現する](https://qiita.com/minoruGH/items/20d7664a3a57c7365ebc) 
+- [Ivy (Swiper) で雑に migemo を使う](https://www.yewton.net/2020/05/21/migemo-ivy/) 
 
 
 ```emacs-lisp

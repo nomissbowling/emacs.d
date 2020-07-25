@@ -23,6 +23,7 @@
     :hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode :ensure t
     :config
+    (autoload 'nyan-mode "nyan-mode" nil t)
     (nyan-mode)
     (setq nyan-cat-face-number 4)
     (setq nyan-animate-nyancat t)))

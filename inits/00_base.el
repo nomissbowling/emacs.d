@@ -15,7 +15,7 @@
 
 
 ;; exec-path-from-shell
-(leaf exec-path-from-shell :ensure t
+(leaf exec-path-from-shell
   :when (memq window-system '(mac ns x))
   :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config

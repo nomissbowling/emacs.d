@@ -887,7 +887,7 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 
 ```
 
-### 15.7 [restart-emacs]Emacsを再起動する
+### 15.7 [restart-emacs] Emacsを再起動する
 `C-x C-c` は、デフォルトで `(save-buffers-kill-emacs)` に割り当てられていますが、Emacsの再起動にリバインドしました。
 
 ```emacs-lisp

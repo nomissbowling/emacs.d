@@ -150,13 +150,19 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 (setq inhibit-startup-message t)
 ```
 
-初期画面には、`Dashboard` を表示させています。
+### 3.5 Dashboard バッファーをリロードさせる
+
+Emacs 起動時の初期画面には、`Dashboard` を表示させています。
 
 ![Dashboard by iceberg-theme](https://live.staticflickr.com/65535/50133698492_33ff20267b_b.jpg)
 
-愛着あるこのバッファーですが、うっかり Killすると消えてしまうので再生できるように設定しました。作業が一段落したらここへ戻ります。
-
+愛着あるこのバッファーですが、うっかり Killすると消えてしまうので消さないでリロードできるように設定しました。当面の作業が一段落したらここへ戻ります。
 下記設定例では `<Home>` キーを押すことで、直前に作業していたバッファー画面とDashboard画面とをトグルで表示させています。(winner-mode 使用)
+
+また、Dashboard は、読み取り専用バッファーなので簡単なお気に入りを開くためのワンキーリンクを設定できます。hydra で更に多くのBookMark リンクを表示させても便利です。
+
+- [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el) 
+
 
 ```emacs-lisp
 ;; Custom dashboard
@@ -216,6 +222,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
     (funcall (local-key-binding "r"))))
 
 ```
+
 
 
 

@@ -6,21 +6,21 @@
 
 (leaf easy-hugo :ensure t
   :config
-  ;; Sort-publishday on startup
-  (setq easy-hugo--sort-char-flg nil)
-  (setq easy-hugo--sort-time-flg nil)
-  (setq easy-hugo--sort-publishday-flg 1)
-  (bind-key "C-c C-e" 'easy-hugo)
-  (bind-key "C-x p" 'easy-hugo-preview)
-  (bind-key "C-x P" 'easy-hugo-publish)
-  (bind-key "C-c d" 'inseart-date)
   (with-eval-after-load 'easy-hugo
+    (bind-key "C-c C-e" 'easy-hugo)
+    (bind-key "C-x p" 'easy-hugo-preview)
+    (bind-key "C-x P" 'easy-hugo-publish)
+    (bind-key "C-c d" 'inseart-date)
     (bind-key [tab] 'easy-hugo-no-help easy-hugo-mode-map)
     (bind-key "v" 'easy-hugo-view-other-window easy-hugo-mode-map)
     (bind-key "o" 'easy-hugo-open-basedir easy-hugo-mode-map)
     (bind-key "m" 'asy-hugo-magit easy-hugo-mode-map)
     (bind-key "r" 'easy-hugo-rename easy-hugo-mode-map)
     (bind-key "e" 'my:edit-easy-hugo easy-hugo-mode-map))
+  ;; Sort-publishday on startup
+  (setq easy-hugo--sort-char-flg nil)
+  (setq easy-hugo--sort-time-flg nil)
+  (setq easy-hugo--sort-publishday-flg 1)
   :init
   ;; Main blog (=blog1)
   (setq easy-hugo-basedir "~/Dropbox/web/wegh/topics/"

@@ -30,11 +30,10 @@
 
 ;; Persistent undo history for GNU Emacs
 (leaf undohist :ensure t
-  :require t
+  :hook (emacs-startup-hook . undohist-initialize)
   :config
   (setq undohist-directory "~/Dropbox/dotfiles/undohist")
-  (setq undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG"))
-  (undohist-initialize))
+  (setq undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG")))
 
 
 ;; Treat undo history as a tree

@@ -589,7 +589,7 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 
 ## 8. 履歴 / ファイル管理
 
-### 8.1 [auto-save-buffer-enhanced]ファイルの自動保存
+### 8.1 [auto-save-buffer-enhanced] ファイルの自動保存
 
 ```emacs-lisp
 (leaf auto-save-buffers-enhanced :ensure t
@@ -604,7 +604,7 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
   (auto-save-buffers-enhanced t))
 ```
 
-### 8.2 空のファイルを自動的に削除
+### 8.2 空になったファイルを自動的に削除
 
 ```emacs-lisp
 (defun my:delete-file-if-no-contents ()

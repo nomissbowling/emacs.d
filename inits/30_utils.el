@@ -106,7 +106,7 @@
   (browse-url "https://keep.new/"))
 
 (defun browse-homepage ()
-  "Open my homepage."
+  "Open my homepage with crome."
   (interactive)
   (browse-url "https://gospel-haiku.com/update/"))
 

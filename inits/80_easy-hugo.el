@@ -6,11 +6,11 @@
 
 (leaf easy-hugo :ensure t
   :config
+  (bind-key "C-c C-e" 'easy-hugo)
+  (bind-key "C-x p" 'easy-hugo-preview)
+  (bind-key "C-x P" 'easy-hugo-publish)
+  (bind-key "C-c d" 'inseart-date)
   (with-eval-after-load 'easy-hugo
-    (bind-key "C-c C-e" 'easy-hugo)
-    (bind-key "C-x p" 'easy-hugo-preview)
-    (bind-key "C-x P" 'easy-hugo-publish)
-    (bind-key "C-c d" 'inseart-date)
     (bind-key [tab] 'easy-hugo-no-help easy-hugo-mode-map)
     (bind-key "v" 'easy-hugo-view-other-window easy-hugo-mode-map)
     (bind-key "o" 'easy-hugo-open-basedir easy-hugo-mode-map)

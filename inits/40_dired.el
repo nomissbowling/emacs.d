@@ -94,7 +94,7 @@
     (call-interactively 'dired-unmark-all-marks)
     (call-interactively 'revert-buffer))
 
-  (leaf dired :require t
+  (leaf dired
     :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
     :config
     (bind-key "j" 'dired-next-line dired-mode-map)
@@ -129,7 +129,6 @@
       :config
       (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
     (leaf sudo-edit :ensure t)))
-
 
 
 ;; Local Variables:

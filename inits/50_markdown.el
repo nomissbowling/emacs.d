@@ -64,7 +64,6 @@
     :mode ("\\.md" . poly-markdown-mode))
   (leaf livedown
     :el-get  shime/emacs-livedown
-    :require t
     :config
     (bind-key "C-c C-p" 'livedown-preview)
     (bind-key "C-c C-k" 'livedown-kill)

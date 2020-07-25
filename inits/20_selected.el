@@ -5,28 +5,23 @@
 ;; (setq debug-on-error t)
 
 (leaf selected :ensure t
+  :bind ("s-s" . hydra-selected/body)
+  :hook (emacs-startup-hook . selected-global-mode)
   :config
-  (selected-global-mode)
-  (with-eval-after-load 'selected
-    (bind-key ";" 'comment-dwim selected-keymap)
-    (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
-    (bind-key "." 'my:mozc-word-regist selected-keymap)
-    (bind-key "e" 'my:eijiro selected-keymap)
-    (bind-key "w" 'my:weblio selected-keymap)
-    (bind-key "k" 'my:kobun selected-keymap)
-    (bind-key "r" 'my:ruigo selected-keymap)
-    (bind-key "p" 'my:postal selected-keymap)
-    (bind-key "t" 'my:translate selected-keymap)
-    (bind-key "m" 'my:g-map selected-keymap)
-    (bind-key "g" 'my:google selected-keymap)
-    (bind-key "l" 'counsel-selected selected-keymap)
-    (bind-key "?" 'hydra-selected/body selected-keymap)
-    (bind-key "q" 'selected-off selected-keymap)
-    (defun my-activate-selected ()
-      (selected-global-mode 1)
-      (selected--on) ;; must call expclitly here
-      (remove-hook 'activate-mark-hook #'my-activate-selected))
-    (add-hook 'activate-mark-hook #'my-activate-selected))
+  (bind-key ";" 'comment-dwim selected-keymap)
+  (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
+  (bind-key "." 'my:mozc-word-regist selected-keymap)
+  (bind-key "e" 'my:eijiro selected-keymap)
+  (bind-key "w" 'my:weblio selected-keymap)
+  (bind-key "k" 'my:kobun selected-keymap)
+  (bind-key "r" 'my:ruigo selected-keymap)
+  (bind-key "p" 'my:postal selected-keymap)
+  (bind-key "t" 'my:translate selected-keymap)
+  (bind-key "m" 'my:g-map selected-keymap)
+  (bind-key "g" 'my:google selected-keymap)
+  (bind-key "l" 'counsel-selected selected-keymap)
+  (bind-key "?" 'hydra-selected/body selected-keymap)
+  (bind-key "q" 'selected-off selected-keymap)
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected)
   (defun my:translate ()
@@ -107,6 +102,35 @@
 	  (message ""))))))
 
 
+
+
+;; ;; IME ON/OFF ステータスフラグ
+;; (defvar my:ime-flag nil)
+;; ;; ;; 判定
+;; (defun my:ime-active-p ()
+;;   (interactive)
+;;   (when (string-match "japanese-mozc" (current-input-method))))
+
+;; ;; IME ON
+;; (defun my:ime-on ()
+;;   (interactive)
+;;   (when (null current-input-method) (toggle-input-method)))
+
+;; ;; IME OFF
+;; (defun my:ime-off ()
+;;   (interactive)
+;;   (inactivate-input-method))
+
+;; ;; 領域選択開始に合わせて IMEを OFF
+;; (add-hook 'activate-mark-hook
+;; 	  #'(lambda ()
+;; 	      (when (setq my:ime-flag (my:ime-active-p))
+;; 		(my:ime-off))))
+;; ;; 選択解除で IME ONを復帰
+;; (add-hook 'deactivate-mark-hook
+;; 	  #'(lambda ()
+;; 	      (when my:ime-flag
+;; 		(my:ime-on))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

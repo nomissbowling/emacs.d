@@ -24,8 +24,23 @@
   (bind-key "q" 'selected-off selected-keymap)
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected)
+  ;; Control ime when selecetd
+  (defun my-activate-selected ()
+    (selected-global-mode 1)
+    (selected--on) ;; must call expclitly here
+    (remove-hook 'activate-mark-hook #'my-activate-selected))
+  (add-hook 'activate-mark-hook #'my-activate-selected)
+  (defun my:ime-on ()
+    (interactive)
+    (when (null current-input-method) (toggle-input-method)))
+  (defun my:ime-off ()
+    (interactive)
+    (inactivate-input-method))
+  ;; activate-mark-hook
+  (add-hook 'activate-mark-hook #'(lambda ()(my:ime-off)))
+  (add-hook 'deactivate-mark-hook #'(lambda () (my:ime-on)))
   (defun my:translate ()
-    "Automatically recognize and translate Japanese and English."
+    "Traslate user-function for selected."
     (interactive)
     (google-translate-auto))
   :hydra
@@ -47,6 +62,24 @@
    ("c" clipboard-kill-ring-save)))
 
 
+(leaf *control-ime-when-selecetd
+  :init
+  (defun my-activate-selected ()
+    "Activate-selected."
+    (selected-global-mode 1)
+    (selected--on) ;; must call expclitly here
+    (remove-hook 'activate-mark-hook #'my-activate-selected))
+  (add-hook 'activate-mark-hook #'my-activate-selected)
+  (defun my:ime-on ()
+    (interactive)
+    (when (null current-input-method) (toggle-input-method)))
+  (defun my:ime-off ()
+    (interactive)
+    (inactivate-input-method))
+  (add-hook 'activate-mark-hook #'(lambda ()(my:ime-off)))
+  (add-hook 'deactivate-mark-hook #'(lambda () (my:ime-on))))
+
+
 (eval-when-compile
   (leaf *user-search-function
     :init
@@ -55,37 +88,31 @@
       (interactive (list (region-or-read-string nil)))
       (browse-url (format "http://www.weblio.jp/content/%s"
 			  (upcase (url-hexify-string str)))))
-
     ;; Kobun
     (defun my:kobun (str)
       (interactive (list (region-or-read-string nil)))
       (browse-url (format "https://kobun.weblio.jp/content/%s"
 			  (upcase (url-hexify-string str)))))
-
     ;; Ruigo
     (defun my:ruigo (str)
       (interactive (list (region-or-read-string nil)))
       (browse-url (format "https://thesaurus.weblio.jp/content/%s"
 			  (upcase (url-hexify-string str)))))
-
     ;; Eijiro
     (defun my:eijiro (str)
       (interactive (list (region-or-read-string nil)))
       (browse-url (format "http://eow.alc.co.jp/%s/UTF-8/"
 			  (upcase (url-hexify-string str)))))
-
     ;; Postal code
     (defun my:postal (str)
       (interactive (list (region-or-read-string nil)))
       (browse-url (format "https://postcode.goo.ne.jp/search/q/%s"
 			  (upcase (url-hexify-string str)))))
-
     ;; Google
     (defun my:google (str)
       (interactive (list (region-or-read-string nil)))
       (browse-url (format "http://www.google.com/search?hl=ja&q=%s"
 			  (upcase (url-hexify-string str)))))
-
     ;; Google map
     (defun my:g-map (str)
       (interactive (list (region-or-read-string nil)))
@@ -101,36 +128,6 @@
 	  (deactivate-mark)
 	  (message ""))))))
 
-
-
-
-;; ;; IME ON/OFF ステータスフラグ
-;; (defvar my:ime-flag nil)
-;; ;; ;; 判定
-;; (defun my:ime-active-p ()
-;;   (interactive)
-;;   (when (string-match "japanese-mozc" (current-input-method))))
-
-;; ;; IME ON
-;; (defun my:ime-on ()
-;;   (interactive)
-;;   (when (null current-input-method) (toggle-input-method)))
-
-;; ;; IME OFF
-;; (defun my:ime-off ()
-;;   (interactive)
-;;   (inactivate-input-method))
-
-;; ;; 領域選択開始に合わせて IMEを OFF
-;; (add-hook 'activate-mark-hook
-;; 	  #'(lambda ()
-;; 	      (when (setq my:ime-flag (my:ime-active-p))
-;; 		(my:ime-off))))
-;; ;; 選択解除で IME ONを復帰
-;; (add-hook 'deactivate-mark-hook
-;; 	  #'(lambda ()
-;; 	      (when my:ime-flag
-;; 		(my:ime-on))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

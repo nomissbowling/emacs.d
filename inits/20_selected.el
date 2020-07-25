@@ -9,20 +9,21 @@
     :bind ("s-s" . hydra-selected/body)
     :hook (emacs-startup-hook . selected-global-mode)
     :config
-    (bind-key ";" 'comment-dwim selected-keymap)
-    (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
-    (bind-key "." 'my:mozc-word-regist selected-keymap)
-    (bind-key "e" 'my:eijiro selected-keymap)
-    (bind-key "w" 'my:weblio selected-keymap)
-    (bind-key "k" 'my:kobun selected-keymap)
-    (bind-key "r" 'my:ruigo selected-keymap)
-    (bind-key "p" 'my:postal selected-keymap)
-    (bind-key "t" 'my:translate selected-keymap)
-    (bind-key "m" 'my:g-map selected-keymap)
-    (bind-key "g" 'my:google selected-keymap)
-    (bind-key "l" 'counsel-selected selected-keymap)
-    (bind-key "h" 'hydra-selected/body selected-keymap)
-    (bind-key "q" 'selected-off selected-keymap)
+    (with-eval-after-load 'selected
+      (bind-key ";" 'comment-dwim selected-keymap)
+      (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
+      (bind-key "." 'my:mozc-word-regist selected-keymap)
+      (bind-key "e" 'my:eijiro selected-keymap)
+      (bind-key "w" 'my:weblio selected-keymap)
+      (bind-key "k" 'my:kobun selected-keymap)
+      (bind-key "r" 'my:ruigo selected-keymap)
+      (bind-key "p" 'my:postal selected-keymap)
+      (bind-key "t" 'my:translate selected-keymap)
+      (bind-key "m" 'my:g-map selected-keymap)
+      (bind-key "g" 'my:google selected-keymap)
+      (bind-key "l" 'counsel-selected selected-keymap)
+      (bind-key "h" 'hydra-selected/body selected-keymap)
+      (bind-key "q" 'selected-off selected-keymap))
     :init
     (leaf counsel-selected :el-get takaxp/counsel-selected)
     (defun my:translate ()
@@ -48,7 +49,7 @@
      ("c" clipboard-kill-ring-save)))
 
 
-  (leaf  *control-ime-when-selecetd
+  (leaf  *control-mozc-when-region-seleceted
     :init
     (defun my-activate-selected ()
       (selected-global-mode 1)
@@ -72,7 +73,7 @@
 	 (unless (null my:ime-flag) (my:ime-on)))))
 
 
-  (leaf *user-search-function
+  (leaf *user-word-search-functions
     :init
     ;; Weblio
     (defun my:weblio (str)

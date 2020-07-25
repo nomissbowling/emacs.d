@@ -4,29 +4,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; fringe-mode for right- only
-(fringe-mode (cons 0 nil))
-
-
-;; Interface for display-line-numbers (emacs version >=26)
-(leaf display-line-numbers
-  :bind ("<f9>" . display-line-numbers-mode)
-  :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
-
-
-;; Highlight the current line
-(global-hl-line-mode)
-(make-variable-buffer-local 'global-hl-line-mode)
-(add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
-
-
-;; Highlight matching parens
-(leaf paren
-  :config
-  (show-paren-mode)
-  (setq show-paren-style 'mixed))
-
-
 ;; A tomatically insert pairs
 (leaf smartparens :ensure t
   :config

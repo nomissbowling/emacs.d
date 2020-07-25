@@ -67,6 +67,23 @@
 ;; word wrapping is used
 (global-visual-line-mode)
 
+;; fringe-mode for right- only
+(fringe-mode (cons 0 nil))
+
+;; Interface for display-line-numbers (emacs version >=26)
+(leaf display-line-numbers
+  :bind ("<f9>" . display-line-numbers-mode)
+  :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
+
+;; Highlight the current line
+(global-hl-line-mode)
+(make-variable-buffer-local 'global-hl-line-mode)
+(add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
+
+;; Highlight matching parens
+(show-paren-mode)
+(setq show-paren-style 'mixed)
+
 ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
 (setq ring-bell-function 'ignore)
 
@@ -164,13 +181,11 @@ If the region is inactive, `backward-kill-word'."
 	 args))
 (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
-
 ;; Set buffer that can not be killed
 (with-current-buffer "*scratch*"
   (emacs-lock-mode 'kill))
 (with-current-buffer "*Messages*"
   (emacs-lock-mode 'kill))
-
 
 ;; Hack emacs-init-time
 (with-eval-after-load "time"

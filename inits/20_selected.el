@@ -4,83 +4,65 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf selected :ensure t
-  :bind ("s-s" . hydra-selected/body)
-  :hook (emacs-startup-hook . selected-global-mode)
-  :config
-  (bind-key ";" 'comment-dwim selected-keymap)
-  (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
-  (bind-key "." 'my:mozc-word-regist selected-keymap)
-  (bind-key "e" 'my:eijiro selected-keymap)
-  (bind-key "w" 'my:weblio selected-keymap)
-  (bind-key "k" 'my:kobun selected-keymap)
-  (bind-key "r" 'my:ruigo selected-keymap)
-  (bind-key "p" 'my:postal selected-keymap)
-  (bind-key "t" 'my:translate selected-keymap)
-  (bind-key "m" 'my:g-map selected-keymap)
-  (bind-key "g" 'my:google selected-keymap)
-  (bind-key "l" 'counsel-selected selected-keymap)
-  (bind-key "?" 'hydra-selected/body selected-keymap)
-  (bind-key "q" 'selected-off selected-keymap)
-  :init
-  (leaf counsel-selected :el-get takaxp/counsel-selected)
-  ;; Control ime when selecetd
-  (defun my-activate-selected ()
-    (selected-global-mode 1)
-    (selected--on) ;; must call expclitly here
-    (remove-hook 'activate-mark-hook #'my-activate-selected))
-  (add-hook 'activate-mark-hook #'my-activate-selected)
-  (defun my:ime-on ()
-    (interactive)
-    (when (null current-input-method) (toggle-input-method)))
-  (defun my:ime-off ()
-    (interactive)
-    (inactivate-input-method))
-  ;; activate-mark-hook
-  (add-hook 'activate-mark-hook #'(lambda ()(my:ime-off)))
-  (add-hook 'deactivate-mark-hook #'(lambda () (my:ime-on)))
-  (defun my:translate ()
-    "Traslate user-function for selected."
-    (interactive)
-    (google-translate-auto))
-  :hydra
-  (hydra-selected
-   (:color red :hint nil)
-   "
- 🔍 _t_ranslate  _g_oogle  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _l_ist  mozc:_._"
-   ("t" my:translate)
-   ("e" my:eijiro)
-   ("w" my:weblio)
-   ("k" my:kobun)
-   ("r" my:ruigo)
-   ("p" my:postal)
-   ("m" my:g-map)
-   ("g" my:google)
-   ("." my:mozc-word-regist)
-   (";" comment-dwim)
-   ("l" cunsel-selected)
-   ("c" clipboard-kill-ring-save)))
-
-
-(leaf *control-ime-when-selecetd
-  :init
-  (defun my-activate-selected ()
-    "Activate-selected."
-    (selected-global-mode 1)
-    (selected--on) ;; must call expclitly here
-    (remove-hook 'activate-mark-hook #'my-activate-selected))
-  (add-hook 'activate-mark-hook #'my-activate-selected)
-  (defun my:ime-on ()
-    (interactive)
-    (when (null current-input-method) (toggle-input-method)))
-  (defun my:ime-off ()
-    (interactive)
-    (inactivate-input-method))
-  (add-hook 'activate-mark-hook #'(lambda ()(my:ime-off)))
-  (add-hook 'deactivate-mark-hook #'(lambda () (my:ime-on))))
-
-
 (eval-when-compile
+  (leaf selected :ensure t
+    :bind ("s-s" . hydra-selected/body)
+    :hook (emacs-startup-hook . selected-global-mode)
+    :config
+    (bind-key ";" 'comment-dwim selected-keymap)
+    (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
+    (bind-key "." 'my:mozc-word-regist selected-keymap)
+    (bind-key "e" 'my:eijiro selected-keymap)
+    (bind-key "w" 'my:weblio selected-keymap)
+    (bind-key "k" 'my:kobun selected-keymap)
+    (bind-key "r" 'my:ruigo selected-keymap)
+    (bind-key "p" 'my:postal selected-keymap)
+    (bind-key "t" 'my:translate selected-keymap)
+    (bind-key "m" 'my:g-map selected-keymap)
+    (bind-key "g" 'my:google selected-keymap)
+    (bind-key "l" 'counsel-selected selected-keymap)
+    (bind-key "?" 'hydra-selected/body selected-keymap)
+    (bind-key "q" 'selected-off selected-keymap)
+    :init
+    (leaf counsel-selected :el-get takaxp/counsel-selected)
+    ;; Control ime when selecetd
+    (defun my-activate-selected ()
+      (selected-global-mode 1)
+      (selected--on) ;; must call expclitly here
+      (remove-hook 'activate-mark-hook #'my-activate-selected))
+    (add-hook 'activate-mark-hook #'my-activate-selected)
+    (defun my:ime-on ()
+      (interactive)
+      (when (null current-input-method) (toggle-input-method)))
+    (defun my:ime-off ()
+      (interactive)
+      (inactivate-input-method))
+    ;; activate-mark-hook
+    (add-hook 'activate-mark-hook #'(lambda ()(my:ime-off)))
+    (add-hook 'deactivate-mark-hook #'(lambda () (my:ime-on)))
+    (defun my:translate ()
+      "Traslate user-function for selected."
+      (interactive)
+      (google-translate-auto))
+    :hydra
+    (hydra-selected
+     (:color red :hint nil)
+     "
+ 🔍 _t_ranslate  _g_oogle  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _l_ist  mozc:_._"
+     ("t" my:translate)
+     ("e" my:eijiro)
+     ("w" my:weblio)
+     ("k" my:kobun)
+     ("r" my:ruigo)
+     ("p" my:postal)
+     ("m" my:g-map)
+     ("g" my:google)
+     ("." my:mozc-word-regist)
+     (";" comment-dwim)
+     ("l" cunsel-selected)
+     ("c" clipboard-kill-ring-save)))
+
+
   (leaf *user-search-function
     :init
     ;; Weblio

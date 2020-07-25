@@ -25,21 +25,6 @@
     (bind-key "q" 'selected-off selected-keymap)
     :init
     (leaf counsel-selected :el-get takaxp/counsel-selected)
-    ;; Control ime when selecetd
-    (defun my-activate-selected ()
-      (selected-global-mode 1)
-      (selected--on) ;; must call expclitly here
-      (remove-hook 'activate-mark-hook #'my-activate-selected))
-    (add-hook 'activate-mark-hook #'my-activate-selected)
-    (defun my:ime-on ()
-      (interactive)
-      (when (null current-input-method) (toggle-input-method)))
-    (defun my:ime-off ()
-      (interactive)
-      (inactivate-input-method))
-    ;; activate-mark-hook
-    (add-hook 'activate-mark-hook #'(lambda ()(my:ime-off)))
-    (add-hook 'deactivate-mark-hook #'(lambda () (my:ime-on)))
     (defun my:translate ()
       "Traslate user-function for selected."
       (interactive)
@@ -61,6 +46,30 @@
      (";" comment-dwim)
      ("l" cunsel-selected)
      ("c" clipboard-kill-ring-save)))
+
+
+  (leaf  *control-ime-when-selecetd
+    :init
+    (defun my-activate-selected ()
+      (selected-global-mode 1)
+      (selected--on) ;; must call expclitly here
+      (remove-hook 'activate-mark-hook #'my-activate-selected))
+    (add-hook 'activate-mark-hook #'my-activate-selected)
+    (defun my:ime-on ()
+      (interactive)
+      (when (null current-input-method) (toggle-input-method)))
+    (defun my:ime-off ()
+      (interactive)
+      (inactivate-input-method))
+    ;; activate-mark-hook
+    (add-hook
+     'activate-mark-hook
+     #'(lambda ()
+	 (setq my:ime-flag current-input-method) (my:ime-off)))
+    (add-hook
+     'deactivate-mark-hook
+     #'(lambda ()
+	 (unless (null my:ime-flag) (my:ime-on)))))
 
 
   (leaf *user-search-function

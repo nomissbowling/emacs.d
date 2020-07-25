@@ -528,7 +528,9 @@ selected.el の最大の欠点は、IMEとの相性が悪いことです。IME�
      (bind-key "M-c" 'YaTeX-typeset-buffer)	;; Type set
      (bind-key "M-l" 'YaTeX-lpr))))		;; Open PDF file
 ```
-`YaTeX-lpr` は、`dviprint-command-format` を呼び出すコマンドです。dviファイルからdvipdfmx でPDF作成したあと、PDFビューアーを起動させて表示させるところまでをバッチファイルに書き、PATHの通ったところに置きます。私は、`/usr/loca/bin` に置きました。
+`YaTeX-lpr` は、`dviprint-command-format` を呼び出すコマンドです。
+
+dviファイルからdvipdfmx でPDF作成したあと、PDFビューアーを起動させて表示させるところまでをバッチファイルに書き、PATHの通ったところに置きます。私は、`/usr/loca/bin` に置きました。
 
 
 ```sh

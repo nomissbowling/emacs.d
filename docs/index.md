@@ -445,7 +445,7 @@ If there are two or more windows, it will go to another window."
   (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
 ```
 
-### 6.2 [selected]imput-method のオン・オフを自動制御する
+### 6.2 [selected] imput-method のオン・オフを自動制御する
 
 selected.el の最大の欠点は、IMEとの相性が悪いことです。IMEオンのまま選択領域に対するコマンドを選択すると、押下キーがバッファにそのまま入力されてしまいます。
 

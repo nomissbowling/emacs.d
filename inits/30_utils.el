@@ -14,7 +14,6 @@
   (migemo-init))
 
 
-
 (leaf imenu-list :ensure t
   :bind (("<f2>" . imenu-list-smart-toggle))
   :config

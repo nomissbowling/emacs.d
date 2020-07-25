@@ -261,6 +261,19 @@ Mozcと連動してカーソルの色をカスタマイズするために [mozc-
     (setq mozc-candidate-style 'posframe)))
 
 ```
+#### 句読点では即確定させる
+句読点などを入力したとき、わざわざmozcに変換してもらう必要はないので以下を設定しておくことでワンアクションスピーディーになります。
+
+```emacs-lisp
+(add-hook 'mozc-mode-hook
+          (lambda ()
+            (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+            (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+            (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))))
+```
+
+
+
 **📝 今後の課題**
 >Windows10 では `Google日本語入力` を使います。WSLも含めて複数環境で Emacsを動かしています。これら全ての環境で Mozcユーザー辞書を共有できるようにしたいと思考中です。
 

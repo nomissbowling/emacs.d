@@ -388,41 +388,41 @@ If there are two or more windows, it will go to another window."
 
 ```emacs-lisp
 (leaf selected :ensure t
+  :bind ("s-s" . hydra-selected/body)
+  :hook (emacs-startup-hook . selected-global-mode)
   :config
-  (selected-global-mode)
-  (define-key selected-keymap ";" 'comment-dwim )
-  (define-key selected-keymap "c" 'clipboard-kill-ring-save)
-  (define-key selected-keymap "." 'my:mozc-word-regist)
-  (define-key selected-keymap "e" 'my:eijiro)
-  (define-key selected-keymap "w" 'my:weblio)
-  (define-key selected-keymap "k" 'my:kobun)
-  (define-key selected-keymap "r" 'my:ruigo)
-  (define-key selected-keymap "p" 'my:postal)
-  (define-key selected-keymap "t" 'my:translate)
-  (define-key selected-keymap "m" 'my:g-map)
-  (define-key selected-keymap "g" 'my:google)
-  (define-key selected-keymap "l" 'counsel-selected)
-  (define-key selected-keymap "?" 'hydra-selected/body)
-  (define-key selected-keymap "q" 'selected-off)
+  (with-eval-after-load 'selected
+	(bind-key ";" 'comment-dwim selected-keymap)
+	(bind-key "c" 'clipboard-kill-ring-save selected-keymap)
+	(bind-key "." 'my:mozc-word-regist selected-keymap)
+	(bind-key "e" 'my:eijiro selected-keymap)
+	(bind-key "w" 'my:weblio selected-keymap)
+	(bind-key "k" 'my:kobun selected-keymap)
+	(bind-key "r" 'my:ruigo selected-keymap)
+	(bind-key "p" 'my:postal selected-keymap)
+	(bind-key "t" 'my:translate selected-keymap)
+	(bind-key "m" 'my:g-map selected-keymap)
+	(bind-key "g" 'my:google selected-keymap)
+	(bind-key "l" 'counsel-selected selected-keymap)
+	(bind-key "h" 'hydra-selected/body selected-keymap)
+	(bind-key "q" 'selected-off selected-keymap))
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected)
-  (defun my-activate-selected ()
-    (selected-global-mode 1)
-    (selected--on) ;; must call expclitly here
-    (remove-hook 'activate-mark-hook #'my-activate-selected))
-  (add-hook 'activate-mark-hook #'my-activate-selected)
+  (defun my:translate ()
+	"Traslate user-function for selected."
+	(interactive)
+	(google-translate-auto))
   :hydra
   (hydra-selected
    (:color red :hint nil)
    "
- 🔍 _t_ranslate  _g_oogle  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _l_ist"
+ 🔍 _t_ranslate  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _g_oogle  _l_ist"
    ("t" my:translate)
    ("e" my:eijiro)
    ("w" my:weblio)
    ("k" my:kobun)
    ("r" my:ruigo)
-   ("p" my:postal)
-   ("m" my:g-map)
+   ("g" my:google)
    ("l" cunsel-selected)))
 
 ```

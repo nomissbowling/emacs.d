@@ -72,8 +72,7 @@
   :init
   ;; Weblio
   (defun my:weblio (str)
-    (interactive (list (region-or-read-string nil)
-		       ))
+    (interactive (list (region-or-read-string nil)))
     (browse-url (format "http://www.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
   ;; Kobun

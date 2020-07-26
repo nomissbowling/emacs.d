@@ -89,7 +89,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 
 遅延読み込みしても問題ない設定には積極的に活用しています。
 
-個別ごとに設定してもいいのですが、私の場合は `inits/` フォルダー内に設定群を配置してまとめて遅延読み込みしています。
+遅延設定は、個別にしてもいいのですが、私の場合は `inits/` フォルダー内に設定群を配置してまとめて遅延読み込みしています。
 
 以下の設定例では `after-init-hook` で `init-loarder` が始動します。
 
@@ -98,8 +98,6 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
   :init
   (setq load-prefer-newer t)
   (setq el-get-dir "~/.emacs.d/elisp")
-  (add-to-list 'load-path "~/Dropbox/emacs.d")
-  (require 'init-config)
   :config
   (add-hook
    'after-init-hook
@@ -110,9 +108,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 ```
 
 ### 2.4 初期画面設定
-[init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) は、Emacs起動時の初期画面表示のための設定ファイル ですので、遅延読み込みより前に読み込む必要があります。（前項の設定を参照）
-
-起動時にギクシャクする画面は見たくないので、まず冒頭に以下を設定しています。
+起動時にギクシャクする画面は見たくないので、`init.el` の冒頭に以下を設定しています。
 
 ```emacs-lisp
 ;; Quiet Startup

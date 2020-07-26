@@ -39,7 +39,7 @@
 			    (agenda . 5))))
   ;; Set the footer
   (setq dashboard-footer-icon
-  	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+  	(all-the-icons-octicon "code" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
   (setq dashboard-footer-messages '("Always be joyful. Never stop praying. Be thankful in all circumstances!"))
   ;; Insert custom item
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))

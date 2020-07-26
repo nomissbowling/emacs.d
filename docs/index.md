@@ -83,14 +83,9 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 
 ```
 
-### 2.3 after-init-hook / emacs-startup-hook：遅延読み込み
-
-* [after-init-hook と emacs-startup-hook の違いを読み解く](https://minosjp.hatenablog.com/entry/2019/10/08/232215)
-
-遅延読み込みしても問題ない設定には積極的に活用しています。
+### 2.3 after-init-hook：遅延読み込み
 
 遅延設定は、個別にしてもいいのですが、私の場合は `inits/` フォルダー内に設定群を配置してまとめて遅延読み込みしています。
-
 以下の設定例では `after-init-hook` で `init-loarder` が始動します。
 
 ```emacs-lisp

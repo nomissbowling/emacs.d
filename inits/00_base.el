@@ -192,13 +192,18 @@ If the region is inactive, `backward-kill-word'."
     "Return a string giving the duration of the Emacs initialization."
     (interactive)
     (let ((str
-           (format "%.3f seconds"
-                   (float-time
-                    (time-subtract after-init-time before-init-time)))))
+	   (format "%.3f seconds"
+		   (float-time
+		    (time-subtract after-init-time before-init-time)))))
       (if (called-interactively-p 'interactive)
-          (message "%s" str)
-        str)))
+	  (message "%s" str)
+	str)))
   (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
+
+;; Load user Functions
+(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+(require 'user-dired)
+(require 'user-template)
 
 
 ;; Local Variables:

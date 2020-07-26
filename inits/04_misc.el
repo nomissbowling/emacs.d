@@ -17,7 +17,6 @@
 
 
 (leaf yasnippet :ensure t
-  :bind ("<f11>" . ivy-yasnippet)
   :config
   (yas-global-mode)
   (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))

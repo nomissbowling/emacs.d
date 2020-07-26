@@ -7,8 +7,8 @@
 (eval-when-compile
   (leaf selected :ensure t
     :bind ("s-s" . hydra-selected/body)
-    :hook (emacs-startup-hook . selected-global-mode)
     :config
+    (selected-global-mode)
     (with-eval-after-load 'selected
       (bind-key ";" 'comment-dwim selected-keymap)
       (bind-key "c" 'clipboard-kill-ring-save selected-keymap)

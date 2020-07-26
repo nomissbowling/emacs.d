@@ -17,8 +17,8 @@
 ;; exec-path-from-shell
 (leaf exec-path-from-shell
   :when (memq window-system '(mac ns x))
-  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
+  (exec-path-from-shell-initialize)
   (setq exec-path-from-shell-check-startup-files nil))
 
 
@@ -44,7 +44,6 @@
 			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/scp:"
 			 (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
-
 
 ;; Save hist
 (savehist-mode)

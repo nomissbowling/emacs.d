@@ -37,8 +37,8 @@
 
 ;; Highlight some operations
 (leaf volatile-highlights :ensure t
-  :hook (emacs-startup-hook . volatile-highlights-mode)
   :config
+  (volatile-highlights-mode)
   (with-no-warnings
     (when (fboundp 'pulse-momentary-highlight-region)
       (defun my-vhl-pulse (beg end &optional _buf face)

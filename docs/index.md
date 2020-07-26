@@ -115,61 +115,66 @@ Dashboard バッファーは、読み取り専用なので、ワンキーリン�
 
 
 ```emacs-lisp
-;; Custom dashboard
 (leaf dashboard :ensure t
-  :hook (after-init-hook . dashboard-setup-startup-hook)
   :config
-  (bind-key "<home>" 'open-dashboard)
-  (bind-key "<home>" 'quit-dashboard dashboard-mode-map)
+  (with-eval-after-load 'dashboard
+    (bind-key "<home>" 'open-dashboard)
+	;;  （中略）
+    (bind-key "<home>" 'quit-dashboard dashboard-mode-map)
+	)
   ;;  （中略）
+  )
+
+(leaf *dasuboard-extension
+  :config
   (defvar dashboard-recover-layout-p nil
-    "Wether recovers the layout.")
+	"Wether recovers the layout.")
 
   (defun restore-previous-session ()
-    "Restore the previous session."
-    (interactive)
-    (when (bound-and-true-p persp-mode)
-      (restore-session persp-auto-save-fname)))
+	"Restore the previous session."
+	(interactive)
+	(when (bound-and-true-p persp-mode)
+	  (restore-session persp-auto-save-fname)))
 
   (defun restore-session (fname)
-    "Restore the specified session."
-    (interactive
+	"Restore the specified session."
+	(interactive
 	 (list (read-file-name "Load perspectives from a file: " persp-save-dir)))
-    (when (bound-and-true-p persp-mode)
-      (message "Restoring session...")
-      (quit-window t)
-      (condition-case-unless-debug err
+	(when (bound-and-true-p persp-mode)
+	  (message "Restoring session...")
+	  (quit-window t)
+	  (condition-case-unless-debug err
 		  (persp-load-state-from-file fname)
 		(error "Error: Unable to restore session -- %s" err))
-      (message "Done")))
+	  (message "Done")))
 
   (defun open-dashboard ()
-    "Open the *dashboard* buffer and jump to the first widget."
-    (interactive)
-    (delete-other-windows)
-    (setq default-directory "~/")
-    ;; Refresh dashboard buffer
-    (if (get-buffer dashboard-buffer-name)
+	"Open the *dashboard* buffer and jump to the first widget."
+	(interactive)
+	(delete-other-windows)
+	(setq default-directory "~/")
+	;; Refresh dashboard buffer
+	(if (get-buffer dashboard-buffer-name)
 		(kill-buffer dashboard-buffer-name))
-    (dashboard-insert-startupify-lists)
-    (switch-to-buffer dashboard-buffer-name)
-    ;; Jump to the first section
-    (goto-char (point-min))
-    (dashboard-goto-recent-files))
+	(dashboard-insert-startupify-lists)
+	(switch-to-buffer dashboard-buffer-name)
+	;; Jump to the first section
+	(goto-char (point-min))
+	(dashboard-goto-recent-files))
 
   (defun quit-dashboard ()
-    "Quit dashboard window."
-    (interactive)
-    (quit-window t)
-    (when (and dashboard-recover-layout-p
+	"Quit dashboard window."
+	(interactive)
+	(quit-window t)
+	(when (and dashboard-recover-layout-p
 			   (bound-and-true-p winner-mode))
-      (winner-undo)
-      (setq dashboard-recover-layout-p nil)))
+	  (winner-undo)
+	  (setq dashboard-recover-layout-p nil)))
 
   (defun dashboard-goto-recent-files ()
-    "Go to recent files."
-    (interactive)
-    (funcall (local-key-binding "r"))))
+	"Go to recent files."
+	(interactive)
+	(funcall (local-key-binding "r"))))
 
 ```
 - [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el)は、ここを見て下さい。 

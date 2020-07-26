@@ -4,11 +4,42 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(defadvice toggle-input-method (around toggle-input-method-around activate)
-  "Input method function in key-chord.el not to be nil."
-  (let ((input-method-function-save input-method-function))
-    ad-do-it
-    (setq input-method-function input-method-function-save)))
+(leaf mozc :ensure t
+  :config
+  (bind-key* "<hiragana-katakana>" 'toggle-input-method)
+  (setq default-input-method "japanese-mozc")
+  (setq mozc-helper-program-name "mozc_emacs_helper")
+  (setq mozc-leim-title "♡かな")
+  :init
+  (defun mozc-insert-str (str)
+    "If punctuation marks, immediately confirm."
+    (mozc-handle-event 'enter)
+    (toggle-input-method)
+    (insert str)
+    (toggle-input-method))
+  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
+  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
+
+  (defadvice toggle-input-method (around toggle-input-method-around activate)
+    "Input method function in key-chord.el not to be nil."
+    (let ((input-method-function-save input-method-function))
+      ad-do-it
+      (setq input-method-function input-method-function-save)))
+  :preface
+  (leaf mozc-cursor-color
+    :el-get iRi-E/mozc-el-extensions
+    :require t
+    :config
+    (setq mozc-cursor-color-alist
+	  '((direct . "#BD93F9")
+	    (read-only . "#84A0C6")
+	    (hiragana . "#CC3333"))))
+  (leaf mozc-cand-posframe :ensure t
+    :require t
+    :config
+    (setq mozc-candidate-style 'posframe)))
 
 
 (leaf *user-mozc-tool
@@ -40,40 +71,6 @@
     "Run the mozc-tool in the background."
     (interactive)
     (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")))
-
-
-(leaf mozc :ensure t
-  :config
-  (bind-key* "<hiragana-katakana>" 'toggle-input-method)
-  (setq default-input-method "japanese-mozc")
-  (setq mozc-helper-program-name "mozc_emacs_helper")
-  (setq mozc-leim-title "♡かな")
-  :init
-  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
-  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
-  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
-  (defun mozc-insert-str (str)
-    "If punctuation marks, immediately confirm."
-    (mozc-handle-event 'enter)
-    (toggle-input-method)
-    (insert str)
-    (toggle-input-method))
-
-  :preface
-  (leaf mozc-cursor-color
-    :el-get iRi-E/mozc-el-extensions
-    :require t
-    :config
-    (setq mozc-cursor-color-alist
-	  '((direct . "#BD93F9")
-	    (read-only . "#84A0C6")
-	    (hiragana . "#CC3333"))))
-  (leaf mozc-cand-posframe :ensure t
-    :require t
-    :config
-    (setq mozc-candidate-style 'posframe))
-  )
 
 
 ;; Local Variables:

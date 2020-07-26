@@ -330,17 +330,7 @@ Melpからインストールできるのですが、[@HKey](https://twitter.com/
 (bind-key "C-x C-x" 'my:exchange-point-and-mark)
 ```
 
-### 4.5 タグジャンプ
-この機能もごく稀にしか使いません。
-一等地にあるデフォルトの `M-.` は、もっとも頻繁に使う [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) （後述）に渡したいので変更しています。
-
-```emacs-lisp
-;; xref-find-* key
-(bind-key "C-," 'xref-find-references)
-(bind-key "C-." 'xref-find-definitions)
-
-```
-### 4.6 [expand-region]カーソル位置を起点に選択範囲を賢く広げる
+### 4.5 [expand-region]カーソル位置を起点に選択範囲を賢く広げる
 `er/expand-region` を呼ぶと、カーソル位置を起点として前後に選択範囲を広げてくれます。2回以上呼ぶとその回数だけ賢く選択範囲が広がりますが、2回目以降は設定したキーバインドの最後の一文字を連打すればOKです。その場合、選択範囲を狭める時は - を押し， 0 を押せばリセットされます。
 
 ```emacs-lisp

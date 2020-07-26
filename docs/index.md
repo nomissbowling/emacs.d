@@ -276,7 +276,8 @@ If there are two or more windows, it will go to another window."
 
 - [iflipb.el](https://github.com/jrosdahl/iflipb) を使うと tabbar感覚の操作感になります。
 - [タブを使わない究極のバーファー移動](https://qiita.com/minoruGH/items/aa96e92c1434f87940d6)
-
+- [tempbf.el](https://github.com/jrosdahl/iflipb) は、不要なbufferを自動的にKillしてくれるので更に便利になります。
+- [不要なバッファーを自動的にkillする](https://qiita.com/minoruGH/items/d7f6f1bd76c046a85927)
 
 ```emacs-lisp
 (leaf iflipb
@@ -287,11 +288,6 @@ If there are two or more windows, it will go to another window."
   (setq iflipb-wrap-around t)
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir")))
 
-```
-- [tempbf.el](https://github.com/jrosdahl/iflipb) は、不要なbufferを自動的にKillしてくれるので更に便利になります。
-- [不要なバッファーを自動的にkillする](https://qiita.com/minoruGH/items/d7f6f1bd76c046a85927)
-
-```emacs-lisp
 ;; automatically kill unnecessary buffers
 (use-package tempbuf)
 (add-hook 'dired-mode-hook 'turn-on-tempbuf-mode)

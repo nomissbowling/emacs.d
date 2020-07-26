@@ -56,7 +56,7 @@ init-loader を使うことの是非については諸説あるようですが�
 
 [minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。
 
-新しいパッケージや設定をテストしたり、Emacs が動かなくなったときに使います。
+新しいパッケージや設定をテストしたり、エラー等で Emacsが起動しない場合に使用します。
 シェルから `resq` と入力することで起動することがでます。
 
 以下を `.zshrc` または `.bashrc` に書き込みます。
@@ -65,7 +65,7 @@ init-loader を使うことの是非については諸説あるようですが�
 alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ```
 
-ファイルの PATH は、ご自分の環境に応じて修正が必要です。エラー等で Emacsが起動しない場合に使用します。
+ファイルの PATH は、ご自分の環境に応じて修正が必要です。
 
 ### 2.2 GCサイズの最適化
 Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻します。

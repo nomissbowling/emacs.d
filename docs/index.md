@@ -368,26 +368,9 @@ Melpからインストールできるのですが、[@HKey](https://twitter.com/
 	(bind-key "m" 'my:g-map selected-keymap)
 	(bind-key "g" 'my:google selected-keymap)
 	(bind-key "l" 'counsel-selected selected-keymap)
-	(bind-key "h" 'hydra-selected/body selected-keymap)
 	(bind-key "q" 'selected-off selected-keymap))
   :init
-  (leaf counsel-selected :el-get takaxp/counsel-selected)
-  (defun my:translate ()
-	"Traslate user-function for selected."
-	(interactive)
-	(google-translate-auto))
-  :hydra
-  (hydra-selected
-   (:color red :hint nil)
-   "
- 🔍 _t_ranslate  _e_ijiro  _w_eblio  _k_obun  _r_uigo  _g_oogle  _l_ist"
-   ("t" my:translate)
-   ("e" my:eijiro)
-   ("w" my:weblio)
-   ("k" my:kobun)
-   ("r" my:ruigo)
-   ("g" my:google)
-   ("l" cunsel-selected)))
+  (leaf counsel-selected :el-get takaxp/counsel-selected))
 
 ```
 

@@ -85,7 +85,7 @@
    ("r" counsel-rg)
    ("@" hydra-package/body)
    ("p" open-keepass)
-   ("2" my:pdfout-buffer)
+   ("2" pdfout-select)
    (":" my:ps-print)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)

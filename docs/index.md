@@ -48,9 +48,10 @@
 基本的には `init.el` を読み込むことで制御しています。 手順は以下のとおり。
 
 1. `init.el` の読み込み
-2. `inits/` に配置したファイル群の遅延読み込み （init-loader 使用）
+2. `inits/` に配置したファイル群の読み込み （init-loader 使用）
 
-遅延起動でも問題ないものは `inits/` フォルダーに配置し [init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込みます。
+`inits/` フォルダーに配置したファイルを [init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込むのですが、これを `after-init-hook` で遅延読込しています。
+
 init-loader の是非は諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
 
 ### 2.1 [minimal-init.el] 最小限のEmacsを起動

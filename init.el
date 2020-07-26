@@ -55,7 +55,6 @@
      ))
   (setq custom-file (locate-user-emacs-file "custom.el")))
 
-
 (provide 'init)
 
 ;; Local Variables:

@@ -45,7 +45,7 @@
 
 ```
 
-## 3. 起動設定
+## 2. 起動設定
 基本的には `init.el` を読み込むことで制御しています。 手順は以下のとおり。
 
 1. `init.el` の読み込み
@@ -67,7 +67,7 @@
 遅延起動でも問題ないものは `inits/` フォルダーに配置し [init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込みます。
 init-loader の是非は諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
 
-### 3.1 [minimal-init.el] 最小限のEmacsを起動
+### 2.1 [minimal-init.el] 最小限のEmacsを起動
 
 [minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。シェルから `resq` と入力することで起動することがでます。
 
@@ -79,7 +79,7 @@ alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。エラー等で Emacsが起動しない場合に使用します。
 
-### 3.2 GCサイズの最適化
+### 2.2 GCサイズの最適化
 通常は以下のように設定している事例が多いです。
 
 ```emacs-lisp
@@ -104,7 +104,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 
 `init.el` の先頭に記述しないと効果は少ないです。元ネタは [seagle0123](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
 
-### 3.3 after-init-hook / emacs-startup-hook：遅延読み込み
+### 2.3 after-init-hook / emacs-startup-hook：遅延読み込み
 
 * [after-init-hook と emacs-startup-hook の違いを読み解く](https://minosjp.hatenablog.com/entry/2019/10/08/232215)
 
@@ -130,7 +130,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
   (setq custom-file (locate-user-emacs-file "custom.el")))
 ```
 
-### 3.4 初期画面設定
+### 2.4 初期画面設定
 [init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) は、Emacs起動時の初期画面表示のための設定ファイル ですので、遅延読み込みより前に読み込む必要があります。（前項の設定を参照）
 
 起動時にギクシャクする画面は見たくないので、まず冒頭に以下を設定しています。
@@ -145,7 +145,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 (setq inhibit-startup-message t)
 ```
 
-### 3.5 Dashboard バッファーをリロードさせる
+### 2.5 Dashboard バッファーをリロードさせる
 
 Emacs 起動時の初期画面には、`Dashboard` を表示させています。
 
@@ -219,10 +219,10 @@ Emacs 起動時の初期画面には、`Dashboard` を表示させています�
 
 
 
-## 4. コア設定
+## 3. コア設定
 Emacs を操作して文書編集する上で必要な設定。
 
-### 4.1 言語 / 文字コード
+### 3.1 言語 / 文字コード
 
 シンプルにこれだけです。
 
@@ -230,7 +230,7 @@ Emacs を操作して文書編集する上で必要な設定。
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
 ```
-### 4.2 日本語入力
+### 3.2 日本語入力
 
 Debian10 にインストールした Emacs上で [emacs-mozc](https://packages.debian.org/ja/jessie/emacs-mozc) を使っています。
 
@@ -261,7 +261,7 @@ Mozcと連動してカーソルの色をカスタマイズするために [mozc-
     (setq mozc-candidate-style 'posframe)))
 
 ```
-#### 4.2.1 [mozc] 句読点では即確定させる
+#### 3.2.1 [mozc] 句読点では即確定させる
 句読点などを入力したとき、わざわざmozcに変換してもらう必要はないので以下を設定しておくことでワンアクションスピーディーになります。
 
 ```emacs-lisp
@@ -274,14 +274,14 @@ Mozcと連動してカーソルの色をカスタマイズするために [mozc-
 
 
 
-#### 4.2.2 [mozc] ユーザー辞書を複数端末で共有させる
+#### 3.2.2 [mozc] ユーザー辞書を複数端末で共有させる
 
 Windows10 では `Google日本語入力` を使います。WSLも含めて複数環境で Emacsを動かしています。これら全ての環境で Mozcユーザー辞書を共有できるようにしたいと思考中です。
 
 Mozc のファイル群を Dropbox に保存して、シンボリックを各端末に置くという方法で、一応は動きますが多少問題もあります。辞書の共有は、Google Drive がよいという情報もあるので、時間のあるときにゆっくり試してみます。
 
 
-## 5. カーソル移動
+## 4. カーソル移動
 カーソルの移動は、原則デフォルトで使っていますが、以下の挙動だけ変更しています。
 
 ```eval_rst
@@ -298,7 +298,7 @@ Mozc のファイル群を Dropbox に保存して、シンボリックを各端
 +--------------------------+-----------+
 ```
 
-### 5.1 ウインドウの移動
+### 4.1 ウインドウの移動
 
 私の場合、二分割以上の作業はしないので `C-q` だけで便利に使えるこの関数は宝物です。
 最初の `C-q` でに分割になり、二度目以降は押すたびに Window 移動します。
@@ -314,7 +314,7 @@ If there are two or more windows, it will go to another window."
 (bind-key "C-q" 'other-window-or-split)
 ```
 
-### 5.2 バッファー切り替え
+### 4.2 バッファー切り替え
 
 - [iflipb.el](https://github.com/jrosdahl/iflipb) を使うと tabbar感覚の操作感になります。
 - [タブを使わない究極のバーファー移動](https://qiita.com/minoruGH/items/aa96e92c1434f87940d6)
@@ -340,7 +340,7 @@ If there are two or more windows, it will go to another window."
 (add-hook 'magit-mode-hook 'turn-on-tempbuf-mode)
 ```
 
-### 5.3 バッファー先頭・末尾
+### 4.3 バッファー先頭・末尾
 
 [sequential-command.el](https://rubikitch.hatenadiary.org/entry/20090219/sequential_command) は地味なながら一度使うと便利すぎて止められません。Melpからインストールできるのですが、[@HKey](https://twitter.com/hke7) さんの改良版を el-getで入れてます。感謝！
 
@@ -357,7 +357,7 @@ If there are two or more windows, it will go to another window."
 	:el-get HKey/sequential-command))
 ```
 
-### 5.4 編集点の移動
+### 4.4 編集点の移動
 ポイントを変遷するような高度な作業はしないので、"一手前に戻る汎用的な方法" だけ採用しています。元ネタは [@masasam](https://twitter.com/SolistWork) さんのブログ記事
 [Mark Ringを活用する](https://solist.work/blog/posts/mark-ring/) からです。感謝！
 
@@ -370,7 +370,7 @@ If there are two or more windows, it will go to another window."
 (bind-key "C-x C-x" 'my:exchange-point-and-mark)
 ```
 
-### 5.5 タグジャンプ
+### 4.5 タグジャンプ
 この機能もごく稀にしか使いません。
 一等地にあるデフォルトの `M-.` は、もっとも頻繁に使う [hydra-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) （後述）に渡したいので変更しています。
 
@@ -380,7 +380,7 @@ If there are two or more windows, it will go to another window."
 (bind-key "C-." 'xref-find-definitions)
 
 ```
-### 5.6 [expand-region]カーソル位置を起点に選択範囲を賢く広げる
+### 4.6 [expand-region]カーソル位置を起点に選択範囲を賢く広げる
 `er/expand-region` を呼ぶと、カーソル位置を起点として前後に選択範囲を広げてくれます。2回以上呼ぶとその回数だけ賢く選択範囲が広がりますが、2回目以降は設定したキーバインドの最後の一文字を連打すればOKです。その場合、選択範囲を狭める時は - を押し， 0 を押せばリセットされます。
 
 ```emacs-lisp
@@ -392,10 +392,10 @@ If there are two or more windows, it will go to another window."
 [@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) では [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) が紹介されています。
 
 
-## 6. 編集サポート
+## 5. 編集サポート
 
 
-### 6.1 [selected] リージョン選択時のアクションを制御
+### 5.1 [selected] リージョン選択時のアクションを制御
 
 選択領域に対するスピードコマンドです。Emacsバッファーで領域を選択した後、バインドしたと入力するとコマンドが実行されます。
 
@@ -463,7 +463,7 @@ If there are two or more windows, it will go to another window."
   (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
 ```
 
-### 6.2 [selected] IME のオン・オフを自動制御する
+### 5.2 [selected] IME のオン・オフを自動制御する
 
 selected.el の最大の欠点は、IMEとの相性が悪いことです。IMEオンのまま選択領域に対するコマンドを選択すると、押下キーがバッファにそのまま入力されてしまいます。
 
@@ -497,7 +497,7 @@ selected.el の最大の欠点は、IMEとの相性が悪いことです。IME�
 
 
 
-### 6.3 [darkroom-mode] 執筆モード
+### 5.3 [darkroom-mode] 執筆モード
 [darkroom.el](https://github.com/joaotavora/darkroom)  は、画面の余計な項目を最小限にして、文章の執筆に集中できるようにするパッケージです。
 
 基本機能は、文字サイズが大きくなり、モード行が消えるだけですが、設定例では、行番号表示、diff-hl、flymake も消しています。併せて文字間隔も少し大きくして読みやすくしました。[F12] キーで IN/OUT をトグルしています。
@@ -525,7 +525,7 @@ selected.el の最大の欠点は、IMEとの相性が悪いことです。IME�
     (display-line-numbers-mode 1)))
 ```
 
-### 6.4 [yatex] YaTexでTex編集
+### 5.4 [yatex] YaTexでTex編集
 
 ごく一般的な設定例ですが、参考になるとしたら [yatexprc](https://www.yatex.org/gitbucket/yuuji/yatex/blob/c45e2a0187b702c5e817bf3023816dde154f0de9/yatexprc.el) の `M-x YaTeX-lpr` を使って一気にPDF作成まで自動化している点でしょうか。
 
@@ -564,9 +564,9 @@ rm *.au* *.dv* *.lo*
 dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 ```
 
-## 7. 表示サポート
+## 6. 表示サポート
 
-### 7.1 [emacs-lock-mode] scratch バッファーを消さない
+### 6.1 [emacs-lock-mode] scratch バッファーを消さない
 
 難しい関数を設定せずとも内蔵コマンドで簡単に実現できます。
 
@@ -578,7 +578,7 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
   (emacs-lock-mode 'kill))
 ```
 
-### 7.2 swiper を migemo 化してローマ字入力で日本語を検索
+### 6.2 swiper を migemo 化してローマ字入力で日本語を検索
 
 昔は、[avy-migemo-e.g.swiper.el](https://github.com/momomo5717/avy-migemo) を使って出来ていたのですが、２年ほど前から更新が止まってしまっていて、いまは動きません。つい最近、avy-migemo を使わない Tipsを見つけたので試した処、機嫌よく動いてくれています。
 
@@ -604,6 +604,41 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 	  '((t . ivy--regex-plus)
 		(swiper . my:ivy-migemo-re-builder)))
 ```
+
+## 7. Hydra
+
+
+[hydra.el](https://github.com/abo-abo/hydra) は、連続して操作するときにプレフィクスキーをキャンセルさせるための elispです。
+
+日本では、[smartrep.el](http://sheephead.homelinux.org/2011/12/19/6930/) が有名だったようですが、hydra.elも同様の機能を提供します。
+私はおもに8種の hydra を設定しています。それぞれを呼び出すための相関図は下記のとおりです。
+
+```
+┌──────────────────┐
+│ hydra-work-menu  │ ワークテーブル分岐
+└──────────────────┘
+￬￪ 相互に行き来できる
+┌──────────────────┐
+│ hydra-quick-menu │ よく使うコマンド群
+└──────────────────┘
+   │
+   ├── hydra-compile
+   ├── hydra-markdown
+   ├── hydra-package
+   ├── hydra-magit    <<- Dired からも呼び出せる
+   ├── hydra-browse   <<- Dashboard からも呼び出せる
+   └── hydra-pinky
+```
+
+- [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
+- [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el) 
+- [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el) 
+- [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el) 
+- [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el) 
+- [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
+- [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
+
 
 ## 8. 履歴 / ファイル管理
 
@@ -791,70 +826,16 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 	  (file-name-sans-extension filename) ".docx"))))
 ```
 
-## 10. Hydra
-
-[hydra.el](https://github.com/abo-abo/hydra) は、連続して操作するときにプレフィクスキーをキャンセルさせるための elispです。
-
-日本では、[smartrep.el](http://sheephead.homelinux.org/2011/12/19/6930/) が有名だったようですが、hydra.elも同様の機能を提供します。
-私はおもに8種の hydra を設定しています。それぞれを呼び出すための相関図は下記のとおりです。
-
-```
-┌──────────────────┐
-│ hydra-work-menu  │ ワークテーブル分岐
-└──────────────────┘
-￬￪ 相互に行き来できる
-┌──────────────────┐
-│ hydra-quick-menu │ よく使うコマンド群
-└──────────────────┘
-   │
-   ├── hydra-compile
-   ├── hydra-markdown
-   ├── hydra-package
-   ├── hydra-magit    <<- Dired からも呼び出せる
-   ├── hydra-browse   <<- Dashboard からも呼び出せる
-   └── hydra-pinky
-```
-
-### 10.1 hydra-work-menu 
-- [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
-
-### 10.2 hydra-quick-menu
-- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
-
-### 10.3 hydra-pinky
-- [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el) 
-
-### 10.4 hydra-compile
-- [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el) 
-
-### 10.5 hydra-markdown
-- [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el) 
-
-### 10.6 hydra-magit
-- [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el) 
-
-### 10.7 hydra-package
-- [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
-
-### 10.8 hydra-browse
-- [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
-
-
-## 11. Org Mode / Howm Mode
+## 10. Org Mode / Howm Mode
 
 ```emacs-lisp
 
 ```
 
-## 12. Hugo
 
-```emacs-lisp
+## 11. フォント / 配色関係
 
-```
-
-## 13. フォント / 配色関係
-
-### 13.1 フォント設定
+### 11.1 フォント設定
 
 ```emacs-lisp
 (add-to-list 'default-frame-alist '(font . "Cica-18"))
@@ -862,15 +843,15 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 (when (string-match "x250" (shell-command-to-string "uname -n"))
   (add-to-list 'default-frame-alist '(font . "Cica-15")))
 ```
-### 13.2 [volatile-highlight]コピペした領域を強調
+### 11.2 [volatile-highlight]コピペした領域を強調
 
 ```emacs-lisp
 
 ```
 
-## 14. ユーティリティー関数
+## 12. ユーティリティー関数
 
-### 14.1 Terminal を Emacsから呼び出す
+### 12.1 Terminal を Emacsから呼び出す
 
 ```emacs-lisp
 (defun term-current-dir-open ()
@@ -881,7 +862,7 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 (bind-key "<f4>" 'term-current-dir-open)
 ```
 
-### 14.2 Thunar を Emacsから呼び出す
+### 12.2 Thunar を Emacsから呼び出す
 
 ```emacs-lisp
 (defun filer-current-dir-open ()
@@ -892,7 +873,7 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 
 ```
 
-### 15.7 [restart-emacs] Emacsを再起動する
+### 12.7 [restart-emacs] Emacsを再起動する
 `C-x C-c` は、デフォルトで `(save-buffers-kill-emacs)` に割り当てられていますが、Emacsの再起動にリバインドしました。
 
 ```emacs-lisp
@@ -901,7 +882,13 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 
 ```
 
-## 16. おわりに
+## 13. WEB開発Tool
+
+### 13.1 MakeWeb
+
+### 13.2 Easy-Hugo
+
+## 14. おわりに
 
 以上が私の init.el とその説明です。
 

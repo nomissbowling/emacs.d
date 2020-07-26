@@ -1,4 +1,4 @@
-;;; 20_selected.el --- 20_selected.el  -*- lexical-binding: t -*-
+00;;; 20_selected.el --- 20_selected.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -68,7 +68,7 @@
        (unless (null my:ime-flag) (my:ime-on)))))
 
 
-(leaf *user-word-search-functions
+(leaf *user-functions-for-word-search
   :init
   ;; Weblio
   (defun my:weblio (str)

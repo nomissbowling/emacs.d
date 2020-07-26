@@ -119,9 +119,7 @@ Dashboard バッファーは、読み取り専用なので、ワンキーリン�
   :config
   (with-eval-after-load 'dashboard
     (bind-key "<home>" 'open-dashboard)
-	;;  （中略）
-    (bind-key "<home>" 'quit-dashboard dashboard-mode-map)
-	)
+    (bind-key "<home>" 'quit-dashboard dashboard-mode-map))
   ;;  （中略）
   )
 
@@ -177,7 +175,7 @@ Dashboard バッファーは、読み取り専用なので、ワンキーリン�
 	(funcall (local-key-binding "r"))))
 
 ```
-- [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el)は、ここを見て下さい。 
+- [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el)は、ここを見て下さい。
 
 
 

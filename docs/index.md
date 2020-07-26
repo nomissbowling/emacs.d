@@ -50,7 +50,7 @@
 1. `init.el` の読み込み
 2. `inits/` に配置したファイル群の読み込み （init-loader 使用）
 
-init-loader の是非は諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
+init-loader を使うことの是非については諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
 
 ### 2.1 [minimal-init.el] 最小限のEmacsを起動
 
@@ -82,26 +82,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 
 ```
 
-### 2.3 after-init-hook：遅延読み込み
-
-遅延設定は、個別にしてもいいのですが、私の場合は `inits/` フォルダー内に設定群を配置してまとめて遅延読み込みしています。
-以下の設定例では `after-init-hook` で `init-loarder` が始動します。
-
-```emacs-lisp
-(leaf init-loader :ensure t
-  :init
-  (setq load-prefer-newer t)
-  (setq el-get-dir "~/.emacs.d/elisp")
-  :config
-  (add-hook
-   'after-init-hook
-   (lambda ()
-	 (custom-set-variables '(init-loader-show-log-after-init 'error-only))
-	 (init-loader-load "~/Dropbox/emacs.d/inits")))
-  (setq custom-file (locate-user-emacs-file "custom.el")))
-```
-
-### 2.4 初期画面設定
+### 2.3 初期画面設定
 起動時にギクシャクする画面は見たくないので、`init.el` の冒頭に以下を設定しています。
 
 ```emacs-lisp

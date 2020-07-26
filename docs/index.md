@@ -95,7 +95,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 (setq inhibit-startup-message t)
 ```
 
-### 2.5 Dashboard バッファーをリロードさせる
+### 2.4 Dashboard バッファーをリロードさせる
 
 Emacs 起動時の初期画面には、`Dashboard` を表示させています。
 

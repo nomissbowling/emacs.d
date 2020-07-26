@@ -1,57 +1,39 @@
-;;; init-config.el   -*- lexical-binding: t -*-
-
-;; an extensible emacs startup screen
-
+;;; 01_dashboard.el --- 01_dashboard.el
+;;; Commentary:
 ;;; Code:
-;; (setq debug-on-error t)
+;;(setq debug-on-error t)
 
-;; Quiet Startup
-(set-frame-parameter nil 'fullscreen 'maximized)
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
-
-
-;; Load user Functions
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(add-hook
- 'after-init-hook
- (lambda ()
-   (require 'user-dired)
-   (require 'user-template)))
-
-
-;; Custom Dashboard
 (leaf dashboard :ensure t
-  :bind (("<home>" . open-dashboard)
-	 (:dashboard-mode-map
-	  ("c" . browse-calendar)
-	  ("w" . browse-weather)
-	  ("n" . browse-google-news)
-	  ("k" . browse-keep)
-	  ("m" . browse-gmail)
-	  ("t" . browse-tweetdeck)
-	  ("s" . browse-slack)
-	  ("h" . browse-homepage)
-	  ("p" . browse-pocket)
-	  ("e" . easy-hugo)
-	  ("." . hydra-browse/body)
-	  ("<home>" . quit-dashboard)))
-  :hook (after-init-hook . dashboard-setup-startup-hook)
   :config
-  (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png"
-	dashboard-set-heading-icons t
-	dashboard-set-file-icons t
-	;; dashboard-page-separator "\n\f\f\n"
-	show-week-agenda-p t
-	dashboard-items '((recents  . 10)
-			  (agenda . 5)))
+  (with-eval-after-load 'dashboard
+    (bind-key "<home>" 'open-dashboard)
+    (bind-key "c" 'browse-calendar dashboard-mode-map)
+    (bind-key "w" 'browse-weather dashboard-mode-map)
+    (bind-key "n" 'browse-google-news dashboard-mode-map)
+    (bind-key "k" 'browse-keep dashboard-mode-map)
+    (bind-key "m" 'browse-gmail dashboard-mode-map)
+    (bind-key "t" 'browse-tweetdeck dashboard-mode-map)
+    (bind-key "s" 'browse-slack dashboard-mode-map)
+    (bind-key "h" 'browse-homepage dashboard-mode-map)
+    (bind-key "p" 'browse-pocket dashboard-mode-map)
+    (bind-key "e" 'easy-hugo dashboard-mode-map)
+    (bind-key "." 'hydra-browse/body dashboard-mode-map)
+    (bind-key "<home>" 'quit-dashboard dashboard-mode-map))
+  ;; Set the title
   (setq dashboard-banner-logo-title
 	(concat "GNU Emacs " emacs-version " kernel "
 		(car (split-string (shell-command-to-string "uname -r")))  " Debian "
 		(car (split-string (shell-command-to-string "cat /etc/debian_version"))) " 86_64 GNU/Linux"))
+  (dashboard-setup-startup-hook)
+  (global-page-break-lines-mode)
+  ;; Set the banner
+  (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png")
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  ;; (setq dashboard-page-separator "\n\f\f\n")
+  (setq show-week-agenda-p t)
+  (setq dashboard-items '((recents  . 10)
+			  (agenda . 5)))
   ;; for sub machine
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (setq dashboard-items '((recents  . 5)
@@ -63,8 +45,11 @@
   (setq dashboard-footer-messages '("Always be joyful. Never stop praying. Be thankful in all circumstances!"))
   ;; Insert custom item
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
-  (add-to-list 'dashboard-items '(custom) t)
-  :init
+  (add-to-list 'dashboard-items '(custom) t))
+
+
+(leaf *dasuboard-extension
+  :config
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
     (interactive)
@@ -121,11 +106,9 @@
     (interactive)
     (funcall (local-key-binding "r"))))
 
-(provide 'init-config)
-
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; init-config.el ends here
+;;; 01_dashboard.el ends here

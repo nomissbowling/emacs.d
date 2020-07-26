@@ -1,4 +1,4 @@
-;;; 30_mozc.el --- 30_mozc.el  -*- lexical-binding: t -*-
+;;; 20_mozc.el --- 20_mozc.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -77,4 +77,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 05_mozc.el ends here
+;;; 20_mozc.el ends here

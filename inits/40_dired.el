@@ -40,90 +40,89 @@
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
   (leaf sudo-edit :ensure t))
 
-(eval-when-compile
-  (leaf *user-dired-extention
-    :init
-    ;; Switching the display and non-display of hidden files
-    (defun toggle-dired-listing-switches ()
-      "Toggle `dired-mode' switch between with and without 'A' option to show or hide dot files."
-      (interactive)
-      (progn
-	(if (string-match "[Aa]" dired-listing-switches)
-	    (setq dired-listing-switches "-lgGhF")
-	  (setq dired-listing-switches "-lgGhFA"))
-	(reload-current-dired-buffer)))
 
-    (defun reload-current-dired-buffer ()
-      "Reload current `dired-mode' buffer."
-      (let* ((dir (dired-current-directory)))
-	(progn (kill-buffer (current-buffer))
-	       (dired dir))))
+(leaf *user-dired-extention
+  :init
+  ;; Switching the display and non-display of hidden files
+  (defun toggle-dired-listing-switches ()
+    "Toggle `dired-mode' switch between with and without 'A' option to show or hide dot files."
+    (interactive)
+    (progn
+      (if (string-match "[Aa]" dired-listing-switches)
+	  (setq dired-listing-switches "-lgGhF")
+	(setq dired-listing-switches "-lgGhFA"))
+      (reload-current-dired-buffer)))
 
-    ;; Add [Dir] to the directory buffer
-    (defun dired-my-append-buffer-name-hint ()
-      "Append a auxiliary string to a name of dired buffer."
-      (when (eq major-mode 'dired-mode)
-	(let* ((dir (expand-file-name list-buffers-directory))
-	       ;; Add a drive letter for Windows
-	       (drive (if (and (eq 'system-type 'windows-nt)
-			       (string-match "^\\([a-zA-Z]:\\)/" dir))
-			  (match-string 1 dir) "")))
-	  (rename-buffer (concat (buffer-name) " [" drive "dir]") t))))
+  (defun reload-current-dired-buffer ()
+    "Reload current `dired-mode' buffer."
+    (let* ((dir (dired-current-directory)))
+      (progn (kill-buffer (current-buffer))
+	     (dired dir))))
 
-    ;; Quit-window according to screen division
-    (defun dired-dwim-quit-window ()
-      "`quit-window 'according to screen division."
-      (interactive)
-      (quit-window (not (delq (selected-window) (get-buffer-window-list)))))
+  ;; Add [Dir] to the directory buffer
+  (defun dired-my-append-buffer-name-hint ()
+    "Append a auxiliary string to a name of dired buffer."
+    (when (eq major-mode 'dired-mode)
+      (let* ((dir (expand-file-name list-buffers-directory))
+	     ;; Add a drive letter for Windows
+	     (drive (if (and (eq 'system-type 'windows-nt)
+			     (string-match "^\\([a-zA-Z]:\\)/" dir))
+			(match-string 1 dir) "")))
+	(rename-buffer (concat (buffer-name) " [" drive "dir]") t))))
 
-    ;; http://nishikawasasaki.hatenablog.com/entry/20120222/1329932699
-    (defun dired-open-in-accordance-with-situation ()
-      "Files are opened in separate buffers, directories are opened in the same buffer."
-      (interactive)
-      (let ((file (dired-get-filename)))
-	(if (file-directory-p file)
-	    (dired-find-alternate-file)
-	  (dired-find-file))))
+  ;; Quit-window according to screen division
+  (defun dired-dwim-quit-window ()
+    "`quit-window 'according to screen division."
+    (interactive)
+    (quit-window (not (delq (selected-window) (get-buffer-window-list)))))
 
-    (defun dired-up-alternate-directory ()
-      "Move to higher directory without make new buffer."
-      (interactive)
-      (let* ((dir (dired-current-directory))
-	     (up (file-name-directory (directory-file-name dir))))
-	(or (dired-goto-file (directory-file-name dir))
-	    ;; Only try dired-goto-subdir if buffer has more than one dir.
-	    (and (cdr dired-subdir-alist)
-		 (dired-goto-subdir up))
-	    (progn
-	      (find-alternate-file up)
-	      (dired-goto-file dir)))))
+  ;; http://nishikawasasaki.hatenablog.com/entry/20120222/1329932699
+  (defun dired-open-in-accordance-with-situation ()
+    "Files are opened in separate buffers, directories are opened in the same buffer."
+    (interactive)
+    (let ((file (dired-get-filename)))
+      (if (file-directory-p file)
+	  (dired-find-alternate-file)
+	(dired-find-file))))
 
-    ;; https://www.emacswiki.org/emacs/OperatingOnFilesInDired
-    (defun dired-open-file ()
-      "In dired, open the file in associated application."
-      (interactive)
-      (let* ((file (dired-get-filename nil t)))
-	(unless (getenv "WSLENV")
-	  (call-process "xdg-open" nil 0 nil file))
-	;; use wsl-utils:https://github.com/smzht/wsl-utils
-	(when (getenv "WSLENV")
-	  (call-process "wslstart" nil 0 nil fn))))
+  (defun dired-up-alternate-directory ()
+    "Move to higher directory without make new buffer."
+    (interactive)
+    (let* ((dir (dired-current-directory))
+	   (up (file-name-directory (directory-file-name dir))))
+      (or (dired-goto-file (directory-file-name dir))
+	  ;; Only try dired-goto-subdir if buffer has more than one dir.
+	  (and (cdr dired-subdir-alist)
+	       (dired-goto-subdir up))
+	  (progn
+	    (find-alternate-file up)
+	    (dired-goto-file dir)))))
 
-    (defun my:dired-toggle-mark (arg)
-      "Toggle the current next files."
-      (interactive "p")
-      (let ((dired-marker-char
-	     (if (save-excursion (beginning-of-line)
-				 (looking-at " "))
-		 dired-marker-char ?\040)))
-	(dired-mark arg)))
+  ;; https://www.emacswiki.org/emacs/OperatingOnFilesInDired
+  (defun dired-open-file ()
+    "In dired, open the file in associated application."
+    (interactive)
+    (let* ((file (dired-get-filename nil t)))
+      (unless (getenv "WSLENV")
+	(call-process "xdg-open" nil 0 nil file))
+      ;; use wsl-utils:https://github.com/smzht/wsl-utils
+      (when (getenv "WSLENV")
+	(call-process "wslstart" nil 0 nil fn))))
 
-    (defun my:dired-unmark-all ()
-      "Dired unmark all."
-      (interactive)
-      (call-interactively 'dired-unmark-all-marks)
-      (call-interactively 'revert-buffer))))
+  (defun my:dired-toggle-mark (arg)
+    "Toggle the current next files."
+    (interactive "p")
+    (let ((dired-marker-char
+	   (if (save-excursion (beginning-of-line)
+			       (looking-at " "))
+	       dired-marker-char ?\040)))
+      (dired-mark arg)))
 
+  (defun my:dired-unmark-all ()
+    "Dired unmark all."
+    (interactive)
+    (call-interactively 'dired-unmark-all-marks)
+    (call-interactively 'revert-buffer)))
 
 
 ;; Local Variables:

@@ -5,27 +5,6 @@
 ;; (setq debug-on-error t)
 
 (eval-when-compile
-  ;; https://gist.github.com/EricCrosson/fa41233f327403ea2a5a
-  (defun close-compile-window-if-successful (buffer string)
-    "Close a compilation window if succeeded without warnings."
-    (when (and
-	   (string-match "compilation" (buffer-name buffer))
-	   (string-match "finished" string)
-	   (not
-	    (with-current-buffer buffer
-	      (search-forward "warning" nil t))))
-      (run-with-timer 1 nil
-		      (lambda ()
-			(delete-other-windows)))))
-  (add-hook 'compilation-finish-functions 'close-compile-window-if-successful)
-
-
-  ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
-  (add-hook 'makefile-mode-hook
-	    (lambda ()
-	      (fset 'makefile-warn-suspicious-lines 'ignore)))
-
-
   (leaf *user-make-function
     :hydra
     (hydra-compile
@@ -41,6 +20,28 @@
      ("e" next-error)
      ("<muhenkan>" nil))
     :config
+    ;; https://gist.github.com/EricCrosson/fa41233f327403ea2a5a
+    (defun close-compile-window-if-successful (buffer string)
+      "Close a compilation window if succeeded without warnings."
+      (when (and
+	     (string-match "compilation" (buffer-name buffer))
+	     (string-match "finished" string)
+	     (not
+	      (with-current-buffer buffer
+		(search-forward "warning" nil t))))
+	(run-with-timer 1 nil
+			(lambda ()
+			  (delete-other-windows)))))
+    (add-hook 'compilation-finish-functions 'close-compile-window-if-successful)
+
+    ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
+    (add-hook 'makefile-mode-hook
+	      (lambda ()
+		(fset 'makefile-warn-suspicious-lines 'ignore)))))
+
+
+  (leaf *user-compile-command
+    :init
     (defun my:make-k ()
       "Make command default."
       (interactive)
@@ -64,7 +65,7 @@
     (defun my:make-clean ()
       "Make command for clean."
       (interactive)
-      (compile "make clean"))))
+      (compile "make clean")))
 
 
 ;; Local Variables:

@@ -4,59 +4,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(defun other-window-or-split ()
-  "If there is one window, open split window.
-If there are two or more windows, it will go to another window."
-  (interactive)
-  (when (one-window-p)
-    (split-window-horizontally))
-  (other-window 1))
-
-
-(defun window-toggle-division ()
-  "Replace vertical <-> horizontal when divided into two."
-  (interactive)
-  (unless (= (count-windows 1) 2)
-    (error "Not divided into two!"))
-  (let ((before-height)
-	(other-buf (window-buffer (next-window))))
-    (setq before-height (window-height))
-    (delete-other-windows)
-    (if (= (window-height) before-height)
-	(split-window-vertically)
-      (split-window-horizontally))
-    (other-window 1)
-    (switch-to-buffer other-buf)
-    (other-window -1)))
-
-
-(leaf key-chord
-  :el-get zk-phi/key-chord
-  :config
-  (key-chord-mode 1)
-  (key-chord-define-global "df" 'counsel-descbinds)
-  (key-chord-define-global "l;" 'init-loader-show-log))
-
-
-(leaf sequential-command-config
-  :hook (emacs-startup-hook . sequential-command-setup-keys)
-  :config
-  (bind-key "C-a" 'seq-home)
-  (bind-key "C-e" 'seq-end)
-  :init
-  (leaf sequential-command
-    :el-get HKey/sequential-command))
-
-
-(leaf iflipb
-  :ensure t
-  :config
-  (bind-key "M-]" 'iflipb-next-buffer)
-  (bind-key "M-[" 'iflipb-previous-buffer)
-  (setq iflipb-wrap-around t)
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
-
-
 (leaf *hydra-pinky
   :config
   (bind-key "C-q" 'other-window-or-split)
@@ -107,7 +54,58 @@ If there are two or more windows, it will go to another window."
    ("-" (text-scale-set 0))
    (":" counsel-switch-buffer)
    ("<henkan>" nil)
-   ("<muhenkan>" nil)))
+   ("<muhenkan>" nil))
+  :init
+  (defun other-window-or-split ()
+    "If there is one window, open split window.
+If there are two or more windows, it will go to another window."
+    (interactive)
+    (when (one-window-p)
+      (split-window-horizontally))
+    (other-window 1))
+
+  (defun window-toggle-division ()
+    "Replace vertical <-> horizontal when divided into two."
+    (interactive)
+    (unless (= (count-windows 1) 2)
+      (error "Not divided into two!"))
+    (let ((before-height)
+	  (other-buf (window-buffer (next-window))))
+      (setq before-height (window-height))
+      (delete-other-windows)
+      (if (= (window-height) before-height)
+	  (split-window-vertically)
+	(split-window-horizontally))
+      (other-window 1)
+      (switch-to-buffer other-buf)
+      (other-window -1))))
+
+
+(leaf key-chord
+  :el-get zk-phi/key-chord
+  :config
+  (key-chord-mode 1)
+  (key-chord-define-global "df" 'counsel-descbinds)
+  (key-chord-define-global "l;" 'init-loader-show-log))
+
+
+(leaf sequential-command-config
+  :hook (emacs-startup-hook . sequential-command-setup-keys)
+  :config
+  (bind-key "C-a" 'seq-home)
+  (bind-key "C-e" 'seq-end)
+  :init
+  (leaf sequential-command
+    :el-get HKey/sequential-command))
+
+
+(leaf iflipb
+  :ensure t
+  :config
+  (bind-key "M-]" 'iflipb-next-buffer)
+  (bind-key "M-[" 'iflipb-previous-buffer)
+  (setq iflipb-wrap-around t)
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
 
 
 ;; Local Variables:

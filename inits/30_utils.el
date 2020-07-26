@@ -27,9 +27,9 @@
   (defalias 'my:github-show 'browse-at-remote))
 
 
-;; ps-print
-(leaf ps-mule
-  :config
+(leaf *user-ps-print-setting
+  :doc "use ps-print ps-mule"
+  :init
   (setq ps-multibyte-buffer 'non-latin-printer)
   (defalias 'ps-mule-header-string-charsets 'ignore)
   (setq ps-paper-type 'a4)

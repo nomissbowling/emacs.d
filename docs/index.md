@@ -55,9 +55,7 @@ init-loader の是非は諸説あるようですが、[多くの恩恵](http://e
 
 ### 2.1 [minimal-init.el] 最小限のEmacsを起動
 
-[minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。シェルから `resq` と入力することで起動することがでます。
-
-以下を `.zshrc` または `.bashrc` に書き込みます。
+[minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。シェルから `resq` と入力することで起動することがでます。以下を `.zshrc` または `.bashrc` に書き込みます。
 
 ```shell
 alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
@@ -66,11 +64,6 @@ alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。エラー等で Emacsが起動しない場合に使用します。
 
 ### 2.2 GCサイズの最適化
-通常は以下のように設定している事例が多いです。
-
-```emacs-lisp
-(setq gc-cons-threshold (* 128 1024 1024)) ;; 128MB
-```
 劇的な効果は期待できませんが、以下のように設定すると 0.06秒ほど起動時間を早くできます。
 
 ```emacs-lisp

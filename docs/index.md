@@ -64,7 +64,8 @@ alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。エラー等で Emacsが起動しない場合に使用します。
 
 ### 2.2 GCサイズの最適化
-劇的な効果は期待できませんが、以下のように設定すると 0.06秒ほど起動時間を早くできます。
+Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻します。
+`init.el` の先頭に記述しないと効果は少ないです。元ネタは [seagle0123](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
 
 ```emacs-lisp
 ;; Speed up startup
@@ -79,9 +80,6 @@ alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
    (setq gc-cons-threshold 800000)))
 
 ```
-Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻します。
-
-`init.el` の先頭に記述しないと効果は少ないです。元ネタは [seagle0123](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
 
 ### 2.3 after-init-hook / emacs-startup-hook：遅延読み込み
 

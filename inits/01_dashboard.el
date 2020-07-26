@@ -30,7 +30,6 @@
   (setq dashboard-startup-banner "~/Dropbox/emacs.d/emacs.png")
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
-  ;; (setq dashboard-page-separator "\n\f\f\n")
   (setq show-week-agenda-p t)
   (setq dashboard-items '((recents  . 10)
 			  (agenda . 5)))
@@ -38,25 +37,29 @@
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (setq dashboard-items '((recents  . 5)
 			    (agenda . 5))))
-
   ;; Set the footer
   (setq dashboard-footer-icon
 	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
   (setq dashboard-footer-messages '("Always be joyful. Never stop praying. Be thankful in all circumstances!"))
   ;; Insert custom item
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
-  (add-to-list 'dashboard-items '(custom) t))
+  (add-to-list 'dashboard-items '(custom) t)
+  :init
+  (defun dashboard-goto-recent-files ()
+    "Go to recent files."
+    (interactive)
+    (funcall (local-key-binding "r")))
 
-
-(leaf *dasuboard-extension
-  :config
   (defun dashboard-insert-custom (list-size)
     "Insert custom and set LIST-SIZE."
     (interactive)
     (insert (if (display-graphic-p)
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
-    (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+    (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) ")))
 
+
+(leaf *dashboard-reload-settings
+  :config
   (defvar dashboard-recover-layout-p nil
     "Wether recovers the layout.")
 
@@ -99,12 +102,7 @@
     (when (and dashboard-recover-layout-p
 	       (bound-and-true-p winner-mode))
       (winner-undo)
-      (setq dashboard-recover-layout-p nil)))
-
-  (defun dashboard-goto-recent-files ()
-    "Go to recent files."
-    (interactive)
-    (funcall (local-key-binding "r"))))
+      (setq dashboard-recover-layout-p nil))))
 
 
 ;; Local Variables:

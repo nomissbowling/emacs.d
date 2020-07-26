@@ -86,7 +86,7 @@
     (interactive (list (region-or-read-string nil)))
     (browse-url (format "http://maps.google.co.jp/maps?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
-
+  ;; Common function
   (defun region-or-read-string (prompt &optional initial history default inherit)
     "If region is specified, get that string, otherwise call `read-string'."
     (if (not (region-active-p))

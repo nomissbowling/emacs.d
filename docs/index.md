@@ -68,7 +68,12 @@ alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。
 
 ### 2.2 GCサイズの最適化
-起動時に発生するガベージコレクトを防ぐ定番の設定ですが、更に欲張ってみました。
+通常は、以下の設定が定番のようですが、更に欲張ってみました。
+
+```emacs-lisp
+(setq gc-cons-threshold (* 128 1024 1024))
+```
+
 Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻します。
 `init.el` の先頭に記述しないと効果は少ないです。元ネタは [seagle0123](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
 

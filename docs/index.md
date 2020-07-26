@@ -32,15 +32,14 @@
 │   ├── user-dired.el
 │   └── user-template.el
 ├── inits/
-│   ├── 01_base.el
-│   ├── 02_git.el
+│   ├── 00_base.el
+│   ├── 01_dashboard.el
 │   ├── ...
-│   ├── 99_user-dired.el
-│   └── 99_user-template.el
+│   ├── 90_eshell.el
+│   └── 90_translate.el
 ├── snippets/
 ├── .gitignore
 ├── init.el
-├── init-config.el
 └── minimaru-init.el
 
 ```
@@ -49,20 +48,7 @@
 基本的には `init.el` を読み込むことで制御しています。 手順は以下のとおり。
 
 1. `init.el` の読み込み
-2. `init-config.el` の読み込み
-3. `inits/` に配置したファイル群の遅延読み込み （init-loader 使用）
-
-[init-config.el](https://github.com/minorugh/emacs.d/blob/master/init-config.el) には、主に Emacs起動時の画面設定を書いていますが、個人的な設定ファイルなどもここから読み込ませます。
-
-```emacs-lisp
-;; Load user Functions
-(add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-(add-hook
- 'after-init-hook
- (lambda ()
-   (require 'user-dired)
-   (require 'user-template)))
-```
+2. `inits/` に配置したファイル群の遅延読み込み （init-loader 使用）
 
 遅延起動でも問題ないものは `inits/` フォルダーに配置し [init-loader.el](https://github.com/emacs-jp/init-loader) で順次読み込みます。
 init-loader の是非は諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。

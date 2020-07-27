@@ -13,14 +13,12 @@
   (unless (server-running-p)
     (server-start)))
 
-
 ;; exec-path-from-shell
 (leaf exec-path-from-shell
   :when (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize)
   (setq exec-path-from-shell-check-startup-files nil))
-
 
 ;; Save the file specified code with basic utf-8 if it exists
 (set-language-environment "Japanese")

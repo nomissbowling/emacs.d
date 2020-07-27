@@ -32,11 +32,11 @@
 │   ├── user-dired.el
 │   └── user-template.el
 ├── inits/
-│   ├── 00_base.el
-│   ├── 01_dashboard.el
+│   ├── 01_base.el
+│   ├── 02_git.el
 │   ├── ...
-│   ├── 90_eshell.el
-│   └── 90_translate.el
+│   ├── 90_translate.el
+│   └── 99_dashboard.el
 ├── snippets/
 ├── .gitignore
 ├── init.el

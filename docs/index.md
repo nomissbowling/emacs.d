@@ -373,22 +373,22 @@ Melpからインストールできるのですが、[@HKey](https://twitter.com/
 
 ```
 
-検索結果を browse-url で表示させるユーザーコマンドは、検索urlのフォーマとさえ解れば、パッケージツールに頼らずともお好みのマイコマンドを作成できます。以下は、Webkio串刺し検索の例です。
+検索結果を browse-url で表示させるユーザーコマンドは、検索urlのフォーマとさえ解れば、パッケージツールに頼らずともお好みのマイコマンドを作成できます。
+
+以下は、Webkio串刺し検索の例です。
 
 ```emacs-lisp
 (defun weblio (str)
-  (interactive (list (region-or-read-string nil)))
+  (interactive (list (my:get-region-str nil)))
   (browse-url (format "http://www.weblio.jp/content/%s"
 					  (upcase (url-hexify-string str)))))
 ```
 
-日本語文章の編集中に即、辞書登録できるように、`mozc-word-regist` も設定しています。
-
 ```emacs-lisp
-(defun my:mozc-word-regist ()
-  "Run the mozc-tool in the background."
-  (interactive)
-  (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
+;; common function
+(defun my:get-region-str (string)
+  "Get that string from region."
+  (buffer-substring-no-properties (region-beginning) (region-end)))
 ```
 
 ### 5.2 [selected] IME のオン・オフを自動制御する

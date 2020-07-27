@@ -13,7 +13,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
-  (bind-key "M-s" 'swiper-thing-at-point)
+  (bind-key "s-s" 'swiper-thing-at-point)
   (bind-key "C-s" 'swiper-migemo-or-region)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'counsel-switch-buffer)

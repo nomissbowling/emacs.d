@@ -7,6 +7,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+
 ;; Start the server in Emacs session
 (leaf server :require t
   :config
@@ -140,7 +141,9 @@
 (setq select-enable-primary  t)
 (bind-key "M-w" 'clipboard-kill-ring-save)
 (bind-key "C-w" 'my:clipboard-kill-region)
+(bind-key "s-v" 'yank)
 (bind-key "C-x C-x" 'my:exchange-point-and-mark)
+
 
 (defun my:clipboard-kill-region ()
   "If the region is active, `clipboard-kill-region'.
@@ -149,6 +152,7 @@ If the region is inactive, `backward-kill-word'."
   (if (use-region-p)
       (clipboard-kill-region (region-beginning) (region-end))
     (backward-kill-word 1)))
+
 (defun my:exchange-point-and-mark ()
   "No mark active `exchange-point-and-mark'."
   (interactive)

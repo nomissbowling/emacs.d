@@ -1,4 +1,4 @@
-;;; 00_base.el --- 00_base.el -*- lexical-binding: t -*-
+;;; 01_base.el --- 01_base.el -*- lexical-binding: t -*-
 ;; emacs base setting.
 
 ;; performs various variable settings and function executions
@@ -210,4 +210,4 @@ If the region is inactive, `backward-kill-word'."
 ;; no-byte-compile: t
 ;; End:
 
-;;; 00_base.el ends here
+;;; 01_base.el ends here

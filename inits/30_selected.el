@@ -31,7 +31,7 @@
   :init
   (defun my-activate-selected ()
     (selected-global-mode 1)
-    (selected--on) ;; must call expclitly here
+    (selected--on)
     (remove-hook 'activate-mark-hook #'my-activate-selected))
   (add-hook 'activate-mark-hook #'my-activate-selected)
   (defun my:ime-on ()
@@ -40,7 +40,7 @@
   (defun my:ime-off ()
     (interactive)
     (inactivate-input-method))
-  ;; mark-hook
+  ;; activate-mark-hook
   (add-hook
    'activate-mark-hook
    #'(lambda ()

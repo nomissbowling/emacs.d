@@ -12,7 +12,10 @@
 (leaf expand-region :ensure t
   :bind ("C-@" . er/expand-region)
   :config
-  (push 'er/mark-outside-pairs er/try-expand-list))
+  (with-eval-after-load "selected"
+    (when (require 'expand-region nil t)
+      (push 'er/mark-outside-pairs er/try-expand-list)
+      (bind-key "SPC" 'er/expand-region selected-keymap))))
 
 
 (leaf yasnippet :ensure t

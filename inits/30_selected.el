@@ -69,58 +69,57 @@
   :init
   ;; Weblio
   (defun my:weblio (str)
-    (interactive (list (region-read-string "Weblio: ")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://www.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
   ;; Kobun
   (defun my:kobun (str)
-    (interactive (list (region-read-string "古文: ")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://kobun.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
   ;; Ruigo
   (defun my:ruigo (str)
-    (interactive (list (region-read-string "類語: ")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://thesaurus.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
   ;; Eijiro
   (defun my:eijiro (str)
-    (interactive (list (region-read-string "英辞郎: ")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://eow.alc.co.jp/%s/UTF-8/"
 			(upcase (url-hexify-string str)))))
   ;; Postal code
   (defun my:postal (str)
-    (interactive (list (region-read-string "郵便番号: ")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://postcode.goo.ne.jp/search/q/%s"
 			(upcase (url-hexify-string str)))))
   ;; Google
   (defun my:google (str)
-    (interactive (list (region-read-string "Google :")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://www.google.com/search?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
   ;; Google map
   (defun my:g-map (str)
-    (interactive  (list (region-read-string "GoogleMap :")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://maps.google.co.jp/maps?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
   ;; Amazon
   (defun my:amazon (str)
-    (interactive  (list (region-read-string "amazon: ")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://www.amazon.co.jp/gp/search?index=blended&field-keywords=%s"
 			(upcase (url-hexify-string str)))))
   ;; Yodobashi
   (defun my:yodobashi (str)
-    (interactive  (list (region-read-string "ヨドバシ: ")))
+    (interactive (list (my:get-region nil)))
     (browse-url (format "https://www.yodobashi.com/?word=%s"
 			(upcase (url-hexify-string str)))))
+
   ;; Common function
-  (defun region-read-string (prompt &optional initial history default inherit)
-    "If region is specified, get that string, otherwise call`read-string'."
-    (if (not (region-active-p))
-	(read-string prompt initial history default inherit)
-      (prog1
-	  (buffer-substring-no-properties (region-beginning) (region-end))
-	(deactivate-mark)
-	(message "")))))
+  (defun my:get-region (arg)
+    "Get that string from region."
+    (buffer-substring-no-properties (region-beginning) (region-end)))
+
+  )
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

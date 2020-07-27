@@ -1,4 +1,4 @@
-;;; 04_company.el --- 04_company.el  -*- lexical-binding: t -*-
+;;; 03_company.el --- 03_company.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;; (setq debug-on-error t)
@@ -30,4 +30,4 @@
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
-;;; 04_company.el ends here
+;;; 03_company.el ends here

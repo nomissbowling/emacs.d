@@ -1,4 +1,4 @@
-;;; 02_git.el  --- 02_git.el   -*- lexical-binding: t -*-
+;;; 01_git.el  --- 01_git.el   -*- lexical-binding: t -*-
 ;; git porcelain inside emacs
 
 ;;; Code:
@@ -32,4 +32,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 02_git.el ends here
+;;; 01_git.el ends here

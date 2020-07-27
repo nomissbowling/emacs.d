@@ -5,7 +5,7 @@
 ;; (setq debug-on-error t)
 
 (leaf selected :ensure t
-  :bind ("s-s" . counsel-selected)
+  :bind ("s-s" . hydra-search/body)
   :config
   (selected-global-mode)
   (with-eval-after-load 'selected
@@ -25,7 +25,20 @@
     (bind-key "l" 'counsel-selected selected-keymap)
     (bind-key "q" 'selected-off selected-keymap))
   :init
-  (leaf counsel-selected :el-get takaxp/counsel-selected))
+  (leaf counsel-selected :el-get takaxp/counsel-selected)
+  :hydra
+  (hydra-search
+   (:color red :hint nil)
+   "
+   🔍 : _e_ijiro  _w_eblio  _k_obun  _r_uigo  _p_ostal  _g_oogle  _a_mazon  _y_odobash."
+   ("a" my:amazon)
+   ("y" my:yodobashi)
+   ("e" my:eijiro)
+   ("w" my:weblio)
+   ("k" my:kobun)
+   ("r" my:ruigo)
+   ("p" my:poastal)
+   ("g" my:google)))
 
 
 (leaf  *control-mozc-when-region-seleceted

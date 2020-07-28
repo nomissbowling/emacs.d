@@ -575,7 +575,6 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 
 ## 7. Hydra
 
-
 [hydra.el](https://github.com/abo-abo/hydra) は、連続して操作するときにプレフィクスキーをキャンセルさせるための elispです。
 
 日本では、[smartrep.el](http://sheephead.homelinux.org/2011/12/19/6930/) が有名だったようですが、hydra.elも同様の機能を提供します。
@@ -597,15 +596,24 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
    ├── hydra-browse   <<- Dashboard からも呼び出せる
    └── hydra-pinky
 ```
+`Work-Menu` と `Quick-Menu` とがメインになっていて、相互にトグルで呼び出せるようにしています。
 
-- [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el)
-- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el)
+[hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) は、
+日記記事の追加、編集などのほか、毎日頻繁に開くワークスペースへのショートカットを設定しています。
+
+一方、[hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) は、
+編集作業で頻繁に使うツールを設定しています。下記の hydra-extention も此処から呼び出します。
+
 - [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el)
 - [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el)
 - [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el)
 - [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el)
 - [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el)
 - [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el)
+
+Qitta に詳しい記事を書いています。
+
+- [HydraでEmacsのキーバインド問題を解消](https://qiita.com/minoruGH/items/3776090fba46b1f9c228) 
 
 
 ## 8. 履歴 / ファイル管理

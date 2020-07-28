@@ -54,7 +54,7 @@ init-loader を使うことの是非については諸説あるようですが�
 
 
 ### 2.1 GCサイズの最適化
-起動時に発生するガベージコレクトを防ぐ定番の設定ですが更に欲張ってみました。お奨めできるかどうかは自信ありません。
+起動時に発生するガベージコレクトを防ぐ定番の設定ですが更に欲張ってみました。
 
 Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻します。
 `init.el` の先頭に記述しないと効果は少ないです。元ネタは [seagle0123](https://github.com/seagle0128/.emacs.d/blob/master/init.el) からです。感謝！
@@ -96,7 +96,9 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
   (setq custom-file (locate-user-emacs-file "custom.el")))
 ```
 
-`after-init-hook` の処理で 1.0sec 程度早くなっています。からくり GC 設定のほうは、`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用してわけですが、.06sec ほど改善される程度です。
+`after-init-hook` の処理で 1.0sec 程度早くなっています。
+
+からくり GC 設定のほうは、`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用してわけですが、.06sec ほど改善される程度です。
 本格的な遅延読み込みを図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
 
 - [postpone.el で起動と拡張読み込みを分離する](https://qiita.com/takaxp/items/c01fb7737496af9a8fcd) 

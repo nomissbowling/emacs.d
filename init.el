@@ -53,7 +53,8 @@
   (add-hook
    'after-init-hook
    (lambda ()
-     (init-loader-load "~/Dropbox/emacs.d/inits")))
+     (init-loader-load "~/Dropbox/emacs.d/inits")
+     ))
   (setq custom-file (locate-user-emacs-file "custom.el")))
 
 

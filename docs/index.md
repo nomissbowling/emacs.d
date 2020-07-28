@@ -297,7 +297,6 @@ If there are two or more windows, it will go to another window."
 ### 4.3 [sequential-command.el] バッファー先頭・末尾
 
 [sequential-command.el](https://rubikitch.hatenadiary.org/entry/20090219/sequential_command) は地味なながら一度使うと便利すぎて止められません。
-
 Melpa からインストールできるのですが、[@HKey](https://twitter.com/hke7) さんの[改良版](https://github.com/HKey/sequential-command)
 を el-get で入れてます。感謝！
 

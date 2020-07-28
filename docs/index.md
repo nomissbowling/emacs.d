@@ -55,11 +55,12 @@ init-loader を使うことの是非については諸説あるようですが�
 ### 2.2 [after-init-hook] init-loader でまとめて遅延読み込み
 我流なのおすすめできませんが、ごく簡単な概念でかなり効果的ですので説明しておきます。
 
-1. init.el の冒頭設定で超大胆に GC を減らします。 `(setq gc-cons-threshold 100000000)`
+1. init.el の冒頭設定で超大胆に GC を減らします。<br> `(setq gc-cons-threshold 100000000)`
 2. init.el から遅延処理できない初期設定を読み込みます。
 3. 最後に残りの設定ファイル群を `after-init-hook` で読み込ませます。
-4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。 ` (setq gc-cons-threshold 800000)` 
+4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)` 
 
+`after-init-hook` のほうが `emacs-startup-hook` より先に実行されるという仕組みを利用しているわけです。
 現状、わたしの Emacs の起動時間は、o.430sec 前後です。GC のからくりで .06sec 程度、`after-init-hook` の処理で 1.0sec 程度早くなっています。
 
 本格的な高速化を図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。

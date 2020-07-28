@@ -443,12 +443,15 @@ selected.el は、うっかり IMEオンのまま選択領域に対するコマ�
     (selected--on) ;; must call expclitly here
     (remove-hook 'activate-mark-hook #'my-activate-selected))
   (add-hook 'activate-mark-hook #'my-activate-selected)
+
   (defun my:ime-on ()
     (interactive)
     (when (null current-input-method) (toggle-input-method)))
+
   (defun my:ime-off ()
     (interactive)
     (inactivate-input-method))
+
   ;; mark-hook
   (add-hook
    'activate-mark-hook

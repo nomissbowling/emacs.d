@@ -430,7 +430,7 @@ Melpa からインストールできるのですが、[@HKey](https://twitter.co
 
 ### 5.2 [selected] IME のオン・オフを自動制御する
 
-selected.el の最大の欠点は、IMEとの相性が悪いことです。IMEオンのまま選択領域に対するコマンドを選択すると、押下キーがバッファにそのまま入力されてしまいます。
+selected.el は、うっかり IMEオンのまま選択領域に対するコマンドを選択すると、押下キーがバッファにそのまま入力されてしまいます。
 
 領域を選択し始める時にIMEをオフにして、コマンド発行後にIMEを元に戻すという例が、
 [@takaxp](https://qiita.com/takaxp) さんの [Qiitaの記事](https://qiita.com/takaxp/items/00245794d46c3a5fcaa8) にあったので、私の環境（emacs-mozc ）にあうように設定したら、すんなり動いてくれました。感謝！

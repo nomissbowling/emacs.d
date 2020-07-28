@@ -596,12 +596,17 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
    ├── hydra-browse   <<- Dashboard からも呼び出せる
    └── hydra-pinky
 ```
-`hydra-work-menu` と `hydra-quick-menu` の２つがとメインになっていて、相互にトグルで呼び出せるようにしています。
+### 7.1 [hydra-work-menu / hydra-quick-menu] 
 
 [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) は、
 日記記事の追加、編集などのほか、毎日頻繁に開くワークスペースへのショートカットを設定しています。
 もうひとつの、[hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) は、
 編集作業で頻繁に使うツールを設定しています。下記の hydra-extention も此処から呼び出します。
+
+この２つの hydra がメインになっていて、相互にトグルで呼び出せるようにしています。
+
+### 7.2 Hydra-extention
+hydra で工夫するといろんなコマンドのキーバインドを記憶する必要もなく GUI 感覚で操作できるので積極的に使っています。
 
 - [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el)
 - [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el)

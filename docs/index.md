@@ -80,7 +80,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 1. init.el の冒頭設定で超大胆に GC を減らします。<br> `(setq gc-cons-threshold 100000000)`
 2. 次に遅延処理できない初期設定を読み込みます。
 3. 最後に残りの設定ファイル群をまとめて `after-init-hook` で遅延読み込みします。
-4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)` 
+4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)`
 
 ```emacs-lisp
 (leaf init-loader :ensure t
@@ -96,12 +96,12 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
   (setq custom-file (locate-user-emacs-file "custom.el")))
 ```
 
-この `after-init-hook` の処理で 1.0sec 程度、。起動時間を短縮できています。
+この `after-init-hook` の処理で 1.0sec 程度、起動時間を短縮できています。
 
 からくり GC 設定のほうは、`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用してわけですが、.06sec ほど改善される程度です。
 本格的な遅延読み込みを図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
 
-- [postpone.el で起動と拡張読み込みを分離する](https://qiita.com/takaxp/items/c01fb7737496af9a8fcd) 
+- [postpone.el で起動と拡張読み込みを分離する](https://qiita.com/takaxp/items/c01fb7737496af9a8fcd)
 
 
 ### 2.3 初期画面設定

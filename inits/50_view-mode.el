@@ -3,12 +3,12 @@
 ;;; Code:
 ;;(setq debug-on-error t)
 
-(leaf viewer
-  :ensure t
+(leaf viewer :ensure t
   :config
   (when (require 'viewer nil t)
     (viewer-change-modeline-color-setup)
     (setq viewer-modeline-color-view "#852941")))
+
 
 (bind-key "C-c v" 'view-mode)
 (add-hook

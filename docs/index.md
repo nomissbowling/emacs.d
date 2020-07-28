@@ -57,7 +57,7 @@ init-loader を使うことの是非については諸説あるようですが�
 
 1. init.el の冒頭設定で超大胆に GC を減らします。 `(setq gc-cons-threshold 100000000)`
 2. init.el から遅延処理できない初期設定を読み込みます。
-3. 最後に残りの設定ファイル群を `after-init-hook` で読み込ませます。`init-loader` 使用
+3. 最後に残りの設定ファイル群を `after-init-hook` で読み込ませます。
 4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。 ` (setq gc-cons-threshold 800000)` 
 
 現状、わたしの Emacs の起動時間は、o.430sec 前後です。

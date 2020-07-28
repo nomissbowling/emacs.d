@@ -14,7 +14,7 @@
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
   (bind-key "s-s" 'swiper-thing-at-point)
-  (bind-key "C-s" 'swiper-migemo-or-region)
+  (bind-key "C-s" 'swiper-or-region)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'counsel-switch-buffer)
   (bind-key "C-x b" 'counsel-switch-buffer)
@@ -47,7 +47,7 @@
 (eval-when-compile
   (leaf *user-function-for-counsel
     :init
-    (defun swiper-migemo-or-region ()
+    (defun swiper-or-region ()
       "If region is selected, `swiper' with the keyword selected in region.
 If the region isn't selected, `swiper' with migemo."
       (interactive)

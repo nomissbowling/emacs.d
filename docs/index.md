@@ -630,10 +630,6 @@ Qitta に詳しい記事を書いています。
 (leaf auto-save-buffers-enhanced :ensure t
   :config
   (setq auto-save-buffers-enhanced-quiet-save-p t)
-  ;; auto save *scratch* to ~/.emacs.d/scratch
-  (setq auto-save-buffers-enhanced-save-scratch-buffer-to-file-p t
-		auto-save-buffers-enhanced-file-related-with-scratch-buffer
-		(locate-user-emacs-file "scratch"))
   ;; Exclusion of the auto-save-buffers
   (setq auto-save-buffers-enhanced-exclude-regexps '("^/ssh:" "^/scp:" "/sudo:"))
   (auto-save-buffers-enhanced t))

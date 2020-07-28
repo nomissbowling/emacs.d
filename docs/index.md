@@ -356,15 +356,21 @@ Melpa からインストールできるのですが、[@HKey](https://twitter.co
 ```
 
 ### 4.5 [expand-region]カーソル位置を起点に選択範囲を賢く広げる
+
+
 `er/expand-region` を呼ぶと、カーソル位置を起点として前後に選択範囲を広げてくれます。2回以上呼ぶとその回数だけ賢く選択範囲が広がりますが、2回目以降は設定したキーバインドの最後の一文字を連打すればOKです。その場合、選択範囲を狭める時は - を押し， 0 を押せばリセットされます。
 
 ```emacs-lisp
+
 (leaf expand-region :ensure t
-  :bind ("C-@" . er/expand-region)
-  :confug
-  (push 'er/mark-outside-pairs er/try-expand-list))
+  :bind ("C-@" . er/expand-region))
+(with-eval-after-load "selected"
+  (when (require 'expand-region nil t)
+    (push 'er/mark-outside-pairs er/try-expand-list)
+    (bind-key "SPC" 'er/expand-region selected-keymap)))
 ```
-[@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) では [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) が紹介されています。
+
+[@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) で紹介されていた [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) を利用しています。俳句記事編集で日本語の一行コピーというアクションも多いので、`C-@` でも使えるようにしています。
 
 
 ## 5. 編集サポート
@@ -374,7 +380,7 @@ Melpa からインストールできるのですが、[@HKey](https://twitter.co
 
 選択領域に対するスピードコマンドです。Emacsバッファーで領域を選択した後、バインドしたワンキーを入力するとコマンドが実行されます。
 
-[counsel-selected](https://github.com/takaxp/counsel-selected) を使うと、ミニバッファーにコマンドメニューがポップアップ表示されますが、私は Hydra で Help-menu ぽいのも併用しています。
+コマンドの数が増えてきたら、ヘルプ代わりに使える [counsel-selected](https://github.com/takaxp/counsel-selected) も便利そうです。
 
 ```emacs-lisp
 (leaf selected :ensure t

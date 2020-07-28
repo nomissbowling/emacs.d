@@ -15,7 +15,7 @@
     (server-start)))
 
 ;; exec-path-from-shell
-(leaf exec-path-from-shell
+(leaf exec-path-from-shell :ensure t
   :when (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize)
@@ -141,7 +141,7 @@
 (setq select-enable-primary  t)
 (bind-key "M-w" 'clipboard-kill-ring-save)
 (bind-key "C-w" 'my:clipboard-kill-region)
-(bind-key "s-v" 'yank)
+(bind-key "s-v" 'yank)	;; Like Mac
 (bind-key "C-x C-x" 'my:exchange-point-and-mark)
 
 

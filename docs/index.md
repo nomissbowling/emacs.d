@@ -298,7 +298,8 @@ If there are two or more windows, it will go to another window."
 
 [sequential-command.el](https://rubikitch.hatenadiary.org/entry/20090219/sequential_command) は地味なながら一度使うと便利すぎて止められません。
 
-Melpa からインストールできるのですが、[@HKey](https://twitter.com/hke7) さんの改良版を el-get で入れてます。感謝！
+Melpa からインストールできるのですが、[@HKey](https://twitter.com/hke7) さんの[改良版](https://github.com/HKey/sequential-command)
+を el-get で入れてます。感謝！
 
 - [sequential-command をもう少し賢く](https://hke7.wordpress.com/2012/04/08/sequential-command-%E3%82%92%E3%82%82%E3%81%86%E5%B0%91%E3%81%97%E8%B3%A2%E3%81%8F/)
 
@@ -510,8 +511,8 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 
 昔は、[avy-migemo-e.g.swiper.el](https://github.com/momomo5717/avy-migemo) を使って出来ていたのですが、２年ほど前から更新が止まってしまっていて、いまは動きません。つい最近、avy-migemo を使わない Tipsを見つけたので試した処、機嫌よく動いてくれています。
 
-- [avy-migemoを使わずにswiper-migemoを実現する](https://qiita.com/minoruGH/items/20d7664a3a57c7365ebc) 
-- [Ivy (Swiper) で雑に migemo を使う](https://www.yewton.net/2020/05/21/migemo-ivy/) 
+- [avy-migemoを使わずにswiper-migemoを実現する](https://qiita.com/minoruGH/items/20d7664a3a57c7365ebc)
+- [Ivy (Swiper) で雑に migemo を使う](https://www.yewton.net/2020/05/21/migemo-ivy/)
 
 
 ```emacs-lisp
@@ -558,14 +559,14 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
    └── hydra-pinky
 ```
 
-- [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
-- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) 
-- [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el) 
-- [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el) 
-- [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el) 
-- [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el) 
-- [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
-- [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el) 
+- [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el)
+- [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el)
+- [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el)
+- [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el)
+- [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el)
+- [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el)
+- [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el)
+- [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el)
 
 
 ## 8. 履歴 / ファイル管理
@@ -826,5 +827,3 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 &ensp;<a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ .Permalink }}" data-via="minorugh" data-text="{{ .Params.Title }}" data-lang="jp" data-count="horizontal">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 <blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr"> <a href="https://twitter.com/minorugh/status/839117944260997120"></a></blockquote>
-
-

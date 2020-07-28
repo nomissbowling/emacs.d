@@ -127,8 +127,6 @@ Emacs 起動時の初期画面には、`Dashboard` を表示させています�
 
 下記設定例では `<Home>` キーを押すことで、直前に作業していたバッファー画面とDashboard画面とをトグルで表示させています。
 
-Dashboard バッファーは、読み取り専用なので、ワンキーリンクでお気に入りを開けるように設定しています。
-
 
 ```emacs-lisp
 (leaf dashboard :ensure t

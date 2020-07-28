@@ -52,20 +52,20 @@
 
 init-loader を使うことの是非については諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
 
-### 2.1 [minimal-init.el] 最小限のEmacsを起動
+### 2.1 機動の高速化概念
+我流なのおすすめできませんが、ごく簡単な概念でかなり効果的ですので説明しておきます。
 
-[minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。
+1. init.el の冒頭設定で超大胆に GC を減らします。 `(setq gc-cons-threshold 100000000)`
+2. init.el から遅延処理できない初期設定を読み込みます。
+3. 初期設定を除く設定ファイル群を `after-init-hook` で、`init-loader` から読み込ませます。
+4. `init-loader` が全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。 ` (setq gc-cons-threshold 800000)` 
 
-新しいパッケージや設定をテストしたり、エラー等で Emacsが起動しない場合に使用します。
-シェルから `resq` と入力することで起動することがでます。
+現状、わたしの Emacs の起動時間は、o.430sec 前後です。GC のからくりで .06sec 程度、`after-init-hook` の処理で 1.0sec 程度早くなっています。
+本格的な高速化を図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
 
-以下を `.zshrc` または `.bashrc` に書き込みます。
+- [postpone.el で起動と拡張読み込みを分離する](https://qiita.com/takaxp/items/c01fb7737496af9a8fcd) 
 
-```shell
-alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
-```
 
-ファイルの PATH は、ご自分の環境に応じて修正が必要です。
 
 ### 2.2 GCサイズの最適化
 起動時に発生するガベージコレクトを防ぐ定番の設定ですが更に欲張ってみました。お奨めできるかどうかは自信ありません。
@@ -176,6 +176,21 @@ Dashboard バッファーは、読み取り専用なので、ワンキーリン�
 
 ```
 - [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el)は、ここを見て下さい。
+
+### 2.5 [minimal-init.el] 最小限のEmacsを起動
+
+[minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。
+
+新しいパッケージや設定をテストしたり、エラー等で Emacsが起動しない場合に使用します。
+シェルから `resq` と入力することで起動することがでます。
+
+以下を `.zshrc` または `.bashrc` に書き込みます。
+
+```shell
+alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
+```
+
+ファイルの PATH は、ご自分の環境に応じて修正が必要です。
 
 
 

@@ -62,7 +62,7 @@ init-loader を使うことの是非については諸説あるようですが�
 
 現状、わたしの Emacs の起動時間は、0.430sec 前後です。
 
-`after-init-hook` の実行後に `emacs-startup-hook` が実行されるという仕組みを利用しているわけですが、GC のからくり設定で .06sec 程度、`after-init-hook` の処理で 1.0sec 程度早くなっています。
+`after-init-hook` の実行後に `emacs-startup-hook` が実行されるという仕組みを利用しているわけですが、`after-init-hook` の処理で 1.0sec 程度早くなっています。GC のからくり設定で早くなるのはごく僅かです。
 
 本格的な遅延読み込みを図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
 

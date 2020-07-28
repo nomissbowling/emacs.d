@@ -1,4 +1,4 @@
-;;; init.el --- init.el  -*- lexical-binding: t -*-
+;;; init.el --- my init.el  -*- lexical-binding: t -*-
 ;; emacs-initial-setting
 
 ;;; Code:

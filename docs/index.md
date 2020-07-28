@@ -272,7 +272,7 @@ If there are two or more windows, it will go to another window."
 (bind-key "C-q" 'other-window-or-split)
 ```
 
-### 4.2 バッファー切り替え
+### 4.2 [iflipb.el] バッファー切り替え
 
 - [iflipb.el](https://github.com/jrosdahl/iflipb) を使うと tabbar感覚の操作感になります。
 - [タブを使わない究極のバーファー移動](https://qiita.com/minoruGH/items/aa96e92c1434f87940d6)
@@ -294,7 +294,7 @@ If there are two or more windows, it will go to another window."
 (add-hook 'magit-mode-hook 'turn-on-tempbuf-mode)
 ```
 
-### 4.3 バッファー先頭・末尾
+### 4.3 [sequential-command.el] バッファー先頭・末尾
 
 [sequential-command.el](https://rubikitch.hatenadiary.org/entry/20090219/sequential_command) は地味なながら一度使うと便利すぎて止められません。
 

@@ -29,6 +29,14 @@
     (setq nyan-animate-nyancat t)))
 
 
+;; Show clock in in the mode line
+(setq display-time-format "%H:%M") ;; %y%m%d. ;; "%H%M.%S"
+(setq display-time-interval 1)
+(setq display-time-default-load-average nil)
+(unless noninteractive
+  (display-time-mode 1))
+
+
 (leaf all-the-icons :ensure t
   :config
   (setq all-the-icons-scale-factor 1.0)

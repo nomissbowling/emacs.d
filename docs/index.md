@@ -598,12 +598,14 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 ```
 ### 7.1 [hydra-work-menu / hydra-quick-menu] 
 
-[hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) は、
-日記記事の追加、編集などのほか、毎日頻繁に開くワークスペースへのショートカットを設定しています。
-もうひとつの、[hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) は、
-編集作業で頻繁に使うツールを設定しています。下記の hydra-extention も此処から呼び出します。
+[hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) には、
+日記や俳句関係のシリーズ記事の追加、編集など、毎日頻繁に開くワークスペースへのショートカットを設定しています。
 
-この２つの hydra がメインになっていて、相互にトグルで呼び出せるようにしています。
+
+[hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) の方には、
+編集作業で頻繁に使うツール群のほか、my:dired を開くためのショートカットも設定しています。下記の hydra-extention も此処から呼び出します。
+
+この２つの hydra は、いわば私の秘書のような役割で、どちらからでも相互にトグルで呼び出せるようにしています。
 
 ### 7.2 Hydra-extention
 hydra で工夫するといろんなコマンドのキーバインドを記憶する必要もなく GUI 感覚で操作できるので積極的に使っています。

@@ -52,34 +52,6 @@
 
 init-loader を使うことの是非については諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
 
-### 2.2 [after-init-hook] init-loader でまとめて遅延読み込み
-我流なのおすすめできませんが、ごく簡単な概念でかなり効果的ですので説明しておきます。
-
-1. init.el の冒頭設定で超大胆に GC を減らします。<br> `(setq gc-cons-threshold 100000000)`
-2. 次に遅延処理できない初期設定を読み込みます。
-3. 最後に残りの設定ファイル群をまとめて `after-init-hook` で遅延読み込みします。
-4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)`
-
-```emacs-lisp
-(leaf init-loader :ensure t
-  :init
-  (setq load-prefer-newer t)
-  (setq el-get-dir "~/.emacs.d/elisp")
-  :config
-  (custom-set-variables '(init-loader-show-log-after-init 'error-only))
-  (add-hook
-   'after-init-hook
-   (lambda ()
-     (init-loader-load "~/Dropbox/emacs.d/inits")))
-  (setq custom-file (locate-user-emacs-file "custom.el")))
-```
-
-`after-init-hook` の処理で 1.0sec 程度早くなっています。からくり GC 設定のほうは、`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用してわけですが、.06sec ほど改善される程度です。
-本格的な遅延読み込みを図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
-
-- [postpone.el で起動と拡張読み込みを分離する](https://qiita.com/takaxp/items/c01fb7737496af9a8fcd)
-
-
 
 ### 2.1 GCサイズの最適化
 起動時に発生するガベージコレクトを防ぐ定番の設定ですが更に欲張ってみました。お奨めできるかどうかは自信ありません。
@@ -101,6 +73,34 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
    (setq gc-cons-threshold 800000)))
 
 ```
+
+### 2.2 [after-init-hook] init-loader でまとめて遅延読み込み
+我流なのおすすめできませんが、ごく簡単な概念でかなり効果的ですので説明しておきます。
+
+1. init.el の冒頭設定で超大胆に GC を減らします。<br> `(setq gc-cons-threshold 100000000)`
+2. 次に遅延処理できない初期設定を読み込みます。
+3. 最後に残りの設定ファイル群をまとめて `after-init-hook` で遅延読み込みします。
+4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)` 
+
+```emacs-lisp
+(leaf init-loader :ensure t
+  :init
+  (setq load-prefer-newer t)
+  (setq el-get-dir "~/.emacs.d/elisp")
+  :config
+  (custom-set-variables '(init-loader-show-log-after-init 'error-only))
+  (add-hook
+   'after-init-hook
+   (lambda ()
+     (init-loader-load "~/Dropbox/emacs.d/inits")))
+  (setq custom-file (locate-user-emacs-file "custom.el")))
+```
+
+`after-init-hook` の処理で 1.0sec 程度早くなっています。からくり GC 設定のほうは、`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用してわけですが、.06sec ほど改善される程度です。
+本格的な遅延読み込みを図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
+
+- [postpone.el で起動と拡張読み込みを分離する](https://qiita.com/takaxp/items/c01fb7737496af9a8fcd) 
+
 
 ### 2.3 初期画面設定
 起動時にギクシャクする画面は見たくないので、`init.el` の冒頭に以下を設定しています。

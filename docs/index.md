@@ -60,7 +60,7 @@ init-loader を使うことの是非については諸説あるようですが�
 3. 最後に残りの設定ファイル群をまとめて `after-init-hook` で遅延読み込みします。
 4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)` 
 
-`after-init-hook` の処理で 1.0sec 程度早くなっています。`after-init-hook` 実行後に `emacs-startup-hook` が実行されるという仕組みを利用して GC値を
+`after-init-hook` の処理で 1.0sec 程度早くなっています。`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用して GC値を
 コントロールしているわけですが、こちらの方の効果はごく僅かです。
 本格的な遅延読み込みを図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
 

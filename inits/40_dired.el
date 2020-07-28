@@ -5,7 +5,8 @@
 ;; (setq debug-on-error t)
 
 (leaf dired
-  :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
+  :hook
+  (dired-mode-hook . dired-my-append-buffer-name-hint)
   :config
   (bind-key "j" 'dired-next-line dired-mode-map)
   (bind-key "k" 'dired-previous-line dired-mode-map)

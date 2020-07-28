@@ -4,14 +4,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; Quiet Startup
-(set-frame-parameter nil 'fullscreen 'maximized)
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
-
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
@@ -21,6 +13,14 @@
 	    "Restore defalut values after startup."
 	    (setq file-name-handler-alist default-file-name-handler-alist)
 	    (setq gc-cons-threshold 800000)))
+
+;; Quiet Startup
+(set-frame-parameter nil 'fullscreen 'maximized)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
 
 ;; Package
 (customize-set-variable

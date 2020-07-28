@@ -85,7 +85,7 @@
 			(upcase (url-hexify-string str)))))
   ;; Google map
   (defun my:g-map (str)
-    (interactive (list (my:get-region-sr nil)))
+    (interactive (list (my:get-region-str nil)))
     (browse-url (format "https://maps.google.co.jp/maps?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
   ;; Amazon

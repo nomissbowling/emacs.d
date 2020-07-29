@@ -1,4 +1,4 @@
-;;; 08_highlight.el --- 08_highlight.el  -*- lexical-binding: t -*-
+;;; 06_highlight.el --- 06_highlight.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -90,4 +90,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 08_highlight.el ends here
+;;; 06_highlight.el ends here

@@ -1,4 +1,4 @@
-;;; 09_buffer.el --- 09_buffer.el  -*- lexical-binding: t -*-
+;;; 07_buffer.el --- 07_buffer.el  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -100,4 +100,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 09_buffer.el ends here
+;;; 07_buffer.el ends here

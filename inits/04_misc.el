@@ -65,13 +65,16 @@
     :config
     (counsel-projectile-mode)))
 
-;; misc
+
 (leaf restart-emacs :ensure t
   :bind ("C-x C-c" . restart-emacs))
+
 (leaf web-mode :ensure t
   :mode "\\.js\\'" "\\.html?\\'")
+
 (leaf php-mode :ensure t
   :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
+
 (leaf iedit :ensure t
   :bind ("C-;" . iedit-mode))
 

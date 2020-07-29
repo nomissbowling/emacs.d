@@ -19,6 +19,10 @@
 
 (leaf flycheck :ensure t
   :hook (prog-mode-hook . flycheck-mode))
+(leaf flycheck-title :ensure t
+  :after flycheck
+  :config
+  (flycheck-title-mode))
 
 
 (leaf yasnippet :ensure t
@@ -78,4 +82,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 04_misc.el ends here
+;;; 045_misc.el ends here

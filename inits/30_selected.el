@@ -55,52 +55,52 @@
   :init
   ;; Weblio
   (defun my:weblio (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://www.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
   ;; Kobun
   (defun my:kobun (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://kobun.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
   ;; Ruigo
   (defun my:ruigo (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://thesaurus.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
   ;; Eijiro
   (defun my:eijiro (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://eow.alc.co.jp/%s/UTF-8/"
 			(upcase (url-hexify-string str)))))
   ;; Postal code
   (defun my:postal (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://postcode.goo.ne.jp/search/q/%s"
 			(upcase (url-hexify-string str)))))
   ;; Google
   (defun my:google (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://www.google.com/search?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
   ;; Google map
   (defun my:g-map (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://maps.google.co.jp/maps?hl=ja&q=%s"
 			(upcase (url-hexify-string str)))))
   ;; Amazon
   (defun my:amazon (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://www.amazon.co.jp/gp/search?index=blended&field-keywords=%s"
 			(upcase (url-hexify-string str)))))
   ;; Yodobashi
   (defun my:yodobashi (str)
-    (interactive (list (my:get-region-str nil)))
+    (interactive (list (my:get-region-word nil)))
     (browse-url (format "https://www.yodobashi.com/?word=%s"
 			(upcase (url-hexify-string str)))))
   ;; common function
-  (defun my:get-region-str (string)
-    "Get that string from region."
+  (defun my:get-region-word (r)
+    "Get word string from region."
     (buffer-substring-no-properties (region-beginning) (region-end)))
   )
 

@@ -436,31 +436,28 @@ selected.el は、うっかり IMEオンのまま選択領域に対するコマ�
 [@takaxp](https://qiita.com/takaxp) さんの [Qiitaの記事](https://qiita.com/takaxp/items/00245794d46c3a5fcaa8) にあったので、私の環境（emacs-mozc ）にあうように設定したら、すんなり動いてくれました。感謝！
 
 ```emacs-lisp
-(leaf  *control-mozc-when-region-seleceted
-  :init
-  (defun my-activate-selected ()
-    (selected-global-mode 1)
-    (selected--on) ;; must call expclitly here
-    (remove-hook 'activate-mark-hook #'my-activate-selected))
-  (add-hook 'activate-mark-hook #'my-activate-selected)
+(defun my-activate-selected ()
+  (selected-global-mode 1)
+  (selected--on) ;; must call expclitly here
+  (remove-hook 'activate-mark-hook #'my-activate-selected))
+(add-hook 'activate-mark-hook #'my-activate-selected)
 
-  (defun my:ime-on ()
-    (interactive)
-    (when (null current-input-method) (toggle-input-method)))
+(defun my:ime-on ()
+  (interactive)
+  (when (null current-input-method) (toggle-input-method)))
 
-  (defun my:ime-off ()
-    (interactive)
-    (inactivate-input-method))
+(defun my:ime-off ()
+  (interactive)
+  (inactivate-input-method))
 
-  ;; mark-hook
-  (add-hook
-   'activate-mark-hook
-   #'(lambda ()
-       (setq my:ime-flag current-input-method) (my:ime-off)))
-  (add-hook
-   'deactivate-mark-hook
-   #'(lambda ()
-       (unless (null my:ime-flag) (my:ime-on)))))
+(add-hook
+ 'activate-mark-hook
+ #'(lambda ()
+	 (setq my:ime-flag current-input-method) (my:ime-off)))
+(add-hook
+ 'deactivate-mark-hook
+ #'(lambda ()
+	 (unless (null my:ime-flag) (my:ime-on))))
 ```
 
 

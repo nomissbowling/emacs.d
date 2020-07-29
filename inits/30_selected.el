@@ -34,13 +34,15 @@
     (selected--on)
     (remove-hook 'activate-mark-hook #'my-activate-selected))
   (add-hook 'activate-mark-hook #'my-activate-selected)
+
   (defun my:ime-on ()
     (interactive)
     (when (null current-input-method) (toggle-input-method)))
   (defun my:ime-off ()
     (interactive)
     (inactivate-input-method))
-  ;; activate-mark-hook
+
+  (defvar my:ime-flag nil)
   (add-hook
    'activate-mark-hook
    #'(lambda ()

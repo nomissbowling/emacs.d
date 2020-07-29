@@ -50,7 +50,8 @@
 
 
 (leaf projectile :ensure t
-  :config (projectile-mode)
+  :config
+  (projectile-mode)
   :init
   (leaf counsel-projectile :ensure t
     :config

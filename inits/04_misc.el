@@ -19,10 +19,6 @@
 
 (leaf flycheck :ensure t
   :hook (prog-mode-hook . flycheck-mode))
-(leaf flycheck-title
-  :ensure t
-  :after flycheck
-  :config (flycheck-title-mode))
 
 
 (leaf yasnippet :ensure t

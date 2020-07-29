@@ -370,7 +370,7 @@ Melpa からインストールできるのですが、[@HKey](https://twitter.co
     (bind-key "SPC" 'er/expand-region selected-keymap)))
 ```
 
-[@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) で紹介されていた [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) を利用しています。俳句記事編集で日本語の一行コピーというアクションも多いので、`C-@` でも使えるようにしています。
+[@takaxp](https://twitter.com/m2ym) さんの [init.el](https://takaxp.github.io/) で紹介されていた [select.el とペアで使う方法](https://takaxp.github.io/init.html#org3901456e) を利用しています。私の場合、俳句記事編集で日本語の一行コピーというアクションも多いので、`C-@` でも使えるようにしています。
 
 
 ## 5. 編集サポート

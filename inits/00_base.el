@@ -1,12 +1,9 @@
 ;;; 00_base.el --- 00_base.el -*- lexical-binding: t -*-
-;; emacs base setting.
-
+;;; Commentary:
 ;; performs various variable settings and function executions
-;; for emacs standard attachment library.
 
 ;;; Code:
 ;; (setq debug-on-error t)
-
 
 ;; Start the server in Emacs session
 (leaf server :require t

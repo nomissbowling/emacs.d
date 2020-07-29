@@ -14,8 +14,9 @@
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
   :when (memq window-system '(mac ns x))
+  :commands exec-path-from-shell-initialize
+  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
-  (exec-path-from-shell-initialize)
   (setq exec-path-from-shell-check-startup-files nil))
 
 ;; Save the file specified code with basic utf-8 if it exists

@@ -1,5 +1,5 @@
 ;;; 01_git.el  --- 01_git.el   -*- lexical-binding: t -*-
-;; git porcelain inside emacs
+;;; Commentary:
 
 ;;; Code:
 ;; (setq debug-on-erro t)

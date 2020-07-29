@@ -21,6 +21,7 @@
   (bind-key "M-x" 'counsel-M-x)
   (bind-key "M-y" 'counsel-yank-pop)
   (bind-key "s-a" 'counsel-linux-app)
+  (bind-key "s-c" 'counsel-mark-ring)
   (bind-key "C-x C-f" 'counsel-find-file)
   (bind-key "C-c k" 'counsel-ag)
   (bind-key "C-c w" 'counsel-rg)

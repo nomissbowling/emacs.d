@@ -39,32 +39,32 @@
 	      (fset 'makefile-warn-suspicious-lines 'ignore))))
 
 
-  (leaf *user-compile-command
-    :init
-    (defun my:make-k ()
-      "Make command default."
-      (interactive)
-      (compile "make -k"))
-    (defun my:make-upftp ()
-      "Make command for upftp."
-      (interactive)
-      (compile "make up"))
-    (defun my:make-move ()
-      "Make command for move."
-      (interactive)
-      (compile "make mv"))
-    (defun my:make-bklog ()
-      "Make command for bklog."
-      (interactive)
-      (compile "make bk"))
-    (defun my:make-git ()
-      "Make command for git."
-      (interactive)
-      (compile "make git"))
-    (defun my:make-clean ()
-      "Make command for clean."
-      (interactive)
-      (compile "make clean")))
+(leaf *user-compile-command
+  :init
+  (defun my:make-k ()
+    "Make command default."
+    (interactive)
+    (compile "make -k"))
+  (defun my:make-upftp ()
+    "Make command for upftp."
+    (interactive)
+    (compile "make up"))
+  (defun my:make-move ()
+    "Make command for move."
+    (interactive)
+    (compile "make mv"))
+  (defun my:make-bklog ()
+    "Make command for bklog."
+    (interactive)
+    (compile "make bk"))
+  (defun my:make-git ()
+    "Make command for git."
+    (interactive)
+    (compile "make git"))
+  (defun my:make-clean ()
+    "Make command for clean."
+    (interactive)
+    (compile "make clean")))
 
 
 ;; Local Variables:

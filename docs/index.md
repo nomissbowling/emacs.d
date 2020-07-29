@@ -411,20 +411,20 @@ Melpa からインストールできるのですが、[@HKey](https://twitter.co
 
 ```emacs-lisp
 (defun my:google (str)
-  (interactive (list (my:get-region-str nil)))
+  (interactive (list (my:get-region-word nil)))
   (browse-url (format "https://www.google.com/search?hl=ja&q=%s"
 					  (upcase (url-hexify-string str)))))
 
 (defun my:weblio (str)
-  (interactive (list (my:get-region-str nil)))
+  (interactive (list (my:get-region-word nil)))
   (browse-url (format "http://www.weblio.jp/content/%s"
 					  (upcase (url-hexify-string str)))))
 ```
 
 ```emacs-lisp
 ;; common function
-(defun my:get-region-str (string)
-  "Get that string from region."
+(defun my:get-region-word (r)
+  "Get word string from region."
   (buffer-substring-no-properties (region-beginning) (region-end)))
 ```
 

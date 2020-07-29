@@ -1,4 +1,5 @@
 ;;; init.el --- my init.el  -*- lexical-binding: t -*-
+;;; Commentary:
 ;; emacs-initial-setting
 
 ;;; Code:
@@ -54,7 +55,7 @@
    'after-init-hook
    (lambda ()
      (init-loader-load "~/Dropbox/emacs.d/inits")))
-    (setq custom-file (locate-user-emacs-file "custom.el")))
+  (setq custom-file (locate-user-emacs-file "custom.el")))
 
 
 (provide 'init)

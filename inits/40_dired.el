@@ -1,4 +1,4 @@
-;;; 40_dired.el --- 40_dired.el  -*- lexical-binding: t -*-
+;;; 40_dired.el --- 40_dired.el
 ;;; Commentary:
 
 ;;; Code:

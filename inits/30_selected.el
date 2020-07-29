@@ -1,4 +1,4 @@
-;;; 30_selected.el --- 30_selected.el  -*- lexical-binding: t -*-
+;;; 30_selected.el --- 30_selected.el
 ;;; Commentary:
 
 ;;; Code:

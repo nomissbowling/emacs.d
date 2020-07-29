@@ -1,4 +1,4 @@
-;;; 10_hydra-menu.el --- 10_hydra-menu.el  -*- lexical-binding: t -*-
+;;; 10_hydra-menu.el --- 10_hydra-menu.el
 ;;; Commentary:
 
 ;;; Code:

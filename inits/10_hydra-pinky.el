@@ -1,4 +1,4 @@
-;;; 10_hydra-pinky.el --- 10_hydra-pinky.el  -*- lexical-binding: t -*-
+;;; 10_hydra-pinky.el --- 10_hydra-pinky.el
 ;;; Commentary:
 
 ;;; Code:

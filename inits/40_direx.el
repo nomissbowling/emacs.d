@@ -1,4 +1,4 @@
-;;; 40_direx.el --- 40_direx.el  -*- lexical-binding: t -*-
+;;; 40_direx.el --- 40_direx.el
 ;;; Commentary:
 
 ;;; Code:

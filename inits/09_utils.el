@@ -1,4 +1,4 @@
-;;; 09_utils.el --- 09_utils.el  -*- lexical-binding: t -*-
+;;; 09_utils.el --- 09_utils.el
 ;;; Commentary:
 
 ;;; Code:

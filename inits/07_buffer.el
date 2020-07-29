@@ -1,4 +1,4 @@
-;;; 07_buffer.el --- 07_buffer.el  -*- lexical-binding: t -*-
+;;; 07_buffer.el --- 07_buffer.el
 ;;; Commentary:
 
 ;;; Code:

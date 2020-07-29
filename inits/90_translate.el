@@ -1,5 +1,5 @@
-;;; 90_translate.el --- 90_translate.el  -*- lexical-binding: t -*-
-;; README is here : https://github.com/atykhonov/google-translate
+;;; 90_translate.el --- 90_translate.el
+;;; Commentary:
 
 ;;; Code:
 ;; (setq debug-on-error t)

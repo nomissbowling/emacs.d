@@ -1,4 +1,4 @@
-;;; 04_misc.el --- 04_misc.el  -*- lexical-binding t -*-
+;;; 04_misc.el --- 04_misc.el
 ;;; Commentary:
 
 ;;; Code:
@@ -82,4 +82,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 045_misc.el ends here
+;;; 04_misc.el ends here

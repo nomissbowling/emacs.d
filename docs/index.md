@@ -442,6 +442,8 @@ selected.el は、うっかり IMEオンのまま選択領域に対するコマ�
   (remove-hook 'activate-mark-hook #'my-activate-selected))
 (add-hook 'activate-mark-hook #'my-activate-selected)
 
+(defvar my:ime-flag nil)
+
 (defun my:ime-on ()
   (interactive)
   (when (null current-input-method) (toggle-input-method)))

@@ -459,9 +459,6 @@ selected.el は、うっかり IMEオンのまま選択領域に対するコマ�
  #'(lambda ()
 	 (unless (null my:ime-flag) (my:ime-on))))
 ```
-
-
-
 ### 5.3 [darkroom-mode] 執筆モード
 [darkroom.el](https://github.com/joaotavora/darkroom)  は、画面の余計な項目を最小限にして、文章の執筆に集中できるようにするパッケージです。
 

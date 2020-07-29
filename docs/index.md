@@ -96,9 +96,9 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
   (setq custom-file (locate-user-emacs-file "custom.el")))
 ```
 
-この `after-init-hook` の処理で 1.0sec 程度、起動時間を短縮できています。
+私の init.el は、必要最小限の内容ですので、遅延処理しなくても 1.0 秒前後で起動しますが、この `after-init-hook` の処理で 0.5 秒程度、起動時間を短縮できています。
 
-からくり GC 設定のほうは、`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用してわけですが、.06sec ほど改善される程度です。
+からくり GC 設定のほうは、`after-init-hook` が実行されたあとに `emacs-startup-hook` が実行されるという仕組みを利用してわけですが、0.1 秒ほど改善されています。
 本格的な遅延読み込みを図るなら、[@takaxp](https://twitter.com/takaxp) さんの Qiita の記事がお薦めです。
 
 - [postpone.el で起動と拡張読み込みを分離する](https://qiita.com/takaxp/items/c01fb7737496af9a8fcd)

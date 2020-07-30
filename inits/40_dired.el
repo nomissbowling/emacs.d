@@ -30,6 +30,7 @@
   (setq dired-recursive-deletes 'always)
   (setq dired-listing-switches "-lgGhF")
   :init
+  (leaf sudo-edit :ensure t)
   (leaf wdired :require t)
   (leaf dired-x :require t
     :config
@@ -38,8 +39,7 @@
   ;; Show directory first
   (leaf ls-lisp :require t
     :config
-    (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
-  (leaf sudo-edit :ensure t))
+    (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t)))
 
 
 (leaf *user-dired-extention

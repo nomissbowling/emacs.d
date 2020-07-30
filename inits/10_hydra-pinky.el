@@ -81,14 +81,6 @@ If there are two or more windows, it will go to another window."
       (other-window -1))))
 
 
-(leaf key-chord
-  :el-get zk-phi/key-chord
-  :config
-  (key-chord-mode 1)
-  (key-chord-define-global "df" 'counsel-descbinds)
-  (key-chord-define-global "l;" 'init-loader-show-log))
-
-
 (leaf sequential-command-config
   :hook (emacs-startup-hook . sequential-command-setup-keys)
   :config

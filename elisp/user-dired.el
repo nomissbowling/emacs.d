@@ -103,6 +103,10 @@
   (find-file "~/Dropbox/GH/apsh/apsh.txt")
   (goto-char (point-min)))
 
+(defun sylpheed ()
+  "Open sylpheed."
+  (interactive)
+  (shell-command-to-string "sylpheed %u"))
 
 (provide 'user-dired)
 

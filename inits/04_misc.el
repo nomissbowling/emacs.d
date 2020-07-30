@@ -18,7 +18,7 @@
 
 
 (leaf flycheck :ensure t
-  :hook (emacs-startup-hook . flycheck-mode)
+  :hook (emacs-startup-hook . global-flycheck-mode)
   :init
   (setq flycheck-global-modes
 	'(not text-mode outline-mode fundamental-mode lisp-interaction-mode

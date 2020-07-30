@@ -5,6 +5,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+(eval-when-compile
+  (require 'cl-lib))
+
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
@@ -14,7 +17,6 @@
 	    "Restore defalut values after startup."
 	    (setq file-name-handler-alist default-file-name-handler-alist)
 	    (setq gc-cons-threshold 800000)))
-
 
 ;; Quiet Startup
 (set-frame-parameter nil 'fullscreen 'maximized)

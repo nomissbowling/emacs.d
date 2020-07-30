@@ -12,8 +12,8 @@
    "
   🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------
-    _d_ropbox^^   _e_macs.d   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm_@_
-    _t_ramp:_q_   magit._:_   f_l_ych   _f_tp   _y_as:_n_:_v_   _a_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   _p_inky"
+    _d_ropbox^^   _e_macs.d^^   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm_@_
+    _t_ramp:_q_   git:_[_._]_   f_l_ych   _f_tp   _y_as:_n_:_v_   _a_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   view_:_"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -31,7 +31,7 @@
    ("r" restart-emacs)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
-   (":" magit-status)
+   (":" view-mode)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
@@ -46,8 +46,9 @@
    ("x" hydra-work/body)
    ("p" hydra-pinky/body)
    ("/" kill-other-buffers)
-   ("\\" delete-other-windows)
    ("_" delete-other-windows)
+   ("[" hydra-magit/body)
+   ("]" magit-status)
    ("<muhenkan>" nil)
    ("M-." nil)))
 
@@ -59,9 +60,9 @@
    (:hint nil :exit t)
    "
   📝 Work Menu
-  --------------^^^^^^^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------
-    Work: _a_:合評^^   _d_:日記   _m_:毎日   _w_:毎週   _k_:兼題   _t_:定例   _s_:吟行   _o_:落穂   _n_:近詠   創作:_[_:_]_    package:_@_
-    Tool: _g_ist:_l_   _e_:Hugo   _j_unk🐾   _b_ackup   _p_asswd   _r_g(mi)   ps_2_pdf   print_:_   _f_lickr   _i_ndex.md^^    _v_iew-mode"
+  --------------^^^^^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------
+    Work: _a_:合評^^   _d_:日記   _m_:毎日   _w_:毎週   _k_:兼題   _t_:定例   _s_:吟行   _o_:落穂   _n_:近詠   創作:_[_:_]_
+    Tool: _g_ist:_l_   _e_:Hugo   _j_unk🐾   _b_ackup   _p_asswd   _r_g(mi)   ps_2_pdf   print_:_   _f_lickr   _i_ndex.md^^"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)

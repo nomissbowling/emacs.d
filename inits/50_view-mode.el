@@ -29,9 +29,9 @@
    (define-key view-mode-map "w" 'my:view-forward-word+1)
    (define-key view-mode-map "W" 'backward-word)
    (define-key view-mode-map "s" 'swiper-or-region)
-   (define-key view-mode-map "[" 'forward-list)
-   (define-key view-mode-map "]" 'backward-list)
-   (define-key view-mode-map "l" 'avy-goto-line)
+   (define-key view-mode-map "j" 'forward-list)
+   (define-key view-mode-map "k" 'backward-list)
+   (define-key view-mode-map "l" 'goto-line)
    (define-key view-mode-map ";" 'recenter-top-bottom)
    (define-key view-mode-map "t" 'direx:jump-to-project-directory)
    (define-key view-mode-map "o" 'other-window-or-split)
@@ -44,7 +44,7 @@
    (define-key view-mode-map "n" 'diff-hl-next-hunk)
    (define-key view-mode-map "p" 'diff-hl-previous-hunk)
    (define-key view-mode-map "s" 'swiper-or-region)
-   (define-key view-mode-map "S" 'counsel-switch-buffer)
+   (define-key view-mode-map "S" 'my:switch-buffer)
    (define-key view-mode-map "." 'hydra-view-mode/body)))
 
 
@@ -70,6 +70,11 @@
   (save-buffer)
   (view-mode 1)
   (message "delete-char"))
+(defun my:switch-buffer ()
+  "Hoge."
+  (interactive)
+  (counsel-switch-buffer)
+  (view-mode 1))
 (defun my:view-undo ()
   "Undo in view mode."
   (interactive)
@@ -87,8 +92,8 @@
   _SPC_: next page       _a_: top of line       _<__-__>_: text-scale       _o_: other-window     _0_: delete-window
     _b_: prev page       _e_: end of line       _w_: forward word^^^^       _t_: direx:tree       _1_: del-other-windows
     _g_: page top        _l_: goto line         _W_: backward word^^^^      _:_: view exit        _d_: vc-diff
-    _G_: page end        _n_: diff-next-hunk    _[_: forward pair^^^^       _v_: view mode        _s_: swiper
-    _;_: recenter        _p_: diff-prev-hunk    _]_: backward pair^^^^      _._: close            _S_: switch-buffer"
+    _G_: page end        _n_: diff-next-hunk    _j_: forward pair^^^^       _v_: view mode        _s_: swiper
+    _;_: recenter        _p_: diff-prev-hunk    _k_: backward pair^^^^      _._: close            _S_: switch-buffer"
   ;; Move page
   ("SPC" scroll-up-command)
   ("b" scroll-down-command)
@@ -106,9 +111,9 @@
   ;; Misc
   (":" View-exit :exit t)
   ("v" view-mode)
-  ("[" forward-list)
-  ("]" backward-list)
-  ("l" avy-goto-line)
+  ("j" forward-list)
+  ("k" backward-list)
+  ("l" goto-line)
   (";" recenter-top-bottom)
   ;;window
   (">" text-scale-increase)
@@ -120,7 +125,7 @@
   ("n" diff-hl-next-hunk)
   ("p" diff-hl-previous-hunk)
   ("s" swiper-or-region)
-  ("S" counsel-switch-buffer)
+  ("S" my:switch-buffer)
   ;; Others
   ("o" other-window-or-split :exit t)
   ("t" direx:jump-to-project-directory)

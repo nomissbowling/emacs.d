@@ -103,6 +103,12 @@
   (find-file "~/Dropbox/GH/apsh/apsh.txt")
   (goto-char (point-min)))
 
+(defun my:inits-doc ()
+  "Open apsh file."
+  (interactive)
+  (find-file "~/Dropbox/emacs.d/docs/index.md")
+  (goto-char (point-min)))
+
 (defun sylpheed ()
   "Open sylpheed."
   (interactive)

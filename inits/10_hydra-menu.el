@@ -60,8 +60,8 @@
    "
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^--------------------------------------------------------------------------------------------------
-    Work: _a_:合評^^   _d_:日記   _m_:毎日   _w_:毎週   _k_:兼題   _t_:定例   _s_:吟行   _o_:落穂   _n_:近詠   創作:_[_:_]_    _i_nits-doc
-    Tool: _g_ist:_l_   _e_:Hugo   _j_unk🐾   _b_ackup   _p_asswd   _r_g(mi)   ps_2_pdf   print_:_   _f_lickr   package:_@_^^   _v_iew-mode"
+    Work: _a_:合評^^   _d_:日記   _m_:毎日   _w_:毎週   _k_:兼題   _t_:定例   _s_:吟行   _o_:落穂   _n_:近詠   創作:_[_:_]_    package:_@_
+    Tool: _g_ist:_l_   _e_:Hugo   _j_unk🐾   _b_ackup   _p_asswd   _r_g(mi)   ps_2_pdf   print_:_   _f_lickr   _i_ndex.md^^    _v_iew-mode"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)

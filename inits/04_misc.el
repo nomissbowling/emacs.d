@@ -26,6 +26,7 @@
 
 
 (leaf yasnippet :ensure t
+  :commands yas-grobal-mode
   :config
   (yas-global-mode)
   (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))

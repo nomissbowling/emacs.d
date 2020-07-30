@@ -730,8 +730,11 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
 ### 9.2 [ps-print]
 
 ```emacs-lisp
-(leaf ps-print :ensure nil
-  :config
+(leaf *user-ps-print-setting
+  :doc "use ps-print ps-mule"
+  :init
+  (setq ps-multibyte-buffer 'non-latin-printer)
+  (defalias 'ps-mule-header-string-charsets 'ignore)
   (setq ps-paper-type 'a4)
   (setq ps-font-size 9)
   (setq ps-printer-name nil)

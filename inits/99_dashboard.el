@@ -12,6 +12,7 @@
     (bind-key "n" 'browse-google-news dashboard-mode-map)
     (bind-key "k" 'browse-keep dashboard-mode-map)
     (bind-key "m" 'browse-gmail dashboard-mode-map)
+    (bind-key "g" 'sylpheed dashboard-mode-map)
     (bind-key "t" 'browse-tweetdeck dashboard-mode-map)
     (bind-key "s" 'browse-slack dashboard-mode-map)
     (bind-key "h" 'browse-homepage dashboard-mode-map)
@@ -55,7 +56,7 @@
     (interactive)
     (insert (if (display-graphic-p)
   		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
-    (insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) ")))
+    (insert "   📰 News: (n)   📝 Keep: (k)    mail: (m:g)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) ")))
 
 
 (leaf *dashboard-reload-settings

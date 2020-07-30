@@ -816,8 +816,18 @@ magitの画面は、デフォルトでは、`other-window` に表示されます
   (add-to-list 'default-frame-alist '(font . "Cica-15")))
 ```
 ### 11.2 [volatile-highlight]コピペした領域を強調
+コピペした領域をフラッシングさせます。
 
 ```emacs-lisp
+(leaf volatile-highlights :ensure t
+  :config
+  (volatile-highlights-mode)
+  (with-no-warnings
+    (when (fboundp 'pulse-momentary-highlight-region)
+      (defun my-vhl-pulse (beg end &optional _buf face)
+		"Pulse the changes."
+		(pulse-momentary-highlight-region beg end face))
+      (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
 ```
 

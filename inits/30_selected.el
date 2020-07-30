@@ -12,6 +12,7 @@
     (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
     (bind-key "." 'my:mozc-word-regist selected-keymap)
     (bind-key "i" 'iedit-mode selected-keymap)
+    (bind-key "s" 'swiper-thing-at-point selected-keymap)
     (bind-key "a" 'my:amazon selected-keymap)
     (bind-key "y" 'my:yodobashi selected-keymap)
     (bind-key "e" 'my:eijiro selected-keymap)

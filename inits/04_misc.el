@@ -28,10 +28,9 @@
 (leaf yasnippet :ensure t
   :config
   (yas-global-mode)
-  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
-  :init
-  (leaf yasnippet-snippets :ensure t)
-  (leaf ivy-yasnippet :ensure t))
+  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))
+(leaf yasnippet-snippets :ensure t)
+(leaf ivy-yasnippet :ensure t)
 
 
 (leaf prescient :ensure t

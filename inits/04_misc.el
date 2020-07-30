@@ -29,8 +29,15 @@
     (flycheck-title-mode)))
 
 
+(leaf key-chord
+  :el-get zk-phi/key-chord
+  :config
+  (key-chord-mode 1)
+  (key-chord-define-global "df" 'counsel-descbinds)
+  (key-chord-define-global "l;" 'init-loader-show-log))
+
+
 (leaf yasnippet :ensure t
-  :commands yas-grobal-mode
   :config
   (yas-global-mode)
   (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))

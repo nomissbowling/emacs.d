@@ -18,11 +18,15 @@
 
 
 (leaf flycheck :ensure t
-  :hook (prog-mode-hook . flycheck-mode))
-(leaf flycheck-title :ensure t
-  :after flycheck
-  :config
-  (flycheck-title-mode))
+  :hook (emacs-startup-hook . flycheck-mode)
+  :init
+  (setq flycheck-global-modes
+	'(not text-mode outline-mode fundamental-mode lisp-interaction-mode
+	      org-mode diff-mode shell-mode eshell-mode term-mode vterm-mode))
+  (leaf flycheck-title :ensure t
+    :after flycheck
+    :config
+    (flycheck-title-mode)))
 
 
 (leaf yasnippet :ensure t

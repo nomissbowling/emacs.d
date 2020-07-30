@@ -8,7 +8,6 @@
   :config
   (bind-key "C-<tab>" 'company-complete)
   (bind-key "<tab>" 'company-complete-common-or-cycle company-active-map)
-  (bind-key "<backtab>" 'company-select-previous company-active-map)
   (bind-key "b" 'company-select-previous company-active-map)
   (bind-key "SPC" 'company-select-next company-active-map)
   (bind-key "C-d" 'company-show-doc-buffer company-active-map)

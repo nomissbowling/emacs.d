@@ -4,9 +4,24 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; custom-theme
+;; Cycle custom theme
 (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-(load-theme 'iceberg t)
+(leaf doom-themes :ensure t)
+
+(setq my-themes (list 'iceberg 'doom-dracula))
+(setq curr-theme my-themes)
+(setq curr-theme my-themes)
+(load-theme (car curr-theme) t)
+
+(defun my-theme-cycle ()
+  "Cycle custom theme."
+  (interactive)
+  (disable-theme (car curr-theme))
+  (setq curr-theme (cdr curr-theme))
+  (if (null curr-theme) (setq curr-theme my-themes))
+  (load-theme (car curr-theme) t)
+  (message "%s" (car curr-theme)))
+(bind-key "C-x t" 'my-theme-cycle)
 
 
 (leaf doom-modeline :ensure t

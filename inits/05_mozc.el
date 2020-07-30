@@ -39,7 +39,7 @@
   (leaf mozc-cand-posframe :ensure t
     :config
     (when (require 'mozc-cand-posframe nil t)
-    (setq mozc-candidate-style 'posframe))))
+      (setq mozc-candidate-style 'posframe))))
 
 
 (leaf *user-mozc-tool

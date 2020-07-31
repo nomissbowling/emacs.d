@@ -4,8 +4,8 @@
 ;; (setq debug-on-error t)
 
 (leaf company :ensure t
-  :hook (emacs-startup-hook . global-company-mode)
   :config
+  (global-company-mode)
   (bind-key "C-<tab>" 'company-complete)
   (bind-key "<tab>" 'company-complete-common-or-cycle company-active-map)
   (bind-key "b" 'company-select-previous company-active-map)

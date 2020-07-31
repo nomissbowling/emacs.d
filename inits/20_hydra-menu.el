@@ -1,4 +1,4 @@
-;;; 10_hydra-menu.el --- 10_hydra-menu.el
+;;; 20_hydra-menu.el --- 20_hydra-menu.el
 ;;; Commentary:
 
 ;;; Code:
@@ -31,7 +31,7 @@
    ("r" restart-emacs)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
-   (":" view-mode)
+   (":" my:view-mode)
    (";" my:dot-emacs-dir)
    ("c" hydra-compile/body)
    ("b" hydra-browse/body)
@@ -105,6 +105,12 @@
 
 (leaf *user-defined-function
   :config
+  (defun my:view-mode ()
+    "Narrow the only counsel-command in M-x."
+    (interactive)
+    (view-mode)
+    (hydra-view-mode/body))
+
   (defun my:ps-print ()
     "Narrow the only counsel-command in M-x."
     (interactive)
@@ -140,4 +146,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 10_hydra-menu.el ends here
+;;; 20_hydra-menu.el ends here

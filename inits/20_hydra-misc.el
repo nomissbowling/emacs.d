@@ -1,4 +1,4 @@
-;;; 10_hydra-misc.el --- 10_hydra-misc.el
+;;; 20_hydra-misc.el --- 20_hydra-misc.el
 ;;; Commentary:
 
 ;;; Code:
@@ -120,4 +120,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 10_hydra-misc.el ends here
+;;; 20_hydra-misc.el ends here

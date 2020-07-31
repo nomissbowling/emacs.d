@@ -1,4 +1,4 @@
-;;; 10_hydra-compile.el --- 10_hydra-compile.el
+;;; 20_hydra-compile.el --- 20_hydra-compile.el
 ;;; Commentary:
 
 ;;; Code:
@@ -71,4 +71,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; 10_hydra-compile.el ends here
+;;; 20_hydra-compile.el ends here

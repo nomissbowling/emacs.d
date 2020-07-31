@@ -5,6 +5,7 @@
 ;; (setq debug-on-error t)
 
 (leaf *user-make-function
+  :mode ("\\.mak\\'" "makefile\\'" . makefile-mode)
   :hydra
   (hydra-compile
    (:color red :hint nil)

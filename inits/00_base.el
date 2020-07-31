@@ -5,6 +5,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+(eval-when-compile
+  (require 'cl-lib))
+
 ;; Start the server in Emacs session
 (leaf server :require t
   :config
@@ -14,7 +17,7 @@
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
   :when (memq window-system '(mac ns x))
-  :defun (exec-path-from-shell-initialize)
+  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
   (setq exec-path-from-shell-check-startup-files nil))
 

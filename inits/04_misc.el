@@ -38,6 +38,7 @@
 
 
 (leaf yasnippet :ensure t
+  ;; :hook (emacs-startup-hook . yas-global-mode)
   :config
   (yas-global-mode)
   (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))

@@ -13,7 +13,7 @@
 (setq curr-theme my-themes)
 (load-theme (car curr-theme) t)
 
-(defun my-theme-cycle ()
+(defun my:cycle-theme ()
   "Cycle custom theme."
   (interactive)
   (disable-theme (car curr-theme))

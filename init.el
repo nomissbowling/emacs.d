@@ -5,9 +5,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(eval-when-compile
-  (require 'cl-lib))
-
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
@@ -38,21 +35,20 @@
   (package-refresh-contents)
   (package-install 'leaf))
 
-
 (leaf leaf-keywords
   :ensure t
   :init
   (leaf bind-key :ensure t)
   (leaf hydra :ensure t)
-  (leaf el-get :ensure t)
+  (leaf el-get :ensure t
+    :config
+    (setq el-get-dir "~/.emacs.d/elisp"))
   :config
   (leaf-keywords-init))
-
 
 (leaf init-loader :ensure t
   :init
   (setq load-prefer-newer t)
-  (setq el-get-dir "~/.emacs.d/elisp")
   :config
   (custom-set-variables '(init-loader-show-log-after-init 'error-only))
   (add-hook

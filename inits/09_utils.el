@@ -22,6 +22,16 @@
   (setq imenu-list-focus-after-activation t))
 
 
+(leaf sequential-command-config
+  :hook (emacs-startup-hook . sequential-command-setup-keys)
+  :config
+  (bind-key "C-a" 'seq-home)
+  (bind-key "C-e" 'seq-end)
+  :init
+  (leaf sequential-command
+    :el-get HKey/sequential-command))
+
+
 (leaf browse-at-remote :ensure t
   :config
   (defalias 'my:github-show 'browse-at-remote))
@@ -62,6 +72,15 @@
 
 (leaf *user-functions-utils
   :init
+  (defun other-window-or-split ()
+    "If there is one window, open split window.
+If there are two or more windows, it will go to another window."
+    (interactive)
+    (when (one-window-p)
+      (split-window-horizontally))
+    (other-window 1))
+  (bind-key "C-q" 'other-window-or-split)
+
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)

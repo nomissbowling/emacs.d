@@ -7,6 +7,7 @@
   :config
   (with-eval-after-load 'dashboard
     (bind-key "<home>" 'open-dashboard)
+    (bind-key ";" 'my-theme-cycle)
     (bind-key "c" 'browse-calendar dashboard-mode-map)
     (bind-key "w" 'browse-weather dashboard-mode-map)
     (bind-key "n" 'browse-google-news dashboard-mode-map)

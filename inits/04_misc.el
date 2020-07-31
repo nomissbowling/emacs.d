@@ -37,15 +37,6 @@
   (key-chord-define-global "l;" 'init-loader-show-log))
 
 
-(leaf yasnippet :ensure t
-  ;; :hook (emacs-startup-hook . yas-global-mode)
-  :config
-  (yas-global-mode)
-  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets")))
-(leaf yasnippet-snippets :ensure t)
-(leaf ivy-yasnippet :ensure t)
-
-
 (leaf prescient :ensure t
   :config
   (prescient-persist-mode)

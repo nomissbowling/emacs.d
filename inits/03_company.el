@@ -26,6 +26,16 @@
     (company-quickhelp-mode)))
 
 
+(leaf yasnippet :ensure t
+  :config
+  (yas-global-mode)
+  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
+  :init
+  (leaf yasnippet-snippets :ensure t)
+  (leaf ivy-yasnippet :ensure t))
+
+
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

@@ -15,7 +15,7 @@
  'view-mode-hook
  (lambda ()
    (define-key view-mode-map "i" 'View-exit)
-   (define-key view-mode-map ":" 'View-exit)
+   (define-key view-mode-map "," 'View-exit)
    (define-key view-mode-map "g" 'beginning-of-buffer)
    (define-key view-mode-map "G" 'end-of-buffer)
    (define-key view-mode-map "e" 'seq-end)
@@ -30,8 +30,8 @@
    (define-key view-mode-map ";" 'recenter-top-bottom)
    (define-key view-mode-map "t" 'direx:jump-to-project-directory)
    (define-key view-mode-map "o" 'other-window-or-split)
-   (define-key view-mode-map "]" 'text-scale-increase)
-   (define-key view-mode-map "[" 'text-scale-decrease)
+   (define-key view-mode-map ">" 'text-scale-increase)
+   (define-key view-mode-map "<" 'text-scale-decrease)
    (define-key view-mode-map "-" '(text-scale-set 0))
    (define-key view-mode-map "0" 'delete-window)
    (define-key view-mode-map "1" 'delete-other-windows)
@@ -39,9 +39,9 @@
    (define-key view-mode-map "n" 'diff-hl-next-hunk)
    (define-key view-mode-map "p" 'diff-hl-previous-hunk)
    (define-key view-mode-map "s" 'swiper-or-region)
-   (define-key view-mode-map "S" 'my:switch-buffer)
-   (define-key view-mode-map "<" 'iflipb-previous-buffer)
-   (define-key view-mode-map ">" 'iflipb-next-buffer)
+   (define-key view-mode-map ":" 'my:switch-buffer)
+   (define-key view-mode-map "[" 'iflipb-previous-buffer)
+   (define-key view-mode-map "]" 'iflipb-next-buffer)
    (define-key view-mode-map "." 'hydra-view-mode/body)))
 
 
@@ -89,7 +89,7 @@
 ;; hydra-view-mode
 (defhydra hydra-view-mode (:color red :hint nil)
   "
-  🐳 page:_SPC_:_b_:_;_  _l_ine:_a_:_e_._g_._G_  win:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_[__-__]_  buffer:_<_._S_._>_  _s_wiper  exit:_:__._"
+  🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_<__-__>_  buffer:_[__:__]_  _s_wiper  view-exit:_,_"
   ;; Move page
   ("SPC" scroll-up-command)
   ("f" scroll-up-command)
@@ -99,19 +99,19 @@
   ;; Move line
   ("a" seq-home)
   ("e" seq-end)
-  ("w" my:view-forward-word+1)
-  ("W" backward-word)
+  ;; ("w" my:view-forward-word+1)
+  ;; ("W" backward-word)
   ("D" my:view-kill-whole-line)
   ("X" my:view-del-char)
   ("u" my:view-undo)
   ;; Misc
   ("i" View-exit :exit t)
-  (":" View-exit :exit t)
-  ("l" goto-line)
+  ("," View-exit :exit t)
+  ;; ("l" goto-line)
   (";" recenter-top-bottom)
   ;;window
-  ("]" text-scale-increase)
-  ("[" text-scale-decrease)
+  (">" text-scale-increase)
+  ("<" text-scale-decrease)
   ("-" (text-scale-set 0))
   ("0" delete-window)
   ("_" delete-other-windows)
@@ -120,9 +120,12 @@
   ("p" diff-hl-previous-hunk)
   ("s" swiper-or-region)
   ;;buffer
-  ("S" my:switch-buffer)
-  ("<" iflipb-previous-buffer)
-  (">" iflipb-next-buffer)
+  (":" my:switch-buffer)
+  ("[" iflipb-previous-buffer)
+  ("]" iflipb-next-buffer)
+  ;; avy
+  ("l" avy-goto-line)
+  ("w" avy-goto-word-1)
   ;; Others
   ("o" other-window-or-split)
   ("t" direx:jump-to-project-directory)

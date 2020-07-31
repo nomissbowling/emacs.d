@@ -87,9 +87,9 @@
 
 
 ;; hydra-view-mode
-(defhydra hydra-view-mode (:color pink :hint nil)
+(defhydra hydra-view-mode (:color red :hint nil)
   "
-  🐳 page:_SPC_:_b_:_;_  _l_ine:_a_:_e_  win:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_[__-__]_  buffer:_<_._S_._>_  _s_wiper  exit:_:__._"
+  🐳 page:_SPC_:_b_:_;_  _l_ine:_a_:_e_._g_._G_  win:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_[__-__]_  buffer:_<_._S_._>_  _s_wiper  exit:_:__._"
   ;; Move page
   ("SPC" scroll-up-command)
   ("f" scroll-up-command)

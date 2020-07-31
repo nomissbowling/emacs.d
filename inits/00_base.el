@@ -131,6 +131,7 @@
 
 ;; Run muhenkan same as C-g
 (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
+(bind-key "<muhenkan>" 'keyboard-quit)
 
 ;; xref-find-* key
 (bind-key "C-," 'xref-find-references)
@@ -167,9 +168,6 @@ If the region is inactive, `backward-kill-word'."
 
 ;; Set transparency (active inactive)
 (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
-
-;; Set makefle mode
-(add-to-list 'auto-mode-alist '("\\.mak\\'" . makefile-mode))
 
 ;; M-x info-emacs-manual (C-h r or F1+r)
 (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")

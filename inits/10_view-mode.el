@@ -16,6 +16,7 @@
  (lambda ()
    (define-key view-mode-map "i" 'View-exit)
    (define-key view-mode-map "," 'View-exit)
+   (define-key view-mode-map "q" 'View-exit)
    (define-key view-mode-map "g" 'beginning-of-buffer)
    (define-key view-mode-map "G" 'end-of-buffer)
    (define-key view-mode-map "e" 'seq-end)
@@ -107,6 +108,7 @@
   ;; Misc
   ("i" View-exit :exit t)
   ("," View-exit :exit t)
+  ("q" View-exit :exit t)
   ;; ("l" goto-line)
   (";" recenter-top-bottom)
   ;;window

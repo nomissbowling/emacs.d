@@ -45,7 +45,9 @@
   (leaf amx :ensure t
     :init (setq amx-history-length 20))
   (leaf ivy-rich :ensure t
-    :hook (ivy-mode-hook . ivy-rich-mode)))
+    :hook (ivy-mode-hook . ivy-rich-mode))
+  (leaf avy :ensure t
+    :bind ("C-r" . avy-goto-word-1)))
 
 
 (leaf *user-function-for-counsel
@@ -70,7 +72,6 @@ If the region isn't selected, `swiper' with migemo."
 			splitted))))
 
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
-				(counsel-rg . my:ivy-migemo-re-builder)
 				(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)

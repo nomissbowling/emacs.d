@@ -21,8 +21,8 @@
   :hook (emacs-startup-hook . global-flycheck-mode)
   :init
   (setq flycheck-global-modes
-	'(not text-mode outline-mode fundamental-mode lisp-interaction-mode
-	      org-mode diff-mode shell-mode eshell-mode term-mode vterm-mode))
+	'(not text-mode markdown-mode fundamental-mode lisp-interaction-mode
+	      org-mode diff-mode toml-mode web-mode eshell-mode makefile-mode css-mode))
   (leaf flycheck-title :ensure t
     :after flycheck
     :config
@@ -76,7 +76,7 @@
   :mode "\\.js\\'" "\\.html?\\'")
 
 (leaf php-mode :ensure t
-  :mode "\\.php\\'"  "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
+  :mode "\\.php\\'" "\\.inc\\'" "\\.ctp\\'" "\\.lock\\'")
 
 (leaf iedit :ensure t
   :bind ("C-;" . iedit-mode))

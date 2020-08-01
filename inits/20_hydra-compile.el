@@ -19,7 +19,7 @@
    ("c" my:make-clean)
    ("e" next-error)
    ("<muhenkan>" nil))
-  :config
+  :init
   ;; https://gist.github.com/EricCrosson/fa41233f327403ea2a5a
   (defun close-compile-window-if-successful (buffer string)
     "Close a compilation window if succeeded without warnings."

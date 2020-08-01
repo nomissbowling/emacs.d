@@ -53,6 +53,7 @@
 init-loader を使うことの是非については諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
 
 
+
 ### 2.1 GCサイズの最適化
 起動時に発生するガベージコレクトを防ぐ定番の設定ですが更に欲張ってみました。
 
@@ -727,6 +728,10 @@ Qitta に詳しい記事を書いています。
 
 ### 8.1 [auto-save-buffer-enhanced] ファイルの自動保存
 
+[auto-save-buffer-enhanced.el](https://github.com/kentaro/auto-save-buffers-enhanced) は、Emacs に本当の自動保存機能を提供します。
+
+Tramp-mode と併用すると emacs が固まってしまうことがあるようなので、 `auto-save-buffers-enhanced-exclude-regexps` を設定して trampでリモート編集時には auto-save-buffers を停止するようにしています。
+
 ```emacs-lisp
 (leaf auto-save-buffers-enhanced :ensure t
   :config
@@ -737,6 +742,10 @@ Qitta に詳しい記事を書いています。
 ```
 
 ### 8.2 空になったファイルを自動的に削除
+
+howm や org でメモをとるときに、ゴミファイルが残らないように時々メンテしています。ファイルを開いて中味を確認してから、一度閉じて dited で削除するというプロセスは手間がかかりすぎます。
+
+下記の設定をしておくと、`C-x h` で全選択して delete したあと `kill-buffer` することで自動的にファイルが削除されるので便利です。
 
 ```emacs-lisp
 (defun my:delete-file-if-no-contents ()
@@ -752,7 +761,9 @@ Qitta に詳しい記事を書いています。
 ```
 
 ### 8.3 [undo-tree]
+`C-x -u` で `undo-tree-visualize` を呼ぶと tee の下に diff表示もしてくれるようにカスタマイズした設定です。
 
+ネタ元は、[Link Text](URL ) 
 ```emacs-lisp
 (leaf undo-tree :ensure t
   :hook

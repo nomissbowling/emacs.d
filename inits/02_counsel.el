@@ -71,6 +71,7 @@ If the region isn't selected, `swiper' with migemo."
 			splitted))))
 
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
+				(counsel-web . my:ivy-migemo-re-builder)
 				(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)
@@ -91,6 +92,12 @@ If the region isn't selected, `swiper' with migemo."
     "Narrow the only counsel-command in `M-x'."
     (interactive)
     (counsel-M-x "^counsel ")))
+
+
+(leaf counsel-web :ensure t
+  :config
+  (setq counsel-web-search-action #'browse-url)
+  (setq counsel-web-engine 'google))
 
 
 (leaf counsel-tramp :ensure t

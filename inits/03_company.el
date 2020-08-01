@@ -1,5 +1,6 @@
 ;;; 03_company.el --- 03_company.el
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
 
@@ -34,8 +35,8 @@
   (leaf ivy-yasnippet :ensure t))
 
 
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 03_company.el ends here

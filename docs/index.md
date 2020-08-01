@@ -461,11 +461,11 @@ selected.el は、うっかり IMEオンのまま選択領域に対するコマ�
 ```
 
 ### 5.3 viewモード
-elisp,perl,html 等々のソースファイルを見るときに、`view-mode` を使っています。[@masasam](https://twitter.com/SolistWork) さんのブログ記事 [Emacs Pinkyをhydraで解決する](https://solist.work/blog/posts/emacs-pinky-hydra/) からもヒントを得て `view-mode` 上で使える便利コマンドも追加しました。
+elisp,perl,html 等々のソースファイルを見るときに、`view-mode` を使っています。
 
-[viewer.el](https://www-he.scphys.kyoto-u.ac.jp/member/shotakaha/dokuwiki/doku.php?id=toolbox:emacs:viewer:start) を使って `view-mode` のときのモードラインの色を変えています。 `
+[@masasam](https://twitter.com/SolistWork) さんのブログ記事 [Emacs Pinkyをhydraで解決する](https://solist.work/blog/posts/emacs-pinky-hydra/) からもヒントを得て `view-mode` 上で使える便利コマンドも追加しました。
 
-`view-mode` 上の `counsel-switch-buffer` からファイルを選んで開く場合は、自動的に `view-mode` で開きます。
+[viewer.el](https://www-he.scphys.kyoto-u.ac.jp/member/shotakaha/dokuwiki/doku.php?id=toolbox:emacs:viewer:start) を使って `view-mode` のときのモードラインの色を変えています。 `view-mode` 上の `counsel-switch-buffer` からファイルを選んで開く場合は、自動的に `view-mode` で開きます。
 
 ```emacs-lisp
 (leaf viewer :ensure t
@@ -510,15 +510,6 @@ elisp,perl,html 等々のソースファイルを見るときに、`view-mode` �
   (counsel-switch-buffer)
   (view-mode 1))
 
-(defun my:view-undo ()
-  "Undo in view mode."
-  (interactive)
-  (view-mode 0)
-  (undo)
-  (save-buffer)
-  (view-mode 1)
-  (message "undo and save!"))
-
 ```
 
 view-modo` 時に「.」押下でミニバッファーに簡単な Hydra ヘルプメニューをトグル表示します。「,」を押すと `view-mode` から抜けることが出来ます。
@@ -526,42 +517,42 @@ view-modo` 時に「.」押下でミニバッファーに簡単な Hydra ヘル�
 ```emacs-lisp
 ;; hydra-view-mode
 (defhydra hydra-view-mode (:color red :hint nil)
-"
+  "
 🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_<__-__>_  buffer:_[__:__]_  _s_wiper  view-exit:_,_"
-;; Move page
-("SPC" scroll-up-command)
-("f" scroll-up-command)
-("b" scroll-down-command)
-("g" beginning-of-buffer)
-("G" end-of-buffer)
-;; Move line
-("a" seq-home)
-("e" seq-end)
-(";" recenter-top-bottom)
-("l" avy-goto-line)
-("w" avy-goto-word-1)
-;; misc
-("i" View-exit :exit t)
-("," View-exit :exit t)
-;;window
-(">" text-scale-increase)
-("<" text-scale-decrease)
-("-" (text-scale-set 0))
-("0" delete-window)
-("_" delete-other-windows)
-("d" vc-diff :exit t)
-("n" diff-hl-next-hunk)
-("p" diff-hl-previous-hunk)
-("s" swiper-or-region)
-;;buffer
-(":" my:switch-buffer)
-("[" iflipb-previous-buffer)
-("]" iflipb-next-buffer)
-;; Others
-("o" other-window-or-split)
-("t" direx:jump-to-project-directory)
-("s" swiper-or-region)
-("." nil :color blue))
+  ;; Move page
+  ("SPC" scroll-up-command)
+  ("f" scroll-up-command)
+  ("b" scroll-down-command)
+  ("g" beginning-of-buffer)
+  ("G" end-of-buffer)
+  ;; Move line
+  ("a" seq-home)
+  ("e" seq-end)
+  (";" recenter-top-bottom)
+  ("l" avy-goto-line)
+  ("w" avy-goto-word-1)
+  ;; misc
+  ("i" View-exit :exit t)
+  ("," View-exit :exit t)
+  ;;window
+  (">" text-scale-increase)
+  ("<" text-scale-decrease)
+  ("-" (text-scale-set 0))
+  ("0" delete-window)
+  ("_" delete-other-windows)
+  ("d" vc-diff :exit t)
+  ("n" diff-hl-next-hunk)
+  ("p" diff-hl-previous-hunk)
+  ("s" swiper-or-region)
+  ;;buffer
+  (":" my:switch-buffer)
+  ("[" iflipb-previous-buffer)
+  ("]" iflipb-next-buffer)
+  ;; Others
+  ("o" other-window-or-split)
+  ("t" direx:jump-to-project-directory)
+  ("s" swiper-or-region)
+  ("." nil :color blue))
 
 ```
 

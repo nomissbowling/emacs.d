@@ -710,11 +710,11 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 hydra で工夫するといろんなコマンドのキーバインドを記憶する必要もなく GUI 感覚で操作できるので積極的に使っています。
 
 - [hydra-view-mode](https://github.com/minorugh/emacs.d/blob/master/inits/10_view-mode.el)
-- [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el)
+- [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/20_hydra-compile.el)
 - [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el)
 - [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el)
-- [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el)
-- [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-misc.el)
+- [hydra-package](https://github.com/minorugh/emacs.d/blob/master/inits/20_hydra-misc.el)
+- [hydra-browse](https://github.com/minorugh/emacs.d/blob/master/inits/20_hydra-misc.el)
 
 Qitta に詳しい記事を書いています。
 

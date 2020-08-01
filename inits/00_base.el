@@ -31,7 +31,6 @@
 (when (string-match "x250" (shell-command-to-string "uname -n"))
   (add-to-list 'default-frame-alist '(font . "Cica-15")))
 
-
 ;; Recentf
 (leaf recentf
   :config

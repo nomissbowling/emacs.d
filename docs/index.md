@@ -512,7 +512,7 @@ elisp , perl , html 等々のソースファイルを見るときは、`view-mod
 
 ```
 
-view-modo` 時に「.」押下でミニバッファーに簡単な Hydra ヘルプメニューをトグル表示します。「,」を押すと `view-mode` から抜けることが出来ます。
+`view-modo` 時に「.」押下でミニバッファーに簡単な Hydra ヘルプメニューをトグル表示します。「,」を押すと `view-mode` から抜けることが出来ます。
 
 ```emacs-lisp
 ;; hydra-view-mode

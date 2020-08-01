@@ -709,7 +709,7 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 ### 7.2 [hydra-extention] その他の Hydra 設定。
 hydra で工夫するといろんなコマンドのキーバインドを記憶する必要もなく GUI 感覚で操作できるので積極的に使っています。
 
-- [hydra-pinky](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-pinky.el)
+- [hydra-view-mode](https://github.com/minorugh/emacs.d/blob/master/inits/10_view-mode.el)
 - [hydra-compile](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-compile.el)
 - [hydra-markdown](https://github.com/minorugh/emacs.d/blob/master/inits/50_markdown.el)
 - [hydra-magit](https://github.com/minorugh/emacs.d/blob/master/inits/01_git.el)

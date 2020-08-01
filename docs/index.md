@@ -461,7 +461,7 @@ selected.el は、うっかり IMEオンのまま選択領域に対するコマ�
 ```
 
 ### 5.3 viewモード
-elisp,perl,html 等々のソースファイルを見るときに、`view-mode` を使っています。
+elisp , perl , html 等々のソースファイルを見るときに、`view-mode` を使っています。
 
 [@masasam](https://twitter.com/SolistWork) さんのブログ記事 [Emacs Pinkyをhydraで解決する](https://solist.work/blog/posts/emacs-pinky-hydra/) からもヒントを得て `view-mode` 上で使える便利コマンドも追加しました。
 

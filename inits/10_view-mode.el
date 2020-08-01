@@ -7,6 +7,7 @@
   :config
   (when (require 'viewer nil t)
     (viewer-change-modeline-color-setup)
+    (setq viewer-modeline-color-unwritable "orange")
     (setq viewer-modeline-color-view "#852941")))
 
 

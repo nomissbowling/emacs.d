@@ -512,7 +512,7 @@ elisp , perl , html 等々のソースファイルを見るときは、`view-mod
 
 ```
 
-![Alt Text](https://live.staticflickr.com/65535/50174801848_c99c7f367e_b.jpg) 
+![hydra-view-mode](https://live.staticflickr.com/65535/50174801848_c99c7f367e_b.jpg)
 
 `view-modo` 時に「.」押下でミニバッファーに簡単な Hydra ヘルプメニューをトグル表示します。「,」を押すと `view-mode` から抜けることが出来ます。
 
@@ -695,12 +695,12 @@ dvipdfmx $1 && open -a Preview.app ${name%.*}.pdf
 [hydra-work-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) には、
 日記や俳句関係のシリーズ記事の追加、編集など、毎日頻繁に開くワークスペースへのショートカットを設定しています。
 
-![Alt Text](https://live.staticflickr.com/65535/50174826063_b4fa442b1e_b.jpg) 
+![hydra-work-menu](https://live.staticflickr.com/65535/50175364331_9fcf3c6c86_b.jpg) 
 
 [hydra-quick-menu](https://github.com/minorugh/emacs.d/blob/master/inits/10_hydra-menu.el) の方には、
 編集作業で頻繁に使うツール群のほか、my:dired を開くためのショートカットも設定しています。下記の hydra-extention も此処から呼び出します。
 
-![Alt Text](https://live.staticflickr.com/65535/50175364331_9fcf3c6c86_b.jpg) 
+![hydra-quick-menu](https://live.staticflickr.com/65535/50174826063_b4fa442b1e_b.jpg) 
 
 
 

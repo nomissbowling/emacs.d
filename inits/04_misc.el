@@ -69,6 +69,15 @@
     (counsel-projectile-mode)))
 
 
+(leaf yasnippet :ensure t
+  :config
+  (yas-global-mode)
+  (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))
+  :init
+  (leaf yasnippet-snippets :ensure t)
+  (leaf ivy-yasnippet :ensure t))
+
+
 (leaf restart-emacs :ensure t
   :bind ("C-x C-c" . restart-emacs))
 

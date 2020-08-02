@@ -48,7 +48,7 @@
 基本的には `init.el` を読み込むことで制御しています。 手順は以下のとおり。
 
 1. `init.el` の読み込み
-2. `inits/` に配置したファイル群の読み込み （init-loader 使用）
+2. `inits/` のファイル群を読み込み （init-loader 使用）
 
 init-loader を使うことの是非については諸説あるようですが、[多くの恩恵](http://emacs.rubikitch.com/init-loader/)は捨て難く私には必須ツールです。
 

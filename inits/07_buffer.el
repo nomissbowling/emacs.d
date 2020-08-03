@@ -24,6 +24,7 @@
   :el-get emacswiki:tempbuf
   :hook
   (dired-mode-hook . turn-on-tempbuf-mode)
+  (direx:direx-mode-hook . turn-on-tempbuf-mode)
   (magit-mode-hook . turn-on-tempbuf-mode)
   (compilation-mode-hook . turn-on-tempbuf-mode)
   :config

@@ -10,7 +10,6 @@
 
 (setq my-themes (list 'iceberg 'doom-dracula))
 (setq curr-theme my-themes)
-(setq curr-theme my-themes)
 (load-theme (car curr-theme) t)
 
 (defun my:cycle-theme ()

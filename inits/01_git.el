@@ -27,6 +27,19 @@
     (diff-hl-margin-mode)
     (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
 
+(defun close-magit-window-if-finished (buffer string)
+  "Close a compilation window if succeeded without warnings."
+  (when (and
+	 (string-match "magit:" (buffer-name buffer))
+	 (string-match "Git finished" string)
+	 (not
+	  (with-current-buffer buffer
+	    (search-forward "warning" nil t))))
+    (run-with-timer 1 nil
+		    (lambda ()
+		      (delete-other-windows)))))
+(add-hook 'magit-finish-functions 'close-mait-window-if-finished)
+
 
 ;; Local Variables:
 ;; no-byte-compile: t

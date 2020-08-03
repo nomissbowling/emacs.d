@@ -65,7 +65,6 @@
     Tool: _g_ist:_l_   _e_:Hugo   _j_unk🐾   _b_ackup   _p_asswd   ps_2_pdf   print_:_   _f_lickr   theme_;_   _i_ndex.md"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
-   (";" my:cycle-theme)
    ("e" easy-hugo)
    ("d" my:diary)
    ("D" my:diary-new-post)
@@ -89,7 +88,7 @@
    ("p" open-keepass)
    ("2" pdfout-select)
    (":" my:ps-print)
-   (":" my:ps-print)
+   (";" my:cycle-theme)
    ("/" kill-other-buffers)
    ("_" delete-other-windows)
    ("." hydra-quick-menu/body)

@@ -70,6 +70,7 @@
 
 
 (leaf yasnippet :ensure t
+  :commands yas-global-mode
   :config
   (yas-global-mode)
   (setq yas-snippet-dirs '("~/Dropbox/emacs.d/snippets"))

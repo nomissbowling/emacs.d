@@ -9,9 +9,6 @@
 (leaf doom-themes :ensure t)
 
 (setq my-themes (list 'iceberg 'doom-dracula))
-(setq curr-theme my-themes)
-(load-theme (car curr-theme) t)
-
 (defun my:cycle-theme ()
   "Cycle custom theme."
   (interactive)
@@ -20,7 +17,8 @@
   (if (null curr-theme) (setq curr-theme my-themes))
   (load-theme (car curr-theme) t)
   (message "%s" (car curr-theme)))
-(bind-key "C-x t" 'my-theme-cycle)
+(setq curr-theme my-themes)
+(load-theme (car curr-theme) t)
 
 
 (leaf doom-modeline :ensure t

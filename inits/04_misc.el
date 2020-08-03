@@ -9,6 +9,10 @@
   (popwin-mode))
 
 
+(leaf iedit :ensure t
+  :bind ("C-;" . iedit-mode))
+
+
 (leaf expand-region :ensure t
   :bind ("C-@" . er/expand-region))
 (with-eval-after-load "selected"
@@ -84,9 +88,6 @@
 
 (leaf web-mode :ensure t
   :mode "\\.js?\\'" "\\.html?\\'" "\\.php?\\'")
-
-(leaf iedit :ensure t
-  :bind ("C-;" . iedit-mode))
 
 
 ;; Local Variables:

@@ -86,6 +86,7 @@
 (leaf restart-emacs :ensure t
   :bind ("C-x C-c" . restart-emacs))
 
+
 (leaf web-mode :ensure t
   :mode "\\.js?\\'" "\\.html?\\'" "\\.php?\\'")
 

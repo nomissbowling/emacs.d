@@ -62,7 +62,7 @@
   📝 Work Menu
   --------------^^^^^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------
     Work: _a_:合評^^   _d_:日記   _m_:毎日   _w_:毎週   _k_:兼題   _t_:定例   _s_:吟行   _o_:落穂   _n_:近詠   創作:_[_:_]_
-    Tool: _g_ist:_l_   _e_:Hugo   _j_unk🐾   _b_ackup   _p_asswd   ps_2_pdf   print_:_   _f_lickr   theme_;_   _i_ndex.md"
+    Tool: _g_ist:_l_   _e_:Hugo   _j_unk🐾   _b_ackup   _p_asswd   ps_2_pdf   print_:_   _f_lickr   theme_;_   s_y_lpheed"
    ("a" my:apsh)
    ("A" my:apsh-new-post)
    ("e" easy-hugo)
@@ -99,6 +99,7 @@
    ("J" my:junk-file-dir)
    ("v" view-mode)
    ("i" my:inits-doc)
+   ("y" sylpheed)
    ("f" (browse-url "https://www.flickr.com/photos/minorugh/"))
    ("<muhenkan>" nil)
    ("s-x" nil)))

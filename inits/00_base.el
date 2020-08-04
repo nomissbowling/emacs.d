@@ -130,7 +130,6 @@
 
 ;; Run muhenkan same as C-g
 (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
-(bind-key "<muhenkan>" 'keyboard-quit)
 
 ;; xref-find-* key
 (bind-key "C-," 'xref-find-references)

@@ -8,8 +8,6 @@
   :hook
   (dired-mode-hook . dired-my-append-buffer-name-hint)
   :config
-  (bind-key "j" 'dired-next-line dired-mode-map)
-  (bind-key "k" 'dired-previous-line dired-mode-map)
   (bind-key "<left>" 'dired-up-alternate-directory dired-mode-map)
   (bind-key "<right>" 'dired-open-in-accordance-with-situation dired-mode-map)
   (bind-key "RET"'dired-open-in-accordance-with-situation dired-mode-map)

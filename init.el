@@ -35,20 +35,21 @@
   (package-refresh-contents)
   (package-install 'leaf))
 
+
 (leaf leaf-keywords
   :ensure t
   :init
   (leaf bind-key :ensure t)
   (leaf hydra :ensure t)
-  (leaf el-get :ensure t
-    :config
-    (setq el-get-dir "~/.emacs.d/elisp"))
+  (leaf el-get :ensure t)
   :config
-  (leaf-keywords-init))
+  (leaf-keywords-init)
+  :preface
+  (setq el-get-dir "~/.emacs.d/elisp")
+  (setq load-prefer-newer t))
+
 
 (leaf init-loader :ensure t
-  :init
-  (setq load-prefer-newer t)
   :config
   (custom-set-variables '(init-loader-show-log-after-init 'error-only))
   (add-hook

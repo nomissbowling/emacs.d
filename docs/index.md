@@ -117,6 +117,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 ```
+設定順序など影響ないと思っていたのですが、いろいろ試した結果上記の順番が一番起動時間が早かったです。理由は私にはわかりません。
 
 ### 2.4 Dashboard バッファーをリロードさせる
 

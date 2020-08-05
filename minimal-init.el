@@ -1,11 +1,14 @@
 ;;; minimal-init.el --- minimal-init.el
+;;; Commentary:
 
-;; This will start with typing miniemacs at shell with minimal emacs.
+;; This will start with typing miniemacs at shell with minimal Emacs.
 ;; Write below at .zshrc or .bashrc.
-;; alias miniemacs='emacs -q -l ~/.emacs.d/minimal-init.el'
-;; Use when test of package and my emacs don't start.
+;; alias miniemacs='Emacs -q -l ~/.emacs.d/minimal-init.el'
+;; Use when test of package and my Emacs don't start.
 
 ;;; Code:
+;; (setq debug-on-error t)
+
 (package-initialize)
 
 (menu-bar-mode 0)

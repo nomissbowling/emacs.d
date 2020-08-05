@@ -13,6 +13,7 @@
   (bind-key "RET"'dired-open-in-accordance-with-situation dired-mode-map)
   (bind-key "SPC" 'my:dired-toggle-mark dired-mode-map)
   (bind-key "C-g" 'my:dired-unmark-all dired-mode-map)
+  (bind-key "f" 'counsel-find-file dired-mode-map)
   (bind-key "r" 'wdired-change-to-wdired-mode dired-mode-map)
   (bind-key "o" 'dired-open-file dired-mode-map)
   (bind-key "[" 'dired-hide-details-mode dired-mode-map)

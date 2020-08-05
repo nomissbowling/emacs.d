@@ -8,6 +8,14 @@
 (eval-when-compile
   (require 'cl-lib))
 
+;; Quiet Startup
+(set-frame-parameter nil 'fullscreen 'maximized)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
 ;; Start the server in Emacs session
 (leaf server :require t
   :config

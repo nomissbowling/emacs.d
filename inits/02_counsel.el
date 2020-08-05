@@ -39,8 +39,7 @@
   (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
   :init
   (leaf ivy-xref :ensure t
-    :init
-    (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+    :init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
   (leaf amx :ensure t
     :init (setq amx-history-length 20))
   (leaf ivy-rich :ensure t

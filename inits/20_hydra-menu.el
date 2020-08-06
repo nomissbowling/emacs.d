@@ -49,6 +49,8 @@
    ("_" delete-other-windows)
    ("[" hydra-magit/body)
    ("]" magit-status)
+   ("1" twit-1)
+   ("2" twit-2)
    ("<muhenkan>" nil)
    ("M-." nil)))
 

@@ -13,8 +13,9 @@
   :bind ("C-;" . iedit-mode))
 
 
-(with-eval-after-load "selected"
-  (when (leaf expand-region :ensure t)
+(leaf expand-region :ensure t
+  :config
+  (with-eval-after-load "selected"
     (bind-key "SPC" 'er/expand-region selected-keymap)))
 
 

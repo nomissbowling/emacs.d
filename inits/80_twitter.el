@@ -4,7 +4,7 @@
 ;;(setq debug-on-error t)
 
 ;; Switch multiple accounts
-(defun my/reload-twit ()
+(defun my:reload-twit ()
   "Reload twit buffers."
   (mapc
    (lambda (buffer)
@@ -27,7 +27,7 @@
         (expand-file-name "~/Dropbox/dotfiles/twittering-mode1.gpg"))
   ;; timeline to read on startup
   (setq twittering-initial-timeline-spec-string '("minoruGH" ":retweets_of_me" ":mentions" ":home"))
-  (my/reload-twit))
+  (my:reload-twit))
 
 (defun twit-2 ()
   "Log in to @gospelhaiku."
@@ -36,7 +36,7 @@
         (expand-file-name "~/Dropbox/dotfiles/twittering-mode2.gpg"))
   ;; timeline to read on startup
   (setq twittering-initial-timeline-spec-string '("gospelhaiku" ":mentions" ":home"))
-  (my/reload-twit))
+  (my:reload-twit))
 
 ;; Twitterring-mode settings
 (leaf twittering-mode

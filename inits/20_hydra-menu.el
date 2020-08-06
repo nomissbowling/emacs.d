@@ -27,7 +27,6 @@
    ("y" ivy-yasnippet)
    ("n" yas/new-snippet)
    ("v" yas/visit-snippet-file)
-   ("]" counsel-rg)
    ("r" restart-emacs)
    ("s" counsel-web-suggest)
    ("m" hydra-markdown/body)
@@ -51,6 +50,7 @@
    ("]" magit-status)
    ("1" twit-1)
    ("2" twit-2)
+   ("3" browse-tweetdeck)
    ("<muhenkan>" nil)
    ("M-." nil)))
 

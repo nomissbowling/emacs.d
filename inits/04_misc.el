@@ -13,15 +13,14 @@
   :bind ("C-;" . iedit-mode))
 
 
-(leaf expand-region :ensure t
-  :bind ("C-@" . er/expand-region)
-  :config
-  (push 'er/mark-outside-pairs er/try-expand-list))
+(with-eval-after-load "selected"
+  (when (leaf expand-region :ensure t)
+    (bind-key "SPC" 'er/expand-region selected-keymap)))
 
 
 (leaf cool-copy
   :el-get blue0513/cool-copy.el
-  :bind ("s-c" . cool-copy)
+  :bind ("C-@" . cool-copy)
   :config
   (setq cool-copy-show 'posframe))
 

@@ -1,17 +1,48 @@
-;;; 80_twitter.el --- 80_twitter.el  -*- lexical-binding: t; -*-
+;;; 80_twitter.el --- 80_twitter.el
 ;;; Commentary:
 ;;; Code:
 ;;(setq debug-on-error t)
 
+;; Switch multiple accounts
+(defun my/reload-twit ()
+  "Reload twit buffers."
+  (mapc
+   (lambda (buffer)
+     (twittering-deactivate-buffer buffer)
+     (kill-buffer buffer))
+   (twittering-get-buffer-list))
+  (twittering-unregister-killed-buffer)
+  ;; Clear variables
+  (setq twittering-private-info-file-loaded nil)
+  (setq twittering-account-authorization nil)
+  (setq twittering-oauth-access-token-alist nil)
+  (setq twittering-buffer-info-list nil)
+  (setq twittering-timeline-data-table (make-hash-table :test 'equal))
+  (twit))
+
+(defun twit-1 ()
+  "Log in to @minorugh."
+  (interactive)
+  (setq twittering-private-info-file
+        (expand-file-name "~/Dropbox/dotfiles/twittering-mode1.gpg"))
+  ;; timeline to read on startup
+  (setq twittering-initial-timeline-spec-string '("minoruGH" ":retweets_of_me" ":mentions" ":home"))
+  (my/reload-twit))
+
+(defun twit-2 ()
+  "Log in to @gospelhaiku."
+  (interactive)
+  (setq twittering-private-info-file
+        (expand-file-name "~/Dropbox/dotfiles/twittering-mode2.gpg"))
+  ;; timeline to read on startup
+  (setq twittering-initial-timeline-spec-string '("gospelhaiku" ":mentions" ":home"))
+  (my/reload-twit))
+
+;; Twitterring-mode settings
 (leaf twittering-mode
   :ensure t
-  :commands twit
+  :require t
   :config
-  (setq twittering-private-info-file
-  	(expand-file-name "~/Dropbox/dotfiles/twittering-mode1.gpg"))
-
-  ;; timeline to read on startup
-  (setq twittering-initial-timeline-spec-string '(":direct_messages" ":mentions" ":home" "minoruGH"))
   (setq twittering-use-master-password t)
   (setq twittering-use-ssl t)
   (setq twittering-timer-interval 40)
@@ -22,15 +53,13 @@
   (setq twittering-scroll-mode nil)
   (setq twittering-pop-to-buffer-function 'pop-to-buffer)
 
-  ;; Key bind
-  (bind-key "p" 'twittering-update-status-interactive twittering-mode-map)
   (bind-key "F" 'twittering-favorite twittering-mode-map)
   (bind-key "r" 'twittering-enter twittering-mode-map)
   (bind-key "Q" 'twittering-organic-retweet twittering-mode-map)
   (bind-key "T" 'twittering-native-retweet twittering-mode-map)
   (bind-key "M" 'twittering-direct-message twittering-mode-map)
-  (bind-key "." 'twittering-current-timeline twittering-mode-map) ;; Refresh
-  (bind-key "<SPC>" 'twittering-kill-and-switch-to-next-timeline twittering-mode-map)
+  (bind-key "." 'twittering-current-timeline twittering-mode-map) ;; refresh
+  (bind-key "f" 'twittering-kill-and-switch-to-next-timeline twittering-mode-map)
   (bind-key "b" 'twittering-kill-and-switch-to-previous-timeline twittering-mode-map)
 
   ;; RT format
@@ -46,6 +75,7 @@
   (setq twittering-tinyurl-service 'j.mp)
   (setq twittering-bitly-login "minorugh")
   (setq twittering-bitly-api-key "R_f0b3887698d4d171004f55af6e6a199e")
+
 
   ;; look for name
   (defface twittering-mode-name-face
@@ -63,9 +93,11 @@
   (defface twittering-mode-sepa-face
     '((t (:foreground "#969896"))) nil)
 
+
   (defadvice twittering-visit-timeline (before kill-buffer-before-visit-timeline activate)
     "Delete current TL buffer before opening new TL."
     (twittering-kill-buffer))
+
 
   (defun twittering-kill-and-switch-to-next-timeline ()
     "Open next TL of twittering-initial-timeline-spec-string."
@@ -79,6 +111,7 @@
 	(unless (eq (current-buffer) next)
 	  (twittering-visit-timeline next)))))
 
+
   (defun twittering-kill-and-switch-to-previous-timeline ()
     "Open previous TL of twittering-initial-timeline-spec-string."
     (interactive)
@@ -90,10 +123,9 @@
 			 (car buffer-list))))
 	(unless (eq (current-buffer) previous)
 	  (twittering-visit-timeline previous)))))
-  )
 
+  )
 ;; Local Variables:
 ;; byte-compile-warnings: (not free-vars callargs)
 ;; End:
-
 ;;; 80_twitter.el ends here

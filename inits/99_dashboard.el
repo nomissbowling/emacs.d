@@ -9,7 +9,7 @@
     (bind-key "<home>" 'open-dashboard)
     (bind-key ";" 'my:cycle-theme)
     (bind-key "c" 'browse-calendar dashboard-mode-map)
-    (bind-key "w" 'browse-weather dashboard-mode-map)
+    (bind-key "w" 'twit dashboard-mode-map)
     (bind-key "n" 'browse-google-news dashboard-mode-map)
     (bind-key "k" 'browse-keep dashboard-mode-map)
     (bind-key "g" 'browse-gmail dashboard-mode-map)

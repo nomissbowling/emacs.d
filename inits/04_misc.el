@@ -21,6 +21,11 @@
     (bind-key "SPC" 'er/expand-region selected-keymap)))
 
 
+(leaf cool-copy
+  :el-get blue0513/cool-copy.el
+  :bind ("s-c" . cool-copy))
+
+
 (leaf flycheck :ensure t
   :hook (emacs-startup-hook . global-flycheck-mode)
   :init

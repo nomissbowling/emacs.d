@@ -14,6 +14,7 @@
 
 
 (leaf expand-region :ensure t
+  :bind ("C-@" . er/expand-region)
   :config
   (with-eval-after-load "selected"
     (bind-key "SPC" 'er/expand-region selected-keymap)))
@@ -21,7 +22,7 @@
 
 (leaf cool-copy
   :el-get blue0513/cool-copy.el
-  :bind ("C-@" . cool-copy)
+  :bind ("s-c" . cool-copy)
   :config
   (setq cool-copy-show 'posframe))
 

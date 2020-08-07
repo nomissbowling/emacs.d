@@ -35,7 +35,7 @@
   (setq twittering-private-info-file
         (expand-file-name "~/Dropbox/dotfiles/twittering-mode2.gpg"))
   ;; timeline to read on startup
-  (setq twittering-initial-timeline-spec-string '("gospelhaiku" ":mentions" ":home"))
+  (setq twittering-initial-timeline-spec-string '("gospelhaiku" ":retweets_of_me" ":mentions" ":home"))
   (my:reload-twit))
 
 ;; Twitterring-mode settings

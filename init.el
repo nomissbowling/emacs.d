@@ -27,8 +27,7 @@
   (package-install 'leaf))
 
 
-(leaf leaf-keywords
-  :ensure t
+(leaf leaf-keywords :ensure t
   :init
   (leaf bind-key :ensure t)
   (leaf hydra :ensure t)

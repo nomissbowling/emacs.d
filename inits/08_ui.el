@@ -50,15 +50,13 @@
 
 
 (leaf all-the-icons :ensure t
+  :hook (dired-mode-hook . all-the-icons-dired-mode)
+  :init
+  (leaf all-the-icons-dired :ensure t)
+  (leaf all-the-icons-ivy-rich :ensure t)
   :config
   (setq all-the-icons-scale-factor 1.0)
-  :init
-  (leaf all-the-icons-dired :ensure t
-    :config
-    (all-the-icons-dired-mode))
-  (leaf all-the-icons-ivy-rich :ensure t
-    :config
-    (all-the-icons-ivy-rich-mode)))
+  (all-the-icons-ivy-rich-mode))
 
 
 (leaf darkroom :ensure t

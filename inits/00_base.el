@@ -8,6 +8,7 @@
 (eval-when-compile
   (require 'cl-lib))
 
+
 ;; Quiet Startup
 (set-frame-parameter nil 'fullscreen 'maximized)
 (scroll-bar-mode 0)
@@ -16,11 +17,13 @@
 (setq inhibit-splash-screen t)
 (setq inhibit-startup-message t)
 
+
 ;; Start the server in Emacs session
 (leaf server :require t
   :config
   (unless (server-running-p)
     (server-start)))
+
 
 ;; exec-path-from-shell
 (leaf exec-path-from-shell :ensure t
@@ -33,11 +36,13 @@
 (set-language-environment "Japanese")
 (prefer-coding-system 'utf-8)
 
+
 ;; font
 (add-to-list 'default-frame-alist '(font . "Cica-18"))
 ;; for sub-machine
 (when (string-match "x250" (shell-command-to-string "uname -n"))
   (add-to-list 'default-frame-alist '(font . "Cica-15")))
+
 
 ;; Recentf
 (leaf recentf
@@ -50,6 +55,7 @@
 			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/scp:"
 			 (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
+
 
 ;; Save hist
 (savehist-mode)
@@ -75,15 +81,18 @@
 ;; fringe-mode for right- only
 (fringe-mode (cons 0 nil))
 
+
 ;; Interface for display-line-numbers (emacs version >=26)
 (leaf display-line-numbers
   :bind ("<f9>" . display-line-numbers-mode)
   :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
 
+
 ;; Highlight the current line
 (global-hl-line-mode)
 (make-variable-buffer-local 'global-hl-line-mode)
 (add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
+
 
 ;; Highlight matching parens
 (show-paren-mode)
@@ -113,12 +122,16 @@
 
 ;; Copy with mouse drag
 (setq mouse-drag-copy-region t)
+
 ;; Do not make a backup filie like *.~
 (setq make-backup-files nil)
+
 ;; Do not use auto save
 (setq auto-save-default nil)
+
 ;; Do not create lock file
 (setq create-lockfiles nil)
+
 ;; Open symbolic link directly
 (setq vc-follow-symlinks t)
 
@@ -139,9 +152,11 @@
 ;; Run muhenkan same as C-g
 (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
 
+
 ;; xref-find-* key
 (bind-key "C-," 'xref-find-references)
 (bind-key "C-." 'xref-find-definitions)
+
 
 ;; Use the X11 clipboard
 (setq select-enable-clipboard  t)
@@ -150,7 +165,6 @@
 (bind-key "C-w" 'my:clipboard-kill-region)
 (bind-key "s-v" 'yank)	;; Like Mac
 (bind-key "C-x C-x" 'my:exchange-point-and-mark)
-
 
 (defun my:clipboard-kill-region ()
   "If the region is active, `clipboard-kill-region'.
@@ -165,6 +179,7 @@ If the region is inactive, `backward-kill-word'."
   (interactive)
   (exchange-point-and-mark)
   (deactivate-mark))
+
 
 ;; Exit Emacs with M-x exitle
 (defalias 'exit 'save-buffers-kill-emacs)
@@ -186,11 +201,13 @@ If the region is inactive, `backward-kill-word'."
 	 args))
 (advice-add 'Info-find-node :around 'Info-find-node--info-ja)
 
+
 ;; Set buffer that can not be killed
 (with-current-buffer "*scratch*"
   (emacs-lock-mode 'kill))
 (with-current-buffer "*Messages*"
   (emacs-lock-mode 'kill))
+
 
 ;; Hack emacs-init-time
 (with-eval-after-load "time"
@@ -205,6 +222,7 @@ If the region is inactive, `backward-kill-word'."
 	  (message "%s" str)
 	str)))
   (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
+
 
 ;; Load user Functions
 (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")

@@ -22,7 +22,8 @@
     :config
     (company-quickhelp-mode)
     (setq company-quickhelp-color-foreground "#C7C9D1")
-    (setq company-quickhelp-color-background "#393F60")
+    ;; (setq company-quickhelp-color-background "#393F60")
+    (setq company-quickhelp-color-background "#161822")
     (setq company-quickhelp-max-lines 5)))
 
 

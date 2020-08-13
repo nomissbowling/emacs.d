@@ -1,4 +1,4 @@
-;;; 00_base.el --- 00_base.el
+;;; 00_base.el --- 00_base.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 ;; performs various variable settings and function executions
 

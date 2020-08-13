@@ -8,7 +8,7 @@
 (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
 (leaf doom-themes :ensure t)
 
-(setq my-themes (list 'doom-dracula 'iceberg))
+(setq my-themes (list 'iceberg 'doom-dracula))
 (defun my:cycle-theme ()
   "Cycle custom theme."
   (interactive)

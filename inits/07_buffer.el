@@ -34,10 +34,10 @@
 (leaf iflipb
   :ensure t
   :config
-  (bind-key "M-]" 'iflipb-next-buffer)
-  (bind-key "M-[" 'iflipb-previous-buffer)
   (setq iflipb-wrap-around t)
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "dir" ".org")))
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "GH" "dir" ".org"))
+  (bind-key "M-]" 'iflipb-next-buffer)
+  (bind-key "M-[" 'iflipb-previous-buffer))
 
 
 ;; Persistent undo history for GNU Emacs

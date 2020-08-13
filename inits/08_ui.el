@@ -42,11 +42,11 @@
 
 
 ;; Show clock in in the mode line
-(setq display-time-format "%H:%M") ;; %y%m%d. ;; "%H%M.%S"
+(setq display-time-string-forms
+      '((format "%s:%s" 24-hours minutes) load (if mail "")))
 (setq display-time-interval 1)
 (setq display-time-default-load-average nil)
-(unless noninteractive
-  (display-time-mode 1))
+(display-time)
 
 
 (leaf all-the-icons :ensure t

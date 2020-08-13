@@ -42,7 +42,8 @@
 
 
 (defun md2pdf ()
-  "Generate pdf from currently open markdown. Use wkhtmltopdf without latex"
+  "Generate pdf from currently open markdown.
+Use wkhtmltopdf without latex."
   (interactive)
   (let ((filename (buffer-file-name (current-buffer))))
     (shell-command-to-string

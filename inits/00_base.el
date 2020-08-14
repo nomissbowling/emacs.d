@@ -8,7 +8,6 @@
 (eval-when-compile
   (require 'cl-lib))
 
-
 ;; Quiet Startup
 (set-frame-parameter nil 'fullscreen 'maximized)
 (scroll-bar-mode 0)
@@ -136,7 +135,7 @@
 (setq vc-follow-symlinks t)
 
 ;; Display file name in title bar: buffername-emacs-version
-(setq frame-title-format "%b")
+;; (setq frame-title-format "%b")
 
 ;; Make it easy to see when it is the same name file
 (leaf uniquify

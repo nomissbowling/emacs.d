@@ -1,4 +1,4 @@
-;;; 10_view-mode.el --- 10_view-mode.el
+;;; 10_view-mode.el --- 10_view-mode.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;;(setq debug-on-error t)
@@ -8,13 +8,27 @@
   (when (require 'viewer nil t)
     (viewer-change-modeline-color-setup)
     (setq viewer-modeline-color-unwritable "orange")
-    (setq viewer-modeline-color-view "#852941"))
-  :init
-  (defun my:switch-buffer ()
-    "Hoge."
-    (interactive)
-    (counsel-switch-buffer)
-    (view-mode 1)))
+    (setq viewer-modeline-color-view "#852941")))
+
+
+;; Other-window-or-split with follow-mode
+(bind-key "C-q" 'other-window-or-split)
+(defun other-window-or-split ()
+  "If there is one window, open split window.
+If there are two or more windows, it will go to another window."
+  (interactive)
+  (when (one-window-p)
+    ;; (split-window-horizontally))
+    (follow-delete-other-windows-and-split))
+  (other-window 1))
+
+
+;; Switch-buffer for view-mode
+(defun my:switch-buffer ()
+  "Hoge."
+  (interactive)
+  (counsel-switch-buffer)
+  (view-mode 1))
 
 
 (bind-key "C-c v" 'view-mode)

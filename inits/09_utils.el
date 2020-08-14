@@ -1,4 +1,4 @@
-;;; 09_utils.el --- 09_utils.el
+;;; 09_utils.el --- 09_utils.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -72,15 +72,6 @@
 
 (leaf *user-functions-utils
   :init
-  (defun other-window-or-split ()
-    "If there is one window, open split window.
-If there are two or more windows, it will go to another window."
-    (interactive)
-    (when (one-window-p)
-      (split-window-horizontally))
-    (other-window 1))
-  (bind-key "C-q" 'other-window-or-split)
-
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)

@@ -12,15 +12,16 @@
 
 
 ;; Other-window-or-split with follow-mode
-(bind-key "C-q" 'other-window-or-split)
-(defun other-window-or-split ()
-  "If there is one window, open split window.
+(bind-key
+ "C-q"
+ (defun other-window-or-split ()
+   "If there is one window, open split window.
 If there are two or more windows, it will go to another window."
-  (interactive)
-  (when (one-window-p)
-    ;; (split-window-horizontally))
-    (follow-delete-other-windows-and-split))
-  (other-window 1))
+   (interactive)
+   (when (one-window-p)
+     ;; (split-window-horizontally))
+     (follow-delete-other-windows-and-split))
+   (other-window 1)))
 
 
 ;; Switch-buffer for view-mode

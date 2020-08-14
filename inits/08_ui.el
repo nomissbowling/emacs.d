@@ -1,4 +1,4 @@
-;;; 08_ui.el --- 08_ui.el
+;;; 08_ui.el --- 08_ui.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -39,14 +39,6 @@
     (nyan-mode)
     (setq nyan-cat-face-number 4)
     (setq nyan-animate-nyancat t)))
-
-
-;; Show clock in in the mode line
-(setq display-time-string-forms
-      '((format "%s:%s" 24-hours minutes) load (if mail "")))
-(setq display-time-interval 1)
-(setq display-time-default-load-average nil)
-(display-time)
 
 
 (leaf all-the-icons :ensure t

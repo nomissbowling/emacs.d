@@ -1,4 +1,4 @@
-;;; 30_selected.el --- 30_selected.el
+;;; 30_selected.el --- 30_selected.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -15,6 +15,7 @@
     (bind-key "s" 'swiper-thing-at-point selected-keymap)
     (bind-key "a" 'my:amazon selected-keymap)
     (bind-key "y" 'my:yodobashi selected-keymap)
+    (bind-key "d" 'my:koujien selected-keymap)
     (bind-key "e" 'my:eijiro selected-keymap)
     (bind-key "w" 'my:weblio selected-keymap)
     (bind-key "k" 'my:kobun selected-keymap)
@@ -57,6 +58,11 @@
 
 (leaf *user-functions-for-selected
   :init
+  ;; Weblio
+  (defun my:koujien (str)
+    (interactive (list (my:get-region nil)))
+    (browse-url (format "https://sakura-paris.org/dict/広辞苑/prefix/%s"
+			(upcase (url-hexify-string str)))))
   ;; Weblio
   (defun my:weblio (str)
     (interactive (list (my:get-region nil)))

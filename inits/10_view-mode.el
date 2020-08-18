@@ -4,6 +4,7 @@
 ;;(setq debug-on-error t)
 
 (leaf viewer :ensure t
+  :chord ("jk" . view-mode)
   :config
   (when (require 'viewer nil t)
     (viewer-change-modeline-color-setup)
@@ -32,7 +33,6 @@ If there are two or more windows, it will go to another window."
   (view-mode 1))
 
 
-(bind-key "C-c v" 'view-mode)
 (add-hook
  'view-mode-hook
  (lambda ()

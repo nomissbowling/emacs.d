@@ -1,4 +1,4 @@
-;;; 90_translate.el --- 90_translate.el
+;;; 90_translate.el --- 90_translate.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

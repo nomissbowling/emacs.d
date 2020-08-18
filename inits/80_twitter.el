@@ -1,4 +1,4 @@
-;;; 80_twitter.el --- 80_twitter.el
+;;; 80_twitter.el --- 80_twitter.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 ;;(setq debug-on-error t)

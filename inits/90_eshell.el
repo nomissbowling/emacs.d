@@ -1,4 +1,4 @@
-;;; 89_eshell.el --- 90_eshell.el
+;;; 89_eshell.el --- 90_eshell.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

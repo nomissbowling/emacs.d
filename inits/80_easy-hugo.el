@@ -1,4 +1,4 @@
-;;; 80_easy-hugo.el --- 80_easy-hugo.el
+;;; 80_easy-hugo.el --- 80_easy-hugo.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

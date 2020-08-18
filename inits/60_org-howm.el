@@ -1,4 +1,4 @@
-;;; 60_memo.el --- 60_memo.el
+;;; 60_memo.el --- 60_memo.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

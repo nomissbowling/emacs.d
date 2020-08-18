@@ -1,4 +1,4 @@
-;;; 20_hydra-misc.el --- 20_hydra-misc.el
+;;; 20_hydra-misc.el --- 20_hydra-misc.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

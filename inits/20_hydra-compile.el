@@ -1,4 +1,4 @@
-;;; 20_hydra-compile.el --- 20_hydra-compile.el
+;;; 20_hydra-compile.el --- 20_hydra-compile.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

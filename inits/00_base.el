@@ -50,8 +50,8 @@
   (setq recentf-save-file "~/.emacs.d/recentf")
   (setq recentf-max-saved-items 200)
   (setq recentf-auto-cleanup 'never)
-  (setq recentf-exclud '("recentf" "COMMIT_EDITMSG\\" "bookmarks" "emacs\\．d" "\\.gitignore"
-			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm" "^/tmp/" "^/scp:"
+  (setq recentf-exclud '("recentf" "COMMIT_EDITMSG" "bookmarks\\" "emacs.d" "\\.gitignore"
+			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm-keys" "\\.emacs.d/" "^/tmp/" "^/scp:"
 			 (lambda (file) (file-in-directory-p file package-user-dir))))
   (push (expand-file-name recentf-save-file) recentf-exclude))
 
@@ -234,3 +234,4 @@ If the region is inactive, `backward-kill-word'."
 ;; End:
 
 ;;; 00_base.el ends here
+

@@ -1,4 +1,4 @@
-;;; 02_counsel.el --- 02_counsel.el
+;;; 02_counsel.el --- 02_counsel.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

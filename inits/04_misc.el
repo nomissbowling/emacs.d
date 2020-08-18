@@ -1,4 +1,4 @@
-;;; 04_misc.el --- 04_misc.el
+;;; 04_misc.el --- 04_misc.el   -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

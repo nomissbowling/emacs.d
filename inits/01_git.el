@@ -1,4 +1,4 @@
-;;; 01_git.el  --- 01_git.el
+;;; 01_git.el  --- 01_git.el   -*- lexical-binding: t -*-_
 ;;; Commentary:
 
 ;;; Code:

@@ -42,7 +42,7 @@
 			    (agenda . 5))))
   ;; Set the footer
   (setq dashboard-footer-icon
-  	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+	(all-the-icons-octicon "dashboard" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
   (setq dashboard-footer-messages '("Always be joyful. Never stop praying. Be thankful in all circumstances!"))
   ;; Insert custom item
   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
@@ -57,7 +57,7 @@
     "Insert custom and set LIST-SIZE."
     (interactive)
     (insert (if (display-graphic-p)
-  		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
+		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
     (insert "   📰 News: (n)   📝 Keep: (k)    Mail: (g:m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) ")))
 
 
@@ -75,13 +75,13 @@
   (defun restore-session (fname)
     "Restore the specified session."
     (interactive (list (read-file-name "Load perspectives from a file: "
-				       persp-save-dir)))
+  				       persp-save-dir)))
     (when (bound-and-true-p persp-mode)
       (message "Restoring session...")
       (quit-window t)
       (condition-case-unless-debug err
-	  (persp-load-state-from-file fname)
-	(error "Error: Unable to restore session -- %s" err))
+  	  (persp-load-state-from-file fname)
+  	(error "Error: Unable to restore session -- %s" err))
       (message "Done")))
 
   (defun open-dashboard ()
@@ -103,7 +103,7 @@
     (interactive)
     (quit-window t)
     (when (and dashboard-recover-layout-p
-	       (bound-and-true-p winner-mode))
+  	       (bound-and-true-p winner-mode))
       (winner-undo)
       (setq dashboard-recover-layout-p nil))))
 

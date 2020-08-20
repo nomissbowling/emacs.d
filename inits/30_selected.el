@@ -9,17 +9,14 @@
   (selected-global-mode)
   (with-eval-after-load 'selected
     (bind-key ";" 'comment-dwim selected-keymap)
+    (bind-key "f" 'describe-function selected-keymap)
+    (bind-key "v" 'describe-variable selected-keymap)
     (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
-    (bind-key "." 'my:mozc-word-regist selected-keymap)
     (bind-key "i" 'iedit-mode selected-keymap)
     (bind-key "s" 'swiper-thing-at-point selected-keymap)
-    (bind-key "a" 'my:amazon selected-keymap)
-    (bind-key "y" 'my:yodobashi selected-keymap)
     (bind-key "d" 'my:koujien selected-keymap)
     (bind-key "e" 'my:eijiro selected-keymap)
     (bind-key "w" 'my:weblio selected-keymap)
-    (bind-key "k" 'my:kobun selected-keymap)
-    (bind-key "r" 'my:ruigo selected-keymap)
     (bind-key "p" 'my:postal selected-keymap)
     (bind-key "t" 'google-translate-auto selected-keymap)
     (bind-key "m" 'my:g-map selected-keymap)
@@ -68,16 +65,6 @@
     (interactive (list (my:get-region nil)))
     (browse-url (format "https://www.weblio.jp/content/%s"
 			(upcase (url-hexify-string str)))))
-  ;; Kobun
-  (defun my:kobun (str)
-    (interactive (list (my:get-region nil)))
-    (browse-url (format "https://kobun.weblio.jp/content/%s"
-			(upcase (url-hexify-string str)))))
-  ;; Ruigo
-  (defun my:ruigo (str)
-    (interactive (list (my:get-region nil)))
-    (browse-url (format "https://thesaurus.weblio.jp/content/%s"
-			(upcase (url-hexify-string str)))))
   ;; Eijiro
   (defun my:eijiro (str)
     (interactive (list (my:get-region nil)))
@@ -97,16 +84,6 @@
   (defun my:g-map (str)
     (interactive (list (my:get-region nil)))
     (browse-url (format "https://maps.google.co.jp/maps?hl=ja&q=%s"
-			(upcase (url-hexify-string str)))))
-  ;; Amazon
-  (defun my:amazon (str)
-    (interactive (list (my:get-region nil)))
-    (browse-url (format "https://www.amazon.co.jp/gp/search?index=blended&field-keywords=%s"
-			(upcase (url-hexify-string str)))))
-  ;; Yodobashi
-  (defun my:yodobashi (str)
-    (interactive (list (my:get-region nil)))
-    (browse-url (format "https://www.yodobashi.com/?word=%s"
 			(upcase (url-hexify-string str)))))
   ;; common function
   (defun my:get-region (r)

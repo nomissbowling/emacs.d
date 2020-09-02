@@ -8,7 +8,7 @@
   :config
   (bind-key "C-x g" 'hydra-magit/body)
   (bind-key "<henkan>" 'magit-status)
-  ;; (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   :hydra
   (hydra-magit
    (:color red :hint nil)

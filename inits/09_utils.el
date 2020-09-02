@@ -126,7 +126,7 @@
   (defun browse-homepage ()
     "Open my homepage with crome."
     (interactive)
-    (browse-url "https://gospel-haiku.com/update/"))
+    (browse-url "https://gospel-haiku.com/"))
 
   (defun browse-gmail ()
     "Open gmail with chrome."

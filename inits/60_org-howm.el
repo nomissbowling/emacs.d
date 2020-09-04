@@ -35,8 +35,7 @@
   (setq org-log-done 'time)
   (setq org-use-speed-commands t)
   (setq org-src-fontify-natively t)
-  (setq org-agenda-files '("~/Dropbox/howm/org/task.org"
-			   "~/Dropbox/howm/org/memo.org"))
+  (setq org-agenda-files '("~/Dropbox/howm/org/task.org"))
   (setq org-refile-targets
 	'(("~/Dropbox/howm/org/archives.org" :level . 1)
 	  ("~/Dropbox/howm/org/remember.org" :level . 1)

@@ -17,37 +17,37 @@
    (setq gc-cons-threshold 800000)))
 
 
-;; Package
-(customize-set-variable
- 'package-archives '(("org"   . "https://orgmode.org/elpa/")
-		     ("melpa" . "https://melpa.org/packages/")
-		     ("gnu"   . "https://elpa.gnu.org/packages/")))
-(package-initialize)
-(unless (package-installed-p 'leaf)
-  (package-refresh-contents)
-  (package-install 'leaf))
+(eval-and-compile
+  (customize-set-variable
+   'package-archives '(("org"   . "https://orgmode.org/elpa/")
+		       ("melpa" . "https://melpa.org/packages/")
+		       ("gnu"   . "https://elpa.gnu.org/packages/")))
+  (package-initialize)
+  (unless (package-installed-p 'leaf)
+    (package-refresh-contents)
+    (package-install 'leaf))
 
 
-(leaf leaf-keywords :ensure t
-  :config
-  (leaf-keywords-init)
-  :init
-  (leaf bind-key :ensure t)
-  (leaf hydra :ensure t)
-  (leaf el-get :ensure t)
-  :preface
-  (setq el-get-dir "~/.emacs.d/elisp")
-  (setq load-prefer-newer t))
+  (leaf leaf-keywords :ensure t
+    :config
+    (leaf-keywords-init)
+    :init
+    (leaf bind-key :ensure t)
+    (leaf hydra :ensure t)
+    (leaf el-get :ensure t)
+    :preface
+    (setq el-get-dir "~/.emacs.d/elisp")
+    (setq load-prefer-newer t))
 
 
-(leaf init-loader :ensure t
-  :config
-  (custom-set-variables '(init-loader-show-log-after-init 'error-only))
-  (add-hook
-   'after-init-hook
-   (lambda ()
-     (init-loader-load "~/Dropbox/emacs.d/inits")))
-  (setq custom-file (locate-user-emacs-file "custom.el")))
+  (leaf init-loader :ensure t
+    :config
+    (custom-set-variables '(init-loader-show-log-after-init 'error-only))
+    (add-hook
+     'after-init-hook
+     (lambda ()
+       (init-loader-load "~/Dropbox/emacs.d/inits")))
+    (setq custom-file (locate-user-emacs-file "custom.el"))))
 
 
 (provide 'init)

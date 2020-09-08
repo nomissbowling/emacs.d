@@ -10,21 +10,20 @@
 
 
 (leaf iedit :ensure t
-  :config
-  (bind-key "C-;" 'iedit-mode))
+  : bind ("C-;" . iedit-mode))
 
 
 (leaf expand-region :ensure t
+  :bind ("C-@" . er/expand-region)
   :config
-  (bind-key "C-@" 'er/expand-region)
   (with-eval-after-load "selected"
     (bind-key "SPC" 'er/expand-region selected-keymap)))
 
 
 (leaf cool-copy
   :el-get blue0513/cool-copy.el
+  :bind ("s-c" . cool-copy)
   :config
-  (bind-key "s-c" 'cool-copy)
   (setq cool-copy-show 'posframe))
 
 
@@ -91,8 +90,7 @@
 
 
 (leaf restart-emacs :ensure t
-  :config
-  (bind-key "C-x C-c" 'restart-emacs))
+  :bind ("C-x C-c" . restart-emacs))
 
 
 (leaf web-mode :ensure t

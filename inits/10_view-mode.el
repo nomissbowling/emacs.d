@@ -4,8 +4,8 @@
 ;;(setq debug-on-error t)
 
 (leaf viewer :ensure t
-  :chord ("jk" . view-mode)
   :config
+  (key-chord-define-global "jk" 'view-mode)
   (when (require 'viewer nil t)
     (viewer-change-modeline-color-setup)
     (setq viewer-modeline-color-unwritable "orange")

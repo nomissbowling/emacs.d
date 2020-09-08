@@ -32,7 +32,8 @@
 
 ;; Colorize color names in buffers
 (leaf rainbow-mode :ensure t
-  :bind ("C-c r" . rainbow-mode))
+  :config
+  (bind-key "C-c r" 'rainbow-mode))
 
 
 ;; Highlight some operations
@@ -66,9 +67,9 @@
 
 
 (leaf whitespace :ensure t
-  :bind ("C-c C-c" . my:cleanup-for-spaces)
   :hook (prog-mode-hook . my:enable-trailing-mode)
   :config
+  (bind-key "C-c C-c" 'my:cleanup-for-spaces)
   (setq show-trailing-whitespace nil)
   :preface
   (defun my:enable-trailing-mode ()

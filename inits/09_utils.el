@@ -15,8 +15,8 @@
 
 
 (leaf imenu-list :ensure t
-  :bind (("<f2>" . imenu-list-smart-toggle))
   :config
+  (bind-key "<f2>" 'imenu-list-smart-toggle)
   (setq imenu-list-size 30)
   (setq imenu-list-position 'left)
   (setq imenu-list-focus-after-activation t))

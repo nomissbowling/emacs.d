@@ -10,7 +10,7 @@
 
 
 (leaf iedit :ensure t
-  : bind ("C-;" . iedit-mode))
+  :bind ("C-;" . iedit-mode))
 
 
 (leaf expand-region :ensure t

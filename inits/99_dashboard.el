@@ -58,7 +58,7 @@
     (interactive)
     (insert (if (display-graphic-p)
 		(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
-    (insert "   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) ")))
+    (insert "   📰 News: (n)   📝 Keep: (k)    Mail: (g:m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) ")))
 
 
 (leaf *dashboard-reload-settings

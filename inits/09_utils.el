@@ -14,7 +14,8 @@
   (migemo-init))
 
 
-(leaf imenu-list :ensure t
+(leaf imenu-list
+  :ensure t
   :config
   (bind-key "<f2>" 'imenu-list-smart-toggle)
   (setq imenu-list-size 30)
@@ -32,7 +33,8 @@
     :el-get HKey/sequential-command))
 
 
-(leaf browse-at-remote :ensure t
+(leaf browse-at-remote
+  :ensure t
   :config
   (defalias 'my:github-show 'browse-at-remote))
 

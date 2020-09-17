@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf selected :ensure t
+(leaf selected
+  :ensure t
   :config
   (selected-global-mode)
   (with-eval-after-load 'selected
@@ -23,6 +24,11 @@
     (bind-key "q" 'selected-off selected-keymap))
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected))
+
+(defun select-counsel-command ()
+  "Narrow the only counsel-command in `M-x'."
+  (interactive)
+  (counsel-M-x "^counsel "))
 
 
 (leaf  *control-mozc-when-region-seleceted

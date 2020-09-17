@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf counsel :ensure t
+(leaf counsel
+  :ensure t
   :hook
   (ivy-mode-hook . counsel-mode)
   (css-mode-hook . counsel-css-imenu-setup)
@@ -13,23 +14,10 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
-  (bind-key "s-s" 'swiper-thing-at-point)
   (bind-key "C-s" 'swiper-or-region)
   (bind-key "C-:" 'counsel-switch-buffer)
-  (bind-key "C-x C-b" 'counsel-switch-buffer)
-  (bind-key "C-x b" 'counsel-switch-buffer)
-  (bind-key "M-x" 'counsel-M-x)
-  (bind-key "M-y" 'counsel-yank-pop)
-  (bind-key "s-a" 'counsel-linux-app)
   (bind-key "C-x C-f" 'counsel-find-file)
-  (bind-key "C-c k" 'counsel-ag)
-  (bind-key "C-c w" 'counsel-rg)
-  (bind-key "C-c f" 'counsel-projectile-find-file)
-  (bind-key "C-c g" 'counsel-git)
-  (bind-key "C-c j" 'counsel-git-grep)
-  (bind-key "C-c i" 'counsel-imenu)
-  (bind-key "C-c t" 'counsel-tramp)
-  (bind-key "C-c C-r" 'counsel-recentf)
+  (bind-key "C-x C-r" 'counsel-recentf)
   (bind-key [remap dired] 'counsel-dired)
   (bind-key "<f6>" 'select-counsel-command)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
@@ -100,7 +88,8 @@ If the region isn't selected, `swiper' with migemo."
   (setq counsel-web-engine 'google))
 
 
-(leaf counsel-tramp :ensure t
+(leaf counsel-tramp
+  :ensure t
   :config
   (bind-key "C-c t" 'counsel-tramp)
   (bind-key "C-c q" 'my:tramp-quit)

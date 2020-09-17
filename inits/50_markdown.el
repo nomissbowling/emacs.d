@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf markdown-mode :ensure t
+(leaf markdown-mode
+  :ensure t
   :mode "\\.md\\'"
   :bind (("C-c '" . markdown-edit-code-block))
   :hydra

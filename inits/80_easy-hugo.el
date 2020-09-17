@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf easy-hugo :ensure t
+(leaf easy-hugo
+  :ensure t
   :config
   (bind-key "C-c C-e" 'easy-hugo)
   (bind-key "C-x p" 'easy-hugo-preview)

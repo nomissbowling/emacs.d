@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf howm :ensure t
+(leaf howm
+  :ensure t
   :hook (emacs-startup-hook . howm-mode)
   :init
   (setq howm-view-title-header "#")

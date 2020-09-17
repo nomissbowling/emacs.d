@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf direx :ensure t
+(leaf direx
+  :ensure t
   :config
   (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
   (push '(direx:direx-mode :position left :width 25 :dedicated t)

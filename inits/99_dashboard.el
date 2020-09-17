@@ -3,7 +3,8 @@
 ;;; Code:
 ;;(setq debug-on-error t)
 
-(leaf dashboard :ensure t
+(leaf dashboard
+  :ensure t
   :config
   (with-eval-after-load 'dashboard
     (bind-key "<home>" 'open-dashboard)

@@ -5,7 +5,8 @@
 ;; (setq debug-on-error t)
 
 ;; automatically save buffers in a decent way
-(leaf auto-save-buffers-enhanced :ensure t
+(leaf auto-save-buffers-enhanced
+  :ensure t
   :config
   (setq auto-save-buffers-enhanced-quiet-save-p t)
   ;; Exclusion of the auto-save-buffers
@@ -41,7 +42,8 @@
 
 
 ;; Persistent undo history for GNU Emacs
-(leaf undohist :ensure t
+(leaf undohist
+  :ensure t
   :hook (emacs-startup-hook . undohist-initialize)
   :config
   (setq undohist-directory "~/Dropbox/dotfiles/undohist")
@@ -49,7 +51,8 @@
 
 
 ;; Treat undo history as a tree
-(leaf undo-tree :ensure t
+(leaf undo-tree
+  :ensure t
   :hook
   (prog-mode-hook . undo-tree-mode)
   (text-mode-hook . undo-tree-mode)

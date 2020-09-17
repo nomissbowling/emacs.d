@@ -18,14 +18,16 @@
 
 
 ;; Start the server in Emacs session
-(leaf server :require t
+(leaf server
+  :require t
   :config
   (unless (server-running-p)
     (server-start)))
 
 
 ;; exec-path-from-shell
-(leaf exec-path-from-shell :ensure t
+(leaf exec-path-from-shell
+  :ensure t
   :when (memq window-system '(mac ns x))
   :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
@@ -45,8 +47,8 @@
 
 ;; Recentf
 (leaf recentf
+  :global-minor-mode t
   :config
-  (recentf-mode)
   (setq recentf-save-file "~/.emacs.d/recentf")
   (setq recentf-max-saved-items 200)
   (setq recentf-auto-cleanup 'never)

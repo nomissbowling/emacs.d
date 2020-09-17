@@ -21,9 +21,10 @@
 (load-theme (car curr-theme) t)
 
 
-(leaf doom-modeline :ensure t
+(leaf doom-modeline
+  :global-minor-mode t
+  :ensure t
   :config
-  (doom-modeline-mode)
   (line-number-mode 0)
   (column-number-mode 0)
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project)
@@ -31,12 +32,14 @@
   (setq doom-modeline-major-mode-icon nil)
   (setq doom-modeline-minor-modes nil)
   :init
-  (leaf hide-mode-line :ensure t
+  (leaf hide-mode-line
+    :ensure t
     :hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
-  (leaf nyan-mode :ensure t
+  (leaf nyan-mode
+    :ensure t
+    :global-minor-mode t
     :config
     (autoload 'nyan-mode "nyan-mode" nil t)
-    (nyan-mode)
     (setq nyan-cat-face-number 4)
     (setq nyan-animate-nyancat t)))
 
@@ -51,7 +54,8 @@
   (all-the-icons-ivy-rich-mode))
 
 
-(leaf darkroom :ensure t
+(leaf darkroom
+  :ensure t
   :config
   (bind-key "<f12>" 'my:darkroom-mode-in)
   (defun my:darkroom-mode-in ()

@@ -3,7 +3,8 @@
 ;;; Code:
 ;;(setq debug-on-error t)
 
-(leaf viewer :ensure t
+(leaf viewer
+  :ensure t
   :config
   (key-chord-define-global "jk" 'view-mode)
   (when (require 'viewer nil t)
@@ -26,7 +27,7 @@ If there are two or more windows, it will go to another window."
 
 
 ;; Switch-buffer for view-mode
-(defun my:switch-buffer ()
+(defun switch-buffer-in-view-mode ()
   "Hoge."
   (interactive)
   (counsel-switch-buffer)
@@ -58,7 +59,7 @@ If there are two or more windows, it will go to another window."
    (define-key view-mode-map "n" 'diff-hl-next-hunk)
    (define-key view-mode-map "p" 'diff-hl-previous-hunk)
    (define-key view-mode-map "s" 'swiper-thing-at-point)
-   (define-key view-mode-map ":" 'my:switch-buffer)
+   (define-key view-mode-map ":" 'switch-buffer-in-view-mode)
    (define-key view-mode-map "[" 'iflipb-previous-buffer)
    (define-key view-mode-map "]" 'iflipb-next-buffer)
    (define-key view-mode-map "." 'hydra-view-mode/body)))
@@ -93,7 +94,7 @@ If there are two or more windows, it will go to another window."
   ("p" diff-hl-previous-hunk)
   ("s" swiper-thing-at-point)
   ;;buffer
-  (":" my:switch-buffer)
+  (":" switch-buffer-in-view-mode)
   ("[" iflipb-previous-buffer)
   ("]" iflipb-next-buffer)
   ;; avy

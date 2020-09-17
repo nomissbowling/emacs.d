@@ -4,16 +4,18 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf popwin :ensure t
-  :config
-  (popwin-mode))
+(leaf popwin
+  :ensure t
+  :global-minor-mode t)
 
 
-(leaf iedit :ensure t
+(leaf iedit
+  :ensure t
   :bind ("C-;" . iedit-mode))
 
 
-(leaf expand-region :ensure t
+(leaf expand-region
+  :ensure t
   :bind ("C-@" . er/expand-region)
   :config
   (with-eval-after-load "selected"
@@ -27,7 +29,8 @@
   (setq cool-copy-show 'posframe))
 
 
-(leaf flycheck :ensure t
+(leaf flycheck
+  :ensure t
   :hook (emacs-startup-hook . global-flycheck-mode)
   :init
   (setq flycheck-global-modes
@@ -35,51 +38,53 @@
   	      org-mode diff-mode toml-mode web-mode eshell-mode makefile-mode css-mode))
   (leaf flycheck-title :ensure t
     :after flycheck
-    :config
-    (flycheck-title-mode)))
+    :global-minor-mode t))
 
 
 (leaf key-chord
   :el-get zk-phi/key-chord
+  :global-minor-mode t
   :config
-  (key-chord-mode 1)
   (key-chord-define-global "df" 'counsel-descbinds)
   (key-chord-define-global "l;" 'init-loader-show-log))
 
 
-(leaf prescient :ensure t
-  :config
-  (prescient-persist-mode)
+(leaf prescient
+  :ensure t
+  :commands prescient-persist-mode
+  :global-minor-mode prescient-persist-mode
   :init
   (leaf company-prescient :ensure t
-    :config
-    (company-prescient-mode))
+    :after prescient company
+    :global-minor-mode t)
   (leaf ivy-prescient :ensure t
-    :config
-    (ivy-prescient-mode)))
+    :after prescient ivy
+    :global-minor-mode t))
 
 
-(leaf quickrun :ensure t
+(leaf quickrun
+  :ensure t
   :bind ("<f5>" . quickrun))
 
 
-(leaf which-key :ensure t
+(leaf which-key
+  :ensure t
+  :global-minor-mode t
   :config
-  (which-key-mode)
   (setq which-key-max-description-length 40)
   (setq which-key-use-C-h-commands t))
 
 
-(leaf projectile :ensure t
-  :config
-  (projectile-mode)
+(leaf projectile
+  :ensure t
+  :global-minor-mode t
   :init
   (leaf counsel-projectile :ensure t
-    :config
-    (counsel-projectile-mode)))
+    :global-minor-mode t))
 
 
-(leaf yasnippet :ensure t
+(leaf yasnippet
+  :ensure t
   :commands yas-global-mode
   :config
   (yas-global-mode)
@@ -89,11 +94,13 @@
   (leaf ivy-yasnippet :ensure t))
 
 
-(leaf restart-emacs :ensure t
+(leaf restart-emacs
+  :ensure t
   :bind ("C-x C-c" . restart-emacs))
 
 
-(leaf web-mode :ensure t
+(leaf web-mode
+  :ensure t
   :mode "\\.js?\\'" "\\.html?\\'" "\\.php?\\'")
 
 

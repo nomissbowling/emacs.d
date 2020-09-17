@@ -36,7 +36,8 @@
     (setq dired-omit-mode t)
     (setq dired-omit-files "^\\desktop.ini"))
   ;; Show directory first
-  (leaf ls-lisp :require t
+  (leaf ls-lisp
+    :require t
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t)))
 

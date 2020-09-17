@@ -4,9 +4,11 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf company :ensure t
+(leaf company
+  :ensure t
+  :commands global-company-mode
+  :global-minor-mode global-company-mode
   :config
-  (global-company-mode)
   (bind-key "C-<tab>" 'company-complete)
   (bind-key "<tab>" 'company-complete-common-or-cycle company-active-map)
   (bind-key "b" 'company-select-previous company-active-map)
@@ -16,15 +18,16 @@
   (setq company-minimum-prefix-length 3)
   (setq company-selection-wrap-around t)
   (setq completion-ignore-case t)
-  (setq company-dabbrev-downcase nil)
-  :init
-  (leaf company-quickhelp :ensure t
-    :config
-    (company-quickhelp-mode)
-    (setq company-quickhelp-color-foreground "#C7C9D1")
-    ;; (setq company-quickhelp-color-background "#393F60")
-    (setq company-quickhelp-color-background "#161822")
-    (setq company-quickhelp-max-lines 5)))
+  (setq company-dabbrev-downcase nil))
+
+
+(leaf company-quickhelp
+  :ensure t
+  :global-minor-mode t
+  :config
+  (setq company-quickhelp-color-foreground "#C7C9D1")
+  (setq company-quickhelp-color-background "#161822")
+  (setq company-quickhelp-max-lines 5))
 
 
 ;; Local Variables:

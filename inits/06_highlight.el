@@ -5,41 +5,48 @@
 ;; (setq debug-on-error t)
 
 ;; A tomatically insert pairs
-(leaf smartparens :ensure t
+(leaf smartparens
+  :ensure t
+  :global-minor-mode smartparens-global-mode
   :config
-  (smartparens-global-mode)
+  ;; (smartparens-global-mode)
   (sp-pair "`" nil :actions :rem)
   (sp-pair "'" nil :actions :rem)
   (sp-pair "[" nil :actions :rem))
 
 
 ;; Keeps code always indented
-(leaf aggressive-indent :ensure t
+(leaf aggressive-indent
+  :ensure t
   :hook ((emacs-lisp-mode-hook css-mode-hook) . aggressive-indent-mode))
 
 
 ;; Highlight the cursor whenever the window scrolls
-(leaf beacon :ensure t
+(leaf beacon
+  :ensure t
+  :global-minor-mode t
   :config
-  (beacon-mode)
   (setq beacon-color "yellow"))
 
 
 ;; Highlight brackets according to their depth
-(leaf rainbow-delimiters :ensure t
+(leaf rainbow-delimiters
+  :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
 
 
 ;; Colorize color names in buffers
-(leaf rainbow-mode :ensure t
+(leaf rainbow-mode
+  :ensure t
   :config
   (bind-key "C-c r" 'rainbow-mode))
 
 
 ;; Highlight some operations
-(leaf volatile-highlights :ensure t
+(leaf volatile-highlights
+  :ensure t
+  :global-minor-mode t
   :config
-  (volatile-highlights-mode)
   (with-no-warnings
     (when (fboundp 'pulse-momentary-highlight-region)
       (defun my-vhl-pulse (beg end &optional _buf face)
@@ -48,9 +55,10 @@
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
 
-(leaf dimmer :ensure t
+(leaf dimmer
+  :ensure t
+  :global-minor-mode t
   :config
-  (dimmer-mode)
   (setq dimmer-exclusion-regexp-list
 	'(".*Minibuf.*" ".*which-key.*" "*direx:direx.*" "*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*"))
   (setq dimmer-fraction 0.5)
@@ -66,7 +74,8 @@
     (add-hook 'focus-in-hook #'dimmer-on)))
 
 
-(leaf whitespace :ensure t
+(leaf whitespace
+  :ensure t
   :hook (prog-mode-hook . my:enable-trailing-mode)
   :config
   (bind-key "C-c C-c" 'my:cleanup-for-spaces)

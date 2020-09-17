@@ -4,7 +4,8 @@
 ;;; Code:
 ;; (setq debug-on-erro t)
 
-(leaf magit :ensure t
+(leaf magit
+  :ensure t
   :config
   (bind-key "C-x g" 'magit-status)
   (bind-key "<henkan>" 'hydra-magit/body)
@@ -20,12 +21,13 @@
    ("d" vc-diff)
    ("<muhenkan>" nil))
   :init
-  (leaf git-timemachine :ensure t)
-  (leaf diff-hl :ensure t
-    :config
-    (global-diff-hl-mode)
-    (diff-hl-margin-mode)
-    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)))
+  (leaf git-timemachine :ensure t))
+
+(leaf diff-hl
+  :ensure t
+  :global-minor-mode (global-diff-hl-mode diff-hl-margin-mode)
+  :config
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
 
 
 ;; Local Variables:

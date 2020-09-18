@@ -16,10 +16,7 @@
 
 (leaf expand-region
   :ensure t
-  :bind ("C-@" . er/expand-region)
-  :config
-  (with-eval-after-load "selected"
-    (bind-key "SPC" 'er/expand-region selected-keymap)))
+  :bind ("C-@" . er/expand-region))
 
 
 (leaf cool-copy

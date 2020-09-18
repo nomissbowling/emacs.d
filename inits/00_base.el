@@ -58,10 +58,8 @@
   ;; Do not create lock file
   (setq create-lockfiles nil)
   ;; Open symbolic link directly
-  (setq vc-follow-symlinks t))
+  (setq vc-follow-symlinks t)
 
-
-(leaf cus-default
   :init
   ;; Save the file specified code with basic utf-8 if it exists
   (set-language-environment "Japanese")
@@ -107,7 +105,7 @@
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 
-(leaf cus-key-bind
+(leaf cus-keybind
   :init
   ;; Text-scale-adjust
   (bind-key "C-c z" 'text-scale-adjust)
@@ -140,14 +138,12 @@ If the region is inactive, `backward-kill-word'."
 
 (leaf base-setting
   :init
-  ;; Start the server in Emacs session
   (leaf server
     :require t
     :config
     (unless (server-running-p)
       (server-start)))
 
-  ;; exec-path-from-shell
   (leaf exec-path-from-shell
     :ensure t
     :when (memq window-system '(mac ns x))
@@ -155,7 +151,6 @@ If the region is inactive, `backward-kill-word'."
     :config
     (setq exec-path-from-shell-check-startup-files nil))
 
-  ;; Recentf
   (leaf recentf
     :global-minor-mode t
     :config
@@ -167,31 +162,26 @@ If the region is inactive, `backward-kill-word'."
 			   (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))
 
-  ;; Interface for display-line-numbers (emacs version >=26)
   (leaf display-line-numbers
     :bind ("<f9>" . display-line-numbers-mode)
     :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
 
-  ;; Highlight the current line
   (leaf hl-line
     :config
     (make-variable-buffer-local 'global-hl-line-mode)
     (add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
     :global-minor-mode global-hl-line-mode)
 
-  ;; Highlight matching parens
   (leaf paren
     :config
     (setq show-paren-delay '0.1)
     (setq show-paren-style 'mixed)
     :global-minor-mode show-paren-mode)
 
-  ;; Make it easy to see when it is the same name file
   (leaf uniquify
     :config
     (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
 
-  ;; contains many mode setting
   (leaf generic-x :require t))
 
 

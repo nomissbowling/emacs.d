@@ -28,7 +28,8 @@
     (package-install 'leaf))
 
 
-  (leaf leaf-keywords :ensure t
+  (leaf leaf-keywords
+    :ensure t
     :init
     (leaf bind-key :ensure t)
     (leaf hydra :ensure t)
@@ -40,7 +41,8 @@
     (setq load-prefer-newer t))
 
 
-  (leaf init-loader :ensure t
+  (leaf init-loader
+    :ensure t
     :config
     (custom-set-variables '(init-loader-show-log-after-init 'error-only))
     (add-hook

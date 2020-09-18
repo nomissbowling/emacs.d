@@ -43,10 +43,10 @@
 
 (leaf key-chord
   :el-get zk-phi/key-chord
-  :global-minor-mode t
   :config
   (key-chord-define-global "df" 'counsel-descbinds)
-  (key-chord-define-global "l;" 'init-loader-show-log))
+  (key-chord-define-global "l;" 'init-loader-show-log)
+  :global-minor-mode t)
 
 
 (leaf prescient
@@ -69,10 +69,10 @@
 
 (leaf which-key
   :ensure t
-  :global-minor-mode t
   :config
   (setq which-key-max-description-length 40)
-  (setq which-key-use-C-h-commands t))
+  (setq which-key-use-C-h-commands t)
+  :global-minor-mode t)
 
 
 (leaf projectile

@@ -8,7 +8,7 @@
   :ensure t
   :config
   (bind-key "C-x g" 'magit-status)
-  (bind-key "<henkan>" 'hydra-magit/body)
+  (bind-key "C-x m" 'hydra-magit/body)
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
   :hydra
   (hydra-magit

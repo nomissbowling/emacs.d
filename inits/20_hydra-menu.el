@@ -56,7 +56,7 @@
 
 
 (leaf hydra-work-menu
-  :bind ("s-x" . hydra-work/body)
+  :bind ("<henkan>" . hydra-work/body)
   :hydra
   (hydra-work
    (:hint nil :exit t)
@@ -104,7 +104,7 @@
    ("y" sylpheed)
    ("f" (browse-url "https://www.flickr.com/photos/minorugh/"))
    ("<muhenkan>" nil)
-   ("s-x" nil)))
+   ("<henkan>" nil)))
 
 
 (leaf user-defined-function

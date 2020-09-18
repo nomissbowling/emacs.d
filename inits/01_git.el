@@ -23,11 +23,11 @@
   :init
   (leaf git-timemachine :ensure t))
 
+
 (leaf diff-hl
   :ensure t
-  :global-minor-mode (global-diff-hl-mode diff-hl-margin-mode)
-  :config
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
+  :hook (magit-post-refresh-hook . diff-hl-magit-post-refresh)
+  :global-minor-mode (global-diff-hl-mode diff-hl-margin-mode))
 
 
 ;; Local Variables:

@@ -62,6 +62,7 @@ If there are two or more windows, it will go to another window."
    (define-key view-mode-map ":" 'switch-buffer-in-view-mode)
    (define-key view-mode-map "[" 'iflipb-previous-buffer)
    (define-key view-mode-map "]" 'iflipb-next-buffer)
+   (define-key view-mode-map "?" 'hydra-view-mode/body)
    (define-key view-mode-map "." 'hydra-view-mode/body)))
 
 

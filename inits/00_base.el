@@ -9,12 +9,14 @@
   (require 'cl-lib))
 
 ;; Quiet Startup
-(set-frame-parameter nil 'fullscreen 'maximized)
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(setq inhibit-splash-screen t)
-(setq inhibit-startup-message t)
+(leaf cus-start
+  :config
+  (set-frame-parameter nil 'fullscreen 'maximized)
+  (scroll-bar-mode 0)
+  (tool-bar-mode 0)
+  (menu-bar-mode 0)
+  (setq inhibit-splash-screen t)
+  (setq inhibit-startup-message t))
 
 
 ;; Start the server in Emacs session
@@ -32,6 +34,7 @@
   :hook (emacs-startup-hook . exec-path-from-shell-initialize)
   :config
   (setq exec-path-from-shell-check-startup-files nil))
+
 
 ;; Save the file specified code with basic utf-8 if it exists
 (set-language-environment "Japanese")
@@ -90,14 +93,20 @@
 
 
 ;; Highlight the current line
-(global-hl-line-mode)
-(make-variable-buffer-local 'global-hl-line-mode)
-(add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
+(leaf hl-line
+  :config
+  (make-variable-buffer-local 'global-hl-line-mode)
+  (add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
+  :global-minor-mode global-hl-line-mode)
 
 
 ;; Highlight matching parens
-(show-paren-mode)
-(setq show-paren-style 'mixed)
+(leaf paren
+  :config
+  (setq show-paren-delay '0.1)
+  (setq show-paren-style 'mixed)
+  :global-minor-mode show-paren-mode)
+
 
 ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
 (setq ring-bell-function 'ignore)

@@ -79,7 +79,8 @@
   :ensure t
   :global-minor-mode t
   :init
-  (leaf counsel-projectile :ensure t
+  (leaf counsel-projectile
+    :ensure t
     :global-minor-mode t))
 
 

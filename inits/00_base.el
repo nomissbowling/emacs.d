@@ -182,15 +182,14 @@ If the region is inactive, `backward-kill-word'."
     :config
     (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
 
-  (leaf generic-x :require t))
+  (leaf generic-x :require t)
 
-
-(leaf load-user-functions
-  :init
-  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-  :config
-  (require 'user-dired)
-  (require 'user-template))
+  (leaf load-user-function
+    :init
+    (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+    :config
+    (require 'user-dired)
+    (require 'user-template)))
 
 
 ;; Local Variables:

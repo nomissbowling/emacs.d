@@ -7,7 +7,6 @@
 (leaf company
   :ensure t
   :commands global-company-mode
-  :global-minor-mode global-company-mode
   :config
   (bind-key "C-<tab>" 'company-complete)
   (bind-key "<tab>" 'company-complete-common-or-cycle company-active-map)
@@ -18,16 +17,17 @@
   (setq company-minimum-prefix-length 3)
   (setq company-selection-wrap-around t)
   (setq completion-ignore-case t)
-  (setq company-dabbrev-downcase nil))
+  (setq company-dabbrev-downcase nil)
+  :global-minor-mode global-company-mode)
 
 
 (leaf company-quickhelp
   :ensure t
-  :global-minor-mode t
   :config
   (setq company-quickhelp-color-foreground "#C7C9D1")
   (setq company-quickhelp-color-background "#161822")
-  (setq company-quickhelp-max-lines 5))
+  (setq company-quickhelp-max-lines 5)
+  :global-minor-mode t)
 
 
 ;; Local Variables:

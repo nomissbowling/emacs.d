@@ -14,6 +14,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
+  (bind-key "C-r" 'swiper-thing-at-point)
   (bind-key "C-s" 'swiper-or-region)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'switch-to-buffer)
@@ -34,7 +35,7 @@
   (leaf ivy-rich :ensure t
     :hook (ivy-mode-hook . ivy-rich-mode))
   (leaf avy :ensure t
-    :bind ("C-r" . avy-goto-word-1)))
+    :bind ("C-c w" . avy-goto-word-1)))
 
 
 (leaf *user-function-for-counsel

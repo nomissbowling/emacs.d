@@ -16,6 +16,7 @@
   (setq enable-recursive-minibuffers t)
   (bind-key "C-s" 'swiper-or-region)
   (bind-key "C-:" 'counsel-switch-buffer)
+  (bind-key "C-x C-b" 'switch-to-buffer)
   (bind-key "C-x C-f" 'counsel-find-file)
   (bind-key "C-x C-r" 'counsel-recentf)
   (bind-key [remap dired] 'counsel-dired)

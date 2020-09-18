@@ -42,7 +42,7 @@
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t)))
 
 
-(leaf *user-dired-extention
+(leaf user-dired-extention
   :init
   ;; Switching the display and non-display of hidden files
   (defun toggle-dired-listing-switches ()

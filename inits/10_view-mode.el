@@ -106,6 +106,7 @@ If there are two or more windows, it will go to another window."
   ("s" swiper-or-region)
   ("." nil :color blue))
 
+
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:

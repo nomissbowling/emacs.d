@@ -4,7 +4,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *user-make-function
+(leaf user-make-function
   :mode ("\\.mak\\'" "makefile\\'" . makefile-mode)
   :hydra
   (hydra-compile
@@ -40,7 +40,7 @@
 	      (fset 'makefile-warn-suspicious-lines 'ignore))))
 
 
-(leaf *user-compile-command
+(leaf user-compile-command
   :init
   (defun my:make-k ()
     "Make command default."

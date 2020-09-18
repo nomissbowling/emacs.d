@@ -62,7 +62,7 @@
     (insert "   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) ")))
 
 
-(leaf *dashboard-reload-settings
+(leaf dashboard-reload-settings
   :config
   (defvar dashboard-recover-layout-p nil
     "Wether recovers the layout.")

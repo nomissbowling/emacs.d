@@ -55,7 +55,7 @@
 
 
 ;; Open browser by favorite url
-(leaf *hydra-browse
+(leaf hydra-browse
   :hydra
   (hydra-browse
    (:hint nil :exit t)
@@ -103,7 +103,7 @@
 
 
 ;; Emacs in WSL and opening links
-(leaf *browse-url-in-WSL
+(leaf browse-url-in-WSL
   :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
   :if (getenv "WSLENV")
   :config

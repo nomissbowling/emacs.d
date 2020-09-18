@@ -7,7 +7,6 @@
 (leaf selected
   :ensure t
   :config
-  (selected-global-mode)
   (with-eval-after-load 'selected
     (bind-key ";" 'comment-dwim selected-keymap)
     (bind-key "f" 'describe-function selected-keymap)
@@ -22,16 +21,12 @@
     (bind-key "g" 'my:google selected-keymap)
     (bind-key "l" 'counsel-selected selected-keymap)
     (bind-key "q" 'selected-off selected-keymap))
+  :global-minor-mode selected-global-mode
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected))
 
-(defun select-counsel-command ()
-  "Narrow the only counsel-command in `M-x'."
-  (interactive)
-  (counsel-M-x "^counsel "))
 
-
-(leaf  *control-mozc-when-region-seleceted
+(leaf  control-mozc-when-region-seleceted
   :init
   (defun my-activate-selected ()
     (selected-global-mode 1)
@@ -57,7 +52,7 @@
        (unless (null my:ime-flag) (my:ime-on)))))
 
 
-(leaf *user-functions-for-selected
+(leaf user-functions-for-selected
   :init
   ;; Weblio
   (defun my:koujien (str)

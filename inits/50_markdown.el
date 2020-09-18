@@ -39,40 +39,40 @@
     (setq livedown-autostart nil)
     (setq livedown-open t)
     (setq livedown-port 1337)
-    (setq livedown-browser nil)))
+    (setq livedown-browser nil))
 
-
-(defun md2pdf ()
-  "Generate pdf from currently open markdown.
+  :preface
+  (defun md2pdf ()
+    "Generate pdf from currently open markdown.
 Use wkhtmltopdf without latex."
-  (interactive)
-  (let ((filename (buffer-file-name (current-buffer))))
-    (shell-command-to-string
-     (concat "pandoc "
-	     filename
-	     " -f markdown -t html5 -o "
-	     (file-name-sans-extension filename)
-	     ".pdf"))
-    (shell-command-to-string
-     (concat "evince "
-	     (file-name-sans-extension filename)
-	     ".pdf"))))
+    (interactive)
+    (let ((filename (buffer-file-name (current-buffer))))
+      (shell-command-to-string
+       (concat "pandoc "
+	       filename
+	       " -f markdown -t html5 -o "
+	       (file-name-sans-extension filename)
+	       ".pdf"))
+      (shell-command-to-string
+       (concat "evince "
+	       (file-name-sans-extension filename)
+	       ".pdf"))))
 
-(defun md2docx ()
-  "Generate docx from currently open markdown."
-  (interactive)
-  (let ((filename (buffer-file-name (current-buffer))))
-    (shell-command-to-string
-     (concat "pandoc "
-	     filename
-	     " -t docx -o "
-	     (file-name-sans-extension filename)
-	     ;; ".docx -V mainfont=IPAPGothic -V fontsize=16pt --toc --highlight-style=zenburn"))
-	     ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
-    (shell-command-to-string
-     (concat "xdg-open "
-	     (file-name-sans-extension filename)
-	     ".docx"))))
+  (defun md2docx ()
+    "Generate docx from currently open markdown."
+    (interactive)
+    (let ((filename (buffer-file-name (current-buffer))))
+      (shell-command-to-string
+       (concat "pandoc "
+	       filename
+	       " -t docx -o "
+	       (file-name-sans-extension filename)
+	       ;; ".docx -V mainfont=IPAPGothic -V fontsize=16pt --toc --highlight-style=zenburn"))
+	       ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
+      (shell-command-to-string
+       (concat "xdg-open "
+	       (file-name-sans-extension filename)
+	       ".docx")))))
 
 
 ;; Local Variables:

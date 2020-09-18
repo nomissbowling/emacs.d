@@ -25,7 +25,7 @@
   (push '("*eshell*" :height 0.6) popwin:special-display-config))
 
 
-(leaf *user-custom-function
+(leaf user-custom-function
   :init
   (defun my:eshell-prompt ()
     "Prompt change string."

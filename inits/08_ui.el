@@ -4,21 +4,22 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; Cycle custom theme
-(add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-(leaf doom-themes :ensure t)
-
-(setq my-themes (list 'iceberg 'doom-dracula))
-(defun my:cycle-theme ()
-  "Cycle custom theme."
-  (interactive)
-  (disable-theme (car curr-theme))
-  (setq curr-theme (cdr curr-theme))
-  (if (null curr-theme) (setq curr-theme my-themes))
-  (load-theme (car curr-theme) t)
-  (message "%s" (car curr-theme)))
-(setq curr-theme my-themes)
-(load-theme (car curr-theme) t)
+(leaf cycle-theme
+  :init
+  (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
+  (leaf doom-themes :ensure t)
+  :config
+  (setq my-themes (list 'iceberg 'doom-dracula))
+  (defun my:cycle-theme ()
+    "Cycle custom theme."
+    (interactive)
+    (disable-theme (car curr-theme))
+    (setq curr-theme (cdr curr-theme))
+    (if (null curr-theme) (setq curr-theme my-themes))
+    (load-theme (car curr-theme) t)
+    (message "%s" (car curr-theme)))
+  (setq curr-theme my-themes)
+  (load-theme (car curr-theme) t))
 
 
 (leaf doom-modeline
@@ -44,7 +45,8 @@
     (setq nyan-animate-nyancat t)))
 
 
-(leaf all-the-icons :ensure t
+(leaf all-the-icons
+  :ensure t
   :hook (dired-mode-hook . all-the-icons-dired-mode)
   :init
   (leaf all-the-icons-dired :ensure t)

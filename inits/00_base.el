@@ -107,68 +107,6 @@
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 
-;; Start the server in Emacs session
-(leaf server
-  :require t
-  :config
-  (unless (server-running-p)
-    (server-start)))
-
-
-;; exec-path-from-shell
-(leaf exec-path-from-shell
-  :ensure t
-  :when (memq window-system '(mac ns x))
-  :hook (emacs-startup-hook . exec-path-from-shell-initialize)
-  :config
-  (setq exec-path-from-shell-check-startup-files nil))
-
-
-;; Recentf
-(leaf recentf
-  :global-minor-mode t
-  :config
-  (setq recentf-save-file "~/.emacs.d/recentf")
-  (setq recentf-max-saved-items 200)
-  (setq recentf-auto-cleanup 'never)
-  (setq recentf-exclud '("recentf" "COMMIT_EDITMSG" "bookmarks\\" "emacs.d" "\\.gitignore"
-			 "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm-keys" "\\.emacs.d/" "^/tmp/" "^/scp:"
-			 (lambda (file) (file-in-directory-p file package-user-dir))))
-  (push (expand-file-name recentf-save-file) recentf-exclude))
-
-
-;; Interface for display-line-numbers (emacs version >=26)
-(leaf display-line-numbers
-  :bind ("<f9>" . display-line-numbers-mode)
-  :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
-
-
-;; Highlight the current line
-(leaf hl-line
-  :config
-  (make-variable-buffer-local 'global-hl-line-mode)
-  (add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
-  :global-minor-mode global-hl-line-mode)
-
-
-;; Highlight matching parens
-(leaf paren
-  :config
-  (setq show-paren-delay '0.1)
-  (setq show-paren-style 'mixed)
-  :global-minor-mode show-paren-mode)
-
-
-;; Make it easy to see when it is the same name file
-(leaf uniquify
-  :config
-  (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
-
-
-;; contains many mode setting
-(leaf generic-x :require t)
-
-
 (leaf cus-key-bind
   :init
   ;; Text-scale-adjust
@@ -198,6 +136,63 @@ If the region is inactive, `backward-kill-word'."
     (interactive)
     (exchange-point-and-mark)
     (deactivate-mark)))
+
+
+(leaf base-setting
+  :init
+  ;; Start the server in Emacs session
+  (leaf server
+    :require t
+    :config
+    (unless (server-running-p)
+      (server-start)))
+
+  ;; exec-path-from-shell
+  (leaf exec-path-from-shell
+    :ensure t
+    :when (memq window-system '(mac ns x))
+    :hook (emacs-startup-hook . exec-path-from-shell-initialize)
+    :config
+    (setq exec-path-from-shell-check-startup-files nil))
+
+  ;; Recentf
+  (leaf recentf
+    :global-minor-mode t
+    :config
+    (setq recentf-save-file "~/.emacs.d/recentf")
+    (setq recentf-max-saved-items 200)
+    (setq recentf-auto-cleanup 'never)
+    (setq recentf-exclud '("recentf" "COMMIT_EDITMSG" "bookmarks\\" "emacs.d" "\\.gitignore"
+			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm-keys" "\\.emacs.d/" "^/tmp/" "^/scp:"
+			   (lambda (file) (file-in-directory-p file package-user-dir))))
+    (push (expand-file-name recentf-save-file) recentf-exclude))
+
+  ;; Interface for display-line-numbers (emacs version >=26)
+  (leaf display-line-numbers
+    :bind ("<f9>" . display-line-numbers-mode)
+    :hook ((prog-mode-hook text-mode-hook) . display-line-numbers-mode))
+
+  ;; Highlight the current line
+  (leaf hl-line
+    :config
+    (make-variable-buffer-local 'global-hl-line-mode)
+    (add-hook 'dashboard-mode-hook (lambda() (setq global-hl-line-mode nil)))
+    :global-minor-mode global-hl-line-mode)
+
+  ;; Highlight matching parens
+  (leaf paren
+    :config
+    (setq show-paren-delay '0.1)
+    (setq show-paren-style 'mixed)
+    :global-minor-mode show-paren-mode)
+
+  ;; Make it easy to see when it is the same name file
+  (leaf uniquify
+    :config
+    (setq uniquify-buffer-name-style 'post-forward-angle-brackets))
+
+  ;; contains many mode setting
+  (leaf generic-x :require t))
 
 
 (leaf load-user-functions

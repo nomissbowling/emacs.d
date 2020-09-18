@@ -86,7 +86,7 @@
       (when win (with-selected-window win (kill-buffer-and-window))))))
 
 
-(leaf *user-buffer-functions
+(leaf user-buffer-functions
   :config
   (bind-key [S-return] 'toggle-scratch)
   (bind-key "M-/" 'kill-buffer)

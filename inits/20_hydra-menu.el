@@ -4,7 +4,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf *hydra-quick-menu
+(leaf hydra-quick-menu
   :bind ("M-." . hydra-quick-menu/body)
   :hydra
   (hydra-quick-menu
@@ -55,7 +55,7 @@
    ("M-." nil)))
 
 
-(leaf *hydra-work-menu
+(leaf hydra-work-menu
   :bind ("s-x" . hydra-work/body)
   :hydra
   (hydra-work
@@ -107,7 +107,7 @@
    ("s-x" nil)))
 
 
-(leaf *user-defined-function
+(leaf user-defined-function
   :config
   (defun my:view-mode ()
     "Narrow the only counsel-command in M-x."

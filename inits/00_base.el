@@ -198,8 +198,9 @@ If the region is inactive, `backward-kill-word'."
 (leaf load-user-functions
   :init
   (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-  (leaf user-dired :require t)
-  (leaf user-template :require t))
+  :config
+  (require 'user-dired)
+  (require 'user-template))
 
 
 ;; Local Variables:

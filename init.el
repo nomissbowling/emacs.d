@@ -38,7 +38,8 @@
     (leaf-keywords-init)
     :preface
     (setq el-get-dir "~/.emacs.d/elisp")
-    (setq load-prefer-newer t))
+    (setq load-prefer-newer t)
+    (setq custom-file (locate-user-emacs-file "custom.el")))
 
 
   (leaf init-loader
@@ -48,8 +49,7 @@
     (add-hook
      'after-init-hook
      (lambda ()
-       (init-loader-load "~/Dropbox/emacs.d/inits")))
-    (setq custom-file (locate-user-emacs-file "custom.el"))))
+       (init-loader-load "~/Dropbox/emacs.d/inits")))))
 
 
 (provide 'init)

@@ -59,9 +59,10 @@ If the region isn't selected, `swiper' with migemo."
 							  (t (migemo-get-pattern it)))
 						splitted))))
 
-  (setq ivy-re-builders-alist '((t . ivy--regex-plus)
-								(counsel-web . my:ivy-migemo-re-builder)
-								(swiper . my:ivy-migemo-re-builder)))
+  (setq ivy-re-builders-alist
+		'((t . ivy--regex-plus)
+		  (counsel-web . my:ivy-migemo-re-builder)
+		  (swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)
     "Transform into a string for minibuffer."

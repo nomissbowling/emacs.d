@@ -84,12 +84,12 @@
       "Return a string giving the duration of the Emacs initialization."
       (interactive)
       (let ((str
-			 (format "%.3f seconds"
-					 (float-time
-					  (time-subtract after-init-time before-init-time)))))
-		(if (called-interactively-p 'interactive)
-			(message "%s" str)
-		  str)))
+  			 (format "%.3f seconds"
+  					 (float-time
+  					  (time-subtract after-init-time before-init-time)))))
+  		(if (called-interactively-p 'interactive)
+  			(message "%s" str)
+  		  str)))
     (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")

@@ -51,13 +51,15 @@ If the region isn't selected, `swiper' with migemo."
   (defun my:ivy-migemo-re-builder (str)
     "Own ivy-migemo-re-build for swiper."
     (let* ((sep " \\|\\^\\|\\.\\|\\*")
-		   (splitted (--map (s-join "" it)
-							(--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
-											(s-split "" str t)))))
-      (s-join "" (--map (cond ((s-equals? it " ") ".*?")
-							  ((s-matches? sep it) it)
-							  (t (migemo-get-pattern it)))
-						splitted))))
+		   (splitted
+			(--map (s-join "" it)
+				   (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
+								   (s-split "" str t)))))
+      (s-join ""
+			  (--map (cond ((s-equals? it " ") ".*?")
+						   ((s-matches? sep it) it)
+						   (t (migemo-get-pattern it)))
+					 splitted))))
 
   (setq ivy-re-builders-alist
 		'((t . ivy--regex-plus)

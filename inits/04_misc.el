@@ -21,9 +21,9 @@
 
 (leaf cool-copy
   :el-get blue0513/cool-copy.el
-  :bind (("s-c" . cool-copy)
-		 ("s-v" . yank))
   :config
+  (bind-key "s-c" 'cool-copy)
+  (bind-key "s-v" 'yank)
   (setq cool-copy-show 'posframe))
 
 

@@ -18,10 +18,8 @@
 
 (leaf cool-copy
   :el-get blue0513/cool-copy.el
-  :require t
+  :bind ("s-c" . cool-copy)
   :config
-  (bind-key "s-c" 'cool-copy)
-  (bind-key "s-v" 'yank)
   (setq cool-copy-show 'posframe))
 
 (leaf flycheck

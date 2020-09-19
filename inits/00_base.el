@@ -113,6 +113,7 @@
   (setq select-enable-primary  t)
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'my:clipboard-kill-region)
+  (bind-key "s-v" 'yank)
   (bind-key "C-x C-x" 'my:exchange-point-and-mark)
   :config
   (defun my:clipboard-kill-region ()

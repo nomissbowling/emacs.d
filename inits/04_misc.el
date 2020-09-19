@@ -21,9 +21,10 @@
 
 (leaf cool-copy
   :el-get blue0513/cool-copy.el
-  :bind (("s-c" . cool-copy)
-		 ("s-v" . yank))
-  :config (setq cool-copy-show 'posframe))
+  :bind ("s-c" . cool-copy)
+  :config
+  (setq cool-copy-show 'posframe)
+  (bind-key "s-v" 'yank))
 
 
 (leaf flycheck
@@ -31,8 +32,8 @@
   :hook (emacs-startup-hook . global-flycheck-mode)
   :init
   (setq flycheck-global-modes
-  	'(not text-mode markdown-mode fundamental-mode lisp-interaction-mode
-  	      org-mode diff-mode toml-mode web-mode eshell-mode makefile-mode css-mode))
+		'(not text-mode markdown-mode fundamental-mode lisp-interaction-mode
+			  org-mode diff-mode toml-mode web-mode eshell-mode makefile-mode css-mode))
   (leaf flycheck-title :ensure t
     :after flycheck
     :global-minor-mode t))

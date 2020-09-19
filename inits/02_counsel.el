@@ -27,7 +27,7 @@
   (setq counsel-yank-pop-separator
 		"\n------------------------------------------------------------\n")
   (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
-  :init
+  :preface
   (leaf ivy-xref :ensure t
 	:init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
   (leaf amx :ensure t

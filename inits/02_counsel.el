@@ -61,7 +61,6 @@ If the region isn't selected, `swiper' with migemo."
 
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
 								(counsel-web . my:ivy-migemo-re-builder)
-								(counsel-rg . my:ivy-migemo-re-builder)
 								(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)

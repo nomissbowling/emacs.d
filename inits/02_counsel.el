@@ -14,7 +14,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
-  (bind-key "C-r" 'swiper-thing-at-point)
+  (bind-key "s-s" 'swiper-thing-at-point)
   (bind-key "C-s" 'swiper-or-region)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'switch-to-buffer)
@@ -30,16 +30,16 @@
   :init
   (leaf ivy-xref
 	:ensure t
-    :init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+	:init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
   (leaf amx
 	:ensure t
-    :init (setq amx-history-length 20))
+	:init (setq amx-history-length 20))
   (leaf ivy-rich
 	:ensure t
-    :hook (ivy-mode-hook . ivy-rich-mode))
+	:hook (ivy-mode-hook . ivy-rich-mode))
   (leaf avy
 	:ensure t
-    :bind ("C-c w" . avy-goto-word-1)))
+	:bind ("C-r" . avy-goto-word-1)))
 
 
 (leaf *user-function-for-counsel
@@ -49,34 +49,34 @@
 If the region isn't selected, `swiper' with migemo."
     (interactive)
     (if (not (use-region-p))
-	(swiper)
+		(swiper)
       (swiper-thing-at-point)))
 
   (defun my:ivy-migemo-re-builder (str)
     "Own ivy-migemo-re-build for swiper."
     (let* ((sep " \\|\\^\\|\\.\\|\\*")
-	   (splitted (--map (s-join "" it)
-			    (--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
-					    (s-split "" str t)))))
+		   (splitted (--map (s-join "" it)
+							(--partition-by (s-matches-p " \\|\\^\\|\\.\\|\\*" it)
+											(s-split "" str t)))))
       (s-join "" (--map (cond ((s-equals? it " ") ".*?")
-			      ((s-matches? sep it) it)
-			      (t (migemo-get-pattern it)))
-			splitted))))
+							  ((s-matches? sep it) it)
+							  (t (migemo-get-pattern it)))
+						splitted))))
 
   (setq ivy-re-builders-alist '((t . ivy--regex-plus)
-				(counsel-web . my:ivy-migemo-re-builder)
-				(counsel-rg . my:ivy-migemo-re-builder)
-				(swiper . my:ivy-migemo-re-builder)))
+								(counsel-web . my:ivy-migemo-re-builder)
+								(counsel-rg . my:ivy-migemo-re-builder)
+								(swiper . my:ivy-migemo-re-builder)))
 
   (defun my:ivy-format-function-arrow (cands)
     "Transform into a string for minibuffer."
     (ivy--format-function-generic
      (lambda (str)
        (concat (if (display-graphic-p)
-		   (all-the-icons-octicon "chevron-right" :height 0.8 :v-adjust -0.05)
-		 ">")
-	       (propertize " " 'display `(space :align-to 2))
-	       (ivy--add-face str 'ivy-current-match)))
+				   (all-the-icons-octicon "chevron-right" :height 0.8 :v-adjust -0.05)
+				 ">")
+			   (propertize " " 'display `(space :align-to 2))
+			   (ivy--add-face str 'ivy-current-match)))
      (lambda (str)
        (concat (propertize " " 'display `(space :align-to 2)) str))
      cands

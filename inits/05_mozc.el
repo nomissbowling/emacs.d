@@ -43,7 +43,7 @@
     (setq mozc-candidate-style 'posframe)))
 
 
-(leaf user-mozc-tool
+(leaf mozc-tool
   :config
   (bind-key "<f7>" 'select-mozc-tool)
   (bind-key "<f8>" 'my:mozc-word-regist)

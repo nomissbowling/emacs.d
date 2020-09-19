@@ -5,10 +5,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(eval-when-compile
-  (require 'cl-lib))
-
-
 (leaf cus-start
   :config
   ;; Save hist
@@ -88,22 +84,22 @@
       "Return a string giving the duration of the Emacs initialization."
       (interactive)
       (let ((str
-	     (format "%.3f seconds"
-		     (float-time
-		      (time-subtract after-init-time before-init-time)))))
-	(if (called-interactively-p 'interactive)
-	    (message "%s" str)
-	  str)))
+			 (format "%.3f seconds"
+					 (float-time
+					  (time-subtract after-init-time before-init-time)))))
+		(if (called-interactively-p 'interactive)
+			(message "%s" str)
+		  str)))
     (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")
   (defun Info-find-node--info-ja (orig-fn filename &rest args)
     "Info as ORIG-FN FILENAME ARGS."
     (apply orig-fn
-	   (pcase filename
-	     ("emacs" "emacs-ja.info")
-	     (_ filename))
-	   args))
+		   (pcase filename
+			 ("emacs" "emacs-ja.info")
+			 (_ filename))
+		   args))
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 

@@ -14,12 +14,10 @@
   (sp-pair "'" nil :actions :rem)
   (sp-pair "[" nil :actions :rem))
 
-
 ;; Keeps code always indented
 (leaf aggressive-indent
   :ensure t
   :hook ((emacs-lisp-mode-hook css-mode-hook) . aggressive-indent-mode))
-
 
 ;; Highlight the cursor whenever the window scrolls
 (leaf beacon
@@ -28,19 +26,16 @@
   :config
   (setq beacon-color "yellow"))
 
-
 ;; Highlight brackets according to their depth
 (leaf rainbow-delimiters
   :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
-
 
 ;; Colorize color names in buffers
 (leaf rainbow-mode
   :ensure t
   :config
   (bind-key "C-c r" 'rainbow-mode))
-
 
 ;; Highlight some operations
 (leaf volatile-highlights
@@ -50,28 +45,28 @@
   (with-no-warnings
     (when (fboundp 'pulse-momentary-highlight-region)
       (defun my-vhl-pulse (beg end &optional _buf face)
-	"Pulse the changes."
-	(pulse-momentary-highlight-region beg end face))
+		"Pulse the changes."
+		(pulse-momentary-highlight-region beg end face))
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
-
+;; Visually highlight the selected buffer
 (leaf dimmer
   :ensure t
   :global-minor-mode t
   :config
   (setq dimmer-exclusion-regexp-list
-	'(".*Minibuf.*" ".*which-key.*" "*direx:direx.*" "*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*"))
+		'(".*Minibuf.*" ".*which-key.*" "*direx:direx.*" "*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*"))
   (setq dimmer-fraction 0.5)
   :preface
   (with-eval-after-load "dimmer"
-    (defun dimmer-off ()
-      (dimmer-mode -1)
-      (dimmer-process-all))
-    (defun dimmer-on ()
-      (dimmer-mode 1)
-      (dimmer-process-all))
-    (add-hook 'focus-out-hook #'dimmer-off)
-    (add-hook 'focus-in-hook #'dimmer-on)))
+	(defun dimmer-off ()
+	  (dimmer-mode -1)
+	  (dimmer-process-all))
+	(defun dimmer-on ()
+	  (dimmer-mode 1)
+	  (dimmer-process-all))
+	(add-hook 'focus-out-hook #'dimmer-off)
+	(add-hook 'focus-in-hook #'dimmer-on)))
 
 
 (leaf whitespace
@@ -91,9 +86,9 @@
     (delete-trailing-whitespace)
     (save-excursion
       (save-restriction
-	(widen)
-	(goto-char (point-max))
-	(delete-blank-lines)))))
+		(widen)
+		(goto-char (point-max))
+		(delete-blank-lines)))))
 
 
 ;; Local Variables:

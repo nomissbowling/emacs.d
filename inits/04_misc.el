@@ -8,23 +8,18 @@
   :ensure t
   :global-minor-mode t)
 
-
 (leaf iedit
   :ensure t
   :bind ("C-;" . iedit-mode))
-
 
 (leaf expand-region
   :ensure t
   :bind ("C-@" . er/expand-region))
 
-
 (leaf cool-copy
   :el-get blue0513/cool-copy.el
   :bind ("s-c" . cool-copy)
-  :config
-  (setq cool-copy-show 'posframe))
-
+  :config (setq cool-copy-show 'posframe))
 
 (leaf flycheck
   :ensure t
@@ -37,7 +32,6 @@
     :after flycheck
     :global-minor-mode t))
 
-
 (leaf key-chord
   :el-get zk-phi/key-chord
   :config
@@ -45,10 +39,8 @@
   (key-chord-define-global "l;" 'init-loader-show-log)
   :global-minor-mode t)
 
-
 (leaf prescient
   :ensure t
-  :commands prescient-persist-mode
   :global-minor-mode prescient-persist-mode
   :init
   (leaf company-prescient :ensure t
@@ -58,11 +50,9 @@
     :after prescient ivy
     :global-minor-mode t))
 
-
 (leaf quickrun
   :ensure t
   :bind ("<f5>" . quickrun))
-
 
 (leaf which-key
   :ensure t
@@ -71,7 +61,6 @@
   (setq which-key-use-C-h-commands t)
   :global-minor-mode t)
 
-
 (leaf projectile
   :ensure t
   :global-minor-mode t
@@ -79,7 +68,6 @@
   (leaf counsel-projectile
     :ensure t
     :global-minor-mode t))
-
 
 (leaf yasnippet
   :ensure t
@@ -91,11 +79,9 @@
   (leaf yasnippet-snippets :ensure t)
   (leaf ivy-yasnippet :ensure t))
 
-
 (leaf restart-emacs
   :ensure t
   :bind ("C-x C-c" . restart-emacs))
-
 
 (leaf web-mode
   :ensure t

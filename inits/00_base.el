@@ -105,14 +105,10 @@
 
 (leaf cus-keybind
   :init
-  ;; Text-scale-adjust
   (bind-key "C-c z" 'text-scale-adjust)
-  ;; Run muhenkan same as C-g
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
-  ;; xref-find-* key
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)
-  ;; Use the X11 clipboard
   (setq select-enable-clipboard  t)
   (setq select-enable-primary  t)
   (bind-key "M-w" 'clipboard-kill-ring-save)

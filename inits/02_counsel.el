@@ -56,7 +56,8 @@ If the region isn't selected, `swiper' with migemo."
 											(s-split "" str t)))))
       (s-join "" (--map (cond ((s-equals? it " ") ".*?")
 							  ((s-matches? sep it) it)
-							  (t (migemo-get-pattern it))) splitted))))
+							  (t (migemo-get-pattern it)))
+						splitted))))
 
   (setq ivy-re-builders-alist
 		'((t . ivy--regex-plus)

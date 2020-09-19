@@ -117,20 +117,21 @@
   (setq select-enable-primary  t)
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'my:clipboard-kill-region)
+  (bind-key "s-v" 'yank)
   (bind-key "C-x C-x" 'my:exchange-point-and-mark)
   :config
   (defun my:clipboard-kill-region ()
-    "If the region is active, `clipboard-kill-region'.
+	"If the region is active, `clipboard-kill-region'.
 If the region is inactive, `backward-kill-word'."
-    (interactive)
-    (if (use-region-p)
+	(interactive)
+	(if (use-region-p)
 		(clipboard-kill-region (region-beginning) (region-end))
-      (backward-kill-word 1)))
+	  (backward-kill-word 1)))
   (defun my:exchange-point-and-mark ()
-    "No mark active `exchange-point-and-mark'."
-    (interactive)
-    (exchange-point-and-mark)
-    (deactivate-mark)))
+	"No mark active `exchange-point-and-mark'."
+	(interactive)
+	(exchange-point-and-mark)
+	(deactivate-mark)))
 
 
 (leaf base-setting
@@ -155,8 +156,8 @@ If the region is inactive, `backward-kill-word'."
     (setq recentf-max-saved-items 200)
     (setq recentf-auto-cleanup 'never)
     (setq recentf-exclud '("recentf" "COMMIT_EDITMSG" "bookmarks\\" "emacs.d" "\\.gitignore"
-			   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm-keys" "\\.emacs.d/" "^/tmp/" "^/scp:"
-			   (lambda (file) (file-in-directory-p file package-user-dir))))
+						   "\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" "\\.howm-keys" "\\.emacs.d/" "^/tmp/" "^/scp:"
+						   (lambda (file) (file-in-directory-p file package-user-dir))))
     (push (expand-file-name recentf-save-file) recentf-exclude))
 
   (leaf display-line-numbers

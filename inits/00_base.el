@@ -59,6 +59,8 @@
   (setq create-lockfiles nil)
   ;; Open symbolic link directly
   (setq vc-follow-symlinks t)
+  ;; Customize tab width
+  (setq-default tab-width 4)
 
   :init
   ;; Save the file specified code with basic utf-8 if it exists

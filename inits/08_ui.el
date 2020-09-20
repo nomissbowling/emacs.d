@@ -19,7 +19,8 @@
     (load-theme (car curr-theme) t)
     (message "%s" (car curr-theme)))
   (setq curr-theme my-themes)
-  (load-theme (car curr-theme) t))
+  (load-theme (car curr-theme) t)
+  (bind-key "C-x t" 'my:cycle-theme))
 
 
 (leaf doom-modeline
@@ -61,7 +62,6 @@
   :config
   (bind-key "<f12>" 'my:darkroom-mode-in)
   (defun my:darkroom-mode-in ()
-    "Darkroom mode in."
     (interactive)
     (display-line-numbers-mode 0)
     (diff-hl-mode 0)
@@ -69,8 +69,8 @@
     (setq line-spacing 0.4)
     (darkroom-mode 1)
     (bind-key "<f12>" 'my:darkroom-mode-out darkroom-mode-map))
+
   (defun my:darkroom-mode-out ()
-    "Darkroom mode out."
     (interactive)
     (darkroom-mode 0)
     (flymake-mode 1)

@@ -5,114 +5,106 @@
 
 (leaf viewer
   :ensure t
+  :chord ("jk" . my:view-mode)
+  :bind ("C-q" . other-window-or-split)
   :config
   (when (require 'viewer nil t)
     (viewer-change-modeline-color-setup)
     (setq viewer-modeline-color-unwritable "orange")
-    (setq viewer-modeline-color-view "#852941")))
+    (setq viewer-modeline-color-view "#852941"))
 
+  (defun my:view-mode ()
+	"View mode with hydra."
+	(interactive)
+	(view-mode)
+	(hydra-view-mode/body))
 
-(key-chord-define-global
- "jk"
- (defun my:view-mode ()
-   "View mode with hydra-view-mode."
-   (interactive)
-   (hydra-view-mode/body)
-   (view-mode 1)))
-
-
-;; Other-window-or-split with follow-mode
-(bind-key
- "C-q"
- (defun other-window-or-split ()
-   "If there is one window, open split window.
+  (defun other-window-or-split ()
+	"If there is one window, open split window.
 If there are two or more windows, it will go to another window."
-   (interactive)
-   (when (one-window-p)
-     ;; (split-window-horizontally))
-     (follow-delete-other-windows-and-split))
-   (other-window 1)))
+	(interactive)
+	(when (one-window-p)
+	  ;; (split-window-horizontally))
+	  (follow-delete-other-windows-and-split))
+	(other-window 1))
 
+  (defun switch-buffer-in-view-mode ()
+	"Switch buffer in viewmode."
+	(interactive)
+	(counsel-switch-buffer)
+	(view-mode 1))
 
-;; Switch-buffer for view-mode
-(defun switch-buffer-in-view-mode ()
-  "Switch buffer in viewmode."
-  (interactive)
-  (counsel-switch-buffer)
-  (view-mode 1))
+  :init
+  (add-hook
+   'view-mode-hook
+   (lambda ()
+	 (define-key view-mode-map "i" 'View-exit)
+	 (define-key view-mode-map "," 'View-exit)
+	 (define-key view-mode-map "g" 'beginning-of-buffer)
+	 (define-key view-mode-map "G" 'end-of-buffer)
+	 (define-key view-mode-map "e" 'seq-end)
+	 (define-key view-mode-map "a" 'seq-home)
+	 (define-key view-mode-map "b" 'scroll-down-command)
+	 (define-key view-mode-map "w" 'avy-goto-word-1)
+	 (define-key view-mode-map "l" 'avy-goto-line)
+	 (define-key view-mode-map "j" 'goto-line)
+	 (define-key view-mode-map ";" 'recenter-top-bottom)
+	 (define-key view-mode-map "t" 'direx:jump-to-project-directory)
+	 (define-key view-mode-map "o" 'other-window-or-split)
+	 (define-key view-mode-map ">" 'text-scale-increase)
+	 (define-key view-mode-map "<" 'text-scale-decrease)
+	 (define-key view-mode-map "-" '(text-scale-set 0))
+	 (define-key view-mode-map "0" 'delete-window)
+	 (define-key view-mode-map "1" 'delete-other-windows)
+	 (define-key view-mode-map "d" 'vc-diff)
+	 (define-key view-mode-map "n" 'diff-hl-next-hunk)
+	 (define-key view-mode-map "p" 'diff-hl-previous-hunk)
+	 (define-key view-mode-map "s" 'swiper)
+	 (define-key view-mode-map ":" 'switch-buffer-in-view-mode)
+	 (define-key view-mode-map "[" 'iflipb-previous-buffer)
+	 (define-key view-mode-map "]" 'iflipb-next-buffer)
+	 (define-key view-mode-map "?" 'hydra-view-mode/body)
+	 (define-key view-mode-map "." 'hydra-view-mode/body)))
 
-
-(add-hook
- 'view-mode-hook
- (lambda ()
-   (define-key view-mode-map "i" 'View-exit)
-   (define-key view-mode-map "," 'View-exit)
-   (define-key view-mode-map "g" 'beginning-of-buffer)
-   (define-key view-mode-map "G" 'end-of-buffer)
-   (define-key view-mode-map "e" 'seq-end)
-   (define-key view-mode-map "a" 'seq-home)
-   (define-key view-mode-map "b" 'scroll-down-command)
-   (define-key view-mode-map "w" 'avy-goto-word-1)
-   (define-key view-mode-map "l" 'avy-goto-line)
-   (define-key view-mode-map "j" 'goto-line)
-   (define-key view-mode-map ";" 'recenter-top-bottom)
-   (define-key view-mode-map "t" 'direx:jump-to-project-directory)
-   (define-key view-mode-map "o" 'other-window-or-split)
-   (define-key view-mode-map ">" 'text-scale-increase)
-   (define-key view-mode-map "<" 'text-scale-decrease)
-   (define-key view-mode-map "-" '(text-scale-set 0))
-   (define-key view-mode-map "0" 'delete-window)
-   (define-key view-mode-map "1" 'delete-other-windows)
-   (define-key view-mode-map "d" 'vc-diff)
-   (define-key view-mode-map "n" 'diff-hl-next-hunk)
-   (define-key view-mode-map "p" 'diff-hl-previous-hunk)
-   (define-key view-mode-map "s" 'swiper)
-   (define-key view-mode-map ":" 'switch-buffer-in-view-mode)
-   (define-key view-mode-map "[" 'iflipb-previous-buffer)
-   (define-key view-mode-map "]" 'iflipb-next-buffer)
-   (define-key view-mode-map "?" 'hydra-view-mode/body)
-   (define-key view-mode-map "." 'hydra-view-mode/body)))
-
-
-;; hydra-view-mode
-(defhydra hydra-view-mode (:color red :hint nil)
-  "
+  :preface
+  (defhydra hydra-view-mode (:color red :hint nil)
+	"
   🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_<__-__>_  buffer:_[__:__]_  _s_wiper  view-exit:_,_"
-  ;; Move page
-  ("SPC" scroll-up-command)
-  ("f" scroll-up-command)
-  ("b" scroll-down-command)
-  ("g" beginning-of-buffer)
-  ("G" end-of-buffer)
-  ;; Move line
-  ("a" seq-home)
-  ("e" seq-end)
-  ("j" goto-line)
-  ;; Misc
-  ("i" View-exit :exit t)
-  ("," View-exit :exit t)
-  (";" recenter-top-bottom)
-  ;;window
-  (">" text-scale-increase)
-  ("<" text-scale-decrease)
-  ("-" (text-scale-set 0))
-  ("0" delete-window)
-  ("_" delete-other-windows)
-  ("d" vc-diff :exit t)
-  ("n" diff-hl-next-hunk)
-  ("p" diff-hl-previous-hunk)
-  ;;buffer
-  (":" switch-buffer-in-view-mode)
-  ("[" iflipb-previous-buffer)
-  ("]" iflipb-next-buffer)
-  ;; avy
-  ("l" avy-goto-line)
-  ("w" avy-goto-word-1)
-  ;; Others
-  ("o" other-window-or-split)
-  ("t" direx:jump-to-project-directory)
-  ("s" swiper)
-  ("." nil :color blue))
+	;; Move page
+	("SPC" scroll-up-command)
+	("f" scroll-up-command)
+	("b" scroll-down-command)
+	("g" beginning-of-buffer)
+	("G" end-of-buffer)
+	;; Move line
+	("a" seq-home)
+	("e" seq-end)
+	("j" goto-line)
+	;; Misc
+	("i" View-exit :exit t)
+	("," View-exit :exit t)
+	(";" recenter-top-bottom)
+	;;window
+	(">" text-scale-increase)
+	("<" text-scale-decrease)
+	("-" (text-scale-set 0))
+	("0" delete-window)
+	("_" delete-other-windows)
+	("d" vc-diff :exit t)
+	("n" diff-hl-next-hunk)
+	("p" diff-hl-previous-hunk)
+	;;buffer
+	(":" switch-buffer-in-view-mode)
+	("[" iflipb-previous-buffer)
+	("]" iflipb-next-buffer)
+	;; avy
+	("l" avy-goto-line)
+	("w" avy-goto-word-1)
+	;; Others
+	("o" other-window-or-split)
+	("t" direx:jump-to-project-directory)
+	("s" swiper)
+	("." nil :color blue)))
 
 
 ;; Local Variables:

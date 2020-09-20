@@ -25,13 +25,12 @@
 (leaf flycheck
   :ensure t
   :hook (emacs-startup-hook . global-flycheck-mode)
-  :init
-  (setq flycheck-global-modes
-		'(not text-mode markdown-mode fundamental-mode lisp-interaction-mode
-			  org-mode diff-mode toml-mode web-mode eshell-mode makefile-mode css-mode))
+  :config
   (leaf flycheck-title :ensure t
-    :after flycheck
-    :global-minor-mode t))
+  	:global-minor-mode t)
+  (setq flycheck-global-modes
+  		'(not text-mode markdown-mode fundamental-mode lisp-interaction-mode
+  			  org-mode diff-mode toml-mode web-mode eshell-mode makefile-mode css-mode)))
 
 (leaf key-chord
   :el-get zk-phi/key-chord

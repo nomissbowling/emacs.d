@@ -14,7 +14,7 @@
 	(setq viewer-modeline-color-view "#852941")))
 
 
-(leaf view-pinky
+(leaf cus-view-mode
   :config
   (defun my:view-mode ()
 	"View mode with hydra."

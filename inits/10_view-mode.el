@@ -73,7 +73,7 @@ If there are two or more windows, it will go to another window."
   (hydra-view-mode
    (:color red :hint nil)
    "
-  🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_<__-__>_  buffer:_[__:__]_  _s_wiper  view-exit:_,_"
+  🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_<__-__>_  buffer:_[__:__]_  _s_wiper  exit:_,_"
    ;; Move page
    ("SPC" scroll-up-command)
    ("f" scroll-up-command)

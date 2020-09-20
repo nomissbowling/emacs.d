@@ -54,7 +54,7 @@
 
 (leaf user-functions-for-selected
   :init
-  ;; Weblio
+  ;; Kojien
   (defun my:koujien (str)
     (interactive (list (my:get-region nil)))
     (browse-url (format "https://sakura-paris.org/dict/広辞苑/prefix/%s"

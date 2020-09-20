@@ -4,7 +4,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; automatically save buffers in a decent way
 (leaf auto-save-buffers-enhanced
   :ensure t
   :config
@@ -20,7 +19,6 @@
   (persistent-scratch-setup-default))
 
 
-;; automatically deleted in the background buffers
 (leaf tempbuf
   :el-get emacswiki:tempbuf
   :hook
@@ -41,7 +39,6 @@
   (bind-key "M-[" 'iflipb-previous-buffer))
 
 
-;; Persistent undo history for GNU Emacs
 (leaf undohist
   :ensure t
   :hook (emacs-startup-hook . undohist-initialize)
@@ -50,7 +47,6 @@
   (setq undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG")))
 
 
-;; Treat undo history as a tree
 (leaf undo-tree
   :ensure t
   :hook
@@ -66,21 +62,21 @@
   (setq undo-tree-enable-undo-in-region nil)
   (setq undo-tree-auto-save-history nil)
   (setq undo-tree-history-directory-alist
-	`(("." . ,(concat user-emacs-directory "undo-tree-hist/"))))
+		`(("." . ,(concat user-emacs-directory "undo-tree-hist/"))))
   :init
+  ;; show visualizer diff display
   (defun undo-tree-visualizer-show-diff (&optional node)
-    ;; show visualizer diff display
-    (setq-local undo-tree-visualizer-diff t)
-    (let ((buff (with-current-buffer undo-tree-visualizer-parent-buffer
-		  (undo-tree-diff node)))
-	  (display-buffer-mark-dedicated 'soft)
-	  win)
-      (setq win (split-window))
-      (set-window-buffer win buff)
-      (shrink-window-if-larger-than-buffer win)))
+	(setq-local undo-tree-visualizer-diff t)
+	(let ((buff (with-current-buffer undo-tree-visualizer-parent-buffer
+				  (undo-tree-diff node)))
+		  (display-buffer-mark-dedicated 'soft)
+		  win)
+	  (setq win (split-window))
+	  (set-window-buffer win buff)
+	  (shrink-window-if-larger-than-buffer win)))
 
+  ;; hide visualizer diff display
   (defun undo-tree-visualizer-hide-diff ()
-    ;; hide visualizer diff display
     (setq-local undo-tree-visualizer-diff nil)
     (let ((win (get-buffer-window undo-tree-diff-buffer-name)))
       (when win (with-selected-window win (kill-buffer-and-window))))))
@@ -94,12 +90,11 @@
     "Toggle current buffer and *scratch* buffer."
     (interactive)
     (if (not (string= "*scratch*" (buffer-name)))
-	(progn
-	  (setq toggle-scratch-prev-buffer (buffer-name))
-	  (switch-to-buffer "*scratch*"))
+		(progn
+		  (setq toggle-scratch-prev-buffer (buffer-name))
+		  (switch-to-buffer "*scratch*"))
       (switch-to-buffer toggle-scratch-prev-buffer)))
 
-  ;; kill-oter-buffers
   (defun kill-other-buffers ()
     "Kill all other buffers."
     (interactive)

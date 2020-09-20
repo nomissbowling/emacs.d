@@ -6,11 +6,19 @@
 (leaf viewer
   :ensure t
   :config
-  (key-chord-define-global "jk" 'view-mode)
   (when (require 'viewer nil t)
     (viewer-change-modeline-color-setup)
     (setq viewer-modeline-color-unwritable "orange")
     (setq viewer-modeline-color-view "#852941")))
+
+
+(key-chord-define-global
+ "jk"
+ (defun my:view-mode ()
+   "View mode with hydra-view-mode."
+   (interactive)
+   (hydra-view-mode/body)
+   (view-mode 1)))
 
 
 ;; Other-window-or-split with follow-mode
@@ -28,7 +36,7 @@ If there are two or more windows, it will go to another window."
 
 ;; Switch-buffer for view-mode
 (defun switch-buffer-in-view-mode ()
-  "Hoge."
+  "Switch buffer in viewmode."
   (interactive)
   (counsel-switch-buffer)
   (view-mode 1))
@@ -58,7 +66,7 @@ If there are two or more windows, it will go to another window."
    (define-key view-mode-map "d" 'vc-diff)
    (define-key view-mode-map "n" 'diff-hl-next-hunk)
    (define-key view-mode-map "p" 'diff-hl-previous-hunk)
-   (define-key view-mode-map "s" 'swiper-thing-at-point)
+   (define-key view-mode-map "s" 'swiper)
    (define-key view-mode-map ":" 'switch-buffer-in-view-mode)
    (define-key view-mode-map "[" 'iflipb-previous-buffer)
    (define-key view-mode-map "]" 'iflipb-next-buffer)
@@ -93,7 +101,6 @@ If there are two or more windows, it will go to another window."
   ("d" vc-diff :exit t)
   ("n" diff-hl-next-hunk)
   ("p" diff-hl-previous-hunk)
-  ("s" swiper-thing-at-point)
   ;;buffer
   (":" switch-buffer-in-view-mode)
   ("[" iflipb-previous-buffer)
@@ -104,7 +111,7 @@ If there are two or more windows, it will go to another window."
   ;; Others
   ("o" other-window-or-split)
   ("t" direx:jump-to-project-directory)
-  ("s" swiper-or-region)
+  ("s" swiper)
   ("." nil :color blue))
 
 

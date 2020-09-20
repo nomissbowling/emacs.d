@@ -75,7 +75,8 @@
     (counsel-M-x "^counsel ")))
 
 
-(leaf counsel-web :ensure t
+(leaf counsel-web
+  :ensure t
   :config
   (setq counsel-web-search-action #'browse-url)
   (setq counsel-web-engine 'google))
@@ -103,7 +104,8 @@
       (message "Tramp Quit!"))))
 
 
-(leaf counsel-css :ensure t
+(leaf counsel-css
+  :ensure t
   :config
   (add-hook 'css-mode-hook #'counsel-css-imenu-setup))
 

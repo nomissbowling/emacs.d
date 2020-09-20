@@ -31,12 +31,12 @@
 (leaf gist
   :ensure t
   :bind (("C-c g" . gist-region-or-buffer)
-	 ("C-c l" . gist-list)
-	 (:tabulated-list-mode-map
-	  ("." . hydra-gist-help/body)))
+		 ("C-c l" . gist-list)
+		 (:tabulated-list-mode-map
+		  ("." . hydra-gist-help/body)))
   :hydra
   (hydra-gist-help ()
-		   "
+				   "
   🎲 Function for gist
      M-x gist-list: Lists your gists in a new buffer
      M-x gist-region-or-buffer: Post either the current region or buffer
@@ -51,7 +51,7 @@
     -----------------------------
   🎲 In dired buffer
      @ : make a gist out of marked files"
-		   ("." nil)))
+				   ("." nil)))
 
 
 ;; Open browser by favorite url

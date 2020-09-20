@@ -39,7 +39,7 @@
   (defalias 'my:github-show 'browse-at-remote))
 
 
-(leaf *user-ps-print-setting
+(leaf ps-print-setting
   :init
   (setq ps-multibyte-buffer 'non-latin-printer)
   (defalias 'ps-mule-header-string-charsets 'ignore)
@@ -52,7 +52,7 @@
   (setq ps-print-footer nil))
 
 
-(leaf *pdfout-from-emacs
+(leaf pdfout-from-emacs
   :init
   (defun pdfout-select ()
     "PDF out select menu."
@@ -68,10 +68,10 @@
     (interactive "r")
     ;; (shell-command-on-region begin end my:pdfout-command-format)))
     (shell-command-on-region begin end (format my:pdfout-command-format
-					       (concat (read-from-minibuffer "File name:") ".pdf")))))
+											   (concat (read-from-minibuffer "File name:") ".pdf")))))
 
 
-(leaf *user-functions-utils
+(leaf user-functions-utils
   :init
   (defun filer-current-dir-open ()
     "Open filer in current dir."
@@ -89,15 +89,15 @@
   (defun my:delete-file-if-no-contents ()
     "Automatic deletion for empty files (Valid in all modes)."
     (when (and (buffer-file-name (current-buffer))
-	       (= (point-min) (point-max)))
+			   (= (point-min) (point-max)))
       (delete-file
        (buffer-file-name (current-buffer)))))
   (if (not (memq 'my:delete-file-if-no-contents after-save-hook))
       (setq after-save-hook
-	    (cons 'my:delete-file-if-no-contents after-save-hook))))
+			(cons 'my:delete-file-if-no-contents after-save-hook))))
 
 
-(leaf *user-function-for-browse-url
+(leaf user-browse-url
   :init
   (defun browse-calendar ()
     "Open Google-calendar with chrome."

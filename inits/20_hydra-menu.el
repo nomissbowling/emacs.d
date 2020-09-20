@@ -109,12 +109,6 @@
 
 (leaf user-defined-function
   :config
-  (defun my:view-mode ()
-    "Narrow the only counsel-command in M-x."
-    (interactive)
-    (view-mode)
-    (hydra-view-mode/body))
-
   (defun my:ps-print ()
     "Narrow the only counsel-command in M-x."
     (interactive)

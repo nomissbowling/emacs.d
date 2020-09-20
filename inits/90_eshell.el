@@ -25,12 +25,12 @@
   (push '("*eshell*" :height 0.6) popwin:special-display-config))
 
 
-(leaf user-custom-function
+(leaf user-function-for-eshell
   :init
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat (eshell/pwd)
-	    (if (= (user-uid) 0) "\n# " "\n$ ")))
+			(if (= (user-uid) 0) "\n# " "\n$ ")))
 
   (defun eshell/clear ()
     "Clear the current buffer, leaving one prompt at the top."
@@ -43,8 +43,8 @@
     (interactive)
     (let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
       (with-current-buffer "*eshell*"
-	(cd path)
-	(eshell-emit-prompt)))))
+		(cd path)
+		(eshell-emit-prompt)))))
 
 
 ;; Local Variables:

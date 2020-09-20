@@ -18,7 +18,7 @@
     (bind-key "<f10>" 'quit-window direx:direx-mode-map)))
 
 
-(leaf extension-function-for-direx
+(leaf function-for-direx
   :init
   ;; https://blog.shibayu36.org/entry/2013/02/12/191459
   (defun direx:jump-to-project-directory ()
@@ -31,13 +31,13 @@
     "In direx, open the file in associated application."
     (interactive)
     (let* ((item (direx:item-at-point!))
-	   (file (direx:item-tree item))
-	   (file-full-name (direx:file-full-name file)))
+		   (file (direx:item-tree item))
+		   (file-full-name (direx:file-full-name file)))
       (unless (getenv "WSLENV")
-	(call-process "xdg-open" nil 0 nil file-full-name))
+		(call-process "xdg-open" nil 0 nil file-full-name))
       ;; use wsl-utils:https://github.com/smzht/wsl-utils
       (when (getenv "WSLENV")
-	(call-process "wslstart" nil 0 nil file-full-name)))))
+		(call-process "wslstart" nil 0 nil file-full-name)))))
 
 
 ;; Local Variables:

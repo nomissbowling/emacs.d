@@ -5,14 +5,13 @@
 
 (leaf viewer
   :ensure t
-  :require t
   :chord ("jk" . my:view-mode)
   :bind ("C-q" . other-window-or-split)
-  :config
+  :init
   (when (require 'viewer nil t)
-    (viewer-change-modeline-color-setup)
-    (setq viewer-modeline-color-unwritable "orange")
-    (setq viewer-modeline-color-view "#852941")))
+	(viewer-change-modeline-color-setup)
+	(setq viewer-modeline-color-unwritable "orange")
+	(setq viewer-modeline-color-view "#852941")))
 
 
 (leaf view-pinky

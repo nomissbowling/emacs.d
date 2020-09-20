@@ -26,7 +26,7 @@
   (leaf counsel-selected :el-get takaxp/counsel-selected))
 
 
-(leaf  control-mozc-when-region-seleceted
+(leaf  control-mozc-when-seleceted
   :init
   (defun my-activate-selected ()
     (selected-global-mode 1)

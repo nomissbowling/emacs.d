@@ -20,8 +20,8 @@
 (eval-and-compile
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")
-		       ("melpa" . "https://melpa.org/packages/")
-		       ("gnu"   . "https://elpa.gnu.org/packages/")))
+					   ("melpa" . "https://melpa.org/packages/")
+					   ("gnu"   . "https://elpa.gnu.org/packages/")))
   (package-initialize)
   (unless (package-installed-p 'leaf)
     (package-refresh-contents)
@@ -30,12 +30,12 @@
 
   (leaf leaf-keywords
     :ensure t
+    :config
+    (leaf-keywords-init)
     :init
     (leaf bind-key :ensure t)
     (leaf hydra :ensure t)
     (leaf el-get :ensure t)
-    :config
-    (leaf-keywords-init)
     :preface
     (setq el-get-dir "~/.emacs.d/elisp")
     (setq load-prefer-newer t)

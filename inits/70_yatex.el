@@ -18,8 +18,8 @@
    'yatex-mode-hook
    '(lambda()
 	  (leaf yatexprc :require t)
-	  (bind-key "M-c" 'YaTeX-typeset-buffer)	;; Type set
-	  (bind-key "M-l" 'YaTeX-lpr))))			;; Open PDF file
+	  (bind-key "M-c" 'YaTeX-typeset-buffer)
+	  (bind-key "M-l" 'YaTeX-lpr))))		;; Open PDF file
 
 
 ;; Dviprint-command-format

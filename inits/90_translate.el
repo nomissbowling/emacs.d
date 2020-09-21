@@ -6,7 +6,7 @@
 
 (leaf google-translate
   :ensure t
-  :bind ("C-t" . google-translate-auto)
+  :bind ("C-x t" . google-translate-auto)
   :config
   (defun google-translate-auto ()
     "Automatically recognize and translate Japanese and English."

@@ -7,6 +7,7 @@
 (leaf howm
   :ensure t
   :hook (emacs-startup-hook . howm-mode)
+  :chord ("@@" . howm-list-all)
   :init
   (setq howm-view-title-header "#")
   (defun my:howm-create-file ()
@@ -14,19 +15,18 @@
     (interactive)
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time)))
   :config
-  (key-chord-define-global "@@" 'howm-list-all)
   (bind-key [backtab] 'howm-view-summary-previous-section howm-view-summary-mode-map)
   (setq howm-directory "~/Dropbox/howm")
   (setq howm-view-split-horizontally t)
   (setq howm-view-summary-persistent nil)
   (setq howm-normalizer 'howm-sort-items-by-reverse-date)
   (setq howm-user-font-lock-keywords
-	'(("memo:" . (0 'gnus-group-mail-3))
-	  ("note:" . (0 'epa-mark))
-	  ("perl:" . (0 'diff-refine-added))
-	  ("haiku:" . (0 'compilation-mode-line-exit))
-	  ("emacs:" . (0 'compilation-info))
-	  ("linux:" . (0 'compilation-error)))))
+		'(("memo:" . (0 'gnus-group-mail-3))
+		  ("note:" . (0 'epa-mark))
+		  ("perl:" . (0 'diff-refine-added))
+		  ("haiku:" . (0 'compilation-mode-line-exit))
+		  ("emacs:" . (0 'compilation-info))
+		  ("linux:" . (0 'compilation-error)))))
 
 
 (leaf org

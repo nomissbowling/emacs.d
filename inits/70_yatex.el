@@ -19,7 +19,7 @@
    '(lambda()
 	  (leaf yatexprc :require t)
 	  (bind-key "M-c" 'YaTeX-typeset-buffer)
-	  (bind-key "M-l" 'YaTeX-lpr))))	;; dvpd.sh %s
+	  (bind-key "M-l" 'YaTeX-lpr))))
 
 
 ;; Dviprint-command-format

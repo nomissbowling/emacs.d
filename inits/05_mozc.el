@@ -34,9 +34,9 @@
     :require t
     :config
     (setq mozc-cursor-color-alist
-	  '((direct . "#BD93F9")
-	    (read-only . "#84A0C6")
-	    (hiragana . "#CC3333"))))
+		  '((direct . "#BD93F9")
+			(read-only . "#84A0C6")
+			(hiragana . "#CC3333"))))
   (leaf mozc-cand-posframe :ensure t
     :require t
     :config

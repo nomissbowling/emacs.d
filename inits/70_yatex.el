@@ -16,10 +16,10 @@
   :init
   (add-hook
    'yatex-mode-hook
-   (lambda()
-     (when (require 'yatexprc nil t)
-       (bind-key "M-c" 'YaTeX-typeset-buffer)	;; Type set
-       (bind-key "M-l" 'YaTeX-lpr)))))			;; Open PDF file
+   '(lambda()
+	  (leaf yatexprc :require t)
+	  (bind-key "M-c" 'YaTeX-typeset-buffer)	;; Type set
+	  (bind-key "M-l" 'YaTeX-lpr))))			;; Open PDF file
 
 
 ;; Dviprint-command-format

@@ -9,7 +9,7 @@
   :init
   (leaf doom-themes :ensure t)
   (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-  (setq my-themes (list 'doom-dracula 'iceberg))
+  (setq my-themes (list 'iceberg 'doom-dracula))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)
   :preface

@@ -5,22 +5,22 @@
 ;; (setq debug-on-error t)
 
 (leaf cycle-theme
+  :bind ("C-x t" . my:cycle-theme)
   :init
-  (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
   (leaf doom-themes :ensure t)
-  :config
+  (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
   (setq my-themes (list 'iceberg 'doom-dracula))
-  (defun my:cycle-theme ()
-    "Cycle custom theme."
-    (interactive)
-    (disable-theme (car curr-theme))
-    (setq curr-theme (cdr curr-theme))
-    (if (null curr-theme) (setq curr-theme my-themes))
-    (load-theme (car curr-theme) t)
-    (message "%s" (car curr-theme)))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)
-  (bind-key "C-x t" 'my:cycle-theme))
+  :preface
+  (defun my:cycle-theme ()
+	"Cycle custom theme."
+	(interactive)
+	(disable-theme (car curr-theme))
+	(setq curr-theme (cdr curr-theme))
+	(if (null curr-theme) (setq curr-theme my-themes))
+	(load-theme (car curr-theme) t)
+	(message "%s" (car curr-theme))))
 
 
 (leaf doom-modeline

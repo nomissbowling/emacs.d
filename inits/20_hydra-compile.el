@@ -38,35 +38,34 @@
   ;; Turn off 'Suspicious line XXX of Makefile.' makefile warning
   (add-hook 'makefile-mode-hook
 			(lambda ()
-			  (fset 'makefile-warn-suspicious-lines 'ignore))))
+			  (fset 'makefile-warn-suspicious-lines 'ignore)))
 
-
-(leaf user-compile-command
-  :init
+  :preface
+  ;; User-compile-command
   (defun my:make-k ()
-    "Make command default."
-    (interactive)
-    (compile "make -k"))
+	"Make command default."
+	(interactive)
+	(compile "make -k"))
   (defun my:make-upftp ()
-    "Make command for upftp."
-    (interactive)
-    (compile "make up"))
+	"Make command for upftp."
+	(interactive)
+	(compile "make up"))
   (defun my:make-move ()
-    "Make command for move."
-    (interactive)
-    (compile "make mv"))
+	"Make command for move."
+	(interactive)
+	(compile "make mv"))
   (defun my:make-bklog ()
-    "Make command for bklog."
-    (interactive)
-    (compile "make bk"))
+	"Make command for bklog."
+	(interactive)
+	(compile "make bk"))
   (defun my:make-git ()
-    "Make command for git."
-    (interactive)
-    (compile "make git"))
+	"Make command for git."
+	(interactive)
+	(compile "make git"))
   (defun my:make-clean ()
-    "Make command for clean."
-    (interactive)
-    (compile "make clean")))
+	"Make command for clean."
+	(interactive)
+	(compile "make clean")))
 
 
 ;; Local Variables:

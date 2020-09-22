@@ -24,8 +24,8 @@
 
 
 (leaf doom-modeline
-  :global-minor-mode t
   :ensure t
+  :global-minor-mode t
   :config
   (line-number-mode 0)
   (column-number-mode 0)

@@ -40,7 +40,6 @@
 	(my:reload-twit)))
 
 
-;; Twitterring-mode settings
 (leaf twittering-mode
   :ensure t
   :require t

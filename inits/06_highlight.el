@@ -4,7 +4,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; A tomatically insert pairs
 (leaf smartparens
   :ensure t
   :global-minor-mode smartparens-global-mode
@@ -14,30 +13,30 @@
   (sp-pair "'" nil :actions :rem)
   (sp-pair "[" nil :actions :rem))
 
-;; Keeps code always indented
+
 (leaf aggressive-indent
   :ensure t
   :hook ((emacs-lisp-mode-hook css-mode-hook) . aggressive-indent-mode))
 
-;; Highlight the cursor whenever the window scrolls
+
 (leaf beacon
   :ensure t
   :global-minor-mode t
   :config
   (setq beacon-color "yellow"))
 
-;; Highlight brackets according to their depth
+
 (leaf rainbow-delimiters
   :ensure t
   :hook (prog-mode-hook . rainbow-delimiters-mode))
 
-;; Colorize color names in buffers
+
 (leaf rainbow-mode
   :ensure t
   :config
   (bind-key "C-c r" 'rainbow-mode))
 
-;; Highlight some operations
+
 (leaf volatile-highlights
   :ensure t
   :global-minor-mode t
@@ -49,7 +48,7 @@
 		(pulse-momentary-highlight-region beg end face))
       (advice-add #'vhl/.make-hl :override #'my-vhl-pulse))))
 
-;; Visually highlight the selected buffer
+
 (leaf dimmer
   :ensure t
   :global-minor-mode t

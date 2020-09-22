@@ -103,34 +103,7 @@
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 
-(leaf cus-keybind
-  :init
-  (bind-key "C-c z" 'text-scale-adjust)
-  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
-  (bind-key "C-," 'xref-find-references)
-  (bind-key "C-." 'xref-find-definitions)
-  (setq select-enable-clipboard  t)
-  (setq select-enable-primary  t)
-  (bind-key "M-w" 'clipboard-kill-ring-save)
-  (bind-key "C-w" 'my:clipboard-kill-region)
-  (bind-key "s-v" 'yank)
-  (bind-key "C-x C-x" 'my:exchange-point-and-mark)
-  :config
-  (defun my:clipboard-kill-region ()
-	"If the region is active, `clipboard-kill-region'.
-If the region is inactive, `backward-kill-word'."
-	(interactive)
-	(if (use-region-p)
-		(clipboard-kill-region (region-beginning) (region-end))
-	  (backward-kill-word 1)))
-  (defun my:exchange-point-and-mark ()
-	"No mark active `exchange-point-and-mark'."
-	(interactive)
-	(exchange-point-and-mark)
-	(deactivate-mark)))
-
-
-(leaf base-setting
+(leaf cus-base-setting
   :init
   (leaf server
     :require t
@@ -184,6 +157,33 @@ If the region is inactive, `backward-kill-word'."
     :config
     (require 'user-dired)
     (require 'user-template)))
+
+
+(leaf cus-keybind
+  :init
+  (bind-key "C-c z" 'text-scale-adjust)
+  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
+  (bind-key "C-," 'xref-find-references)
+  (bind-key "C-." 'xref-find-definitions)
+  (setq select-enable-clipboard  t)
+  (setq select-enable-primary  t)
+  (bind-key "M-w" 'clipboard-kill-ring-save)
+  (bind-key "C-w" 'my:clipboard-kill-region)
+  (bind-key "s-v" 'yank)
+  (bind-key "C-x C-x" 'my:exchange-point-and-mark)
+  :config
+  (defun my:clipboard-kill-region ()
+	"If the region is active, `clipboard-kill-region'.
+If the region is inactive, `backward-kill-word'."
+	(interactive)
+	(if (use-region-p)
+		(clipboard-kill-region (region-beginning) (region-end))
+	  (backward-kill-word 1)))
+  (defun my:exchange-point-and-mark ()
+	"No mark active `exchange-point-and-mark'."
+	(interactive)
+	(exchange-point-and-mark)
+	(deactivate-mark)))
 
 
 ;; Local Variables:

@@ -26,7 +26,8 @@
   (setq counsel-yank-pop-separator
 		"\n------------------------------------------------------------\n")
   (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
-  :preface
+
+  :init
   (leaf ivy-xref :ensure t
 	:init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
   (leaf amx :ensure t
@@ -34,11 +35,9 @@
   (leaf ivy-rich :ensure t
 	:hook (ivy-mode-hook . ivy-rich-mode))
   (leaf avy :ensure t
-	:bind ("C-r" . avy-goto-word-1)))
+	:bind ("C-r" . avy-goto-word-1))
 
-
-(leaf *user-function-for-counsel
-  :init
+  :preface
   (defun my:ivy-migemo-re-builder (str)
     "Own ivy-migemo-re-build for swiper."
     (let* ((sep " \\|\\^\\|\\.\\|\\*")
@@ -49,7 +48,6 @@
 							  ((s-matches? sep it) it)
 							  (t (migemo-get-pattern it)))
 						splitted))))
-
   (setq ivy-re-builders-alist
 		'((t . ivy--regex-plus)
 		  (counsel-web . my:ivy-migemo-re-builder)
@@ -75,39 +73,39 @@
     (counsel-M-x "^counsel ")))
 
 
-(leaf counsel-web
-  :ensure t
-  :config
-  (setq counsel-web-search-action #'browse-url)
-  (setq counsel-web-engine 'google))
+(leaf counsel-tools
+  :index
+  (leaf counsel-web
+	:ensure t
+	:config
+	(setq counsel-web-search-action #'browse-url)
+	(setq counsel-web-engine 'google))
 
+  (leaf counsel-tramp
+	:ensure t
+	:config
+	(bind-key "C-c t" 'counsel-tramp)
+	(bind-key "C-c q" 'my:tramp-quit)
+	(setq tramp-default-method "scp")
+	(setq counsel-tramp-custom-connections
+		  '(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
+	(add-hook 'counsel-tramp-pre-command-hook
+			  '(lambda () (projectile-mode 0)))
+	(add-hook 'counsel-tramp-quit-hook
+			  '(lambda () (projectile-mode 1)))
+	:preface
+	(defun my:tramp-quit ()
+	  "Quit tramp, if tramp connencted."
+	  (interactive)
+	  (when (get-buffer "*tramp/scp xsrv*")
+		(tramp-cleanup-all-connections)
+		(counsel-tramp-quit)
+		(message "Tramp Quit!"))))
 
-(leaf counsel-tramp
-  :ensure t
-  :config
-  (bind-key "C-c t" 'counsel-tramp)
-  (bind-key "C-c q" 'my:tramp-quit)
-  (setq tramp-default-method "scp")
-  (setq counsel-tramp-custom-connections
-	'(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
-  (add-hook 'counsel-tramp-pre-command-hook
-	    '(lambda () (projectile-mode 0)))
-  (add-hook 'counsel-tramp-quit-hook
-	    '(lambda () (projectile-mode 1)))
-  :preface
-  (defun my:tramp-quit ()
-    "Quit tramp, if tramp connencted."
-    (interactive)
-    (when (get-buffer "*tramp/scp xsrv*")
-      (tramp-cleanup-all-connections)
-      (counsel-tramp-quit)
-      (message "Tramp Quit!"))))
-
-
-(leaf counsel-css
-  :ensure t
-  :config
-  (add-hook 'css-mode-hook #'counsel-css-imenu-setup))
+  (leaf counsel-css
+	:ensure t
+	:config
+	(add-hook 'css-mode-hook #'counsel-css-imenu-setup)))
 
 
 ;; Local Variables:

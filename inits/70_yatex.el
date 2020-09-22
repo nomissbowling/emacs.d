@@ -32,21 +32,21 @@
 ;; | name=$1
 ;; | dvipdfmx $1 && open -a preview.app ${name%.*}.pdf
 ;; | # Delete unnecessary files
-;; | rm *.au* *.dv* *.lo*
+;; | rm *.aux *.dvi *.log
 ;;
 ;; for Linux
 ;; | #!/bin/bash
 ;; | name=$1
 ;; | dvipdfmx $1 && evince ${name%.*}.pdf
 ;; | # Delete unnecessary files
-;; | rm *.au* *.dv* *.lo*
+;; | rm *.aux *.dvi *.log
 ;;
 ;; for WSL
 ;; | #!/bin/bash
 ;; | name=$1
 ;; | dvipdfmx $1 && wslstart ${name%.*}.pdf
 ;; | # Delete unnecessary files
-;; | rm *.au* *.dv* *.lo*
+;; | rm *.aux *.dvi *.log
 ;;
 ;; ------------------------------------------------------------------------
 

@@ -16,17 +16,14 @@
   (setq eshell-prompt-function 'my:eshell-prompt)
   (setq eshell-prompt-regexp "^[^#$]*[$#] ")
   (setq eshell-command-aliases-list
-	(append (list
-		 (list "cl" "clear")
-		 (list "ll" "ls -ltr -S")
-		 (list "la" "ls -a -S")
-		 (list "ex" "exit"))))
+		(append (list
+				 (list "cl" "clear")
+				 (list "ll" "ls -ltr -S")
+				 (list "la" "ls -a -S")
+				 (list "ex" "exit"))))
   :init
-  (push '("*eshell*" :height 0.6) popwin:special-display-config))
-
-
-(leaf user-function-for-eshell
-  :init
+  (push '("*eshell*" :height 0.6) popwin:special-display-config)
+  :preface
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat (eshell/pwd)

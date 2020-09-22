@@ -10,33 +10,8 @@
   :init
   (when (require 'viewer nil t)
 	(viewer-change-modeline-color-setup)
-	(setq viewer-modeline-color-view "#852941")))
-
-
-(leaf cus-view-mode
+	(setq viewer-modeline-color-view "#852941"))
   :config
-  (defun my:view-mode ()
-	"View mode with hydra."
-	(interactive)
-	(view-mode)
-	(hydra-view-mode/body))
-
-  (defun other-window-or-split ()
-	"If there is one window, open split window.
-If there are two or more windows, it will go to another window."
-	(interactive)
-	(when (one-window-p)
-	  ;; (split-window-horizontally))
-	  (follow-delete-other-windows-and-split))
-	(other-window 1))
-
-  (defun switch-buffer-in-view-mode ()
-	"Switch buffer in viewmode."
-	(interactive)
-	(counsel-switch-buffer)
-	(view-mode 1))
-
-  :init
   (add-hook
    'view-mode-hook
    (lambda ()
@@ -107,7 +82,29 @@ If there are two or more windows, it will go to another window."
    ("o" other-window-or-split)
    ("t" direx:jump-to-project-directory)
    ("s" swiper)
-   ("." nil :color blue)))
+   ("." nil :color blue))
+
+  :preface
+  (defun my:view-mode ()
+	"View mode with hydra."
+	(interactive)
+	(view-mode)
+	(hydra-view-mode/body))
+
+  (defun other-window-or-split ()
+	"If there is one window, open split window.
+If there are two or more windows, it will go to another window."
+	(interactive)
+	(when (one-window-p)
+	  ;; (split-window-horizontally))
+	  (follow-delete-other-windows-and-split))
+	(other-window 1))
+
+  (defun switch-buffer-in-view-mode ()
+	"Switch buffer in viewmode."
+	(interactive)
+	(counsel-switch-buffer)
+	(view-mode 1)))
 
 
 ;; Local Variables:

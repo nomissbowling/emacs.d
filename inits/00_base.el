@@ -5,7 +5,7 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf cus-start
+(leaf cus-start-setting
   :config
   ;; Save hist
   (savehist-mode)
@@ -93,7 +93,7 @@
     (advice-add 'emacs-init-time :override #'ad:emacs-init-time)))
 
 
-(leaf base-setting
+(leaf emacs-base-setting
   :init
   (leaf server
     :require t
@@ -161,7 +161,7 @@
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 
-(leaf cus-keybind
+(leaf cus-keybind-setting
   :init
   (bind-key "C-c z" 'text-scale-adjust)
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)

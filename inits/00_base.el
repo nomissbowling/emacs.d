@@ -164,7 +164,6 @@
 
 (leaf cus-keybind-setting
   :init
-  (bind-key "C-c z" 'text-scale-adjust)
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)

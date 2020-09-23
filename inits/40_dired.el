@@ -5,8 +5,7 @@
 ;; (setq debug-on-error t)
 
 (leaf dired
-  :hook
-  (dired-mode-hook . dired-my-append-buffer-name-hint)
+  :hook (dired-mode-hook . dired-my-append-buffer-name-hint)
   :config
   (bind-key "<left>" 'dired-up-alternate-directory dired-mode-map)
   (bind-key "<right>" 'dired-open-in-accordance-with-situation dired-mode-map)

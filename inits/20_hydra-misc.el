@@ -4,7 +4,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-;; Interactive extensions for package.el
 (leaf package-utils
   :ensure t
   :chord ("p@" . hydra-package/body)
@@ -27,7 +26,6 @@
     (counsel-M-x "^el-get ")))
 
 
-;; Emacs integration for gist.github.com
 (leaf gist
   :ensure t
   :bind (("C-c g" . gist-region-or-buffer)
@@ -54,8 +52,7 @@
 				   ("." nil)))
 
 
-;; Open browser by favorite url
-(leaf hydra-browse
+(leaf open-favorite-on-browse
   :hydra
   (hydra-browse
    (:hint nil :exit t)
@@ -102,18 +99,17 @@
    ("." nil)))
 
 
-;; Emacs in WSL and opening links
 (leaf browse-url-in-WSL
   :url "https://adam.kruszewski.name/2017/09/emacs-in-wsl-and-opening-links/"
   :if (getenv "WSLENV")
   :config
   (let ((cmd-exe "/mnt/c/Windows/System32/cmd.exe")
-	(cmd-args '("/c" "start")))
+		(cmd-args '("/c" "start")))
     (when (file-exists-p cmd-exe)
       (setq browse-url-generic-program  cmd-exe
-	    browse-url-generic-args     cmd-args
-	    browse-url-browser-function 'browse-url-generic
-	    search-web-default-browser 'browse-url-generic))))
+			browse-url-generic-args     cmd-args
+			browse-url-browser-function 'browse-url-generic
+			search-web-default-browser 'browse-url-generic))))
 
 
 ;; Local Variables:

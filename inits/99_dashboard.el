@@ -60,7 +60,6 @@
 	(insert (if (display-graphic-p)
 				(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
 	(insert "   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
-
   :preface
   (defvar dashboard-recover-layout-p nil
 	"Wether recovers the layout.")

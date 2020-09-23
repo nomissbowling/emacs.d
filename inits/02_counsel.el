@@ -26,7 +26,6 @@
   (setq counsel-yank-pop-separator
 		"\n------------------------------------------------------------\n")
   (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
-
   :init
   (leaf ivy-xref :ensure t
 	:init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
@@ -36,7 +35,6 @@
 	:hook (ivy-mode-hook . ivy-rich-mode))
   (leaf avy :ensure t
 	:bind ("C-r" . avy-goto-word-1))
-
   :preface
   (defun my:ivy-migemo-re-builder (str)
     "Own ivy-migemo-re-build for swiper."

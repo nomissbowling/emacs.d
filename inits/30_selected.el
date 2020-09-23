@@ -24,7 +24,6 @@
   :global-minor-mode selected-global-mode
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected)
-
   :preface
   ;; Control mozc when seleceted
   (defun my:activate-selected ()

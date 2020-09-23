@@ -19,7 +19,6 @@
    ("c" my:make-clean)
    ("e" next-error)
    ("<muhenkan>" nil))
-
   :init
   ;; https://gist.github.com/EricCrosson/fa41233f327403ea2a5a
   (defun close-compile-window-if-successful (buffer string)
@@ -39,7 +38,6 @@
   (add-hook 'makefile-mode-hook
 			(lambda ()
 			  (fset 'makefile-warn-suspicious-lines 'ignore)))
-
   :preface
   ;; User-compile-command
   (defun my:make-k ()

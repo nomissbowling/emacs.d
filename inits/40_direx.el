@@ -16,7 +16,6 @@
     (bind-key "o" 'direx:open-file direx:direx-mode-map)
     (bind-key "SPC" 'direx:find-item-other-window direx:direx-mode-map)
     (bind-key "<f10>" 'quit-window direx:direx-mode-map))
-
   :preface
   (defun direx:jump-to-project-directory ()
     "If in project, launch direx-project otherwise start direx."

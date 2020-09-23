@@ -42,7 +42,6 @@
 	 (define-key view-mode-map "]" 'iflipb-next-buffer)
 	 (define-key view-mode-map "?" 'hydra-view-mode/body)
 	 (define-key view-mode-map "." 'hydra-view-mode/body)))
-
   :hydra
   (hydra-view-mode
    (:color red :hint nil)
@@ -83,7 +82,6 @@
    ("t" direx:jump-to-project-directory)
    ("s" swiper)
    ("." nil :color blue))
-
   :preface
   (defun my:view-mode ()
 	"View mode with hydra."

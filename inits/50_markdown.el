@@ -40,7 +40,6 @@
     (setq livedown-open t)
     (setq livedown-port 1337)
     (setq livedown-browser nil))
-
   :preface
   (defun md2pdf ()
     "Generate pdf from currently open markdown."

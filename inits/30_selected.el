@@ -27,11 +27,11 @@
 
   :preface
   ;; Control mozc when seleceted
-  (defun my-activate-selected ()
+  (defun my:activate-selected ()
 	(selected-global-mode 1)
 	(selected--on)
-	(remove-hook 'activate-mark-hook #'my-activate-selected))
-  (add-hook 'activate-mark-hook #'my-activate-selected)
+	(remove-hook 'activate-mark-hook #'my:activate-selected))
+  (add-hook 'activate-mark-hook #'my:activate-selected)
 
   (defun my:ime-on ()
 	(interactive)

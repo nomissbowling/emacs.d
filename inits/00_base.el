@@ -167,14 +167,15 @@
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)
-  (setq select-enable-clipboard  t)
-  (setq select-enable-primary  t)
   (bind-key "s-c" 'cool-copy)
   (bind-key "s-v" 'yank)
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'my:clipboard-kill-region)
   (bind-key "C-x C-x" 'my:exchange-point-and-mark)
   :init
+  (setq select-enable-clipboard  t)
+  (setq select-enable-primary  t)
+  :preface
   (leaf cool-copy
 	:el-get blue0513/cool-copy.el
 	:require t

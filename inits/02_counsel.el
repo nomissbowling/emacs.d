@@ -74,7 +74,7 @@
 
 
 (leaf counsel-tools
-  :index
+  :init
   (leaf counsel-web
 	:ensure t
 	:config

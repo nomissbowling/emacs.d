@@ -73,7 +73,7 @@
     (counsel-M-x "^counsel ")))
 
 
-(leaf counsel-tools
+(leaf counsel-tools-setting
   :init
   (leaf counsel-web
 	:ensure t

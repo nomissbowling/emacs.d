@@ -18,7 +18,6 @@
     (bind-key "<f10>" 'quit-window direx:direx-mode-map))
 
   :preface
-  ;; https://blog.shibayu36.org/entry/2013/02/12/191459
   (defun direx:jump-to-project-directory ()
     "If in project, launch direx-project otherwise start direx."
     (interactive)

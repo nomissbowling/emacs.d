@@ -49,12 +49,11 @@
 (leaf all-the-icons
   :ensure t
   :hook (dired-mode-hook . all-the-icons-dired-mode)
-  :config
-  (setq all-the-icons-scale-factor 1.0)
-  (all-the-icons-ivy-rich-mode)
+  :config (setq all-the-icons-scale-factor 1.0)
   :init
   (leaf all-the-icons-dired :ensure t)
-  (leaf all-the-icons-ivy-rich :ensure t))
+  (leaf all-the-icons-ivy-rich :ensure t
+	:global-minor-mode t))
 
 
 (leaf darkroom

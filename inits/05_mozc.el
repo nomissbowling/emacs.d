@@ -47,7 +47,7 @@
 	 '(mozc-cand-posframe-footer-face ((t (:background "#282D43" :foreground "#454D73")))))))
 
 
-(leaf mozc-tool
+(leaf mozc-tool-setting
   :config
   (bind-key "<f7>" 'select-mozc-tool)
   (bind-key "<f8>" 'my:mozc-word-regist)

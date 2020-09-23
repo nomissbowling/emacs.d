@@ -6,8 +6,8 @@
 
 (leaf mozc
   :ensure t
+  :bind* ("<hiragana-katakana>" . toggle-input-method)
   :config
-  (bind-key* "<hiragana-katakana>" 'toggle-input-method)
   (setq default-input-method "japanese-mozc")
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (setq mozc-leim-title "♡かな")

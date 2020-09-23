@@ -182,7 +182,6 @@
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)
-  (bind-key "s-c" 'cool-copy)
   (bind-key "s-v" 'yank)
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'my:clipboard-kill-region)
@@ -193,7 +192,7 @@
   :preface
   (leaf cool-copy
 	:el-get blue0513/cool-copy.el
-	:require t
+	:bind ("s-c" . cool-copy)
 	:config	(setq cool-copy-show 'posframe))
 
   (defun my:clipboard-kill-region ()

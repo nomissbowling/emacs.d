@@ -178,8 +178,7 @@
   (leaf cool-copy
 	:el-get blue0513/cool-copy.el
 	:require t
-	:config
-	(setq cool-copy-show 'posframe))
+	:config	(setq cool-copy-show 'posframe))
 
   (defun my:clipboard-kill-region ()
 	"If the region is active, `clipboard-kill-region'.

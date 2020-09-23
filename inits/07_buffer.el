@@ -8,7 +8,6 @@
   :ensure t
   :config
   (setq auto-save-buffers-enhanced-quiet-save-p t)
-  ;; Exclusion of the auto-save-buffers
   (setq auto-save-buffers-enhanced-exclude-regexps '("^/ssh:" "^/scp:" "/sudo:"))
   (auto-save-buffers-enhanced t))
 
@@ -50,9 +49,7 @@
 
 (leaf undo-tree
   :ensure t
-  :hook
-  (prog-mode-hook . undo-tree-mode)
-  (text-mode-hook . undo-tree-mode)
+  :hook ((prog-mode-hook text-mode-hook) . undo-tree-mode)
   :config
   (bind-key* "C-_" 'undo-tree-undo)
   (bind-key* "C-\\" 'undo-tree-undo)

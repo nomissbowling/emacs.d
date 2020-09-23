@@ -67,6 +67,7 @@
     (setq line-spacing 0.4)
     (darkroom-mode 1)
     (bind-key "<f12>" 'my:darkroom-mode-out darkroom-mode-map))
+
   (defun my:darkroom-mode-out ()
     (interactive)
     (darkroom-mode 0)

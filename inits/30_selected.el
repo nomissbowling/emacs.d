@@ -6,6 +6,7 @@
 
 (leaf selected
   :ensure t
+  :global-minor-mode selected-global-mode
   :config
   (with-eval-after-load 'selected
     (bind-key ";" 'comment-dwim selected-keymap)
@@ -21,7 +22,6 @@
     (bind-key "g" 'my:google selected-keymap)
     (bind-key "l" 'counsel-selected selected-keymap)
     (bind-key "q" 'selected-off selected-keymap))
-  :global-minor-mode selected-global-mode
   :init
   (leaf counsel-selected :el-get takaxp/counsel-selected)
   :preface

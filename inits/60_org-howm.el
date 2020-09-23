@@ -33,6 +33,7 @@
   :config
   (bind-key "C-c a" 'org-agenda)
   (bind-key "C-c c" 'org-capture)
+  :init
   (setq org-log-done 'time)
   (setq org-use-speed-commands t)
   (setq org-src-fontify-natively t)
@@ -50,18 +51,19 @@
 		   "# emacs: %?\n%U %i\n\n```emacs-lisp\n%i\n```")
 		  ("l" "★ Linux" plain (file my:howm-create-file)
 		   "# linux: %?\n%U %i")))
-  :init
+  :preface
   ;; Maximize the org-capture buffer
   (defvar my:org-capture-before-config nil
     "Window configuration before 'org-capture'.")
   (defadvice org-capture (before save-config activate)
     "Save the window configuration before 'org-capture'."
     (setq my:org-capture-before-config (current-window-configuration)))
-  (add-hook 'org-capture-mode-hook 'delete-other-windows)
+  (add-hook 'org-capture-mode-hook 'delete-other-windows))
 
-  (leaf open-junk-file :ensure t
-    :config
-    (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")))
+
+(leaf open-junk-file :ensure t
+  :config
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
 
 
 ;; Local Variables:

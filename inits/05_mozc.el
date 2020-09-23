@@ -12,16 +12,17 @@
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (setq mozc-leim-title "♡かな")
   :init
+  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
+  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
+  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
+
   (defun mozc-insert-str (str)
     "If punctuation marks, immediately confirm."
     (mozc-handle-event 'enter)
     (toggle-input-method)
     (insert str)
     (toggle-input-method))
-  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
-  (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
-  (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
-  (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
 
   (defadvice toggle-input-method (around toggle-input-method-around activate)
     "Input method function in key-chord.el not to be nil."

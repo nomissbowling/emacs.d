@@ -28,10 +28,10 @@
 
 (leaf gist
   :ensure t
-  :bind (("C-c g" . gist-region-or-buffer)
-		 ("C-c l" . gist-list)
-		 (:tabulated-list-mode-map
-		  ("." . hydra-gist-help/body)))
+  :config
+  (bind-key "C-c g" 'gist-region-or-buffer)
+  (bind-key "C-c l" 'gist-list)
+  (bind-key "." 'hydra-gist-help/body tabulated-list-mode-map)
   :hydra
   (hydra-gist-help ()
 				   "

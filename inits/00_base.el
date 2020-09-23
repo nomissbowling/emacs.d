@@ -90,17 +90,7 @@
   		(if (called-interactively-p 'interactive)
   			(message "%s" str)
   		  str)))
-    (advice-add 'emacs-init-time :override #'ad:emacs-init-time))
-  ;; M-x info-emacs-manual (C-h r or F1+r)
-  (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")
-  (defun Info-find-node--info-ja (orig-fn filename &rest args)
-    "Info as ORIG-FN FILENAME ARGS."
-    (apply orig-fn
-		   (pcase filename
-			 ("emacs" "emacs-ja.info")
-			 (_ filename))
-		   args))
-  (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
+    (advice-add 'emacs-init-time :override #'ad:emacs-init-time)))
 
 
 (leaf base-setting
@@ -156,7 +146,19 @@
     (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     :config
     (require 'user-dired)
-    (require 'user-template)))
+    (require 'user-template))
+
+  :config
+  ;; M-x info-emacs-manual (C-h r or F1+r)
+  (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")
+  (defun Info-find-node--info-ja (orig-fn filename &rest args)
+	"Info as ORIG-FN FILENAME ARGS."
+	(apply orig-fn
+		   (pcase filename
+			 ("emacs" "emacs-ja.info")
+			 (_ filename))
+		   args))
+  (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 
 (leaf cus-keybind

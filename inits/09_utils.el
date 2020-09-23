@@ -53,12 +53,13 @@
 
 
 (leaf pdfout-from-emacs
+  :config
+  (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
   :init
   (defun pdfout-select ()
     "PDF out select menu."
     (interactive)
     (counsel-M-x "^my:pdfout "))
-  (setq my:pdfout-command-format "nkf -e | e2ps -a4 -p -nh | ps2pdf - %s")
   (defun my:pdfout-buffer ()
     "PDF out from buffer."
     (interactive)
@@ -72,19 +73,20 @@
 
 
 (leaf user-functions-utils
+  :config
+  (bind-key "<f3>" 'filer-current-dir-open)
+  (bind-key "<f4>" 'term-current-dir-open)
   :init
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)
     (compile (concat "Thunar " default-directory)))
-  (bind-key "<f3>" 'filer-current-dir-open)
 
   (defun term-current-dir-open ()
     "Open terminal application in current dir."
     (interactive)
     (let ((dir (directory-file-name default-directory)))
       (compile (concat "gnome-terminal --working-directory " dir))))
-  (bind-key "<f4>" 'term-current-dir-open)
 
   (defun my:delete-file-if-no-contents ()
     "Automatic deletion for empty files (Valid in all modes)."

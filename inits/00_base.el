@@ -147,19 +147,7 @@
     (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     :config
     (require 'user-dired)
-    (require 'user-template))
-
-  :config
-  ;; M-x info-emacs-manual (C-h r or F1+r)
-  (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")
-  (defun Info-find-node--info-ja (orig-fn filename &rest args)
-	"Info as ORIG-FN FILENAME ARGS."
-	(apply orig-fn
-		   (pcase filename
-			 ("emacs" "emacs-ja.info")
-			 (_ filename))
-		   args))
-  (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
+    (require 'user-template)))
 
 
 (leaf cus-keybind-setting
@@ -193,7 +181,18 @@ If the region is inactive, `backward-kill-word'."
 	"No mark active `exchange-point-and-mark'."
 	(interactive)
 	(exchange-point-and-mark)
-	(deactivate-mark)))
+	(deactivate-mark))
+
+  ;; M-x info-emacs-manual (C-h r or F1+r)
+  (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")
+  (defun Info-find-node--info-ja (orig-fn filename &rest args)
+	"Info as ORIG-FN FILENAME ARGS."
+	(apply orig-fn
+		   (pcase filename
+			 ("emacs" "emacs-ja.info")
+			 (_ filename))
+		   args))
+  (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 
 ;; Local Variables:

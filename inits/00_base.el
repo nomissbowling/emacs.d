@@ -149,7 +149,7 @@
     (require 'user-template)))
 
 
-(leaf cus-keybind-setting
+(leaf cus-keybind
   :config
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)

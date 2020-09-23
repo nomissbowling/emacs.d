@@ -19,11 +19,8 @@
   (bind-key "w" 'my:weblio selected-keymap)
   (bind-key "t" 'google-translate-auto selected-keymap)
   (bind-key "g" 'my:google selected-keymap)
-  (bind-key "l" 'counsel-selected selected-keymap)
   (bind-key "q" 'selected-off selected-keymap)
   :init
-  (leaf counsel-selected :el-get takaxp/counsel-selected)
-  :preface
   ;; Control mozc when seleceted
   (defun my:activate-selected ()
 	(selected-global-mode 1)

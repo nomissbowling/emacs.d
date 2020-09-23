@@ -33,10 +33,11 @@
 (leaf iflipb
   :ensure t
   :config
-  (setq iflipb-wrap-around t)
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "GH" "dir" ".org"))
   (bind-key "M-]" 'iflipb-next-buffer)
-  (bind-key "M-[" 'iflipb-previous-buffer))
+  (bind-key "M-[" 'iflipb-previous-buffer)
+  :init
+  (setq iflipb-wrap-around t)
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "GH" "dir" ".org")))
 
 
 (leaf undohist
@@ -57,13 +58,14 @@
   (bind-key* "C-\\" 'undo-tree-undo)
   (bind-key* "C-/" 'undo-tree-redo)
   (bind-key* "C-x u" 'undo-tree-visualize)
+  :init
   (setq undo-tree-visualizer-timestamps t)
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-enable-undo-in-region nil)
   (setq undo-tree-auto-save-history nil)
   (setq undo-tree-history-directory-alist
 		`(("." . ,(concat user-emacs-directory "undo-tree-hist/"))))
-  :init
+  :preface
   ;; show visualizer diff display
   (defun undo-tree-visualizer-show-diff (&optional node)
 	(setq-local undo-tree-visualizer-diff t)
@@ -86,6 +88,7 @@
   :config
   (bind-key [S-return] 'toggle-scratch)
   (bind-key "M-/" 'kill-buffer)
+  :init
   (defun toggle-scratch ()
     "Toggle current buffer and *scratch* buffer."
     (interactive)

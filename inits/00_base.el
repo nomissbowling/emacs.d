@@ -103,7 +103,7 @@
   (advice-add 'Info-find-node :around 'Info-find-node--info-ja))
 
 
-(leaf cus-base-setting
+(leaf base-setting
   :init
   (leaf server
     :require t

@@ -50,61 +50,61 @@
   (add-to-list 'dashboard-items '(custom) t)
   :init
   (defun dashboard-goto-recent-files ()
-    "Go to recent files."
-    (interactive)
-    (funcall (local-key-binding "r")))
+	"Go to recent files."
+	(interactive)
+	(funcall (local-key-binding "r")))
 
   (defun dashboard-insert-custom (list-size)
-    "Insert custom and set LIST-SIZE."
-    (interactive)
-    (insert (if (display-graphic-p)
+	"Insert custom and set LIST-SIZE."
+	(interactive)
+	(insert (if (display-graphic-p)
 				(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
-    (insert "   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+	(insert "   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
   :preface
   (defvar dashboard-recover-layout-p nil
-    "Wether recovers the layout.")
+	"Wether recovers the layout.")
 
   (defun restore-previous-session ()
-    "Restore the previous session."
-    (interactive)
-    (when (bound-and-true-p persp-mode)
-      (restore-session persp-auto-save-fname)))
+	"Restore the previous session."
+	(interactive)
+	(when (bound-and-true-p persp-mode)
+	  (restore-session persp-auto-save-fname)))
 
   (defun restore-session (fname)
-    "Restore the specified session."
-    (interactive (list (read-file-name "Load perspectives from a file: "
+	"Restore the specified session."
+	(interactive (list (read-file-name "Load perspectives from a file: "
 									   persp-save-dir)))
-    (when (bound-and-true-p persp-mode)
-      (message "Restoring session...")
-      (quit-window t)
-      (condition-case-unless-debug err
+	(when (bound-and-true-p persp-mode)
+	  (message "Restoring session...")
+	  (quit-window t)
+	  (condition-case-unless-debug err
 		  (persp-load-state-from-file fname)
 		(error "Error: Unable to restore session -- %s" err))
-      (message "Done")))
+	  (message "Done")))
 
   (defun open-dashboard ()
-    "Open the *dashboard* buffer and jump to the first widget."
-    (interactive)
-    (delete-other-windows)
-    (setq default-directory "~/")
-    ;; Refresh dashboard buffer
-    (if (get-buffer dashboard-buffer-name)
+	"Open the *dashboard* buffer and jump to the first widget."
+	(interactive)
+	(delete-other-windows)
+	(setq default-directory "~/")
+	;; Refresh dashboard buffer
+	(if (get-buffer dashboard-buffer-name)
 		(kill-buffer dashboard-buffer-name))
-    (dashboard-insert-startupify-lists)
-    (switch-to-buffer dashboard-buffer-name)
-    ;; Jump to the first section
-    (goto-char (point-min))
-    (dashboard-goto-recent-files))
+	(dashboard-insert-startupify-lists)
+	(switch-to-buffer dashboard-buffer-name)
+	;; Jump to the first section
+	(goto-char (point-min))
+	(dashboard-goto-recent-files))
 
   (defun quit-dashboard ()
-    "Quit dashboard window."
-    (interactive)
-    (quit-window t)
-    (when (and dashboard-recover-layout-p
+	"Quit dashboard window."
+	(interactive)
+	(quit-window t)
+	(when (and dashboard-recover-layout-p
 			   (bound-and-true-p winner-mode))
-      (winner-undo)
-      (setq dashboard-recover-layout-p nil))))
+	  (winner-undo)
+	  (setq dashboard-recover-layout-p nil))))
 
 
 ;; Local Variables:

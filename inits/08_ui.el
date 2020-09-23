@@ -52,8 +52,7 @@
   :config (setq all-the-icons-scale-factor 1.0)
   :init
   (leaf all-the-icons-dired :ensure t)
-  (leaf all-the-icons-ivy-rich :ensure t
-	:global-minor-mode t))
+  (leaf all-the-icons-ivy-rich :ensure t))
 
 
 (leaf darkroom

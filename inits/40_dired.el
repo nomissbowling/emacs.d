@@ -42,7 +42,6 @@
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
 
   :preface
-  ;; Switching the display and non-display of hidden files
   (defun toggle-dired-listing-switches ()
     "Toggle `dired-mode' switch between with and without 'A' option to show or hide dot files."
     (interactive)

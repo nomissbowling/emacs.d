@@ -6,16 +6,16 @@
 
 (leaf direx
   :ensure t
+  :bind ("<f10>" . direx:jump-to-project-directory)
   :config
-  (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
-  (push '(direx:direx-mode :position left :width 25 :dedicated t)
-		popwin:special-display-config)
-  (bind-key "<f10>" 'direx:jump-to-project-directory)
-  (bind-key "C-x C-j" 'direx:jump-to-project-directory)
   (with-eval-after-load 'direx
     (bind-key "o" 'direx:open-file direx:direx-mode-map)
     (bind-key "SPC" 'direx:find-item-other-window direx:direx-mode-map)
     (bind-key "<f10>" 'quit-window direx:direx-mode-map))
+  :init
+  (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
+  (push '(direx:direx-mode :position left :width 25 :dedicated t)
+		popwin:special-display-config)
   :preface
   (defun direx:jump-to-project-directory ()
     "If in project, launch direx-project otherwise start direx."

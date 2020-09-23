@@ -57,8 +57,8 @@
 
 (leaf darkroom
   :ensure t
+  :bind ("<f12>" . my:darkroom-mode-in)
   :config
-  (bind-key "<f12>" 'my:darkroom-mode-in)
   (defun my:darkroom-mode-in ()
     (interactive)
     (display-line-numbers-mode 0)

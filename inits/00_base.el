@@ -163,7 +163,7 @@
 
 
 (leaf cus-keybind-setting
-  :init
+  :config
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)
@@ -171,9 +171,17 @@
   (setq select-enable-primary  t)
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'my:clipboard-kill-region)
-  (bind-key "s-v" 'yank)
   (bind-key "C-x C-x" 'my:exchange-point-and-mark)
-  :config
+  :init
+  (leaf cool-copy
+	:el-get blue0513/cool-copy.el
+	:bind (("s-c" . cool-copy)
+		   ("s-v" . yank))
+	:config
+	;; (bind-key "s-c" 'cool-copy)
+	;; (bind-key "s-v" 'yank)
+	(setq cool-copy-show 'posframe))
+
   (defun my:clipboard-kill-region ()
 	"If the region is active, `clipboard-kill-region'.
 If the region is inactive, `backward-kill-word'."
@@ -181,6 +189,7 @@ If the region is inactive, `backward-kill-word'."
 	(if (use-region-p)
 		(clipboard-kill-region (region-beginning) (region-end))
 	  (backward-kill-word 1)))
+
   (defun my:exchange-point-and-mark ()
 	"No mark active `exchange-point-and-mark'."
 	(interactive)

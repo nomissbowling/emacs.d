@@ -31,7 +31,7 @@
   ;; fringe-mode for right- only
   (fringe-mode (cons 0 nil))
 
-  ;; frame
+  ;; Start screen
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
   (tool-bar-mode 0)

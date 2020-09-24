@@ -187,8 +187,8 @@
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'clipboard-kill-region)
   :init
-  (setq select-enable-clipboard  t)
-  (setq select-enable-primary  t)
+  (setq select-enable-clipboard t)
+  (setq select-enable-primary t)
   :preface
   (leaf cool-copy :require t
 	:el-get blue0513/cool-copy.el

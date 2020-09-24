@@ -14,7 +14,8 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
-  (bind-key "C-s" 'swiper)
+  (bind-key "C-r" 'swiper)
+  (bind-key "C-s" 'swiper-thing-at-point)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'switch-to-buffer)
   (bind-key "C-x C-f" 'counsel-find-file)
@@ -23,6 +24,7 @@
   (bind-key "<f6>" 'select-counsel-command)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
+  (setq counsel-find-file-ignore-regexp (regexp-opt completion-ignored-extensions))
   (setq counsel-yank-pop-separator
 		"\n------------------------------------------------------------\n")
   (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
@@ -36,9 +38,6 @@
 
   (leaf ivy-rich :ensure t
 	:hook (ivy-mode-hook . ivy-rich-mode))
-
-  (leaf avy :ensure t
-	:bind ("C-r" . avy-goto-word-1))
 
   :preface
   (defun my:ivy-migemo-re-builder (str)

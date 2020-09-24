@@ -21,6 +21,7 @@
   (bind-key "t" 'counsel-tramp dired-mode-map)
   (bind-key "s" 'sudo-edit dired-mode-map)
   (bind-key "." 'magit-status dired-mode-map)
+  (bind-key "," 'dired dired-mode-map)
   ;; Use dired as 2-screen filer
   (setq dired-dwim-target t)
   ;; Always to perform the delete/copy of directories recursively

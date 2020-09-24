@@ -6,7 +6,7 @@
 
 (leaf eshell
   :after popwin
-  :bind* ("C-z" . eshell)
+  :bind* ("s-z" . eshell)
   :config
   (setq eshell-cmpl-ignore-case t)
   (setq eshell-ask-to-save-history (quote always))

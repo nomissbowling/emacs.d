@@ -174,7 +174,7 @@
     (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     :config
     (require 'user-dired)
-    (require 'user-template)))
+    (require 'User-Template)))
 
 
 (leaf cus-keybind

@@ -174,7 +174,7 @@
     (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     :config
     (require 'user-dired)
-    (require 'User-Template)))
+    (require 'user-template)))
 
 
 (leaf cus-keybind
@@ -182,6 +182,7 @@
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)
   (bind-key "C-." 'xref-find-definitions)
+  (bind-key "s-c" 'cool-copy)
   (bind-key "s-v" 'yank)
   (bind-key "M-w" 'clipboard-kill-ring-save)
   (bind-key "C-w" 'my:clipboard-kill-region)
@@ -190,9 +191,8 @@
   (setq select-enable-clipboard  t)
   (setq select-enable-primary  t)
   :preface
-  (leaf cool-copy
+  (leaf cool-copy :require t
 	:el-get blue0513/cool-copy.el
-	:bind ("s-c" . cool-copy)
 	:config	(setq cool-copy-show 'posframe))
 
   (defun my:clipboard-kill-region ()

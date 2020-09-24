@@ -20,9 +20,7 @@
    ("d" vc-diff)
    ("<muhenkan>" nil))
   :init
-  (leaf git-timemachine :ensure t)
-  (leaf keychain-environment :ensure t
-	:config (keychain-refresh-environment)))
+  (leaf git-timemachine :ensure t))
 
 
 (leaf diff-hl

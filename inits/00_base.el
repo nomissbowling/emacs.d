@@ -141,11 +141,11 @@
     (setq recentf-save-file "~/.emacs.d/recentf")
     (setq recentf-max-saved-items 200)
     (setq recentf-auto-cleanup 'never)
-	(setq recentf-exclude
-		  '("recentf" "COMMIT_EDITMSG" "bookmarks" "emacs.d" "\\.gitignore"
-			"\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" ".howm-keys" "\\.emacs.d/" "^/tmp/" "^/scp:"
-			(lambda (file) (file-in-directory-p file package-user-dir))))
-	(push (expand-file-name recentf-save-file) recentf-exclude))
+  	(setq recentf-exclude
+  		  '("recentf" "COMMIT_EDITMSG" "bookmarks" "\\.gitignore"
+  			"\\.\\(?:gz\\|gif\\|svg\\|png\\|jpe?g\\)$" ".howm-keys" "\\.emacs.d/" "^/tmp/" "^/scp:"
+  			(lambda (file) (file-in-directory-p file package-user-dir))))
+  	(push (expand-file-name recentf-save-file) recentf-exclude))
 
   (leaf display-line-numbers
     :bind ("<f9>" . display-line-numbers-mode)

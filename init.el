@@ -1,8 +1,8 @@
-;;; init.el --- emacs-initial-setting  -*- lexical-binding: t -*-
+;;; init.el --- emacs initial setting  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;; (setq debug-on-error t)
-
 
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)

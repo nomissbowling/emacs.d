@@ -43,9 +43,8 @@
 
 
   (leaf load-user-function
-    :init
-    (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     :config
+    (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     (leaf user-dired :require t)
     (leaf user-template :require t))
 

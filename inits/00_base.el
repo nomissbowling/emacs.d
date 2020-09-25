@@ -42,7 +42,6 @@
   (setq vc-follow-symlinks t)
   (setq-default tab-width 4)
 
-  :init
   ;; Basic code
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
@@ -78,7 +77,7 @@
 
 
 (leaf emacs-base-setting
-  :init
+  :config
   (leaf server
     :require t
     :config

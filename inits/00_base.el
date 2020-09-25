@@ -7,31 +7,17 @@
 
 (leaf cus-start-setting
   :config
-  ;; Save hist
+  ;; Basic modes
   (savehist-mode)
-
-  ;;Save plae
   (save-place-mode)
-
-  ;; Automatic reloading of changed files
   (global-auto-revert-mode)
-
-  ;; Do not blink the cursor
   (blink-cursor-mode)
-
-  ;; Window configuration undo/redo
   (winner-mode)
-
-  ;; font-lock
   (global-font-lock-mode)
-
-  ;; word wrapping is used
   (global-visual-line-mode)
-
-  ;; fringe-mode for right- only
   (fringe-mode (cons 0 nil))
 
-  ;; Start screen
+  ;; UI
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
   (tool-bar-mode 0)
@@ -39,54 +25,29 @@
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
 
-  ;; All warning sounds and flash are invalid (note that the warning sound does not sound completely)
+  ;; Misc
   (setq ring-bell-function 'ignore)
-
-  ;; unable right-to-left language reordering
   (setq-default bidi-display-reordering nil)
-
-  ;; Point keeps its screen position when scroll
   (setq scroll-preserve-screen-position :always)
-
-  ;; Turn Off warning sound screen flash
   (setq visible-bell nil)
-
-  ;; Do not change the position of the cursor when scrolling pages
   (setq scroll-preserve-screen-position t)
-
-  ;; Suppress warnings for 'ad-handle-definition:'
   (setq ad-redefinition-action 'accept)
-
-  ;; Do not distinguish uppercase and lowercase letters on completion
   (setq completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
-
-  ;; Copy with mouse drag
   (setq mouse-drag-copy-region t)
-
-  ;; Do not make a backup filie like *.~
   (setq make-backup-files nil)
-
-  ;; Do not use auto save
   (setq auto-save-default nil)
-
-  ;; Do not create lock file
   (setq create-lockfiles nil)
-
-  ;; Open symbolic link directly
   (setq vc-follow-symlinks t)
-
-  ;; Customize tab width
   (setq-default tab-width 4)
 
   :init
-  ;; Save the file specified code with basic utf-8 if it exists
+  ;; Basic code
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
 
-  ;; font
+  ;; Font
   (add-to-list 'default-frame-alist '(font . "Cica-18"))
-  ;; for sub-machine
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-15")))
 
@@ -170,7 +131,7 @@
   (leaf generic-x :require t))
 
 
-(leaf change-key-binding
+(leaf user-key-modifiers
   :config
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)

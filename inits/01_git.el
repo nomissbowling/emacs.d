@@ -9,6 +9,7 @@
   :config
   (bind-key "C-x g" 'magit-status)
   (bind-key "C-x m" 'hydra-magit/body)
+  (bind-key "C-x t" 'git-timemachine-toggle)
   :hydra
   (hydra-magit
    (:color red :hint nil)

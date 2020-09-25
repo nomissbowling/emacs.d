@@ -42,6 +42,23 @@
   (setq vc-follow-symlinks t)
   (setq-default tab-width 4)
 
+  ;; Hack emacs-init-time
+  (with-eval-after-load "time"
+    (defun ad:emacs-init-time ()
+      "Return a string giving the duration of the Emacs initialization."
+      (interactive)
+      (let ((str
+  			 (format "%.3f seconds"
+  					 (float-time
+  					  (time-subtract after-init-time before-init-time)))))
+  		(if (called-interactively-p 'interactive)
+  			(message "%s" str)
+  		  str)))
+    (advice-add 'emacs-init-time :override #'ad:emacs-init-time)))
+
+
+(leaf emacs-base-setting
+  :config
   ;; Basic code
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
@@ -61,23 +78,7 @@
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill))
 
-  ;; Hack emacs-init-time
-  (with-eval-after-load "time"
-    (defun ad:emacs-init-time ()
-      "Return a string giving the duration of the Emacs initialization."
-      (interactive)
-      (let ((str
-  			 (format "%.3f seconds"
-  					 (float-time
-  					  (time-subtract after-init-time before-init-time)))))
-  		(if (called-interactively-p 'interactive)
-  			(message "%s" str)
-  		  str)))
-    (advice-add 'emacs-init-time :override #'ad:emacs-init-time)))
-
-
-(leaf emacs-base-setting
-  :config
+  :init
   (leaf server
     :require t
     :config

@@ -42,14 +42,22 @@
     (setq custom-file (locate-user-emacs-file "custom.el")))
 
 
-  (leaf init-loader
-    :ensure t
+  (leaf load-user-function
+    :init
+    (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
     :config
-    (custom-set-variables '(init-loader-show-log-after-init 'error-only))
-    (add-hook
-     'after-init-hook
-     (lambda ()
-       (init-loader-load "~/Dropbox/emacs.d/inits")))))
+    (leaf user-dired :require t)
+    (leaf user-template :require t))
+
+
+  (leaf init-loader
+	:ensure t
+	:config
+	(custom-set-variables '(init-loader-show-log-after-init 'error-only))
+	(add-hook
+	 'after-init-hook
+	 (lambda ()
+	   (init-loader-load "~/Dropbox/emacs.d/inits")))))
 
 
 (provide 'init)

@@ -25,9 +25,6 @@
 
 (leaf sequential-command-config
   :hook (emacs-startup-hook . sequential-command-setup-keys)
-  :config
-  (bind-key "C-a" 'seq-home)
-  (bind-key "C-e" 'seq-end)
   :init
   (leaf sequential-command
     :el-get HKey/sequential-command))

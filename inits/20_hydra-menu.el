@@ -109,6 +109,11 @@
 
 (leaf user-defined-function
   :config
+  (defun sylpheed ()
+	"Open sylpheed."
+	(interactive)
+	(shell-command-to-string "sylpheed %u"))
+
   (defun my:ps-print ()
     "Narrow the only counsel-command in M-x."
     (interactive)

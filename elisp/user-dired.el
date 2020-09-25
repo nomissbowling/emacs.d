@@ -15,7 +15,7 @@
   (interactive)
   (find-file "~/Dropbox/"))
 
-(defun my:www-dir ()
+(defun my:web-dir ()
   "Open Web dir."
   (interactive)
   (find-file "~/Dropbox/web/"))
@@ -40,27 +40,21 @@
   (interactive)
   (find-file "~/Dropbox/backup/"))
 
-(defun my:otibo ()
-  "Open otibo dir."
-  (interactive)
-  (find-file "~/Dropbox/GH/otibo/tex/otibo.txt")
-  (goto-char (point-min)))
-
 (defun my:book-dir ()
   "Open book dir."
   (interactive)
   (find-file "~/Dropbox/book/"))
+
+(defun my:junk-file-dir ()
+  "Open junk-file dir."
+  (interactive)
+  (find-file "~/Dropbox/howm/junk/"))
 
 (defun my:diary ()
   "Open diary dir."
   (interactive)
   (find-file "~/Dropbox/GH/dia/diary.txt")
   (goto-char (point-min)))
-
-(defun my:junk-file-dir ()
-  "Open junk-file dir."
-  (interactive)
-  (find-file "~/Dropbox/howm/junk/"))
 
 (defun my:d_kukai ()
   "Open dkukai minoru_seq file."
@@ -98,6 +92,12 @@
   (find-file "~/Dropbox/GH/kinnei/kinnei.txt")
   (goto-char (point-min)))
 
+(defun my:otibo ()
+  "Open otibo dir."
+  (interactive)
+  (find-file "~/Dropbox/GH/otibo/tex/otibo.txt")
+  (goto-char (point-min)))
+
 (defun my:apsh ()
   "Open apsh file."
   (interactive)
@@ -109,11 +109,6 @@
   (interactive)
   (find-file "~/Dropbox/emacs.d/docs/index.md")
   (goto-char (point-min)))
-
-(defun sylpheed ()
-  "Open sylpheed."
-  (interactive)
-  (shell-command-to-string "sylpheed %u"))
 
 
 (provide 'user-dired)

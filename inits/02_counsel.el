@@ -32,10 +32,8 @@
   :init
   (leaf ivy-xref :ensure t
 	:init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
-
   (leaf amx :ensure t
 	:init (setq amx-history-length 20))
-
   (leaf ivy-rich :ensure t
 	:hook (ivy-mode-hook . ivy-rich-mode))
 

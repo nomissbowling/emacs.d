@@ -49,7 +49,9 @@
 (leaf all-the-icons
   :ensure t
   :hook (dired-mode-hook . all-the-icons-dired-mode)
-  :config (setq all-the-icons-scale-factor 1.0)
+  :config
+  (setq all-the-icons-scale-factor 1.0)
+  (all-the-icons-ivy-rich-mode)
   :init
   (leaf all-the-icons-dired :ensure t)
   (leaf all-the-icons-ivy-rich :ensure t))

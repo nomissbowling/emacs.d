@@ -16,7 +16,7 @@
  📦 Git: _s_tatus  _b_lame  _t_imemachine  _d_iff"
    ("s" magit-status :exit t)
    ("b" magit-blame :exit t)
-   ("t" git-timemachine :exit t)
+   ("t" git-timemachine)
    ("d" vc-diff)
    ("<muhenkan>" nil))
   :init

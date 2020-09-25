@@ -185,14 +185,22 @@
   (bind-key "s-c" 'cool-copy)
   (bind-key "s-v" 'clipboard-yank)
   (bind-key "M-w" 'clipboard-kill-ring-save)
-  (bind-key "C-w" 'clipboard-kill-region)
+  (bind-key "C-w" 'my:clipboard-kill-region)
   :init
   (setq select-enable-clipboard t)
   (setq select-enable-primary t)
-  :preface
   (leaf cool-copy :require t
 	:el-get blue0513/cool-copy.el
-	:config	(setq cool-copy-show 'posframe))
+	:config
+	(setq cool-copy-show 'posframe))
+  :preface
+  (defun my:clipboard-kill-region ()
+	"If the region is active, `clipboard-kill-region'.
+If the region is inactive, `backward-kill-word'."
+	(interactive)
+	(if (use-region-p)
+		(clipboard-kill-region (region-beginning) (region-end))
+	  (backward-kill-word 1)))
 
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")

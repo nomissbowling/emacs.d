@@ -7,11 +7,11 @@
 (leaf mozc
   :ensure t
   :bind* ("<hiragana-katakana>" . toggle-input-method)
-  :config
+  :init
   (setq default-input-method "japanese-mozc")
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (setq mozc-leim-title "♡かな")
-  :init
+  :config
   (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
   (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
   (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))

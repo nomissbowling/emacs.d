@@ -170,7 +170,7 @@
   (leaf generic-x :require t))
 
 
-(leaf cus-keybind
+(leaf change-key-binding
   :config
   (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
   (bind-key "C-," 'xref-find-references)

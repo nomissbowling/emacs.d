@@ -5,13 +5,13 @@
 
 (leaf viewer
   :ensure t
+  :require t
   :chord ("jk" . my:view-mode)
   :bind ("C-q" . other-window-or-split)
-  :init
-  (when (require 'viewer nil t)
-	(viewer-change-modeline-color-setup)
-	(setq viewer-modeline-color-view "#852941"))
   :config
+  (viewer-change-modeline-color-setup)
+  (setq viewer-modeline-color-view "#852941")
+  :init
   (add-hook
    'view-mode-hook
    (lambda ()

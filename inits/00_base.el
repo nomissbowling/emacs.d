@@ -24,6 +24,7 @@
   (menu-bar-mode 0)
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
 
   ;; Misc
   (setq ring-bell-function 'ignore)
@@ -51,14 +52,9 @@
   (when (string-match "x250" (shell-command-to-string "uname -n"))
     (add-to-list 'default-frame-alist '(font . "Cica-15")))
 
-  ;; Exit Emacs with M-x exitle
+  ;; Modifires
   (defalias 'exit 'save-buffers-kill-emacs)
-
-  ;; Input yes or no to y or n (even SPC OK instead of y)
   (defalias 'yes-or-no-p 'y-or-n-p)
-
-  ;; Set transparency (active inactive)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
 
   ;; Set buffer that can not be killed
   (with-current-buffer "*scratch*"

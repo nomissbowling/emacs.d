@@ -69,7 +69,7 @@
 											   (concat (read-from-minibuffer "File name:") ".pdf")))))
 
 
-(leaf user-functions-utils
+(leaf user-utils-function
   :config
   (bind-key "<f3>" 'filer-current-dir-open)
   (bind-key "<f4>" 'term-current-dir-open)

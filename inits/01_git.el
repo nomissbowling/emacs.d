@@ -1,4 +1,4 @@
-;;; 01_git.el  --- 01_git.el   -*- lexical-binding: t -*-_
+;;; 01_git.el  --- git tools inside emacs  -*- lexical-binding: t -*-_
 ;;; Commentary:
 
 ;;; Code:

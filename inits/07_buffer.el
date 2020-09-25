@@ -1,4 +1,4 @@
-;;; 07_buffer.el --- 07_buffer.el   -*- lexical-binding: t -*-
+;;; 07_buffer.el --- buffer control tools  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

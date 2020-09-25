@@ -1,4 +1,4 @@
-;;; 20_hydra-menu.el --- 20_hydra-menu.el   -*- lexical-binding: t -*-
+;;; 20_hydra-menu.el --- hydra for work menu  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

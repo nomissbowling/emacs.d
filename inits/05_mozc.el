@@ -1,4 +1,4 @@
-;;; 05_mozc.el --- 05_mozc.el   -*- lexical-binding: t -*-
+;;; 05_mozc.el --- minor mode to input japanese with mozc  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

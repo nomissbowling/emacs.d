@@ -1,5 +1,6 @@
-;;; 10_view-mode.el --- 10_view-mode.el   -*- lexical-binding: t -*-
+;;; 10_view-mode.el --- view-mode settings  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;;(setq debug-on-error t)
 

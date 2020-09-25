@@ -1,4 +1,4 @@
-;;; 06_highlight.el --- 06_highlight.el   -*- lexical-binding: t -*-
+;;; 06_highlight.el --- highlight tools  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

@@ -1,4 +1,4 @@
-;;; 03_company.el --- 03_company.el   -*- lexical-binding: t -*-
+;;; 03_company.el --- Modular text completion framework  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

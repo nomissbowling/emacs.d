@@ -1,4 +1,4 @@
-;;; 02_counsel.el --- 02_counsel.el   -*- lexical-binding: t -*-
+;;; 02_counsel.el --- Various completion functions using Ivy  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

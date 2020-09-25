@@ -1,4 +1,4 @@
-;;; 90_translate.el --- 90_translate.el   -*- lexical-binding: t -*-
+;;; 90_translate.el --- emacs interface to google translate  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -12,26 +12,26 @@
     "Automatically recognize and translate Japanese and English."
     (interactive)
     (if (use-region-p)
-	(let ((string (buffer-substring-no-properties (region-beginning) (region-end))))
-	  (deactivate-mark)
-	  (if (string-match (format "\\`[%s]+\\'" "[:ascii:]")
-			    string)
-	      (google-translate-translate
-	       "en" "ja"
-	       string)
-	    (google-translate-translate
-	     "ja" "en"
-	     string)))
+		(let ((string (buffer-substring-no-properties (region-beginning) (region-end))))
+		  (deactivate-mark)
+		  (if (string-match (format "\\`[%s]+\\'" "[:ascii:]")
+							string)
+			  (google-translate-translate
+			   "en" "ja"
+			   string)
+			(google-translate-translate
+			 "ja" "en"
+			 string)))
       (let ((string (read-string "Google Translate: ")))
-	(if (string-match
-	     (format "\\`[%s]+\\'" "[:ascii:]")
-	     string)
-	    (google-translate-translate
-	     "en" "ja"
-	     string)
-	  (google-translate-translate
-	   "ja" "en"
-	   string))))))
+		(if (string-match
+			 (format "\\`[%s]+\\'" "[:ascii:]")
+			 string)
+			(google-translate-translate
+			 "en" "ja"
+			 string)
+		  (google-translate-translate
+		   "ja" "en"
+		   string))))))
 
 
 ;; Fix error of "Failed to search TKK"
@@ -60,4 +60,5 @@
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
+
 ;;; 90_translate.el ends here

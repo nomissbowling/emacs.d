@@ -1,5 +1,6 @@
-;;; 99_dashboard.el --- 99_dashboard.el   -*- lexical-binding: t -*-
+;;; 99_dashboard.el --- startup screen extracted  -*- lexical-binding: t -*-
 ;;; Commentary:
+
 ;;; Code:
 ;;(setq debug-on-error t)
 

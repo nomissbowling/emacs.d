@@ -6,31 +6,32 @@
 
 (leaf google-translate
   :ensure t
+  :bind ("s-t" . google-translate-auto)
   :config
   (defun google-translate-auto ()
     "Automatically recognize and translate Japanese and English."
     (interactive)
     (if (use-region-p)
-		(let ((string (buffer-substring-no-properties (region-beginning) (region-end))))
-		  (deactivate-mark)
-		  (if (string-match (format "\\`[%s]+\\'" "[:ascii:]")
-							string)
-			  (google-translate-translate
-			   "en" "ja"
-			   string)
-			(google-translate-translate
-			 "ja" "en"
-			 string)))
+	(let ((string (buffer-substring-no-properties (region-beginning) (region-end))))
+	  (deactivate-mark)
+	  (if (string-match (format "\\`[%s]+\\'" "[:ascii:]")
+			    string)
+	      (google-translate-translate
+	       "en" "ja"
+	       string)
+	    (google-translate-translate
+	     "ja" "en"
+	     string)))
       (let ((string (read-string "Google Translate: ")))
-		(if (string-match
-			 (format "\\`[%s]+\\'" "[:ascii:]")
-			 string)
-			(google-translate-translate
-			 "en" "ja"
-			 string)
-		  (google-translate-translate
-		   "ja" "en"
-		   string))))))
+	(if (string-match
+	     (format "\\`[%s]+\\'" "[:ascii:]")
+	     string)
+	    (google-translate-translate
+	     "en" "ja"
+	     string)
+	  (google-translate-translate
+	   "ja" "en"
+	   string))))))
 
 
 ;; Fix error of "Failed to search TKK"

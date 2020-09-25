@@ -1,4 +1,5 @@
-;;; user-dired.el -*- lexical-binding: t -*-
+;;; user-dired.el --- user-dired.el  -*- lexical-binding: t -*-
+;;; Commentary:
 ;; open user directory
 
 ;;; Code:
@@ -113,6 +114,7 @@
   "Open sylpheed."
   (interactive)
   (shell-command-to-string "sylpheed %u"))
+
 
 (provide 'user-dired)
 

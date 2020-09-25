@@ -1,9 +1,6 @@
-;;; user-dired.el --- user-dired.el  -*- lexical-binding: t -*-
+;;; user-dired.el --- user dired settings  -*- lexical-binding: t -*-
 ;;; Commentary:
-;; open user directory
-
 ;;; Code:
-;; (setq debug-on-error t)
 
 (leaf open-user-dir
   :init

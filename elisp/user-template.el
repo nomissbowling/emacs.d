@@ -1,9 +1,6 @@
-;;; user-template.el --- user-template.el   -*- lexical-binding: t -*-
+;;; user-template.el --- user template settings  -*- lexical-binding: t -*-
 ;;; Commentary:
-;; user-template functions
-
 ;;; Code:
-;; (setq debug-on-error t)
 
 (leaf new-post-template
   :init

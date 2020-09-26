@@ -7,6 +7,8 @@
 (leaf eshell
   :after popwin
   :bind* ("s-z" . eshell)
+  :init
+  (push '("*eshell*" :height 0.6) popwin:special-display-config)
   :config
   (setq eshell-cmpl-ignore-case t)
   (setq eshell-ask-to-save-history 'always)
@@ -21,8 +23,6 @@
 				 (list "ll" "ls -ltr -S")
 				 (list "la" "ls -a -S")
 				 (list "ex" "exit"))))
-  :init
-  (push '("*eshell*" :height 0.6) popwin:special-display-config)
   :preface
   (defun my:eshell-prompt ()
     "Prompt change string."

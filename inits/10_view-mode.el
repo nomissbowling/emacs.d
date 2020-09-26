@@ -12,9 +12,6 @@
   (viewer-change-modeline-color-setup)
   (setq viewer-modeline-color-view "#852941")
   :init
-  (mykie:global-set-key	"C-q"
-	:default other-window-or-split
-	:C-u     delete-window)
   (with-eval-after-load "viewer"
 	(define-key view-mode-map "i" 'View-exit)
 	(define-key view-mode-map "," 'View-exit)
@@ -83,6 +80,7 @@
    ("t" direx:jump-to-project-directory)
    ("s" swiper)
    ("." nil :color blue))
+
   :preface
   (defun my:view-mode ()
 	"View mode with hydra."
@@ -90,6 +88,9 @@
 	(view-mode)
 	(hydra-view-mode/body))
 
+  (mykie:global-set-key	"C-q"
+	:default other-window-or-split
+	:C-u     delete-window)
   (defun other-window-or-split ()
 	"If there is one window, open split window.
 If there are two or more windows, it will go to another window."

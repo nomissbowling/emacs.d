@@ -14,8 +14,9 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
-  (bind-key "C-r" 'swiper)
-  (bind-key "C-s" 'swiper-thing-at-point)
+  (mykie:global-set-key	"C-s"
+	:default swiper-thing-at-point
+	:C-u     swiper)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'switch-to-buffer)
   (bind-key "C-x C-f" 'counsel-find-file)
@@ -30,6 +31,8 @@
   (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
 
   :init
+  (leaf avy :ensure t
+	:bind ("C-r" . avy-goto-word-1))
   (leaf ivy-xref :ensure t
 	:init (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
   (leaf amx :ensure t

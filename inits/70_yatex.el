@@ -14,7 +14,8 @@
   (setq YaTeX-latex-message-code 'utf-8)
   (setq YaTeX-default-pop-window-height 15)
   :init
-  (leaf yatexprc :require t
+  (leaf yatexprc
+	:require t
 	:after yatex
 	:config
 	(bind-key "M-c" 'YaTeX-typeset-buffer)

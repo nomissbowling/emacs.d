@@ -6,7 +6,7 @@
 
 (leaf eshell
   :after popwin
-  :bind* ("s-z" . eshell)
+  :bind* ("C-z" . eshell)
   :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
   :config
@@ -27,20 +27,21 @@
   :preface
   (defun my:eshell-prompt ()
     "Prompt change string."
-    (concat (eshell/pwd)
-			(if (= (user-uid) 0) "\n# " "\n$ ")))
+    (concat
+	 (propertize (eshell/pwd) 'face `(:foreground "#89B8C2" :weight bold))
+	 (propertize (if (= (user-uid) 0) "\n# " "\n$ ") 'face `(:foreground "#89B8C2" :weight bold))))
 
   (defun eshell/clear ()
-    "Clear the current buffer, leaving one prompt at the top."
-    (interactive)
-    (let ((inhibit-read-only t))
-      (erase-buffer)))
+	"Clear the current buffer, leaving one prompt at the top."
+	(interactive)
+	(let ((inhibit-read-only t))
+	  (erase-buffer)))
 
   (defun eshell-on-current-buffer ()
-    "Set the eshell directory to the current buffer."
-    (interactive)
-    (let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
-      (with-current-buffer "*eshell*"
+	"Set the eshell directory to the current buffer."
+	(interactive)
+	(let ((path (file-name-directory (or  (buffer-file-name) default-directory))))
+	  (with-current-buffer "*eshell*"
 		(cd path)
 		(eshell-emit-prompt)))))
 

@@ -4,6 +4,11 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+(leaf mykie
+  :ensure t
+  :config (mykie:initialize))
+
+
 (leaf popwin
   :ensure t
   :global-minor-mode t)

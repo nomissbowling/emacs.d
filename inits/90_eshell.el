@@ -18,11 +18,13 @@
   (setq eshell-prompt-function 'my:eshell-prompt)
   (setq eshell-prompt-regexp "^[^#$]*[$#] ")
   (setq eshell-command-aliases-list
-		(append (list
-				 (list "cl" "clear")
-				 (list "ll" "ls -ltr -S")
-				 (list "la" "ls -a -S")
-				 (list "ex" "exit"))))
+		
+		(append
+		 (list
+		  (list "cl" "clear")
+		  (list "ll" "ls -ltr -S")
+		  (list "la" "ls -a -S")
+		  (list "ex" "exit"))))
   :preface
   (defun my:eshell-prompt ()
     "Prompt change string."

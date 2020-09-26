@@ -48,21 +48,21 @@
    (:color red :hint nil)
    "
   🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_<__-__>_  buffer:_[__:__]_  _s_wiper  exit:_,_"
-   ;; Move page
+   ;; move page
    ("SPC" scroll-up-command)
    ("f" scroll-up-command)
    ("b" scroll-down-command)
    ("g" beginning-of-buffer)
    ("G" end-of-buffer)
-   ;; Move line
+   ;; move line
    ("a" seq-home)
    ("e" seq-end)
    ("j" goto-line)
-   ;; Misc
+   ;; misc
    ("i" View-exit :exit t)
    ("," View-exit :exit t)
    (";" recenter-top-bottom)
-   ;;window
+   ;; window
    (">" text-scale-increase)
    ("<" text-scale-decrease)
    ("-" (text-scale-set 0))
@@ -71,7 +71,7 @@
    ("d" vc-diff :exit t)
    ("n" diff-hl-next-hunk)
    ("p" diff-hl-previous-hunk)
-   ;;buffer
+   ;; buffer
    (":" switch-buffer-in-view-mode)
    ("[" iflipb-previous-buffer)
    ("]" iflipb-next-buffer)

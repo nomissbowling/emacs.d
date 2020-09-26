@@ -10,7 +10,11 @@
   :chord ("jk" . my:view-mode)
   :config
   (viewer-change-modeline-color-setup)
-  (setq viewer-modeline-color-view "#852941")
+  (setq viewer-modeline-color-view "#852941"))
+
+
+(leaf view-mode-keybinding
+  :config
   (define-key view-mode-map "i" 'View-exit)
   (define-key view-mode-map "," 'View-exit)
   (define-key view-mode-map "g" 'beginning-of-buffer)

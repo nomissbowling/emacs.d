@@ -8,11 +8,13 @@
   :ensure t
   :require t
   :chord ("jk" . my:view-mode)
-  :bind ("C-q" . other-window-or-split)
   :config
   (viewer-change-modeline-color-setup)
   (setq viewer-modeline-color-view "#852941")
   :init
+  (mykie:global-set-key	"C-q"
+	:default other-window-or-split
+	:C-u     delete-window)
   (add-hook
    'view-mode-hook
    (lambda ()

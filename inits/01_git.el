@@ -1,4 +1,4 @@
-;;; 01_git.el  --- git tools inside emacs  -*- lexical-binding: t -*-_
+;;; 01_git.el  --- Git porcelain inside Emacs  -*- lexical-binding: t -*-_
 ;;; Commentary:
 
 ;;; Code:
@@ -9,7 +9,6 @@
   :config
   (bind-key "C-x g" 'magit-status)
   (bind-key "C-x m" 'hydra-magit/body)
-  (bind-key "C-x t" 'git-timemachine-toggle)
   :hydra
   (hydra-magit
    (:color red :hint nil)

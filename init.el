@@ -29,13 +29,12 @@
 
   (leaf leaf-keywords
     :ensure t
-    :config
-    (leaf-keywords-init)
     :init
     (leaf bind-key :ensure t)
     (leaf hydra :ensure t)
     (leaf el-get :ensure t)
-    :preface
+    :config
+    (leaf-keywords-init)
     (setq el-get-dir "~/.emacs.d/elisp")
     (setq load-prefer-newer t)
     (setq custom-file (locate-user-emacs-file "custom.el")))

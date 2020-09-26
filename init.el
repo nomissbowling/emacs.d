@@ -19,8 +19,8 @@
 (eval-and-compile
   (customize-set-variable
    'package-archives '(("org"   . "https://orgmode.org/elpa/")
-					   ("melpa" . "https://melpa.org/packages/")
-					   ("gnu"   . "https://elpa.gnu.org/packages/")))
+		       ("melpa" . "https://melpa.org/packages/")
+		       ("gnu"   . "https://elpa.gnu.org/packages/")))
   (package-initialize)
   (unless (package-installed-p 'leaf)
     (package-refresh-contents)
@@ -48,13 +48,13 @@
 
 
   (leaf init-loader
-	:ensure t
-	:config
-	(custom-set-variables '(init-loader-show-log-after-init 'error-only))
-	(add-hook
-	 'after-init-hook
-	 (lambda ()
-	   (init-loader-load "~/Dropbox/emacs.d/inits")))))
+    :ensure t
+    :config
+    (custom-set-variables '(init-loader-show-log-after-init 'error-only))
+    (add-hook
+     'after-init-hook
+     (lambda ()
+       (init-loader-load "~/Dropbox/emacs.d/inits")))))
 
 
 (provide 'init)

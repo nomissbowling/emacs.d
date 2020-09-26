@@ -14,12 +14,10 @@
   (setq YaTeX-latex-message-code 'utf-8)
   (setq YaTeX-default-pop-window-height 15)
   :init
-  (add-hook
-   'yatex-mode-hook
-   '(lambda()
-	  (leaf yatexprc :require t)
-	  (bind-key "M-c" 'YaTeX-typeset-buffer)
-	  (bind-key "M-l" 'YaTeX-lpr))))
+  (with-eval-after-load "yatex"
+	(leaf yatexprc :require t)
+	(bind-key "M-c" 'YaTeX-typeset-buffer)
+	(bind-key "M-l" 'YaTeX-lpr)))
 
 
 ;; Dviprint-command-format (YaTeX-lpr)

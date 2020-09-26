@@ -8,17 +8,18 @@
   :ensure t
   :global-minor-mode selected-global-mode
   :config
-  (bind-key ";" 'comment-dwim selected-keymap)
-  (bind-key "f" 'describe-function selected-keymap)
-  (bind-key "v" 'describe-variable selected-keymap)
-  (bind-key "c" 'clipboard-kill-ring-save selected-keymap)
-  (bind-key "i" 'iedit-mode selected-keymap)
-  (bind-key "s" 'swiper-thing-at-point selected-keymap)
-  (bind-key "d" 'my:koujien selected-keymap)
-  (bind-key "e" 'my:eijiro selected-keymap)
-  (bind-key "w" 'my:weblio selected-keymap)
-  (bind-key "t" 'google-translate-auto selected-keymap)
-  (bind-key "g" 'my:google selected-keymap)
+  (with-eval-after-load "selected"
+	(bind-key ";" 'comment-dwim selected-keymap)
+	(bind-key "f" 'describe-function selected-keymap)
+	(bind-key "v" 'describe-variable selected-keymap)
+	(bind-key "c" 'clipboard-kill-ring-save selected-keymap)
+	(bind-key "i" 'iedit-mode selected-keymap)
+	(bind-key "s" 'swiper-thing-at-point selected-keymap)
+	(bind-key "d" 'my:koujien selected-keymap)
+	(bind-key "e" 'my:eijiro selected-keymap)
+	(bind-key "w" 'my:weblio selected-keymap)
+	(bind-key "t" 'google-translate-auto selected-keymap)
+	(bind-key "g" 'my:google selected-keymap))
   :init
   ;; Control mozc when seleceted
   (defun my:activate-selected ()

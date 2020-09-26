@@ -12,13 +12,14 @@
   (setq dviprint-command-format "dvpd.sh %s")
   (setq YaTeX-kanji-code nil)
   (setq YaTeX-latex-message-code 'utf-8)
-  (setq YaTeX-default-pop-window-height 15)
-  :init
-  (leaf yatexprc :require t
-	:after yatex
-	:config
-	(bind-key "M-c" 'YaTeX-typeset-buffer)
-	(bind-key "M-l" 'YaTeX-lpr)))
+  (setq YaTeX-default-pop-window-height 15))
+
+
+(leaf yatexprc :require t
+  :after yatex
+  :config
+  (bind-key "M-c" 'YaTeX-typeset-buffer)
+  (bind-key "M-l" 'YaTeX-lpr))
 
 
 ;; Dviprint-command-format (YaTeX-lpr)

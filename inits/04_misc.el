@@ -6,7 +6,8 @@
 
 (leaf mykie
   :ensure t
-  :config (mykie:initialize))
+  :config
+  (mykie:initialize))
 
 
 (leaf popwin

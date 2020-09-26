@@ -19,7 +19,6 @@
   (bind-key "w" 'my:weblio selected-keymap)
   (bind-key "t" 'google-translate-auto selected-keymap)
   (bind-key "g" 'my:google selected-keymap)
-  (bind-key "q" 'selected-off selected-keymap)
   :init
   ;; Control mozc when seleceted
   (defun my:activate-selected ()

@@ -9,7 +9,7 @@
   :bind* ("s-z" . eshell)
   :config
   (setq eshell-cmpl-ignore-case t)
-  (setq eshell-ask-to-save-history (quote always))
+  (setq eshell-ask-to-save-history 'always)
   (setq eshell-cmpl-cycle-completions t)
   (setq eshell-cmpl-cycle-cutoff-length 5)
   (setq eshell-hist-ignoredups t)

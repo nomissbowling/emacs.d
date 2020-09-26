@@ -1,4 +1,4 @@
-;;; 08_ui.el --- ui tools  -*- lexical-binding: t -*-
+;;; 08_ui.el --- UI tools  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:

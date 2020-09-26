@@ -15,7 +15,8 @@
   (setq YaTeX-default-pop-window-height 15))
 
 
-(leaf yatexprc :require t
+(leaf yatexprc
+  :require t
   :after yatex
   :config
   (bind-key "M-c" 'YaTeX-typeset-buffer)

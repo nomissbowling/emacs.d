@@ -18,7 +18,6 @@
   (setq eshell-prompt-function 'my:eshell-prompt)
   (setq eshell-prompt-regexp "^[^#$]*[$#] ")
   (setq eshell-command-aliases-list
-		
 		(append
 		 (list
 		  (list "cl" "clear")

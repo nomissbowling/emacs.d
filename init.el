@@ -51,11 +51,10 @@
     :ensure t
     :config
     (custom-set-variables '(init-loader-show-log-after-init 'error-only))
-    ;; (add-hook
-    ;;  'after-init-hook
-    ;;  (lambda ()
-	(init-loader-load "~/Dropbox/emacs.d/inits")))
-;; ))
+    (add-hook
+     'after-init-hook
+     (lambda ()
+	   (init-loader-load "~/Dropbox/emacs.d/inits")))))
 
 
 (provide 'init)

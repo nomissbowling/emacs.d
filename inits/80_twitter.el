@@ -73,7 +73,6 @@
   (setq twittering-bitly-login "minorugh")
   (setq twittering-bitly-api-key "R_f0b3887698d4d171004f55af6e6a199e")
 
-  :preface
   ;; look for name
   (defface twittering-mode-name-face
     '((t (:foreground "#81a2be"))) nil)

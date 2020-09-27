@@ -38,7 +38,8 @@
   (add-hook 'makefile-mode-hook
 			(lambda ()
 			  (fset 'makefile-warn-suspicious-lines 'ignore)))
-  :preface
+
+  ;; User-make-commands
   (defun my:make-k ()
 	"Make command default."
 	(interactive)

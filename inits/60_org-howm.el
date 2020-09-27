@@ -33,7 +33,6 @@
   :config
   (bind-key "C-c a" 'org-agenda)
   (bind-key "C-c c" 'org-capture)
-  :init
   (setq org-log-done 'time)
   (setq org-use-speed-commands t)
   (setq org-src-fontify-natively t)
@@ -51,7 +50,7 @@
 		   "# emacs: %?\n%U %i\n\n```emacs-lisp\n%i\n```")
 		  ("l" "★ Linux" plain (file my:howm-create-file)
 		   "# linux: %?\n%U %i")))
-  :preface
+  :init
   ;; Maximize the org-capture buffer
   (defvar my:org-capture-before-config nil
     "Window configuration before 'org-capture'.")

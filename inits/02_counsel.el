@@ -96,7 +96,7 @@
 			  '(lambda () (projectile-mode 0)))
 	(add-hook 'counsel-tramp-quit-hook
 			  '(lambda () (projectile-mode 1)))
-	:preface
+	:init
 	(defun my:tramp-quit ()
 	  "Quit tramp, if tramp connencted."
 	  (interactive)

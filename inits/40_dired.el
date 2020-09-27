@@ -104,7 +104,7 @@
 		(call-process "xdg-open" nil 0 nil file))
       ;; use wsl-utils:https://github.com/smzht/wsl-utils
       (when (getenv "WSLENV")
-		(call-process "wslstart" nil 0 nil fn))))
+		(call-process "wslstart" nil 0 nil file))))
 
   (defun my:dired-toggle-mark (arg)
     "Toggle the current next files."

@@ -76,6 +76,21 @@
   (with-current-buffer "*Messages*"
     (emacs-lock-mode 'kill))
 
+  ;; key modifiers
+  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
+  (bind-key "C-," 'xref-find-references)
+  (bind-key "C-." 'xref-find-definitions)
+  (bind-key "s-c" 'cool-copy)
+  (bind-key "s-v" 'clipboard-yank)
+  (bind-key "M-w" 'clipboard-kill-ring-save)
+  (bind-key "C-w" 'clipboard-kill-region)
+  (setq select-enable-clipboard t)
+  (setq select-enable-primary t)
+  (leaf cool-copy :require t
+	:el-get blue0513/cool-copy.el
+	:config
+	(setq cool-copy-show 'posframe))
+
   ;; M-x info-emacs-manual (C-h r or F1+r)
   (add-to-list 'Info-directory-list "~/Dropbox/emacs.d/elisp/info/")
   (defun Info-find-node--info-ja (orig-fn filename &rest args)
@@ -136,34 +151,9 @@
   (leaf generic-x :require t))
 
 
-(leaf user-key-modifiers
-  :config
-  (bind-key* "<muhenkan>" 'minibuffer-keyboard-quit ivy-minibuffer-map)
-  (bind-key "C-," 'xref-find-references)
-  (bind-key "C-." 'xref-find-definitions)
-  (bind-key "s-c" 'cool-copy)
-  (bind-key "s-v" 'clipboard-yank)
-  (bind-key "M-w" 'clipboard-kill-ring-save)
-  (bind-key "C-w" 'my:clipboard-kill-region)
-  :init
-  (setq select-enable-clipboard t)
-  (setq select-enable-primary t)
-  (leaf cool-copy :require t
-	:el-get blue0513/cool-copy.el
-	:config
-	(setq cool-copy-show 'posframe))
-  :preface
-  (defun my:clipboard-kill-region ()
-	"If the region is active, `clipboard-kill-region'.
-If the region is inactive, `backward-kill-word'."
-	(interactive)
-	(if (use-region-p)
-		(clipboard-kill-region (region-beginning) (region-end))
-	  (backward-kill-word 1))))
-
-
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
 ;;; 00_base.el ends here
+

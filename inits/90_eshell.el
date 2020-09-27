@@ -24,7 +24,8 @@
 		  (list "ll" "ls -ltr -S")
 		  (list "la" "ls -a -S")
 		  (list "ex" "exit"))))
-  :preface
+
+  ;; cus functions
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat

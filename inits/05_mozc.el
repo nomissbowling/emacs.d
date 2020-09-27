@@ -7,29 +7,28 @@
 (leaf mozc
   :ensure t
   :bind* ("<hiragana-katakana>" . toggle-input-method)
-  :init
+  :config
   (setq default-input-method "japanese-mozc")
   (setq mozc-helper-program-name "mozc_emacs_helper")
   (setq mozc-leim-title "♡かな")
-  :config
+  ;; extention
   (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
   (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
   (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
   (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
-
   (defun mozc-insert-str (str)
     "If punctuation marks, immediately confirm."
     (mozc-handle-event 'enter)
     (toggle-input-method)
     (insert str)
     (toggle-input-method))
-
+  ;; Key-chord measures
   (defadvice toggle-input-method (around toggle-input-method-around activate)
     "Input method function in key-chord.el not to be nil."
     (let ((input-method-function-save input-method-function))
       ad-do-it
       (setq input-method-function input-method-function-save)))
-  :preface
+  :init
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
     :require t
@@ -81,6 +80,6 @@
 
 ;; Local Variables:
 ;; no-byte-compile: t
-;; End:
+;; End
 
 ;;; 05_mozc.el ends here

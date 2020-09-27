@@ -40,7 +40,8 @@
     :require t
     :config
     (setq ls-lisp-use-insert-directory-program nil ls-lisp-dirs-first t))
-  :preface
+
+  ;; cus functions
   (defun toggle-dired-listing-switches ()
     "Toggle `dired-mode' switch between with and without 'A' option to show or hide dot files."
     (interactive)
@@ -56,9 +57,8 @@
       (progn (kill-buffer (current-buffer))
 			 (dired dir))))
 
-  ;; Add [Dir] to the directory buffer
   (defun dired-my-append-buffer-name-hint ()
-    "Append a auxiliary string to a name of dired buffer."
+    "Append a auxiliary string [Dir] to a name of dired buffer."
     (when (eq major-mode 'dired-mode)
       (let* ((dir (expand-file-name list-buffers-directory))
 			 ;; Add a drive letter for Windows
@@ -67,7 +67,6 @@
 						(match-string 1 dir) "")))
 		(rename-buffer (concat (buffer-name) " [" drive "dir]") t))))
 
-  ;; Quit-window according to screen division
   (defun dired-dwim-quit-window ()
     "`quit-window 'according to screen division."
     (interactive)

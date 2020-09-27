@@ -16,7 +16,8 @@
   (setq direx:leaf-icon "  " direx:open-icon "📂" direx:closed-icon "📁")
   (push '(direx:direx-mode :position left :width 25 :dedicated t)
 		popwin:special-display-config)
-  :preface
+
+  ;; cus functions
   (defun direx:jump-to-project-directory ()
 	"If in project, launch direx-project otherwise start direx."
 	(interactive)

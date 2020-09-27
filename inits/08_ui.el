@@ -12,7 +12,7 @@
   (setq my-themes (list 'iceberg 'doom-dracula))
   (setq curr-theme my-themes)
   (load-theme (car curr-theme) t)
-  :preface
+  :config
   (defun my:cycle-theme ()
 	"Cycle custom theme."
 	(interactive)

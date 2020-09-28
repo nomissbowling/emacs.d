@@ -32,8 +32,8 @@
 (leaf iflipb
   :ensure t
   :config
-  (bind-key "M-]" 'iflipb-next-buffer)
-  (bind-key "M-[" 'iflipb-previous-buffer)
+  (bind-key "C-<right>" 'iflipb-next-buffer)
+  (bind-key "C-<left>" 'iflipb-previous-buffer)
   :init
   (setq iflipb-wrap-around t)
   (setq iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "dir]$" "GH" ".org$")))

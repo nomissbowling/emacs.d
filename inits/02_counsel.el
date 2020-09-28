@@ -14,7 +14,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
-  (bind-key "C-s" 'swiper-thing-at-point-or-swiper)
+  (bind-key "C-s" 'swiper-or-thing-at-point)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'switch-to-buffer)
   (bind-key "C-x C-f" 'counsel-find-file)
@@ -39,7 +39,7 @@
 	:hook (ivy-mode-hook . ivy-rich-mode))
 
   :preface
-  (defun swiper-thing-at-point-or-swiper (arg)
+  (defun swiper-or-thing-at-point (arg)
 	(interactive "p")
 	(case arg
 	  (4 (swiper))

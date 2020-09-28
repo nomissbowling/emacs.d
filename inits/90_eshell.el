@@ -29,8 +29,8 @@
   (defun my:eshell-prompt ()
     "Prompt change string."
     (concat
-	 (propertize (eshell/pwd) 'face `(:foreground "#89B8C2" :weight bold))
-	 (propertize (if (= (user-uid) 0) "\n# " "\n$ ") 'face `(:foreground "#89B8C2" :weight bold))))
+	 (eshell/pwd)
+	 (if (= (user-uid) 0) "\n# " "\n$ ")))
 
   (defun eshell/clear ()
 	"Clear the current buffer, leaving one prompt at the top."

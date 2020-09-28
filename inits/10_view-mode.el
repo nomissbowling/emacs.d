@@ -90,9 +90,13 @@
 	(view-mode)
 	(hydra-view-mode/body))
 
-  (mykie:global-set-key	"C-q"
-	:default other-window-or-split
-	:C-u     delete-window)
+  (bind-key
+   "C-q"
+   (defun other-window-or-sprit-or-close (arg)
+	 (interactive "p")
+	 (case arg
+	   (4 (delete-window))
+	   (t (other-window-or-split)))))
   (defun other-window-or-split ()
 	"If there is one window, open split window.
 If there are two or more windows, it will go to another window."

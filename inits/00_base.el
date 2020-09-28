@@ -143,6 +143,7 @@
     :config
     (setq show-paren-delay '0.1)
     (setq show-paren-style 'mixed)
+	;; (setq show-paren-style 'parenthesis)
     :global-minor-mode show-paren-mode)
 
   (leaf uniquify

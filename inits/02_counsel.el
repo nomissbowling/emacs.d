@@ -14,9 +14,7 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-use-selectable-prompt t)
   (setq enable-recursive-minibuffers t)
-  (mykie:global-set-key	"C-s"
-	:default swiper-thing-at-point
-	:C-u     swiper)
+  (bind-key "C-s" 'swiper-thing-at-point-or-swiper)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'switch-to-buffer)
   (bind-key "C-x C-f" 'counsel-find-file)
@@ -41,6 +39,12 @@
 	:hook (ivy-mode-hook . ivy-rich-mode))
 
   :preface
+  (defun swiper-thing-at-point-or-swiper (arg)
+	(interactive "p")
+	(case arg
+	  (4 (swiper))
+	  (t (swiper-thing-at-point))))
+
   (defun my:ivy-migemo-re-builder (str)
     "Own ivy-migemo-re-build for swiper."
     (let* ((sep " \\|\\^\\|\\.\\|\\*")

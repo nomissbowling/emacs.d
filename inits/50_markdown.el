@@ -7,7 +7,6 @@
 (leaf markdown-mode
   :ensure t
   :mode "\\.md\\'"
-  :bind (("C-c '" . markdown-edit-code-block))
   :hydra
   (hydra-markdown
    (:color red :hint nil)
@@ -28,7 +27,6 @@
    ("<muhenkan>" nil))
   :init
   (leaf markdown-toc :ensure t)
-  (leaf edit-indirect :ensure t)
   (leaf poly-markdown :ensure t
     :mode ("\\.md" . poly-markdown-mode))
   (leaf livedown

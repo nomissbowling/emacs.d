@@ -36,7 +36,8 @@
   (bind-key "M-[" 'iflipb-previous-buffer)
   :init
   (setq iflipb-wrap-around t)
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "GH" "dir" ".org")))
+  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "dir]$" "GH" ".org"))
+  )
 
 
 (leaf undohist

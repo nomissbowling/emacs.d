@@ -95,7 +95,7 @@
    (defun other-window-or-sprit-or-close (arg)
 	 (interactive "p")
 	 (case arg
-	   (4 (delete-window))
+	   (4 (delete-other-windows))
 	   (t (other-window-or-split)))))
   (defun other-window-or-split ()
 	"If there is one window, open split window.

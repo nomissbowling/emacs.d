@@ -15,11 +15,7 @@
   (setq eshell-cmpl-cycle-completions t)
   (setq eshell-cmpl-cycle-cutoff-length 5)
   (setq eshell-hist-ignoredups t)
-  (setq eshell-prompt-function
-		(lambda ()
-		  (concat
-		   (eshell/pwd)
-		   (if (= (user-uid) 0) "\n# " "\n$ "))))
+  (setq eshell-prompt-function 'my:eshell-prompt)
   (setq eshell-prompt-regexp "^[^#$]*[$#] ")
   (setq eshell-command-aliases-list
 		(append
@@ -28,6 +24,13 @@
 		  (list "ll" "ls -ltr -S")
 		  (list "la" "ls -a -S")
 		  (list "ex" "exit"))))
+
+  ;; cus functions
+  (defun my:eshell-prompt ()
+    "Prompt change string."
+    (concat
+	 (eshell/pwd)
+	 (if (= (user-uid) 0) "\n# " "\n$ ")))
 
   (defun eshell/clear ()
 	"Clear the current buffer, leaving one prompt at the top."

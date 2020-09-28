@@ -76,6 +76,6 @@
 
 ;; Local Variables:
 ;; no-byte-compile: t
-;; End
+;; End:
 
 ;;; 05_mozc.el ends here

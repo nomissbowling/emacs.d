@@ -26,7 +26,6 @@
   (define-key view-mode-map "l" 'avy-goto-line)
   (define-key view-mode-map "j" 'goto-line)
   (define-key view-mode-map ";" 'recenter-top-bottom)
-  (define-key view-mode-map "t" 'direx:jump-to-project-directory)
   (define-key view-mode-map "o" 'other-window-or-split)
   (define-key view-mode-map ">" 'text-scale-increase)
   (define-key view-mode-map "<" 'text-scale-decrease)

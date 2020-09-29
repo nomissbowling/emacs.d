@@ -26,23 +26,27 @@
   :ensure t
   :global-minor-mode t
   :config
-  (line-number-mode 0)
-  (column-number-mode 0)
   (setq doom-modeline-buffer-file-name-style 'truncate-with-project)
   (setq doom-modeline-icon t)
   (setq doom-modeline-major-mode-icon nil)
   (setq doom-modeline-minor-modes nil)
+  (line-number-mode 0)
+  (column-number-mode 0)
+  ;; (doom-modeline-def-modeline
+  ;; 	'main
+  ;; 	'(bar window-number matches buffer-info remote-host buffer-position parrot selection-info)
+  ;; 	'(misc-info persp-name debug minor-modes input-method major-mode process vcs checker))
   :init
   (leaf hide-mode-line
-    :ensure t
-    :hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
+	:ensure t
+	:hook ((imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode
-    :ensure t
-    :global-minor-mode t
-    :config
-    (autoload 'nyan-mode "nyan-mode" nil t)
-    (setq nyan-cat-face-number 4)
-    (setq nyan-animate-nyancat t)))
+	:ensure t
+	:global-minor-mode t
+	:config
+	(autoload 'nyan-mode "nyan-mode" nil t)
+	(setq nyan-cat-face-number 4)
+	(setq nyan-animate-nyancat t)))
 
 
 (leaf all-the-icons

@@ -38,7 +38,7 @@
   (leaf ivy-rich :ensure t
 	:hook (ivy-mode-hook . ivy-rich-mode))
 
-  :preface
+  ;; User function
   (defun swiper-or-thing-at-point (arg)
 	(interactive "p")
 	(case arg

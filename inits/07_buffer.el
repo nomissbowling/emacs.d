@@ -62,7 +62,7 @@
   (setq undo-tree-auto-save-history nil)
   (setq undo-tree-history-directory-alist
 		`(("." . ,(concat user-emacs-directory "undo-tree-hist/"))))
-  :preface
+
   ;; show visualizer diff display
   (defun undo-tree-visualizer-show-diff (&optional node)
 	(setq-local undo-tree-visualizer-diff t)

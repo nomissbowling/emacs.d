@@ -98,7 +98,7 @@
    ("[" my:haiku-note)
    ("]" my:haiku-note-post)
    ("j" open-junk-file)
-   ("J" my:junk-file-dir)
+   ("J" open-last-junk-file)
    ("v" view-mode)
    ("i" my:inits-doc)
    ("y" sylpheed)

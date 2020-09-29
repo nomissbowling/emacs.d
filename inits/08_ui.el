@@ -5,7 +5,7 @@
 ;; (setq debug-on-error t)
 
 (leaf cycle-theme-setting
-  :bind ("S-<f11>" . my:cycle-theme)
+  :bind ("C-x t" . my:cycle-theme)
   :init
   (leaf doom-themes :ensure t)
   (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")

@@ -6,15 +6,6 @@
 
 (leaf cus-start-setting
   :config
-  ;; Basic modes
-  (savehist-mode)
-  (save-place-mode)
-  (global-auto-revert-mode)
-  (blink-cursor-mode)
-  (winner-mode)
-  (global-font-lock-mode)
-  (global-visual-line-mode)
-
   ;; UI
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
@@ -23,6 +14,15 @@
   (setq inhibit-splash-screen t)
   (setq inhibit-startup-message t)
   (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
+
+  ;; Basic modes
+  (savehist-mode)
+  (save-place-mode)
+  (global-auto-revert-mode)
+  (blink-cursor-mode)
+  (winner-mode)
+  (global-font-lock-mode)
+  (global-visual-line-mode)
 
   ;; Misc
   (setq ring-bell-function 'ignore)

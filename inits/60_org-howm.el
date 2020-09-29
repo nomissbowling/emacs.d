@@ -62,8 +62,20 @@
 
 (leaf open-junk-file :ensure t
   :config
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."))
-
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")
+  :init
+  (leaf em-glob	:require t
+	:config
+	(defvar junk-file-dir "~/Dropbox/howm/junk/")
+	(defun open-last-junk-file ()
+	  "Open last created junk file."
+	  (interactive)
+	  (find-file
+	   (car
+		(last (eshell-extended-glob
+			   (concat
+				(file-name-as-directory junk-file-dir)
+				"*.*.*"))))))))
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -1,4 +1,4 @@
-;;; 50_markdown.el --- markdown-mode settings  -*- lexical-binding: t -*-
+;;; 50_markdown.el --- Markdown configurations.  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -7,11 +7,12 @@
 (leaf markdown-mode
   :ensure t
   :mode "\\.md\\'"
+  :chord ("mm" . hydra-markdown/body)
   :hydra
   (hydra-markdown
    (:color red :hint nil)
    "
-    Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _c_ode:_a_bort  _v_iew:_k_ill  md2_p_df  md2_d_ocx"
+    Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _c_ode:_a_bort  pre_v_iew  md2_p_df  md2_d_ocx"
    ("i" markdown-insert-italic)
    ("x" markdown-insert-strike-through)
    ("t" markdown-insert-table)
@@ -19,26 +20,59 @@
    ("f" markdown-insert-footnote)
    ("c" markdown-edit-code-block)
    ("a" edit-indirect-abort)
-   ("v" livedown-preview)
-   ("k" livedown-kill)
+   ("v" markdown-preview)
    ;; Pndoc
    ("p" md2pdf)
    ("d" md2docx)
    ("<muhenkan>" nil))
+  :config
+  (setq markdown-enable-wiki-links t
+		markdown-italic-underscore t
+		markdown-asymmetric-header t
+		markdown-make-gfm-checkboxes-buttons t
+		markdown-gfm-uppercase-checkbox t
+		markdown-fontify-code-blocks-natively t
+
+		markdown-content-type "application/xhtml+xml"
+		markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+							 "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
+		markdown-xhtml-header-content "
+<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+<style>
+body {
+  box-sizing: border-box;
+  max-width: 740px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 0 10px;
+}
+</style>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css'>
+<script src='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js'></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('markdown-body');
+  document.querySelectorAll('pre code').forEach((code) => {
+    if (code.className != 'mermaid') {
+      hljs.highlightBlock(code);
+    }
+  });
+});
+</script>
+<script src='https://unpkg.com/mermaid@8.4.8/dist/mermaid.min.js'></script>
+<script>
+mermaid.initialize({
+  theme: 'default',  // default, forest, dark, neutral
+  startOnLoad: true
+});
+</script>
+"
   :init
   (leaf markdown-toc :ensure t)
   (leaf poly-markdown :ensure t
-    :mode ("\\.md" . poly-markdown-mode))
-  (leaf livedown
-    :el-get  shime/emacs-livedown
-    :config
-    (bind-key "C-c C-p" 'livedown-preview)
-    (bind-key "C-c C-k" 'livedown-kill)
-    (setq livedown-autostart nil)
-    (setq livedown-open t)
-    (setq livedown-port 1337)
-    (setq livedown-browser nil))
-  :config
+	:mode ("\\.md" . poly-markdown-mode))
+
+  :preface
   (defun md2pdf ()
     "Generate pdf from currently open markdown."
     (interactive)
@@ -68,8 +102,8 @@
       (shell-command-to-string
        (concat "xdg-open "
 			   (file-name-sans-extension filename)
-			   ".docx")))))
-
+			   ".docx"))))
+  )
 
 ;; Local Variables:
 ;; no-byte-compile: t

@@ -63,6 +63,7 @@
 (leaf open-junk-file :ensure t
   :config
   (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")
+  (setq open-junk-file-find-file-function 'find-file)
   :init
   ;; https://qiita.com/zonkyy/items/eba6bc64f66d278f0032
   (leaf em-glob	:require t

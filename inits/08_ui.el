@@ -32,14 +32,14 @@
   (setq doom-modeline-minor-modes nil)
   (line-number-mode 0)
   (column-number-mode 0)
-  (doom-modeline-def-modeline
-  	'main
-  	'(bar window-number matches buffer-info remote-host buffer-position parrot selection-info)
-  	'(misc-info persp-name debug minor-modes input-method major-mode process vcs checker))
+  ;; (doom-modeline-def-modeline
+  ;; 	'main
+  ;; 	'(bar window-number matches buffer-info remote-host buffer-position parrot selection-info)
+  ;; 	'(misc-info persp-name debug minor-modes input-method major-mode process vcs checker))
   :init
   (leaf hide-mode-line
 	:ensure t
-	:hook ((dashboard-mode-hook imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
+	:hook ((fundamental-mode-hook dashboard-mode-hook imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode
 	:ensure t
 	:global-minor-mode t

@@ -7,15 +7,14 @@
 (leaf markdown-mode
   :ensure t
   :mode "\\.md\\'"
-  :chord ("mm" . hydra-markdown/body)
   :config
-  (setq markdown-italic-underscore t
-		markdown-asymmetric-header t
-		markdown-fontify-code-blocks-natively t
-		markdown-content-type "application/xhtml+xml"
-		markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
-							 "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css")
-		markdown-xhtml-header-content "
+  (setq markdown-italic-underscore t)
+  (setq markdown-asymmetric-header t)
+  (setq markdown-fontify-code-blocks-natively t)
+  (setq markdown-content-type "application/xhtml+xml")
+  (setq markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
+							 "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"))
+  (setq markdown-xhtml-header-content "
 <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
 <style>
 body {
@@ -47,6 +46,7 @@ mermaid.initialize({
 </script>
 ")
 
+  :chord ("mm" . hydra-markdown/body)
   :hydra
   (hydra-markdown
    (:color red :hint nil)

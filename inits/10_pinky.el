@@ -13,7 +13,6 @@
 
 
 (leaf view-mode-keybinding
-  :chord ("::" . hydra-pinky/body)
   :config
   (define-key view-mode-map "i" 'View-exit)
   (define-key view-mode-map "," 'View-exit)
@@ -40,6 +39,7 @@
   (define-key view-mode-map "[" 'iflipb-previous-buffer)
   (define-key view-mode-map "]" 'iflipb-next-buffer)
   (define-key view-mode-map "." 'hydra-pinky/body)
+  :chord ("::" . hydra-pinky/body)
   :hydra
   (hydra-pinky
    (:color red :hint nil)

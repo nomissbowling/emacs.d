@@ -39,6 +39,7 @@
   (setq create-lockfiles nil)
   (setq vc-follow-symlinks t)
   (setq-default tab-width 4)
+  (setq frame-title-format (concat "%b - emacs@" (system-name)))
 
   ;; Hack emacs-init-time
   (with-eval-after-load "time"

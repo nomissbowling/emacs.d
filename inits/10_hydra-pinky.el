@@ -1,4 +1,4 @@
-;;; 10_view-mode.el --- view-mode settings  -*- lexical-binding: t -*-
+;;; 10_hydra-pinky.el --- view-mode & pinky settings  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -7,15 +7,16 @@
 (leaf viewer
   :ensure t
   :require t
-  :chord ("jk" . my:view-mode)
   :config
   (viewer-change-modeline-color-setup)
   (setq viewer-modeline-color-view "#852941"))
 
 
 (leaf view-mode-keybinding
+  :chord ("::" . hydra-pinky/body)
   :config
   (define-key view-mode-map "i" 'View-exit)
+  (define-key view-mode-map "," 'View-exit)
   (define-key view-mode-map "g" 'beginning-of-buffer)
   (define-key view-mode-map "G" 'end-of-buffer)
   (define-key view-mode-map "e" 'seq-end)
@@ -28,8 +29,7 @@
   (define-key view-mode-map "o" 'other-window-or-split)
   (define-key view-mode-map "+" 'text-scale-increase)
   (define-key view-mode-map "-" 'text-scale-decrease)
-  (define-key view-mode-map "," '(text-scale-set 0))
-  (define-key view-mode-map "@" 'er/expand-region)
+  (define-key view-mode-map "/" '(text-scale-set 0))
   (define-key view-mode-map "0" 'delete-window)
   (define-key view-mode-map "1" 'delete-other-windows)
   (define-key view-mode-map "d" 'vc-diff)
@@ -40,12 +40,12 @@
   (define-key view-mode-map "[" 'iflipb-previous-buffer)
   (define-key view-mode-map "]" 'iflipb-next-buffer)
   (define-key view-mode-map "?" 'hydra-view-mode/body)
-  (define-key view-mode-map "." 'hydra-view-mode/body)
+  (define-key view-mode-map "." 'hydra-pinky/body)
   :hydra
-  (hydra-view-mode
+  (hydra-pinky
    (:color red :hint nil)
    "
-  🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_-__,__+_  buffer:_[__:__]_  _s_wiper  region:_@_  ex_i_t"
+  🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_-__/__+_  buffer:_[__:__]_  _s_wiper  _v_iew  exit:_,_"
    ;; move page
    ("SPC" scroll-up-command)
    ("f" scroll-up-command)
@@ -58,19 +58,19 @@
    ("j" goto-line)
    ;; misc
    ("i" View-exit :exit t)
+   ("," View-exit :exit t)
    (";" recenter-top-bottom)
-   ("@" er/expand-region)
    ;; window
    ("+" text-scale-increase)
    ("-" text-scale-decrease)
-   ("," (text-scale-set 0))
+   ("/" (text-scale-set 0))
    ("0" delete-window)
    ("_" delete-other-windows)
    ("d" vc-diff :exit t)
    ("n" diff-hl-next-hunk)
    ("p" diff-hl-previous-hunk)
    ;; buffer
-   (":" switch-buffer-in-view-mode)
+   (":" counsel-switch-buffer)
    ("[" iflipb-previous-buffer)
    ("]" iflipb-next-buffer)
    ;; avy
@@ -80,15 +80,10 @@
    ("o" other-window-or-split)
    ("t" direx:jump-to-project-directory)
    ("s" swiper)
+   ("v" view-mode)
    ("." nil :color blue))
 
   :init
-  (defun my:view-mode ()
-	"View mode with hydra."
-	(interactive)
-	(view-mode)
-	(hydra-view-mode/body))
-
   (bind-key
    "C-q"
    (defun other-window-or-sprit-or-close (arg)
@@ -103,16 +98,10 @@ If there are two or more windows, it will go to another window."
 	(when (one-window-p)
 	  ;; (split-window-horizontally))
 	  (follow-delete-other-windows-and-split))
-	(other-window 1))
-
-  (defun switch-buffer-in-view-mode ()
-	"Switch buffer in viewmode."
-	(interactive)
-	(counsel-switch-buffer)
-	(view-mode 1)))
+	(other-window 1)))
 
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
-;;; 10_view-mode.el ends here
+;;; 10_hydra-pinky.el ends here

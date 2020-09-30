@@ -19,7 +19,6 @@
   (bind-key "a" 'toggle-dired-listing-switches dired-mode-map)
   (bind-key "q" 'dired-dwim-quit-window dired-mode-map)
   (bind-key "t" 'counsel-tramp dired-mode-map)
-  (bind-key "v" 'my:dired-view-file dired-mode-map)
   (bind-key "s" 'sudo-edit dired-mode-map)
   (bind-key "." 'magit-status dired-mode-map)
   (bind-key "," 'dired dired-mode-map)
@@ -114,12 +113,6 @@
 							   (looking-at " "))
 			   dired-marker-char ?\040)))
       (dired-mark arg)))
-
-  (defun my:dired-view-file ()
-	"Open file in view-mode with hydra"
-	(interactive)
-	(dired-view-file)
-	(hydra-view-mode/body))
 
   (defun my:dired-unmark-all ()
 	"Dired unmark all."

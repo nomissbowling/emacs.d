@@ -66,7 +66,8 @@ mermaid.initialize({
   startOnLoad: true
 });
 </script>
-"
+")
+
   :init
   (leaf markdown-toc :ensure t)
   (leaf poly-markdown :ensure t

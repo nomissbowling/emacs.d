@@ -1,4 +1,4 @@
-;;; 10_hydra-pinky.el --- view-mode & pinky settings  -*- lexical-binding: t -*-
+;;; 10_pinky.el --- view-mode & pinky settings  -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -104,4 +104,4 @@ If there are two or more windows, it will go to another window."
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
-;;; 10_hydra-pinky.el ends here
+;;; 10_pinky.el ends here

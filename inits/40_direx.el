@@ -10,7 +10,6 @@
   :config
   (with-eval-after-load 'direx
 	(bind-key "o" 'direx:open-file direx:direx-mode-map)
-	(bind-key "v" 'my:direx-view-file direx:direx-mode-map)
 	(bind-key "SPC" 'direx:find-item-other-window direx:direx-mode-map)
 	(bind-key "<f10>" 'quit-window direx:direx-mode-map))
   :init
@@ -35,13 +34,7 @@
 		(call-process "xdg-open" nil 0 nil file-full-name))
 	  ;; use wsl-utils:https://github.com/smzht/wsl-utils
 	  (when (getenv "WSLENV")
-		(call-process "wslstart" nil 0 nil file-full-name))))
-
-  (defun my:direx-view-file ()
-	"Open file in view-mode with hydra"
-	(interactive)
-	(direx:view-item)
-	(hydra-view-mode/body)))
+		(call-process "wslstart" nil 0 nil file-full-name)))))
 
 
 ;; Local Variables:

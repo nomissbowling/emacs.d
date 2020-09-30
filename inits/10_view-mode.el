@@ -16,7 +16,6 @@
 (leaf view-mode-keybinding
   :config
   (define-key view-mode-map "i" 'View-exit)
-  (define-key view-mode-map "," 'View-exit)
   (define-key view-mode-map "g" 'beginning-of-buffer)
   (define-key view-mode-map "G" 'end-of-buffer)
   (define-key view-mode-map "e" 'seq-end)
@@ -27,9 +26,10 @@
   (define-key view-mode-map "j" 'goto-line)
   (define-key view-mode-map ";" 'recenter-top-bottom)
   (define-key view-mode-map "o" 'other-window-or-split)
-  (define-key view-mode-map ">" 'text-scale-increase)
-  (define-key view-mode-map "<" 'text-scale-decrease)
-  (define-key view-mode-map "-" '(text-scale-set 0))
+  (define-key view-mode-map "+" 'text-scale-increase)
+  (define-key view-mode-map "-" 'text-scale-decrease)
+  (define-key view-mode-map "," '(text-scale-set 0))
+  (define-key view-mode-map "@" 'er/expand-region)
   (define-key view-mode-map "0" 'delete-window)
   (define-key view-mode-map "1" 'delete-other-windows)
   (define-key view-mode-map "d" 'vc-diff)
@@ -45,7 +45,7 @@
   (hydra-view-mode
    (:color red :hint nil)
    "
-  🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_<__-__>_  buffer:_[__:__]_  _s_wiper  exit:_,_"
+  🐳 page:_SPC_:_b_:_;_  goto:_a_:_e_._j_._l_._w_  window:_o_:_0_:___  _d_iff:_n_:_p_  zoom:_-__,__+_  buffer:_[__:__]_  _s_wiper  region:_@_  ex_i_t"
    ;; move page
    ("SPC" scroll-up-command)
    ("f" scroll-up-command)
@@ -58,12 +58,12 @@
    ("j" goto-line)
    ;; misc
    ("i" View-exit :exit t)
-   ("," View-exit :exit t)
    (";" recenter-top-bottom)
+   ("@" er/expand-region)
    ;; window
-   (">" text-scale-increase)
-   ("<" text-scale-decrease)
-   ("-" (text-scale-set 0))
+   ("+" text-scale-increase)
+   ("-" text-scale-decrease)
+   ("," (text-scale-set 0))
    ("0" delete-window)
    ("_" delete-other-windows)
    ("d" vc-diff :exit t)

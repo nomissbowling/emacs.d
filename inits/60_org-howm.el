@@ -64,11 +64,12 @@
   :config
   (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")
   :init
+  ;; https://qiita.com/zonkyy/items/eba6bc64f66d278f0032
   (leaf em-glob	:require t
 	:config
 	(defvar junk-file-dir "~/Dropbox/howm/junk/")
 	(defun open-last-junk-file ()
-	  "Open last created junk file."
+	  "Open last created junk-file."
 	  (interactive)
 	  (find-file
 	   (car

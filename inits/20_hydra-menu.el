@@ -13,7 +13,7 @@
   🐳 Quick Menu
   ---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-------------------------------------------------------------------------------------------------------------
     _d_ropbox^^   _e_macs.d^^   _i_nits   _w_eb   .emacs_;_^^^^   GH:_h_   _b_rowse   _g_ithub   _r_estart   _m_arkdown   _u_ndotree   howm:_@_
-    _t_ramp:_q_   git:_[_._]_   f_l_ych   _f_tp   _y_as:_n_:_v_   _a_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   pinky_:_"
+    _t_ramp:_q_   git:_[_._]_   fck_E_r   _f_tp   _y_as:_n_:_v_   _a_g🐾   _s_earch   make:_k_   _c_ompile   _o_pen-url   capture_,_   pinky_:_"
    ("a" counsel-ag)
    ("o" browse-url-at-point)
    ("f" ftp-client)
@@ -39,7 +39,7 @@
    ("@" howm-list-all)
    ("," org-capture)
    ("k" my:make-k)
-   ("l" counsel-flycheck)
+   ("E" counsel-flycheck)
    ("u" undo-tree-visualize)
    ("." hydra-work/body)
    ("x" hydra-work/body)

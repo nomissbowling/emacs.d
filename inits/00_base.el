@@ -11,8 +11,8 @@
   (scroll-bar-mode 0)
   (tool-bar-mode 0)
   (menu-bar-mode 0)
-  (setq inhibit-splash-screen t)
-  (setq inhibit-startup-message t)
+  (setq inhibit-splash-screen t
+		inhibit-startup-message t)
   (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
 
   ;; Basic modes

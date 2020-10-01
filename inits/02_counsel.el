@@ -11,9 +11,6 @@
   (css-mode-hook . counsel-css-imenu-setup)
   :config
   (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-use-selectable-prompt t)
-  (setq enable-recursive-minibuffers t)
   (bind-key "C-s" 'swiper-or-thing-at-point)
   (bind-key "C-:" 'counsel-switch-buffer)
   (bind-key "C-x C-b" 'switch-to-buffer)
@@ -22,11 +19,14 @@
   (bind-key [remap dired] 'counsel-dired)
   (bind-key "<f6>" 'select-counsel-command)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
-  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
-  (setq counsel-find-file-ignore-regexp (regexp-opt completion-ignored-extensions))
-  (setq counsel-yank-pop-separator
-		"\n------------------------------------------------------------\n")
-  (setq ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
+  (setq ivy-use-virtual-buffers t
+		ivy-use-selectable-prompt t
+		enable-recursive-minibuffers t
+		xref-show-xrefs-function #'ivy-xref-show-xrefs
+		counsel-find-file-ignore-regexp (regexp-opt completion-ignored-extensions)
+		counsel-yank-pop-separator
+		"\n------------------------------------------------------------\n"
+		ivy-format-functions-alist '((t . my:ivy-format-function-arrow)))
 
   :init
   (leaf avy :ensure t
@@ -84,16 +84,16 @@
 (leaf counsel-web
   :ensure t
   :config
-  (setq counsel-web-search-action #'browse-url)
-  (setq counsel-web-engine 'google))
+  (setq counsel-web-search-action #'browse-url
+		counsel-web-engine 'google))
 
 (leaf counsel-tramp
   :ensure t
   :config
   (bind-key "C-c t" 'counsel-tramp)
   (bind-key "C-c q" 'my:tramp-quit)
-  (setq tramp-default-method "scp")
-  (setq counsel-tramp-custom-connections
+  (setq tramp-default-method "scp"
+		counsel-tramp-custom-connections
 		'(/scp:xsrv:/home/minorugh/gospel-haiku.com/public_html/))
   (add-hook 'counsel-tramp-pre-command-hook
 			'(lambda () (projectile-mode 0)))

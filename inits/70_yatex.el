@@ -8,11 +8,11 @@
   :ensure t
   :mode ("\\.tex\\'" . yatex-mode)
   :config
-  (setq tex-command "platex")
-  (setq dviprint-command-format "dvpd.sh %s")
-  (setq YaTeX-kanji-code nil)
-  (setq YaTeX-latex-message-code 'utf-8)
-  (setq YaTeX-default-pop-window-height 15))
+  (setq tex-command "platex"
+		dviprint-command-format "dvpd.sh %s"
+		YaTeX-kanji-code nil
+		YaTeX-latex-message-code 'utf-8
+		YaTeX-default-pop-window-height 15))
 
 
 (leaf yatexprc

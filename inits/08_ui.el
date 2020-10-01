@@ -9,8 +9,8 @@
   :init
   (leaf doom-themes :ensure t)
   (add-to-list 'custom-theme-load-path "~/Dropbox/emacs.d/elisp/iceberg-theme")
-  (setq my-themes (list 'iceberg 'doom-dracula))
-  (setq curr-theme my-themes)
+  (setq my-themes (list 'iceberg 'doom-dracula)
+		curr-theme my-themes)
   (load-theme (car curr-theme) t)
   (defun my:cycle-theme ()
 	"Cycle custom theme."
@@ -26,16 +26,12 @@
   :ensure t
   :global-minor-mode t
   :config
-  (setq doom-modeline-buffer-file-name-style 'truncate-with-project)
-  (setq doom-modeline-icon t)
-  (setq doom-modeline-major-mode-icon nil)
-  (setq doom-modeline-minor-modes nil)
+  (setq doom-modeline-buffer-file-name-style 'truncate-with-project
+		doom-modeline-icon t
+		doom-modeline-major-mode-icon nil
+		doom-modeline-minor-modes nil)
   (line-number-mode 0)
   (column-number-mode 0)
-  ;; (doom-modeline-def-modeline
-  ;; 	'main
-  ;; 	'(bar window-number matches buffer-info remote-host buffer-position parrot selection-info)
-  ;; 	'(misc-info persp-name debug minor-modes input-method major-mode process vcs checker))
   :init
   (leaf hide-mode-line
 	:ensure t
@@ -45,8 +41,8 @@
 	:global-minor-mode t
 	:config
 	(autoload 'nyan-mode "nyan-mode" nil t)
-	(setq nyan-cat-face-number 4)
-	(setq nyan-animate-nyancat t)))
+	(setq nyan-cat-face-number 4
+		  nyan-animate-nyancat t)))
 
 
 (leaf all-the-icons

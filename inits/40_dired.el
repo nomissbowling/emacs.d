@@ -23,18 +23,18 @@
   (bind-key "." 'magit-status dired-mode-map)
   (bind-key "," 'dired dired-mode-map)
   ;; Use dired as 2-screen filer
-  (setq dired-dwim-target t)
-  ;; Always to perform the delete/copy of directories recursively
-  (setq dired-recursive-copies 'always)
-  (setq dired-recursive-deletes 'always)
-  (setq dired-listing-switches "-lgGhF")
+  (setq dired-dwim-target t
+		;; Always to perform the delete/copy of directories recursively
+		dired-recursive-copies 'always
+		dired-recursive-deletes 'always
+		dired-listing-switches "-lgGhF")
   :init
   (leaf sudo-edit :ensure t)
   (leaf wdired :require t)
   (leaf dired-x :require t
     :config
-    (setq dired-omit-mode t)
-    (setq dired-omit-files "^\\desktop.ini"))
+    (setq dired-omit-mode t
+		  dired-omit-files "^\\desktop.ini"))
   ;; Show directory first
   (leaf ls-lisp
     :require t

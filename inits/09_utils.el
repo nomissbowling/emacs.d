@@ -8,8 +8,8 @@
   :ensure t
   :if (executable-find "cmigemo")
   :config
-  (setq migemo-command (executable-find "cmigemo"))
-  (setq migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
+  (setq migemo-command (executable-find "cmigemo")
+		migemo-dictionary "/usr/share/cmigemo/utf-8/migemo-dict")
   (autoload 'migemo-init "migemo" nil t)
   (migemo-init))
 
@@ -18,9 +18,9 @@
   :ensure t
   :bind ("<f2>" . imenu-list-smart-toggle)
   :config
-  (setq imenu-list-size 30)
-  (setq imenu-list-position 'left)
-  (setq imenu-list-focus-after-activation t))
+  (setq imenu-list-size 30
+		imenu-list-position 'left
+		imenu-list-focus-after-activation t))
 
 
 (leaf sequential-command-config
@@ -38,15 +38,15 @@
 
 (leaf ps-print-setting
   :init
-  (setq ps-multibyte-buffer 'non-latin-printer)
   (defalias 'ps-mule-header-string-charsets 'ignore)
-  (setq ps-paper-type 'a4)
-  (setq ps-font-size 9)
-  (setq ps-printer-name nil)
-  (setq ps-print-header nil)
-  (setq ps-show-n-of-n t)
-  (setq ps-line-number t)
-  (setq ps-print-footer nil))
+  (setq ps-multibyte-buffer 'non-latin-printer
+		ps-paper-type 'a4
+		ps-font-size 9
+		ps-printer-name nil
+		ps-print-header nil
+		ps-show-n-of-n t
+		ps-line-number t
+		ps-print-footer nil))
 
 
 (leaf pdfout-from-emacs

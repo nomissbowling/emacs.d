@@ -14,20 +14,20 @@
   (bind-key "b" 'company-select-previous company-active-map)
   (bind-key "SPC" 'company-select-next company-active-map)
   (bind-key "C-d" 'company-show-doc-buffer company-active-map)
-  (setq company-transformers '(company-sort-by-backend-importance))
-  (setq company-minimum-prefix-length 3)
-  (setq company-selection-wrap-around t)
-  (setq completion-ignore-case t)
-  (setq company-dabbrev-downcase nil))
+  (setq company-transformers '(company-sort-by-backend-importance)
+		company-minimum-prefix-length 3
+		company-selection-wrap-around t
+		completion-ignore-case t
+		company-dabbrev-downcase nil))
 
 
 (leaf company-quickhelp
   :ensure t
   :global-minor-mode t
   :config
-  (setq company-quickhelp-color-foreground "#C7C9D1")
-  (setq company-quickhelp-color-background "#161822")
-  (setq company-quickhelp-max-lines 5))
+  (setq company-quickhelp-color-foreground "#C7C9D1"
+		company-quickhelp-color-background "#161822"
+		company-quickhelp-max-lines 5))
 
 
 ;; Local Variables:

@@ -16,11 +16,11 @@
     (format-time-string "~/Dropbox/howm/%Y/%m/%Y%m%d%H%M.md" (current-time)))
   :config
   (bind-key [backtab] 'howm-view-summary-previous-section howm-view-summary-mode-map)
-  (setq howm-directory "~/Dropbox/howm")
-  (setq howm-view-split-horizontally t)
-  (setq howm-view-summary-persistent nil)
-  (setq howm-normalizer 'howm-sort-items-by-reverse-date)
-  (setq howm-user-font-lock-keywords
+  (setq howm-directory "~/Dropbox/howm"
+		howm-view-split-horizontally t
+		howm-view-summary-persistent nil
+		howm-normalizer 'howm-sort-items-by-reverse-date
+		howm-user-font-lock-keywords
 		'(("memo:" . (0 'gnus-group-mail-3))
 		  ("note:" . (0 'epa-mark))
 		  ("perl:" . (0 'diff-refine-added))
@@ -33,11 +33,11 @@
   :config
   (bind-key "C-c a" 'org-agenda)
   (bind-key "C-c c" 'org-capture)
-  (setq org-log-done 'time)
-  (setq org-use-speed-commands t)
-  (setq org-src-fontify-natively t)
-  (setq org-agenda-files '("~/Dropbox/howm/org/task.org"))
-  (setq org-capture-templates
+  (setq org-log-done 'time
+		org-use-speed-commands t
+		org-src-fontify-natively t
+		org-agenda-files '("~/Dropbox/howm/org/task.org")
+		org-capture-templates
 		'(("t" " Task" entry (file+headline "~/Dropbox/howm/org/task.org" "Task")
 		   "** TODO %?\n SCHEDULED: %^t \n" :prepend t)
 		  ("m" " Memo" plain (file my:howm-create-file)
@@ -62,8 +62,8 @@
 
 (leaf open-junk-file :ensure t
   :config
-  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d.")
-  (setq open-junk-file-find-file-function 'find-file)
+  (setq open-junk-file-format "~/Dropbox/howm/junk/%Y%m%d."
+		open-junk-file-find-file-function 'find-file)
   :init
   ;; https://qiita.com/zonkyy/items/eba6bc64f66d278f0032
   (leaf em-glob	:require t

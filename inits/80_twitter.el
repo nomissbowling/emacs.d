@@ -14,29 +14,29 @@
 	 (twittering-get-buffer-list))
 	(twittering-unregister-killed-buffer)
 	;; Clear variables
-	(setq twittering-private-info-file-loaded nil)
-	(setq twittering-account-authorization nil)
-	(setq twittering-oauth-access-token-alist nil)
-	(setq twittering-buffer-info-list nil)
-	(setq twittering-timeline-data-table (make-hash-table :test 'equal))
+	(setq twittering-private-info-file-loaded nil
+		  twittering-account-authorization nil
+		  twittering-oauth-access-token-alist nil
+		  twittering-buffer-info-list nil
+		  twittering-timeline-data-table (make-hash-table :test 'equal))
 	(twit))
 
   (defun twit-1 ()
 	"Log in to @minorugh."
 	(interactive)
 	(setq twittering-private-info-file
-		  (expand-file-name "~/Dropbox/dotfiles/twittering-mode1.gpg"))
-	;; timeline to read on startup
-	(setq twittering-initial-timeline-spec-string '("minoruGH" ":retweets_of_me" ":mentions" ":home"))
+		  (expand-file-name "~/Dropbox/dotfiles/twittering-mode1.gpg")
+		  ;; timeline to read on startup
+		  twittering-initial-timeline-spec-string '("minoruGH" ":retweets_of_me" ":mentions" ":home"))
 	(my:reload-twit))
 
   (defun twit-2 ()
 	"Log in to @gospelhaiku."
 	(interactive)
 	(setq twittering-private-info-file
-		  (expand-file-name "~/Dropbox/dotfiles/twittering-mode2.gpg"))
-	;; timeline to read on startup
-	(setq twittering-initial-timeline-spec-string '("gospelhaiku" ":retweets_of_me" ":mentions" ":home"))
+		  (expand-file-name "~/Dropbox/dotfiles/twittering-mode2.gpg")
+		  ;; timeline to read on startup
+		  twittering-initial-timeline-spec-string '("gospelhaiku" ":retweets_of_me" ":mentions" ":home"))
 	(my:reload-twit)))
 
 
@@ -53,25 +53,25 @@
   (bind-key "f" 'twittering-kill-and-switch-to-next-timeline twittering-mode-map)
   (bind-key "b" 'twittering-kill-and-switch-to-previous-timeline twittering-mode-map)
   :init
-  (setq twittering-use-master-password t)
-  (setq twittering-use-ssl t)
-  (setq twittering-timer-interval 40)
-  (setq twittering-convert-fix-size 48)
-  (setq twittering-update-status-function 'twittering-update-status-from-pop-up-buffer)
-  (setq twittering-icon-mode t)
-  (setq twittering-number-of-tweets-on-retrieval 50)  ;; Tweet display count
-  (setq twittering-scroll-mode nil)
-  (setq twittering-pop-to-buffer-function 'pop-to-buffer)
-  ;; RT format
-  (setq twittering-retweet-format '(nil _ " %u QT @%s: %t"))
-  ;; TL flows downward
-  (setq twittering-reverse-mode t)
-  ;; Display format
-  (setq twittering-status-format "%i%FACE[twittering-mode-name-face]{%s(%S) %p }%FACE[twittering-mode-reply-face]{%r%R}\n%FACE[twittering-mode-text-face]{%t}\n%FACE[twittering-mode-hide-face]{%C{%m/%d %H:%M:%S}(%@)}%FACE[twittering-mode-hide-face]{  from %f%L}%FACE[twittering-mode-sepa-face]{\n\n----------------------------------------------------------\n}")
-  ;; URL shortening service to j.mp
-  (setq twittering-tinyurl-service 'j.mp)
-  (setq twittering-bitly-login "minorugh")
-  (setq twittering-bitly-api-key "R_f0b3887698d4d171004f55af6e6a199e")
+  (setq twittering-use-master-password t
+		twittering-use-ssl t
+		twittering-timer-interval 40
+		twittering-convert-fix-size 48
+		twittering-update-status-function 'twittering-update-status-from-pop-up-buffer
+		twittering-icon-mode t
+		twittering-number-of-tweets-on-retrieval 50  ;; Tweet display count
+		twittering-scroll-mode nil
+		twittering-pop-to-buffer-function 'pop-to-buffer
+		;; RT format
+		twittering-retweet-format '(nil _ " %u QT @%s: %t")
+		;; TL flows downward
+		twittering-reverse-mode t
+		;; Display format
+		twittering-status-format "%i%FACE[twittering-mode-name-face]{%s(%S) %p }%FACE[twittering-mode-reply-face]{%r%R}\n%FACE[twittering-mode-text-face]{%t}\n%FACE[twittering-mode-hide-face]{%C{%m/%d %H:%M:%S}(%@)}%FACE[twittering-mode-hide-face]{  from %f%L}%FACE[twittering-mode-sepa-face]{\n\n----------------------------------------------------------\n}"
+		;; URL shortening service to j.mp
+		twittering-tinyurl-service 'j.mp
+		twittering-bitly-login "minorugh"
+		twittering-bitly-api-key "R_f0b3887698d4d171004f55af6e6a199e")
 
   ;; look for name
   (defface twittering-mode-name-face

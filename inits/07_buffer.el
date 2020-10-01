@@ -35,16 +35,16 @@
   (bind-key "C-<right>" 'iflipb-next-buffer)
   (bind-key "C-<left>" 'iflipb-previous-buffer)
   :init
-  (setq iflipb-wrap-around t)
-  (setq iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "dir]$" "GH" ".org$")))
+  (setq iflipb-wrap-around t
+		iflipb-ignore-buffers (list "^[*]" "^magit" "emacs.d" "dir]$" "GH" ".org$")))
 
 
 (leaf undohist
   :ensure t
   :hook (emacs-startup-hook . undohist-initialize)
   :config
-  (setq undohist-directory "~/Dropbox/dotfiles/undohist")
-  (setq undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG")))
+  (setq undohist-directory "~/Dropbox/dotfiles/undohist"
+		undohist-ignored-files '("/tmp/" "COMMIT_EDITMSG")))
 
 
 (leaf undo-tree
@@ -56,11 +56,11 @@
   (bind-key* "C-/" 'undo-tree-redo)
   (bind-key* "C-x u" 'undo-tree-visualize)
   :init
-  (setq undo-tree-visualizer-timestamps t)
-  (setq undo-tree-visualizer-diff t)
-  (setq undo-tree-enable-undo-in-region nil)
-  (setq undo-tree-auto-save-history nil)
-  (setq undo-tree-history-directory-alist
+  (setq undo-tree-visualizer-timestamps t
+		undo-tree-visualizer-diff t
+		undo-tree-enable-undo-in-region nil
+		undo-tree-auto-save-history nil
+		undo-tree-history-directory-alist
 		`(("." . ,(concat user-emacs-directory "undo-tree-hist/"))))
 
   ;; show visualizer diff display

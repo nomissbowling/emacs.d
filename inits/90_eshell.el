@@ -10,14 +10,14 @@
   :init
   (push '("*eshell*" :height 0.6) popwin:special-display-config)
   :config
-  (setq eshell-cmpl-ignore-case t)
-  (setq eshell-ask-to-save-history (quote always))
-  (setq eshell-cmpl-cycle-completions t)
-  (setq eshell-cmpl-cycle-cutoff-length 5)
-  (setq eshell-hist-ignoredups t)
-  (setq eshell-prompt-function 'my:eshell-prompt)
-  (setq eshell-prompt-regexp "^[^#$]*[$#] ")
-  (setq eshell-command-aliases-list
+  (setq eshell-cmpl-ignore-case t
+		eshell-ask-to-save-history (quote always)
+		eshell-cmpl-cycle-completions t
+		eshell-cmpl-cycle-cutoff-length 5
+		eshell-hist-ignoredups t
+		eshell-prompt-function 'my:eshell-prompt
+		eshell-prompt-regexp "^[^#$]*[$#] "
+		eshell-command-aliases-list
   		(append
   		 (list
   		  (list "cl" "clear")

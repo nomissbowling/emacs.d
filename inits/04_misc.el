@@ -59,8 +59,8 @@
   :ensure t
   :global-minor-mode t
   :config
-  (setq which-key-max-description-length 40)
-  (setq which-key-use-C-h-commands t))
+  (setq which-key-max-description-length 40
+		which-key-use-C-h-commands t))
 
 
 (leaf projectile

@@ -6,7 +6,7 @@
 
 (leaf markdown-mode
   :ensure t
-  :mode "\\.md\\'"
+  :mode ("\\.md\\'" . markdown-mode)
   :config
   (setq markdown-italic-underscore t)
   (setq markdown-asymmetric-header t)
@@ -51,13 +51,13 @@
   (hydra-markdown
    (:color red :hint nil)
    "
-    Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _c_ode:_a_bort  pre_v_iew  md2_p_df  md2_d_ocx"
+    Markdown: _i_talic  消線:_x_  _f_ootnote  _t_able  t_o_c  _e_dit-code:_a_bort  pre_v_iew  md2_p_df  md2_d_ocx"
    ("i" markdown-insert-italic)
    ("x" markdown-insert-strike-through)
    ("t" markdown-insert-table)
    ("o" markdown-toc-generate-or-refresh-toc)
    ("f" markdown-insert-footnote)
-   ("c" markdown-edit-code-block)
+   ("e" markdown-edit-code-block)
    ("a" edit-indirect-abort)
    ("v" markdown-preview)
    ;; Pndoc
@@ -67,6 +67,7 @@
 
   :init
   (leaf markdown-toc :ensure t)
+  (leaf edit-indirect :ensure t)
   (leaf poly-markdown :ensure t
   	:mode ("\\.md" . poly-markdown-mode))
 

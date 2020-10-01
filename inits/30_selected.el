@@ -19,6 +19,7 @@
   (bind-key "w" 'my:weblio selected-keymap)
   (bind-key "t" 'google-translate-auto selected-keymap)
   (bind-key "g" 'my:google selected-keymap)
+
   :init
   ;; Control mozc when seleceted
   (defun my:activate-selected ()
@@ -26,7 +27,6 @@
 	(selected--on)
 	(remove-hook 'activate-mark-hook #'my:activate-selected))
   (add-hook 'activate-mark-hook #'my:activate-selected)
-
   (defun my:ime-on ()
 	(interactive)
 	(when (null current-input-method) (toggle-input-method)))

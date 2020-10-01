@@ -8,6 +8,7 @@
   :ensure t
   :mode ("\\.md\\'" . markdown-mode)
   :config
+  :init
   (setq markdown-italic-underscore t)
   (setq markdown-asymmetric-header t)
   (setq markdown-fontify-code-blocks-natively t)

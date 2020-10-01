@@ -25,7 +25,8 @@
   (global-visual-line-mode)
 
   ;; Misc
-  (setq ring-bell-function 'ignore
+  (setq frame-title-format (concat "%b - emacs@" (system-name))
+		ring-bell-function 'ignore
 		scroll-preserve-screen-position :always
 		visible-bell nil
 		scroll-preserve-screen-position t
@@ -36,10 +37,9 @@
 		make-backup-files nil
 		auto-save-default nil
 		create-lockfiles nil
-		vc-follow-symlinks t
-		frame-title-format (concat "%b - emacs@" (system-name)))
-  (setq-default bidi-display-reordering nil
-				tab-width 4)
+		vc-follow-symlinks t)
+  (setq-default bidi-display-reordering nil)
+  (setq-default tab-width 4)
 
   ;; Hack emacs-init-time
   (with-eval-after-load "time"

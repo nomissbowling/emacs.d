@@ -9,12 +9,13 @@
   :mode ("\\.md\\'" . markdown-mode)
   :config
   :init
+  (setq markdown-command "pandoc")
   (setq markdown-italic-underscore t)
   (setq markdown-asymmetric-header t)
   (setq markdown-fontify-code-blocks-natively t)
   (setq markdown-content-type "application/xhtml+xml")
   (setq markdown-css-paths '("https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css"
-  							 "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"))
+							 "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css"))
   (setq markdown-xhtml-header-content "
   <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
   <style>
@@ -70,37 +71,37 @@
   (leaf markdown-toc :ensure t)
   (leaf edit-indirect :ensure t)
   (leaf poly-markdown :ensure t
-  	:mode ("\\.md" . poly-markdown-mode))
+	:mode ("\\.md" . poly-markdown-mode))
 
   :preface
   (defun md2pdf ()
-    "Generate pdf from currently open markdown."
-    (interactive)
-    (let ((filename (buffer-file-name (current-buffer))))
+	"Generate pdf from currently open markdown."
+	(interactive)
+	(let ((filename (buffer-file-name (current-buffer))))
 	  ;; Use wkhtmltopdf without latex
-      (shell-command-to-string
-       (concat "pandoc "
+	  (shell-command-to-string
+	   (concat "pandoc "
 			   filename
 			   " -f markdown -t html5 -o "
 			   (file-name-sans-extension filename)
 			   ".pdf"))
-      (shell-command-to-string
-       (concat "evince "
+	  (shell-command-to-string
+	   (concat "evince "
 			   (file-name-sans-extension filename)
 			   ".pdf"))))
 
   (defun md2docx ()
-    "Generate docx from currently open markdown."
-    (interactive)
-    (let ((filename (buffer-file-name (current-buffer))))
-      (shell-command-to-string
-       (concat "pandoc "
+	"Generate docx from currently open markdown."
+	(interactive)
+	(let ((filename (buffer-file-name (current-buffer))))
+	  (shell-command-to-string
+	   (concat "pandoc "
 			   filename
 			   " -t docx -o "
 			   (file-name-sans-extension filename)
 			   ".docx -V mainfont=IPAPGothic -V fontsize=16pt --highlight-style=zenburn"))
-      (shell-command-to-string
-       (concat "xdg-open "
+	  (shell-command-to-string
+	   (concat "xdg-open "
 			   (file-name-sans-extension filename)
 			   ".docx"))))
   )

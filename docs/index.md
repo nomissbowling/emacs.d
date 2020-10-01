@@ -84,9 +84,6 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 
 ```emacs-lisp
 (leaf init-loader :ensure t
-  :init
-  (setq load-prefer-newer t)
-  (setq el-get-dir "~/.emacs.d/elisp")
   :config
   (custom-set-variables '(init-loader-show-log-after-init 'error-only))
   (add-hook

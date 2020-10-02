@@ -4,9 +4,9 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(leaf cus-start-setting
+(leaf emacs-startup-setting
   :config
-  ;; UI
+  ;; Quiet Startup
   (set-frame-parameter nil 'fullscreen 'maximized)
   (scroll-bar-mode 0)
   (tool-bar-mode 0)

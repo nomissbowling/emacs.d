@@ -36,8 +36,8 @@
   (leaf hydra :ensure t)
   :config
   (leaf-keywords-init)
-  (setq el-get-dir "~/.emacs.d/elisp"
-		load-prefer-newer t
+  (setq load-prefer-newer t
+		el-get-dir "~/.emacs.d/elisp"
 		custom-file (locate-user-emacs-file "custom.el")))
 
 

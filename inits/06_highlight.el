@@ -54,7 +54,6 @@
   (setq dimmer-exclusion-regexp-list
 		'(".*Minibuf.*" ".*which-key.*" "*direx:direx.*" "*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*")
 		dimmer-fraction 0.5)
-  :preface
   (with-eval-after-load "dimmer"
 	(defun dimmer-off ()
 	  (dimmer-mode -1)
@@ -72,7 +71,7 @@
   :hook (prog-mode-hook . my:enable-trailing-mode)
   :config
   (setq show-trailing-whitespace nil)
-  :preface
+  :init
   (defun my:enable-trailing-mode ()
     "Show tail whitespace."
     (setq show-trailing-whitespace t))

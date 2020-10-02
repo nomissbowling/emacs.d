@@ -72,7 +72,7 @@
   T .. publish timer    m .. Magit status    c .. Open config      f .. Open file
   N .. No help [tab]    / .. Select postdir  o .. Open base dir    v .. View other window
   ")
-  :preface
+
   (defun my:edit-easy-hugo ()
     "Edit setting file for 'easy-hugo'."
     (interactive)

@@ -11,6 +11,7 @@
   (setq default-input-method "japanese-mozc"
 		mozc-helper-program-name "mozc_emacs_helper"
 		mozc-leim-title "♡かな")
+
   ;; extention
   (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
   (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
@@ -22,12 +23,14 @@
     (toggle-input-method)
     (insert str)
     (toggle-input-method))
+
   ;; Key-chord measures
   (defadvice toggle-input-method (around toggle-input-method-around activate)
     "Input method function in key-chord.el not to be nil."
     (let ((input-method-function-save input-method-function))
       ad-do-it
       (setq input-method-function input-method-function-save)))
+
   :init
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions

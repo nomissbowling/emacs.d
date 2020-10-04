@@ -7,20 +7,16 @@
 (leaf yatex
   :ensure t
   :mode ("\\.tex\\'" . yatex-mode)
-  :config
+  :init
   (setq tex-command "platex"
 		dviprint-command-format "dvpd.sh %s"
 		YaTeX-kanji-code nil
 		YaTeX-latex-message-code 'utf-8
-		YaTeX-default-pop-window-height 15))
-
-
-(leaf yatexprc
-  :require t
-  :after yatex
+		YaTeX-default-pop-window-height 15)
   :config
-  (bind-key "M-c" 'YaTeX-typeset-buffer)
-  (bind-key "M-l" 'YaTeX-lpr))
+  (when (require 'yatexprc nil t)
+	(bind-key "M-c" 'YaTeX-typeset-buffer)
+	(bind-key "M-l" 'YaTeX-lpr)))
 
 
 ;; Dviprint-command-format (YaTeX-lpr)

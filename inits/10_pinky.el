@@ -65,7 +65,7 @@
    ("/" (text-scale-set 0))
    ("0" delete-window)
    ("_" delete-other-windows)
-   ("d" vc-diff :exit t)
+   ("d" vc-diff)
    ("n" diff-hl-next-hunk)
    ("p" diff-hl-previous-hunk)
    ;; buffer

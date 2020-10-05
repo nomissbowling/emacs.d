@@ -52,7 +52,7 @@
   :global-minor-mode t
   :config
   (setq dimmer-exclusion-regexp-list
-		'(".*Minibuf.*" ".*which-key.*" "*direx:direx.*" "*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*")
+		'(".*Minibuf.*" ".*which-key.*" "*direx:direx.*" "*Messages.*" ".*LV.*" ".*howm.*" ".*magit.*" ".*org.*" "posframe")
 		dimmer-fraction 0.5)
   (with-eval-after-load "dimmer"
 	(defun dimmer-off ()

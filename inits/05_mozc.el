@@ -52,29 +52,29 @@
   (bind-key "<f8>" 'my:mozc-word-regist)
   :init
   (defun select-mozc-tool ()
-    "Select mozc tool command."
-    (interactive)
-    (counsel-M-x "my:mozc "))
+	"Select mozc tool command."
+	(interactive)
+	(counsel-M-x "my:mozc "))
 
   (defun my:mozc-config-dialog ()
-    "Run the mozc-tool in the background."
-    (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
+	"Run the mozc-tool in the background."
+	(interactive)
+	(compile "/usr/lib/mozc/mozc_tool --mode=config_dialog"))
 
   (defun my:mozc-dictionary-tool ()
-    "Run the mozc-tool in the background."
-    (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=dictionary_tool"))
+	"Run the mozc-tool in the background."
+	(interactive)
+	(compile "/usr/lib/mozc/mozc_tool --mode=dictionary_tool"))
 
   (defun my:mozc-word-regist ()
-    "Run the mozc-tool in the background."
-    (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
+	"Run the mozc-tool in the background."
+	(interactive)
+	(compile "/usr/lib/mozc/mozc_tool --mode=word_register_dialog"))
 
   (defun my:mozc-hand-writing ()
-    "Run the mozc-tool in the background."
-    (interactive)
-    (compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")))
+	"Run the mozc-tool in the background."
+	(interactive)
+	(compile "/usr/lib/mozc/mozc_tool --mode=hand_writing")))
 
 
 ;; Local Variables:

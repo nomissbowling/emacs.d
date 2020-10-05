@@ -41,7 +41,7 @@
 			(read-only . "#84A0C6")
 			(hiragana . "#CC3333"))))
   (leaf mozc-cand-posframe :ensure t
-    :require t
+	:require t
     :config
     (setq mozc-candidate-style 'posframe)))
 

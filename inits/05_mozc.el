@@ -34,9 +34,9 @@
   :init
   (leaf mozc-cursor-color
     :el-get iRi-E/mozc-el-extensions
-    :require t
-    :config
-    (setq mozc-cursor-color-alist
+	:require t
+	:config
+	(setq mozc-cursor-color-alist
 		  '((direct . "#BD93F9")
 			(read-only . "#84A0C6")
 			(hiragana . "#CC3333"))))

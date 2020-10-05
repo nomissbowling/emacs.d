@@ -35,7 +35,7 @@
   :init
   (leaf hide-mode-line
 	:ensure t
-	:hook ((fundamental-mode-hook dashboard-mode-hook imenu-list-minor-mode-hook direx:direx-mode-hook diff-mode-hook) . hide-mode-line-mode))
+	:hook ((dashboard-mode-hook imenu-list-minor-mode-hook direx:direx-mode-hook) . hide-mode-line-mode))
   (leaf nyan-mode
 	:ensure t
 	:global-minor-mode t

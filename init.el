@@ -29,8 +29,6 @@
 (leaf leaf-keywords
   :ensure t
   :init
-  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-  (leaf user-defined :require t)
   (leaf bind-key :ensure t)
   (leaf el-get :ensure t)
   (leaf hydra :ensure t)
@@ -43,6 +41,9 @@
 
 (leaf init-loader
   :ensure t
+  :init
+  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+  (leaf user-defined :require t)
   :config
   (custom-set-variables '(init-loader-show-log-after-init 'error-only))
   (add-hook

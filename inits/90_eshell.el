@@ -25,6 +25,7 @@
   		  (list "la" "ls -a")
 		  (list "d" "dired .")
   		  (list "ex" "exit"))))
+
   ;; cus functions
   (defun my:eshell-prompt ()
     "Prompt change string."

@@ -11,6 +11,9 @@
   (bind-key "C-x p" 'easy-hugo-preview)
   (bind-key "C-x P" 'easy-hugo-publish)
   (bind-key "C-c d" 'inseart-date)
+  (when (require 'popup nil t)
+	(bind-key "C-x C-t" 'easy-hugo-complete-tags)
+	(bind-key "C-x C-c" 'easy-hugo-complete-categories))
   (with-eval-after-load 'easy-hugo
     (bind-key [tab] 'easy-hugo-no-help easy-hugo-mode-map)
     (bind-key "v" 'easy-hugo-view-other-window easy-hugo-mode-map)
@@ -23,7 +26,6 @@
   (setq easy-hugo--sort-time-flg nil)
   (setq easy-hugo--sort-publishday-flg 1)
   :init
-  (require 'popup)
   (leaf toml-mode :ensure t)
   ;; Main blog (=blog1)
   (setq easy-hugo-basedir "~/Dropbox/web/wegh/topics/"

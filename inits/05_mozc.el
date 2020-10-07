@@ -12,10 +12,10 @@
 		mozc-helper-program-name "mozc_emacs_helper"
 		mozc-leim-title "♡かな")
 
-  ;; extention
-  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
+  ;; Confirmed immediately
   (define-key mozc-mode-map "," '(lambda () (interactive) (mozc-insert-str "、")))
   (define-key mozc-mode-map "." '(lambda () (interactive) (mozc-insert-str "。")))
+  (define-key mozc-mode-map "?" '(lambda () (interactive) (mozc-insert-str "？")))
   (define-key mozc-mode-map "!" '(lambda () (interactive) (mozc-insert-str "！")))
   (defun mozc-insert-str (str)
     "If punctuation marks, immediately confirm."

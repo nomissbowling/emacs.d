@@ -9,7 +9,7 @@
   :config
   (bind-key "<left>" 'dired-up-alternate-directory dired-mode-map)
   (bind-key "<right>" 'dired-open-in-accordance-with-situation dired-mode-map)
-  (bind-key "RET"'dired-open-in-accordance-with-situation dired-mode-map)
+  (bind-key "RET" 'dired-open-in-accordance-with-situation dired-mode-map)
   (bind-key "SPC" 'my:dired-toggle-mark dired-mode-map)
   (bind-key "C-g" 'my:dired-unmark-all dired-mode-map)
   (bind-key "f" 'counsel-find-file dired-mode-map)

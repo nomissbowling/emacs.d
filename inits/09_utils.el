@@ -27,7 +27,7 @@
   :hook (emacs-startup-hook . sequential-command-setup-keys)
   :init
   (leaf sequential-command
-    :el-get HKey/sequential-command))
+	:el-get HKey/sequential-command))
 
 
 (leaf browse-at-remote

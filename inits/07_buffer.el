@@ -65,14 +65,14 @@
 
   ;; show visualizer diff display
   (defun undo-tree-visualizer-show-diff (&optional node)
-	(setq-local undo-tree-visualizer-diff t)
-	(let ((buff (with-current-buffer undo-tree-visualizer-parent-buffer
-				  (undo-tree-diff node)))
-		  (display-buffer-mark-dedicated 'soft)
-		  win)
-	  (setq win (split-window))
-	  (set-window-buffer win buff)
-	  (shrink-window-if-larger-than-buffer win)))
+  	(setq-local undo-tree-visualizer-diff t)
+  	(let ((buff (with-current-buffer undo-tree-visualizer-parent-buffer
+  				  (undo-tree-diff node)))
+  		  (display-buffer-mark-dedicated 'soft)
+  		  win)
+  	  (setq win (split-window))
+  	  (set-window-buffer win buff)
+  	  (shrink-window-if-larger-than-buffer win)))
 
   ;; hide visualizer diff display
   (defun undo-tree-visualizer-hide-diff ()

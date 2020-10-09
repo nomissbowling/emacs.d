@@ -47,7 +47,7 @@
   </script>
   ")
 
-  :chord ("mm" . hydra-markdown/body)
+  :bind ("C-x m" . hydra-markdown/body)
   :hydra
   (hydra-markdown
    (:color red :hint nil)

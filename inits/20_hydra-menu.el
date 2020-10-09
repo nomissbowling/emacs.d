@@ -121,7 +121,7 @@
   (defun open-keepass ()
     "Narrow the only espy command in M-x."
     (interactive)
-    (compile "keepassxc"))
+    (compile "secret-tool lookup type kdb | keepassxc --pw-stdin ~/Dropbox/backup/passwd/keypassX/20191105.kdbx"))
 
   (defun open-calculator ()
     "Narrow the only espy command in M-x."

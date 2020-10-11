@@ -62,7 +62,7 @@
 
 (leaf emacs-base-setting
   :config
-  ;; Basic code
+  ;; Basic encoding
   (set-language-environment "Japanese")
   (prefer-coding-system 'utf-8)
 

@@ -4,6 +4,10 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
+(eval-when-compile
+  (require 'cl-lib))
+
+
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil
@@ -42,6 +46,9 @@
 
 (leaf init-loader
   :ensure t
+  :init
+  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+  (leaf user-defined :require t)
   :config
   (custom-set-variables '(init-loader-show-log-after-init 'error-only))
   (add-hook

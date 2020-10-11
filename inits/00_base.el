@@ -53,11 +53,7 @@
   		(if (called-interactively-p 'interactive)
   			(message "%s" str)
   		  str)))
-  	(advice-add 'emacs-init-time :override #'ad:emacs-init-time))
-
-  ;; Load user defined
-  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
-  (leaf user-defined :require t))
+  	(advice-add 'emacs-init-time :override #'ad:emacs-init-time)))
 
 
 (leaf emacs-base-setting

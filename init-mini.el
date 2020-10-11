@@ -1,4 +1,4 @@
-;;; minimal-init.el --- minimal-init.el
+;;; init-mini.el --- minimal-init
 ;;; Commentary:
 
 ;; This will start with typing miniemacs at shell with minimal Emacs.
@@ -122,4 +122,4 @@
 ;; no-byte-compile: t
 ;; End:
 
-;;; minimal-init.el ends here
+;;; init-mini.el ends here

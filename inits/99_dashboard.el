@@ -14,13 +14,10 @@
     (bind-key "n" 'browse-google-news dashboard-mode-map)
     (bind-key "k" 'browse-keep dashboard-mode-map)
     (bind-key "m" 'browse-gmail dashboard-mode-map)
-    (bind-key "g" 'sylpheed dashboard-mode-map)
-    (bind-key "b" 'counsel-bookmark dashboard-mode-map)
     (bind-key "t" 'browse-tweetdeck dashboard-mode-map)
     (bind-key "s" 'browse-slack dashboard-mode-map)
     (bind-key "h" 'browse-homepage dashboard-mode-map)
     (bind-key "p" 'browse-pocket dashboard-mode-map)
-    (bind-key "e" 'easy-hugo dashboard-mode-map)
     (bind-key "." 'hydra-browse/body dashboard-mode-map)
     (bind-key "<home>" 'quit-dashboard dashboard-mode-map))
   ;; Set the title
@@ -36,10 +33,10 @@
   (setq dashboard-set-file-icons t)
   (setq show-week-agenda-p t)
   (setq dashboard-items '((recents  . 10)
-						  (agenda . 5)))
+  						  (agenda . 5)))
   ;; for sub machine
   (when (string-match "x250" (shell-command-to-string "uname -n"))
-    (setq dashboard-items '((recents  . 5)
+	(setq dashboard-items '((recents  . 5)
 							(agenda . 5))))
   ;; Set the footer
   (setq dashboard-footer-icon
@@ -59,7 +56,7 @@
 	(interactive)
 	(insert (if (display-graphic-p)
 				(all-the-icons-faicon "google" :height 1.2 :v-adjust -0.05 :face 'dashboard-heading) " "))
-	(insert "   📅 Calendar: (c)   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
+	(insert "    Calendar: (c)   📰 News: (n)   📝 Keep: (k)    Mail: (m)    Twitter: (t)    Pocket: (p)    Slack: (s)    GH: (h) "))
 
   (defvar dashboard-recover-layout-p nil
 	"Wether recovers the layout.")

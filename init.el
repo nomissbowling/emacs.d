@@ -16,6 +16,7 @@
 		 gc-cons-threshold 800000)))
 
 
+;; Package
 (customize-set-variable
  'package-archives '(("org"   . "https://orgmode.org/elpa/")
 					 ("melpa" . "https://melpa.org/packages/")

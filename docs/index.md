@@ -15,9 +15,10 @@
 ~/.emacs.d
 ├── el-get/
 ├── elisp/
-│   ├── emacs-livedown/
+│   ├── cool-copy/
 │   ├── key-chord/
 │   ├── mozc-el-extensions/
+│   ├── sequential-command/
 │   └── tempbuf/
 ├── elpa/
 └── init.el （シンボリック）
@@ -28,8 +29,7 @@
 ├── elisp/
 │   ├── iceberg-theme/
 │   ├── info/
-│   ├── user-dired.el
-│   └── user-template.el
+│   └── user-defined.el
 ├── inits/
 │   ├── 01_base.el
 │   ├── 02_git.el
@@ -39,7 +39,7 @@
 ├── snippets/
 ├── .gitignore
 ├── init.el
-└── minimaru-init.el
+└── init-mini.el
 
 ```
 

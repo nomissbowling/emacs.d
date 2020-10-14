@@ -31,8 +31,8 @@
 │   ├── info/
 │   └── user-defined.el
 ├── inits/
-│   ├── 01_base.el
-│   ├── 02_git.el
+│   ├── 00_base.el
+│   ├── 01_git.el
 │   ├── ...
 │   ├── 90_translate.el
 │   └── 99_dashboard.el
@@ -70,7 +70,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
  (lambda ()
    "Restore defalut values after startup."
    (setq file-name-handler-alist default-file-name-handler-alist)
-   (setq gc-cons-threshold 800000)))
+   (setq gc-cons-threshold 1000000)))
 
 ```
 
@@ -83,14 +83,17 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)`
 
 ```emacs-lisp
-(leaf init-loader :ensure t
+(leaf init-loader
+  :ensure t
+  :init
+  (add-to-list 'load-path "~/Dropbox/emacs.d/elisp")
+  (leaf user-defined :require t)
   :config
   (custom-set-variables '(init-loader-show-log-after-init 'error-only))
   (add-hook
    'after-init-hook
    (lambda ()
-     (init-loader-load "~/Dropbox/emacs.d/inits")))
-  (setq custom-file (locate-user-emacs-file "custom.el")))
+     (init-loader-load "~/Dropbox/emacs.d/inits"))))
 ```
 
 私の init.el は、インストールパッケージ数 112 + 必要最小限の内容ですので、遅延処理しなくても 2 秒以下で起動しますが、この `after-init-hook` の処理で 0.5 秒程度、起動時間を短縮できています。

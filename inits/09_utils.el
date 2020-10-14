@@ -23,11 +23,11 @@
 		imenu-list-focus-after-activation t))
 
 
-(leaf sequential-command-config
-  :hook (emacs-startup-hook . sequential-command-setup-keys)
-  :init
-  (leaf sequential-command
-	:el-get HKey/sequential-command))
+(leaf sequential-command
+  :el-get HKey/sequential-command
+  :config
+  (leaf sequential-command-config
+	:hook (emacs-startup-hook . sequential-command-setup-keys)))
 
 
 (leaf browse-at-remote
@@ -74,6 +74,11 @@
   (bind-key "<f3>" 'filer-current-dir-open)
   (bind-key "<f4>" 'term-current-dir-open)
   :init
+  (defun my:jpg2png ()
+	"Hoge"
+	(interactive)
+	(compile "mkdir ~/Desktop/output | mogrify -path ~/Desktop/output  -format png *"))
+
   (defun filer-current-dir-open ()
     "Open filer in current dir."
     (interactive)

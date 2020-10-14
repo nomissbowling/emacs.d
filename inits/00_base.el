@@ -13,7 +13,7 @@
   (menu-bar-mode 0)
   (setq inhibit-splash-screen t
 		inhibit-startup-message t)
-  (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
+
 
   ;; Basic modes
   (savehist-mode)
@@ -40,20 +40,21 @@
 		vc-follow-symlinks t)
   (setq-default bidi-display-reordering nil)
   (setq-default tab-width 4)
+  (add-to-list 'default-frame-alist '(alpha . (1.0 0.9)))
 
   ;; Hack emacs-init-time
   (with-eval-after-load "time"
-  	(defun ad:emacs-init-time ()
-  	  "Return a string giving the duration of the Emacs initialization."
-  	  (interactive)
-  	  (let ((str
-  			 (format "%.3f seconds"
-  					 (float-time
-  					  (time-subtract after-init-time before-init-time)))))
-  		(if (called-interactively-p 'interactive)
-  			(message "%s" str)
-  		  str)))
-  	(advice-add 'emacs-init-time :override #'ad:emacs-init-time)))
+	(defun ad:emacs-init-time ()
+	  "Return a string giving the duration of the Emacs initialization."
+	  (interactive)
+	  (let ((str
+			 (format "%.3f seconds"
+					 (float-time
+					  (time-subtract after-init-time before-init-time)))))
+		(if (called-interactively-p 'interactive)
+			(message "%s" str)
+		  str)))
+	(advice-add 'emacs-init-time :override #'ad:emacs-init-time)))
 
 
 (leaf emacs-base-setting

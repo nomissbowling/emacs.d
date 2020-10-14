@@ -19,7 +19,8 @@
 
 
 (leaf tempbuf
-  :el-get emacswiki:tempbuf
+  :el-get (tempbuf
+		   :url "http://www.emacswiki.org/emacs/download/tempbuf.el")
   :hook
   (dired-mode-hook . turn-on-tempbuf-mode)
   (direx:direx-mode-hook . turn-on-tempbuf-mode)

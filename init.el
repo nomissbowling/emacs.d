@@ -4,10 +4,6 @@
 ;;; Code:
 ;; (setq debug-on-error t)
 
-(eval-when-compile
-  (require 'cl-lib))
-
-
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil
@@ -17,7 +13,7 @@
  (lambda ()
    "Restore defalut values after startup."
    (setq file-name-handler-alist default-file-name-handler-alist
-		 gc-cons-threshold 800000)))
+		 gc-cons-threshold 1000000)))
 
 
 ;; Package
@@ -41,7 +37,8 @@
   (leaf-keywords-init)
   (setq load-prefer-newer t
 		el-get-dir "~/.emacs.d/elisp"
-		custom-file (locate-user-emacs-file "custom.el")))
+		custom-file (locate-user-emacs-file "custom.el")
+		byte-compile-warnings '(cl-functions)))
 
 
 (leaf init-loader

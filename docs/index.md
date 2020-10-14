@@ -80,7 +80,7 @@ Emacs起動時に大胆に GCを減らし、Startup後に通常の値に戻し�
 1. init.el の冒頭設定で超大胆に GC を減らします。<br> `(setq gc-cons-threshold 100000000)`
 2. 次に遅延処理できない初期設定を読み込みます。
 3. 最後に残りの設定ファイル群をまとめて `after-init-hook` で遅延読み込みします。
-4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 800000)`
+4. 全て読み終わったら、`emacs-startup-hook` で GC の値を戻します。<br> ` (setq gc-cons-threshold 1000000)`
 
 ```emacs-lisp
 (leaf init-loader

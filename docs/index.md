@@ -190,11 +190,11 @@ Emacs 起動時の初期画面には、`Dashboard` を表示させています�
 	(funcall (local-key-binding "r"))))
 
 ```
-- [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/init-config.el)は、ここを見て下さい。
+- [Dashboard の詳細設定](https://github.com/minorugh/emacs.d/blob/master/inits/99_dashboard.el)は、ここを見て下さい。
 
-### 2.5 [minimal-init.el] 最小限のEmacsを起動
+### 2.5 [init-mini.el] 最小限のEmacsを起動
 
-[minimal-init.el](https://github.com/minorugh/emacs.d/blob/master/minimal-init.el) は、最小限の emacs を起動させるための設定です。
+[init-mini.el](https://github.com/minorugh/emacs.d/blob/master/init-mini.el) は、最小限の emacs を起動させるための設定です。
 
 新しいパッケージや設定をテストしたり、エラー等で Emacsが起動しない場合に使用します。
 シェルから `resq` と入力することで起動することがでます。
@@ -202,7 +202,7 @@ Emacs 起動時の初期画面には、`Dashboard` を表示させています�
 以下を `.zshrc` または `.bashrc` に書き込みます。
 
 ```shell
-alias resq='emacs -q -l ~/Dropbox/emacs.d/minimal-init.el'
+alias resq='emacs -q -l ~/Dropbox/emacs.d/init-mini.el'
 ```
 
 ファイルの PATH は、ご自分の環境に応じて修正が必要です。

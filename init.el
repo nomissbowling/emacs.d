@@ -39,10 +39,10 @@
   (leaf hydra :ensure t)
   :config
   (leaf-keywords-init)
-  (setq load-prefer-newer t
-		el-get-dir "~/.emacs.d/elisp"
-		custom-file (locate-user-emacs-file "custom.el")
-		byte-compile-warnings '(cl-functions)))
+  (setq load-prefer-newer t)
+  (setq el-get-dir "~/.emacs.d/elisp")
+  (setq custom-file (locate-user-emacs-file "custom.el"))
+  (setq byte-compile-warnings '(cl-functions)))
 
 
 (leaf init-loader

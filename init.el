@@ -9,9 +9,9 @@
 
 ;; Speed up startup
 (defvar default-file-name-handler-alist file-name-handler-alist)
+(defvar default-gc-cons-threshold gc-cons-threshold)
 (setq file-name-handler-alist nil)
-(setq default-gc-cons-threshold gc-cons-threshold)
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold (* 1024 1024 100))
 (add-hook
  'emacs-startup-hook
  (lambda ()

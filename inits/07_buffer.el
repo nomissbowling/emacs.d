@@ -21,11 +21,8 @@
 (leaf tempbuf
   :el-get (tempbuf
 		   :url "http://www.emacswiki.org/emacs/download/tempbuf.el")
-  :hook
-  (dired-mode-hook . turn-on-tempbuf-mode)
-  (direx:direx-mode-hook . turn-on-tempbuf-mode)
-  (magit-mode-hook . turn-on-tempbuf-mode)
-  (compilation-mode-hook . turn-on-tempbuf-mode)
+  :hook ((dired-mode-hook direx:direx-mode magit-mode compilation-mode)
+		 . turn-on-tempbuf-mode)
   :config
   (setq tempbuf-kill-message nil))
 
